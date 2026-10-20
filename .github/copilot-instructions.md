@@ -143,7 +143,13 @@ The SDK has two public API layers per module:
    name as a shipped top-level function (`Firebase.getApps(context)`, `Firebase.fromResource(context)`, next to
    `Firebase.initialize` in `Initialize.kt`), calling the real static through the Java helper on Android. JVM-only types
    get a `kotlin.time` counterpart as shipped top-level functions (`Timestamp(Instant)`, `Timestamp.toKotlinInstant` in
-   `TimestampInstant.kt`; `kotlin.time.ExperimentalTime` is opted in at the build level).
+   `TimestampInstant.kt`; `kotlin.time.ExperimentalTime` is opted in at the build level). An instance member whose
+   replacement has the same arity cannot be deprecated (a member shadows a same-named extension), so only the
+   replacement is shipped, as a same-named extension taking the multiplatform type (`getHttpsCallableFromUrl(url: String)`
+   in `FunctionsUrl.kt`); the report maps such a member to the extension. On Android the shipped facades reach the SDK's
+   JVM-only members through a package-private Java helper (`FunctionsJvmApi.java`): javac compiles after the stubs are
+   stripped, so the stub need not (and must not) declare members common code cannot call. Members the Android SDK has
+   but `firebase-java-sdk` lacks or keeps non-public are listed in `jvmMissingMembers` and verified against Android only.
    - An Android API that cannot be mapped onto a platform and has no replacement to point at is **omitted** on purpose so
      callers get a compile error and adapt.
    - An API that maps onto Android, JVM and Apple but not JS/wasmJs goes in the `nonJsMain` source set (`utils.applyFirebaseHierarchy()`).
@@ -156,7 +162,7 @@ The SDK has two public API layers per module:
      is selected with `Class#member(Type, Type)`.
 2. **`dev.gitlive.firebase.*` (Kotlin-first layer)** — the existing API, implemented in `commonMain` *on top of* the
    `com.google.firebase` layer (suspend functions instead of `Task`, `Flow` instead of listeners, default arguments instead of
-   builders). New modules are migrated to this structure one at a time; `firebase-app`, `firebase-installations`, `firebase-crashlytics` and `firebase-config` are the reference.
+   builders). New modules are migrated to this structure one at a time; `firebase-app`, `firebase-installations`, `firebase-crashlytics`, `firebase-config` and `firebase-functions` are the reference.
    `firebase-dataconnect` shows a module whose Android SDK API is already coroutine- and kotlinx-serialization-based, so it is
    used as is from common code with almost no `dev.gitlive` layer: the `com.google.firebase.dataconnect` interfaces, value
    types and serializers are plain common code (verified against the Android SDK and stripped on Android), and `nonAndroidMain`
