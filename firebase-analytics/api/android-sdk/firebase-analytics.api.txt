@@ -1,4 +1,4 @@
-// Source: generated from the published classes (the module is not open source) of com.google.android.gms:play-services-measurement-api:23.2.0
+// Source: generated from the published classes (the module is not open source) of com.google.android.gms:play-services-measurement-api:24.0.0
 // Signature format: 3.0
 package com.google.firebase.analytics {
 

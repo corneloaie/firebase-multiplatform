@@ -1,6 +1,6 @@
 # Android SDK source compatibility of firebase-dataconnect
-# Android SDK api.txt ref: fc5a2bee3a2f81f2f35652867628a3f4913e915d
-# 100% of 198 public members available (198 identical, 0 mapped, 0 missing, 0 omitted)
+# Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
+# 99% of 197 public members available (196 identical, 0 mapped, 1 missing, 0 omitted)
 #
 com.google.firebase.dataconnect.AnyValue
   OK    AnyValue(boolean)
@@ -17,6 +17,8 @@ com.google.firebase.dataconnect.AnyValueKt
   OK    static AnyValue encode(Companion, T, SerializationStrategy, SerializersModule)
   OK    static AnyValue fromAny(Companion, Object)
   OK    static AnyValue fromNullableAny(Companion, Object)
+com.google.firebase.dataconnect.AuthUserChangedException  (class missing)
+  MISS  AuthUserChangedException(String, Throwable)
 com.google.firebase.dataconnect.CacheSettings
   OK    CacheSettings(Storage, long)
   OK    long getMaxAge()
@@ -51,13 +53,11 @@ com.google.firebase.dataconnect.DataConnectOperationFailureResponse.ErrorInfo
   OK    String toString()
 com.google.firebase.dataconnect.DataConnectPathSegment
 com.google.firebase.dataconnect.DataConnectSettings
-  OK    DataConnectSettings(String, boolean)
   OK    DataConnectSettings(String, boolean, CacheSettings)
   OK    CacheSettings getCacheSettings()
   OK    String getHost()
   OK    boolean getSslEnabled()
 com.google.firebase.dataconnect.DataConnectSettingsKt
-  OK    static DataConnectSettings copy(DataConnectSettings, String, boolean)
   OK    static DataConnectSettings copy(DataConnectSettings, String, boolean, CacheSettings)
 com.google.firebase.dataconnect.DataSource
   OK    static DataSource CACHE

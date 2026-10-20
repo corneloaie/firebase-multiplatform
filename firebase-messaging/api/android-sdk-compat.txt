@@ -1,5 +1,5 @@
 # Android SDK source compatibility of firebase-messaging
-# Android SDK api.txt ref: fc5a2bee3a2f81f2f35652867628a3f4913e915d
+# Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
 # 91% of 67 public members available (61 identical, 0 mapped, 0 missing, 6 omitted)
 #
 com.google.firebase.messaging.FirebaseMessaging

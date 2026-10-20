@@ -1,5 +1,5 @@
 # Android SDK source compatibility of firebase-functions
-# Android SDK api.txt ref: fc5a2bee3a2f81f2f35652867628a3f4913e915d
+# Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
 # 93% of 60 public members available (50 identical, 6 mapped, 0 missing, 4 omitted)
 #
 com.google.firebase.functions.FirebaseFunctions
@@ -66,7 +66,7 @@ com.google.firebase.functions.HttpsCallableReference
   OK    long getTimeout()
   MAP   void setTimeout(long, TimeUnit)  [TimeUnit -> Object, deprecated: setTimeout(Long, TimeUnit) takes a java.util.concurrent.TimeUnit and can only be called from Android/JVM code; use setTimeout(timeout) with a kotlin.time.Duration from common code]
   PLAT  Publisher stream()
-  PLAT  Publisher stream(Object data =)
+  PLAT  Publisher stream(Object)
   MAP   HttpsCallableReference withTimeout(long, TimeUnit)  [TimeUnit -> Object, deprecated: withTimeout(Long, TimeUnit) takes a java.util.concurrent.TimeUnit and can only be called from Android/JVM code; use withTimeout(timeout) with a kotlin.time.Duration from common code]
 com.google.firebase.functions.HttpsCallableResult
   OK    Object getData()

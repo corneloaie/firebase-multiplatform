@@ -1,6 +1,6 @@
 # Android SDK source compatibility of firebase-auth
-# Android SDK api.txt ref: com.google.firebase:firebase-auth-interop:20.0.0, com.google.firebase:firebase-auth:24.2.0
-# 100% of 270 public members available (264 identical, 6 mapped, 0 missing, 0 omitted)
+# Android SDK api.txt ref: com.google.firebase:firebase-auth-interop:20.0.0, com.google.firebase:firebase-auth:25.0.0
+# 99% of 272 public members available (264 identical, 6 mapped, 2 missing, 0 omitted)
 #
 com.google.firebase.auth.ActionCodeEmailInfo
   OK    ActionCodeEmailInfo()
@@ -157,6 +157,9 @@ com.google.firebase.auth.FirebaseAuthMissingActivityForRecaptchaException
 com.google.firebase.auth.FirebaseAuthMultiFactorException
   OK    FirebaseAuthMultiFactorException(String, String, MultiFactorResolver)
   OK    MultiFactorResolver getResolver()
+com.google.firebase.auth.FirebaseAuthPasswordDoesNotMeetRequirementsException  (class missing)
+  MISS  FirebaseAuthPasswordDoesNotMeetRequirementsException(String, String, String)
+  MISS  String getReason()
 com.google.firebase.auth.FirebaseAuthProvider
   OK    static String PROVIDER_ID
 com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException

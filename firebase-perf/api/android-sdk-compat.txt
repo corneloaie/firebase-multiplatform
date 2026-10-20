@@ -1,5 +1,5 @@
 # Android SDK source compatibility of firebase-perf
-# Android SDK api.txt ref: fc5a2bee3a2f81f2f35652867628a3f4913e915d
+# Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
 # 100% of 50 public members available (49 identical, 1 mapped, 0 missing, 0 omitted)
 #
 com.google.firebase.perf.FirebasePerformance

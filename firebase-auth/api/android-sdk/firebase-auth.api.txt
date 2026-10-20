@@ -1,4 +1,4 @@
-// Source: generated from the published classes (the module is not open source) of com.google.firebase:firebase-auth-interop:20.0.0, com.google.firebase:firebase-auth:24.2.0
+// Source: generated from the published classes (the module is not open source) of com.google.firebase:firebase-auth-interop:20.0.0, com.google.firebase:firebase-auth:25.0.0
 // Signature format: 3.0
 package com.google.firebase.auth {
 
@@ -8,7 +8,7 @@ package com.google.firebase.auth {
     method public abstract String getPreviousEmail();
   }
 
-  public class ActionCodeInfo {
+  public abstract class ActionCodeInfo {
     ctor public ActionCodeInfo();
     method public String getEmail();
     field protected String email;
@@ -131,7 +131,7 @@ package com.google.firebase.auth {
     ctor public FederatedAuthProvider();
   }
 
-  public class FirebaseAuth {
+  public abstract class FirebaseAuth {
     method public void addAuthStateListener(com.google.firebase.auth.FirebaseAuth.AuthStateListener);
     method public void addIdTokenListener(com.google.firebase.auth.FirebaseAuth.IdTokenListener);
     method public com.google.android.gms.tasks.Task applyActionCode(String);
@@ -213,6 +213,11 @@ package com.google.firebase.auth {
     method public com.google.firebase.auth.MultiFactorResolver getResolver();
   }
 
+  public final class FirebaseAuthPasswordDoesNotMeetRequirementsException extends com.google.firebase.auth.FirebaseAuthException {
+    ctor public FirebaseAuthPasswordDoesNotMeetRequirementsException(String, String, String);
+    method public String getReason();
+  }
+
   public interface FirebaseAuthProvider {
     field public static final String PROVIDER_ID = "firebase";
   }
@@ -230,13 +235,13 @@ package com.google.firebase.auth {
 
   public final class FirebaseAuthUserCollisionException extends com.google.firebase.auth.FirebaseAuthException {
     ctor public FirebaseAuthUserCollisionException(String, String);
-    method public final String getEmail();
-    method public final com.google.firebase.auth.AuthCredential getUpdatedCredential();
+    method public String getEmail();
+    method public com.google.firebase.auth.AuthCredential getUpdatedCredential();
   }
 
   public final class FirebaseAuthWeakPasswordException extends com.google.firebase.auth.FirebaseAuthInvalidCredentialsException {
     ctor public FirebaseAuthWeakPasswordException(String, String, String);
-    method public final String getReason();
+    method public String getReason();
   }
 
   public class FirebaseAuthWebException extends com.google.firebase.auth.FirebaseAuthException {
@@ -389,15 +394,15 @@ package com.google.firebase.auth {
 
   public static final class PhoneAuthOptions.Builder {
     ctor public PhoneAuthOptions.Builder(com.google.firebase.auth.FirebaseAuth);
-    method public final com.google.firebase.auth.PhoneAuthOptions build();
-    method public final com.google.firebase.auth.PhoneAuthOptions.Builder requireSmsValidation(boolean);
-    method public final com.google.firebase.auth.PhoneAuthOptions.Builder setActivity(android.app.Activity);
-    method public final com.google.firebase.auth.PhoneAuthOptions.Builder setCallbacks(com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks);
-    method public final com.google.firebase.auth.PhoneAuthOptions.Builder setForceResendingToken(com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken);
-    method public final com.google.firebase.auth.PhoneAuthOptions.Builder setMultiFactorHint(com.google.firebase.auth.PhoneMultiFactorInfo);
-    method public final com.google.firebase.auth.PhoneAuthOptions.Builder setMultiFactorSession(com.google.firebase.auth.MultiFactorSession);
-    method public final com.google.firebase.auth.PhoneAuthOptions.Builder setPhoneNumber(String);
-    method public final com.google.firebase.auth.PhoneAuthOptions.Builder setTimeout(Long, java.util.concurrent.TimeUnit);
+    method public com.google.firebase.auth.PhoneAuthOptions build();
+    method public com.google.firebase.auth.PhoneAuthOptions.Builder requireSmsValidation(boolean);
+    method public com.google.firebase.auth.PhoneAuthOptions.Builder setActivity(android.app.Activity);
+    method public com.google.firebase.auth.PhoneAuthOptions.Builder setCallbacks(com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks);
+    method public com.google.firebase.auth.PhoneAuthOptions.Builder setForceResendingToken(com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken);
+    method public com.google.firebase.auth.PhoneAuthOptions.Builder setMultiFactorHint(com.google.firebase.auth.PhoneMultiFactorInfo);
+    method public com.google.firebase.auth.PhoneAuthOptions.Builder setMultiFactorSession(com.google.firebase.auth.MultiFactorSession);
+    method public com.google.firebase.auth.PhoneAuthOptions.Builder setPhoneNumber(String);
+    method public com.google.firebase.auth.PhoneAuthOptions.Builder setTimeout(Long, java.util.concurrent.TimeUnit);
   }
 
   public class PhoneAuthProvider {
@@ -475,7 +480,7 @@ package com.google.firebase.auth {
     method public long getEnrollmentTimestamp();
     method public String getFactorId();
     method public String getUid();
-    method public org.json.JSONObject toJson();
+    method public final org.json.JSONObject toJson();
   }
 
   public interface TotpSecret {

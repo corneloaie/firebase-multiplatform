@@ -1,5 +1,5 @@
 # Android SDK source compatibility of firebase-analytics
-# Android SDK api.txt ref: com.google.android.gms:play-services-measurement-api:23.2.0
+# Android SDK api.txt ref: com.google.android.gms:play-services-measurement-api:24.0.0
 # 100% of 153 public members available (152 identical, 1 mapped, 0 missing, 0 omitted)
 #
 com.google.firebase.analytics.AnalyticsKt

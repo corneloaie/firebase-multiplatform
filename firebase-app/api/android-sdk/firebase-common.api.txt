@@ -1,4 +1,4 @@
-// Source: https://raw.githubusercontent.com/firebase/firebase-android-sdk/fc5a2bee3a2f81f2f35652867628a3f4913e915d/firebase-common/api.txt
+// Source: https://raw.githubusercontent.com/firebase/firebase-android-sdk/3199128480a6619779fa2feda823922f10b91009/firebase-common/api.txt
 // Signature format: 3.0
 package com.google.firebase {
 
