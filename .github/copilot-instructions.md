@@ -157,12 +157,13 @@ The SDK has two public API layers per module:
      vendored Android SDK `api/android-sdk/*.api.txt` and writes `api/android-sdk-compat.txt` (committed, checked by `check`); its
      percentage is the module's README badge. A member deprecated with an error on our side is reported as `MAP` with its
      message and counts as provided. `api/android-sdk/exclusions.txt` lists members deliberately not mirrored: they count as
-     unavailable unless the comment says `@hide` (hidden in the Android SDK) or `@platform` (the signature involves an
-     Android/JVM-only type with no replacement, such as `Parcel`), which drops them from the count; a single overload
+     unavailable unless the comment says `@hide` (hidden in the Android SDK), `@platform` (the signature involves an
+     Android/JVM-only type with no replacement, such as `Parcel`) or `@unavailable` (the feature does not exist in the
+     pinned iOS or JS SDK, such as the Firestore pipeline API), which drops them from the count; a single overload
      is selected with `Class#member(Type, Type)`.
 2. **`dev.gitlive.firebase.*` (Kotlin-first layer)** — the existing API, implemented in `commonMain` *on top of* the
    `com.google.firebase` layer (suspend functions instead of `Task`, `Flow` instead of listeners, default arguments instead of
-   builders). New modules are migrated to this structure one at a time; `firebase-app`, `firebase-installations`, `firebase-crashlytics`, `firebase-config`, `firebase-functions`, `firebase-perf`, `firebase-messaging`, `firebase-analytics`, `firebase-storage` and `firebase-database` are the reference.
+   builders). New modules are migrated to this structure one at a time; `firebase-app`, `firebase-installations`, `firebase-crashlytics`, `firebase-config`, `firebase-functions`, `firebase-perf`, `firebase-messaging`, `firebase-analytics`, `firebase-storage`, `firebase-database` and `firebase-firestore` are the reference.
    `firebase-dataconnect` shows a module whose Android SDK API is already coroutine- and kotlinx-serialization-based, so it is
    used as is from common code with almost no `dev.gitlive` layer: the `com.google.firebase.dataconnect` interfaces, value
    types and serializers are plain common code (verified against the Android SDK and stripped on Android), and `nonAndroidMain`
