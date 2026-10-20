@@ -22,6 +22,9 @@ updates:
         versions: [ "2.2.x" ]
       - dependency-name: "org.jetbrains.dokka"
         versions: [ "2.2.x" ]
+      # The weekly workflow (.github/workflows/weekly.yml) moves the Firebase BoM together with the iOS and JS SDKs
+      # and regenerates the API coverage reports, so Dependabot leaves it alone.
+      - dependency-name: "com.google.firebase:firebase-bom"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

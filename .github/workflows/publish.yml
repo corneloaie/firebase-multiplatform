@@ -1,5 +1,6 @@
-# This workflow will build a Java project with Gradle
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+# Publishes every library module to Maven Central as io.github.corneloaie:<module>:<forkVersion> when a GitHub release
+# is published (its tag must be v<forkVersion>, see gradle.properties), or by hand. It needs the four repository
+# secrets below; MAINTAINING.md has the one-time Sonatype Central Portal and GPG setup.
 
 name: Publish
 
@@ -15,72 +16,61 @@ env:
   ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.PASSPHRASE }}
 
 jobs:
-  build:
+  publish:
     runs-on: macos-latest
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v7
       - name: Set up JDK
-        uses: actions/setup-java@v6
+        uses: actions/setup-java@v5
         with:
-          distribution: 'zulu'
-          java-version: '17'
-      - uses: gradle/actions/setup-gradle@v6.3.0
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+          distribution: 'temurin'
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
       - uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '26.4.1'
-      - name: Publish Firebase Analytics
-        run: ./gradlew :firebase-analytics:publish
-      - name: Publish Firebase App
-        run: ./gradlew :firebase-app:publish
-      - name: Publish Firebase Auth
-        run: ./gradlew :firebase-auth:publish
-      - name: Publish Firebase Common
-        run: ./gradlew :firebase-common:publish
-      - name: Publish Firebase Common Internal
-        run: ./gradlew :firebase-common-internal:publish
-      - name: Publish Firebase Config
-        run: ./gradlew :firebase-config:publish
-      - name: Publish Firebase Database
-        run: ./gradlew :firebase-database:publish
-      - name: Publish Firebase Firestore
-        run: ./gradlew :firebase-firestore:publish
-      - name: Publish Firebase Functions
-        run: ./gradlew :firebase-functions:publish
-      - name: Publish Firebase Messaging
-        run: ./gradlew :firebase-messaging:publish
-      - name: Publish Firebase Storage
-        run: ./gradlew :firebase-storage:publish
-      - name: Publish Firebase Installations
-        run: ./gradlew :firebase-installations:publish
-      - name: Publish Firebase Performance
-        run: ./gradlew :firebase-perf:publish
-      - name: Publish Firebase Crashlytics
-        run: ./gradlew :firebase-crashlytics:publish
+          xcode-version: '26.2.0'
+      - name: Check the release tag against forkVersion
+        if: github.event_name == 'release'
+        run: |
+          version=$(sed -n 's/^forkVersion=//p' gradle.properties)
+          if [ "${GITHUB_REF_NAME#v}" != "$version" ]; then
+            echo "::error::Release tag $GITHUB_REF_NAME does not match forkVersion=$version in gradle.properties"
+            exit 1
+          fi
+      - name: Check the publishing secrets
+        run: |
+          for name in ORG_GRADLE_PROJECT_mavenCentralUsername ORG_GRADLE_PROJECT_mavenCentralPassword ORG_GRADLE_PROJECT_signingInMemoryKey ORG_GRADLE_PROJECT_signingInMemoryKeyPassword; do
+            if [ -z "${!name}" ]; then echo "::error::Secret for $name is not set (see MAINTAINING.md)"; exit 1; fi
+          done
+      - name: Publish to Maven Central
+        run: |
+          for module in firebase-common firebase-common-internal firebase-app firebase-analytics firebase-auth firebase-config \
+                        firebase-crashlytics firebase-database firebase-dataconnect firebase-firestore firebase-functions \
+                        firebase-installations firebase-messaging firebase-perf firebase-storage; do
+            echo "::group::$module"
+            ./gradlew ":$module:publishToMavenCentral"
+            echo "::endgroup::"
+          done
+
   documentation:
     runs-on: macos-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v7
       - name: Set up JDK
-        uses: actions/setup-java@v6
+        uses: actions/setup-java@v5
         with:
-          distribution: 'zulu'
-          java-version: '17'
-      - uses: gradle/gradle-build-action@v3
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+          distribution: 'temurin'
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
       - uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '26.4.1'
+          xcode-version: '26.2.0'
       - name: Generate documentation
         run: ./gradlew dokkaHtmlMultiModule
-      - name: Uploading build folder
-        uses: actions/upload-artifact@v7
-        with:
-          name: artefact
-          path: build/dokka/htmlMultiModule
-      - name: Deploy API documentation to Github Pages
+      - name: Deploy API documentation to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages

@@ -1,0 +1,189 @@
+# Every Monday, keep this fork current, one pull request per concern:
+#   1. "Weekly: merge upstream GitLive": GitLive's v3.0.0 line, plus updated heads of the upstream PR branches this fork
+#      carries ahead of upstream (.github/upstream-merges.tsv).
+#   2. "Weekly: Firebase SDK updates": the latest Firebase Android BoM, iOS SDK and JS SDK, and the Android API
+#      reference the coverage reports compare against, with the reports and the README coverage table regenerated.
+#   3. Optionally, a Claude Code run that implements the Android API members the update reported missing and fixes
+#      what the new SDKs broke, pushing to pull request 2. Enable it by setting the repository variable
+#      CLAUDE_WEEKLY=true and one of the secrets CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY.
+#
+# Pull requests opened with GITHUB_TOKEN do not trigger other workflows, so CI ("Pull Request") is started on each
+# branch with workflow_dispatch; its checks show on the pull request's head commit.
+
+name: Weekly update
+
+on:
+  schedule:
+    - cron: '23 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  actions: write
+
+concurrency:
+  group: weekly-update
+
+jobs:
+  upstream:
+    name: Merge upstream GitLive
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BRANCH: weekly/upstream-sync
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C "$BRANCH"
+      - name: Merge upstream
+        id: sync
+        run: |
+          set +e
+          .github/scripts/upstream/sync.sh "$RUNNER_TEMP/upstream.md"
+          echo "exit=$?" >> "$GITHUB_OUTPUT"
+          echo "ahead=$(git rev-list --count origin/main..HEAD)" >> "$GITHUB_OUTPUT"
+          cat "$RUNNER_TEMP/upstream.md" >> "$GITHUB_STEP_SUMMARY"
+      - name: Open or update the pull request
+        if: steps.sync.outputs.ahead != '0'
+        run: |
+          git push --force origin "$BRANCH"
+          if [ "$(gh pr view "$BRANCH" --json state --jq .state 2>/dev/null)" = OPEN ]; then
+            gh pr edit "$BRANCH" --body-file "$RUNNER_TEMP/upstream.md"
+          else
+            gh pr create --base main --head "$BRANCH" --title "Weekly: merge upstream GitLive" --body-file "$RUNNER_TEMP/upstream.md"
+          fi
+          gh workflow run pull_request.yml --ref "$BRANCH"
+      - name: Report the merges that need a hand
+        if: steps.sync.outputs.exit == '3'
+        run: |
+          title="Upstream GitLive changes need a manual merge"
+          number=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number // empty')
+          if [ -n "$number" ]; then
+            gh issue comment "$number" --body-file "$RUNNER_TEMP/upstream.md"
+          else
+            gh issue create --title "$title" --body-file "$RUNNER_TEMP/upstream.md"
+          fi
+
+  firebase-sdks:
+    name: Firebase SDK updates and API coverage
+    runs-on: ubuntu-latest
+    outputs:
+      branch: ${{ steps.pr.outputs.branch }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ github.token }}
+      BRANCH: weekly/firebase-sdks
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Set up JDK
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C "$BRANCH"
+      - name: Move to the latest Firebase SDKs
+        id: versions
+        run: |
+          python3 .github/scripts/weekly/firebase_versions.py --write --summary "$RUNNER_TEMP/versions.md"
+          cat "$RUNNER_TEMP/versions.md" >> "$GITHUB_STEP_SUMMARY"
+      - name: Regenerate the Android API references and coverage reports
+        id: reports
+        if: steps.versions.outputs.changed == 'true'
+        continue-on-error: true
+        run: |
+          ./gradlew --continue updateAndroidSdkApi
+          ./gradlew --continue androidSourceCompatDump
+      - name: Summarise the coverage
+        if: steps.versions.outputs.changed == 'true'
+        run: |
+          python3 .github/scripts/weekly/coverage.py --readme README.md --compare origin/main --summary "$RUNNER_TEMP/coverage.md" > /dev/null
+          {
+            cat "$RUNNER_TEMP/versions.md"
+            echo
+            if [ "${{ steps.reports.outcome }}" != success ]; then
+              echo "> [!WARNING]"
+              echo "> Regenerating the coverage reports failed (see the workflow run): the new SDKs probably broke the Android build. The coverage below is from the modules that still built."
+              echo
+            fi
+            cat "$RUNNER_TEMP/coverage.md"
+          } > "$RUNNER_TEMP/body.md"
+          cat "$RUNNER_TEMP/coverage.md" >> "$GITHUB_STEP_SUMMARY"
+      - name: Open or update the pull request
+        id: pr
+        if: steps.versions.outputs.changed == 'true'
+        run: |
+          git add -A
+          git commit -q -m "Weekly Firebase SDK update" -m "$(cat "$RUNNER_TEMP/versions.md")"
+          git push --force origin "$BRANCH"
+          if [ "$(gh pr view "$BRANCH" --json state --jq .state 2>/dev/null)" = OPEN ]; then
+            gh pr edit "$BRANCH" --body-file "$RUNNER_TEMP/body.md"
+          else
+            gh pr create --base main --head "$BRANCH" --title "Weekly: Firebase SDK updates" --body-file "$RUNNER_TEMP/body.md"
+          fi
+          gh workflow run pull_request.yml --ref "$BRANCH"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+
+  implement:
+    name: Implement the new Android API with Claude
+    needs: firebase-sdks
+    if: needs.firebase-sdks.outputs.branch != '' && vars.CLAUDE_WEEKLY == 'true'
+    runs-on: macos-latest
+    timeout-minutes: 240
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.firebase-sdks.outputs.branch }}
+          fetch-depth: 0
+      - name: Set up JDK
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '26.2.0'
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ github.token }}
+          claude_args: --max-turns 400
+          prompt: |
+            You maintain corneloaie/firebase-multiplatform, a Kotlin Multiplatform Firebase SDK (read CLAUDE.md and
+            MAINTAINING.md first). This checkout is the branch `${{ needs.firebase-sdks.outputs.branch }}` of the open
+            pull request "Weekly: Firebase SDK updates", which moved the build to new Firebase SDKs and a new Android API
+            reference. Its body (`gh pr view ${{ needs.firebase-sdks.outputs.branch }}`) lists the version changes and
+            every Android SDK member that became MISS or OMIT.
+
+            1. Make every target compile again: `./gradlew --continue compileReleaseKotlinAndroid compileKotlinJvm
+               compileKotlinJs compileKotlinWasmJs compileKotlinIosSimulatorArm64 compileKotlinMacosArm64`
+               (tvOS too if the runner has it). Fix what the new SDK versions broke, following each SDK's release
+               notes; never delete public API to make it compile.
+            2. Implement each newly MISS member of the com.google.firebase compatibility layer on every platform, the way
+               the module already does it (commonMain expect or plain common code, android/jvm typealias or header
+               stub, apple over the iOS SDK, js and wasmJs over the JS SDK). Where a platform SDK cannot provide it,
+               follow the conventions in .github/copilot-instructions.md (UnsupportedOnJs, exclusions.txt with
+               @platform) instead of leaving it MISS. Add a commonTest for anything with behaviour.
+            3. Regenerate: `./gradlew apiDump`, `./gradlew androidSourceCompatDump`,
+               `python3 .github/scripts/weekly/coverage.py --readme README.md`, then `./gradlew formatKotlin lintKotlin`.
+            4. Commit in small logical commits and `git push origin HEAD`. Comment on the pull request with what you
+               changed and anything you could not finish.
