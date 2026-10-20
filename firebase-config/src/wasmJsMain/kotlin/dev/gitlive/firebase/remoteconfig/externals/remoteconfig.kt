@@ -43,3 +43,15 @@ public external interface Value : JsAny {
     public fun asString(): String?
     public fun getSource(): String
 }
+
+public external fun onConfigUpdate(remoteConfig: RemoteConfig, observer: ConfigUpdateObserver): () -> Unit
+
+public external fun setCustomSignals(remoteConfig: RemoteConfig, customSignals: JsAny): Promise<JsAny?>
+
+/** The `{ next, error, complete }` object `onConfigUpdate` takes. */
+public external interface ConfigUpdateObserver : JsAny
+
+public external interface ConfigUpdate : JsAny {
+    /** A JS `Set` of the updated keys. */
+    public fun getUpdatedKeys(): JsAny
+}
