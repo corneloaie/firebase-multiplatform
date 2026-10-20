@@ -21,6 +21,12 @@ public expect class FirebaseStorage {
     /** The maximum time to retry uploads, in milliseconds. */
     public var maxUploadRetryTimeMillis: Long
 
+    /**
+     * The maximum time to retry each chunk of an upload, in milliseconds (60 seconds by default). Android only: the
+     * Apple and JS SDKs have no per-chunk retry, so there the value is kept but has no effect.
+     */
+    public var maxChunkUploadRetry: Long
+
     /** A reference to the root of the default bucket. */
     public val reference: StorageReference
 

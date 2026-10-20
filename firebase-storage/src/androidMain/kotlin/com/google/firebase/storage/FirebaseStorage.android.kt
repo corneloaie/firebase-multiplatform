@@ -33,6 +33,9 @@ public actual class FirebaseStorage private constructor() {
     public actual var maxUploadRetryTimeMillis: Long
         get() = stub()
         set(_) = stub()
+    public actual var maxChunkUploadRetry: Long
+        get() = stub()
+        set(_) = stub()
 
     /** Not in the common API (JS has no download retry time); the shipped nonJsMain extension binds to this member. */
     public var maxDownloadRetryTimeMillis: Long

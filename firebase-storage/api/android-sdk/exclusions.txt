@@ -15,5 +15,3 @@ com.google.firebase.storage.*Task#add*Listener(Executor, *)  // @platform java.u
 com.google.firebase.storage.StorageTask#continueWith(Executor, Continuation)  // @platform java.util.concurrent.Executor
 com.google.firebase.storage.StorageTask#continueWithTask(Executor, Continuation)  // @platform java.util.concurrent.Executor
 com.google.firebase.storage.StorageTask#onSuccessTask(Executor, SuccessContinuation)  // @platform java.util.concurrent.Executor
-com.google.firebase.storage.FirebaseStorage#getMaxChunkUploadRetry  // Android-only: the Apple and JS SDKs have no chunk retry setting
-com.google.firebase.storage.FirebaseStorage#setMaxChunkUploadRetry  // Android-only, see above

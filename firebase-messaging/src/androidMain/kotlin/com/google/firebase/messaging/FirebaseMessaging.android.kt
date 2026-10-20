@@ -23,6 +23,13 @@ public actual class FirebaseMessaging private constructor() {
         get() = stub()
         set(_) = stub()
 
+    public actual fun register(): Task<Nothing?> = stub()
+    public actual fun unregister(): Task<Nothing?> = stub()
+    public actual fun isNotificationDelegationEnabled(): Boolean = stub()
+    public actual fun setNotificationDelegationEnabled(enable: Boolean): Task<Nothing?> = stub()
+    public actual fun deliveryMetricsExportToBigQueryEnabled(): Boolean = stub()
+    public actual fun setDeliveryMetricsExportToBigQuery(enable: Boolean): Unit = stub()
+
     public actual companion object {
         @Deprecated("The registration token has no scope any more; getToken() returns the FCM token")
         @JvmField

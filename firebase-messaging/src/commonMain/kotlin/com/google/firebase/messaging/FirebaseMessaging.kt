@@ -33,6 +33,31 @@ public expect class FirebaseMessaging {
      */
     public var isAutoInitEnabled: Boolean
 
+    /**
+     * Registers this app instance with FCM by its Firebase installation ID (FID), for direct-send messaging. On Android
+     * it needs the `firebase_messaging_installation_id_enabled` manifest flag. The Apple and JS SDKs have no FID
+     * registration: the task fails there.
+     */
+    public fun register(): Task<Nothing?>
+
+    /** Unregisters this app instance from FCM's FID registration, see [register]; the task fails on Apple and JS. */
+    public fun unregister(): Task<Nothing?>
+
+    /** Whether notifications are delegated to Google Play services (an Android feature); always false elsewhere. */
+    public fun isNotificationDelegationEnabled(): Boolean
+
+    /** Delegates notifications to Google Play services (an Android feature); does nothing elsewhere. */
+    public fun setNotificationDelegationEnabled(enable: Boolean): Task<Nothing?>
+
+    /**
+     * Whether message delivery data is exported to BigQuery. Android only: the Apple and JS SDKs configure the export
+     * themselves (the Apple notification service extension), so this is always false there.
+     */
+    public fun deliveryMetricsExportToBigQueryEnabled(): Boolean
+
+    /** Exports message delivery data to BigQuery (Android only); does nothing elsewhere, see [deliveryMetricsExportToBigQueryEnabled]. */
+    public fun setDeliveryMetricsExportToBigQuery(enable: Boolean)
+
     public companion object {
         /** The scope of the registration token, `FCM`; a remnant of the Instance ID API. */
         @Deprecated("The registration token has no scope any more; getToken() returns the FCM token")

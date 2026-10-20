@@ -8,6 +8,7 @@ import swiftPMImport.dev.gitlive.firebase.messaging.FIRMessaging
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.FirebaseException
+import dev.gitlive.firebase.UnsupportedOnApple
 import platform.Foundation.NSError
 
 /** @property ios The underlying Firebase iOS SDK object. */
@@ -28,6 +29,30 @@ public actual class FirebaseMessaging internal constructor(public val ios: FIRMe
             ios.autoInitEnabled = value
         }
 
+    /** Fails: the iOS SDK has no registration by Firebase installation ID. */
+    @UnsupportedOnApple
+    public actual fun register(): Task<Nothing?> = unsupportedOnApple("FirebaseMessaging.register")
+
+    /** Fails: the iOS SDK has no registration by Firebase installation ID. */
+    @UnsupportedOnApple
+    public actual fun unregister(): Task<Nothing?> = unsupportedOnApple("FirebaseMessaging.unregister")
+
+    /** Always false: notification delegation is an Android feature. */
+    @UnsupportedOnApple
+    public actual fun isNotificationDelegationEnabled(): Boolean = false
+
+    /** Does nothing: notification delegation is an Android feature. */
+    @UnsupportedOnApple
+    public actual fun setNotificationDelegationEnabled(enable: Boolean): Task<Nothing?> = TaskCompletionSource<Nothing?>().apply { setResult(null) }.task
+
+    /** Always false: on Apple platforms the notification service extension exports delivery data itself. */
+    @UnsupportedOnApple
+    public actual fun deliveryMetricsExportToBigQueryEnabled(): Boolean = false
+
+    /** Does nothing: on Apple platforms the notification service extension exports delivery data itself. */
+    @UnsupportedOnApple
+    public actual fun setDeliveryMetricsExportToBigQuery(enable: Boolean) {}
+
     override fun equals(other: Any?): Boolean = other is FirebaseMessaging && other.ios == ios
 
     override fun hashCode(): Int = ios.hashCode()
@@ -41,6 +66,9 @@ public actual class FirebaseMessaging internal constructor(public val ios: FIRMe
         public actual fun getInstance(): FirebaseMessaging = FirebaseMessaging(FIRMessaging.messaging())
     }
 }
+
+private fun <T> unsupportedOnApple(member: String): Task<T> =
+    TaskCompletionSource<T>().apply { setException(UnsupportedOperationException("$member is not provided by the Firebase iOS SDK")) }.task
 
 internal inline fun <T> task(crossinline start: ((T, NSError?) -> Unit) -> Unit): Task<T> {
     val source = TaskCompletionSource<T>()

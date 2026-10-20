@@ -1,6 +1,6 @@
 # Android SDK source compatibility of firebase-storage
 # Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
-# 98% of 166 public members available (159 identical, 5 mapped, 0 missing, 2 omitted)
+# 100% of 166 public members available (161 identical, 5 mapped, 0 missing, 0 omitted)
 #
 com.google.firebase.storage.CancellableTask
   OK    CancellableTask()
@@ -27,14 +27,14 @@ com.google.firebase.storage.FirebaseStorage
   OK    static FirebaseStorage getInstance(FirebaseApp)
   OK    static FirebaseStorage getInstance(String)
   OK    static FirebaseStorage getInstance(FirebaseApp, String)
-  OMIT  long getMaxChunkUploadRetry()
+  OK    long getMaxChunkUploadRetry()
   OK    long getMaxDownloadRetryTimeMillis()
   OK    long getMaxOperationRetryTimeMillis()
   OK    long getMaxUploadRetryTimeMillis()
   OK    StorageReference getReference()
   OK    StorageReference getReference(String)
   OK    StorageReference getReferenceFromUrl(String)
-  OMIT  void setMaxChunkUploadRetry(long)
+  OK    void setMaxChunkUploadRetry(long)
   OK    void setMaxDownloadRetryTimeMillis(long)
   OK    void setMaxOperationRetryTimeMillis(long)
   OK    void setMaxUploadRetryTimeMillis(long)

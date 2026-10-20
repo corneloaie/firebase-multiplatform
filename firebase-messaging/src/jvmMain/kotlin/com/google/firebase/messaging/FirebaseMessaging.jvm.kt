@@ -20,6 +20,18 @@ public actual class FirebaseMessaging private constructor() {
     /** Kept in memory: there is no registration to initialise on the JVM. */
     public actual var isAutoInitEnabled: Boolean = true
 
+    public actual fun register(): Task<Nothing?> = unsupported()
+
+    public actual fun unregister(): Task<Nothing?> = unsupported()
+
+    public actual fun isNotificationDelegationEnabled(): Boolean = false
+
+    public actual fun setNotificationDelegationEnabled(enable: Boolean): Task<Nothing?> = unsupported()
+
+    public actual fun deliveryMetricsExportToBigQueryEnabled(): Boolean = false
+
+    public actual fun setDeliveryMetricsExportToBigQuery(enable: Boolean) {}
+
     override fun toString(): String = "FirebaseMessaging"
 
     public actual companion object {

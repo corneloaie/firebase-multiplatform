@@ -38,6 +38,30 @@ public actual class FirebaseMessaging internal constructor(public val js: Messag
         get() = false
         set(_) = Unit
 
+    /** Fails: the JS SDK has no registration by Firebase installation ID. */
+    @UnsupportedOnJs
+    public actual fun register(): Task<Nothing?> = unsupportedOnJs("FirebaseMessaging.register")
+
+    /** Fails: the JS SDK has no registration by Firebase installation ID. */
+    @UnsupportedOnJs
+    public actual fun unregister(): Task<Nothing?> = unsupportedOnJs("FirebaseMessaging.unregister")
+
+    /** Always false: notification delegation is an Android feature. */
+    @UnsupportedOnJs
+    public actual fun isNotificationDelegationEnabled(): Boolean = false
+
+    /** Does nothing: notification delegation is an Android feature. */
+    @UnsupportedOnJs
+    public actual fun setNotificationDelegationEnabled(enable: Boolean): Task<Nothing?> = completedTask()
+
+    /** Always false: the JS SDK exports delivery data through its own configuration. */
+    @UnsupportedOnJs
+    public actual fun deliveryMetricsExportToBigQueryEnabled(): Boolean = false
+
+    /** Does nothing: the JS SDK exports delivery data through its own configuration. */
+    @UnsupportedOnJs
+    public actual fun setDeliveryMetricsExportToBigQuery(enable: Boolean) {}
+
     override fun equals(other: Any?): Boolean = other is FirebaseMessaging && other.js == js
 
     override fun hashCode(): Int = js.hashCode()
@@ -53,6 +77,9 @@ public actual class FirebaseMessaging internal constructor(public val js: Messag
 }
 
 private fun completedTask(): Task<Nothing?> = TaskCompletionSource<Nothing?>().apply { setResult(null) }.task
+
+private fun <T> unsupportedOnJs(member: String): Task<T> =
+    TaskCompletionSource<T>().apply { setException(UnsupportedOperationException("$member is not provided by the Firebase JS SDK")) }.task
 
 private inline fun <T : JsAny?, R> task(start: () -> Promise<T>, crossinline result: (T) -> R): Task<R> {
     val source = TaskCompletionSource<R>()

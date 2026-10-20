@@ -4,6 +4,7 @@
 
 package com.google.firebase.storage
 
+import dev.gitlive.firebase.UnsupportedOnJs
 import com.google.firebase.FirebaseApp
 import dev.gitlive.firebase.storage.externals.connectStorageEmulator
 import dev.gitlive.firebase.storage.externals.getStorage
@@ -28,6 +29,10 @@ public actual class FirebaseStorage internal constructor(public val js: JsFireba
         set(value) {
             js.maxUploadRetryTime = value.toDouble()
         }
+
+    /** Kept but has no effect: the JS SDK has no per-chunk upload retry. */
+    @UnsupportedOnJs
+    public actual var maxChunkUploadRetry: Long = DEFAULT_MAX_CHUNK_UPLOAD_RETRY_MILLIS
 
     public actual val reference: StorageReference get() = rethrow { StorageReference(ref(js)) }
 

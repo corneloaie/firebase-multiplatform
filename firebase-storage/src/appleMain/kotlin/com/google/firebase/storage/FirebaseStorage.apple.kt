@@ -4,6 +4,7 @@
 
 package com.google.firebase.storage
 
+import dev.gitlive.firebase.UnsupportedOnApple
 import swiftPMImport.dev.gitlive.firebase.storage.FIRStorage
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
@@ -27,6 +28,10 @@ public actual class FirebaseStorage internal constructor(public val ios: FIRStor
         set(value) {
             ios.setMaxUploadRetryTime(value / MILLIS_PER_SECOND)
         }
+
+    /** Kept but has no effect: the iOS SDK has no per-chunk upload retry. */
+    @UnsupportedOnApple
+    public actual var maxChunkUploadRetry: Long = DEFAULT_MAX_CHUNK_UPLOAD_RETRY_MILLIS
 
     /** The maximum time to retry downloads, in milliseconds. */
     internal var maxDownloadRetryTimeMillisValue: Long
