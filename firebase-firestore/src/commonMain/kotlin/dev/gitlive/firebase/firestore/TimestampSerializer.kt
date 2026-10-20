@@ -63,7 +63,8 @@ public object DoubleAsTimestampSerializer : KSerializer<Double> by SpecialValueS
         when (value) {
             FieldValue.serverTimestamp.nativeValue -> SERVER_TIMESTAMP
             is NativeTimestamp -> Timestamp(value).toMilliseconds()
-            is Double -> value
+            // A whole number reads back as an Int or Long on Wasm (and from Android's Long fields), not as a Double.
+            is Number -> value.toDouble()
             else -> throw SerializationException("Cannot deserialize $value")
         }
     },

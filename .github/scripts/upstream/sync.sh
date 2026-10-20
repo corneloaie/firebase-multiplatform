@@ -3,9 +3,10 @@
 # fork carries ahead of upstream (.github/upstream-merges.tsv), re-merged when its head has moved and dropped once
 # upstream has merged the pull request into v3.0.0.
 #
-# Only mechanical conflicts are resolved here: README.md (this fork's own) and Apple sources whose only upstream-side
-# change is the CocoaPods -> SwiftPM import rewrite (resolve_apple.py). Anything else aborts that merge and is listed in
-# the summary for a person (or Claude) to resolve by hand.
+# Only mechanical conflicts are resolved here: README.md (this fork's own), Apple sources whose only upstream-side
+# change is the CocoaPods -> SwiftPM import rewrite (resolve_apple.py), and version pins that both sides moved
+# (resolve_versions.py: the higher version wins, androidSdk.apiRef and forkVersion stay this fork's). Anything else
+# aborts that merge and is listed in the summary for a person (or Claude) to resolve by hand.
 #
 # usage: sync.sh <summary.md>   (needs GH_TOKEN for `gh`; exit 0 = everything merged, 3 = some merges need a hand)
 set -uo pipefail
@@ -25,6 +26,9 @@ merge() {
   if git merge --no-ff --no-edit -m "$message" "$ref" >/dev/null 2>&1; then return 0; fi
   if git diff --name-only --diff-filter=U | grep -qx README.md; then git checkout --ours README.md && git add README.md; fi
   if [ -n "$module" ]; then python3 "$here/resolve_apple.py" "$ref" "$module" >/dev/null 2>&1 || true; fi
+  local pins
+  pins="$(git diff --name-only --diff-filter=U | grep -E '(^gradle/libs\.versions\.toml|^gradle\.properties|/build\.gradle\.kts)$' || true)"
+  if [ -n "$pins" ]; then python3 "$here/resolve_versions.py" $pins >/dev/null 2>&1 || true; fi
   local left
   left="$(git diff --name-only --diff-filter=U)"
   if [ -z "$left" ]; then git add -A && git commit --no-edit -q && return 0; fi
