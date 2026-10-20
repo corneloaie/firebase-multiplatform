@@ -1,3 +1,4 @@
+import fork.applyFork
 import org.apache.tools.ant.taskdefs.condition.Os
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
@@ -51,6 +52,8 @@ tasks.withType<AbstractDokkaTask>().configureEach {
 subprojects {
 
     group = "dev.gitlive"
+    // This fork's version and Maven coordinates (buildSrc/src/main/kotlin/fork/Fork.kt); the group above must stay.
+    applyFork()
 
     val nonDocumentationList = listOf("test-utils", "firebase-common", "firebase-common-internal")
     val skipDocumentation = nonDocumentationList.contains(project.name)
