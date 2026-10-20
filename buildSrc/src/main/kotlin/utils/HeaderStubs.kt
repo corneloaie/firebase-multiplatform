@@ -147,6 +147,13 @@ private class ClassMembers : ClassVisitor(Opcodes.ASM9) {
      */
     var hasDefaultArgumentsConstructor = false
 
+    /**
+     * Descriptors of the class's non-public constructors. A private constructor that a nested class calls (a `Builder`)
+     * gets a public synthetic accessor with a trailing marker, the same shape as an inline value class constructor; it is
+     * told apart by the real class having the private constructor itself (see [verifyHeaderStubs]).
+     */
+    val nonPublicConstructors = mutableSetOf<String>()
+
     override fun visit(version: Int, access: Int, name: String, signature: String?, superName: String?, interfaces: Array<out String>?) {
         this.name = name
         this.access = access
@@ -155,6 +162,7 @@ private class ClassMembers : ClassVisitor(Opcodes.ASM9) {
     }
 
     override fun visitMethod(access: Int, name: String, descriptor: String, signature: String?, exceptions: Array<out String>?): MethodVisitor? {
+        if (access and (Opcodes.ACC_PUBLIC or Opcodes.ACC_PROTECTED) == 0 && name == "<init>") nonPublicConstructors += descriptor
         if (access and (Opcodes.ACC_PUBLIC or Opcodes.ACC_PROTECTED) == 0 || name == "<clinit>") return null
         if (access and Opcodes.ACC_SYNTHETIC != 0) {
             // An inline function with a reified type parameter is synthetic (Java cannot call it) but is real Kotlin API:
@@ -202,6 +210,13 @@ private val kotlinOnlyMethods = setOf("getEntries")
 /** The descriptor of a constructor with an inline value class parameter: it ends with a marker that no bit mask precedes. */
 private val String.isInlineClassConstructor: Boolean
     get() = endsWith("Lkotlin/jvm/internal/DefaultConstructorMarker;)V") && !isDefaultArgumentsConstructor
+
+/** A public synthetic constructor with a trailing marker: an inline value class constructor or a private constructor's accessor. */
+private val Member.isPrivateConstructorAccessor: Boolean
+    get() = name == "<init>" && access and Opcodes.ACC_SYNTHETIC != 0 && descriptor.isInlineClassConstructor
+
+/** The descriptor without the trailing [kotlin.jvm.internal.DefaultConstructorMarker] parameter. */
+private val String.withoutMarker: String get() = removeSuffix("Lkotlin/jvm/internal/DefaultConstructorMarker;)V") + ")V"
 
 /** The descriptor of the synthetic constructor Kotlin calls when default arguments are used: a bit mask, then the marker. */
 private val String.isDefaultArgumentsConstructor: Boolean get() = endsWith("ILkotlin/jvm/internal/DefaultConstructorMarker;)V")
@@ -259,6 +274,8 @@ private fun verifyHeaderStubs(stubs: List<ClassMembers>, referenceJars: List<Fil
                     // Since Kotlin 2.4 a class whose constructor parameters all have defaults gets a no-arg constructor for
                     // Java callers; an SDK compiled with an older Kotlin lacks it, and Kotlin callers never bind to it.
                     match == null && member.signature == "<init>()V" && stub.hasDefaultArgumentsConstructor -> Unit
+                    // The synthetic accessor of a private constructor that mirrors a private constructor of the real class.
+                    match == null && member.isPrivateConstructorAccessor && member.descriptor.withoutMarker in reals.first().nonPublicConstructors -> Unit
                     match == null -> problems += "${stub.name}.${member.signature} does not exist on the real class"
                     match.isStatic != member.isStatic -> problems += "${stub.name}.${member.signature} is ${if (match.isStatic) "static" else "not static"} on the real class"
                 }

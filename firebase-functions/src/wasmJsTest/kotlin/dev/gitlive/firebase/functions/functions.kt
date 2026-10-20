@@ -12,3 +12,6 @@ actual val emulatorHost: String = "localhost"
 actual val context: Any = Unit
 
 actual fun detailValue(details: Any?, key: String): Any? = details?.let { jsGet(it.asJsAny(), key) }?.toKotlin()
+
+@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
+actual annotation class IgnoreForAndroidUnitTest
