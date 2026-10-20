@@ -16,9 +16,11 @@ let package = Package(
     .library(name: "FirebaseDataConnectObjC", targets: ["FirebaseDataConnectObjC"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/firebase/data-connect-ios-sdk.git", from: "11.12.6"),
+    // Firebase 13 support (data-connect-ios-sdk #124, 2026-10-19) is not in a release yet: the latest, 11.12.6, caps
+    // firebase-ios-sdk below 13. Pinned to that main commit until a release has it; then go back to from: "<release>".
+    .package(url: "https://github.com/firebase/data-connect-ios-sdk.git", revision: "b873123f0b0ac2565758814ecc0cbf4a7be8661d"),
     // FirebaseCore for FirebaseApp.app(name:); the version is the firebase-ios-sdk version of gradle/libs.versions.toml.
-    .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "12.17.0"),
+    .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "13.0.1"),
   ],
   targets: [
     .target(
