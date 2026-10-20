@@ -18,7 +18,6 @@ import com.google.firebase.getApps
 import com.google.firebase.initialize
 import dev.gitlive.firebase.apps
 import dev.gitlive.firebase.runBlockingTest
-import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -51,10 +50,8 @@ class AndroidSdkSourceCompatTest {
         }
     }
 
-    @AfterTest
-    fun deinitializeFirebase() = runBlockingTest {
-        dev.gitlive.firebase.Firebase.apps(context).forEach { it.delete() }
-    }
+    // The default app is kept for the whole test process: Analytics keeps working on it in the background, and deleting
+    // it between tests failed the next one with "FirebaseApp was deleted" (Analytics 24, BoM 35).
 
     @Test
     fun testLogEventsAndProperties() = runBlockingTest {

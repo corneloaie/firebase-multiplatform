@@ -42,6 +42,9 @@ class AndroidSdkSourceCompatTest {
     private lateinit var app: dev.gitlive.firebase.FirebaseApp
     private lateinit var storage: FirebaseStorage
 
+    // As in FirebaseStorageTest: the SDKs cache the storage instance of an app, and calling useEmulator on one that has
+    // been used fails (the iOS SDK stops the process: "Cannot connect to emulator after Storage SDK initialization"), so
+    // the emulator is only configured when the app is created.
     @BeforeTest
     fun initializeFirebase() {
         app = dev.gitlive.firebase.Firebase.apps(context).firstOrNull() ?: dev.gitlive.firebase.Firebase.initialize(
@@ -54,12 +57,14 @@ class AndroidSdkSourceCompatTest {
                 projectId = "fir-kotlin-sdk",
                 gcmSenderId = "846484016111",
             ),
-        )
-        storage = FirebaseStorage.getInstance(app.compat).apply {
-            useEmulator(emulatorHost, 9199)
-            maxOperationRetryTimeMillis = 30_000
-            maxUploadRetryTimeMillis = 30_000
+        ).also {
+            FirebaseStorage.getInstance(it.compat).apply {
+                useEmulator(emulatorHost, 9199)
+                maxOperationRetryTimeMillis = 30_000
+                maxUploadRetryTimeMillis = 30_000
+            }
         }
+        storage = FirebaseStorage.getInstance(app.compat)
     }
 
     @Test

@@ -12,17 +12,13 @@ import com.google.firebase.perf.performance
 import com.google.firebase.perf.trace
 import dev.gitlive.firebase.apps
 import dev.gitlive.firebase.initialize
-import dev.gitlive.firebase.runBlockingTest
 import dev.gitlive.firebase.runTest
-import kotlinx.coroutines.delay
-import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
-import kotlin.time.Duration.Companion.seconds
 
 /**
  * Exercises the `com.google.firebase.perf` layer exactly as Android app code would (the singleton, `Firebase.performance`,
@@ -46,14 +42,10 @@ class AndroidSdkSourceCompatTest {
         )
     }
 
-    @AfterTest
-    fun deinitializeFirebase() = runBlockingTest {
-        // Performance runs installation in the background, which crashes if the app is deleted before completion
-        delay(1.seconds)
-        dev.gitlive.firebase.Firebase.apps(context).forEach {
-            it.delete()
-        }
-    }
+    // The default app is kept for the whole test process instead of being deleted after each test: with BoM 35,
+    // Firebase Sessions (which Performance pulls in) opens a DataStore per app initialisation and crashes the process
+    // ("There are multiple DataStores active for the same file") when the default app is re-created, and the background
+    // installation work fails on a deleted app.
 
     @Test
     fun testInstances() {
