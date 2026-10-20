@@ -1,0 +1,9 @@
+firebase-multiplatform
+Copyright 2026 Cornel Oaie
+
+This product is a fork of the Firebase Kotlin SDK (https://github.com/GitLiveApp/firebase-kotlin-sdk),
+Copyright 2019-2026 GitLive Ltd., licensed under the Apache License, Version 2.0. Source files keep their original
+copyright headers; the full license text is in LICENSE.
+
+It binds to, but does not include, the official Firebase SDKs for Android, Apple platforms and JavaScript, which are
+Copyright Google LLC and licensed under the Apache License, Version 2.0.

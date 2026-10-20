@@ -82,3 +82,7 @@ Some platform code is hand-mirrored with **no compiler enforcement that the copi
 Divergence between mirrors is sometimes deliberate — a platform genuinely lacking an API — so a difference is not automatically a bug. But an *unexplained* one usually is.
 
 `firebase-auth` is forked rather than shared because the GitLive Firebase Java SDK lacks four APIs that `androidMain` uses: `PhoneAuthOptions`, `AuthResult.getCredential()`, `AuthResult.getAdditionalUserInfo()`/`AdditionalUserInfo`, and `ActionCodeSettings.Builder.setLinkDomain()`. Tracked in GitLiveApp/firebase-java-sdk#68; when that lands the fork can be deleted and `srcDir` sharing restored.
+
+## This fork
+
+This repository is corneloaie/firebase-multiplatform, a fork of GitLive's SDK published as `io.github.corneloaie`. Read @MAINTAINING.md before changing build, publishing or upstream-merge setup.
