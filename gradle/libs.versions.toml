@@ -26,7 +26,7 @@ ios-deploymentTarget = "15.0"
 tvos-deploymentTarget = "15.0"
 macos-deploymentTarget = "12.0"
 test-logger-plugin = "4.0.0"
-dokka = "2.0.0"
+dokka = "2.2.0"
 publish = "0.34.0"
 asm = "9.8"
 
