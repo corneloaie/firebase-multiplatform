@@ -203,6 +203,7 @@ public typealias FirebaseAuthInvalidCredentialsException = com.google.firebase.a
 public typealias FirebaseAuthWeakPasswordException = com.google.firebase.auth.FirebaseAuthWeakPasswordException
 public typealias FirebaseAuthInvalidUserException = com.google.firebase.auth.FirebaseAuthInvalidUserException
 public typealias FirebaseAuthMultiFactorException = com.google.firebase.auth.FirebaseAuthMultiFactorException
+public typealias FirebaseAuthPasswordDoesNotMeetRequirementsException = com.google.firebase.auth.FirebaseAuthPasswordDoesNotMeetRequirementsException
 public typealias FirebaseAuthRecentLoginRequiredException = com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException
 public typealias FirebaseAuthUserCollisionException = com.google.firebase.auth.FirebaseAuthUserCollisionException
 public typealias FirebaseAuthWebException = com.google.firebase.auth.FirebaseAuthWebException

@@ -514,6 +514,10 @@ public actual open class FirebaseAuthMultiFactorException actual constructor(err
     public actual val resolver: MultiFactorResolver = resolver
 }
 
+public actual class FirebaseAuthPasswordDoesNotMeetRequirementsException actual constructor(errorCode: String, message: String, reason: String) : FirebaseAuthException(errorCode, message) {
+    public actual val reason: String = reason
+}
+
 public actual class FirebaseAuthRecentLoginRequiredException actual constructor(errorCode: String, message: String) : FirebaseAuthException(errorCode, message)
 
 public actual class FirebaseAuthUserCollisionException actual constructor(errorCode: String, message: String) : FirebaseAuthException(errorCode, message) {

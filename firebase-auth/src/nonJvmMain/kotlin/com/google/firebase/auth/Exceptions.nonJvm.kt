@@ -54,6 +54,18 @@ public actual open class FirebaseAuthMultiFactorException : FirebaseAuthExceptio
     }
 }
 
+public actual class FirebaseAuthPasswordDoesNotMeetRequirementsException : FirebaseAuthException {
+    public actual val reason: String
+
+    public actual constructor(errorCode: String, message: String, reason: String) : super(errorCode, message) {
+        this.reason = reason
+    }
+
+    internal constructor(errorCode: String, message: String, reason: String, cause: Throwable?) : super(errorCode, message, cause) {
+        this.reason = reason
+    }
+}
+
 public actual class FirebaseAuthRecentLoginRequiredException : FirebaseAuthException {
     public actual constructor(errorCode: String, message: String) : super(errorCode, message)
     internal constructor(errorCode: String, message: String, cause: Throwable?) : super(errorCode, message, cause)
@@ -117,6 +129,8 @@ internal fun authException(errorCode: String, message: String, details: AuthErro
         "ERROR_NETWORK_REQUEST_FAILED", "ERROR_TIMEOUT" -> FirebaseNetworkException(message)
         "ERROR_TOO_MANY_REQUESTS", "ERROR_QUOTA_EXCEEDED" -> FirebaseTooManyRequestsException(message)
         "ERROR_WEAK_PASSWORD" -> FirebaseAuthWeakPasswordException(code, message, details.reason, details.cause)
+        // The platform SDKs put the unmet requirements in the message.
+        "ERROR_PASSWORD_DOES_NOT_MEET_REQUIREMENTS" -> FirebaseAuthPasswordDoesNotMeetRequirementsException(code, message, details.reason ?: message, details.cause)
         "ERROR_INVALID_ACTION_CODE", "ERROR_EXPIRED_ACTION_CODE" -> FirebaseAuthActionCodeException(code, message, details.cause)
         "ERROR_INVALID_RECIPIENT_EMAIL", "ERROR_INVALID_SENDER", "ERROR_INVALID_MESSAGE_PAYLOAD" -> FirebaseAuthEmailException(code, message, details.cause)
         "ERROR_USER_NOT_FOUND", "ERROR_USER_DISABLED", "ERROR_USER_TOKEN_EXPIRED", "ERROR_INVALID_USER_TOKEN", "ERROR_USER_MISMATCH", "ERROR_NULL_USER" ->

@@ -102,3 +102,4 @@ com/google/firebase/auth/UserProfileChangeRequest$Builder.getDisplayName()Ljava/
 com/google/firebase/auth/UserProfileChangeRequest$Builder.getPhotoUri()Landroid/net/Uri;
 com/google/firebase/auth/UserProfileChangeRequest.getDisplayName()Ljava/lang/String;
 com/google/firebase/auth/UserProfileChangeRequest.getPhotoUri()Landroid/net/Uri;
+com/google/firebase/auth/FirebaseAuthPasswordDoesNotMeetRequirementsException

@@ -35,6 +35,11 @@ public expect open class FirebaseAuthMultiFactorException(errorCode: String, mes
     public val resolver: MultiFactorResolver
 }
 
+/** The password does not meet the project's password policy; [reason] says which requirements it misses. */
+public expect class FirebaseAuthPasswordDoesNotMeetRequirementsException(errorCode: String, message: String, reason: String) : FirebaseAuthException {
+    public val reason: String
+}
+
 /** The operation requires a recent sign-in; [FirebaseUser.reauthenticate] first. */
 public expect class FirebaseAuthRecentLoginRequiredException(errorCode: String, message: String) : FirebaseAuthException
 
