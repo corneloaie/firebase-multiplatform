@@ -78,8 +78,7 @@ public actual class FirebaseMessaging internal constructor(public val js: Messag
 
 private fun completedTask(): Task<Nothing?> = TaskCompletionSource<Nothing?>().apply { setResult(null) }.task
 
-private fun <T> unsupportedOnJs(member: String): Task<T> =
-    TaskCompletionSource<T>().apply { setException(UnsupportedOperationException("$member is not provided by the Firebase JS SDK")) }.task
+private fun <T> unsupportedOnJs(member: String): Task<T> = TaskCompletionSource<T>().apply { setException(UnsupportedOperationException("$member is not provided by the Firebase JS SDK")) }.task
 
 private inline fun <T : JsAny?, R> task(start: () -> Promise<T>, crossinline result: (T) -> R): Task<R> {
     val source = TaskCompletionSource<R>()

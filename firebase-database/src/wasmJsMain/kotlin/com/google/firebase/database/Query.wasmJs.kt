@@ -264,8 +264,7 @@ public actual open class DatabaseReference internal constructor(override val js:
  * [update] returns [abort]. A Kotlin/Wasm lambda cannot return `undefined` itself (its `null` reaches JS as `null`, which
  * deletes the data).
  */
-private fun abortableUpdate(abort: JsAny, update: (current: JsAny?) -> JsAny?): JsAny =
-    js("(current) => { const next = update(current); return next === abort ? undefined : next; }")
+private fun abortableUpdate(abort: JsAny, update: (current: JsAny?) -> JsAny?): JsAny = js("(current) => { const next = update(current); return next === abort ? undefined : next; }")
 
 /**
  * @property js The underlying Firebase JS SDK object.

@@ -193,8 +193,7 @@ internal class JsRemoteConfigValue(val js: Value) : FirebaseRemoteConfigValue {
 }
 
 /** The `{ next, error, complete }` observer `onConfigUpdate` takes. */
-private fun configUpdateObserver(next: (JsConfigUpdate) -> Unit, error: (JsAny) -> Unit): ConfigUpdateObserver =
-    js("({ next: next, error: error, complete: function() {} })")
+private fun configUpdateObserver(next: (JsConfigUpdate) -> Unit, error: (JsAny) -> Unit): ConfigUpdateObserver = js("({ next: next, error: error, complete: function() {} })")
 
 /** The elements of a JS `Set` (or any iterable) as an array. */
 private fun arrayFrom(iterable: JsAny): JsArray<JsString> = js("Array.from(iterable)")

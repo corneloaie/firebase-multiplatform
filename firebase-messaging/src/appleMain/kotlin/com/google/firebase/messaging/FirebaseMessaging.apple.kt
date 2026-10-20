@@ -67,8 +67,7 @@ public actual class FirebaseMessaging internal constructor(public val ios: FIRMe
     }
 }
 
-private fun <T> unsupportedOnApple(member: String): Task<T> =
-    TaskCompletionSource<T>().apply { setException(UnsupportedOperationException("$member is not provided by the Firebase iOS SDK")) }.task
+private fun <T> unsupportedOnApple(member: String): Task<T> = TaskCompletionSource<T>().apply { setException(UnsupportedOperationException("$member is not provided by the Firebase iOS SDK")) }.task
 
 internal inline fun <T> task(crossinline start: ((T, NSError?) -> Unit) -> Unit): Task<T> {
     val source = TaskCompletionSource<T>()

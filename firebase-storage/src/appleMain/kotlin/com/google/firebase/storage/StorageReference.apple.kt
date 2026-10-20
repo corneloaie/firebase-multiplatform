@@ -182,7 +182,9 @@ internal fun StorageMetadata.toIos(): FIRStorageMetadata {
 
 @Suppress("UNCHECKED_CAST")
 /** [reference] is the object the metadata belongs to: since iOS SDK 12 the metadata no longer exposes it to Objective-C. */
-internal fun FIRStorageMetadata.toCompat(reference: FIRStorageReference?): StorageMetadata = StorageMetadata().also { compat ->
+internal fun FIRStorageMetadata.toCompat(
+    reference: FIRStorageReference?,
+): StorageMetadata = StorageMetadata().also { compat ->
     compat.bucketValue = bucket()
     compat.cacheControlValue = cacheControl()
     compat.contentDispositionValue = contentDisposition()
