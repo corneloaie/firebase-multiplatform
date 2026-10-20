@@ -8,6 +8,12 @@ package com.google.firebase.dataconnect
 public open class DataConnectException(message: String, cause: Throwable? = null) : Exception(message, cause)
 
 /**
+ * Thrown when the signed-in Firebase Authentication user changed while an operation was in progress, so its result
+ * belongs to a different user and is discarded; run the operation again.
+ */
+public open class AuthUserChangedException(message: String, cause: Throwable? = null) : DataConnectException(message, cause)
+
+/**
  * Thrown when the execution of an operation fails: the server reported errors for it, or the data it returned could not
  * be decoded. [response] carries the errors, the raw data and the decoded data when decoding succeeded.
  */

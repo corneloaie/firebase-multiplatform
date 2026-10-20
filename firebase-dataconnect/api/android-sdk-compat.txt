@@ -1,6 +1,6 @@
 # Android SDK source compatibility of firebase-dataconnect
 # Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
-# 99% of 197 public members available (196 identical, 0 mapped, 1 missing, 0 omitted)
+# 100% of 197 public members available (197 identical, 0 mapped, 0 missing, 0 omitted)
 #
 com.google.firebase.dataconnect.AnyValue
   OK    AnyValue(boolean)
@@ -17,8 +17,8 @@ com.google.firebase.dataconnect.AnyValueKt
   OK    static AnyValue encode(Companion, T, SerializationStrategy, SerializersModule)
   OK    static AnyValue fromAny(Companion, Object)
   OK    static AnyValue fromNullableAny(Companion, Object)
-com.google.firebase.dataconnect.AuthUserChangedException  (class missing)
-  MISS  AuthUserChangedException(String, Throwable)
+com.google.firebase.dataconnect.AuthUserChangedException
+  OK    AuthUserChangedException(String, Throwable)
 com.google.firebase.dataconnect.CacheSettings
   OK    CacheSettings(Storage, long)
   OK    long getMaxAge()
