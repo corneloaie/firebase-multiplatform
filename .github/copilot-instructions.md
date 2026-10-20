@@ -162,7 +162,7 @@ The SDK has two public API layers per module:
      is selected with `Class#member(Type, Type)`.
 2. **`dev.gitlive.firebase.*` (Kotlin-first layer)** — the existing API, implemented in `commonMain` *on top of* the
    `com.google.firebase` layer (suspend functions instead of `Task`, `Flow` instead of listeners, default arguments instead of
-   builders). New modules are migrated to this structure one at a time; `firebase-app`, `firebase-installations`, `firebase-crashlytics`, `firebase-config`, `firebase-functions`, `firebase-perf` and `firebase-messaging` are the reference.
+   builders). New modules are migrated to this structure one at a time; `firebase-app`, `firebase-installations`, `firebase-crashlytics`, `firebase-config`, `firebase-functions`, `firebase-perf`, `firebase-messaging` and `firebase-analytics` are the reference.
    `firebase-dataconnect` shows a module whose Android SDK API is already coroutine- and kotlinx-serialization-based, so it is
    used as is from common code with almost no `dev.gitlive` layer: the `com.google.firebase.dataconnect` interfaces, value
    types and serializers are plain common code (verified against the Android SDK and stripped on Android), and `nonAndroidMain`
@@ -170,6 +170,10 @@ The SDK has two public API layers per module:
    `firebase/data-connect` on JS, and on Apple the Swift-only iOS SDK through the Objective-C wrapper Swift package in
    `firebase-dataconnect/apple` (imported with `localSwiftPackage`). There is no JVM target (the Java SDK has no Data
    Connect). Its `test/dataconnect` project runs in the Data Connect emulator.
+   `firebase-analytics` shows a closed-source Android module (its `api/android-sdk/*.api.txt` is generated from the published
+   classes by `generateAndroidSdkApi*`), a plain common class in the stripped package with real bodies for the other platforms
+   (`FirebaseAnalytics` over an internal `NativeAnalytics` expect), a header stub for a platform class (`android.os.Bundle`) and a
+   module the JVM SDK lacks entirely (`jvmKeepClasses` ships the module's own no-op implementation).
 
 When adding to the `dev.gitlive` layer, keep matching class, function and parameter names from the Android SDK; the
 `com.google.firebase` layer takes the exact Android shape, the `dev.gitlive` layer the Kotlin-idiomatic one.

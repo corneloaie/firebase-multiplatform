@@ -5,3 +5,4 @@ config-source-compat	885	d9d9eb21046a00efa82aa0914c7b133004aa0d18
 functions-source-compat	882	237a0e562fa874c9e4b91f436899cf7bfd50d038
 perf-source-compat	884	0b5bf1ebebfab311b5dd31c2c12de5c087de6a28
 messaging-source-compat	886	4f49d41ba50c75bfc60ad75d1c81c8ee0030b574
+analytics-source-compat	891	c3871d1015ac604a9628d723966c13606335adb9
