@@ -195,6 +195,10 @@ kotlin {
         if (supportedPlatforms.contains(TargetPlatform.Jvm)) {
             getByName("jvmMain") {
                 kotlin.srcDir("src/androidMain/kotlin")
+                dependencies {
+                    // The Android SDK brings it; the shared streamAsFlow and the stubs name its Publisher.
+                    implementation("org.reactivestreams:reactive-streams:1.0.4")
+                }
             }
             project.extensions.getByType<SourceSetContainer>().getByName("jvmMain").java.srcDir("src/androidMain/java")
         }
@@ -220,6 +224,7 @@ stripHeaderStubs(
     keepClasses = listOf(
         "com/google/firebase/functions/FunctionsUrlKt.class",
         "com/google/firebase/functions/HttpsCallableTimeoutKt.class",
+        "com/google/firebase/functions/HttpsCallableStreamKt.class",
         "com/google/firebase/functions/FunctionsJvmApi.class",
     ),
     // firebase-java-sdk keeps these package-private / private (they are public in the Android SDK).
@@ -230,6 +235,12 @@ stripHeaderStubs(
         "com/google/firebase/functions/FirebaseFunctionsException\$Code.fromHttpStatus(I)Lcom/google/firebase/functions/FirebaseFunctionsException\$Code;",
         "com/google/firebase/functions/HttpsCallableOptions.limitedUseAppCheckTokens",
         "com/google/firebase/functions/HttpsCallableOptions\$Builder.limitedUseAppCheckTokens",
+        // firebase-java-sdk 0.6.3 predates streaming.
+        "com/google/firebase/functions/HttpsCallableReference.stream()Lorg/reactivestreams/Publisher;",
+        "com/google/firebase/functions/HttpsCallableReference.stream(Ljava/lang/Object;)Lorg/reactivestreams/Publisher;",
+        "com/google/firebase/functions/StreamResponse",
+        "com/google/firebase/functions/StreamResponse\$Message",
+        "com/google/firebase/functions/StreamResponse\$Result",
     ),
 )
 

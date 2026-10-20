@@ -20,6 +20,11 @@ import dev.gitlive.firebase.functions.externals.getFunctions
 import dev.gitlive.firebase.functions.externals.httpsCallable
 import dev.gitlive.firebase.functions.externals.httpsCallableFromURL
 import dev.gitlive.firebase.functions.externals.invoke
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 import kotlin.js.JsException
 import kotlin.js.Promise
 import dev.gitlive.firebase.functions.externals.HttpsCallableResult as JsHttpsCallableResult
@@ -107,6 +112,43 @@ public actual class HttpsCallableResult internal constructor(public val js: JsHt
 }
 
 private const val DEFAULT_TIMEOUT_MILLIS = 70_000L
+
+/** Over the JS SDK's `callable.stream(data)`: its async iterable of chunks, then its `data` promise. */
+public actual fun HttpsCallableReference.streamAsFlow(data: Any?): Flow<StreamResponse> = flow {
+    val result = rethrow { callStream(js, data.toJs()) }.awaitFunctions()
+    val iterator = asyncIterator(jsGet(result, "stream")!!)
+    while (true) {
+        val next = iteratorNext(iterator).awaitFunctions()
+        if (jsGet(next, "done")?.toKotlin() == true) break
+        emit(StreamResponse.Message(HttpsCallableResult(callableResult(jsGet(next, "value")))))
+    }
+    val value = promiseOf(jsGet(result, "data")).awaitFunctions()
+    emit(StreamResponse.Result(HttpsCallableResult(callableResult(value))))
+}
+
+private fun callStream(callable: HttpsCallable, data: JsAny?): Promise<JsAny> = js("callable.stream(data)")
+
+private fun asyncIterator(iterable: JsAny): JsAny = js("iterable[Symbol.asyncIterator]()")
+
+private fun iteratorNext(iterator: JsAny): Promise<JsAny> = js("iterator.next()")
+
+private fun promiseOf(value: JsAny?): Promise<JsAny?> = js("value")
+
+private fun callableResult(data: JsAny?): JsHttpsCallableResult = js("({ data: data })")
+
+/** Awaits locally rather than with kotlinx-coroutines, whose Wasm await loses the JS error's code. */
+private suspend fun <T : JsAny?> Promise<T>.awaitFunctions(): T = suspendCancellableCoroutine { continuation ->
+    then(
+        onFulfilled = {
+            continuation.resume(it)
+            null
+        },
+        onRejected = {
+            continuation.resumeWithException(it.toFunctionsException(null))
+            null
+        },
+    )
+}
 
 private inline fun task(start: () -> Promise<JsHttpsCallableResult>): Task<HttpsCallableResult> {
     val source = TaskCompletionSource<HttpsCallableResult>()

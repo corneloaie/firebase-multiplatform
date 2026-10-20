@@ -47,6 +47,12 @@ public actual class HttpsCallableReference private constructor() {
 
     @Deprecated(WITH_TIMEOUT_JVM_ONLY, level = DeprecationLevel.ERROR)
     public actual fun withTimeout(timeout: Long, units: Any): HttpsCallableReference = stub()
+
+    /** Not in the common API (org.reactivestreams is JVM-only); the shipped streamAsFlow extension binds to it. */
+    public fun stream(): org.reactivestreams.Publisher<StreamResponse> = stub()
+
+    /** Not in the common API (org.reactivestreams is JVM-only); the shipped streamAsFlow extension binds to it. */
+    public fun stream(data: Any?): org.reactivestreams.Publisher<StreamResponse> = stub()
 }
 
 public actual class HttpsCallableResult private constructor() {

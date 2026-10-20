@@ -1,6 +1,6 @@
 # Android SDK source compatibility of firebase-functions
 # Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
-# 93% of 60 public members available (50 identical, 6 mapped, 0 missing, 4 omitted)
+# 100% of 60 public members available (54 identical, 6 mapped, 0 missing, 0 omitted)
 #
 com.google.firebase.functions.FirebaseFunctions
   OK    HttpsCallableReference getHttpsCallable(String)
@@ -71,10 +71,10 @@ com.google.firebase.functions.HttpsCallableReference
 com.google.firebase.functions.HttpsCallableResult
   OK    Object getData()
   MAP   Object data  [property getData()]
-com.google.firebase.functions.StreamResponse  (class omitted)
-com.google.firebase.functions.StreamResponse.Message  (class omitted)
-  OMIT  Message(HttpsCallableResult)
-  OMIT  HttpsCallableResult getMessage()
-com.google.firebase.functions.StreamResponse.Result  (class omitted)
-  OMIT  Result(HttpsCallableResult)
-  OMIT  HttpsCallableResult getResult()
+com.google.firebase.functions.StreamResponse
+com.google.firebase.functions.StreamResponse.Message
+  OK    Message(HttpsCallableResult)
+  OK    HttpsCallableResult getMessage()
+com.google.firebase.functions.StreamResponse.Result
+  OK    Result(HttpsCallableResult)
+  OK    HttpsCallableResult getResult()

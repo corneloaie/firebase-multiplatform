@@ -16,6 +16,9 @@ import dev.gitlive.firebase.functions.externals.getFunctions
 import dev.gitlive.firebase.functions.externals.httpsCallable
 import dev.gitlive.firebase.functions.externals.httpsCallableFromURL
 import dev.gitlive.firebase.functions.externals.invoke
+import kotlinx.coroutines.await
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlin.js.Promise
 import kotlin.js.json
 import dev.gitlive.firebase.functions.externals.HttpsCallableResult as JsHttpsCallableResult
@@ -101,6 +104,27 @@ public actual class HttpsCallableResult internal constructor(public val js: JsHt
 }
 
 private const val DEFAULT_TIMEOUT_MILLIS = 70_000L
+
+/** Over the JS SDK's `callable.stream(data)`: its async iterable of chunks, then its `data` promise. */
+public actual fun HttpsCallableReference.streamAsFlow(data: Any?): Flow<StreamResponse> = flow {
+    val result: dynamic = awaitFunctions(rethrow { js.asDynamic().stream(data.toJs()) })
+    val iterator: dynamic = asyncIterator(result.stream)
+    while (true) {
+        val next: dynamic = awaitFunctions(iterator.next())
+        if (next.done == true) break
+        emit(StreamResponse.Message(HttpsCallableResult(json("data" to next.value).unsafeCast<JsHttpsCallableResult>())))
+    }
+    val value: dynamic = awaitFunctions(result.data)
+    emit(StreamResponse.Result(HttpsCallableResult(json("data" to value).unsafeCast<JsHttpsCallableResult>())))
+}
+
+private fun asyncIterator(iterable: dynamic): dynamic = js("iterable[Symbol.asyncIterator]()")
+
+private suspend fun awaitFunctions(promise: dynamic): dynamic = try {
+    promise.unsafeCast<Promise<Any?>>().await()
+} catch (e: Throwable) {
+    throw e.toFunctionsException()
+}
 
 private inline fun task(start: () -> Promise<JsHttpsCallableResult>): Task<HttpsCallableResult> {
     val source = TaskCompletionSource<HttpsCallableResult>()
