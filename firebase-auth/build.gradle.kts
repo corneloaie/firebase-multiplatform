@@ -34,7 +34,7 @@ if (supportedPlatforms.contains(TargetPlatform.Android)) {
 
         defaultConfig {
             minSdk =
-                23 // Auth has a MinSDK of 23. See https://github.com/firebase/firebase-android-sdk/issues/5927#issuecomment-2093466572
+                24 // Auth had a MinSDK of 23 (https://github.com/firebase/firebase-android-sdk/issues/5927#issuecomment-2093466572); firebase-common 23 (BoM 35) requires 24
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }
 
