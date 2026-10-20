@@ -1,9 +1,11 @@
 package fork
 
 import org.gradle.api.Project
+import org.gradle.api.provider.Property
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.withGroovyBuilder
 import org.gradle.kotlin.dsl.withType
 
 /**
@@ -34,6 +36,13 @@ fun Project.applyFork() {
     plugins.withId("maven-publish") {
         // After the module's own mavenPublishing block, whose coordinates() and pom() run first.
         afterEvaluate {
+            // The group vanniktech stages and uploads to Maven Central under: its mavenPublishing groupId, which the
+            // module's coordinates() call fixed to dev.gitlive (and finalised), so the upload task's copy is replaced.
+            // By name and reflectively, as buildSrc does not compile against the plugin, which modules apply by version.
+            tasks.matching { it.name == "prepareMavenCentralPublishing" }.configureEach {
+                @Suppress("UNCHECKED_CAST")
+                (withGroovyBuilder { "getProjectGroup"() } as Property<String>).set(Fork.GROUP_ID)
+            }
             extensions.configure<PublishingExtension> {
                 publications.withType<MavenPublication>().configureEach {
                     groupId = Fork.GROUP_ID
