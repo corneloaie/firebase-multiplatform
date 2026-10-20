@@ -74,6 +74,9 @@ public final class dev/gitlive/firebase/FirebaseOptions {
 	public fun toString ()Ljava/lang/String;
 }
 
+public abstract interface annotation class dev/gitlive/firebase/UnsupportedOnApple : java/lang/annotation/Annotation {
+}
+
 public abstract interface annotation class dev/gitlive/firebase/UnsupportedOnJs : java/lang/annotation/Annotation {
 }
 
