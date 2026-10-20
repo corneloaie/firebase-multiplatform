@@ -54,7 +54,7 @@ public actual class StorageReference internal constructor(public val ios: FIRSto
     }
 
     public actual fun getMetadata(): Task<StorageMetadata> = task { completion ->
-        ios.metadataWithCompletion { metadata, error -> completion(metadata?.toCompat() ?: StorageMetadata(), error) }
+        ios.metadataWithCompletion { metadata, error -> completion(metadata?.toCompat(ios) ?: StorageMetadata(), error) }
     }
 
     public actual fun list(maxResults: Int): Task<ListResult> = task { completion ->
@@ -76,7 +76,7 @@ public actual class StorageReference internal constructor(public val ios: FIRSto
     internal fun putFileUrl(url: NSURL, metadata: StorageMetadata?): UploadTask = UploadTaskImpl(this, IosUploadController(ios.putFile(url, metadata?.toIos())))
 
     public actual fun updateMetadata(metadata: StorageMetadata): Task<StorageMetadata> = task { completion ->
-        ios.updateMetadata(metadata.toIos()) { updated, error -> completion(updated?.toCompat() ?: StorageMetadata(), error) }
+        ios.updateMetadata(metadata.toIos()) { updated, error -> completion(updated?.toCompat(ios) ?: StorageMetadata(), error) }
     }
 
     override fun equals(other: Any?): Boolean = other is StorageReference && other.bucket == bucket && other.path == path
@@ -107,7 +107,7 @@ internal class IosUploadController(private val ios: FIRStorageUploadTask) : Uplo
         }
         ios.observeStatus(FIRStorageTaskStatusSuccess) { snapshot ->
             update(snapshot)
-            metadata = snapshot?.metadata()?.toCompat()
+            metadata = snapshot?.metadata()?.toCompat(snapshot.reference())
             ios.removeAllObservers()
             task.reportSuccess()
         }
@@ -181,7 +181,8 @@ internal fun StorageMetadata.toIos(): FIRStorageMetadata {
 }
 
 @Suppress("UNCHECKED_CAST")
-internal fun FIRStorageMetadata.toCompat(): StorageMetadata = StorageMetadata().also { compat ->
+/** [reference] is the object the metadata belongs to: since iOS SDK 12 the metadata no longer exposes it to Objective-C. */
+internal fun FIRStorageMetadata.toCompat(reference: FIRStorageReference?): StorageMetadata = StorageMetadata().also { compat ->
     compat.bucketValue = bucket()
     compat.cacheControlValue = cacheControl()
     compat.contentDispositionValue = contentDisposition()
@@ -195,7 +196,7 @@ internal fun FIRStorageMetadata.toCompat(): StorageMetadata = StorageMetadata().
     compat.metadataGenerationValue = metageneration().toString()
     compat.nameValue = name()
     compat.pathValue = path() ?: ""
-    compat.referenceValue = storageReference()?.let { StorageReference(it) }
+    compat.referenceValue = reference?.let { StorageReference(it) }
     compat.sizeBytesValue = size()
     compat.updatedTimeMillisValue = updated()?.timeIntervalSince1970?.let { (it * MILLIS_PER_SECOND).toLong() } ?: 0
 }
