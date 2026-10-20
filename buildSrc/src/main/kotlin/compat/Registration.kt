@@ -60,7 +60,7 @@ fun Project.registerAndroidSourceCompat(vararg androidSdkApiFiles: String, gener
         dependsOn(provider { tasks.findByName("compileReleaseKotlinAndroid") })
         check.set(checkMode)
         reportFile.set(layout.projectDirectory.file("api/android-sdk-compat.txt"))
-        mustRunAfter("androidApiDump")
+        mustRunAfter(tasks.matching { it.name == "androidApiDump" || it.name == "apiDump" })
         mustRunAfter(generateTasks)
     }
     tasks.register("androidSourceCompatDump", AndroidSourceCompatTask::class.java) {
