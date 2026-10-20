@@ -12,6 +12,11 @@ import org.objectweb.asm.FieldVisitor
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
 import java.io.File
+import kotlin.metadata.Visibility
+import kotlin.metadata.jvm.KotlinClassMetadata
+import kotlin.metadata.jvm.Metadata
+import kotlin.metadata.jvm.signature
+import kotlin.metadata.visibility
 import java.util.zip.ZipFile
 
 /**
@@ -148,11 +153,14 @@ private class ClassMembers : ClassVisitor(Opcodes.ASM9) {
     var hasDefaultArgumentsConstructor = false
 
     /**
-     * Descriptors of the class's non-public constructors. A private constructor that a nested class calls (a `Builder`)
-     * gets a public synthetic accessor with a trailing marker, the same shape as an inline value class constructor; it is
-     * told apart by the real class having the private constructor itself (see [verifyHeaderStubs]).
+     * The JVM signatures of the constructors the class's Kotlin metadata declares non-private; null for a class without
+     * Kotlin metadata. A private constructor called from a nested class (a `Builder`) gets a public synthetic accessor
+     * with a trailing marker, the same shape as an inline value class constructor; only the metadata tells them apart.
      */
-    val nonPublicConstructors = mutableSetOf<String>()
+    var kotlinConstructors: Set<String>? = null
+
+    override fun visitAnnotation(descriptor: String, visible: Boolean): AnnotationVisitor? =
+        if (descriptor == "Lkotlin/Metadata;") KotlinMetadataReader { kotlinConstructors = it.nonPrivateConstructorSignatures() } else null
 
     override fun visit(version: Int, access: Int, name: String, signature: String?, superName: String?, interfaces: Array<out String>?) {
         this.name = name
@@ -162,7 +170,6 @@ private class ClassMembers : ClassVisitor(Opcodes.ASM9) {
     }
 
     override fun visitMethod(access: Int, name: String, descriptor: String, signature: String?, exceptions: Array<out String>?): MethodVisitor? {
-        if (access and (Opcodes.ACC_PUBLIC or Opcodes.ACC_PROTECTED) == 0 && name == "<init>") nonPublicConstructors += descriptor
         if (access and (Opcodes.ACC_PUBLIC or Opcodes.ACC_PROTECTED) == 0 || name == "<clinit>") return null
         if (access and Opcodes.ACC_SYNTHETIC != 0) {
             // An inline function with a reified type parameter is synthetic (Java cannot call it) but is real Kotlin API:
@@ -172,6 +179,7 @@ private class ClassMembers : ClassVisitor(Opcodes.ASM9) {
             // marker parameter (unlike the default-arguments constructor, whose marker follows the bit mask): real API.
             if (name == "<init>" && descriptor.isDefaultArgumentsConstructor) hasDefaultArgumentsConstructor = true
             if (name != "<init>" || !descriptor.isInlineClassConstructor) return null
+            if (kotlinConstructors?.contains(name + descriptor) == false) return null
         }
         val member = Member(name, descriptor, access).also { methods += it }
         return object : MethodVisitor(Opcodes.ASM9) {
@@ -203,6 +211,47 @@ private class ClassMembers : ClassVisitor(Opcodes.ASM9) {
     val isAnonymous get() = anonymousClass.containsMatchIn(name)
 }
 
+/** Collects the arguments of a `@kotlin.Metadata` annotation and hands them over at its end. */
+private class KotlinMetadataReader(private val onEnd: (Metadata) -> Unit) : AnnotationVisitor(Opcodes.ASM9) {
+    private var kind = 1
+    private var metadataVersion = intArrayOf()
+    private val data1 = mutableListOf<String>()
+    private val data2 = mutableListOf<String>()
+    private var extraString = ""
+    private var packageName = ""
+    private var extraInt = 0
+
+    override fun visit(name: String?, value: Any?) {
+        when (name) {
+            "k" -> kind = value as Int
+            "mv" -> metadataVersion = value as IntArray
+            "xs" -> extraString = value as String
+            "pn" -> packageName = value as String
+            "xi" -> extraInt = value as Int
+        }
+    }
+
+    override fun visitArray(name: String?): AnnotationVisitor? {
+        val target = when (name) {
+            "d1" -> data1
+            "d2" -> data2
+            else -> return null
+        }
+        return object : AnnotationVisitor(Opcodes.ASM9) {
+            override fun visit(name: String?, value: Any?) {
+                target += value as String
+            }
+        }
+    }
+
+    override fun visitEnd() = onEnd(Metadata(kind = kind, metadataVersion = metadataVersion, data1 = data1.toTypedArray(), data2 = data2.toTypedArray(), extraString = extraString, packageName = packageName, extraInt = extraInt))
+}
+
+private fun Metadata.nonPrivateConstructorSignatures(): Set<String>? =
+    (runCatching { KotlinClassMetadata.readLenient(this) }.getOrNull() as? KotlinClassMetadata.Class)?.kmClass?.constructors
+        ?.filter { it.visibility != Visibility.PRIVATE }
+        ?.mapNotNullTo(mutableSetOf()) { it.signature?.let { signature -> signature.name + signature.descriptor } }
+
 private fun readMembers(bytes: ByteArray): ClassMembers = ClassMembers().also { ClassReader(bytes).accept(it, ClassReader.SKIP_CODE or ClassReader.SKIP_DEBUG or ClassReader.SKIP_FRAMES) }
 
 private val kotlinOnlyMethods = setOf("getEntries")
@@ -210,13 +259,6 @@ private val kotlinOnlyMethods = setOf("getEntries")
 /** The descriptor of a constructor with an inline value class parameter: it ends with a marker that no bit mask precedes. */
 private val String.isInlineClassConstructor: Boolean
     get() = endsWith("Lkotlin/jvm/internal/DefaultConstructorMarker;)V") && !isDefaultArgumentsConstructor
-
-/** A public synthetic constructor with a trailing marker: an inline value class constructor or a private constructor's accessor. */
-private val Member.isPrivateConstructorAccessor: Boolean
-    get() = name == "<init>" && access and Opcodes.ACC_SYNTHETIC != 0 && descriptor.isInlineClassConstructor
-
-/** The descriptor without the trailing [kotlin.jvm.internal.DefaultConstructorMarker] parameter. */
-private val String.withoutMarker: String get() = removeSuffix("Lkotlin/jvm/internal/DefaultConstructorMarker;)V") + ")V"
 
 /** The descriptor of the synthetic constructor Kotlin calls when default arguments are used: a bit mask, then the marker. */
 private val String.isDefaultArgumentsConstructor: Boolean get() = endsWith("ILkotlin/jvm/internal/DefaultConstructorMarker;)V")
@@ -274,8 +316,6 @@ private fun verifyHeaderStubs(stubs: List<ClassMembers>, referenceJars: List<Fil
                     // Since Kotlin 2.4 a class whose constructor parameters all have defaults gets a no-arg constructor for
                     // Java callers; an SDK compiled with an older Kotlin lacks it, and Kotlin callers never bind to it.
                     match == null && member.signature == "<init>()V" && stub.hasDefaultArgumentsConstructor -> Unit
-                    // The synthetic accessor of a private constructor that mirrors a private constructor of the real class.
-                    match == null && member.isPrivateConstructorAccessor && member.descriptor.withoutMarker in reals.first().nonPublicConstructors -> Unit
                     match == null -> problems += "${stub.name}.${member.signature} does not exist on the real class"
                     match.isStatic != member.isStatic -> problems += "${stub.name}.${member.signature} is ${if (match.isStatic) "static" else "not static"} on the real class"
                 }
