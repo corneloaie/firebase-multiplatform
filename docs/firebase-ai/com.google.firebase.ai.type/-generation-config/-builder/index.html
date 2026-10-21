@@ -1,0 +1,612 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Builder</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../../index.html">
+                    Firebase Kotlin SDK
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">3.0.0-alpha02
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-ai:dokkaHtmlPartial/commonMain">common</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-ai:dokkaHtmlPartial/commonMain" data-filter=":firebase-ai:dokkaHtmlPartial/commonMain">
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+                <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://github.com/GitLiveApp/firebase-kotlin-sdk"></a>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Firebase Kotlin SDK
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="firebase-ai::com.google.firebase.ai.type/GenerationConfig.Builder///PointingToDeclaration//428608247">
+  <div class="breadcrumbs"><a href="../../../index.html">firebase-ai</a><span class="delimiter">/</span><a href="../../index.html">com.google.firebase.ai.type</a><span class="delimiter">/</span><a href="../index.html">GenerationConfig</a><span class="delimiter">/</span><span class="current">Builder</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Builder</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Builder</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/GitLiveApp/firebase-kotlin-sdk/tree/master/firebase-ai/src/commonMain/kotlin/com/google/firebase/ai/type/GenerationConfig.kt#L129">source</a>)</span></span></div><p class="paragraph">Builder for creating a <a href="../index.html">GenerationConfig</a>.</p><p class="paragraph">Mainly intended for Java interop. Kotlin consumers should use <a href="../../generation-config.html">generationConfig</a> for a more idiomatic experience.</p><h4 class="">See also</h4><div class="table"><div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../generation-config.html"><span>generation</span><wbr><span><span>Config</span></span></a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1012010748%2FConstructors%2F428608247" anchor-label="Builder" id="1012010748%2FConstructors%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-builder.html"><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1012010748%2FConstructors%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1684705367%2FProperties%2F428608247" anchor-label="candidateCount" id="1684705367%2FProperties%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="candidate-count.html"><span>candidate</span><wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1684705367%2FProperties%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="candidate-count.html">candidateCount</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph"><i>Deprecated.</i> See <a href="../../../../firebase-ai/com.google.firebase.ai.type/-generation-config/candidate-count.html">GenerationConfig.candidateCount</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="113632182%2FProperties%2F428608247" anchor-label="frequencyPenalty" id="113632182%2FProperties%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="frequency-penalty.html"><span>frequency</span><wbr><span><span>Penalty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="113632182%2FProperties%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="frequency-penalty.html">frequencyPenalty</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph"><i>Deprecated.</i> See <a href="../../../../firebase-ai/com.google.firebase.ai.type/-generation-config/frequency-penalty.html">GenerationConfig.frequencyPenalty</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="718288698%2FProperties%2F428608247" anchor-label="imageConfig" id="718288698%2FProperties%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="image-config.html"><span>image</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="718288698%2FProperties%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="image-config.html">imageConfig</a><span class="token operator">: </span><a href="../../-image-config/index.html">ImageConfig</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">See <a href="../../../../firebase-ai/com.google.firebase.ai.type/-generation-config/image-config.html">GenerationConfig.imageConfig</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="50667384%2FProperties%2F428608247" anchor-label="maxOutputTokens" id="50667384%2FProperties%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="max-output-tokens.html"><span>max</span><wbr><span>Output</span><wbr><span><span>Tokens</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="50667384%2FProperties%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="max-output-tokens.html">maxOutputTokens</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">See <a href="../../../../firebase-ai/com.google.firebase.ai.type/-generation-config/max-output-tokens.html">GenerationConfig.maxOutputTokens</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-564329271%2FProperties%2F428608247" anchor-label="presencePenalty" id="-564329271%2FProperties%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="presence-penalty.html"><span>presence</span><wbr><span><span>Penalty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-564329271%2FProperties%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="presence-penalty.html">presencePenalty</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph"><i>Deprecated.</i> See <a href="../../../../firebase-ai/com.google.firebase.ai.type/-generation-config/presence-penalty.html">GenerationConfig.presencePenalty</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-781891431%2FProperties%2F428608247" anchor-label="responseJsonSchema" id="-781891431%2FProperties%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="response-json-schema.html"><span>response</span><wbr><span>Json</span><wbr><span><span>Schema</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-781891431%2FProperties%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="response-json-schema.html">responseJsonSchema</a><span class="token operator">: </span><a href="../../-json-schema/index.html">JsonSchema</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">See <a href="../../../../firebase-ai/com.google.firebase.ai.type/-generation-config/response-json-schema.html">GenerationConfig.responseJsonSchema</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1332284564%2FProperties%2F428608247" anchor-label="responseMimeType" id="1332284564%2FProperties%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="response-mime-type.html"><span>response</span><wbr><span>Mime</span><wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1332284564%2FProperties%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="response-mime-type.html">responseMimeType</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">See <a href="../../../../firebase-ai/com.google.firebase.ai.type/-generation-config/response-mime-type.html">GenerationConfig.responseMimeType</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-683548989%2FProperties%2F428608247" anchor-label="responseModalities" id="-683548989%2FProperties%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="response-modalities.html"><span>response</span><wbr><span><span>Modalities</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-683548989%2FProperties%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="response-modalities.html">responseModalities</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../-response-modality/index.html">ResponseModality</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">See <a href="../../../../firebase-ai/com.google.firebase.ai.type/-generation-config/response-modalities.html">GenerationConfig.responseModalities</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1127240993%2FProperties%2F428608247" anchor-label="responseSchema" id="1127240993%2FProperties%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="response-schema.html"><span>response</span><wbr><span><span>Schema</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1127240993%2FProperties%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="response-schema.html">responseSchema</a><span class="token operator">: </span><a href="../../-schema/index.html">Schema</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">See <a href="../../../../firebase-ai/com.google.firebase.ai.type/-generation-config/response-schema.html">GenerationConfig.responseSchema</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1082947745%2FProperties%2F428608247" anchor-label="speechConfig" id="-1082947745%2FProperties%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="speech-config.html"><span>speech</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1082947745%2FProperties%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="speech-config.html">speechConfig</a><span class="token operator">: </span><a href="../../-speech-config/index.html">SpeechConfig</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">See <a href="../../../../firebase-ai/com.google.firebase.ai.type/-generation-config/speech-config.html">GenerationConfig.speechConfig</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1472082521%2FProperties%2F428608247" anchor-label="stopSequences" id="-1472082521%2FProperties%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stop-sequences.html"><span>stop</span><wbr><span><span>Sequences</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1472082521%2FProperties%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="stop-sequences.html">stopSequences</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">See <a href="../../../../firebase-ai/com.google.firebase.ai.type/-generation-config/stop-sequences.html">GenerationConfig.stopSequences</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="509972003%2FProperties%2F428608247" anchor-label="temperature" id="509972003%2FProperties%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="temperature.html"><span><span>temperature</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="509972003%2FProperties%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="temperature.html">temperature</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph"><i>Deprecated.</i> See <a href="../../../../firebase-ai/com.google.firebase.ai.type/-generation-config/temperature.html">GenerationConfig.temperature</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-497746095%2FProperties%2F428608247" anchor-label="thinkingConfig" id="-497746095%2FProperties%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="thinking-config.html"><span>thinking</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-497746095%2FProperties%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="thinking-config.html">thinkingConfig</a><span class="token operator">: </span><a href="../../-thinking-config/index.html">ThinkingConfig</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-848127283%2FProperties%2F428608247" anchor-label="topK" id="-848127283%2FProperties%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="top-k.html"><span>top</span><wbr><span><span>K</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-848127283%2FProperties%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="top-k.html">topK</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph"><i>Deprecated.</i> See <a href="../../../../firebase-ai/com.google.firebase.ai.type/-generation-config/top-k.html">GenerationConfig.topK</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-693028248%2FProperties%2F428608247" anchor-label="topP" id="-693028248%2FProperties%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="top-p.html"><span>top</span><wbr><span><span>P</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-693028248%2FProperties%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">var </span><a href="top-p.html">topP</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph"><i>Deprecated.</i> See <a href="../../../../firebase-ai/com.google.firebase.ai.type/-generation-config/top-p.html">GenerationConfig.topP</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-604551703%2FFunctions%2F428608247" anchor-label="build" id="-604551703%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="build.html"><span><span>build</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-604551703%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="build.html"><span class="token function">build</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../index.html">GenerationConfig</a></div><div class="brief "><p class="paragraph">Create a new <a href="../index.html">GenerationConfig</a> with the attached arguments.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1421669796%2FFunctions%2F428608247" anchor-label="setCandidateCount" id="-1421669796%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-candidate-count.html"><span>set</span><wbr><span>Candidate</span><wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1421669796%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-candidate-count.html"><span class="token function"><strike>setCandidateCount</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">candidateCount<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">GenerationConfig.Builder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-794059126%2FFunctions%2F428608247" anchor-label="setFrequencyPenalty" id="-794059126%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-frequency-penalty.html"><span>set</span><wbr><span>Frequency</span><wbr><span><span>Penalty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-794059126%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-frequency-penalty.html"><span class="token function"><strike>setFrequencyPenalty</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">frequencyPenalty<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">GenerationConfig.Builder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1797948519%2FFunctions%2F428608247" anchor-label="setImageConfig" id="-1797948519%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-image-config.html"><span>set</span><wbr><span>Image</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1797948519%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-image-config.html"><span class="token function">setImageConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">imageConfig<span class="token operator">: </span><a href="../../-image-config/index.html">ImageConfig</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">GenerationConfig.Builder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1113193921%2FFunctions%2F428608247" anchor-label="setMaxOutputTokens" id="-1113193921%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-max-output-tokens.html"><span>set</span><wbr><span>Max</span><wbr><span>Output</span><wbr><span><span>Tokens</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1113193921%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-max-output-tokens.html"><span class="token function">setMaxOutputTokens</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">maxOutputTokens<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">GenerationConfig.Builder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="613956731%2FFunctions%2F428608247" anchor-label="setPresencePenalty" id="613956731%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-presence-penalty.html"><span>set</span><wbr><span>Presence</span><wbr><span><span>Penalty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="613956731%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-presence-penalty.html"><span class="token function"><strike>setPresencePenalty</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">presencePenalty<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">GenerationConfig.Builder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="860365477%2FFunctions%2F428608247" anchor-label="setResponseMimeType" id="860365477%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-response-mime-type.html"><span>set</span><wbr><span>Response</span><wbr><span>Mime</span><wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="860365477%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-response-mime-type.html"><span class="token function">setResponseMimeType</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">responseMimeType<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">GenerationConfig.Builder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-106386387%2FFunctions%2F428608247" anchor-label="setResponseModalities" id="-106386387%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-response-modalities.html"><span>set</span><wbr><span>Response</span><wbr><span><span>Modalities</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-106386387%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-response-modalities.html"><span class="token function">setResponseModalities</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">responseModalities<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../-response-modality/index.html">ResponseModality</a><span class="token operator">&gt;</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">GenerationConfig.Builder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="855565886%2FFunctions%2F428608247" anchor-label="setResponseSchema" id="855565886%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-response-schema.html"><span>set</span><wbr><span>Response</span><wbr><span><span>Schema</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="855565886%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-response-schema.html"><span class="token function">setResponseSchema</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">responseSchema<span class="token operator">: </span><a href="../../-schema/index.html">Schema</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">GenerationConfig.Builder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="877333924%2FFunctions%2F428608247" anchor-label="setResponseSchemaJson" id="877333924%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-response-schema-json.html"><span>set</span><wbr><span>Response</span><wbr><span>Schema</span><wbr><span><span>Json</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="877333924%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-response-schema-json.html"><span class="token function">setResponseSchemaJson</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">responseSchemaJson<span class="token operator">: </span><a href="../../-json-schema/index.html">JsonSchema</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">GenerationConfig.Builder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1550059811%2FFunctions%2F428608247" anchor-label="setSpeechConfig" id="1550059811%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-speech-config.html"><span>set</span><wbr><span>Speech</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1550059811%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-speech-config.html"><span class="token function">setSpeechConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">speechConfig<span class="token operator">: </span><a href="../../-speech-config/index.html">SpeechConfig</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">GenerationConfig.Builder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1560503804%2FFunctions%2F428608247" anchor-label="setStopSequences" id="-1560503804%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-stop-sequences.html"><span>set</span><wbr><span>Stop</span><wbr><span><span>Sequences</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1560503804%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-stop-sequences.html"><span class="token function">setStopSequences</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">stopSequences<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">GenerationConfig.Builder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="891723361%2FFunctions%2F428608247" anchor-label="setTemperature" id="891723361%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-temperature.html"><span>set</span><wbr><span><span>Temperature</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="891723361%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-temperature.html"><span class="token function"><strike>setTemperature</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">temperature<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">GenerationConfig.Builder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-448615553%2FFunctions%2F428608247" anchor-label="setThinkingConfig" id="-448615553%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-thinking-config.html"><span>set</span><wbr><span>Thinking</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-448615553%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-thinking-config.html"><span class="token function">setThinkingConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">thinkingConfig<span class="token operator">: </span><a href="../../-thinking-config/index.html">ThinkingConfig</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">GenerationConfig.Builder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="130454438%2FFunctions%2F428608247" anchor-label="setTopK" id="130454438%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-top-k.html"><span>set</span><wbr><span>Top</span><wbr><span><span>K</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="130454438%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-top-k.html"><span class="token function"><strike>setTopK</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">topK<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">GenerationConfig.Builder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-280109544%2FFunctions%2F428608247" anchor-label="setTopP" id="-280109544%2FFunctions%2F428608247" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-ai:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-ai:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-top-p.html"><span>set</span><wbr><span>Top</span><wbr><span><span>P</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-280109544%2FFunctions%2F428608247"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-ai:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-top-p.html"><span class="token function"><strike>setTopP</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">topP<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">GenerationConfig.Builder</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2024 GitLive Ltd.</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

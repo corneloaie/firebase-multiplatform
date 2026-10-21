@@ -1,0 +1,323 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>FirebaseAppDistribution</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../../index.html">
+                    Firebase Kotlin SDK
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">3.0.0-alpha02
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-appdistribution:dokkaHtmlPartial/commonMain">common</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-appdistribution:dokkaHtmlPartial/commonMain" data-filter=":firebase-appdistribution:dokkaHtmlPartial/commonMain">
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+                <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://github.com/GitLiveApp/firebase-kotlin-sdk"></a>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Firebase Kotlin SDK
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="firebase-appdistribution::dev.gitlive.firebase.appdistribution/FirebaseAppDistribution///PointingToDeclaration//1303638356">
+  <div class="breadcrumbs"><a href="../../index.html">firebase-appdistribution</a><span class="delimiter">/</span><a href="../index.html">dev.gitlive.firebase.appdistribution</a><span class="delimiter">/</span><span class="current">FirebaseAppDistribution</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Firebase</span><wbr><span>App</span><wbr><span><span>Distribution</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appdistribution:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">FirebaseAppDistribution</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/GitLiveApp/firebase-kotlin-sdk/tree/master/firebase-appdistribution/src/commonMain/kotlin/dev/gitlive/firebase/appdistribution/appdistribution.kt#L43">source</a>)</span></span></div><p class="paragraph">Firebase App Distribution's in-app tester API: signs the tester in, checks for new pre-release builds, updates the app to them and collects the tester's feedback.</p><p class="paragraph">On Android it does nothing (and fails with AppDistributionExceptionStatus.NOT_IMPLEMENTED) unless the app's pre-release builds add the full <code class="lang-kotlin">com.google.firebase:firebase-appdistribution</code> SDK. On iOS an update opens the new release's download link, and there is no in-app feedback. The JVM has no App Distribution. See <a href="../../com.google.firebase.appdistribution/-firebase-app-distribution/index.html">com.google.firebase.appdistribution.FirebaseAppDistribution</a> for each member's behaviour per platform.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="543521954%2FProperties%2F1303638356" anchor-label="compat" id="543521954%2FProperties%2F1303638356" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-appdistribution:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="compat.html"><span><span>compat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="543521954%2FProperties%2F1303638356"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appdistribution:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="compat.html">compat</a><span class="token operator">: </span><a href="../../com.google.firebase.appdistribution/-firebase-app-distribution/index.html">FirebaseAppDistribution</a></div><div class="brief "><p class="paragraph">The Android-SDK-shaped <a href="../../com.google.firebase.appdistribution/-firebase-app-distribution/index.html">com.google.firebase.appdistribution.FirebaseAppDistribution</a> this wraps.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="534192474%2FProperties%2F1303638356" anchor-label="isTesterSignedIn" id="534192474%2FProperties%2F1303638356" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-appdistribution:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-tester-signed-in.html"><span>is</span><wbr><span>Tester</span><wbr><span>Signed</span><wbr><span><span>In</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="534192474%2FProperties%2F1303638356"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appdistribution:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-tester-signed-in.html">isTesterSignedIn</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether the App Distribution tester is signed in.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-526849798%2FFunctions%2F1303638356" anchor-label="cancelFeedbackNotification" id="-526849798%2FFunctions%2F1303638356" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-appdistribution:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="cancel-feedback-notification.html"><span>cancel</span><wbr><span>Feedback</span><wbr><span><span>Notification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-526849798%2FFunctions%2F1303638356"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appdistribution:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="cancel-feedback-notification.html"><span class="token function">cancelFeedbackNotification</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Hides the notification shown by <a href="show-feedback-notification.html">showFeedbackNotification</a>. Does nothing on iOS and the JVM.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1615391900%2FFunctions%2F1303638356" anchor-label="checkForNewRelease" id="1615391900%2FFunctions%2F1303638356" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-appdistribution:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="check-for-new-release.html"><span>check</span><wbr><span>For</span><wbr><span>New</span><wbr><span><span>Release</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1615391900%2FFunctions%2F1303638356"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appdistribution:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="check-for-new-release.html"><span class="token function">checkForNewRelease</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-app-distribution-release/index.html">AppDistributionRelease</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The new release available to the signed-in tester, or null if there is none; <a href="update-app.html">updateApp</a> installs it. Throws a <a href="../-firebase-app-distribution-exception/index.html">FirebaseAppDistributionException</a> with AppDistributionExceptionStatus.AUTHENTICATION_FAILURE when the tester is not signed in.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1801168861%2FFunctions%2F1303638356" anchor-label="equals" id="1801168861%2FFunctions%2F1303638356" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-appdistribution:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="equals.html"><span><span>equals</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1801168861%2FFunctions%2F1303638356"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appdistribution:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="equals.html"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1041513367%2FFunctions%2F1303638356" anchor-label="hashCode" id="-1041513367%2FFunctions%2F1303638356" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-appdistribution:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="hash-code.html"><span>hash</span><wbr><span><span>Code</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1041513367%2FFunctions%2F1303638356"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appdistribution:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1788494765%2FFunctions%2F1303638356" anchor-label="showFeedbackNotification" id="-1788494765%2FFunctions%2F1303638356" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-appdistribution:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="show-feedback-notification.html"><span>show</span><wbr><span>Feedback</span><wbr><span><span>Notification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1788494765%2FFunctions%2F1303638356"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appdistribution:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="show-feedback-notification.html"><span class="token function">showFeedbackNotification</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">additionalFormText<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-char-sequence/index.html">CharSequence</a><span class="token punctuation">, </span></span><span class="parameter ">interruptionLevel<span class="token operator">: </span><a href="../-interruption-level/index.html">InterruptionLevel</a><span class="token operator"> = </span>InterruptionLevel.DEFAULT</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Shows a notification that starts the feedback of <a href="start-feedback.html">startFeedback</a> when the tester taps it, interrupting them as much as <a href="show-feedback-notification.html">interruptionLevel</a>. On Android 13 and above it needs the <code class="lang-kotlin">POST_NOTIFICATIONS</code> permission. Does nothing on iOS and the JVM.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1261943645%2FFunctions%2F1303638356" anchor-label="signInTester" id="-1261943645%2FFunctions%2F1303638356" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-appdistribution:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sign-in-tester.html"><span>sign</span><wbr><span>In</span><wbr><span><span>Tester</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1261943645%2FFunctions%2F1303638356"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appdistribution:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="sign-in-tester.html"><span class="token function">signInTester</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Signs in the App Distribution tester, presenting a Google sign-in UI; throws a <a href="../-firebase-app-distribution-exception/index.html">FirebaseAppDistributionException</a> if that fails.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1034298042%2FFunctions%2F1303638356" anchor-label="signOutTester" id="-1034298042%2FFunctions%2F1303638356" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-appdistribution:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sign-out-tester.html"><span>sign</span><wbr><span>Out</span><wbr><span><span>Tester</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1034298042%2FFunctions%2F1303638356"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appdistribution:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="sign-out-tester.html"><span class="token function">signOutTester</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Signs out the App Distribution tester.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1461716111%2FFunctions%2F1303638356" anchor-label="startFeedback" id="1461716111%2FFunctions%2F1303638356" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-appdistribution:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="start-feedback.html"><span>start</span><wbr><span><span>Feedback</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1461716111%2FFunctions%2F1303638356"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appdistribution:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="start-feedback.html"><span class="token function">startFeedback</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">additionalFormText<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-char-sequence/index.html">CharSequence</a><span class="token punctuation">, </span></span><span class="parameter ">screenshotUri<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Starts an activity to collect and submit feedback from the tester, with <a href="start-feedback.html">additionalFormText</a> shown to them before they submit it. The feedback comes with the screenshot at <a href="start-feedback.html">screenshotUri</a> (a <code class="lang-kotlin">content://</code> or <code class="lang-kotlin">file://</code> URI of a bitmap), or with one the SDK takes of the current activity when it is null. Does nothing on iOS and the JVM.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1219679432%2FFunctions%2F1303638356" anchor-label="toString" id="-1219679432%2FFunctions%2F1303638356" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-appdistribution:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-string.html"><span>to</span><wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1219679432%2FFunctions%2F1303638356"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appdistribution:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-834577762%2FFunctions%2F1303638356" anchor-label="updateApp" id="-834577762%2FFunctions%2F1303638356" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-appdistribution:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="update-app.html"><span>update</span><wbr><span><span>App</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-834577762%2FFunctions%2F1303638356"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appdistribution:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="update-app.html"><span class="token function">updateApp</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="../-update-progress/index.html">UpdateProgress</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Updates the app to the release that the last <a href="check-for-new-release.html">checkForNewRelease</a> returned. Collecting the flow starts the update; it emits the update's progress, completes when the update has, and throws the <a href="../-firebase-app-distribution-exception/index.html">FirebaseAppDistributionException</a> the update failed with (AppDistributionExceptionStatus.UPDATE_NOT_AVAILABLE without a new release). Cancelling the collection does not cancel the update. On iOS it emits nothing: the release's download link is opened, and iOS asks the tester to install it.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="589396186%2FFunctions%2F1303638356" anchor-label="updateIfNewReleaseAvailable" id="589396186%2FFunctions%2F1303638356" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-appdistribution:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-appdistribution:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="update-if-new-release-available.html"><span>update</span><wbr><span>If</span><wbr><span>New</span><wbr><span>Release</span><wbr><span><span>Available</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="589396186%2FFunctions%2F1303638356"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appdistribution:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="update-if-new-release-available.html"><span class="token function">updateIfNewReleaseAvailable</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="../-update-progress/index.html">UpdateProgress</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Updates the app to the newest release, if one is available, asking a signed-out tester to sign in first; see <a href="update-app.html">updateApp</a> for the flow. It completes without an update when there is no new release.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2024 GitLive Ltd.</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

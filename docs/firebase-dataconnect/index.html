@@ -1,0 +1,253 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>firebase-dataconnect</title>
+<link href="../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../scripts/sourceset_dependencies.js" async></script>
+<link href="../styles/style.css" rel="Stylesheet">
+<link href="../styles/main.css" rel="Stylesheet">
+<link href="../styles/prism.css" rel="Stylesheet">
+<link href="../styles/logo-styles.css" rel="Stylesheet">
+<link href="../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../scripts/main.js" defer></script>
+<script type="text/javascript" src="../scripts/prism.js" async></script>
+<script type="text/javascript" src="../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../index.html">
+                    Firebase Kotlin SDK
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">3.0.0-alpha02
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":firebase-dataconnect:dokkaHtmlPartial/androidMain">android</button>
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-dataconnect:dokkaHtmlPartial/commonMain">common</button>
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-dataconnect:dokkaHtmlPartial/nonAndroidMain">nonAndroid</button>
+                <button class="platform-tag platform-selector wasm-like" data-active="" data-filter=":firebase-dataconnect:dokkaHtmlPartial/wasmJsMain">wasmJs</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-dataconnect:dokkaHtmlPartial/androidMain" data-filter=":firebase-dataconnect:dokkaHtmlPartial/androidMain">
+                                <span class="checkbox--icon"></span>
+                                android
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filter=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-dataconnect:dokkaHtmlPartial/nonAndroidMain" data-filter=":firebase-dataconnect:dokkaHtmlPartial/nonAndroidMain">
+                                <span class="checkbox--icon"></span>
+                                nonAndroid
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option wasm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-dataconnect:dokkaHtmlPartial/wasmJsMain" data-filter=":firebase-dataconnect:dokkaHtmlPartial/wasmJsMain">
+                                <span class="checkbox--icon"></span>
+                                wasmJs
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+                <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://github.com/GitLiveApp/firebase-kotlin-sdk"></a>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    Firebase Kotlin SDK
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" id="content" pageids="firebase-dataconnect::////PointingToDeclaration//-292629429">
+  <div class="breadcrumbs"></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>firebase-dataconnect</span></span></h1>
+    <div class="platform-hinted UnderCoverText with-platform-tabs" data-platform-hinted="data-platform-hinted">
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/androidMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":firebase-dataconnect:dokkaHtmlPartial/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-toggle=":firebase-dataconnect:dokkaHtmlPartial/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/nonAndroidMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/nonAndroidMain" data-toggle=":firebase-dataconnect:dokkaHtmlPartial/nonAndroidMain">nonAndroid</button><button class="platform-bookmark" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/wasmJsMain" data-toggle=":firebase-dataconnect:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/androidMain"><p class="paragraph">This module provides the Firebase Data Connect API, <code class="lang-kotlin">com.google.firebase.dataconnect</code>, on Android, iOS, tvOS, JS and Wasm: the Android SDK on Android, the Firebase JS SDK on JS and Wasm (wasmJs) and the Firebase iOS Data Connect SDK (through an Objective-C wrapper) on Apple. Operations take their variables and the kotlinx.serialization strategies that encode them and decode their data.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><p class="paragraph">This module provides the Firebase Data Connect API, <code class="lang-kotlin">com.google.firebase.dataconnect</code>, on Android, iOS, tvOS, JS and Wasm: the Android SDK on Android, the Firebase JS SDK on JS and Wasm (wasmJs) and the Firebase iOS Data Connect SDK (through an Objective-C wrapper) on Apple. Operations take their variables and the kotlinx.serialization strategies that encode them and decode their data.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/nonAndroidMain"><p class="paragraph">This module provides the Firebase Data Connect API, <code class="lang-kotlin">com.google.firebase.dataconnect</code>, on Android, iOS, tvOS, JS and Wasm: the Android SDK on Android, the Firebase JS SDK on JS and Wasm (wasmJs) and the Firebase iOS Data Connect SDK (through an Objective-C wrapper) on Apple. Operations take their variables and the kotlinx.serialization strategies that encode them and decode their data.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/wasmJsMain"><p class="paragraph">This module provides the Firebase Data Connect API, <code class="lang-kotlin">com.google.firebase.dataconnect</code>, on Android, iOS, tvOS, JS and Wasm: the Android SDK on Android, the Firebase JS SDK on JS and Wasm (wasmJs) and the Firebase iOS Data Connect SDK (through an Objective-C wrapper) on Apple. Operations take their variables and the kotlinx.serialization strategies that encode them and decode their data.</p></div>    </div>
+  </div>
+  <h2 class="">Packages</h2>
+  <div class="table"><a data-name="1286941667%2FPackages%2F-606001823" anchor-label="com.google.firebase.dataconnect" id="1286941667%2FPackages%2F-606001823" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/androidMain,:firebase-dataconnect:dokkaHtmlPartial/commonMain,:firebase-dataconnect:dokkaHtmlPartial/nonAndroidMain"></a>
+    <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/androidMain,:firebase-dataconnect:dokkaHtmlPartial/commonMain,:firebase-dataconnect:dokkaHtmlPartial/nonAndroidMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/androidMain,:firebase-dataconnect:dokkaHtmlPartial/commonMain,:firebase-dataconnect:dokkaHtmlPartial/nonAndroidMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="com.google.firebase.dataconnect/index.html">com.google.firebase.dataconnect</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1286941667%2FPackages%2F-606001823"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">android</div>
+              <div class="platform-tag common-like">common</div>
+              <div class="platform-tag common-like">nonAndroid</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-2038434684%2FPackages%2F875243225" anchor-label="com.google.firebase.dataconnect.generated" id="-2038434684%2FPackages%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
+    <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="com.google.firebase.dataconnect.generated/index.html">com.google.firebase.dataconnect.generated</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2038434684%2FPackages%2F875243225"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="546307286%2FPackages%2F875243225" anchor-label="com.google.firebase.dataconnect.serializers" id="546307286%2FPackages%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
+    <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="com.google.firebase.dataconnect.serializers/index.html">com.google.firebase.dataconnect.serializers</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="546307286%2FPackages%2F875243225"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1696013924%2FPackages%2F875243225" anchor-label="dev.gitlive.firebase.dataconnect" id="1696013924%2FPackages%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
+    <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="dev.gitlive.firebase.dataconnect/index.html">dev.gitlive.firebase.dataconnect</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1696013924%2FPackages%2F875243225"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="702537982%2FPackages%2F340639936" anchor-label="dev.gitlive.firebase.dataconnect.externals" id="702537982%2FPackages%2F340639936" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/wasmJsMain"></a>
+    <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/wasmJsMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="dev.gitlive.firebase.dataconnect.externals/index.html">dev.gitlive.firebase.dataconnect.externals</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="702537982%2FPackages%2F340639936"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag wasm-like">wasmJs</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1147324969%2FPackages%2F875243225" anchor-label="dev.gitlive.firebase.dataconnect.serializers" id="-1147324969%2FPackages%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
+    <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="dev.gitlive.firebase.dataconnect.serializers/index.html">dev.gitlive.firebase.dataconnect.serializers</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1147324969%2FPackages%2F875243225"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2024 GitLive Ltd.</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
