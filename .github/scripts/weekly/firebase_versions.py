@@ -3,13 +3,16 @@
 
 What is tracked, and where it lives:
   Android  com.google.firebase:firebase-bom        gradle/libs.versions.toml  firebase-bom
+  Android  firebase-appdistribution(-api), beta    gradle/libs.versions.toml  firebase-appdistribution
   iOS      firebase/firebase-ios-sdk (SwiftPM)     gradle/libs.versions.toml  firebase-ios-sdk
   JS       the `firebase` npm package              npm("firebase", "x.y.z") in the module build files
   API      firebase-android-sdk api.txt revision   gradle.properties          androidSdk.apiRef
 
 The api.txt revision is the newest "m<NNN> mergeback" commit on firebase-android-sdk's main branch: the point where a
 Firebase Android release (the BoM's libraries) was merged back, so the API compared against is the released one rather
-than whatever main has gained since.
+than whatever main has gained since. App Distribution is not in the BoM: it moves to the version that the same revision
+records as released (`latestReleasedVersion` in firebase-appdistribution-api/gradle.properties), so its library and its
+api.txt match.
 
 Usage (from the repository root):
     python3 .github/scripts/weekly/firebase_versions.py           # print current -> latest
@@ -46,10 +49,37 @@ def version_key(version):
     return tuple(int(part) for part in version.split('.'))
 
 
+def prerelease_key(version):
+    """Orders 16.0.0-beta9 < 16.0.0-beta21 < 16.0.0."""
+    base, _, pre = version.partition('-')
+    return version_key(base), 0 if pre else 1, int(re.sub(r'\D', '', pre) or 0)
+
+
+GOOGLE_MAVEN = 'https://dl.google.com/dl/android/maven2/com/google/firebase'
+
+
 def latest_bom():
-    metadata = fetch('https://dl.google.com/dl/android/maven2/com/google/firebase/firebase-bom/maven-metadata.xml', 'application/xml')
+    metadata = fetch(f'{GOOGLE_MAVEN}/firebase-bom/maven-metadata.xml', 'application/xml')
     versions = [v for v in re.findall(r'<version>([^<]+)</version>', metadata) if STABLE.match(v)]
     return max(versions, key=version_key)
+
+
+def latest_appdistribution(api_ref):
+    """The App Distribution release that the api.txt at api_ref describes, if published; else the newest published."""
+    metadata = fetch(f'{GOOGLE_MAVEN}/firebase-appdistribution-api/maven-metadata.xml', 'application/xml')
+    published = re.findall(r'<version>([^<]+)</version>', metadata)
+    properties = fetch(f'https://raw.githubusercontent.com/firebase/firebase-android-sdk/{api_ref}/firebase-appdistribution-api/gradle.properties', 'text/plain')
+    released = re.search(r'^latestReleasedVersion=(\S+)', properties, flags=re.M)
+    if released and released.group(1) in published:
+        return released.group(1)
+    return max(published, key=prerelease_key)
+
+
+def firebase_common_of(artifact, version):
+    """The firebase-common version that a Firebase artifact's POM (or the BoM) names."""
+    pom = fetch(f'{GOOGLE_MAVEN}/{artifact}/{version}/{artifact}-{version}.pom', 'application/xml')
+    match = re.search(r'<artifactId>firebase-common</artifactId>\s*<version>([^<]+)</version>', pom)
+    return match.group(1) if match else None
 
 
 def latest_ios():
@@ -113,6 +143,7 @@ def main():
     rows = [
         # name, current, latest, note
         ('Android BoM', toml_value('firebase-bom'), latest_bom(), 'com.google.firebase:firebase-bom'),
+        ('App Distribution', toml_value('firebase-appdistribution'), latest_appdistribution(api_sha), 'beta, not in the BoM'),
         ('iOS SDK', toml_value('firebase-ios-sdk'), latest_ios(), 'SwiftPM minimum; resolves to the newest release of that major'),
         ('JS SDK', current_js(), latest_js(), 'npm firebase'),
         ('Android API (api.txt)', property_value('androidSdk.apiRef'), api_sha, f'firebase-android-sdk {milestone} mergeback, {api_date}'),
@@ -127,6 +158,8 @@ def main():
         for name, current, latest, _ in changed:
             if name == 'Android BoM':
                 set_toml_value('firebase-bom', latest)
+            elif name == 'App Distribution':
+                set_toml_value('firebase-appdistribution', latest)
             elif name == 'iOS SDK':
                 set_toml_value('firebase-ios-sdk', latest)
             elif name == 'JS SDK':
@@ -143,6 +176,13 @@ def main():
         majors = [name for name, current, latest, _ in changed if not name.startswith('Android API') and current.split('.')[0] != latest.split('.')[0]]
         if majors:
             lines += ['', f'**Major version change:** {", ".join(majors)}. Expect breaking API changes; CI shows what no longer compiles.']
+        latest = {name: latest for name, _, latest, _ in rows}
+        bom_common = firebase_common_of('firebase-bom', latest['Android BoM'])
+        appdistribution_common = firebase_common_of('firebase-appdistribution-api', latest['App Distribution'])
+        if bom_common and appdistribution_common and bom_common.split('.')[0] != appdistribution_common.split('.')[0]:
+            lines += ['', f'**App Distribution lags the BoM:** {latest["App Distribution"]} is built on firebase-common '
+                          f'{appdistribution_common}, BoM {latest["Android BoM"]} on {bom_common}. Keep the previous BoM or '
+                          'wait for an App Distribution release on the new firebase-common.']
         args.summary.write_text('\n'.join(lines) + '\n')
 
     if 'GITHUB_OUTPUT' in os.environ:
