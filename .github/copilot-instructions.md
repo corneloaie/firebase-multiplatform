@@ -158,14 +158,23 @@ The SDK has two public API layers per module:
      `UnsupportedOperationException` where it must return a value, and carries the opt-in marker for it:
      `@dev.gitlive.firebase.UnsupportedOnJs` (js and wasmJs) or `@dev.gitlive.firebase.UnsupportedOnApple` (iOS, macOS,
      tvOS). Android-only features are declared the same way (Play Games sign-in, Play Integrity). `@unavailable` marks only
-     work not done yet (the Firestore pipeline API).
+     work not done yet.
+   - `firebase-firestore` shows the largest surface done as plain common code: the pipeline API
+     (`com.google.firebase.firestore.pipeline`, ~1,300 members) is a tree of backend functions in `commonMain`, stripped on
+     Android and the JVM, that `Pipeline.execute` translates to the iOS SDK's Objective-C pipeline bridge and to the JS
+     SDK's `firebase/firestore/pipelines`. Its `Expression.kt` and `AggregateFunction.kt` are generated from the Android
+     SDK's sources by `firebase-firestore/codegen/generate_pipeline.py`; never edit them by hand. Plain common code cannot
+     carry the per-platform markers, so the few options a platform SDK cannot send (on Apple execute options and source
+     options other than the forced index; on JS field references other than a nearest-neighbour search's distance field
+     and an unnest's index field) fail `execute()` with `UnsupportedOperationException` by design, as their KDoc says;
+     do not add `@UnsupportedOnApple`/`@UnsupportedOnJs` there.
    - Coverage is measured, not assumed: `./gradlew :<module>:androidSourceCompatDump` compares `api/android/<module>.api` with the
      vendored Android SDK `api/android-sdk/*.api.txt` and writes `api/android-sdk-compat.txt` (committed, checked by `check`); its
      percentage is the module's README badge. A member deprecated with an error on our side is reported as `MAP` with its
      message and counts as provided. `api/android-sdk/exclusions.txt` lists members deliberately not mirrored: they count as
      unavailable unless the comment says `@hide` (hidden in the Android SDK), `@platform` (the signature involves an
      Android/JVM-only type with no replacement, such as `Parcel`) or `@unavailable` (the feature does not exist in the
-     pinned iOS or JS SDK, such as the Firestore pipeline API), which drops them from the count; a single overload
+     pinned iOS or JS SDK), which drops them from the count; a single overload
      is selected with `Class#member(Type, Type)`.
 2. **`dev.gitlive.firebase.*` (Kotlin-first layer)** — the existing API, implemented in `commonMain` *on top of* the
    `com.google.firebase` layer (suspend functions instead of `Task`, `Flow` instead of listeners, default arguments instead of
