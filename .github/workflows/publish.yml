@@ -33,7 +33,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-      - uses: gradle/actions/setup-gradle@v6.3.0
+      - uses: gradle/actions/setup-gradle@v6
       - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '26.2.0'
@@ -64,7 +64,7 @@ jobs:
         run: python3 .github/scripts/publish/check_publications.py "$HOME/.m2/repository"
       - name: Keep the publications
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: publications
           path: ~/.m2/repository/io/github/corneloaie/
@@ -89,7 +89,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-      - uses: gradle/actions/setup-gradle@v6.3.0
+      - uses: gradle/actions/setup-gradle@v6
       - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '26.2.0'
