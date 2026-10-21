@@ -5,12 +5,20 @@
 package com.google.firebase.firestore
 
 import swiftPMImport.dev.gitlive.firebase.app.FIRTimestamp
+import swiftPMImport.dev.gitlive.firebase.firestore.FIRBSONObjectId
+import swiftPMImport.dev.gitlive.firebase.firestore.FIRBSONTimestamp
+import swiftPMImport.dev.gitlive.firebase.firestore.FIRBlob
+import swiftPMImport.dev.gitlive.firebase.firestore.FIRDecimal128Value
 import swiftPMImport.dev.gitlive.firebase.firestore.FIRDocumentReference
 import swiftPMImport.dev.gitlive.firebase.firestore.FIRFieldPath
 import swiftPMImport.dev.gitlive.firebase.firestore.FIRFieldValue
 import swiftPMImport.dev.gitlive.firebase.firestore.FIRFilter
 import swiftPMImport.dev.gitlive.firebase.firestore.FIRFirestoreErrorDomain
 import swiftPMImport.dev.gitlive.firebase.firestore.FIRGeoPoint
+import swiftPMImport.dev.gitlive.firebase.firestore.FIRInt32Value
+import swiftPMImport.dev.gitlive.firebase.firestore.FIRMaxKey
+import swiftPMImport.dev.gitlive.firebase.firestore.FIRMinKey
+import swiftPMImport.dev.gitlive.firebase.firestore.FIRRegexValue
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.Timestamp
@@ -24,9 +32,10 @@ import platform.Foundation.create
 import platform.posix.memcpy
 
 /*
- * The iOS SDK reads and writes Foundation values with its own FIRTimestamp, FIRGeoPoint, FIRDocumentReference and NSData;
- * the layer presents them as the Android SDK's types: Map, List, String, Boolean, Long, Double,
- * com.google.firebase.Timestamp, GeoPoint, DocumentReference and Blob.
+ * The iOS SDK reads and writes Foundation values with its own FIRTimestamp, FIRGeoPoint, FIRDocumentReference, NSData
+ * and BSON types (FIRBlob for BSON binary data of a subtype other than 0); the layer presents them as the Android SDK's
+ * types: Map, List, String, Boolean, Long, Double, com.google.firebase.Timestamp, GeoPoint, DocumentReference, Blob,
+ * BsonObjectId, BsonTimestamp, Decimal128Value, Int32Value, MaxKey, MinKey and RegexValue.
  */
 
 /** [this] as the iOS SDK writes it: the layer's value types become the SDK's. */
@@ -37,7 +46,15 @@ internal fun Any?.toIos(): Any? = when (this) {
     is GeoPoint -> FIRGeoPoint(latitude, longitude)
     is DocumentReference -> ios
     is FieldValue -> toIosFieldValue()
-    is Blob -> toBytes().toNSData()
+    // The SDK writes BSON binary data of subtype 0 as plain bytes, as it does NSData.
+    is Blob -> if (subType == 0) toBytes().toNSData() else FIRBlob.blobWithBSONBinary(toBytes().toNSData(), subType.toUByte())
+    is BsonObjectId -> FIRBSONObjectId(value)
+    is BsonTimestamp -> FIRBSONTimestamp(seconds.toUInt(), increment.toUInt())
+    is Decimal128Value -> FIRDecimal128Value(stringValue)
+    is Int32Value -> FIRInt32Value(value)
+    is MaxKey -> FIRMaxKey.shared
+    is MinKey -> FIRMinKey.shared
+    is RegexValue -> FIRRegexValue(pattern, options)
     is FieldPath -> toIos()
     is Map<*, *> -> entries.associate { (key, value) -> key.toIos() to value.toIos() }
     is Collection<*> -> map { it.toIos() }
@@ -56,6 +73,14 @@ internal fun Any?.toCompat(): Any? = when (this) {
     is FIRGeoPoint -> GeoPoint(latitude, longitude)
     is FIRDocumentReference -> DocumentReference(this)
     is NSData -> Blob.fromBytes(toByteArray())
+    is FIRBlob -> Blob.createBsonBinary(subtype.toInt(), bytes.toByteArray())
+    is FIRBSONObjectId -> BsonObjectId(value)
+    is FIRBSONTimestamp -> BsonTimestamp(seconds.toLong(), increment.toLong())
+    is FIRDecimal128Value -> Decimal128Value(value)
+    is FIRInt32Value -> Int32Value(value)
+    is FIRMaxKey -> MaxKey.instance()
+    is FIRMinKey -> MinKey.instance()
+    is FIRRegexValue -> RegexValue(pattern, options)
     is Map<*, *> -> entries.associate { (key, value) -> key.toString() to value.toCompat() }
     is List<*> -> map { it.toCompat() }
     else -> this

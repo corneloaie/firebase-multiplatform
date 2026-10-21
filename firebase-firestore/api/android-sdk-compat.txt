@@ -1,6 +1,6 @@
 # Android SDK source compatibility of firebase-firestore
 # Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
-# 93% of 357 public members available (321 identical, 12 mapped, 24 missing, 0 omitted)
+# 100% of 357 public members available (345 identical, 12 mapped, 0 missing, 0 omitted)
 #
 com.google.firebase.firestore.AggregateField
   OK    static AverageAggregateField average(FieldPath)
@@ -30,18 +30,18 @@ com.google.firebase.firestore.AggregateSource
   OK    static AggregateSource SERVER
 com.google.firebase.firestore.Blob
   OK    int compareTo(Blob)
-  MISS  static Blob createBsonBinary(byte[])
-  MISS  static Blob createBsonBinary(int, byte[])
+  OK    static Blob createBsonBinary(byte[])
+  OK    static Blob createBsonBinary(int, byte[])
   OK    static Blob fromBytes(byte[])
-  MISS  int getSubType()
+  OK    int getSubType()
   OK    byte[] toBytes()
-com.google.firebase.firestore.BsonObjectId  (class missing)
-  MISS  BsonObjectId(String)
-  MISS  String value
-com.google.firebase.firestore.BsonTimestamp  (class missing)
-  MISS  BsonTimestamp(long, long)
-  MISS  long increment
-  MISS  long seconds
+com.google.firebase.firestore.BsonObjectId
+  OK    BsonObjectId(String)
+  OK    String value
+com.google.firebase.firestore.BsonTimestamp
+  OK    BsonTimestamp(long, long)
+  OK    long increment
+  OK    long seconds
 com.google.firebase.firestore.CollectionReference
   OK    Task add(Object)
   OK    DocumentReference document()
@@ -49,9 +49,9 @@ com.google.firebase.firestore.CollectionReference
   OK    String getId()
   OK    DocumentReference getParent()
   OK    String getPath()
-com.google.firebase.firestore.Decimal128Value  (class missing)
-  MISS  Decimal128Value(String)
-  MISS  String stringValue
+com.google.firebase.firestore.Decimal128Value
+  OK    Decimal128Value(String)
+  OK    String stringValue
 com.google.firebase.firestore.DocumentChange
   OK    QueryDocumentSnapshot getDocument()
   OK    int getNewIndex()
@@ -98,24 +98,24 @@ com.google.firebase.firestore.DocumentSnapshot
   PLAT  T get(String, Class, ServerTimestampBehavior)
   OK    Blob getBlob(String)
   OK    Boolean getBoolean(String)
-  MISS  BsonObjectId getBsonObjectId(String)
-  MISS  BsonTimestamp getBsonTimestamp(String)
+  OK    BsonObjectId getBsonObjectId(String)
+  OK    BsonTimestamp getBsonTimestamp(String)
   OK    Map getData()
   OK    Map getData(ServerTimestampBehavior)
   PLAT  Date getDate(String)
   PLAT  Date getDate(String, ServerTimestampBehavior)
-  MISS  Decimal128Value getDecimal128Value(String)
+  OK    Decimal128Value getDecimal128Value(String)
   OK    DocumentReference getDocumentReference(String)
   OK    Double getDouble(String)
   OK    GeoPoint getGeoPoint(String)
   OK    String getId()
-  MISS  Int32Value getInt32Value(String)
+  OK    Int32Value getInt32Value(String)
   OK    Long getLong(String)
-  MISS  MaxKey getMaxKey(String)
+  OK    MaxKey getMaxKey(String)
   OK    SnapshotMetadata getMetadata()
-  MISS  MinKey getMinKey(String)
+  OK    MinKey getMinKey(String)
   OK    DocumentReference getReference()
-  MISS  RegexValue getRegexValue(String)
+  OK    RegexValue getRegexValue(String)
   OK    String getString(String)
   OK    Timestamp getTimestamp(String)
   OK    Timestamp getTimestamp(String, ServerTimestampBehavior)
@@ -279,9 +279,9 @@ com.google.firebase.firestore.GeoPoint
   OK    double getLatitude()
   OK    double getLongitude()
 com.google.firebase.firestore.IgnoreExtraProperties
-com.google.firebase.firestore.Int32Value  (class missing)
-  MISS  Int32Value(int)
-  MISS  int value
+com.google.firebase.firestore.Int32Value
+  OK    Int32Value(int)
+  OK    int value
 com.google.firebase.firestore.ListenSource
   OK    static ListenSource CACHE
   OK    static ListenSource DEFAULT
@@ -327,8 +327,8 @@ com.google.firebase.firestore.LoadBundleTaskProgress.TaskState
   OK    static TaskState RUNNING
   OK    static TaskState SUCCESS
 com.google.firebase.firestore.LocalCacheSettings
-com.google.firebase.firestore.MaxKey  (class missing)
-  MISS  static MaxKey instance()
+com.google.firebase.firestore.MaxKey
+  OK    static MaxKey instance()
 com.google.firebase.firestore.MemoryCacheSettings
   OK    MemoryGarbageCollectorSettings getGarbageCollectorSettings()
   OK    static Builder newBuilder()
@@ -349,8 +349,8 @@ com.google.firebase.firestore.MemoryLruGcSettings.Builder
 com.google.firebase.firestore.MetadataChanges
   OK    static MetadataChanges EXCLUDE
   OK    static MetadataChanges INCLUDE
-com.google.firebase.firestore.MinKey  (class missing)
-  MISS  static MinKey instance()
+com.google.firebase.firestore.MinKey
+  OK    static MinKey instance()
 com.google.firebase.firestore.OnProgressListener
   OK    void onProgress(ProgressT)
 com.google.firebase.firestore.PersistentCacheIndexManager
@@ -428,10 +428,10 @@ com.google.firebase.firestore.QuerySnapshot
   OK    int size()
   PLAT  List toObjects(Class)
   PLAT  List toObjects(Class, ServerTimestampBehavior)
-com.google.firebase.firestore.RegexValue  (class missing)
-  MISS  RegexValue(String, String)
-  MISS  String options
-  MISS  String pattern
+com.google.firebase.firestore.RegexValue
+  OK    RegexValue(String, String)
+  OK    String options
+  OK    String pattern
 com.google.firebase.firestore.ServerTimestamp
 com.google.firebase.firestore.SetOptions
   OK    static SetOptions merge()

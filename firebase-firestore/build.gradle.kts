@@ -233,7 +233,7 @@ stripHeaderStubs(
         "com/google/firebase/firestore/FirestoreStatics.class",
     ),
     // firebase-java-sdk ports an older Android SDK without the cache-only listen source, the gRPC flow control window
-    // setting and the restricted FieldPath.fromDotSeparatedPath.
+    // setting, the restricted FieldPath.fromDotSeparatedPath and the BSON types (BSON binary data is a Blob subtype).
     jvmMissingMembers = listOf(
         "com/google/firebase/firestore/ListenSource",
         "com/google/firebase/firestore/SnapshotListenOptions",
@@ -246,6 +246,23 @@ stripHeaderStubs(
         "com/google/firebase/firestore/FirebaseFirestoreSettings\$Builder.setGrpcFlowControlWindow(I)V",
         "com/google/firebase/firestore/FirebaseFirestoreSettings\$Builder.setGrpcFlowControlWindow(I)Lcom/google/firebase/firestore/FirebaseFirestoreSettings\$Builder;",
         "com/google/firebase/firestore/FieldPath.fromDotSeparatedPath(Ljava/lang/String;)Lcom/google/firebase/firestore/FieldPath;",
+        "com/google/firebase/firestore/BsonObjectId",
+        "com/google/firebase/firestore/BsonTimestamp",
+        "com/google/firebase/firestore/Decimal128Value",
+        "com/google/firebase/firestore/Int32Value",
+        "com/google/firebase/firestore/MaxKey",
+        "com/google/firebase/firestore/MinKey",
+        "com/google/firebase/firestore/RegexValue",
+        "com/google/firebase/firestore/Blob.getSubType()I",
+        "com/google/firebase/firestore/Blob.createBsonBinary([B)Lcom/google/firebase/firestore/Blob;",
+        "com/google/firebase/firestore/Blob.createBsonBinary(I[B)Lcom/google/firebase/firestore/Blob;",
+        "com/google/firebase/firestore/DocumentSnapshot.getBsonObjectId(Ljava/lang/String;)Lcom/google/firebase/firestore/BsonObjectId;",
+        "com/google/firebase/firestore/DocumentSnapshot.getBsonTimestamp(Ljava/lang/String;)Lcom/google/firebase/firestore/BsonTimestamp;",
+        "com/google/firebase/firestore/DocumentSnapshot.getDecimal128Value(Ljava/lang/String;)Lcom/google/firebase/firestore/Decimal128Value;",
+        "com/google/firebase/firestore/DocumentSnapshot.getInt32Value(Ljava/lang/String;)Lcom/google/firebase/firestore/Int32Value;",
+        "com/google/firebase/firestore/DocumentSnapshot.getMaxKey(Ljava/lang/String;)Lcom/google/firebase/firestore/MaxKey;",
+        "com/google/firebase/firestore/DocumentSnapshot.getMinKey(Ljava/lang/String;)Lcom/google/firebase/firestore/MinKey;",
+        "com/google/firebase/firestore/DocumentSnapshot.getRegexValue(Ljava/lang/String;)Lcom/google/firebase/firestore/RegexValue;",
     ),
 )
 

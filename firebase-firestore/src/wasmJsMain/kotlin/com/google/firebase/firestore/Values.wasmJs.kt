@@ -28,9 +28,16 @@ import kotlin.js.JsException
 import kotlin.js.Promise
 import kotlin.math.abs
 import kotlin.math.floor
+import dev.gitlive.firebase.firestore.externals.BsonObjectId as JsBsonObjectId
+import dev.gitlive.firebase.firestore.externals.BsonTimestamp as JsBsonTimestamp
+import dev.gitlive.firebase.firestore.externals.Decimal128Value as JsDecimal128Value
 import dev.gitlive.firebase.firestore.externals.DocumentReference as JsDocumentReference
 import dev.gitlive.firebase.firestore.externals.FieldPath as JsFieldPath
 import dev.gitlive.firebase.firestore.externals.GeoPoint as JsGeoPoint
+import dev.gitlive.firebase.firestore.externals.Int32Value as JsInt32Value
+import dev.gitlive.firebase.firestore.externals.MaxKey as JsMaxKey
+import dev.gitlive.firebase.firestore.externals.MinKey as JsMinKey
+import dev.gitlive.firebase.firestore.externals.RegexValue as JsRegexValue
 import dev.gitlive.firebase.firestore.externals.Timestamp as JsTimestamp
 import dev.gitlive.firebase.firestore.externals.and as jsAnd
 import dev.gitlive.firebase.firestore.externals.arrayRemove as jsArrayRemove
@@ -41,9 +48,10 @@ import dev.gitlive.firebase.firestore.externals.serverTimestamp as jsServerTimes
 import dev.gitlive.firebase.firestore.externals.where as jsWhere
 
 /*
- * The JS SDK reads and writes plain JS values with its own Timestamp, GeoPoint, DocumentReference and Bytes classes;
- * the layer presents them as the Android SDK's types: Map, List, String, Boolean, Long (integral numbers), Double,
- * com.google.firebase.Timestamp, GeoPoint, DocumentReference and Blob.
+ * The JS SDK reads and writes plain JS values with its own Timestamp, GeoPoint, DocumentReference, Bytes (with a BSON
+ * binary subtype) and BSON classes; the layer presents them as the Android SDK's types: Map, List, String, Boolean,
+ * Long (integral numbers), Double, com.google.firebase.Timestamp, GeoPoint, DocumentReference, Blob, BsonObjectId,
+ * BsonTimestamp, Decimal128Value, Int32Value, MaxKey, MinKey and RegexValue.
  *
  * Kotlin/Wasm values are not JS values: the dev.gitlive layer's encoders keep the layer's value types inside the JS
  * objects and arrays they build as references to the Kotlin objects (see `toJsReference`), which read back as `Any` are
@@ -62,7 +70,14 @@ internal fun Any?.toJs(): JsAny? = when (this) {
     is GeoPoint -> JsGeoPoint(latitude, longitude)
     is DocumentReference -> js
     is FieldValue -> toJsFieldValue()
-    is Blob -> Bytes.fromUint8Array(toBytes().toUint8Array())
+    is Blob -> Bytes.fromUint8Array(toBytes().toUint8Array(), subType)
+    is BsonObjectId -> JsBsonObjectId(value)
+    is BsonTimestamp -> JsBsonTimestamp(seconds.toDouble(), increment.toDouble())
+    is Decimal128Value -> JsDecimal128Value(stringValue)
+    is Int32Value -> JsInt32Value(value)
+    is MaxKey -> JsMaxKey.instance()
+    is MinKey -> JsMinKey.instance()
+    is RegexValue -> JsRegexValue(pattern, options)
     is FieldPath -> toJs()
     is Map<*, *> -> jsObject().also { json -> forEach { (key, value) -> jsSet(json, key.toString(), value.toJs()) } }
     is Collection<*> -> map { it.toJs() }.toJsArray()
@@ -84,16 +99,28 @@ internal fun JsAny?.toCompat(): Any? {
     return when (jsTypeOf(this)) {
         "string", "boolean" -> toKotlin()
         "number" -> toCompatNumber()
-        "object" -> when {
-            this is JsTimestamp -> Timestamp(seconds.toLong(), nanoseconds.toInt())
-            this is JsGeoPoint -> GeoPoint(latitude, longitude)
-            this is JsDocumentReference -> DocumentReference(this)
-            this is Bytes -> Blob.fromBytes(toUint8Array().toByteArray())
+        "object" -> toCompatValueType() ?: when {
             jsIsArray(this) -> asJsArray().toList().map { it.toCompat() }
             else -> objectKeys(this).associateWith { key -> jsGet(this, key).toCompat() }
         }
         else -> this
     }
+}
+
+/** An object of one of the JS SDK's value classes as the layer's value type, or null for any other value. */
+private fun JsAny.toCompatValueType(): Any? = when (this) {
+    is JsTimestamp -> Timestamp(seconds.toLong(), nanoseconds.toInt())
+    is JsGeoPoint -> GeoPoint(latitude, longitude)
+    is JsDocumentReference -> DocumentReference(this)
+    is Bytes -> Blob.createBsonBinary(subtype, toUint8Array().toByteArray())
+    is JsBsonObjectId -> BsonObjectId(value)
+    is JsBsonTimestamp -> BsonTimestamp(seconds.toLong(), increment.toLong())
+    is JsDecimal128Value -> Decimal128Value(stringValue)
+    is JsInt32Value -> Int32Value(value)
+    is JsMaxKey -> MaxKey.instance()
+    is JsMinKey -> MinKey.instance()
+    is JsRegexValue -> RegexValue(pattern, options)
+    else -> null
 }
 
 /**
@@ -104,11 +131,7 @@ internal fun JsAny?.toCompat(): Any? {
  */
 internal fun JsAny?.toCompatLeaves(): Any? = this?.compatLeaves().toKotlin()
 
-private fun JsAny.compatLeaves(): JsAny = when {
-    this is JsTimestamp -> Timestamp(seconds.toLong(), nanoseconds.toInt()).toJsReference()
-    this is JsGeoPoint -> GeoPoint(latitude, longitude).toJsReference()
-    this is JsDocumentReference -> DocumentReference(this).toJsReference()
-    this is Bytes -> Blob.fromBytes(toUint8Array().toByteArray()).toJsReference()
+private fun JsAny.compatLeaves(): JsAny = toCompatValueType()?.toJsReference() ?: when {
     jsIsArray(this) -> asJsArray().toList().map { it?.compatLeaves() }.toJsArray()
     isPlainObject(this) -> jsObject().also { json -> objectKeys(this).forEach { key -> jsSet(json, key, jsGet(this, key)?.compatLeaves()) } }
     else -> this

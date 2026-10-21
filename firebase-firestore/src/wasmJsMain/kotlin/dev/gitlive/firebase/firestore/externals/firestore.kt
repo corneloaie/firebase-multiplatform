@@ -370,11 +370,48 @@ public external fun persistentMultipleTabManager(): PersistentTabManager
  * `org.khronos.webgl` for Kotlin/Wasm (see `Values.wasmJs.kt` for the conversions).
  */
 public external class Bytes : JsAny {
+    /** The BSON binary subtype, 0 for plain bytes. */
+    public val subtype: Int
+
     public fun toUint8Array(): JsAny
 
     public companion object {
-        public fun fromUint8Array(array: JsAny): Bytes
+        public fun fromUint8Array(array: JsAny, subtype: Int = definedExternally): Bytes
     }
+}
+
+public external class BsonObjectId(value: String) : JsAny {
+    public val value: String
+}
+
+public external class BsonTimestamp(seconds: Double, increment: Double) : JsAny {
+    public val seconds: Double
+    public val increment: Double
+}
+
+public external class Decimal128Value(value: String) : JsAny {
+    public val stringValue: String
+}
+
+public external class Int32Value(value: Int) : JsAny {
+    public val value: Int
+}
+
+public external class MaxKey : JsAny {
+    public companion object {
+        public fun instance(): MaxKey
+    }
+}
+
+public external class MinKey : JsAny {
+    public companion object {
+        public fun instance(): MinKey
+    }
+}
+
+public external class RegexValue(pattern: String, options: String) : JsAny {
+    public val pattern: String
+    public val options: String
 }
 
 public external interface LoadBundleTask : JsAny {

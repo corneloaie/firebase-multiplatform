@@ -368,11 +368,48 @@ public external fun persistentMultipleTabManager(): PersistentTabManager
 // Additions for the com.google.firebase.firestore compatibility layer.
 
 public external class Bytes {
+    /** The BSON binary subtype, 0 for plain bytes. */
+    public val subtype: Int
+
     public fun toUint8Array(): org.khronos.webgl.Uint8Array
 
     public companion object {
-        public fun fromUint8Array(array: org.khronos.webgl.Uint8Array): Bytes
+        public fun fromUint8Array(array: org.khronos.webgl.Uint8Array, subtype: Int = definedExternally): Bytes
     }
+}
+
+public external class BsonObjectId(value: String) {
+    public val value: String
+}
+
+public external class BsonTimestamp(seconds: Double, increment: Double) {
+    public val seconds: Double
+    public val increment: Double
+}
+
+public external class Decimal128Value(value: String) {
+    public val stringValue: String
+}
+
+public external class Int32Value(value: Int) {
+    public val value: Int
+}
+
+public external class MaxKey {
+    public companion object {
+        public fun instance(): MaxKey
+    }
+}
+
+public external class MinKey {
+    public companion object {
+        public fun instance(): MinKey
+    }
+}
+
+public external class RegexValue(pattern: String, options: String) {
+    public val pattern: String
+    public val options: String
 }
 
 public external interface LoadBundleTask {

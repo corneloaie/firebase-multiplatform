@@ -251,6 +251,13 @@ public actual open class DocumentSnapshot {
     public actual fun getBlob(field: String): Blob? = stub()
     public actual fun getGeoPoint(field: String): GeoPoint? = stub()
     public actual fun getDocumentReference(field: String): DocumentReference? = stub()
+    public actual fun getBsonObjectId(field: String): BsonObjectId? = stub()
+    public actual fun getBsonTimestamp(field: String): BsonTimestamp? = stub()
+    public actual fun getDecimal128Value(field: String): Decimal128Value? = stub()
+    public actual fun getInt32Value(field: String): Int32Value? = stub()
+    public actual fun getMaxKey(field: String): MaxKey? = stub()
+    public actual fun getMinKey(field: String): MinKey? = stub()
+    public actual fun getRegexValue(field: String): RegexValue? = stub()
 
     public actual enum class ServerTimestampBehavior {
         NONE,
