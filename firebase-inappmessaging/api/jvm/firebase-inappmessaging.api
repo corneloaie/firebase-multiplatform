@@ -1,0 +1,255 @@
+public final class com/google/firebase/inappmessaging/FirebaseInAppMessaging {
+	public static final field Companion Lcom/google/firebase/inappmessaging/FirebaseInAppMessaging$Companion;
+	public final fun addClickListener (Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingClickListener;)V
+	public final fun addDismissListener (Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDismissListener;)V
+	public final fun addDisplayErrorListener (Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayErrorListener;)V
+	public final fun addImpressionListener (Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingImpressionListener;)V
+	public final fun areMessagesSuppressed ()Z
+	public final fun clearDisplayListener ()V
+	public static final fun getInstance ()Lcom/google/firebase/inappmessaging/FirebaseInAppMessaging;
+	public final fun isAutomaticDataCollectionEnabled ()Z
+	public final fun removeClickListener (Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingClickListener;)V
+	public final fun removeDismissListener (Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDismissListener;)V
+	public final fun removeDisplayErrorListener (Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayErrorListener;)V
+	public final fun removeImpressionListener (Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingImpressionListener;)V
+	public final fun setAutomaticDataCollectionEnabled (Ljava/lang/Boolean;)V
+	public final fun setAutomaticDataCollectionEnabled (Z)V
+	public final fun setMessageDisplayComponent (Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplay;)V
+	public final fun setMessagesSuppressed (Ljava/lang/Boolean;)V
+	public fun toString ()Ljava/lang/String;
+	public final fun triggerEvent (Ljava/lang/String;)V
+}
+
+public final class com/google/firebase/inappmessaging/FirebaseInAppMessaging$Companion {
+	public final fun getInstance ()Lcom/google/firebase/inappmessaging/FirebaseInAppMessaging;
+}
+
+public abstract interface class com/google/firebase/inappmessaging/FirebaseInAppMessagingClickListener {
+	public abstract fun messageClicked (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/model/Action;)V
+}
+
+public final class com/google/firebase/inappmessaging/FirebaseInAppMessagingContextualTrigger {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun getTriggerName ()Ljava/lang/String;
+}
+
+public abstract interface class com/google/firebase/inappmessaging/FirebaseInAppMessagingDismissListener {
+	public abstract fun messageDismissed (Lcom/google/firebase/inappmessaging/model/InAppMessage;)V
+}
+
+public abstract interface class com/google/firebase/inappmessaging/FirebaseInAppMessagingDisplay {
+	public abstract fun displayMessage (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks;)V
+}
+
+public abstract interface class com/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks {
+	public abstract fun displayErrorEncountered (Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;)Lcom/google/android/gms/tasks/Task;
+	public abstract fun impressionDetected ()Lcom/google/android/gms/tasks/Task;
+	public abstract fun messageClicked (Lcom/google/firebase/inappmessaging/model/Action;)Lcom/google/android/gms/tasks/Task;
+	public abstract fun messageDismissed (Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingDismissType;)Lcom/google/android/gms/tasks/Task;
+}
+
+public final class com/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingDismissType : java/lang/Enum {
+	public static final field AUTO Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingDismissType;
+	public static final field CLICK Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingDismissType;
+	public static final field SWIPE Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingDismissType;
+	public static final field UNKNOWN_DISMISS_TYPE Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingDismissType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingDismissType;
+	public static fun values ()[Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingDismissType;
+}
+
+public final class com/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason : java/lang/Enum {
+	public static final field IMAGE_DISPLAY_ERROR Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;
+	public static final field IMAGE_FETCH_ERROR Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;
+	public static final field IMAGE_UNSUPPORTED_FORMAT Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;
+	public static final field UNSPECIFIED_RENDER_ERROR Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;
+	public static fun values ()[Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;
+}
+
+public abstract interface class com/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayErrorListener {
+	public abstract fun displayErrorEncountered (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;)V
+}
+
+public abstract interface class com/google/firebase/inappmessaging/FirebaseInAppMessagingImpressionListener {
+	public abstract fun impressionDetected (Lcom/google/firebase/inappmessaging/model/InAppMessage;)V
+}
+
+public final class com/google/firebase/inappmessaging/InAppMessagingKt {
+	public static final fun getInAppMessaging (Lcom/google/firebase/Firebase;)Lcom/google/firebase/inappmessaging/FirebaseInAppMessaging;
+}
+
+public final class com/google/firebase/inappmessaging/display/FirebaseInAppMessagingDisplay : com/google/firebase/inappmessaging/FirebaseInAppMessagingDisplay {
+	public static final field Companion Lcom/google/firebase/inappmessaging/display/FirebaseInAppMessagingDisplay$Companion;
+	public fun displayMessage (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks;)V
+	public static final fun getInstance ()Lcom/google/firebase/inappmessaging/display/FirebaseInAppMessagingDisplay;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/google/firebase/inappmessaging/display/FirebaseInAppMessagingDisplay$Companion {
+	public final fun getInstance ()Lcom/google/firebase/inappmessaging/display/FirebaseInAppMessagingDisplay;
+}
+
+public final class com/google/firebase/inappmessaging/display/InAppMessagingDisplayKt {
+	public static final fun getInAppMessagingDisplay (Lcom/google/firebase/Firebase;)Lcom/google/firebase/inappmessaging/display/FirebaseInAppMessagingDisplay;
+}
+
+public final class com/google/firebase/inappmessaging/model/Action {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getActionUrl ()Ljava/lang/String;
+	public final fun getButton ()Lcom/google/firebase/inappmessaging/model/Button;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/google/firebase/inappmessaging/model/BannerMessage : com/google/firebase/inappmessaging/model/InAppMessage {
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAction ()Lcom/google/firebase/inappmessaging/model/Action;
+	public fun getBackgroundHexColor ()Ljava/lang/String;
+	public fun getBody ()Lcom/google/firebase/inappmessaging/model/Text;
+	public fun getImageData ()Lcom/google/firebase/inappmessaging/model/ImageData;
+	public fun getTitle ()Lcom/google/firebase/inappmessaging/model/Text;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/google/firebase/inappmessaging/model/Button {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getButtonHexColor ()Ljava/lang/String;
+	public final fun getText ()Lcom/google/firebase/inappmessaging/model/Text;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/google/firebase/inappmessaging/model/CampaignMetadata {
+	public final fun getCampaignId ()Ljava/lang/String;
+	public final fun getCampaignName ()Ljava/lang/String;
+	public final fun getIsTestMessage ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/google/firebase/inappmessaging/model/CardMessage : com/google/firebase/inappmessaging/model/InAppMessage {
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAction ()Lcom/google/firebase/inappmessaging/model/Action;
+	public fun getBackgroundHexColor ()Ljava/lang/String;
+	public fun getBody ()Lcom/google/firebase/inappmessaging/model/Text;
+	public fun getImageData ()Lcom/google/firebase/inappmessaging/model/ImageData;
+	public final fun getLandscapeImageData ()Lcom/google/firebase/inappmessaging/model/ImageData;
+	public final fun getPortraitImageData ()Lcom/google/firebase/inappmessaging/model/ImageData;
+	public final fun getPrimaryAction ()Lcom/google/firebase/inappmessaging/model/Action;
+	public final fun getSecondaryAction ()Lcom/google/firebase/inappmessaging/model/Action;
+	public fun getTitle ()Lcom/google/firebase/inappmessaging/model/Text;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/google/firebase/inappmessaging/model/ImageData {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getImageUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/google/firebase/inappmessaging/model/ImageOnlyMessage : com/google/firebase/inappmessaging/model/InAppMessage {
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAction ()Lcom/google/firebase/inappmessaging/model/Action;
+	public fun getImageData ()Lcom/google/firebase/inappmessaging/model/ImageData;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class com/google/firebase/inappmessaging/model/InAppMessage {
+	public abstract fun getAction ()Lcom/google/firebase/inappmessaging/model/Action;
+	public fun getActionButton ()Lcom/google/firebase/inappmessaging/model/Button;
+	public fun getBackgroundHexColor ()Ljava/lang/String;
+	public fun getBody ()Lcom/google/firebase/inappmessaging/model/Text;
+	public fun getCampaignId ()Ljava/lang/String;
+	public final fun getCampaignMetadata ()Lcom/google/firebase/inappmessaging/model/CampaignMetadata;
+	public fun getCampaignName ()Ljava/lang/String;
+	public final fun getData ()Ljava/util/Map;
+	public fun getImageData ()Lcom/google/firebase/inappmessaging/model/ImageData;
+	public fun getImageUrl ()Ljava/lang/String;
+	public final fun getIsTestMessage ()Ljava/lang/Boolean;
+	public final fun getMessageType ()Lcom/google/firebase/inappmessaging/model/MessageType;
+	public fun getTitle ()Lcom/google/firebase/inappmessaging/model/Text;
+}
+
+public final class com/google/firebase/inappmessaging/model/MessageType : java/lang/Enum {
+	public static final field BANNER Lcom/google/firebase/inappmessaging/model/MessageType;
+	public static final field CARD Lcom/google/firebase/inappmessaging/model/MessageType;
+	public static final field IMAGE_ONLY Lcom/google/firebase/inappmessaging/model/MessageType;
+	public static final field MODAL Lcom/google/firebase/inappmessaging/model/MessageType;
+	public static final field UNSUPPORTED Lcom/google/firebase/inappmessaging/model/MessageType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/google/firebase/inappmessaging/model/MessageType;
+	public static fun values ()[Lcom/google/firebase/inappmessaging/model/MessageType;
+}
+
+public final class com/google/firebase/inappmessaging/model/ModalMessage : com/google/firebase/inappmessaging/model/InAppMessage {
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAction ()Lcom/google/firebase/inappmessaging/model/Action;
+	public fun getBackgroundHexColor ()Ljava/lang/String;
+	public fun getBody ()Lcom/google/firebase/inappmessaging/model/Text;
+	public fun getImageData ()Lcom/google/firebase/inappmessaging/model/ImageData;
+	public fun getTitle ()Lcom/google/firebase/inappmessaging/model/Text;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/google/firebase/inappmessaging/model/Text {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHexColor ()Ljava/lang/String;
+	public final fun getText ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/gitlive/firebase/inappmessaging/FirebaseInAppMessaging {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getClicks ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getCompat ()Lcom/google/firebase/inappmessaging/FirebaseInAppMessaging;
+	public final fun getDismissals ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getDisplayErrors ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getImpressions ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getMessagesSuppressed ()Z
+	public fun hashCode ()I
+	public final fun isAutomaticDataCollectionEnabled ()Z
+	public final fun setAutomaticDataCollectionEnabled (Ljava/lang/Boolean;)V
+	public final fun setAutomaticDataCollectionEnabled (Z)V
+	public final fun setMessageDisplayComponent (Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplay;)V
+	public final fun setMessagesSuppressed (Z)V
+	public fun toString ()Ljava/lang/String;
+	public final fun triggerEvent (Ljava/lang/String;)V
+}
+
+public final class dev/gitlive/firebase/inappmessaging/InAppMessageClick {
+	public fun <init> (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/model/Action;)V
+	public final fun component1 ()Lcom/google/firebase/inappmessaging/model/InAppMessage;
+	public final fun component2 ()Lcom/google/firebase/inappmessaging/model/Action;
+	public final fun copy (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/model/Action;)Ldev/gitlive/firebase/inappmessaging/InAppMessageClick;
+	public static synthetic fun copy$default (Ldev/gitlive/firebase/inappmessaging/InAppMessageClick;Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/model/Action;ILjava/lang/Object;)Ldev/gitlive/firebase/inappmessaging/InAppMessageClick;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAction ()Lcom/google/firebase/inappmessaging/model/Action;
+	public final fun getInAppMessage ()Lcom/google/firebase/inappmessaging/model/InAppMessage;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/gitlive/firebase/inappmessaging/InAppMessageDisplayError {
+	public fun <init> (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;)V
+	public final fun component1 ()Lcom/google/firebase/inappmessaging/model/InAppMessage;
+	public final fun component2 ()Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;
+	public final fun copy (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;)Ldev/gitlive/firebase/inappmessaging/InAppMessageDisplayError;
+	public static synthetic fun copy$default (Ldev/gitlive/firebase/inappmessaging/InAppMessageDisplayError;Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;ILjava/lang/Object;)Ldev/gitlive/firebase/inappmessaging/InAppMessageDisplayError;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getErrorReason ()Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;
+	public final fun getInAppMessage ()Lcom/google/firebase/inappmessaging/model/InAppMessage;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/gitlive/firebase/inappmessaging/InAppMessagingKt {
+	public static final fun getInAppMessaging (Ldev/gitlive/firebase/Firebase;)Ldev/gitlive/firebase/inappmessaging/FirebaseInAppMessaging;
+}
+

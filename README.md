@@ -29,6 +29,7 @@ This is a fork of [GitLive's firebase-kotlin-sdk](https://github.com/GitLiveApp/
 | [Data Connect](https://firebase.google.com/docs/data-connect) | `io.github.corneloaie:firebase-dataconnect` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-dataconnect/api/android-sdk-compat.txt) | 197: 197 / 0 / 0 / 0 |
 | [Cloud Firestore](https://firebase.google.com/docs/firestore) | `io.github.corneloaie:firebase-firestore` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-firestore/api/android-sdk-compat.txt) | 357: 345 / 12 / 0 / 0 |
 | [Cloud Functions](https://firebase.google.com/docs/functions) | `io.github.corneloaie:firebase-functions` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-functions/api/android-sdk-compat.txt) | 60: 54 / 6 / 0 / 0 |
+| [In-App Messaging](https://firebase.google.com/docs/in-app-messaging) | `io.github.corneloaie:firebase-inappmessaging` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-inappmessaging/api/android-sdk-compat.txt) | 76: 76 / 0 / 0 / 0 |
 | [Installations](https://firebase.google.com/docs/projects/manage-installations) | `io.github.corneloaie:firebase-installations` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-installations/api/android-sdk-compat.txt) | 11: 11 / 0 / 0 / 0 |
 | [Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) | `io.github.corneloaie:firebase-messaging` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-messaging/api/android-sdk-compat.txt) | 67: 67 / 0 / 0 / 0 |
 | [Performance Monitoring](https://firebase.google.com/docs/perf-mon) | `io.github.corneloaie:firebase-perf` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-perf/api/android-sdk-compat.txt) | 50: 49 / 1 / 0 / 0 |
@@ -66,6 +67,7 @@ weekly update moves it to the newest Firebase Android release.
 | `firebase-dataconnect` | ✅ | ✅ | – | ✅ | – | ✅ | ✅ |
 | `firebase-firestore` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `firebase-functions` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `firebase-inappmessaging` | ✅ | ✅ | – | ✅ | ✅ | – | – |
 | `firebase-installations` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `firebase-messaging` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `firebase-perf` | ✅ | ✅ | – | ✅ | ✅ | ✅ | ✅ |
@@ -73,7 +75,10 @@ weekly update moves it to the newest Firebase Android release.
 
 The JVM target runs GitLive's [Firebase Java SDK](https://github.com/GitLiveApp/firebase-java-sdk), a port of the
 Android SDK. It compiles and is tested where upstream tests it, but it is not held to the same coverage as Android, iOS
-and the web. Crashlytics has no web SDK, and Data Connect has no Java implementation.
+and the web. Crashlytics, App Distribution and In-App Messaging have no web SDK, and Data Connect has no Java
+implementation. firebase-java-sdk has neither App Distribution nor In-App Messaging, so on the JVM those two compile and
+act as the Android SDK does without its full library: App Distribution's tasks fail with `NOT_IMPLEMENTED`, and no
+in-app message is ever displayed.
 
 ### Gradle
 

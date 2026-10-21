@@ -1,0 +1,49 @@
+public final class dev/gitlive/firebase/inappmessaging/FirebaseInAppMessaging {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getClicks ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getCompat ()Lcom/google/firebase/inappmessaging/FirebaseInAppMessaging;
+	public final fun getDismissals ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getDisplayErrors ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getImpressions ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getMessagesSuppressed ()Z
+	public fun hashCode ()I
+	public final fun isAutomaticDataCollectionEnabled ()Z
+	public final fun setAutomaticDataCollectionEnabled (Ljava/lang/Boolean;)V
+	public final fun setAutomaticDataCollectionEnabled (Z)V
+	public final fun setMessageDisplayComponent (Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplay;)V
+	public final fun setMessagesSuppressed (Z)V
+	public fun toString ()Ljava/lang/String;
+	public final fun triggerEvent (Ljava/lang/String;)V
+}
+
+public final class dev/gitlive/firebase/inappmessaging/InAppMessageClick {
+	public fun <init> (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/model/Action;)V
+	public final fun component1 ()Lcom/google/firebase/inappmessaging/model/InAppMessage;
+	public final fun component2 ()Lcom/google/firebase/inappmessaging/model/Action;
+	public final fun copy (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/model/Action;)Ldev/gitlive/firebase/inappmessaging/InAppMessageClick;
+	public static synthetic fun copy$default (Ldev/gitlive/firebase/inappmessaging/InAppMessageClick;Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/model/Action;ILjava/lang/Object;)Ldev/gitlive/firebase/inappmessaging/InAppMessageClick;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAction ()Lcom/google/firebase/inappmessaging/model/Action;
+	public final fun getInAppMessage ()Lcom/google/firebase/inappmessaging/model/InAppMessage;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/gitlive/firebase/inappmessaging/InAppMessageDisplayError {
+	public fun <init> (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;)V
+	public final fun component1 ()Lcom/google/firebase/inappmessaging/model/InAppMessage;
+	public final fun component2 ()Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;
+	public final fun copy (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;)Ldev/gitlive/firebase/inappmessaging/InAppMessageDisplayError;
+	public static synthetic fun copy$default (Ldev/gitlive/firebase/inappmessaging/InAppMessageDisplayError;Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;ILjava/lang/Object;)Ldev/gitlive/firebase/inappmessaging/InAppMessageDisplayError;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getErrorReason ()Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;
+	public final fun getInAppMessage ()Lcom/google/firebase/inappmessaging/model/InAppMessage;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/gitlive/firebase/inappmessaging/InAppMessagingKt {
+	public static final fun getAndroid (Ldev/gitlive/firebase/inappmessaging/FirebaseInAppMessaging;)Lcom/google/firebase/inappmessaging/FirebaseInAppMessaging;
+	public static final fun getInAppMessaging (Ldev/gitlive/firebase/Firebase;)Ldev/gitlive/firebase/inappmessaging/FirebaseInAppMessaging;
+}
+
