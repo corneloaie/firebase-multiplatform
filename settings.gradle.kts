@@ -10,6 +10,7 @@ include(
     "firebase-dataconnect",
     "firebase-firestore",
     "firebase-functions",
+    "firebase-inappmessaging",
     "firebase-installations",
     "firebase-messaging",
     "firebase-perf",

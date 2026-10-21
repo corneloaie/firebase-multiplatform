@@ -1,0 +1,9 @@
+# Firebase Android SDK APIs intentionally not mirrored by firebase-inappmessaging.
+# The Executor overloads of the listener registration; the other overloads run the listeners on the SDK's thread.
+com.google.firebase.inappmessaging.FirebaseInAppMessaging#addClickListener(FirebaseInAppMessagingClickListener, Executor)  // @platform java.util.concurrent.Executor
+com.google.firebase.inappmessaging.FirebaseInAppMessaging#addDismissListener(FirebaseInAppMessagingDismissListener, Executor)  // @platform java.util.concurrent.Executor
+com.google.firebase.inappmessaging.FirebaseInAppMessaging#addDisplayErrorListener(FirebaseInAppMessagingDisplayErrorListener, Executor)  // @platform java.util.concurrent.Executor
+com.google.firebase.inappmessaging.FirebaseInAppMessaging#addImpressionListener(FirebaseInAppMessagingImpressionListener, Executor)  // @platform java.util.concurrent.Executor
+com.google.firebase.inappmessaging.model.ImageData#getBitmapData  // @platform android.graphics.Bitmap, which the Android SDK never sets (the display loads the image URL)
+# The display SDK's Application.ActivityLifecycleCallbacks, which the Android framework calls.
+com.google.firebase.inappmessaging.display.FirebaseInAppMessagingDisplay#onActivity*  // @platform android.app.Activity and android.os.Bundle

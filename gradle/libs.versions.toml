@@ -49,6 +49,8 @@ google-firebase-database = { module = "com.google.firebase:firebase-database"}
 google-firebase-dataconnect = { module = "com.google.firebase:firebase-dataconnect"}
 google-firebase-firestore = { module = "com.google.firebase:firebase-firestore"}
 google-firebase-functions = { module = "com.google.firebase:firebase-functions"}
+google-firebase-inappmessaging = { module = "com.google.firebase:firebase-inappmessaging"}
+google-firebase-inappmessaging-display = { module = "com.google.firebase:firebase-inappmessaging-display"}
 google-firebase-installations = { module = "com.google.firebase:firebase-installations"}
 google-firebase-messaging = { module = "com.google.firebase:firebase-messaging"}
 google-firebase-perf = { module = "com.google.firebase:firebase-perf"}
