@@ -1,5 +1,8 @@
 /*
  * Copyright (c) 2026 GitLive Ltd.  Use of this source code is governed by the Apache 2.0 license.
+ *
+ * Adapted in part from the Firebase AI Logic Android SDK (firebase-android-sdk/ai-logic/firebase-ai, Copyright Google
+ * LLC, Apache License 2.0), whose serialization and error handling it follows.
  */
 
 package dev.gitlive.firebase.ai.internal
