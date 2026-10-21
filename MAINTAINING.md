@@ -21,7 +21,8 @@ packages (`swiftPMImport.dev.gitlive.firebase.<module>`) that every Apple source
 - `main` is the default branch and what gets released.
 - `upstream` is GitLive (`https://github.com/GitLiveApp/firebase-kotlin-sdk.git`). This fork follows its `v3.0.0` line,
   which uses SwiftPM, Kotlin 2.4 and Wasm, not its `master` (2.x, CocoaPods).
-- `weekly/upstream-sync` and `weekly/firebase-sdks` are rewritten by the weekly workflow, one pull request each.
+- `weekly/upstream-sync` and `weekly/firebase-sdks` are rewritten by the weekly workflow, one pull request each. A
+  commit pushed to one of them is lost the next Monday unless its pull request has merged.
 
 ## The weekly workflow
 
@@ -72,16 +73,21 @@ parameters and the backend function it builds. It fails on a function it cannot 
 the script (`OVERRIDES`). The rest of the pipeline API (stages, options, `Pipeline`, the expression classes) is written
 by hand, and the Android compilation checks all of it against the SDK's classes.
 
-### 3. Optional: Claude Code implements the gaps
+### 3. The weekly routine
 
-Set the repository variable `CLAUDE_WEEKLY=true` and one of these secrets:
+A Claude Code routine on the maintainer's Mac (a scheduled task in the Claude desktop app) finishes the update. It runs
+on Mondays after the workflow and again on Tuesdays, as the maintainer in their own checkout, so the repository needs no
+Claude token. Each run picks up where the update stands:
 
-- `CLAUDE_CODE_OAUTH_TOKEN`, from `claude setup-token`, which bills a Claude subscription;
-- `ANTHROPIC_API_KEY`, which bills the API.
+- It implements, on every platform, the members the SDK pull request lists as newly missing.
+- It fixes what the new SDKs or upstream changes broke, and pushes to the weekly branches.
+- It resolves the merges reported in "Upstream GitLive changes need a manual merge".
+- It approves the weekly pull requests' CI runs if GitHub still holds them for approval, and re-runs CI jobs that failed
+  for transient reasons.
+- It arms auto-merge (a merge commit) on a weekly pull request once coverage is 100% and no public API was removed, and
+  comments on what it did. The workflow turns auto-merge off again whenever it refreshes a pull request.
 
-The `implement` job then runs on a macOS runner after the SDK update. It makes every target compile, implements the
-newly missing members, regenerates the reports and pushes to `weekly/firebase-sdks`. Review that pull request like any
-other.
+It never releases. Without the routine, do the same by hand: see "Closing coverage gaps by hand" below.
 
 ## Closing coverage gaps by hand
 
