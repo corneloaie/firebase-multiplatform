@@ -1,0 +1,28 @@
+public final class com/google/firebase/appdistribution/FeedbackScreenshotKt {
+	public static final fun startFeedback (Lcom/google/firebase/appdistribution/FirebaseAppDistribution;ILjava/lang/String;)V
+	public static final fun startFeedback (Lcom/google/firebase/appdistribution/FirebaseAppDistribution;Ljava/lang/CharSequence;Ljava/lang/String;)V
+}
+
+public final class dev/gitlive/firebase/appdistribution/AppDistributionKt {
+	public static final fun getAndroid (Ldev/gitlive/firebase/appdistribution/FirebaseAppDistribution;)Lcom/google/firebase/appdistribution/FirebaseAppDistribution;
+	public static final fun getAppDistribution (Ldev/gitlive/firebase/Firebase;)Ldev/gitlive/firebase/appdistribution/FirebaseAppDistribution;
+}
+
+public final class dev/gitlive/firebase/appdistribution/FirebaseAppDistribution {
+	public final fun cancelFeedbackNotification ()V
+	public final fun checkForNewRelease (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCompat ()Lcom/google/firebase/appdistribution/FirebaseAppDistribution;
+	public fun hashCode ()I
+	public final fun isTesterSignedIn ()Z
+	public final fun showFeedbackNotification (Ljava/lang/CharSequence;Lcom/google/firebase/appdistribution/InterruptionLevel;)V
+	public static synthetic fun showFeedbackNotification$default (Ldev/gitlive/firebase/appdistribution/FirebaseAppDistribution;Ljava/lang/CharSequence;Lcom/google/firebase/appdistribution/InterruptionLevel;ILjava/lang/Object;)V
+	public final fun signInTester (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun signOutTester ()V
+	public final fun startFeedback (Ljava/lang/CharSequence;Ljava/lang/String;)V
+	public static synthetic fun startFeedback$default (Ldev/gitlive/firebase/appdistribution/FirebaseAppDistribution;Ljava/lang/CharSequence;Ljava/lang/String;ILjava/lang/Object;)V
+	public fun toString ()Ljava/lang/String;
+	public final fun updateApp ()Lkotlinx/coroutines/flow/Flow;
+	public final fun updateIfNewReleaseAvailable ()Lkotlinx/coroutines/flow/Flow;
+}
+

@@ -6,6 +6,9 @@ androidx-test-junit = "1.3.0"
 androidx-test-runner = "1.7.0"
 ben-manes-versions = "0.61.0"
 firebase-bom = "35.0.2"
+# Not in the BoM (App Distribution is in beta). The API library and the full firebase-appdistribution SDK, which apps add
+# to pre-release builds only, share this version. 16.0.0-beta21 is the first release on firebase-common 23 (BoM 35).
+firebase-appdistribution = "16.0.0-beta21"
 gitlive-firebase-java-sdk = "0.6.3"
 gson = "2.14.0"
 junit = "4.13.2"
@@ -41,6 +44,7 @@ androidx-test-runner = { module = "androidx.test:runner", version.ref = "android
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
 gitlive-firebase-java-sdk = { module = "dev.gitlive:firebase-java-sdk", version.ref = "gitlive-firebase-java-sdk" }
 google-firebase-analytics = { module = "com.google.firebase:firebase-analytics"}
+google-firebase-appdistribution-api = { module = "com.google.firebase:firebase-appdistribution-api", version.ref = "firebase-appdistribution" }
 google-firebase-auth = { module = "com.google.firebase:firebase-auth"}
 google-firebase-common = { module = "com.google.firebase:firebase-common"}
 google-firebase-config = { module = "com.google.firebase:firebase-config"}
