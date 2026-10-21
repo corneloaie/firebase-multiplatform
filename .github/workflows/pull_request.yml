@@ -135,9 +135,10 @@ jobs:
           platform-name: JVM
           report-paths: |
             **/build/reports/tests/jvmTest/
-  build-metadata:
-    # The common and shared source set metadata compilations, which publishing runs and no test job does. They report
-    # errors that the platform compilations accept, such as an expect class that misses an inherited abstract member.
+  build-publication:
+    # Compilations that publishing runs and no test job does: every module's common and shared source set metadata, which
+    # reports errors the platform compilations accept (an expect class missing an inherited abstract member), and its
+    # tvOS code, which no pull request job tests. --continue reports every module's errors at once.
     runs-on: macos-latest
     timeout-minutes: 90
     steps:
@@ -159,5 +160,20 @@ jobs:
       - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '26.4.1'
-      - name: Compile the metadata of every module
-        run: ./gradlew allMetadataJar
+      - name: Compile the metadata and tvOS code of every module
+        run: ./gradlew --continue allMetadataJar compileKotlinTvosArm64 compileKotlinTvosSimulatorArm64
+  ci-passed:
+    name: CI passed
+    # The one check the main branch ruleset requires, so that a pull request merges (auto-merge included) only when
+    # every job above succeeded or was skipped (a test matrix with no affected module).
+    if: always()
+    needs: [ jobMatrixSetup, build-android, build-js, build-wasm-js, build-ios, build-jvm, build-publication ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the results of the jobs
+        env:
+          NEEDS: ${{ toJSON(needs) }}
+        run: |
+          failed=$(echo "$NEEDS" | jq -r 'to_entries[] | select(.value.result != "success" and .value.result != "skipped") | "\(.key): \(.value.result)"')
+          if [ -n "$failed" ]; then echo "$failed"; exit 1; fi
+          echo "Every job succeeded or was skipped."

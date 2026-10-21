@@ -8,3 +8,5 @@ package dev.gitlive.firebase.storage
 actual fun temporaryFile(name: String): Any = name
 
 actual val supportsFileDownloads: Boolean = false
+
+actual val uploadProgressIncludesOverhead: Boolean = false

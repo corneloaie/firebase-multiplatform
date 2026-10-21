@@ -124,16 +124,11 @@ Then run `./gradlew apiDump androidSourceCompatDump formatKotlin` and
 
 1. Sign in to [central.sonatype.com](https://central.sonatype.com) with the `corneloaie` GitHub account. The namespace
    `io.github.corneloaie` is verified automatically for GitHub logins; if not, verify it under Namespaces.
-2. Under Account, choose Generate User Token, then add the two values as repository secrets `SONATYPEUSERNAME` and
-   `SONATYPEPASSWORD`.
-3. Create a signing key and publish its public half:
-
-   ```bash
-   gpg --quick-generate-key "Cornel Oaie <your email>" rsa4096 sign 0
-   gpg --list-secret-keys --keyid-format=long                      # note the key id
-   gpg --keyserver keyserver.ubuntu.com --send-keys <KEYID>
-   gpg --export-secret-keys --armor <KEYID> | gh secret set GPG_PRIVATE_KEY -R corneloaie/firebase-multiplatform
-   gh secret set PASSPHRASE -R corneloaie/firebase-multiplatform   # the key's passphrase
-   ```
+2. Under Account, choose Generate User Token, and keep the page open.
+3. Run `.github/scripts/publish/set-publishing-secrets.sh` in a terminal. It asks for the token's username and password,
+   then for a passphrase. It creates a signing key with that passphrase, publishes the key's public half on
+   keyserver.ubuntu.com, and stores the four secrets the Publish workflow reads (`SONATYPEUSERNAME`,
+   `SONATYPEPASSWORD`, `GPG_PRIVATE_KEY`, `PASSPHRASE`). No value is printed, and none leaves your machine except to
+   GitHub.
 
 4. Optionally, enable GitHub Pages for the `gh-pages` branch after the first release has created it.

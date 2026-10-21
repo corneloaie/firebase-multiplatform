@@ -8,14 +8,10 @@ import dev.gitlive.firebase.perf.FirebasePerformance
 import dev.gitlive.firebase.perf.IgnoreForAndroidUnitTest
 import dev.gitlive.firebase.perf.context
 import dev.gitlive.firebase.perf.performance
-import dev.gitlive.firebase.runBlockingTest
 import dev.gitlive.firebase.runTest
-import kotlinx.coroutines.delay
-import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.time.Duration.Companion.seconds
 
 @IgnoreForAndroidUnitTest
 class TraceTest {
@@ -39,14 +35,8 @@ class TraceTest {
         performance = Firebase.performance(app)
     }
 
-    @AfterTest
-    fun deinitializeFirebase() = runBlockingTest {
-        // Performance runs installation in the background, which crashes if the app is deleted before completion
-        delay(1.seconds)
-        Firebase.apps(context).forEach {
-            it.delete()
-        }
-    }
+    // The default app is kept for the whole test process, as in FirebasePerformanceTest: with BoM 35, re-creating it
+    // makes Firebase Sessions open a second DataStore on the same file, which crashes the process.
 
     @Test
     fun testGetLongMetric() = runTest {

@@ -8,5 +8,7 @@ import dev.gitlive.firebase.testContext
 
 actual val context: Any = testContext
 
+internal actual fun <T> onAppThread(block: () -> T): T = block()
+
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
 actual annotation class IgnoreForAndroidUnitTest

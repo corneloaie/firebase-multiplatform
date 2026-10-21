@@ -10,3 +10,5 @@ import platform.Foundation.NSURL
 actual fun temporaryFile(name: String): Any = NSURL.fileURLWithPath(NSTemporaryDirectory() + name)
 
 actual val supportsFileDownloads: Boolean = true
+
+actual val uploadProgressIncludesOverhead: Boolean = true

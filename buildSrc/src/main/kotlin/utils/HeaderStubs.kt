@@ -45,8 +45,8 @@ fun Project.stripHeaderStubs(
     androidReferenceJars: FileCollection,
     jvmReferenceJars: FileCollection,
     /**
-     * Class files under [packageDirs] (e.g. `com/google/firebase/FirebaseInitializeKt.class`), or whole directories
-     * (`com/google/firebase/analytics/`), that are real code and are shipped.
+     * Class files under [packageDirs] (e.g. `com/google/firebase/FirebaseInitializeKt.class`, which keeps its nested and
+     * lambda classes too), or whole directories (`com/google/firebase/analytics/`), that are real code and are shipped.
      */
     keepClasses: List<String> = emptyList(),
     /**
@@ -100,8 +100,13 @@ fun Project.stripHeaderStubs(
     }
 }
 
-/** Whether a kept entry names [path]: a class file, or a directory (an entry ending with `/`) containing it. */
-private fun List<String>.covers(path: String): Boolean = any { if (it.endsWith("/")) path.startsWith(it) else it == path }
+/**
+ * Whether a kept entry names [path]: a class file, together with its nested and synthetic classes (`Name.class` keeps
+ * `Name$Inner.class` and a lambda's `Name$member$1.class`), or a directory (an entry ending with `/`) containing it.
+ */
+private fun List<String>.covers(path: String): Boolean = any {
+    if (it.endsWith("/")) path.startsWith(it) else it == path || path.startsWith(it.removeSuffix(".class") + "$")
+}
 
 private fun File?.entries(): List<String> = this?.takeIf { it.exists() }?.readLines().orEmpty().map { it.substringBefore("//").trim() }.filter { it.isNotEmpty() }
 

@@ -37,6 +37,17 @@ import kotlin.test.assertTrue
  * way, listing, the exception codes), on every platform, against the Storage emulator.
  */
 @IgnoreForAndroidUnitTest
+/**
+ * Whether upload progress counts more than the uploaded bytes. Against the emulator, the iOS SDK's upload progress also
+ * counts the upload request's own overhead (about 100 bytes), so there only a lower bound is checked.
+ */
+expect val uploadProgressIncludesOverhead: Boolean
+
+/** Asserts that an upload's byte count covers [expected] bytes: exactly, unless [uploadProgressIncludesOverhead]. */
+internal fun assertUploadedBytes(expected: Long, actual: Long) {
+    if (uploadProgressIncludesOverhead) assertTrue(actual >= expected, "$actual < $expected") else assertEquals(expected, actual)
+}
+
 class AndroidSdkSourceCompatTest {
 
     private lateinit var app: dev.gitlive.firebase.FirebaseApp
@@ -89,8 +100,8 @@ class AndroidSdkSourceCompatTest {
         }
         val snapshot: UploadTask.TaskSnapshot = ref.putBytes("hello".encodeToByteArray(), metadata).await()
         val (bytesTransferred, totalByteCount, uploaded) = snapshot
-        assertEquals(5, bytesTransferred)
-        assertEquals(5, totalByteCount)
+        assertUploadedBytes(5, bytesTransferred)
+        assertUploadedBytes(5, totalByteCount)
         assertEquals("text/plain", uploaded?.contentType)
         assertEquals(ref, snapshot.storage)
         assertNull(snapshot.error)
@@ -133,13 +144,13 @@ class AndroidSdkSourceCompatTest {
         assertFalse(task.isCanceled)
         assertNull(task.exception)
         assertTrue(states.all { it is TaskState.InProgress }, "$states")
-        assertEquals(256 * 1024, task.snapshot.totalByteCount)
-        assertEquals(256 * 1024, task.result.bytesTransferred)
+        assertUploadedBytes(256 * 1024, task.snapshot.totalByteCount)
+        assertUploadedBytes(256 * 1024, task.result.bytesTransferred)
         assertEquals(task, task.snapshot.task)
 
         val success = CompletableDeferred<Long>()
         task.addOnSuccessListener { success.complete(it.bytesTransferred) }
-        assertEquals(256 * 1024, success.await())
+        assertUploadedBytes(256 * 1024, success.await())
         val complete = CompletableDeferred<Boolean>()
         task.addOnCompleteListener { complete.complete(it.isSuccessful) }
         assertTrue(complete.await())

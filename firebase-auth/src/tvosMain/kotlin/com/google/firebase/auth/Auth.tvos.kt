@@ -19,6 +19,11 @@ internal actual fun FIRAuth.compatSettings(): FirebaseAuthSettings = object : Fi
     override fun setAppVerificationDisabledForTesting(disabled: Boolean) {}
 }
 
+/** tvOS has no reCAPTCHA Enterprise, so there is nothing to warm up: the task succeeds without doing anything. */
+internal actual fun FIRAuth.initializeRecaptchaConfigCompat(completion: (NSError?) -> Unit) {
+    completion(null)
+}
+
 internal actual fun FIRUser.updatePhoneNumberCompat(credential: PhoneAuthCredential, completion: (NSError?) -> Unit): Unit = throw TvOsPhoneAuthNotSupportedException()
 
 internal actual fun FIRUser.compatMultiFactor(auth: FirebaseAuth): MultiFactor = object : MultiFactor() {
