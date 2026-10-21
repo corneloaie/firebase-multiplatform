@@ -12,6 +12,8 @@ import org.objectweb.asm.FieldVisitor
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
 import java.io.File
+import kotlin.metadata.KmClass
+import kotlin.metadata.KmConstructor
 import kotlin.metadata.Visibility
 import kotlin.metadata.jvm.KotlinClassMetadata
 import kotlin.metadata.jvm.Metadata
@@ -51,9 +53,9 @@ fun Project.stripHeaderStubs(
     keepClasses: List<String> = emptyList(),
     /**
      * Members of the Android SDK that `firebase-java-sdk` (the JVM target's reference) does not have or keeps non-public,
-     * as `internal/class/Name.member(descriptor)` (a field: `internal/class/Name.field`; a whole class: `internal/class/Name`).
-     * They are verified against the Android SDK only; JVM code using them fails to compile against the java SDK, as it
-     * would without this layer.
+     * as `internal/class/Name.member(descriptor)` (a field: `internal/class/Name.field`; a whole class: `internal/class/Name`;
+     * every class of a package: `internal/package/`). They are verified against the Android SDK only; JVM code using them
+     * fails to compile against the java SDK, as it would without this layer.
      */
     jvmMissingMembers: List<String> = emptyList(),
     /** A file listing further [jvmMissingMembers], one per line; `//` starts a comment. */
@@ -164,8 +166,27 @@ private class ClassMembers : ClassVisitor(Opcodes.ASM9) {
      */
     var kotlinConstructors: Set<String>? = null
 
+    /**
+     * The JVM signatures of the constructors the class's Kotlin metadata declares `internal`. Like an internal member
+     * (whose name is mangled), an internal constructor of plain common code is not API: only this module's own code on
+     * the other platforms calls it, so it is neither verified nor dumped.
+     */
+    var internalConstructors: Set<String> = emptySet()
+
+    /** Whether the class's Kotlin metadata declares it `internal` or `private`: JVM-public, but not API (see [isKotlinOnly]). */
+    var isKotlinInternal = false
+
     override fun visitAnnotation(descriptor: String, visible: Boolean): AnnotationVisitor? =
-        if (descriptor == "Lkotlin/Metadata;") KotlinMetadataReader { kotlinConstructors = it.nonPrivateConstructorSignatures() } else null
+        if (descriptor == "Lkotlin/Metadata;") {
+            KotlinMetadataReader { metadata ->
+                val kmClass = metadata.kmClass()
+                kotlinConstructors = kmClass?.constructors?.filter { it.visibility != Visibility.PRIVATE }?.mapNotNullTo(mutableSetOf()) { it.jvmSignature() }
+                internalConstructors = kmClass?.constructors?.filter { it.visibility == Visibility.INTERNAL }?.mapNotNullTo(mutableSetOf()) { it.jvmSignature() }.orEmpty()
+                isKotlinInternal = kmClass?.visibility == Visibility.INTERNAL || kmClass?.visibility == Visibility.PRIVATE
+            }
+        } else {
+            null
+        }
 
     override fun visit(version: Int, access: Int, name: String, signature: String?, superName: String?, interfaces: Array<out String>?) {
         this.name = name
@@ -186,6 +207,7 @@ private class ClassMembers : ClassVisitor(Opcodes.ASM9) {
             if (name != "<init>" || !descriptor.isInlineClassConstructor) return null
             if (kotlinConstructors?.contains(name + descriptor) == false) return null
         }
+        if (name == "<init>" && name + descriptor in internalConstructors) return null
         val member = Member(name, descriptor, access).also { methods += it }
         return object : MethodVisitor(Opcodes.ASM9) {
             override fun visitAnnotation(descriptor: String, visible: Boolean): AnnotationVisitor? = member.annotationVisitor(descriptor)
@@ -206,11 +228,11 @@ private class ClassMembers : ClassVisitor(Opcodes.ASM9) {
 
     /**
      * Kotlin-only classes and members that have no counterpart on the real (Java) class and are never reached at runtime,
-     * including the non-public classes of plain common code (private implementations, lambdas), which only its own
-     * stripped code uses, and the synthetic parts of a multifile facade (`Facade__PartKt`), whose members the facade
-     * itself declares.
+     * including the non-public classes of plain common code (private implementations, lambdas, and `internal` classes,
+     * which are public on the JVM), which only its own stripped code uses, and the synthetic parts of a multifile facade
+     * (`Facade__PartKt`), whose members the facade itself declares.
      */
-    val isKotlinOnly get() = name.endsWith("\$Companion") || name.contains("\$WhenMappings") || name.contains("\$EntriesMappings") || access and Opcodes.ACC_PUBLIC == 0 || access and Opcodes.ACC_SYNTHETIC != 0 || isAnonymous
+    val isKotlinOnly get() = name.endsWith("\$Companion") || name.contains("\$WhenMappings") || name.contains("\$EntriesMappings") || access and Opcodes.ACC_PUBLIC == 0 || access and Opcodes.ACC_SYNTHETIC != 0 || isAnonymous || isKotlinInternal
 
     /** An anonymous object or lambda class (`Outer$fn$1`), an implementation detail of plain common code. */
     val isAnonymous get() = anonymousClass.containsMatchIn(name)
@@ -252,10 +274,9 @@ private class KotlinMetadataReader(private val onEnd: (Metadata) -> Unit) : Anno
     override fun visitEnd() = onEnd(Metadata(kind = kind, metadataVersion = metadataVersion, data1 = data1.toTypedArray(), data2 = data2.toTypedArray(), extraString = extraString, packageName = packageName, extraInt = extraInt))
 }
 
-private fun Metadata.nonPrivateConstructorSignatures(): Set<String>? =
-    (runCatching { KotlinClassMetadata.readLenient(this) }.getOrNull() as? KotlinClassMetadata.Class)?.kmClass?.constructors
-        ?.filter { it.visibility != Visibility.PRIVATE }
-        ?.mapNotNullTo(mutableSetOf()) { it.signature?.let { signature -> signature.name + signature.descriptor } }
+private fun Metadata.kmClass(): KmClass? = (runCatching { KotlinClassMetadata.readLenient(this) }.getOrNull() as? KotlinClassMetadata.Class)?.kmClass
+
+private fun KmConstructor.jvmSignature(): String? = signature?.let { it.name + it.descriptor }
 
 private fun readMembers(bytes: ByteArray): ClassMembers = ClassMembers().also { ClassReader(bytes).accept(it, ClassReader.SKIP_CODE or ClassReader.SKIP_DEBUG or ClassReader.SKIP_FRAMES) }
 
@@ -302,7 +323,7 @@ private fun verifyHeaderStubs(stubs: List<ClassMembers>, referenceJars: List<Fil
     }
     try {
         for (stub in stubs) {
-            if (stub.isKotlinOnly || stub.name in tolerated) continue
+            if (stub.isKotlinOnly || stub.name in tolerated || tolerated.any { it.endsWith("/") && stub.name.startsWith(it) }) continue
             val real = realClass(stub.name)
             val reals = when {
                 real != null -> inherited(real)
@@ -349,7 +370,7 @@ private fun verifyHeaderStubs(stubs: List<ClassMembers>, referenceJars: List<Fil
  */
 private fun dumpStubs(stubs: List<ClassMembers>): String = buildString {
     for (stub in stubs.sortedBy { it.name }) {
-        if (stub.name.contains("\$WhenMappings") || stub.name.contains("\$EntriesMappings") || stub.access and Opcodes.ACC_PUBLIC == 0 || stub.isAnonymous) continue
+        if (stub.name.contains("\$WhenMappings") || stub.name.contains("\$EntriesMappings") || stub.access and Opcodes.ACC_PUBLIC == 0 || stub.isAnonymous || stub.isKotlinInternal) continue
         val modifiers = buildList {
             if (stub.access and Opcodes.ACC_ABSTRACT != 0 && stub.access and Opcodes.ACC_INTERFACE == 0) add("abstract")
             if (stub.access and Opcodes.ACC_FINAL != 0) add("final")

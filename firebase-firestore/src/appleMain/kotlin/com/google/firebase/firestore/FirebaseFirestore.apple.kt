@@ -131,6 +131,8 @@ public actual class FirebaseFirestore internal constructor(public val ios: FIRFi
 
     public actual fun waitForPendingWrites(): Task<Nothing?> = write { ios.waitForPendingWritesWithCompletion(it) }
 
+    public actual fun pipeline(): PipelineSource = PipelineSource(this)
+
     override fun equals(other: Any?): Boolean = other is FirebaseFirestore && other.ios == ios
 
     override fun hashCode(): Int = ios.hashCode()

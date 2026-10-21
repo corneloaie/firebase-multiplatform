@@ -169,3 +169,8 @@ internal inline fun <T> task(crossinline start: ((T?, NSError?) -> Unit) -> Unit
 
 /** A write as a [Task] of the SDK's completion block. */
 internal inline fun write(crossinline start: ((NSError?) -> Unit) -> Unit): Task<Nothing?> = task { completion -> start { error -> completion(null, error) } }
+
+internal actual fun isIntegerValue(number: Number): Boolean = number is Byte || number is Short || number is Int || number is Long
+
+/** The layer wraps the SDK's instance anew for each reference that is asked for its database, so the SDK's are compared. */
+internal actual fun isSameFirestore(a: FirebaseFirestore, b: FirebaseFirestore): Boolean = a === b || a.ios == b.ios

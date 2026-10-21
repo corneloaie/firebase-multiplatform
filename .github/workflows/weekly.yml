@@ -108,6 +108,9 @@ jobs:
         continue-on-error: true
         run: |
           ./gradlew --continue updateAndroidSdkApi
+          # the Firestore pipeline expressions, generated from the Android SDK's sources at the new ref; a function the
+          # generator cannot translate must not keep the other modules' reports from being regenerated
+          python3 firebase-firestore/codegen/generate_pipeline.py || echo "::warning::firebase-firestore/codegen/generate_pipeline.py needs an override for a new pipeline function"
           ./gradlew --continue androidSourceCompatDump
       - name: Summarise the coverage
         if: steps.versions.outputs.changed == 'true'
@@ -184,6 +187,9 @@ jobs:
                stub, apple over the iOS SDK, js and wasmJs over the JS SDK). Where a platform SDK cannot provide it,
                follow the conventions in .github/copilot-instructions.md (UnsupportedOnJs, UnsupportedOnApple,
                exclusions.txt with @platform) instead of leaving it MISS. Add a commonTest for anything with behaviour.
+               The Firestore pipeline expressions (Expression.kt, AggregateFunction.kt) are generated: if
+               `python3 firebase-firestore/codegen/generate_pipeline.py` reports a function it cannot translate, add
+               an override to the script rather than editing its output.
                Do not create modules for Android SDK modules the body lists as not covered; name them in your comment.
             3. Regenerate: `./gradlew apiDump`, `./gradlew androidSourceCompatDump`,
                `python3 .github/scripts/weekly/coverage.py --readme README.md`, then `./gradlew formatKotlin lintKotlin`.

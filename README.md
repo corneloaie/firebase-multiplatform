@@ -18,7 +18,7 @@ Firebase SDK and moved onto their newest releases every week.
 ## Coverage
 
 <!-- coverage:start -->
-**18 Firebase products: 2,804 of 2,804 Android API members available from common code (100%)**, measured against firebase-android-sdk [`3199128`](https://github.com/firebase/firebase-android-sdk/tree/3199128480a6619779fa2feda823922f10b91009). Built on the Firebase Android BoM 35.0.2 (App Distribution 16.0.0-beta21), iOS SDK 13.0.1 and JS SDK 13.0.0.
+**18 Firebase products: 4,092 of 4,092 Android API members available from common code (100%)**, measured against firebase-android-sdk [`3199128`](https://github.com/firebase/firebase-android-sdk/tree/3199128480a6619779fa2feda823922f10b91009). Built on the Firebase Android BoM 35.0.2 (App Distribution 16.0.0-beta21), iOS SDK 13.0.1 and JS SDK 13.0.0.
 
 | Product | Artifact | Android API | Members | Android | iOS | macOS | tvOS | JVM | JS | Wasm |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -32,7 +32,7 @@ Firebase SDK and moved onto their newest releases every week.
 | [Crashlytics](https://firebase.google.com/docs/crashlytics) | `firebase-crashlytics` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-crashlytics/api/android-sdk-compat.txt) | 36 / 36 | ✅ | ✅ | ✅ | – | ✅ | – | – |
 | [Realtime Database](https://firebase.google.com/docs/database) | `firebase-database` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-database/api/android-sdk-compat.txt) | 191 / 191 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [Data Connect](https://firebase.google.com/docs/data-connect) | `firebase-dataconnect` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-dataconnect/api/android-sdk-compat.txt) | 197 / 197 | ✅ | ✅ | – | ✅ | – | ✅ | ✅ |
-| [Cloud Firestore](https://firebase.google.com/docs/firestore) | `firebase-firestore` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-firestore/api/android-sdk-compat.txt) | 364 / 364 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| [Cloud Firestore](https://firebase.google.com/docs/firestore) | `firebase-firestore` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-firestore/api/android-sdk-compat.txt) | 1652 / 1652 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [Cloud Functions](https://firebase.google.com/docs/functions) | `firebase-functions` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-functions/api/android-sdk-compat.txt) | 60 / 60 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [In-App Messaging](https://firebase.google.com/docs/in-app-messaging) | `firebase-inappmessaging` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-inappmessaging/api/android-sdk-compat.txt) | 76 / 76 | ✅ | ✅ | – | ✅ | ✅ | – | – |
 | [Installations](https://firebase.google.com/docs/projects/manage-installations) | `firebase-installations` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-installations/api/android-sdk-compat.txt) | 11 / 11 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -69,14 +69,13 @@ platform: `@UnsupportedOnJs` (JS and Wasm) or `@UnsupportedOnApple` (iOS, macOS 
   and carry `@UnsupportedOnApple` or `@UnsupportedOnJs`; only its value types, such as the token's claims, work there.
 - **Not in the Java SDK.** It has no Data Connect or AI Logic and does not run App Check, so those three have no JVM
   target. It also lacks App Distribution and In-App Messaging; on the JVM those two act as the Android SDK does without
-  its full library. App Distribution's tasks fail with `NOT_IMPLEMENTED`, and no in-app message is displayed.
+  its full library. App Distribution's tasks fail with `NOT_IMPLEMENTED`, and no in-app message is displayed. Its
+  Firestore lacks vector values, the BSON types and the pipeline API, which JVM code cannot use.
 
 ### Not covered yet
 
 - **AI Logic on-device inference** (`firebase-ai-ondevice`, a beta library outside the BoM whose API is deprecated in
   favor of `GenerativeModel.onDeviceExtension`): not mirrored yet. `firebase-ai` covers the rest of AI Logic.
-- **Firestore Pipelines** (`com.google.firebase.firestore.pipeline`, about 1,300 members, an Enterprise edition
-  preview): in progress. Until then Firestore's report marks it `UNAV`.
 - **ML Model Downloader**: not planned. Firebase removed it from iOS SDK 13 and Android BoM 35.
 
 ## Getting started
@@ -257,6 +256,18 @@ Android API's `Bitmap` overloads are Android-only). Off Android there is no on-d
 cloud, as Android does without the `firebase-ai-ondevice` library) and no audio conversation of the SDK's own
 (`LiveSession.startAudioConversation`); see [the module's documentation](firebase-ai/documentation.md).
 
+### Firestore Pipelines
+
+`firebase-firestore` provides the pipeline API (Firestore Pipelines, a Firestore Enterprise edition feature):
+`FirebaseFirestore.pipeline()`, the stages of `Pipeline`, and `com.google.firebase.firestore.pipeline` (`Expression`,
+`AggregateFunction`, `Ordering`, the stage and option classes), on Android, iOS, macOS, tvOS, JS and Wasm. On Android
+the Android SDK runs; elsewhere the pipeline is built in Kotlin and `execute()` hands it to the platform SDK: the JS
+SDK's `firebase/firestore/pipelines`, and on Apple the Objective-C pipeline bridge that the iOS SDK's Swift API is built
+on. A few options cannot be sent everywhere, and fail `execute()` with `UnsupportedOperationException`: on Apple,
+execute options and source options other than the forced index (`CollectionHints.withForceIndex`); on JS and Wasm, a
+field reference as an option other than a nearest-neighbour search's distance field or an unnest's index field. As for
+document data, Kotlin/JS sends an integral double as an integer.
+
 ### The platform SDK objects
 
 Every class has an `android`, `ios` or `js` property holding the official SDK's object, readable in that platform's
@@ -313,7 +324,8 @@ Issues and pull requests are welcome. To build locally:
 3. Build a target with, for example, `./gradlew compileKotlinIosSimulatorArm64`, or everything with
    `./gradlew publishToMavenLocal`.
 
-Most tests need the Firebase emulators: run `firebase emulators:start` in the `test` directory, then for example
+Most tests need the Firebase emulators: run `firebase emulators:start` in the `test` directory (it starts Firestore in
+Enterprise edition, which runs pipelines), then for example
 `./gradlew jvmTest`, `./gradlew jsNodeTest` or `./gradlew iosSimulatorArm64Test`. Android instrumented tests run on a
 Gradle-managed device in CI.
 
