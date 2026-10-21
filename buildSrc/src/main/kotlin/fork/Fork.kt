@@ -7,6 +7,7 @@ import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.withGroovyBuilder
 import org.gradle.kotlin.dsl.withType
+import org.w3c.dom.Element
 
 /**
  * What makes this build corneloaie/firebase-multiplatform rather than GitLive's firebase-kotlin-sdk.
@@ -22,6 +23,7 @@ object Fork {
     const val GROUP_ID = "io.github.corneloaie"
     const val NAME = "firebase-multiplatform"
     const val URL = "https://github.com/corneloaie/firebase-multiplatform"
+    const val DEVELOPER_ID = "corneloaie"
     const val DESCRIPTION = "Kotlin Multiplatform Firebase SDK: the Firebase Android SDK API (com.google.firebase) and a " +
         "Kotlin-first API (dev.gitlive.firebase) from common code on Android, iOS, macOS, tvOS, the JVM, JS and Wasm. " +
         "Based on GitLive's firebase-kotlin-sdk."
@@ -62,9 +64,21 @@ fun Project.applyFork() {
                         }
                         developers {
                             developer {
-                                id.set("corneloaie")
+                                id.set(Fork.DEVELOPER_ID)
                                 name.set("Cornel Oaie")
                                 url.set("https://github.com/corneloaie")
+                            }
+                        }
+                        // The module's own pom() names GitLive's maintainer, and developers {} only adds to the list.
+                        // These artifacts are the fork's, so its POM names only the fork's maintainer; the description
+                        // and NOTICE credit GitLive.
+                        withXml {
+                            val developers = asElement().getElementsByTagName("developer")
+                            for (i in developers.length - 1 downTo 0) {
+                                val developer = developers.item(i) as Element
+                                if (developer.getElementsByTagName("id").item(0)?.textContent != Fork.DEVELOPER_ID) {
+                                    developer.parentNode.removeChild(developer)
+                                }
                             }
                         }
                     }

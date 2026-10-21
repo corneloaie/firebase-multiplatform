@@ -112,8 +112,13 @@ Then run `./gradlew apiDump androidSourceCompatDump formatKotlin` and
 
 1. Set `forkVersion` in `gradle.properties` (semantic versioning; `0.x` while upstream's `v3.0.0` is in alpha). Commit
    it to `main`.
-2. Create a GitHub release with the tag `v<forkVersion>`. The `Publish` workflow checks the tag, publishes every module
-   to Maven Central and deploys the API docs to GitHub Pages.
+2. Run the `Publish` workflow by hand on `main` (`gh workflow run publish.yml`). Run by hand it is a dry run: it builds
+   every publication, tvOS included, and `.github/scripts/publish/check_publications.py` checks their POMs and Gradle
+   module files. The `publications` artifact holds what would be uploaded. A version on Maven Central can never be
+   replaced, so release only after this passes.
+3. Create a GitHub release with the tag `v<forkVersion>`. The `Publish` workflow checks the tag, builds and checks every
+   publication again, and uploads them all to the Central Portal as one deployment, which is released automatically.
+   A failure anywhere uploads nothing. It then deploys the API docs to GitHub Pages.
 
 ### One-time Maven Central setup
 

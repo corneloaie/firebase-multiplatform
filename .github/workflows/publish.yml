@@ -1,6 +1,7 @@
 # Publishes every library module to Maven Central as io.github.corneloaie:<module>:<forkVersion> when a GitHub release
-# is published (its tag must be v<forkVersion>, see gradle.properties), or by hand. It needs the four repository
-# secrets below; MAINTAINING.md has the one-time Sonatype Central Portal and GPG setup.
+# is published (its tag must be v<forkVersion>, see gradle.properties). Run by hand, it is a dry run by default: it
+# builds and checks every publication without signing or uploading anything, and keeps them as a workflow artifact.
+# A real publish needs the four repository secrets below; MAINTAINING.md has the one-time Central Portal and GPG setup.
 
 name: Publish
 
@@ -8,25 +9,31 @@ on:
   release:
     types: [ prereleased, released ]
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run: build and check every publication, without signing or uploading'
+        type: boolean
+        default: true
 
 env:
   ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPEUSERNAME }}
   ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPEPASSWORD }}
   ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.GPG_PRIVATE_KEY }}
   ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.PASSPHRASE }}
+  DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
 
 jobs:
   publish:
     runs-on: macos-latest
-    timeout-minutes: 240
+    timeout-minutes: 300
     steps:
       - uses: actions/checkout@v7
       - name: Set up JDK
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v6
         with:
           distribution: 'temurin'
           java-version: '21'
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6.3.0
       - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '26.2.0'
@@ -39,32 +46,50 @@ jobs:
             exit 1
           fi
       - name: Check the publishing secrets
+        if: env.DRY_RUN != 'true'
         run: |
           for name in ORG_GRADLE_PROJECT_mavenCentralUsername ORG_GRADLE_PROJECT_mavenCentralPassword ORG_GRADLE_PROJECT_signingInMemoryKey ORG_GRADLE_PROJECT_signingInMemoryKeyPassword; do
             if [ -z "${!name}" ]; then echo "::error::Secret for $name is not set (see MAINTAINING.md)"; exit 1; fi
           done
-      - name: Publish to Maven Central
+      # One module per Gradle run keeps the runner's memory in bounds. Into Maven local, so nothing is signed (see the
+      # root build) or uploaded yet.
+      - name: Build every publication
         run: |
-          for module in firebase-common firebase-common-internal firebase-app firebase-analytics firebase-appcheck firebase-appdistribution firebase-auth firebase-config \
-                        firebase-crashlytics firebase-database firebase-dataconnect firebase-firestore firebase-functions \
-                        firebase-inappmessaging firebase-installations firebase-messaging firebase-perf firebase-storage; do
+          for module in $(grep -l 'alias(libs.plugins.publish)' */build.gradle.kts | cut -d/ -f1); do
             echo "::group::$module"
-            ./gradlew ":$module:publishToMavenCentral"
+            ./gradlew ":$module:publishToMavenLocal"
             echo "::endgroup::"
           done
+      - name: Check the publications
+        run: python3 .github/scripts/publish/check_publications.py "$HOME/.m2/repository"
+      - name: Keep the publications
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: publications
+          path: ~/.m2/repository/io/github/corneloaie/
+          if-no-files-found: ignore
+      # A single Gradle run, so every module goes into one Central Portal deployment, which the plugin uploads only if
+      # the whole build succeeds: a failure publishes nothing rather than part of the release. What the step before
+      # built is up to date; this signs and uploads.
+      - name: Publish to Maven Central
+        if: env.DRY_RUN != 'true'
+        run: ./gradlew publishToMavenCentral
 
   documentation:
+    needs: publish
+    if: github.event_name == 'release' || !inputs.dry_run
     runs-on: macos-latest
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v7
       - name: Set up JDK
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v6
         with:
           distribution: 'temurin'
           java-version: '21'
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6.3.0
       - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '26.2.0'
