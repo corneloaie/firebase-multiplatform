@@ -162,3 +162,18 @@ jobs:
           xcode-version: '26.4.1'
       - name: Compile the metadata and tvOS code of every module
         run: ./gradlew --continue allMetadataJar compileKotlinTvosArm64 compileKotlinTvosSimulatorArm64
+  ci-passed:
+    name: CI passed
+    # The one check the main branch ruleset requires, so that a pull request merges (auto-merge included) only when
+    # every job above succeeded or was skipped (a test matrix with no affected module).
+    if: always()
+    needs: [ jobMatrixSetup, build-android, build-js, build-wasm-js, build-ios, build-jvm, build-publication ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the results of the jobs
+        env:
+          NEEDS: ${{ toJSON(needs) }}
+        run: |
+          failed=$(echo "$NEEDS" | jq -r 'to_entries[] | select(.value.result != "success" and .value.result != "skipped") | "\(.key): \(.value.result)"')
+          if [ -n "$failed" ]; then echo "$failed"; exit 1; fi
+          echo "Every job succeeded or was skipped."
