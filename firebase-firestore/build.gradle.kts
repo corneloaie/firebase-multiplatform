@@ -233,7 +233,8 @@ stripHeaderStubs(
         "com/google/firebase/firestore/FirestoreStatics.class",
     ),
     // firebase-java-sdk ports an older Android SDK without the cache-only listen source, the gRPC flow control window
-    // setting, the restricted FieldPath.fromDotSeparatedPath and the BSON types (BSON binary data is a Blob subtype).
+    // setting, the restricted FieldPath.fromDotSeparatedPath, vector values, the minimum and maximum transforms and the
+    // BSON types (BSON binary data is a Blob subtype).
     jvmMissingMembers = listOf(
         "com/google/firebase/firestore/ListenSource",
         "com/google/firebase/firestore/SnapshotListenOptions",
@@ -246,6 +247,13 @@ stripHeaderStubs(
         "com/google/firebase/firestore/FirebaseFirestoreSettings\$Builder.setGrpcFlowControlWindow(I)V",
         "com/google/firebase/firestore/FirebaseFirestoreSettings\$Builder.setGrpcFlowControlWindow(I)Lcom/google/firebase/firestore/FirebaseFirestoreSettings\$Builder;",
         "com/google/firebase/firestore/FieldPath.fromDotSeparatedPath(Ljava/lang/String;)Lcom/google/firebase/firestore/FieldPath;",
+        "com/google/firebase/firestore/VectorValue",
+        "com/google/firebase/firestore/FieldValue.vector([D)Lcom/google/firebase/firestore/VectorValue;",
+        "com/google/firebase/firestore/FieldValue.minimum(J)Lcom/google/firebase/firestore/FieldValue;",
+        "com/google/firebase/firestore/FieldValue.minimum(D)Lcom/google/firebase/firestore/FieldValue;",
+        "com/google/firebase/firestore/FieldValue.maximum(J)Lcom/google/firebase/firestore/FieldValue;",
+        "com/google/firebase/firestore/FieldValue.maximum(D)Lcom/google/firebase/firestore/FieldValue;",
+        "com/google/firebase/firestore/DocumentSnapshot.getVectorValue(Ljava/lang/String;)Lcom/google/firebase/firestore/VectorValue;",
         "com/google/firebase/firestore/BsonObjectId",
         "com/google/firebase/firestore/BsonTimestamp",
         "com/google/firebase/firestore/Decimal128Value",

@@ -85,6 +85,7 @@ public actual open class DocumentSnapshot internal constructor(public open val j
     public actual fun getBlob(field: String): Blob? = typed(field, get(field))
     public actual fun getGeoPoint(field: String): GeoPoint? = typed(field, get(field))
     public actual fun getDocumentReference(field: String): DocumentReference? = typed(field, get(field))
+    public actual fun getVectorValue(field: String): VectorValue? = cast(field, get(field))
     public actual fun getBsonObjectId(field: String): BsonObjectId? = cast(field, get(field))
     public actual fun getBsonTimestamp(field: String): BsonTimestamp? = cast(field, get(field))
     public actual fun getDecimal128Value(field: String): Decimal128Value? = cast(field, get(field))
@@ -120,7 +121,7 @@ private inline fun <reified T> typed(field: String, value: Any?): T? = when (val
     else -> throw RuntimeException("Field '$field' is not a ${T::class.simpleName}, but is ${value::class.simpleName}")
 }
 
-/** As [typed] for the BSON getters, which the Android SDK implements as a cast of the value: a [ClassCastException]. */
+/** As [typed] for the vector and BSON getters, which the Android SDK implements as a cast of the value: a [ClassCastException]. */
 private inline fun <reified T> cast(field: String, value: Any?): T? = when (value) {
     null -> null
     is T -> value

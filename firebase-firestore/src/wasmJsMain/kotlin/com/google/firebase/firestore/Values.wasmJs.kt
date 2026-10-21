@@ -39,19 +39,23 @@ import dev.gitlive.firebase.firestore.externals.MaxKey as JsMaxKey
 import dev.gitlive.firebase.firestore.externals.MinKey as JsMinKey
 import dev.gitlive.firebase.firestore.externals.RegexValue as JsRegexValue
 import dev.gitlive.firebase.firestore.externals.Timestamp as JsTimestamp
+import dev.gitlive.firebase.firestore.externals.VectorValue as JsVectorValue
 import dev.gitlive.firebase.firestore.externals.and as jsAnd
 import dev.gitlive.firebase.firestore.externals.arrayRemove as jsArrayRemove
 import dev.gitlive.firebase.firestore.externals.arrayUnion as jsArrayUnion
 import dev.gitlive.firebase.firestore.externals.increment as jsIncrement
+import dev.gitlive.firebase.firestore.externals.maximum as jsMaximum
+import dev.gitlive.firebase.firestore.externals.minimum as jsMinimum
 import dev.gitlive.firebase.firestore.externals.or as jsOr
 import dev.gitlive.firebase.firestore.externals.serverTimestamp as jsServerTimestamp
+import dev.gitlive.firebase.firestore.externals.vector as jsVector
 import dev.gitlive.firebase.firestore.externals.where as jsWhere
 
 /*
  * The JS SDK reads and writes plain JS values with its own Timestamp, GeoPoint, DocumentReference, Bytes (with a BSON
- * binary subtype) and BSON classes; the layer presents them as the Android SDK's types: Map, List, String, Boolean,
- * Long (integral numbers), Double, com.google.firebase.Timestamp, GeoPoint, DocumentReference, Blob, BsonObjectId,
- * BsonTimestamp, Decimal128Value, Int32Value, MaxKey, MinKey and RegexValue.
+ * binary subtype), VectorValue and BSON classes; the layer presents them as the Android SDK's types: Map, List, String,
+ * Boolean, Long (integral numbers), Double, com.google.firebase.Timestamp, GeoPoint, DocumentReference, Blob,
+ * VectorValue, BsonObjectId, BsonTimestamp, Decimal128Value, Int32Value, MaxKey, MinKey and RegexValue.
  *
  * Kotlin/Wasm values are not JS values: the dev.gitlive layer's encoders keep the layer's value types inside the JS
  * objects and arrays they build as references to the Kotlin objects (see `toJsReference`), which read back as `Any` are
@@ -71,6 +75,7 @@ internal fun Any?.toJs(): JsAny? = when (this) {
     is DocumentReference -> js
     is FieldValue -> toJsFieldValue()
     is Blob -> Bytes.fromUint8Array(toBytes().toUint8Array(), subType)
+    is VectorValue -> jsVector(toArray().map { it.toJsNumber() }.toJsArray())
     is BsonObjectId -> JsBsonObjectId(value)
     is BsonTimestamp -> JsBsonTimestamp(seconds.toDouble(), increment.toDouble())
     is Decimal128Value -> JsDecimal128Value(stringValue)
@@ -113,6 +118,7 @@ private fun JsAny.toCompatValueType(): Any? = when (this) {
     is JsGeoPoint -> GeoPoint(latitude, longitude)
     is JsDocumentReference -> DocumentReference(this)
     is Bytes -> Blob.createBsonBinary(subtype, toUint8Array().toByteArray())
+    is JsVectorValue -> VectorValue(toArray().toList().map { it.toDouble() }.toDoubleArray())
     is JsBsonObjectId -> BsonObjectId(value)
     is JsBsonTimestamp -> BsonTimestamp(seconds.toLong(), increment.toLong())
     is JsDecimal128Value -> Decimal128Value(stringValue)
@@ -149,6 +155,8 @@ private fun FieldValue.toJsFieldValue(): JsAny = when (operation) {
     FieldValue.Operation.ARRAY_UNION -> jsArrayUnion(*arguments.map { it.toJs()!! }.toTypedArray())
     FieldValue.Operation.ARRAY_REMOVE -> jsArrayRemove(*arguments.map { it.toJs()!! }.toTypedArray())
     FieldValue.Operation.INCREMENT -> jsIncrement((arguments.single() as Number).toDouble())
+    FieldValue.Operation.MINIMUM -> jsMinimum((arguments.single() as Number).toDouble())
+    FieldValue.Operation.MAXIMUM -> jsMaximum((arguments.single() as Number).toDouble())
 }
 
 internal fun FieldPath.toJs(): JsFieldPath = if (isDocumentId) documentId() else JsFieldPath(*segments.toTypedArray())

@@ -251,6 +251,7 @@ public actual open class DocumentSnapshot {
     public actual fun getBlob(field: String): Blob? = stub()
     public actual fun getGeoPoint(field: String): GeoPoint? = stub()
     public actual fun getDocumentReference(field: String): DocumentReference? = stub()
+    public actual fun getVectorValue(field: String): VectorValue? = stub()
     public actual fun getBsonObjectId(field: String): BsonObjectId? = stub()
     public actual fun getBsonTimestamp(field: String): BsonTimestamp? = stub()
     public actual fun getDecimal128Value(field: String): Decimal128Value? = stub()
@@ -358,7 +359,26 @@ public actual abstract class FieldValue private constructor() {
 
         @JvmStatic
         public actual fun increment(d: Double): FieldValue = stub()
+
+        @JvmStatic
+        public actual fun minimum(l: Long): FieldValue = stub()
+
+        @JvmStatic
+        public actual fun minimum(d: Double): FieldValue = stub()
+
+        @JvmStatic
+        public actual fun maximum(l: Long): FieldValue = stub()
+
+        @JvmStatic
+        public actual fun maximum(d: Double): FieldValue = stub()
+
+        @JvmStatic
+        public actual fun vector(values: DoubleArray): VectorValue = stub()
     }
+}
+
+public actual class VectorValue private constructor() {
+    public actual fun toArray(): DoubleArray = stub()
 }
 
 public actual class SetOptions private constructor() {

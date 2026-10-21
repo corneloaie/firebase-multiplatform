@@ -19,6 +19,7 @@ import swiftPMImport.dev.gitlive.firebase.firestore.FIRInt32Value
 import swiftPMImport.dev.gitlive.firebase.firestore.FIRMaxKey
 import swiftPMImport.dev.gitlive.firebase.firestore.FIRMinKey
 import swiftPMImport.dev.gitlive.firebase.firestore.FIRRegexValue
+import swiftPMImport.dev.gitlive.firebase.firestore.FIRVectorValue
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.Timestamp
@@ -32,10 +33,11 @@ import platform.Foundation.create
 import platform.posix.memcpy
 
 /*
- * The iOS SDK reads and writes Foundation values with its own FIRTimestamp, FIRGeoPoint, FIRDocumentReference, NSData
- * and BSON types (FIRBlob for BSON binary data of a subtype other than 0); the layer presents them as the Android SDK's
- * types: Map, List, String, Boolean, Long, Double, com.google.firebase.Timestamp, GeoPoint, DocumentReference, Blob,
- * BsonObjectId, BsonTimestamp, Decimal128Value, Int32Value, MaxKey, MinKey and RegexValue.
+ * The iOS SDK reads and writes Foundation values with its own FIRTimestamp, FIRGeoPoint, FIRDocumentReference, NSData,
+ * FIRVectorValue and BSON types (FIRBlob for BSON binary data of a subtype other than 0); the layer presents them as the
+ * Android SDK's types: Map, List, String, Boolean, Long, Double, com.google.firebase.Timestamp, GeoPoint,
+ * DocumentReference, Blob, VectorValue, BsonObjectId, BsonTimestamp, Decimal128Value, Int32Value, MaxKey, MinKey and
+ * RegexValue.
  */
 
 /** [this] as the iOS SDK writes it: the layer's value types become the SDK's. */
@@ -48,6 +50,7 @@ internal fun Any?.toIos(): Any? = when (this) {
     is FieldValue -> toIosFieldValue()
     // The SDK writes BSON binary data of subtype 0 as plain bytes, as it does NSData.
     is Blob -> if (subType == 0) toBytes().toNSData() else FIRBlob.blobWithBSONBinary(toBytes().toNSData(), subType.toUByte())
+    is VectorValue -> FIRVectorValue(toArray().toList())
     is BsonObjectId -> FIRBSONObjectId(value)
     is BsonTimestamp -> FIRBSONTimestamp(seconds.toUInt(), increment.toUInt())
     is Decimal128Value -> FIRDecimal128Value(stringValue)
@@ -74,6 +77,8 @@ internal fun Any?.toCompat(): Any? = when (this) {
     is FIRDocumentReference -> DocumentReference(this)
     is NSData -> Blob.fromBytes(toByteArray())
     is FIRBlob -> Blob.createBsonBinary(subtype.toInt(), bytes.toByteArray())
+    // The SDK keeps the values as NSNumbers of doubles, which Kotlin reads as Double.
+    is FIRVectorValue -> VectorValue(array.map { (it as Number).toDouble() }.toDoubleArray())
     is FIRBSONObjectId -> BsonObjectId(value)
     is FIRBSONTimestamp -> BsonTimestamp(seconds.toLong(), increment.toLong())
     is FIRDecimal128Value -> Decimal128Value(value)
@@ -97,6 +102,14 @@ private fun FieldValue.toIosFieldValue(): FIRFieldValue = when (operation) {
     FieldValue.Operation.INCREMENT -> when (val amount = arguments.single()) {
         is Long -> FIRFieldValue.fieldValueForIntegerIncrement(amount)
         else -> FIRFieldValue.fieldValueForDoubleIncrement((amount as Number).toDouble())
+    }
+    FieldValue.Operation.MINIMUM -> when (val operand = arguments.single()) {
+        is Long -> FIRFieldValue.fieldValueForIntegerMinimum(operand)
+        else -> FIRFieldValue.fieldValueForDoubleMinimum((operand as Number).toDouble())
+    }
+    FieldValue.Operation.MAXIMUM -> when (val operand = arguments.single()) {
+        is Long -> FIRFieldValue.fieldValueForIntegerMaximum(operand)
+        else -> FIRFieldValue.fieldValueForDoubleMaximum((operand as Number).toDouble())
     }
 }
 
