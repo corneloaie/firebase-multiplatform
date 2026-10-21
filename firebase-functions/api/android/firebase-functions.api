@@ -4,6 +4,11 @@ public final class com/google/firebase/functions/FunctionsUrlKt {
 	public static final fun getHttpsCallableFromUrl (Lcom/google/firebase/functions/FirebaseFunctions;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/google/firebase/functions/HttpsCallableReference;
 }
 
+public final class com/google/firebase/functions/HttpsCallableStreamKt {
+	public static final fun streamAsFlow (Lcom/google/firebase/functions/HttpsCallableReference;Ljava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun streamAsFlow$default (Lcom/google/firebase/functions/HttpsCallableReference;Ljava/lang/Object;ILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+}
+
 public final class com/google/firebase/functions/HttpsCallableTimeoutKt {
 	public static final fun setTimeout-HG0u8IE (Lcom/google/firebase/functions/HttpsCallableReference;J)V
 	public static final fun withTimeout-HG0u8IE (Lcom/google/firebase/functions/HttpsCallableReference;J)Lcom/google/firebase/functions/HttpsCallableReference;
