@@ -1,8 +1,8 @@
-# Firebase Kotlin SDK - Claude Instructions
+# firebase-multiplatform - Claude Instructions
 
 ## Project Overview
 
-Kotlin-first multiplatform Firebase SDK maintained by GitLive. Wraps official Firebase SDKs for Android, iOS, JVM, JS and Wasm (wasmJs) into a single idiomatic Kotlin API.
+firebase-multiplatform: the Firebase Android SDK API, plus a Kotlin-first API, for Kotlin Multiplatform common code. It wraps the official Firebase SDKs for Android, iOS, JVM, JS and Wasm (wasmJs), is published as `io.github.corneloaie:<module>`, and started from GitLive's firebase-kotlin-sdk (see "This fork" below).
 
 ## Module Structure
 

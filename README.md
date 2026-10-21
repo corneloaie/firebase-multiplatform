@@ -1,16 +1,18 @@
 # firebase-multiplatform
 
+<!-- coverage-badge:start -->[![Android API coverage](https://img.shields.io/badge/Android%20API%20coverage-100%25%3A%204%2C092%20of%204%2C092%20members%2C%2018%20products-brightgreen?style=flat-square)](#coverage)<!-- coverage-badge:end -->
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.corneloaie/firebase-app?style=flat-square&label=Maven%20Central)](https://central.sonatype.com/namespace/io.github.corneloaie)
 [![Weekly update](https://img.shields.io/github/actions/workflow/status/corneloaie/firebase-multiplatform/weekly.yml?label=weekly%20update&style=flat-square)](.github/workflows/weekly.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square)](LICENSE)
 
-Firebase for Kotlin Multiplatform on Android, iOS, macOS, tvOS, the JVM, JS and Wasm, built on each platform's official
-Firebase SDK and moved onto their newest releases every week.
+**The complete Firebase Android SDK API in Kotlin Multiplatform common code**, for every Firebase client product, on
+Android, iOS, macOS, tvOS, the JVM, JS and Wasm. It is built on each platform's official Firebase SDK and moved onto
+their newest releases every week.
 
 - **The Firebase Android SDK API in common code.** `com.google.firebase.*`, `Task` and listeners included, so an Android
   app's Firebase code moves into `commonMain` as it is.
-- **The whole API of every module.** Each one is measured member by member against the Firebase Android SDK; the
-  table below shows the result.
+- **The whole API, measured.** Every module is checked member by member against the Firebase Android SDK's API, and
+  covers all of it; [the table below](#coverage) shows each one.
 - **A Kotlin-first API next to it** (`dev.gitlive.firebase.*`), with suspending functions, `Flow` and
   kotlinx.serialization.
 - **Published on Maven Central** as `io.github.corneloaie:<module>`.
@@ -60,8 +62,8 @@ throws where it must return a value, and it carries an opt-in marker that warns 
 platform: `@UnsupportedOnJs` (JS and Wasm) or `@UnsupportedOnApple` (iOS, macOS and tvOS).
 
 **Platform notes:**
-- **JVM.** The JVM target runs GitLive's [Firebase Java SDK](https://github.com/GitLiveApp/firebase-java-sdk), a port
-  of the Android SDK. It compiles and is tested where upstream tests it, but it is not held to the same coverage as
+- **JVM.** The JVM target runs the [Firebase Java SDK](https://github.com/GitLiveApp/firebase-java-sdk), a port of the
+  Android SDK. It compiles and is tested where upstream tests it, but it is not held to the same coverage as
   Android, iOS and the web.
 - **Web.** Crashlytics, App Distribution and In-App Messaging have no web SDK.
 - **Android only.** Phone Number Verification has no iOS, web or Java SDK. `firebase-pnv` compiles for Apple platforms,
@@ -102,9 +104,11 @@ kotlin {
 }
 ```
 
-The Kotlin packages are the same as GitLive's (`dev.gitlive.firebase.*` and `com.google.firebase.*`), so a project on
-GitLive's SDK switches by changing the group from `dev.gitlive` to `io.github.corneloaie`. To try a build of `main` before
-it is released, run `./gradlew publishToMavenLocal` in this repository and add `mavenLocal()` to the repositories.
+Coming from GitLive's firebase-kotlin-sdk? The Kotlin packages are the same (`dev.gitlive.firebase.*` and
+`com.google.firebase.*`), so changing the group from `dev.gitlive` to `io.github.corneloaie` is enough.
+
+To try a build of `main` before it is released, run `./gradlew publishToMavenLocal` in this repository and add
+`mavenLocal()` to the repositories.
 
 ### Android
 
@@ -289,31 +293,12 @@ runs the full CI matrix:
 1. **Weekly: Firebase SDK updates.** It moves to the newest Firebase Android BoM, iOS SDK and JS SDK, and to the
    Android API of the newest Firebase Android release. It regenerates the coverage reports and the table above, and
    lists every new Android API member that is not available yet, and any new Firebase Android product no module covers.
-2. **Weekly: merge upstream GitLive.** It merges GitLive's `v3.0.0` line and the upstream pull requests this repository
-   carries, and drops each one once GitLive has merged it. It reports conflicts it cannot resolve in an issue.
+2. **Weekly: merge upstream.** It merges the newest work of the upstream project this one started from (see
+   [Acknowledgements](#acknowledgements)), and reports conflicts it cannot resolve in an issue.
 
 Optionally, a Claude Code job then implements the new members on every platform and fixes whatever the new SDKs broke,
 pushing to the first pull request. Dependabot keeps the build tooling and GitHub Actions current.
 [MAINTAINING.md](MAINTAINING.md) has the details.
-
-## Relationship to GitLive's SDK
-
-This repository is a fork of [GitLive's firebase-kotlin-sdk](https://github.com/GitLiveApp/firebase-kotlin-sdk), with
-its full history. GitLive wrote the Kotlin-first API and is moving every module onto the `com.google.firebase` layer.
-This fork keeps their packages and adds the following:
-
-- **GitLive's in-progress work, merged early:** the source-compatibility pull requests for every module
-  ([#881](https://github.com/GitLiveApp/firebase-kotlin-sdk/pull/881) to
-  [#891](https://github.com/GitLiveApp/firebase-kotlin-sdk/pull/891), and Data Connect's
-  [#915](https://github.com/GitLiveApp/firebase-kotlin-sdk/pull/915)), tracked in
-  [`.github/upstream-merges.tsv`](.github/upstream-merges.tsv).
-- **Wasm for the whole layer.** Those pull requests predate `v3.0.0`'s Wasm target.
-- **More coverage and new modules:** every module at 100% of its Android API, and App Check, App Distribution, In-App
-  Messaging and Phone Number Verification.
-- **Weekly updates** to the newest Firebase SDKs.
-- **Its own Maven coordinates** (`io.github.corneloaie`), so GitLive's `dev.gitlive` artifacts are left alone.
-
-Fixes that apply upstream go back to GitLive as pull requests.
 
 ## Contributing
 
@@ -335,9 +320,14 @@ Before committing a change to the public API:
 - document every public declaration in KDoc.
 
 [MAINTAINING.md](MAINTAINING.md) covers the API rules, the weekly automation, the upstream merges and releasing. API
-documentation for each release is published [here](https://corneloaie.github.io/firebase-multiplatform/docs/).
+documentation for each release is published [here](https://corneloaie.github.io/firebase-multiplatform/).
+
+## Acknowledgements
+
+firebase-multiplatform started from [GitLive's firebase-kotlin-sdk](https://github.com/GitLiveApp/firebase-kotlin-sdk),
+whose Kotlin-first API and Firebase Java SDK it keeps using. Thank you to GitLive and its contributors for that
+foundation.
 
 ## License
 
-Apache License 2.0, see [LICENSE](LICENSE) and [NOTICE](NOTICE). Based on GitLive's
-[firebase-kotlin-sdk](https://github.com/GitLiveApp/firebase-kotlin-sdk).
+Apache License 2.0, see [LICENSE](LICENSE) and [NOTICE](NOTICE).

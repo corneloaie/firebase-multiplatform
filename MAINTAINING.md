@@ -141,4 +141,5 @@ Then run `./gradlew apiDump androidSourceCompatDump formatKotlin` and
    `SONATYPEPASSWORD`, `GPG_PRIVATE_KEY`, `PASSPHRASE`). No value is printed, and none leaves your machine except to
    GitHub.
 
-4. Optionally, enable GitHub Pages for the `gh-pages` branch after the first release has created it.
+4. GitHub Pages serves the `gh-pages` branch, which the Docs workflow (`.github/workflows/docs.yml`) writes after each
+   release; run that workflow by hand to refresh the API documentation from `main` without publishing.

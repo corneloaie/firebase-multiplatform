@@ -1,0 +1,34 @@
+# Builds the API documentation with Dokka and deploys it to the gh-pages branch, which GitHub Pages serves at
+# https://corneloaie.github.io/firebase-multiplatform/. The Publish workflow runs it after each release; run it by hand to
+# refresh the documentation from a branch (main by default) without publishing anything.
+
+name: Docs
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  docs:
+    runs-on: macos-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - name: Set up JDK
+        uses: actions/setup-java@v6
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v6
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '26.2.0'
+      - name: Generate documentation
+        run: ./gradlew dokkaHtmlMultiModule
+      - name: Deploy API documentation to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build/dokka/htmlMultiModule

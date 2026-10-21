@@ -1,9 +1,9 @@
 # The Kotlin-first API (`dev.gitlive.firebase`)
 
 Next to the Firebase Android SDK API (`com.google.firebase`), every module has a Kotlin-first API in the
-`dev.gitlive.firebase` packages, written by GitLive. It is built on the `com.google.firebase` layer and uses suspending
-functions, `Flow`, kotlinx.serialization and default arguments instead of `Task`, listeners and builders. This guide
-is GitLive's, from the README of [firebase-kotlin-sdk](https://github.com/GitLiveApp/firebase-kotlin-sdk).
+`dev.gitlive.firebase` packages. It is built on the `com.google.firebase` layer and uses suspending functions, `Flow`,
+kotlinx.serialization and default arguments instead of `Task`, listeners and builders. GitLive wrote this API and this
+guide, which comes from the README of [firebase-kotlin-sdk](https://github.com/GitLiveApp/firebase-kotlin-sdk).
 
 Unlike the Kotlin Extensions for the Firebase Android SDK this project does not extend a Java based SDK so we get the full power of Kotlin including coroutines and serialization!
 
