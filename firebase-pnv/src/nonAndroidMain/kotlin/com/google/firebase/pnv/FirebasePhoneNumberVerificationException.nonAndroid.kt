@@ -14,7 +14,7 @@ public actual class FirebasePhoneNumberVerificationException actual constructor(
     public actual val errorCode: Int,
     message: String,
     cause: Throwable?,
-) : FirebaseException(message, cause) {
+) : FirebaseException(message, cause ?: Throwable(FirebasePnvStatusCodes.getMessage(errorCode))) {
     override val message: String? = message
 
     public actual companion object

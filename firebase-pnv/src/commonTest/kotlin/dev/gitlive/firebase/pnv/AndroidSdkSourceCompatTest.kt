@@ -23,7 +23,6 @@ import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertIs
 import kotlin.test.assertNotEquals
-import kotlin.test.assertNull
 import kotlin.test.assertSame
 import kotlin.test.assertTrue
 
@@ -139,7 +138,9 @@ class AndroidSdkSourceCompatTest {
         assertEquals(FirebasePnvStatusCodes.CARRIER_NOT_SUPPORTED, e.errorCode)
         assertEquals("Not supported", e.message)
         assertSame(cause, e.cause)
-        assertNull(FirebasePhoneNumberVerificationException(errorCode = 7, message = "Network error", cause = null).cause)
+        // Without a cause, the Android SDK gives the exception one with the status code's message, and so does common code.
+        val withoutCause = FirebasePhoneNumberVerificationException(errorCode = 7, message = "Network error", cause = null)
+        assertEquals(FirebasePnvStatusCodes.getMessage(7), withoutCause.cause?.message)
     }
 
     @Test
