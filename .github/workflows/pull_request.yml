@@ -135,3 +135,29 @@ jobs:
           platform-name: JVM
           report-paths: |
             **/build/reports/tests/jvmTest/
+  build-metadata:
+    # The common and shared source set metadata compilations, which publishing runs and no test job does. They report
+    # errors that the platform compilations accept, such as an expect class that misses an inherited abstract member.
+    runs-on: macos-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+      - name: Set up JDK
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: gradle
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Kotlin/Native cache
+        uses: actions/cache@v5
+        with:
+          path: ~/.konan
+          key: konan-${{ runner.os }}-${{ hashFiles('gradle/libs.versions.toml') }}
+          restore-keys: |
+            konan-${{ runner.os }}-
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '26.4.1'
+      - name: Compile the metadata of every module
+        run: ./gradlew allMetadataJar
