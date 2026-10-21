@@ -27,6 +27,7 @@ import dev.gitlive.firebase.ai.internal.NativeAI
 import dev.gitlive.firebase.ai.internal.NativeRequestOptions
 import dev.gitlive.firebase.ai.internal.catchAsync
 import dev.gitlive.firebase.ai.internal.checkSafetySettingsFor
+import dev.gitlive.firebase.ai.internal.countTokensRequest
 import dev.gitlive.firebase.ai.internal.executeAutoFunction
 import dev.gitlive.firebase.ai.internal.firebaseAIException
 import dev.gitlive.firebase.ai.internal.generateContentRequest
@@ -105,7 +106,7 @@ public actual class GenerativeModel internal constructor(
 
     public actual suspend fun countTokens(prompt: List<Content>): CountTokensResponse = catchAsync {
         if (onDeviceOnly) throw onDeviceNotAvailable()
-        native.countTokens(modelName, request(prompt), options).toCountTokensResponse()
+        native.countTokens(modelName, countTokensRequest(prompt, generationConfig, tools, systemInstruction), options).toCountTokensResponse()
     }
 
     public actual suspend fun countTokens(prompt: Content, vararg prompts: Content): CountTokensResponse = countTokens(listOf(prompt, *prompts))

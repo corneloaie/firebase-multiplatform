@@ -99,6 +99,23 @@ internal fun generateContentRequest(
     putIfNotNull("systemInstruction", systemInstruction?.copy(role = "system")?.toJson())
 }
 
+/**
+ * The `countTokens` request: the contents with the tools, system instruction and generation configuration that count
+ * towards the prompt (the Agent Platform backend's `countTokens` takes these fields only; the SDKs wrap them as the
+ * Google Developer API needs).
+ */
+internal fun countTokensRequest(
+    contents: List<Content>,
+    generationConfig: GenerationConfig?,
+    tools: List<Tool>?,
+    systemInstruction: Content?,
+): JsonObject = buildJsonObject {
+    put("contents", JsonArray(contents.map { it.toJson() }))
+    putIfNotNull("tools", tools?.takeIf { it.isNotEmpty() }?.let { list -> JsonArray(list.map { it.toJson() }) })
+    putIfNotNull("systemInstruction", systemInstruction?.copy(role = "system")?.toJson())
+    putIfNotNull("generationConfig", generationConfig?.toJson())
+}
+
 /** The request of a server prompt template: its inputs, the conversation so far, and the template's tools. */
 internal fun templateGenerateContentRequest(
     inputs: Map<String, Any>,
