@@ -18,8 +18,13 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GetTokenResult
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.MultiFactorAssertion
 import com.google.firebase.auth.OAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.auth.PlayGamesAuthCredential
+import com.google.firebase.auth.PlayGamesAuthProvider
+import com.google.firebase.auth.TotpMultiFactorAssertion
+import com.google.firebase.auth.TotpMultiFactorGenerator
 import com.google.firebase.auth.TwitterAuthProvider
 import com.google.firebase.auth.actionCodeSettings
 import com.google.firebase.auth.auth
@@ -27,6 +32,8 @@ import com.google.firebase.auth.oAuthCredential
 import com.google.firebase.auth.oAuthProvider
 import com.google.firebase.auth.userProfileChangeRequest
 import dev.gitlive.firebase.FirebaseOptions
+import dev.gitlive.firebase.UnsupportedOnApple
+import dev.gitlive.firebase.UnsupportedOnJs
 import dev.gitlive.firebase.app
 import dev.gitlive.firebase.apps
 import dev.gitlive.firebase.initialize
@@ -53,8 +60,10 @@ import kotlin.time.Duration.Companion.minutes
 /**
  * Exercises the `com.google.firebase.auth` layer exactly as Android app code would (the static accessors, the Task-based
  * sign-in API, users and their tokens, credentials and providers, the builders and their Kotlin extensions, listeners,
- * action codes and the error codes), on every platform, against the Authentication emulator.
+ * action codes and the error codes), on every platform, against the Authentication emulator. It opts in to the members
+ * that fail on Apple, JS and Wasm (Play Games sign-in), to check that they do.
  */
+@OptIn(UnsupportedOnApple::class, UnsupportedOnJs::class)
 @IgnoreForAndroidUnitTest
 class AndroidSdkSourceCompatTest {
 
@@ -192,6 +201,29 @@ class AndroidSdkSourceCompatTest {
         } finally {
             result.user?.delete()?.await()
         }
+    }
+
+    @Test
+    fun testPlayGamesProvider() {
+        assertEquals("playgames.google.com", PlayGamesAuthProvider.PROVIDER_ID)
+        assertEquals("playgames.google.com", PlayGamesAuthProvider.PLAY_GAMES_SIGN_IN_METHOD)
+        if (!supportsPlayGamesSignIn) {
+            assertFailsWith<UnsupportedOperationException> { PlayGamesAuthProvider.getCredential("server-auth-code") }
+            return
+        }
+        val credential = PlayGamesAuthProvider.getCredential("server-auth-code")
+        assertIs<PlayGamesAuthCredential>(credential)
+        assertEquals(PlayGamesAuthProvider.PROVIDER_ID, credential.provider)
+        assertEquals(PlayGamesAuthProvider.PLAY_GAMES_SIGN_IN_METHOD, credential.signInMethod)
+    }
+
+    @Test
+    fun testTotpAssertions() {
+        assertEquals("totp", TotpMultiFactorGenerator.FACTOR_ID)
+        val signIn: MultiFactorAssertion = TotpMultiFactorAssertion("123456", null, "enrollment-id")
+        assertEquals(TotpMultiFactorGenerator.FACTOR_ID, signIn.factorId)
+        assertEquals(TotpMultiFactorGenerator.FACTOR_ID, TotpMultiFactorGenerator.getAssertionForSignIn("enrollment-id", "123456").factorId)
+        assertFailsWith<IllegalArgumentException> { TotpMultiFactorAssertion("", null, "enrollment-id") }
     }
 
     @Test

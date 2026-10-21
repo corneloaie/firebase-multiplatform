@@ -1,6 +1,6 @@
 # Android SDK source compatibility of firebase-auth
 # Android SDK api.txt ref: com.google.firebase:firebase-auth-interop:20.0.0, com.google.firebase:firebase-auth:25.0.0
-# 100% of 272 public members available (266 identical, 6 mapped, 0 missing, 0 omitted)
+# 100% of 284 public members available (278 identical, 6 mapped, 0 missing, 0 omitted)
 #
 com.google.firebase.auth.ActionCodeEmailInfo
   OK    ActionCodeEmailInfo()
@@ -328,10 +328,17 @@ com.google.firebase.auth.PhoneMultiFactorInfo
   OK    String getPhoneNumber()
   OK    String getUid()
   PLAT  JSONObject toJson()
+com.google.firebase.auth.PlayGamesAuthCredential
+  OK    String getProvider()
+  OK    String getSignInMethod()
+com.google.firebase.auth.PlayGamesAuthProvider
+  OK    static AuthCredential getCredential(String)
+  OK    static String PLAY_GAMES_SIGN_IN_METHOD
+  OK    static String PROVIDER_ID
 com.google.firebase.auth.SignInMethodQueryResult
   OK    List getSignInMethods()
 com.google.firebase.auth.TotpMultiFactorAssertion
-  UNAV  TotpMultiFactorAssertion(String, TotpSecret, String)
+  OK    TotpMultiFactorAssertion(String, TotpSecret, String)
   OK    String getFactorId()
 com.google.firebase.auth.TotpMultiFactorGenerator
   OK    static Task generateSecret(MultiFactorSession)
@@ -345,13 +352,13 @@ com.google.firebase.auth.TotpMultiFactorInfo
   OK    String getUid()
   PLAT  JSONObject toJson()
 com.google.firebase.auth.TotpSecret
-  UNAV  String generateQrCodeUrl()
+  OK    String generateQrCodeUrl()
   OK    String generateQrCodeUrl(String, String)
-  UNAV  int getCodeIntervalSeconds()
-  UNAV  int getCodeLength()
-  UNAV  long getEnrollmentCompletionDeadline()
-  UNAV  String getHashAlgorithm()
-  UNAV  String getSessionInfo()
+  OK    int getCodeIntervalSeconds()
+  OK    int getCodeLength()
+  OK    long getEnrollmentCompletionDeadline()
+  OK    String getHashAlgorithm()
+  OK    String getSessionInfo()
   OK    String getSharedSecretKey()
   OK    void openInOtpApp(String)
   PLAT  void openInOtpApp(String, String, Activity)

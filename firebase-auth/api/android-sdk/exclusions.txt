@@ -1,10 +1,6 @@
 # Firebase Android SDK APIs intentionally not mirrored by firebase-auth (see README, "Using the Firebase Android SDK API from common code").
-# Members marked @platform or @unavailable that this SDK's Android artifact still declares (so Android code keeps compiling)
-# are listed here because common code cannot call them; they are not counted.
-
-# Play Games sign-in exists only on Android.
-com.google.firebase.auth.PlayGamesAuthCredential  // @unavailable Play Games sign-in is Android-only
-com.google.firebase.auth.PlayGamesAuthProvider  // @unavailable Play Games sign-in is Android-only
+# Members marked @platform that this SDK's Android artifact still declares (so Android code keeps compiling) are listed
+# here because common code cannot call them; they are not counted.
 
 # Activity-bound flows: the iOS and JS SDKs drive redirect and popup sign-in through their own UI hooks.
 com.google.firebase.auth.FirebaseAuth#startActivityForSignInWithProvider  // @platform android.app.Activity
@@ -37,14 +33,3 @@ com.google.firebase.auth.ActionCodeInfo#email  // @hide protected field, use get
 # Test hooks of the Android reCAPTCHA and SMS auto-retrieval flows.
 com.google.firebase.auth.FirebaseAuthSettings#forceRecaptchaFlowForTesting  // @platform Android reCAPTCHA flow
 com.google.firebase.auth.FirebaseAuthSettings#setAutoRetrievedSmsCodeForPhoneNumber  // @platform Android SMS auto-retrieval
-
-# TOTP secret details the iOS SDK does not expose; the shared secret, QR code URL and OTP app hand-off are available.
-com.google.firebase.auth.TotpSecret#generateQrCodeUrl()  // @unavailable the iOS SDK requires the account name and issuer
-com.google.firebase.auth.TotpSecret#getCodeIntervalSeconds  // @unavailable not exposed by the iOS SDK
-com.google.firebase.auth.TotpSecret#getCodeLength  // @unavailable not exposed by the iOS SDK
-com.google.firebase.auth.TotpSecret#getEnrollmentCompletionDeadline  // @unavailable not exposed by the iOS SDK
-com.google.firebase.auth.TotpSecret#getHashAlgorithm  // @unavailable not exposed by the iOS SDK
-com.google.firebase.auth.TotpSecret#getSessionInfo  // @unavailable not exposed by the iOS SDK
-
-# Building a TOTP assertion by hand; use TotpMultiFactorGenerator.
-com.google.firebase.auth.TotpMultiFactorAssertion#<init>  // @unavailable the iOS and JS SDKs only create assertions through TotpMultiFactorGenerator

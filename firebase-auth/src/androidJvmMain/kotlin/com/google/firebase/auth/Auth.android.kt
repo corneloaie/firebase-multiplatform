@@ -194,6 +194,12 @@ public actual class TwitterAuthCredential private constructor() : AuthCredential
 }
 
 @Suppress("DEPRECATION_ERROR")
+public actual class PlayGamesAuthCredential private constructor() : AuthCredential() {
+    override val provider: String get() = stub()
+    override val signInMethod: String get() = stub()
+}
+
+@Suppress("DEPRECATION_ERROR")
 public actual class PhoneAuthCredential private constructor() : AuthCredential() {
     override val provider: String get() = stub()
     override val signInMethod: String get() = stub()
@@ -275,6 +281,19 @@ public actual class TwitterAuthProvider private constructor() {
 
         @JvmStatic
         public actual fun getCredential(token: String, secret: String): AuthCredential = stub()
+    }
+}
+
+public actual class PlayGamesAuthProvider private constructor() {
+    public actual companion object {
+        @JvmField
+        public actual val PROVIDER_ID: String = "playgames.google.com"
+
+        @JvmField
+        public actual val PLAY_GAMES_SIGN_IN_METHOD: String = "playgames.google.com"
+
+        @JvmStatic
+        public actual fun getCredential(serverAuthCode: String): AuthCredential = stub()
     }
 }
 
@@ -449,7 +468,7 @@ public actual class PhoneMultiFactorGenerator actual constructor() {
     }
 }
 
-public actual class TotpMultiFactorAssertion private constructor() : MultiFactorAssertion() {
+public actual class TotpMultiFactorAssertion actual constructor(oneTimePassword: String, secret: TotpSecret?, enrollmentId: String?) : MultiFactorAssertion() {
     override val factorId: String get() = stub()
 }
 
@@ -472,27 +491,15 @@ public actual class TotpMultiFactorGenerator private constructor() {
 public actual interface TotpSecret {
     public actual val sharedSecretKey: String
     public actual fun generateQrCodeUrl(accountName: String, issuer: String): String
+    public actual fun generateQrCodeUrl(): String
     public actual fun openInOtpApp(qrCodeUrl: String)
+    public actual val codeIntervalSeconds: Int
+    public actual val codeLength: Int
+    public actual val enrollmentCompletionDeadline: Long
+    public actual val hashAlgorithm: String
+    public actual val sessionInfo: String
 
-    /** Android only. */
-    public val codeIntervalSeconds: Int
-
-    /** Android only. */
-    public val codeLength: Int
-
-    /** Android only. */
-    public val enrollmentCompletionDeadline: Long
-
-    /** Android only. */
-    public val hashAlgorithm: String
-
-    /** Android only. */
-    public val sessionInfo: String
-
-    /** Android only. */
-    public fun generateQrCodeUrl(): String
-
-    /** Android only. */
+    /** Android only: opens [qrCodeUrl] in an authenticator app from [activity], or [fallbackUrl] when none is installed. */
     public fun openInOtpApp(qrCodeUrl: String, fallbackUrl: String, activity: Activity)
 }
 

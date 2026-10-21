@@ -103,3 +103,5 @@ com/google/firebase/auth/UserProfileChangeRequest$Builder.getPhotoUri()Landroid/
 com/google/firebase/auth/UserProfileChangeRequest.getDisplayName()Ljava/lang/String;
 com/google/firebase/auth/UserProfileChangeRequest.getPhotoUri()Landroid/net/Uri;
 com/google/firebase/auth/FirebaseAuthPasswordDoesNotMeetRequirementsException
+com/google/firebase/auth/PlayGamesAuthCredential
+com/google/firebase/auth/PlayGamesAuthProvider

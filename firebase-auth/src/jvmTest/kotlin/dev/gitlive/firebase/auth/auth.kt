@@ -12,5 +12,7 @@ actual val emulatorHost: String = "10.0.2.2"
 
 actual val context: Any = testContext
 
+actual val supportsPlayGamesSignIn: Boolean = false // firebase-java-sdk has no Play Games sign-in
+
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
 actual annotation class IgnoreForAndroidUnitTest

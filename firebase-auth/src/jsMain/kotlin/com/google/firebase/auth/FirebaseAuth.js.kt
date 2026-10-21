@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
 import dev.gitlive.firebase.Unsubscribe
+import dev.gitlive.firebase.UnsupportedOnJs
 import dev.gitlive.firebase.auth.externals.ActionCodeURL
 import dev.gitlive.firebase.auth.externals.ApplicationVerifier
 import dev.gitlive.firebase.auth.externals.Auth
@@ -309,15 +310,48 @@ internal class MultiFactorResolverImpl(public val js: JsMultiFactorResolver, ove
     override fun resolveSignIn(assertion: MultiFactorAssertion): Task<AuthResult> = task(firebaseAuth) { js.resolveSignIn(assertion.native.unsafeCast<JsMultiFactorAssertion>()).then { toAuthResult(it, firebaseAuth) } }
 }
 
+/** The JS SDK's `TotpSecret` has every parameter but the session, which it keeps private. */
+public actual interface TotpSecret {
+    public actual val sharedSecretKey: String
+    public actual fun generateQrCodeUrl(accountName: String, issuer: String): String
+    public actual fun generateQrCodeUrl(): String
+    public actual fun openInOtpApp(qrCodeUrl: String)
+    public actual val codeIntervalSeconds: Int
+    public actual val codeLength: Int
+    public actual val enrollmentCompletionDeadline: Long
+    public actual val hashAlgorithm: String
+
+    /** Throws `UnsupportedOperationException`: the JS SDK keeps the session private. */
+    @UnsupportedOnJs
+    public actual val sessionInfo: String
+}
+
 internal class TotpSecretImpl(public val js: JsTotpSecret) : TotpSecret {
     override val sharedSecretKey: String get() = js.secretKey
 
     override fun generateQrCodeUrl(accountName: String, issuer: String): String = js.generateQrCodeUrl(accountName, issuer)
 
+    /** The JS SDK's defaults: the signed-in user's email (`unknownuser` without one) at the app's name. */
+    override fun generateQrCodeUrl(): String = js.generateQrCodeUrl()
+
     override fun openInOtpApp(qrCodeUrl: String) {
         if (js("typeof window") != "undefined") js("window").open(qrCodeUrl)
     }
+
+    override val codeIntervalSeconds: Int get() = js.codeIntervalSeconds
+
+    override val codeLength: Int get() = js.codeLength
+
+    /** The JS SDK's deadline is a UTC date string, to the second. */
+    override val enrollmentCompletionDeadline: Long get() = (Date(js.enrollmentCompletionDeadline).getTime() / MILLIS_PER_SECOND).toLong()
+
+    override val hashAlgorithm: String get() = js.hashingAlgorithm
+
+    @UnsupportedOnJs
+    override val sessionInfo: String get() = throw UnsupportedOperationException("TotpSecret.sessionInfo is not exposed by the Firebase JS SDK")
 }
+
+private const val MILLIS_PER_SECOND = 1000.0
 
 internal fun JsMultiFactorInfo.toCompat(): MultiFactorInfo {
     val enrollmentTimestamp = enrollmentTime.toTimestamp()
@@ -436,6 +470,17 @@ internal actual fun nativeOAuthCredential(providerId: String, idToken: String?, 
         ),
         accessToken ?: undefined,
     )
+}
+
+public actual class PlayGamesAuthProvider private constructor() {
+    public actual companion object {
+        public actual val PROVIDER_ID: String = "playgames.google.com"
+        public actual val PLAY_GAMES_SIGN_IN_METHOD: String = "playgames.google.com"
+
+        /** Throws `UnsupportedOperationException`: the JS SDK has no Play Games sign-in. */
+        @UnsupportedOnJs
+        public actual fun getCredential(serverAuthCode: String): AuthCredential = playGamesUnsupported("JS")
+    }
 }
 
 internal actual fun nativePhoneCredential(verificationId: String, smsCode: String): Any = rethrow { JsPhoneAuthProvider.credential(verificationId, smsCode) }

@@ -35,6 +35,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
 import com.google.firebase.getApps
+import dev.gitlive.firebase.UnsupportedOnApple
 import kotlinx.cinterop.CPointer
 import kotlinx.cinterop.ObjCObjectVar
 import kotlinx.cinterop.alloc
@@ -456,6 +457,47 @@ internal actual fun nativeOAuthCredential(providerId: String, idToken: String?, 
     rawNonce == null -> FIROAuthProvider.credentialWithProviderID(providerID = providerId, IDToken = idToken, accessToken = accessToken)
     accessToken == null -> FIROAuthProvider.credentialWithProviderID(providerID = providerId, IDToken = idToken, rawNonce = rawNonce)
     else -> FIROAuthProvider.credentialWithProviderID(providerID = providerId, IDToken = idToken, rawNonce = rawNonce, accessToken = accessToken)
+}
+
+public actual class PlayGamesAuthProvider private constructor() {
+    public actual companion object {
+        public actual val PROVIDER_ID: String = "playgames.google.com"
+        public actual val PLAY_GAMES_SIGN_IN_METHOD: String = "playgames.google.com"
+
+        /** Throws `UnsupportedOperationException`: the iOS SDK has no Play Games sign-in. */
+        @UnsupportedOnApple
+        public actual fun getCredential(serverAuthCode: String): AuthCredential = playGamesUnsupported("iOS")
+    }
+}
+
+/**
+ * The iOS SDK's `FIRTOTPSecret` exposes the shared secret, the QR code URL and the OTP app hand-off only: the hash
+ * algorithm and the code length are read from the QR code URL, and the other parameters throw. The iOS SDK provides
+ * TOTP on iOS only; on tvOS no secret can be generated.
+ */
+public actual interface TotpSecret {
+    public actual val sharedSecretKey: String
+    public actual fun generateQrCodeUrl(accountName: String, issuer: String): String
+    public actual fun generateQrCodeUrl(): String
+    public actual fun openInOtpApp(qrCodeUrl: String)
+
+    /** Throws `UnsupportedOperationException`: the iOS SDK does not expose the interval. */
+    @UnsupportedOnApple
+    public actual val codeIntervalSeconds: Int
+
+    /** The `digits` of the QR code URL, where the iOS SDK exposes it. */
+    public actual val codeLength: Int
+
+    /** Throws `UnsupportedOperationException`: the iOS SDK does not expose the deadline. */
+    @UnsupportedOnApple
+    public actual val enrollmentCompletionDeadline: Long
+
+    /** The `algorithm` of the QR code URL, where the iOS SDK exposes it. */
+    public actual val hashAlgorithm: String
+
+    /** Throws `UnsupportedOperationException`: the iOS SDK keeps the session private. */
+    @UnsupportedOnApple
+    public actual val sessionInfo: String
 }
 
 /**

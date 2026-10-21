@@ -19,6 +19,8 @@ import swiftPMImport.dev.gitlive.firebase.auth.FIRTOTPMultiFactorGenerator
 import swiftPMImport.dev.gitlive.firebase.auth.FIRTOTPSecret
 import swiftPMImport.dev.gitlive.firebase.auth.FIRUser
 import com.google.android.gms.tasks.Task
+import com.google.firebase.FirebaseApp
+import dev.gitlive.firebase.UnsupportedOnApple
 import platform.Foundation.NSError
 
 /*
@@ -45,7 +47,7 @@ internal class MultiFactorImpl(val ios: FIRMultiFactor, private val auth: Fireba
     override fun enroll(assertion: MultiFactorAssertion, displayName: String?): Task<Nothing?> = write(auth) { ios.enrollWithAssertion(assertion.native as FIRMultiFactorAssertion, displayName, it) }
 
     override fun getSession(): Task<MultiFactorSession> = task(auth) { completion ->
-        ios.getSessionWithCompletion { session, error -> completion(session?.let { MultiFactorSessionImpl(it) }, error) }
+        ios.getSessionWithCompletion { session, error -> completion(session?.let { MultiFactorSessionImpl(it, auth) }, error) }
     }
 
     override fun unenroll(info: MultiFactorInfo): Task<Nothing?> = write(auth) { completion ->
@@ -57,20 +59,65 @@ internal class MultiFactorImpl(val ios: FIRMultiFactor, private val auth: Fireba
 
 internal class MultiFactorResolverImpl(val ios: FIRMultiFactorResolver, override val firebaseAuth: FirebaseAuth) : MultiFactorResolver() {
     override val hints: List<MultiFactorInfo> get() = ios.hints().mapNotNull { (it as? FIRMultiFactorInfo)?.toCompat() }
-    override val session: MultiFactorSession get() = MultiFactorSessionImpl(ios.session())
+    override val session: MultiFactorSession get() = MultiFactorSessionImpl(ios.session(), firebaseAuth)
 
     override fun resolveSignIn(assertion: MultiFactorAssertion): Task<AuthResult> = task(firebaseAuth) { completion ->
         ios.resolveSignInWithAssertion(assertion.native as FIRMultiFactorAssertion) { result, error -> completion(result?.toCompat(firebaseAuth), error) }
     }
 }
 
-internal class TotpSecretImpl(val ios: FIRTOTPSecret) : TotpSecret {
+/** @property auth The instance of the user the secret was generated for, which [generateQrCodeUrl] takes its defaults from. */
+internal class TotpSecretImpl(val ios: FIRTOTPSecret, private val auth: FirebaseAuth?) : TotpSecret {
     override val sharedSecretKey: String get() = ios.sharedSecretKey()
 
     override fun generateQrCodeUrl(accountName: String, issuer: String): String = ios.generateQRCodeURLWithAccountName(accountName, issuer)
 
+    /**
+     * As on Android: the signed-in user's email at the app's name, which is `[DEFAULT]` for the default app as on
+     * Android and JS (the iOS SDK names it `__FIRAPP_DEFAULT`).
+     */
+    override fun generateQrCodeUrl(): String {
+        val auth = auth ?: FirebaseAuth.getInstance()
+        val user = checkNotNull(auth.currentUser) { "Current user cannot be null, since user is required to be logged in to enroll for TOTP MFA." }
+        val email = user.email
+        require(!email.isNullOrEmpty()) { "Email cannot be empty, since verified email is required to use MFA." }
+        val appName = auth.app.name
+        return generateQrCodeUrl(email, if (appName == FirebaseApp.DEFAULT_APP_NAME) ANDROID_DEFAULT_APP_NAME else appName)
+    }
+
     override fun openInOtpApp(qrCodeUrl: String) {
         ios.openInOTPAppWithQRCodeURL(qrCodeUrl)
+    }
+
+    @UnsupportedOnApple
+    override val codeIntervalSeconds: Int get() = unsupported("codeIntervalSeconds")
+
+    override val codeLength: Int get() = qrCodeParameter("digits", "codeLength").toIntOrNull() ?: unsupported("codeLength")
+
+    @UnsupportedOnApple
+    override val enrollmentCompletionDeadline: Long get() = unsupported("enrollmentCompletionDeadline")
+
+    override val hashAlgorithm: String get() = qrCodeParameter("algorithm", "hashAlgorithm")
+
+    @UnsupportedOnApple
+    override val sessionInfo: String get() = unsupported("sessionInfo")
+
+    /**
+     * The parameter [name] of the secret's QR code URL (`otpauth://totp/...?secret=...&algorithm=SHA1&digits=6`, in the
+     * Key Uri Format), the only place the iOS SDK exposes the algorithm and the code length; it returns no URL without them.
+     */
+    private fun qrCodeParameter(name: String, member: String): String = ios.generateQRCodeURLWithAccountName("account", "issuer")
+        .substringAfter('?', "")
+        .split('&')
+        .firstNotNullOfOrNull { parameter -> parameter.takeIf { it.startsWith("$name=") }?.substringAfter('=') }
+        ?.takeIf { it.isNotEmpty() }
+        ?: unsupported(member)
+
+    private fun unsupported(member: String): Nothing = throw UnsupportedOperationException("TotpSecret.$member is not exposed by the Firebase iOS SDK")
+
+    private companion object {
+        /** The Android and JS SDKs' name of the default app. */
+        const val ANDROID_DEFAULT_APP_NAME = "[DEFAULT]"
     }
 }
 
@@ -99,7 +146,8 @@ internal actual fun nativeVerifyPhoneNumber(options: PhoneAuthOptions) {
 internal actual fun nativePhoneMultiFactorAssertion(credential: PhoneAuthCredential): Any = FIRPhoneMultiFactorGenerator.assertionWithCredential(credential.ios as FIRPhoneAuthCredential)
 
 internal actual fun nativeTotpGenerateSecret(session: MultiFactorSession): Task<TotpSecret> = task(null) { completion ->
-    FIRTOTPMultiFactorGenerator.generateSecretWithMultiFactorSession((session as MultiFactorSessionImpl).native as FIRMultiFactorSession) { secret, error -> completion(secret?.let { TotpSecretImpl(it) }, error) }
+    val impl = session as MultiFactorSessionImpl
+    FIRTOTPMultiFactorGenerator.generateSecretWithMultiFactorSession(impl.native as FIRMultiFactorSession) { secret, error -> completion(secret?.let { TotpSecretImpl(it, impl.auth) }, error) }
 }
 
 internal actual fun nativeTotpAssertionForEnrollment(secret: TotpSecret, oneTimePassword: String): Any = FIRTOTPMultiFactorGenerator.assertionForEnrollmentWithSecret((secret as TotpSecretImpl).ios, oneTimePassword)

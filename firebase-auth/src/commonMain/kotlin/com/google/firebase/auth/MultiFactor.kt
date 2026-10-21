@@ -94,8 +94,20 @@ public expect class PhoneMultiFactorGenerator() {
     }
 }
 
-/** A verified TOTP factor, mirroring `com.google.firebase.auth.TotpMultiFactorAssertion`. */
-public expect class TotpMultiFactorAssertion : MultiFactorAssertion
+/**
+ * A verified TOTP factor, mirroring `com.google.firebase.auth.TotpMultiFactorAssertion`; usually created with
+ * [TotpMultiFactorGenerator.getAssertionForEnrollment] or [TotpMultiFactorGenerator.getAssertionForSignIn], which call
+ * this constructor with the [secret] or the [enrollmentId] respectively.
+ *
+ * The Apple and JS SDKs only create TOTP assertions through their TOTP generators, so on those platforms the SDK's
+ * assertion is made by its generator when this one is first used: for enrolling [secret] when it is set, otherwise for
+ * signing in with [enrollmentId]; with neither, using the assertion fails with `IllegalArgumentException`.
+ *
+ * @param oneTimePassword The one-time password the authenticator app shows; it must not be empty.
+ * @param secret The secret being enrolled, from [TotpMultiFactorGenerator.generateSecret].
+ * @param enrollmentId The [MultiFactorInfo.uid] of the enrolled factor to sign in with.
+ */
+public expect class TotpMultiFactorAssertion(oneTimePassword: String, secret: TotpSecret?, enrollmentId: String?) : MultiFactorAssertion
 
 /** Creates TOTP factor secrets and assertions, mirroring `com.google.firebase.auth.TotpMultiFactorGenerator`. */
 public expect class TotpMultiFactorGenerator {
@@ -116,7 +128,10 @@ public expect class TotpMultiFactorGenerator {
 /**
  * A TOTP secret to enroll an authenticator app with, mirroring `com.google.firebase.auth.TotpSecret`.
  *
- * Not mirrored: the secret's parameters and session, which the iOS SDK does not expose (see `api/android-sdk/exclusions.txt`).
+ * The iOS SDK exposes only the shared secret, the QR code URL and the OTP app hand-off: on Apple platforms the hash
+ * algorithm and the code length are read from the QR code URL, and [codeIntervalSeconds], [enrollmentCompletionDeadline]
+ * and [sessionInfo] throw `UnsupportedOperationException`. The JS SDK keeps the session private, so [sessionInfo] throws
+ * there too.
  */
 public expect interface TotpSecret {
     /** The shared secret, to enter in the authenticator app by hand. */
@@ -125,6 +140,34 @@ public expect interface TotpSecret {
     /** A URL of a QR code the authenticator app can scan, for [accountName] at [issuer]. */
     public fun generateQrCodeUrl(accountName: String, issuer: String): String
 
+    /**
+     * A URL of a QR code the authenticator app can scan, for the signed-in user's email at the app's name, as
+     * `generateQrCodeUrl(email, app.name)`. It fails without a signed-in user with an email, except on JS and Wasm,
+     * where the JS SDK names the account `unknownuser` then.
+     */
+    public fun generateQrCodeUrl(): String
+
     /** Opens [qrCodeUrl] in the authenticator app. */
     public fun openInOtpApp(qrCodeUrl: String)
+
+    /** How often the one-time passwords change, in seconds. Throws `UnsupportedOperationException` on Apple platforms. */
+    public val codeIntervalSeconds: Int
+
+    /** The number of digits of the one-time passwords. */
+    public val codeLength: Int
+
+    /**
+     * When the enrollment has to be completed by, in seconds since the epoch. Throws `UnsupportedOperationException` on
+     * Apple platforms.
+     */
+    public val enrollmentCompletionDeadline: Long
+
+    /** The hash algorithm of the one-time passwords, such as `SHA1`. */
+    public val hashAlgorithm: String
+
+    /**
+     * The session of the enrollment, which the SDK sends back with the one-time password. Android only: throws
+     * `UnsupportedOperationException` on Apple platforms, JS and Wasm, whose SDKs keep it private.
+     */
+    public val sessionInfo: String
 }

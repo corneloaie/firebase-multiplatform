@@ -12,4 +12,6 @@ actual val emulatorHost: String = "10.0.2.2"
 
 actual val context: Any = ""
 
+actual val supportsPlayGamesSignIn: Boolean = true
+
 actual typealias IgnoreForAndroidUnitTest = Ignore

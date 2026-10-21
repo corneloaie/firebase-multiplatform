@@ -28,6 +28,12 @@ public expect class GoogleAuthCredential : AuthCredential
 /** A Twitter credential from [TwitterAuthProvider]. */
 public expect class TwitterAuthCredential : AuthCredential
 
+/**
+ * A Google Play Games credential from [PlayGamesAuthProvider], mirroring `com.google.firebase.auth.PlayGamesAuthCredential`.
+ * Play Games sign-in exists only on Android, so there is no such credential on the other platforms.
+ */
+public expect class PlayGamesAuthCredential : AuthCredential
+
 /** A phone number credential from [PhoneAuthProvider], mirroring `com.google.firebase.auth.PhoneAuthCredential`. */
 public expect class PhoneAuthCredential : AuthCredential {
     /** The SMS code the credential was created with, or null when the SDK verified the number itself. */
@@ -99,6 +105,23 @@ public expect class TwitterAuthProvider {
 
         /** A credential for a Twitter [token] and [secret]. */
         public fun getCredential(token: String, secret: String): AuthCredential
+    }
+}
+
+/**
+ * Google Play Games credentials, mirroring `com.google.firebase.auth.PlayGamesAuthProvider`. Play Games sign-in exists
+ * only on Android: the Apple and JS SDKs have no Play Games provider, so [getCredential] fails there.
+ */
+public expect class PlayGamesAuthProvider {
+    public companion object {
+        public val PROVIDER_ID: String
+        public val PLAY_GAMES_SIGN_IN_METHOD: String
+
+        /**
+         * A credential for the [serverAuthCode] of a Play Games sign-in. Android only: on Apple, JS and Wasm it throws
+         * `UnsupportedOperationException`.
+         */
+        public fun getCredential(serverAuthCode: String): AuthCredential
     }
 }
 
