@@ -1,6 +1,6 @@
 # Android SDK source compatibility of firebase-firestore
 # Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
-# 100% of 357 public members available (345 identical, 12 mapped, 0 missing, 0 omitted)
+# 100% of 364 public members available (352 identical, 12 mapped, 0 missing, 0 omitted)
 #
 com.google.firebase.firestore.AggregateField
   OK    static AverageAggregateField average(FieldPath)
@@ -119,7 +119,7 @@ com.google.firebase.firestore.DocumentSnapshot
   OK    String getString(String)
   OK    Timestamp getTimestamp(String)
   OK    Timestamp getTimestamp(String, ServerTimestampBehavior)
-  UNAV  VectorValue getVectorValue(String)
+  OK    VectorValue getVectorValue(String)
   PLAT  T toObject(Class)
   PLAT  T toObject(Class, ServerTimestampBehavior)
 com.google.firebase.firestore.DocumentSnapshot.ServerTimestampBehavior
@@ -139,12 +139,12 @@ com.google.firebase.firestore.FieldValue
   OK    static FieldValue delete()
   OK    static FieldValue increment(double)
   OK    static FieldValue increment(long)
-  UNAV  static FieldValue maximum(double)
-  UNAV  static FieldValue maximum(long)
-  UNAV  static FieldValue minimum(double)
-  UNAV  static FieldValue minimum(long)
+  OK    static FieldValue maximum(double)
+  OK    static FieldValue maximum(long)
+  OK    static FieldValue minimum(double)
+  OK    static FieldValue minimum(long)
   OK    static FieldValue serverTimestamp()
-  UNAV  static VectorValue vector(double[])
+  OK    static VectorValue vector(double[])
 com.google.firebase.firestore.Filter
   OK    Filter()
   OK    static Filter and(Filter[])
@@ -475,6 +475,8 @@ com.google.firebase.firestore.TransactionOptions.Builder
   OK    Builder(TransactionOptions)
   OK    TransactionOptions build()
   OK    Builder setMaxAttempts(int)
+com.google.firebase.firestore.VectorValue
+  OK    double[] toArray()
 com.google.firebase.firestore.WriteBatch
   OK    Task commit()
   OK    WriteBatch delete(DocumentReference)

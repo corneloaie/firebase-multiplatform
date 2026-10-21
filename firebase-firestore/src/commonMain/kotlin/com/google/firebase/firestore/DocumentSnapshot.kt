@@ -9,9 +9,9 @@ import com.google.firebase.Timestamp
 /**
  * The data of a document read from Firestore, mirroring `com.google.firebase.firestore.DocumentSnapshot` from the
  * Firebase Android SDK. Field values are the Firestore types: `Boolean`, `Long`, `Double`, `String`, [Timestamp],
- * [GeoPoint], [Blob], [DocumentReference], `List` and `Map`, and the BSON types [BsonObjectId], [BsonTimestamp],
- * [Decimal128Value], [Int32Value], [MaxKey], [MinKey] and [RegexValue], as on Android; a document that does not exist
- * has no data.
+ * [GeoPoint], [Blob], [DocumentReference], [VectorValue], `List` and `Map`, and the BSON types [BsonObjectId],
+ * [BsonTimestamp], [Decimal128Value], [Int32Value], [MaxKey], [MinKey] and [RegexValue], as on Android; a document that
+ * does not exist has no data.
  *
  * Not mirrored: the reflective mapping to custom classes (`toObject`, `get(field, Class)`) and the `Date` accessors
  * (see `api/android-sdk/exclusions.txt`); use the reified `toObject` and `getField` of the Kotlin extensions and
@@ -63,6 +63,9 @@ public expect open class DocumentSnapshot {
     public fun getBlob(field: String): Blob?
     public fun getGeoPoint(field: String): GeoPoint?
     public fun getDocumentReference(field: String): DocumentReference?
+
+    /** The [VectorValue] at [field], or null; throws a `ClassCastException` when the field holds another type, as on Android. */
+    public fun getVectorValue(field: String): VectorValue?
 
     /** The [BsonObjectId] at [field], or null; throws a `ClassCastException` when the field holds another type, as on Android. */
     public fun getBsonObjectId(field: String): BsonObjectId?

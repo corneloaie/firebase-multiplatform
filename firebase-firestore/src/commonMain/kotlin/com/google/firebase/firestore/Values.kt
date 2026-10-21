@@ -22,9 +22,7 @@ public expect class FieldPath {
 
 /**
  * A sentinel written in place of a field value, mirroring `com.google.firebase.firestore.FieldValue` from the Firebase
- * Android SDK: a server timestamp, a deletion or a transform of the current value.
- *
- * Not mirrored: `vector`, `minimum` and `maximum` (see `api/android-sdk/exclusions.txt`).
+ * Android SDK: a server timestamp, a deletion or a transform of the current value. It also creates [VectorValue]s.
  */
 public expect abstract class FieldValue {
     public companion object {
@@ -45,7 +43,33 @@ public expect abstract class FieldValue {
 
         /** Adds [d] to the numeric field. */
         public fun increment(d: Double): FieldValue
+
+        /** Sets the numeric field to the smaller of its value and [l]; a field that is absent or not a number is set to [l]. */
+        public fun minimum(l: Long): FieldValue
+
+        /** Sets the numeric field to the smaller of its value and [d]; a field that is absent or not a number is set to [d]. */
+        public fun minimum(d: Double): FieldValue
+
+        /** Sets the numeric field to the larger of its value and [l]; a field that is absent or not a number is set to [l]. */
+        public fun maximum(l: Long): FieldValue
+
+        /** Sets the numeric field to the larger of its value and [d]; a field that is absent or not a number is set to [d]. */
+        public fun maximum(d: Double): FieldValue
+
+        /** A [VectorValue] of a copy of [values], such as an embedding for vector search. */
+        public fun vector(values: DoubleArray): VectorValue
     }
+}
+
+/**
+ * A vector of doubles stored in a document, such as an embedding for vector search, mirroring
+ * `com.google.firebase.firestore.VectorValue` from the Firebase Android SDK; [FieldValue.vector] creates one. Vectors
+ * are equal when their values are, compared as [DoubleArray.contentEquals] does (`NaN` equals itself, `0.0` and `-0.0`
+ * differ), as on Android.
+ */
+public expect class VectorValue {
+    /** A copy of the values. */
+    public fun toArray(): DoubleArray
 }
 
 /** A geographical point, mirroring `com.google.firebase.firestore.GeoPoint` from the Firebase Android SDK. */

@@ -412,6 +412,20 @@ public external class RegexValue(pattern: String, options: String) {
     public val options: String
 }
 
+public external fun minimum(n: Double): FieldValue
+
+public external fun maximum(n: Double): FieldValue
+
+/**
+ * [values] is a JS array, not a `Float64Array` (a Kotlin `DoubleArray`): the SDK writes it by mapping each value to an
+ * object, which a typed array cannot hold.
+ */
+public external fun vector(values: Array<Double>): VectorValue
+
+public external class VectorValue {
+    public fun toArray(): Array<Double>
+}
+
 public external interface LoadBundleTask {
     public fun onProgress(next: (progress: LoadBundleTaskProgress) -> Unit, error: (error: Throwable) -> Unit, complete: () -> Unit)
     public fun then(onFulfilled: (progress: LoadBundleTaskProgress) -> Unit, onRejected: (error: Throwable) -> Unit): Promise<Unit>

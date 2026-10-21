@@ -414,6 +414,16 @@ public external class RegexValue(pattern: String, options: String) : JsAny {
     public val options: String
 }
 
+public external fun minimum(n: Double): FieldValue
+
+public external fun maximum(n: Double): FieldValue
+
+public external fun vector(values: JsArray<JsNumber>): VectorValue
+
+public external class VectorValue : JsAny {
+    public fun toArray(): JsArray<JsNumber>
+}
+
 public external interface LoadBundleTask : JsAny {
     public fun onProgress(next: (progress: LoadBundleTaskProgress) -> Unit, error: (error: JsAny) -> Unit, complete: () -> Unit)
     public fun then(onFulfilled: (progress: LoadBundleTaskProgress) -> Unit, onRejected: (error: JsAny) -> Unit): Promise<JsAny?>
