@@ -19,3 +19,8 @@ cloud model and `ONLY_ON_DEVICE` fails with `FirebaseAIOnDeviceNotAvailableExcep
 records and plays audio on Android only; elsewhere it does nothing (stream audio with `sendAudioRealtime` instead). The
 JS SDK has no realtime input configuration for the Live API, so `LiveGenerationConfig.realtimeInputConfig` is not
 applied on JS and Wasm.
+
+On Apple platforms the iOS SDK has no JSON Schema in its configuration, so the JSON schemas of `generateObject` and of
+automatic functions are sent as the equivalent OpenAPI schemas; it also has no `displayName` for inline data, no `parts`
+in function responses and no total request timeout (`RequestOptions.timeout` limits the time without data), and its
+Live API sends realtime audio as `audio/pcm`.

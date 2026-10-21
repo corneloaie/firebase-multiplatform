@@ -8,7 +8,6 @@ import dev.gitlive.firebase.UnsupportedOnApple
 import dev.gitlive.firebase.UnsupportedOnJs
 import dev.gitlive.firebase.ai.internal.NativeLiveSession
 import dev.gitlive.firebase.ai.internal.catchAsync
-import dev.gitlive.firebase.ai.internal.firebaseAIException
 import dev.gitlive.firebase.ai.internal.realtimeInput
 import dev.gitlive.firebase.ai.internal.toJson
 import dev.gitlive.firebase.ai.internal.toLiveServerMessage
@@ -52,9 +51,10 @@ public actual class LiveSession internal constructor(
     private fun open(native: NativeLiveSession): Connection = Connection(native).also { connection ->
         native.start(
             onMessage = { message -> connection.messages.trySend(message.toLiveServerMessage()) },
-            onClose = { error ->
+            // As on Android, receiving ends when the connection closes, whatever closed it.
+            onClose = {
                 connection.closed = true
-                connection.messages.close(error?.let { firebaseAIException(it) })
+                connection.messages.close()
             },
         )
     }
@@ -109,7 +109,6 @@ public actual class LiveSession internal constructor(
                     current.messages.onReceiveCatching { it }
                 } ?: break
                 if (next.isClosed) {
-                    next.exceptionOrNull()?.let { throw firebaseAIException(it) }
                     // A closed session that resumeSession replaced: continue with the new one.
                     if (current === connection) break else continue
                 }
