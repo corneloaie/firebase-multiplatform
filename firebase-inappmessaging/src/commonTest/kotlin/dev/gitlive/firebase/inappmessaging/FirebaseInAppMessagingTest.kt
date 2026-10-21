@@ -27,23 +27,24 @@ expect val context: Any
 /** Android unit tests have no Android runtime, which the In-App Messaging SDK needs, so these tests are skipped there. */
 expect annotation class IgnoreForAndroidUnitTest()
 
-/** Creates the SDK instance where an app would, if the platform cares on which thread that happens. */
-internal expect fun createInAppMessaging()
+/** Runs [block] on the thread an app initializes Firebase on, where the platform cares which thread that is. */
+internal expect fun <T> onAppThread(block: () -> T): T
 
 /** Configures the default app once per test process: In-App Messaging only works with the default app. */
 internal fun initializeFirebase() {
-    Firebase.apps(context).firstOrNull() ?: Firebase.initialize(
-        context,
-        FirebaseOptions(
-            applicationId = "1:846484016111:ios:dd1f6688bad7af768c841a",
-            apiKey = "AIzaSyCK87dcMFhzCz_kJVs2cT2AVlqOTLuyWV0",
-            databaseUrl = "https://fir-kotlin-sdk.firebaseio.com",
-            storageBucket = "fir-kotlin-sdk.appspot.com",
-            projectId = "fir-kotlin-sdk",
-            gcmSenderId = "846484016111",
-        ),
-    )
-    createInAppMessaging()
+    onAppThread {
+        Firebase.apps(context).firstOrNull() ?: Firebase.initialize(
+            context,
+            FirebaseOptions(
+                applicationId = "1:846484016111:ios:dd1f6688bad7af768c841a",
+                apiKey = "AIzaSyCK87dcMFhzCz_kJVs2cT2AVlqOTLuyWV0",
+                databaseUrl = "https://fir-kotlin-sdk.firebaseio.com",
+                storageBucket = "fir-kotlin-sdk.appspot.com",
+                projectId = "fir-kotlin-sdk",
+                gcmSenderId = "846484016111",
+            ),
+        )
+    }
 }
 
 @IgnoreForAndroidUnitTest
