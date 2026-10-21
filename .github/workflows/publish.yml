@@ -33,7 +33,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-      - uses: gradle/actions/setup-gradle@v6.3.0
+      - uses: gradle/actions/setup-gradle@v6
       - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '26.2.0'
@@ -89,7 +89,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-      - uses: gradle/actions/setup-gradle@v6.3.0
+      - uses: gradle/actions/setup-gradle@v6
       - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '26.2.0'
