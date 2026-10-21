@@ -16,9 +16,9 @@ import kotlinx.serialization.json.JsonObject
 import kotlin.time.DurationUnit
 
 /**
- * The platform's Data Connect SDK behind one instance: the Firebase JS SDK's `firebase/data-connect` on JS, and the
- * Firebase iOS Data Connect SDK through this module's Objective-C wrapper on Apple. Variables and data cross as JSON, the
- * form both SDKs serialize to, so the kotlinx-serialization side is shared (see JsonCodec.kt).
+ * The platform's Data Connect SDK behind one instance: the Firebase JS SDK's `firebase/data-connect` on JS and wasmJs,
+ * and the Firebase iOS Data Connect SDK through this module's Objective-C wrapper on Apple. Variables and data cross as
+ * JSON, the form both SDKs serialize to, so the kotlinx-serialization side is shared (see JsonCodec.kt).
  *
  * Failures are thrown as [NativeOperationFailure] when the SDK reports errors for the operation (the operation reference,
  * which knows the deserializer, turns it into `DataConnectOperationException` with the decoded data), and as
