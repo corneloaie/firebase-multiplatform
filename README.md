@@ -296,8 +296,9 @@ runs the full CI matrix:
 2. **Weekly: merge upstream.** It merges the newest work of the upstream project this one started from (see
    [Acknowledgements](#acknowledgements)), and reports conflicts it cannot resolve in an issue.
 
-Optionally, a Claude Code job then implements the new members on every platform and fixes whatever the new SDKs broke,
-pushing to the first pull request. Dependabot keeps the build tooling and GitHub Actions current.
+A Claude Code routine then implements the new members on every platform, fixes whatever the new SDKs or upstream
+changes broke, and merges both pull requests once CI passes. Dependabot keeps the build tooling and GitHub Actions
+current.
 [MAINTAINING.md](MAINTAINING.md) has the details.
 
 ## Contributing
