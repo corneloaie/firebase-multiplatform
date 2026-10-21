@@ -136,11 +136,12 @@ jobs:
           report-paths: |
             **/build/reports/tests/jvmTest/
   build-publication:
-    # Compilations that publishing runs and no test job does: every module's common and shared source set metadata, which
-    # reports errors the platform compilations accept (an expect class missing an inherited abstract member), and its
-    # tvOS code, which no pull request job tests. --continue reports every module's errors at once.
+    # Compilations that publishing runs and no test job does: the metadata of every shared source set of every module,
+    # which reports errors the platform compilations accept (an expect class missing an inherited abstract member, an
+    # actual whose modality differs), and the tvOS code, which no pull request job tests. --continue reports every
+    # module's errors at once. It builds every module's Apple dependencies from scratch, about two hours on a runner.
     runs-on: macos-latest
-    timeout-minutes: 90
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v7
       - name: Set up JDK
@@ -161,7 +162,7 @@ jobs:
         with:
           xcode-version: '26.4.1'
       - name: Compile the metadata and tvOS code of every module
-        run: ./gradlew --continue allMetadataJar compileKotlinTvosArm64 compileKotlinTvosSimulatorArm64
+        run: ./gradlew --continue compileAllKotlinMetadata compileKotlinTvosArm64 compileKotlinTvosSimulatorArm64
   ci-passed:
     name: CI passed
     # The one check the main branch ruleset requires, so that a pull request merges (auto-merge included) only when

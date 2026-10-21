@@ -209,6 +209,14 @@ tasks.register("devRunAllTests") {
     }
 }
 
+// Every metadata compilation of every module, the shared native source sets' (appleMain, iosMain, ...) included:
+// publishing runs them all, while allMetadataJar leaves out those of source sets that use the Kotlin SwiftPM import.
+tasks.register("compileAllKotlinMetadata") {
+    group = "verification"
+    description = "Compiles the metadata of every shared source set of every module, as publishing does"
+    dependsOn(subprojects.map { project -> project.tasks.matching { it.name.startsWith("compile") && it.name.endsWith("KotlinMetadata") } })
+}
+
 tasks.register("ciJobsMatrixSetup") {
     doLast {
         EmulatorJobsMatrix().createMatrixJsonFiles(rootProject = rootProject)

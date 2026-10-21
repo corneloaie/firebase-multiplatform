@@ -12,12 +12,17 @@ import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageTaskStatusProgress
 import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageTaskStatusResume
 import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageTaskStatusSuccess
 
+/**
+ * Leaves the members it inherits from [StorageTask] to [FileDownloadTaskImpl], as the expect class does: implementing them
+ * here makes their modality differ from the expect class's, which the shared Apple metadata compilation rejects.
+ */
 public actual abstract class FileDownloadTask internal constructor(
-    override val reference: StorageReference,
-    private val ios: FIRStorageDownloadTask,
+    internal val ios: FIRStorageDownloadTask,
 ) : StorageTask<FileDownloadTask.TaskSnapshot>() {
-    private var bytesTransferred = 0L
-    private var totalByteCount = 0L
+    internal var bytesTransferred = 0L
+        private set
+    internal var totalByteCount = 0L
+        private set
 
     internal fun start() {
         ActiveTasks.downloads += this
@@ -54,6 +59,15 @@ public actual abstract class FileDownloadTask internal constructor(
         }
     }
 
+    public actual inner class TaskSnapshot internal constructor(
+        error: Exception?,
+        public actual val bytesTransferred: Long,
+        public actual val totalByteCount: Long,
+    ) : SnapshotBase(error)
+}
+
+/** The [FileDownloadTask] of the iOS SDK; [FileDownloadTask] itself is abstract, as the expect class leaves the `Task` members inherited. */
+internal class FileDownloadTaskImpl(override val reference: StorageReference, ios: FIRStorageDownloadTask) : FileDownloadTask(ios) {
     override fun snapshotWith(error: Exception?): TaskSnapshot = TaskSnapshot(error, bytesTransferred, totalByteCount)
 
     override fun controlPause(): Boolean {
@@ -71,15 +85,6 @@ public actual abstract class FileDownloadTask internal constructor(
         return true
     }
 
-    public actual inner class TaskSnapshot internal constructor(
-        error: Exception?,
-        public actual val bytesTransferred: Long,
-        public actual val totalByteCount: Long,
-    ) : SnapshotBase(error)
-}
-
-/** The [FileDownloadTask] of the iOS SDK; [FileDownloadTask] itself is abstract, as the expect class leaves the `Task` members inherited. */
-internal class FileDownloadTaskImpl(reference: StorageReference, ios: FIRStorageDownloadTask) : FileDownloadTask(reference, ios) {
     override val isComplete: Boolean get() = completeState
     override val isSuccessful: Boolean get() = successState
     override val isCanceled: Boolean get() = canceledState
