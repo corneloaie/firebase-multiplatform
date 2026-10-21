@@ -41,6 +41,10 @@ androidx-test-runner = { module = "androidx.test:runner", version.ref = "android
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
 gitlive-firebase-java-sdk = { module = "dev.gitlive:firebase-java-sdk", version.ref = "gitlive-firebase-java-sdk" }
 google-firebase-analytics = { module = "com.google.firebase:firebase-analytics"}
+google-firebase-appcheck = { module = "com.google.firebase:firebase-appcheck"}
+google-firebase-appcheck-debug = { module = "com.google.firebase:firebase-appcheck-debug"}
+google-firebase-appcheck-playintegrity = { module = "com.google.firebase:firebase-appcheck-playintegrity"}
+google-firebase-appcheck-recaptcha = { module = "com.google.firebase:firebase-appcheck-recaptcha"}
 google-firebase-auth = { module = "com.google.firebase:firebase-auth"}
 google-firebase-common = { module = "com.google.firebase:firebase-common"}
 google-firebase-config = { module = "com.google.firebase:firebase-config"}

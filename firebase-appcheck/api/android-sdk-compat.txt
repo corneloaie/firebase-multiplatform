@@ -1,0 +1,41 @@
+# Android SDK source compatibility of firebase-appcheck
+# Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
+# 100% of 28 public members available (28 identical, 0 mapped, 0 missing, 0 omitted)
+#
+com.google.firebase.appcheck.AppCheckProvider
+  OK    Task getLimitedUseToken()
+  OK    Task getToken()
+com.google.firebase.appcheck.AppCheckProviderFactory
+  OK    AppCheckProvider create(FirebaseApp)
+com.google.firebase.appcheck.AppCheckToken
+  OK    AppCheckToken()
+  OK    long getExpireTimeMillis()
+  OK    String getToken()
+com.google.firebase.appcheck.FirebaseAppCheck
+  OK    FirebaseAppCheck()
+  OK    void addAppCheckListener(AppCheckListener)
+  OK    Task getAppCheckToken(boolean)
+  OK    static FirebaseAppCheck getInstance()
+  OK    static FirebaseAppCheck getInstance(FirebaseApp)
+  OK    Task getLimitedUseAppCheckToken()
+  OK    void installAppCheckProviderFactory(AppCheckProviderFactory)
+  OK    void installAppCheckProviderFactory(AppCheckProviderFactory, boolean)
+  OK    void removeAppCheckListener(AppCheckListener)
+  OK    void setTokenAutoRefreshEnabled(boolean)
+com.google.firebase.appcheck.FirebaseAppCheck.AppCheckListener
+  OK    void onAppCheckTokenChanged(AppCheckToken)
+com.google.firebase.appcheck.FirebaseAppCheckKt
+  OK    static FirebaseAppCheck appCheck(Firebase, FirebaseApp)
+  OK    static String component1(AppCheckToken)
+  OK    static long component2(AppCheckToken)
+  OK    static FirebaseAppCheck getAppCheck(Firebase)
+com.google.firebase.appcheck.debug.DebugAppCheckProviderFactory
+  OK    AppCheckProvider create(FirebaseApp)
+  OK    static DebugAppCheckProviderFactory getInstance()
+com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory
+  OK    PlayIntegrityAppCheckProviderFactory()
+  OK    AppCheckProvider create(FirebaseApp)
+  OK    static PlayIntegrityAppCheckProviderFactory getInstance()
+com.google.firebase.appcheck.recaptcha.RecaptchaAppCheckProviderFactory
+  OK    AppCheckProvider create(FirebaseApp)
+  OK    static RecaptchaAppCheckProviderFactory getInstance(String)

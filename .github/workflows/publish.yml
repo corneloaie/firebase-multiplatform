@@ -45,7 +45,7 @@ jobs:
           done
       - name: Publish to Maven Central
         run: |
-          for module in firebase-common firebase-common-internal firebase-app firebase-analytics firebase-auth firebase-config \
+          for module in firebase-common firebase-common-internal firebase-app firebase-analytics firebase-appcheck firebase-auth firebase-config \
                         firebase-crashlytics firebase-database firebase-dataconnect firebase-firestore firebase-functions \
                         firebase-installations firebase-messaging firebase-perf firebase-storage; do
             echo "::group::$module"
