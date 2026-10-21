@@ -17,7 +17,7 @@ let package = Package(
   ],
   dependencies: [
     // The version is the firebase-ios-sdk version of gradle/libs.versions.toml.
-    .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "13.0.1"),
+    .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "13.1.0"),
   ],
   targets: [
     .target(
