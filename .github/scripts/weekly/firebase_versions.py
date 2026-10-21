@@ -14,6 +14,9 @@ than whatever main has gained since. App Distribution is not in the BoM: it move
 records as released (`latestReleasedVersion` in firebase-appdistribution-api/gradle.properties), so its library and its
 api.txt match.
 
+The summary also lists firebase-android-sdk modules with a public api.txt that no module here is compared against and
+that are not known below, which is how a new Firebase product shows up.
+
 Usage (from the repository root):
     python3 .github/scripts/weekly/firebase_versions.py           # print current -> latest
     python3 .github/scripts/weekly/firebase_versions.py --write   # update the files
@@ -73,6 +76,35 @@ def latest_appdistribution(api_ref):
     if released and released.group(1) in published:
         return released.group(1)
     return max(published, key=prerelease_key)
+
+
+# api.txt files of firebase-android-sdk that no module is compared against, on purpose or not yet.
+KNOWN_UNTRACKED = {
+    'ai-logic/firebase-ai/api.txt': 'AI Logic, not covered yet',
+    'ai-logic/firebase-ai-ondevice/api.txt': 'AI Logic on-device inference, not covered yet',
+    'firebase-ml-modeldownloader/api.txt': 'ML Model Downloader, not covered yet',
+    'appcheck/firebase-appcheck-debug-testing/api.txt': 'an Android instrumentation-test helper',
+    'firebase-sessions/api.txt': 'internal to Crashlytics and Performance Monitoring',
+}
+# Build infrastructure rather than products: encoders, transport, components, interop and processor modules.
+INFRASTRUCTURE = re.compile(r'^(encoders|transport)/|^firebase-(abt|annotations|components|database-collection|datatransport)/'
+                            r'|^protolite-well-known-types/|-interop/api\.txt$|-ksp-processor/api\.txt$')
+API_MEMBER = re.compile(r'^\s+(method|ctor|field|property|enum_constant) ', flags=re.M)
+
+
+def untracked_android_apis(api_ref):
+    """firebase-android-sdk api.txt files with public members that no module's registerAndroidSourceCompat names."""
+    tree = json.loads(fetch(f'https://api.github.com/repos/firebase/firebase-android-sdk/git/trees/{api_ref}?recursive=1'))
+    paths = {entry['path'] for entry in tree['tree'] if entry['path'].endswith('/api.txt')}
+    tracked = {path for build in ROOT.glob('*/build.gradle.kts') for path in re.findall(r'"([\w./-]+/api\.txt)"', build.read_text())}
+    untracked = []
+    for path in sorted(paths - tracked - KNOWN_UNTRACKED.keys()):
+        if INFRASTRUCTURE.search(path):
+            continue
+        members = len(API_MEMBER.findall(fetch(f'https://raw.githubusercontent.com/firebase/firebase-android-sdk/{api_ref}/{path}', 'text/plain')))
+        if members:  # registrar-only modules (crashlytics-ndk, messaging-directboot, ...) have none
+            untracked.append((path, members))
+    return untracked
 
 
 def firebase_common_of(artifact, version):
@@ -176,6 +208,10 @@ def main():
         majors = [name for name, current, latest, _ in changed if not name.startswith('Android API') and current.split('.')[0] != latest.split('.')[0]]
         if majors:
             lines += ['', f'**Major version change:** {", ".join(majors)}. Expect breaking API changes; CI shows what no longer compiles.']
+        untracked = untracked_android_apis(api_sha)
+        if untracked:
+            lines += ['', '**Android SDK modules no module covers yet** (a new product, or a new part of one):', '']
+            lines += [f'- `{path}`: {members} public members' for path, members in untracked]
         latest = {name: latest for name, _, latest, _ in rows}
         bom_common = firebase_common_of('firebase-bom', latest['Android BoM'])
         appdistribution_common = firebase_common_of('firebase-appdistribution-api', latest['App Distribution'])
