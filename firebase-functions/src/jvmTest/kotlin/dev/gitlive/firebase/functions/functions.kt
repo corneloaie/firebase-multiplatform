@@ -13,3 +13,5 @@ actual val context: Any = testContext
 actual fun detailValue(details: Any?, key: String): Any? = (details as Map<Any?, Any?>)[key]
 
 actual annotation class IgnoreForAndroidUnitTest
+
+actual val streamingSupported: Boolean = false

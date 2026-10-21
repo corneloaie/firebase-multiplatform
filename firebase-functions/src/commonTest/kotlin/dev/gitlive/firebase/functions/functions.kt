@@ -23,6 +23,9 @@ expect val emulatorHost: String
 expect val context: Any
 expect fun detailValue(details: Any?, key: String): Any?
 
+/** Whether streamAsFlow can stream here: not on Apple (Swift-only iOS API) or the JVM (no streaming in firebase-java-sdk). */
+expect val streamingSupported: Boolean
+
 /** Android unit tests have no `Context` and no network, so the tests that need Firebase are skipped there. */
 expect annotation class IgnoreForAndroidUnitTest()
 

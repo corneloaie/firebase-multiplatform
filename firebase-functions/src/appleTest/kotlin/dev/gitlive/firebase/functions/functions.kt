@@ -50,3 +50,5 @@ class FunctionsExceptionTest {
         assertTrue(options.limitedUseAppCheckTokens)
     }
 }
+
+actual val streamingSupported: Boolean = false

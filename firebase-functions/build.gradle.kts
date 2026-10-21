@@ -238,9 +238,12 @@ stripHeaderStubs(
         // firebase-java-sdk 0.6.3 predates streaming.
         "com/google/firebase/functions/HttpsCallableReference.stream()Lorg/reactivestreams/Publisher;",
         "com/google/firebase/functions/HttpsCallableReference.stream(Ljava/lang/Object;)Lorg/reactivestreams/Publisher;",
-        "com/google/firebase/functions/StreamResponse",
-        "com/google/firebase/functions/StreamResponse\$Message",
-        "com/google/firebase/functions/StreamResponse\$Result",
+    ),
+    // firebase-java-sdk 0.6.3 has no StreamResponse, so this module's own is shipped on the JVM (streamAsFlow fails there).
+    jvmKeepClasses = listOf(
+        "com/google/firebase/functions/StreamResponse.class",
+        "com/google/firebase/functions/StreamResponse\$Message.class",
+        "com/google/firebase/functions/StreamResponse\$Result.class",
     ),
 )
 

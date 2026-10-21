@@ -15,3 +15,5 @@ actual fun detailValue(details: Any?, key: String): Any? = details?.let { jsGet(
 
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
 actual annotation class IgnoreForAndroidUnitTest
+
+actual val streamingSupported: Boolean = true

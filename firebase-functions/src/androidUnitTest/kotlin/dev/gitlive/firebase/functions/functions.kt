@@ -15,3 +15,5 @@ actual val context: Any = ""
 
 @Suppress("UNCHECKED_CAST")
 actual fun detailValue(details: Any?, key: String): Any? = (details as Map<Any?, Any?>)[key]
+
+actual val streamingSupported: Boolean = true

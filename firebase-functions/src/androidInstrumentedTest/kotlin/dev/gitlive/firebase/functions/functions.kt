@@ -15,3 +15,5 @@ actual val context: Any = InstrumentationRegistry.getInstrumentation().targetCon
 actual fun detailValue(details: Any?, key: String): Any? = (details as Map<Any?, Any?>)[key]
 
 actual annotation class IgnoreForAndroidUnitTest
+
+actual val streamingSupported: Boolean = true

@@ -12,20 +12,24 @@ import com.google.firebase.functions.FirebaseFunctionsException
 import com.google.firebase.functions.HttpsCallableOptions
 import com.google.firebase.functions.HttpsCallableReference
 import com.google.firebase.functions.HttpsCallableResult
+import com.google.firebase.functions.StreamResponse
 import com.google.firebase.functions.functions
 import com.google.firebase.functions.getHttpsCallable
 import com.google.firebase.functions.getHttpsCallableFromUrl
 import com.google.firebase.functions.setTimeout
+import com.google.firebase.functions.streamAsFlow
 import com.google.firebase.functions.withTimeout
 import dev.gitlive.firebase.apps
 import dev.gitlive.firebase.initialize
 import dev.gitlive.firebase.runTest
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.tasks.await
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
+import kotlin.test.assertIs
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 import kotlin.time.Duration.Companion.seconds
@@ -63,6 +67,20 @@ class AndroidSdkSourceCompatTest {
         assertEquals(FirebaseFunctions.getInstance(), Firebase.functions)
         assertEquals(FirebaseFunctions.getInstance(app, "europe-west1"), Firebase.functions(app, "europe-west1"))
         assertEquals(FirebaseFunctions.getInstance("europe-west1"), Firebase.functions("europe-west1"))
+    }
+
+    @Test
+    fun testStreamAsFlow() = runTest {
+        val callable = functions.getHttpsCallable("streamCounter")
+        if (!streamingSupported) {
+            assertFailsWith<UnsupportedOperationException> { callable.streamAsFlow(mapOf("count" to 3)).toList() }
+            return@runTest
+        }
+        val responses = callable.streamAsFlow(mapOf("count" to 3)).toList()
+        val chunks = responses.dropLast(1).map { assertIs<StreamResponse.Message>(it).message.data }
+        assertEquals(listOf(1, 2, 3), chunks.map { detailValue(it, "chunk").toString().toDouble().toInt() })
+        val result = assertIs<StreamResponse.Result>(responses.last()).result.data
+        assertEquals(3, detailValue(result, "done").toString().toDouble().toInt())
     }
 
     @Test
