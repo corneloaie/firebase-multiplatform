@@ -82,7 +82,7 @@ def latest_appdistribution(api_ref):
 KNOWN_UNTRACKED = {
     'ai-logic/firebase-ai/api.txt': 'AI Logic, not covered yet',
     'ai-logic/firebase-ai-ondevice/api.txt': 'AI Logic on-device inference, not covered yet',
-    'firebase-ml-modeldownloader/api.txt': 'ML Model Downloader, not covered yet',
+    'firebase-ml-modeldownloader/api.txt': 'ML Model Downloader, not planned: gone from iOS SDK 13 and BoM 35',
     'appcheck/firebase-appcheck-debug-testing/api.txt': 'an Android instrumentation-test helper',
     'firebase-sessions/api.txt': 'internal to Crashlytics and Performance Monitoring',
 }
