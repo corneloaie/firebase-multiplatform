@@ -31,11 +31,11 @@ package com.google.firebase.ai.annotations
 @Target(AnnotationTarget.PROPERTY)
 @Retention(AnnotationRetention.SOURCE)
 public annotation class Guide(
-  public val description: String = "",
-  public val minimum: Double = -1.0,
-  public val maximum: Double = -1.0,
-  public val minItems: Int = -1,
-  public val maxItems: Int = -1,
-  public val format: String = "",
-  public val enumValues: Array<String> = [],
+    public val description: String = "",
+    public val minimum: Double = -1.0,
+    public val maximum: Double = -1.0,
+    public val minItems: Int = -1,
+    public val maxItems: Int = -1,
+    public val format: String = "",
+    public val enumValues: Array<String> = [],
 )

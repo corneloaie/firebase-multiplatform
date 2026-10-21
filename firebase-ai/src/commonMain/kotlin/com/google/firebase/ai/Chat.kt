@@ -46,177 +46,175 @@ import kotlinx.coroutines.sync.Semaphore
  * discussion).
  */
 public class Chat(
-  private val model: GenerativeModel,
-  public val history: MutableList<Content> = ArrayList()
+    private val model: GenerativeModel,
+    public val history: MutableList<Content> = ArrayList(),
 ) {
-  private var lock = Semaphore(1)
-  private var turns: Int = 0
-
-  /**
-   * Sends a message using the provided [prompt]; automatically providing the existing [history] as
-   * context.
-   *
-   * If successful, the message and response will be added to the [history]. If unsuccessful,
-   * [history] will remain unchanged.
-   *
-   * @param prompt The input that, together with the history, will be given to the model as the
-   * prompt.
-   * @throws InvalidStateException if [prompt] is not coming from the 'user' role.
-   * @throws InvalidStateException if the [Chat] instance has an active request.
-   */
-  public suspend fun sendMessage(prompt: Content): GenerateContentResponse {
-    prompt.assertComesFromUser()
-    attemptLock()
-    var response: GenerateContentResponse
-    try {
-      val tempHistory = mutableListOf(prompt)
-      while (true) {
-        response =
-          model.generateContent(listOf(*history.toTypedArray(), *tempHistory.toTypedArray()))
-        tempHistory.add(response.candidates.first().content)
-        val functionCallParts =
-          response.candidates.first().content.parts.filterIsInstance<FunctionCallPart>()
-
-        if (functionCallParts.isEmpty()) {
-          break
-        }
-        if (model.requestOptions.autoFunctionCallingTurnLimit < ++turns) {
-          throw RequestTimeoutException("Request took too many turns", history = tempHistory)
-        }
-        if (!functionCallParts.all { model.hasFunction(it) }) {
-          break
-        }
-        val functionResponsePart = functionCallParts.map { model.executeFunction(it) }
-        tempHistory.add(Content("user", functionResponsePart))
-      }
-      history.addAll(tempHistory)
-      return response
-    } finally {
-      lock.release()
-      turns = 0
-    }
-  }
-
-  /**
-   * Sends a message using the provided [text prompt][prompt]; automatically providing the existing
-   * [history] as context.
-   *
-   * If successful, the message and response will be added to the [history]. If unsuccessful,
-   * [history] will remain unchanged.
-   *
-   * @param prompt The input that, together with the history, will be given to the model as the
-   * prompt.
-   * @throws InvalidStateException if [prompt] is not coming from the 'user' role.
-   * @throws InvalidStateException if the [Chat] instance has an active request.
-   */
-  public suspend fun sendMessage(prompt: String): GenerateContentResponse {
-    val content = content { text(prompt) }
-    return sendMessage(content)
-  }
-
-
-  /**
-   * Sends a message using the existing history of this chat as context and the provided [Content]
-   * prompt.
-   *
-   * The response from the model is returned as a stream.
-   *
-   * If successful, the message and response will be added to the history. If unsuccessful, history
-   * will remain unchanged.
-   *
-   * @param prompt The input that, together with the history, will be given to the model as the
-   * prompt.
-   * @throws InvalidStateException if [prompt] is not coming from the 'user' role.
-   * @throws InvalidStateException if the [Chat] instance has an active request.
-   */
-  public fun sendMessageStream(prompt: Content): Flow<GenerateContentResponse> {
-    prompt.assertComesFromUser()
-    attemptLock()
-
-    val fullPrompt = history + prompt
-    val flow = model.generateContentStream(fullPrompt.first(), *fullPrompt.drop(1).toTypedArray())
-    val tempHistory = mutableListOf<Content>()
-    tempHistory.add(prompt)
+    private var lock = Semaphore(1)
+    private var turns: Int = 0
 
     /**
-     * TODO: revisit when images and inline data are returned. This will cause issues with how
-     * things are structured in the response. eg; a text/image/text response will be (incorrectly)
-     * represented as image/text
+     * Sends a message using the provided [prompt]; automatically providing the existing [history] as
+     * context.
+     *
+     * If successful, the message and response will be added to the [history]. If unsuccessful,
+     * [history] will remain unchanged.
+     *
+     * @param prompt The input that, together with the history, will be given to the model as the
+     * prompt.
+     * @throws InvalidStateException if [prompt] is not coming from the 'user' role.
+     * @throws InvalidStateException if the [Chat] instance has an active request.
      */
-    return flow
-      .transform { response -> automaticFunctionExecutingTransform(this, tempHistory, response) }
-      .onCompletion {
-        turns = 0
-        lock.release()
-        if (it == null) {
-          history.addAll(tempHistory)
+    public suspend fun sendMessage(prompt: Content): GenerateContentResponse {
+        prompt.assertComesFromUser()
+        attemptLock()
+        var response: GenerateContentResponse
+        try {
+            val tempHistory = mutableListOf(prompt)
+            while (true) {
+                response =
+                    model.generateContent(listOf(*history.toTypedArray(), *tempHistory.toTypedArray()))
+                tempHistory.add(response.candidates.first().content)
+                val functionCallParts =
+                    response.candidates.first().content.parts.filterIsInstance<FunctionCallPart>()
+
+                if (functionCallParts.isEmpty()) {
+                    break
+                }
+                if (model.requestOptions.autoFunctionCallingTurnLimit < ++turns) {
+                    throw RequestTimeoutException("Request took too many turns", history = tempHistory)
+                }
+                if (!functionCallParts.all { model.hasFunction(it) }) {
+                    break
+                }
+                val functionResponsePart = functionCallParts.map { model.executeFunction(it) }
+                tempHistory.add(Content("user", functionResponsePart))
+            }
+            history.addAll(tempHistory)
+            return response
+        } finally {
+            lock.release()
+            turns = 0
         }
-      }
-  }
+    }
 
-  /**
-   * Sends a message using the existing history of this chat as context and the provided text
-   * prompt.
-   *
-   * The response from the model is returned as a stream.
-   *
-   * If successful, the message and response will be added to the history. If unsuccessful, history
-   * will remain unchanged.
-   *
-   * @param prompt The input(s) that, together with the history, will be given to the model as the
-   * prompt.
-   * @throws InvalidStateException if [prompt] is not coming from the 'user' role.
-   * @throws InvalidStateException if the [Chat] instance has an active request.
-   */
-  public fun sendMessageStream(prompt: String): Flow<GenerateContentResponse> {
-    val content = content { text(prompt) }
-    return sendMessageStream(content)
-  }
+    /**
+     * Sends a message using the provided [text prompt][prompt]; automatically providing the existing
+     * [history] as context.
+     *
+     * If successful, the message and response will be added to the [history]. If unsuccessful,
+     * [history] will remain unchanged.
+     *
+     * @param prompt The input that, together with the history, will be given to the model as the
+     * prompt.
+     * @throws InvalidStateException if [prompt] is not coming from the 'user' role.
+     * @throws InvalidStateException if the [Chat] instance has an active request.
+     */
+    public suspend fun sendMessage(prompt: String): GenerateContentResponse {
+        val content = content { text(prompt) }
+        return sendMessage(content)
+    }
 
+    /**
+     * Sends a message using the existing history of this chat as context and the provided [Content]
+     * prompt.
+     *
+     * The response from the model is returned as a stream.
+     *
+     * If successful, the message and response will be added to the history. If unsuccessful, history
+     * will remain unchanged.
+     *
+     * @param prompt The input that, together with the history, will be given to the model as the
+     * prompt.
+     * @throws InvalidStateException if [prompt] is not coming from the 'user' role.
+     * @throws InvalidStateException if the [Chat] instance has an active request.
+     */
+    public fun sendMessageStream(prompt: Content): Flow<GenerateContentResponse> {
+        prompt.assertComesFromUser()
+        attemptLock()
 
-  private suspend fun automaticFunctionExecutingTransform(
-    transformer: FlowCollector<GenerateContentResponse>,
-    tempHistory: MutableList<Content>,
-    response: GenerateContentResponse
-  ) {
-    val functionCallParts =
-      response.candidates.first().content.parts.filterIsInstance<FunctionCallPart>()
-    if (functionCallParts.isNotEmpty()) {
-      if (functionCallParts.all { model.hasFunction(it) }) {
-        if (model.requestOptions.autoFunctionCallingTurnLimit < ++turns) {
-          throw RequestTimeoutException("Request took too many turns", history = tempHistory)
+        val fullPrompt = history + prompt
+        val flow = model.generateContentStream(fullPrompt.first(), *fullPrompt.drop(1).toTypedArray())
+        val tempHistory = mutableListOf<Content>()
+        tempHistory.add(prompt)
+
+        /**
+         * TODO: revisit when images and inline data are returned. This will cause issues with how
+         * things are structured in the response. eg; a text/image/text response will be (incorrectly)
+         * represented as image/text
+         */
+        return flow
+            .transform { response -> automaticFunctionExecutingTransform(this, tempHistory, response) }
+            .onCompletion {
+                turns = 0
+                lock.release()
+                if (it == null) {
+                    history.addAll(tempHistory)
+                }
+            }
+    }
+
+    /**
+     * Sends a message using the existing history of this chat as context and the provided text
+     * prompt.
+     *
+     * The response from the model is returned as a stream.
+     *
+     * If successful, the message and response will be added to the history. If unsuccessful, history
+     * will remain unchanged.
+     *
+     * @param prompt The input(s) that, together with the history, will be given to the model as the
+     * prompt.
+     * @throws InvalidStateException if [prompt] is not coming from the 'user' role.
+     * @throws InvalidStateException if the [Chat] instance has an active request.
+     */
+    public fun sendMessageStream(prompt: String): Flow<GenerateContentResponse> {
+        val content = content { text(prompt) }
+        return sendMessageStream(content)
+    }
+
+    private suspend fun automaticFunctionExecutingTransform(
+        transformer: FlowCollector<GenerateContentResponse>,
+        tempHistory: MutableList<Content>,
+        response: GenerateContentResponse,
+    ) {
+        val functionCallParts =
+            response.candidates.first().content.parts.filterIsInstance<FunctionCallPart>()
+        if (functionCallParts.isNotEmpty()) {
+            if (functionCallParts.all { model.hasFunction(it) }) {
+                if (model.requestOptions.autoFunctionCallingTurnLimit < ++turns) {
+                    throw RequestTimeoutException("Request took too many turns", history = tempHistory)
+                }
+                val functionResponses = Content("user", functionCallParts.map { model.executeFunction(it) })
+                tempHistory.add(Content("model", functionCallParts))
+                tempHistory.add(functionResponses)
+                model
+                    .generateContentStream(listOf(*history.toTypedArray(), *tempHistory.toTypedArray()))
+                    .collect { automaticFunctionExecutingTransform(transformer, tempHistory, it) }
+            } else {
+                transformer.emit(response)
+                tempHistory.add(Content("model", functionCallParts))
+            }
+        } else {
+            transformer.emit(response)
+            tempHistory.add(response.candidates.first().content)
         }
-        val functionResponses = Content("user", functionCallParts.map { model.executeFunction(it) })
-        tempHistory.add(Content("model", functionCallParts))
-        tempHistory.add(functionResponses)
-        model
-          .generateContentStream(listOf(*history.toTypedArray(), *tempHistory.toTypedArray()))
-          .collect { automaticFunctionExecutingTransform(transformer, tempHistory, it) }
-      } else {
-        transformer.emit(response)
-        tempHistory.add(Content("model", functionCallParts))
-      }
-    } else {
-      transformer.emit(response)
-      tempHistory.add(response.candidates.first().content)
     }
-  }
 
-  private fun Content.assertComesFromUser() {
-    // The 'function' role is deprecated (the Android SDK logs a warning) but still accepted.
-    if (role != "function" && role != "user") {
-      throw InvalidStateException("Chat prompts should come from the 'user' role.")
+    private fun Content.assertComesFromUser() {
+        // The 'function' role is deprecated (the Android SDK logs a warning) but still accepted.
+        if (role != "function" && role != "user") {
+            throw InvalidStateException("Chat prompts should come from the 'user' role.")
+        }
     }
-  }
 
-  private fun attemptLock() {
-    if (!lock.tryAcquire()) {
-      throw InvalidStateException(
-        "This chat instance currently has an ongoing request, please wait for it to complete " +
-          "before sending more messages"
-      )
+    private fun attemptLock() {
+        if (!lock.tryAcquire()) {
+            throw InvalidStateException(
+                "This chat instance currently has an ongoing request, please wait for it to complete " +
+                    "before sending more messages",
+            )
+        }
     }
-  }
 }
 
 /**

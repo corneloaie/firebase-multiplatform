@@ -25,14 +25,14 @@ import kotlin.jvm.JvmField
  * [HarmBlockThreshold] in [SafetySetting].
  */
 public class HarmBlockMethod private constructor(public val ordinal: Int) {
-  public companion object {
-    /**
-     * The harm block method uses both probability and severity scores. See [HarmSeverity] and
-     * [HarmProbability].
-     */
-    @JvmField public val SEVERITY: HarmBlockMethod = HarmBlockMethod(0)
+    public companion object {
+        /**
+         * The harm block method uses both probability and severity scores. See [HarmSeverity] and
+         * [HarmProbability].
+         */
+        @JvmField public val SEVERITY: HarmBlockMethod = HarmBlockMethod(0)
 
-    /** The harm block method uses the probability score. See [HarmProbability]. */
-    @JvmField public val PROBABILITY: HarmBlockMethod = HarmBlockMethod(1)
-  }
+        /** The harm block method uses the probability score. See [HarmProbability]. */
+        @JvmField public val PROBABILITY: HarmBlockMethod = HarmBlockMethod(1)
+    }
 }

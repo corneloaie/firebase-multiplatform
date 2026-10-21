@@ -30,35 +30,36 @@ import kotlin.jvm.JvmStatic
  */
 public class ImageConfig
 private constructor(
-  internal val aspectRatio: AspectRatio? = null,
-  internal val imageSize: ImageSize? = null
+    internal val aspectRatio: AspectRatio? = null,
+    internal val imageSize: ImageSize? = null,
 ) {
-  /** Builder for creating a [ImageConfig]. */
-  public class Builder {
-    @JvmField public var aspectRatio: AspectRatio? = null
-    @JvmField public var imageSize: ImageSize? = null
+    /** Builder for creating a [ImageConfig]. */
+    public class Builder {
+        @JvmField public var aspectRatio: AspectRatio? = null
 
-    /** Sets the aspect ratio of generated images. */
-    public fun setAspectRatio(aspectRatio: AspectRatio): Builder = apply {
-      this.aspectRatio = aspectRatio
+        @JvmField public var imageSize: ImageSize? = null
+
+        /** Sets the aspect ratio of generated images. */
+        public fun setAspectRatio(aspectRatio: AspectRatio): Builder = apply {
+            this.aspectRatio = aspectRatio
+        }
+
+        /** Sets the size of the generated images. */
+        public fun setImageSize(imageSize: ImageSize): Builder = apply { this.imageSize = imageSize }
+
+        /** Create a new [ImageConfig] with the attached arguments. */
+        public fun build(): ImageConfig = ImageConfig(aspectRatio, imageSize)
     }
 
-    /** Sets the size of the generated images. */
-    public fun setImageSize(imageSize: ImageSize): Builder = apply { this.imageSize = imageSize }
-
-    /** Create a new [ImageConfig] with the attached arguments. */
-    public fun build(): ImageConfig = ImageConfig(aspectRatio, imageSize)
-  }
-
-  public companion object {
-    /** Creates a new [Builder]. */
-    @JvmStatic public fun builder(): Builder = Builder()
-  }
+    public companion object {
+        /** Creates a new [Builder]. */
+        @JvmStatic public fun builder(): Builder = Builder()
+    }
 }
 
 /** Helper method to construct an [ImageConfig] in a DSL-like manner. */
 public fun imageConfig(init: ImageConfig.Builder.() -> Unit): ImageConfig {
-  val builder = ImageConfig.builder()
-  builder.init()
-  return builder.build()
+    val builder = ImageConfig.builder()
+    builder.init()
+    return builder.build()
 }

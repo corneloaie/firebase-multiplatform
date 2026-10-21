@@ -72,7 +72,7 @@ class RequestJsonTest {
             systemInstruction = content { text("Be brief") },
         )
         assertJson(
-                """
+            """
                 {
                   "contents": [
                     {"role": "user", "parts": [
@@ -124,7 +124,7 @@ class RequestJsonTest {
             optionalProperties = listOf("either"),
         )
         assertJson(
-                """
+            """
                 {"type": "OBJECT", "nullable": false, "properties": {
                   "name": {"type": "STRING", "nullable": true},
                   "rank": {"type": "INTEGER", "format": "int32", "nullable": false},
@@ -135,7 +135,7 @@ class RequestJsonTest {
             schema.toOpenApiJson(),
         )
         assertJson(
-                """
+            """
                 {"type": "object", "properties": {
                   "name": {"type": ["string", "null"]},
                   "rank": {"type": "integer", "minimum": -2147483648.0, "maximum": 2147483647.0},
@@ -154,7 +154,7 @@ class RequestJsonTest {
         val declaration = FunctionDeclaration("weather", "The weather", mapOf("city" to Schema.string()), optionalParameters = emptyList())
         val auto = AutoFunctionDeclaration.create<String>("echo", "Echoes", JsonSchema.string()) { FunctionResponsePart.from(JsonObject(emptyMap())) }
         assertJson(
-                """
+            """
                 {"functionDeclarations": [
                   {"name": "weather", "description": "The weather", "parameters": {"type": "OBJECT", "nullable": false, "properties": {"city": {"type": "STRING", "nullable": false}}, "required": ["city"]}},
                   {"name": "echo", "description": "Echoes", "parametersJsonSchema": {"type": "string"}}
@@ -165,7 +165,8 @@ class RequestJsonTest {
         assertJson("""{"functionDeclarations": [], "codeExecution": {}}""", Tool.codeExecution().toJson())
         assertJson("""{"functionDeclarations": [], "urlContext": {}}""", Tool.urlContext().toJson())
         assertJson("""{"functionDeclarations": [], "googleMaps": {}}""", Tool.googleMaps().toJson())
-        assertJson("""{"retrievalConfig": {"latLng": {"latitude": 1.5, "longitude": 2.5}}}""",
+        assertJson(
+            """{"retrievalConfig": {"latLng": {"latitude": 1.5, "longitude": 2.5}}}""",
             ToolConfig(retrievalConfig = retrievalConfig { latLng = LatLng(1.5, 2.5) }).toJson(),
         )
     }
@@ -179,7 +180,7 @@ class RequestJsonTest {
             toolConfig = TemplateToolConfig(retrievalConfig { languageCode = "fr" }),
         )
         assertJson(
-                """
+            """
                 {
                   "inputs": {"name": "Ada", "age": 36, "tags": ["a", "b"], "nested": {"ok": true}},
                   "history": [{"role": "user", "parts": [{"text": "Hi", "thoughtSignature": "sig"}]}],
@@ -201,7 +202,7 @@ class RequestJsonTest {
             contextWindowCompression = ContextWindowCompressionConfig(triggerTokens = 1000, slidingWindow = SlidingWindow(500))
         }
         assertJson(
-                """
+            """
                 {
                   "generationConfig": {"temperature": 0.5, "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": "Puck"}}, "languageCode": "en-US"}, "responseModalities": ["AUDIO"]},
                   "systemInstruction": {"role": "user", "parts": [{"text": "Hi", "thought": false}]},
@@ -214,7 +215,8 @@ class RequestJsonTest {
         )
         assertJson("""{"audio": {"mimeType": "audio/pcm", "data": "AAE="}}""", realtimeInput(audio = InlineData(byteArrayOf(0, 1), "audio/pcm")))
         assertJson("""{"activityStart": {}}""", realtimeInput(activityStart = true))
-        assertJson("""[{"name": "f", "response": {"a": 1}, "id": "7"}]""",
+        assertJson(
+            """[{"name": "f", "response": {"a": 1}, "id": "7"}]""",
             toolResponse(listOf(FunctionResponsePart("f", JsonObject(mapOf("a" to JsonPrimitive(1))), "7"))),
         )
     }

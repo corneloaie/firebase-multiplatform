@@ -36,13 +36,13 @@ import kotlin.jvm.JvmField
 public class Candidate
 @OptIn(PublicPreviewAPI::class)
 internal constructor(
-  public val content: Content,
-  public val safetyRatings: List<SafetyRating>,
-  public val citationMetadata: CitationMetadata?,
-  public val finishReason: FinishReason?,
-  public val finishMessage: String?,
-  public val groundingMetadata: GroundingMetadata?,
-  public val urlContextMetadata: UrlContextMetadata?
+    public val content: Content,
+    public val safetyRatings: List<SafetyRating>,
+    public val citationMetadata: CitationMetadata?,
+    public val finishReason: FinishReason?,
+    public val finishMessage: String?,
+    public val groundingMetadata: GroundingMetadata?,
+    public val urlContextMetadata: UrlContextMetadata?,
 )
 
 /**
@@ -60,12 +60,12 @@ internal constructor(
  */
 public class SafetyRating
 internal constructor(
-  public val category: HarmCategory,
-  public val probability: HarmProbability,
-  public val probabilityScore: Float = 0f,
-  public val blocked: Boolean? = null,
-  public val severity: HarmSeverity? = null,
-  public val severityScore: Float? = null
+    public val category: HarmCategory,
+    public val probability: HarmProbability,
+    public val probabilityScore: Float = 0f,
+    public val blocked: Boolean? = null,
+    public val severity: HarmSeverity? = null,
+    public val severityScore: Float? = null,
 )
 
 /**
@@ -93,29 +93,28 @@ public class CitationMetadata internal constructor(public val citations: List<Ci
  */
 public class Citation
 private constructor(
-  public val title: String?,
-  public val startIndex: Int,
-  public val endIndex: Int,
-  public val uri: String?,
-  public val license: String?,
-  // The year, month (1-12) and day of publicationDate, which is a java.util.Calendar on Android.
-  internal val publicationYear: Int?,
-  internal val publicationMonth: Int?,
-  internal val publicationDay: Int?,
+    public val title: String?,
+    public val startIndex: Int,
+    public val endIndex: Int,
+    public val uri: String?,
+    public val license: String?,
+    // The year, month (1-12) and day of publicationDate, which is a java.util.Calendar on Android.
+    internal val publicationYear: Int?,
+    internal val publicationMonth: Int?,
+    internal val publicationDay: Int?,
 ) {
-  internal companion object {
-    fun create(
-      title: String? = null,
-      startIndex: Int = 0,
-      endIndex: Int,
-      uri: String? = null,
-      license: String? = null,
-      publicationYear: Int? = null,
-      publicationMonth: Int? = null,
-      publicationDay: Int? = null,
-    ): Citation =
-      Citation(title, startIndex, endIndex, uri, license, publicationYear, publicationMonth, publicationDay)
-  }
+    internal companion object {
+        fun create(
+            title: String? = null,
+            startIndex: Int = 0,
+            endIndex: Int,
+            uri: String? = null,
+            license: String? = null,
+            publicationYear: Int? = null,
+            publicationMonth: Int? = null,
+            publicationDay: Int? = null,
+        ): Citation = Citation(title, startIndex, endIndex, uri, license, publicationYear, publicationMonth, publicationDay)
+    }
 }
 
 /**
@@ -125,77 +124,77 @@ private constructor(
  * @property ordinal The ordinal value of the finish reason.
  */
 public class FinishReason private constructor(public val name: String, public val ordinal: Int) {
-  public companion object {
-    /** A new and not yet supported value. */
-    @JvmField public val UNKNOWN: FinishReason = FinishReason("UNKNOWN", 0)
+    public companion object {
+        /** A new and not yet supported value. */
+        @JvmField public val UNKNOWN: FinishReason = FinishReason("UNKNOWN", 0)
 
-    /** Model finished successfully and stopped. */
-    @JvmField public val STOP: FinishReason = FinishReason("STOP", 1)
+        /** Model finished successfully and stopped. */
+        @JvmField public val STOP: FinishReason = FinishReason("STOP", 1)
 
-    /** Model hit the token limit. */
-    @JvmField public val MAX_TOKENS: FinishReason = FinishReason("MAX_TOKENS", 2)
+        /** Model hit the token limit. */
+        @JvmField public val MAX_TOKENS: FinishReason = FinishReason("MAX_TOKENS", 2)
 
-    /** [SafetySetting] prevented the model from outputting content. */
-    @JvmField public val SAFETY: FinishReason = FinishReason("SAFETY", 3)
+        /** [SafetySetting] prevented the model from outputting content. */
+        @JvmField public val SAFETY: FinishReason = FinishReason("SAFETY", 3)
 
-    /**
-     * The token generation was stopped because the response was flagged for unauthorized citations.
-     */
-    @JvmField public val RECITATION: FinishReason = FinishReason("RECITATION", 4)
+        /**
+         * The token generation was stopped because the response was flagged for unauthorized citations.
+         */
+        @JvmField public val RECITATION: FinishReason = FinishReason("RECITATION", 4)
 
-    /** Model stopped for another reason. */
-    @JvmField public val OTHER: FinishReason = FinishReason("OTHER", 5)
+        /** Model stopped for another reason. */
+        @JvmField public val OTHER: FinishReason = FinishReason("OTHER", 5)
 
-    /** Token generation stopped because the content contains forbidden terms. */
-    @JvmField public val BLOCKLIST: FinishReason = FinishReason("BLOCKLIST", 6)
+        /** Token generation stopped because the content contains forbidden terms. */
+        @JvmField public val BLOCKLIST: FinishReason = FinishReason("BLOCKLIST", 6)
 
-    /** Token generation stopped for potentially containing prohibited content. */
-    @JvmField public val PROHIBITED_CONTENT: FinishReason = FinishReason("PROHIBITED_CONTENT", 7)
+        /** Token generation stopped for potentially containing prohibited content. */
+        @JvmField public val PROHIBITED_CONTENT: FinishReason = FinishReason("PROHIBITED_CONTENT", 7)
 
-    /**
-     * Token generation stopped because the content potentially contains Sensitive Personally
-     * Identifiable Information (SPII).
-     */
-    @JvmField public val SPII: FinishReason = FinishReason("SPII", 8)
+        /**
+         * Token generation stopped because the content potentially contains Sensitive Personally
+         * Identifiable Information (SPII).
+         */
+        @JvmField public val SPII: FinishReason = FinishReason("SPII", 8)
 
-    /** The function call generated by the model is invalid. */
-    @JvmField
-    public val MALFORMED_FUNCTION_CALL: FinishReason = FinishReason("MALFORMED_FUNCTION_CALL", 9)
+        /** The function call generated by the model is invalid. */
+        @JvmField
+        public val MALFORMED_FUNCTION_CALL: FinishReason = FinishReason("MALFORMED_FUNCTION_CALL", 9)
 
-    /** Token generation stopped because generated images contain safety violations. */
-    @JvmField public val IMAGE_SAFETY: FinishReason = FinishReason("IMAGE_SAFETY", 10)
+        /** Token generation stopped because generated images contain safety violations. */
+        @JvmField public val IMAGE_SAFETY: FinishReason = FinishReason("IMAGE_SAFETY", 10)
 
-    /** Image generation stopped because generated images have other prohibited content. */
-    @JvmField
-    public val IMAGE_PROHIBITED_CONTENT: FinishReason = FinishReason("IMAGE_PROHIBITED_CONTENT", 11)
+        /** Image generation stopped because generated images have other prohibited content. */
+        @JvmField
+        public val IMAGE_PROHIBITED_CONTENT: FinishReason = FinishReason("IMAGE_PROHIBITED_CONTENT", 11)
 
-    /** Image generation stopped because of other miscellaneous issue. */
-    @JvmField public val IMAGE_OTHER: FinishReason = FinishReason("IMAGE_OTHER", 12)
+        /** Image generation stopped because of other miscellaneous issue. */
+        @JvmField public val IMAGE_OTHER: FinishReason = FinishReason("IMAGE_OTHER", 12)
 
-    /** The model was expected to generate an image, but none was generated. */
-    @JvmField public val NO_IMAGE: FinishReason = FinishReason("NO_IMAGE", 13)
+        /** The model was expected to generate an image, but none was generated. */
+        @JvmField public val NO_IMAGE: FinishReason = FinishReason("NO_IMAGE", 13)
 
-    /** Image generation stopped due to recitation. */
-    @JvmField public val IMAGE_RECITATION: FinishReason = FinishReason("IMAGE_RECITATION", 14)
+        /** Image generation stopped due to recitation. */
+        @JvmField public val IMAGE_RECITATION: FinishReason = FinishReason("IMAGE_RECITATION", 14)
 
-    /** The response candidate content was flagged for using an unsupported language. */
-    @JvmField public val LANGUAGE: FinishReason = FinishReason("LANGUAGE", 15)
+        /** The response candidate content was flagged for using an unsupported language. */
+        @JvmField public val LANGUAGE: FinishReason = FinishReason("LANGUAGE", 15)
 
-    /** Model generated a tool call but no tools were enabled in the request. */
-    @JvmField
-    public val UNEXPECTED_TOOL_CALL: FinishReason = FinishReason("UNEXPECTED_TOOL_CALL", 16)
+        /** Model generated a tool call but no tools were enabled in the request. */
+        @JvmField
+        public val UNEXPECTED_TOOL_CALL: FinishReason = FinishReason("UNEXPECTED_TOOL_CALL", 16)
 
-    /** Model called too many tools consecutively, thus the system exited execution. */
-    @JvmField public val TOO_MANY_TOOL_CALLS: FinishReason = FinishReason("TOO_MANY_TOOL_CALLS", 17)
+        /** Model called too many tools consecutively, thus the system exited execution. */
+        @JvmField public val TOO_MANY_TOOL_CALLS: FinishReason = FinishReason("TOO_MANY_TOOL_CALLS", 17)
 
-    /** Request has at least one thought signature missing. */
-    @JvmField
-    public val MISSING_THOUGHT_SIGNATURE: FinishReason =
-      FinishReason("MISSING_THOUGHT_SIGNATURE", 18)
+        /** Request has at least one thought signature missing. */
+        @JvmField
+        public val MISSING_THOUGHT_SIGNATURE: FinishReason =
+            FinishReason("MISSING_THOUGHT_SIGNATURE", 18)
 
-    /** Finished due to malformed response. */
-    @JvmField public val MALFORMED_RESPONSE: FinishReason = FinishReason("MALFORMED_RESPONSE", 19)
-  }
+        /** Finished due to malformed response. */
+        @JvmField public val MALFORMED_RESPONSE: FinishReason = FinishReason("MALFORMED_RESPONSE", 19)
+    }
 }
 
 /**
@@ -225,11 +224,11 @@ public class FinishReason private constructor(public val name: String, public va
  */
 public class GroundingMetadata
 internal constructor(
-  public val webSearchQueries: List<String>,
-  public val searchEntryPoint: SearchEntryPoint?,
-  public val retrievalQueries: List<String>,
-  public val groundingChunks: List<GroundingChunk>,
-  public val groundingSupports: List<GroundingSupport>,
+    public val webSearchQueries: List<String>,
+    public val searchEntryPoint: SearchEntryPoint?,
+    public val retrievalQueries: List<String>,
+    public val groundingChunks: List<GroundingChunk>,
+    public val groundingSupports: List<GroundingSupport>,
 )
 
 /**
@@ -241,8 +240,8 @@ internal constructor(
  */
 public class SearchEntryPoint
 internal constructor(
-  public val renderedContent: String,
-  public val sdkBlob: String?,
+    public val renderedContent: String,
+    public val sdkBlob: String?,
 )
 
 /**
@@ -253,8 +252,8 @@ internal constructor(
  */
 public class GroundingChunk
 internal constructor(
-  public val web: WebGroundingChunk? = null,
-  public val maps: GoogleMapsGroundingChunk? = null,
+    public val web: WebGroundingChunk? = null,
+    public val maps: GoogleMapsGroundingChunk? = null,
 )
 
 /**
@@ -267,9 +266,9 @@ internal constructor(
  */
 public class GoogleMapsGroundingChunk
 internal constructor(
-  public val uri: String?,
-  public val title: String?,
-  public val placeId: String?,
+    public val uri: String?,
+    public val title: String?,
+    public val placeId: String?,
 )
 
 /**
@@ -282,9 +281,9 @@ internal constructor(
  */
 public class WebGroundingChunk
 internal constructor(
-  public val uri: String?,
-  public val title: String?,
-  public val domain: String?
+    public val uri: String?,
+    public val title: String?,
+    public val domain: String?,
 )
 
 /**
@@ -301,8 +300,8 @@ internal constructor(
  */
 public class GroundingSupport
 internal constructor(
-  public val segment: Segment,
-  public val groundingChunkIndices: List<Int>,
+    public val segment: Segment,
+    public val groundingChunkIndices: List<Int>,
 )
 
 /**
@@ -321,10 +320,10 @@ internal constructor(
  */
 public class Segment
 internal constructor(
-  public val startIndex: Int,
-  public val endIndex: Int,
-  public val partIndex: Int,
-  public val text: String,
+    public val startIndex: Int,
+    public val endIndex: Int,
+    public val partIndex: Int,
+    public val text: String,
 )
 
 /**
@@ -342,8 +341,8 @@ public class UrlContextMetadata internal constructor(public val urlMetadata: Lis
  */
 public class UrlMetadata
 internal constructor(
-  public val retrievedUrl: String?,
-  public val urlRetrievalStatus: UrlRetrievalStatus
+    public val retrievedUrl: String?,
+    public val urlRetrievalStatus: UrlRetrievalStatus,
 )
 
 /**
@@ -353,21 +352,24 @@ internal constructor(
  * @property ordinal The ordinal value of the retrieval status.
  */
 public class UrlRetrievalStatus
-private constructor(public val name: String, public val ordinal: Int) {
-  public companion object {
-    /** Unspecified retrieval status. */
-    @JvmField public val UNSPECIFIED: UrlRetrievalStatus = UrlRetrievalStatus("UNSPECIFIED", 0)
+private constructor(
+    public val name: String,
+    public val ordinal: Int,
+) {
+    public companion object {
+        /** Unspecified retrieval status. */
+        @JvmField public val UNSPECIFIED: UrlRetrievalStatus = UrlRetrievalStatus("UNSPECIFIED", 0)
 
-    /** The URL retrieval was successful. */
-    @JvmField public val SUCCESS: UrlRetrievalStatus = UrlRetrievalStatus("SUCCESS", 1)
+        /** The URL retrieval was successful. */
+        @JvmField public val SUCCESS: UrlRetrievalStatus = UrlRetrievalStatus("SUCCESS", 1)
 
-    /** The URL retrieval failed. */
-    @JvmField public val ERROR: UrlRetrievalStatus = UrlRetrievalStatus("ERROR", 2)
+        /** The URL retrieval failed. */
+        @JvmField public val ERROR: UrlRetrievalStatus = UrlRetrievalStatus("ERROR", 2)
 
-    /** The URL retrieval failed because the content is behind a paywall. */
-    @JvmField public val PAYWALL: UrlRetrievalStatus = UrlRetrievalStatus("PAYWALL", 3)
+        /** The URL retrieval failed because the content is behind a paywall. */
+        @JvmField public val PAYWALL: UrlRetrievalStatus = UrlRetrievalStatus("PAYWALL", 3)
 
-    /** The URL retrieval failed because the content is unsafe. */
-    @JvmField public val UNSAFE: UrlRetrievalStatus = UrlRetrievalStatus("UNSAFE", 4)
-  }
+        /** The URL retrieval failed because the content is unsafe. */
+        @JvmField public val UNSAFE: UrlRetrievalStatus = UrlRetrievalStatus("UNSAFE", 4)
+    }
 }

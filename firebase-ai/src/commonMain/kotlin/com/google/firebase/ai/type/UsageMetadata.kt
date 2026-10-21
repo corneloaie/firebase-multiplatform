@@ -35,14 +35,14 @@ package com.google.firebase.ai.type
  */
 public class UsageMetadata
 internal constructor(
-  public val promptTokenCount: Int,
-  public val candidatesTokenCount: Int?,
-  public val totalTokenCount: Int,
-  public val cachedContentTokenCount: Int,
-  public val promptTokensDetails: List<ModalityTokenCount>,
-  public val candidatesTokensDetails: List<ModalityTokenCount>,
-  public val cacheTokensDetails: List<ModalityTokenCount>,
-  public val thoughtsTokenCount: Int,
-  public val toolUsePromptTokenCount: Int,
-  public val toolUsePromptTokensDetails: List<ModalityTokenCount>
+    public val promptTokenCount: Int,
+    public val candidatesTokenCount: Int?,
+    public val totalTokenCount: Int,
+    public val cachedContentTokenCount: Int,
+    public val promptTokensDetails: List<ModalityTokenCount>,
+    public val candidatesTokensDetails: List<ModalityTokenCount>,
+    public val cacheTokensDetails: List<ModalityTokenCount>,
+    public val thoughtsTokenCount: Int,
+    public val toolUsePromptTokenCount: Int,
+    public val toolUsePromptTokensDetails: List<ModalityTokenCount>,
 )

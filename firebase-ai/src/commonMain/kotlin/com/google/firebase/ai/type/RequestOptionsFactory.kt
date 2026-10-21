@@ -23,16 +23,14 @@ package com.google.firebase.ai.type
  * use by wrapper libraries and internal tools.
  */
 public object RequestOptionsFactory {
-  public fun createWithCustomHeader(
-    baseOptions: RequestOptions,
-    customApiClientHeader: String
-  ): RequestOptions {
-    return RequestOptions(
-      timeout = baseOptions.timeout,
-      endpoint = baseOptions.endpoint,
-      apiVersion = baseOptions.apiVersion,
-      autoFunctionCallingTurnLimit = baseOptions.autoFunctionCallingTurnLimit,
-      customApiClientHeader = customApiClientHeader
+    public fun createWithCustomHeader(
+        baseOptions: RequestOptions,
+        customApiClientHeader: String,
+    ): RequestOptions = RequestOptions(
+        timeout = baseOptions.timeout,
+        endpoint = baseOptions.endpoint,
+        apiVersion = baseOptions.apiVersion,
+        autoFunctionCallingTurnLimit = baseOptions.autoFunctionCallingTurnLimit,
+        customApiClientHeader = customApiClientHeader,
     )
-  }
 }

@@ -29,80 +29,81 @@ import kotlin.jvm.JvmSynthetic
  */
 public class ThinkingConfig
 private constructor(
-  internal val thinkingBudget: Int? = null,
-  internal val includeThoughts: Boolean? = null,
-  internal val thinkingLevel: ThinkingLevel? = null,
+    internal val thinkingBudget: Int? = null,
+    internal val includeThoughts: Boolean? = null,
+    internal val thinkingLevel: ThinkingLevel? = null,
 ) {
-  public class Builder() {
-    @JvmField
-    @set:JvmSynthetic // hide void setter from Java
-    public var thinkingBudget: Int? = null
+    public class Builder {
+        @JvmField
+        @set:JvmSynthetic // hide void setter from Java
+        public var thinkingBudget: Int? = null
 
-    @JvmField
-    @set:JvmSynthetic // hide void setter from Java
-    public var includeThoughts: Boolean? = null
+        @JvmField
+        @set:JvmSynthetic // hide void setter from Java
+        public var includeThoughts: Boolean? = null
 
-    @JvmField
-    @set:JvmSynthetic // hide void setter from Java
-    public var thinkingLevel: ThinkingLevel? = null
+        @JvmField
+        @set:JvmSynthetic // hide void setter from Java
+        public var thinkingLevel: ThinkingLevel? = null
 
-    /**
-     * Sets the amount of thinking the model can do to generate a response, defined as a
-     * `ThinkingBudget` in tokens.
-     *
-     * The range of
-     * [supported thinking budget values](https://firebase.google.com/docs/ai-logic/thinking)
-     * depends on the model.
-     * - To disable thinking, when supported by the model, set this value to `0`.
-     * - To use dynamic thinking, allowing the model to decide on the thinking budget based on the
-     * task, set this value to `-1`.
-     */
-    public fun setThinkingBudget(thinkingBudget: Int): Builder = apply {
-      this.thinkingBudget = thinkingBudget
+        /**
+         * Sets the amount of thinking the model can do to generate a response, defined as a
+         * `ThinkingBudget` in tokens.
+         *
+         * The range of
+         * [supported thinking budget values](https://firebase.google.com/docs/ai-logic/thinking)
+         * depends on the model.
+         * - To disable thinking, when supported by the model, set this value to `0`.
+         * - To use dynamic thinking, allowing the model to decide on the thinking budget based on the
+         * task, set this value to `-1`.
+         */
+        public fun setThinkingBudget(thinkingBudget: Int): Builder = apply {
+            this.thinkingBudget = thinkingBudget
+        }
+
+        /**
+         * Sets the amount of thinking the model can do to generate a response, defined as a
+         * `ThinkingLevel`.
+         *
+         * If you don't specify a thinking level, Gemini will use the model's default dynamic thinking
+         * level.
+         *
+         * > Important: Gemini 2.5 series models do not support thinking levels; use [setThinkingBudget]
+         * to set a thinking budget instead.
+         *
+         * @param thinkingLevel A preset that controls the model's "thinking" process. Use
+         * [ThinkingLevel.LOW] for faster responses on less complex tasks, and [ThinkingLevel.HIGH] for
+         * better reasoning on more complex tasks.
+         */
+        public fun setThinkingLevel(thinkingLevel: ThinkingLevel): Builder = apply {
+            this.thinkingLevel = thinkingLevel
+        }
+
+        /**
+         * Indicates whether to request the model to include the thoughts parts in the response.
+         *
+         * Keep in mind that once enabled, you should check for the `isThought` property when processing
+         * a `Part` instance to correctly handle both thoughts and the actual response.
+         *
+         * The default value is `false`.
+         */
+        public fun setIncludeThoughts(includeThoughts: Boolean): Builder = apply {
+            this.includeThoughts = includeThoughts
+        }
+
+        public fun build(): ThinkingConfig {
+            if (thinkingBudget != null && thinkingLevel != null) {
+                throw IllegalArgumentException(
+                    "`thinkingBudget` already set. Cannot set both `thinkingBudget` and `thinkingLevel`",
+                )
+            }
+            return ThinkingConfig(
+                thinkingBudget = thinkingBudget,
+                includeThoughts = includeThoughts,
+                thinkingLevel = thinkingLevel,
+            )
+        }
     }
-
-    /**
-     * Sets the amount of thinking the model can do to generate a response, defined as a
-     * `ThinkingLevel`.
-     *
-     * If you don't specify a thinking level, Gemini will use the model's default dynamic thinking
-     * level.
-     *
-     * > Important: Gemini 2.5 series models do not support thinking levels; use [setThinkingBudget]
-     * to set a thinking budget instead.
-     *
-     * @param thinkingLevel A preset that controls the model's "thinking" process. Use
-     * [ThinkingLevel.LOW] for faster responses on less complex tasks, and [ThinkingLevel.HIGH] for
-     * better reasoning on more complex tasks.
-     */
-    public fun setThinkingLevel(thinkingLevel: ThinkingLevel): Builder = apply {
-      this.thinkingLevel = thinkingLevel
-    }
-
-    /**
-     * Indicates whether to request the model to include the thoughts parts in the response.
-     *
-     * Keep in mind that once enabled, you should check for the `isThought` property when processing
-     * a `Part` instance to correctly handle both thoughts and the actual response.
-     *
-     * The default value is `false`.
-     */
-    public fun setIncludeThoughts(includeThoughts: Boolean): Builder = apply {
-      this.includeThoughts = includeThoughts
-    }
-
-    public fun build(): ThinkingConfig {
-      if (thinkingBudget != null && thinkingLevel != null)
-        throw IllegalArgumentException(
-          "`thinkingBudget` already set. Cannot set both `thinkingBudget` and `thinkingLevel`"
-        )
-      return ThinkingConfig(
-        thinkingBudget = thinkingBudget,
-        includeThoughts = includeThoughts,
-        thinkingLevel = thinkingLevel
-      )
-    }
-  }
 }
 
 /**
@@ -116,7 +117,7 @@ private constructor(
  * ```
  */
 public fun thinkingConfig(init: ThinkingConfig.Builder.() -> Unit): ThinkingConfig {
-  val builder = ThinkingConfig.Builder()
-  builder.init()
-  return builder.build()
+    val builder = ThinkingConfig.Builder()
+    builder.init()
+    return builder.build()
 }

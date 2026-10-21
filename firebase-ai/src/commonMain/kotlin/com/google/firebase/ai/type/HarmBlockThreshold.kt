@@ -22,25 +22,25 @@ import kotlin.jvm.JvmField
 
 /** Represents the threshold for a [HarmCategory] to be allowed by [SafetySetting]. */
 public class HarmBlockThreshold private constructor(public val ordinal: Int) {
-  public companion object {
-    /** Content with negligible harm is allowed. */
-    @JvmField public val LOW_AND_ABOVE: HarmBlockThreshold = HarmBlockThreshold(0)
+    public companion object {
+        /** Content with negligible harm is allowed. */
+        @JvmField public val LOW_AND_ABOVE: HarmBlockThreshold = HarmBlockThreshold(0)
 
-    /** Content with negligible to low harm is allowed. */
-    @JvmField public val MEDIUM_AND_ABOVE: HarmBlockThreshold = HarmBlockThreshold(1)
+        /** Content with negligible to low harm is allowed. */
+        @JvmField public val MEDIUM_AND_ABOVE: HarmBlockThreshold = HarmBlockThreshold(1)
 
-    /** Content with negligible to medium harm is allowed. */
-    @JvmField public val ONLY_HIGH: HarmBlockThreshold = HarmBlockThreshold(2)
+        /** Content with negligible to medium harm is allowed. */
+        @JvmField public val ONLY_HIGH: HarmBlockThreshold = HarmBlockThreshold(2)
 
-    /** All content is allowed regardless of harm. */
-    @JvmField public val NONE: HarmBlockThreshold = HarmBlockThreshold(3)
+        /** All content is allowed regardless of harm. */
+        @JvmField public val NONE: HarmBlockThreshold = HarmBlockThreshold(3)
 
-    /**
-     * All content is allowed regardless of harm.
-     *
-     * The same as [NONE], but metadata when the corresponding [HarmCategory] occurs will **NOT** be
-     * present in the response.
-     */
-    @JvmField public val OFF: HarmBlockThreshold = HarmBlockThreshold(4)
-  }
+        /**
+         * All content is allowed regardless of harm.
+         *
+         * The same as [NONE], but metadata when the corresponding [HarmCategory] occurs will **NOT** be
+         * present in the response.
+         */
+        @JvmField public val OFF: HarmBlockThreshold = HarmBlockThreshold(4)
+    }
 }

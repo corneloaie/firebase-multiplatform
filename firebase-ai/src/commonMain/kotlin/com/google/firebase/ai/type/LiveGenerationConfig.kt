@@ -68,128 +68,137 @@ import kotlin.jvm.JvmField
 @PublicPreviewAPI
 public class LiveGenerationConfig
 private constructor(
-  internal val temperature: Float?,
-  internal val topK: Int?,
-  internal val topP: Float?,
-  internal val maxOutputTokens: Int?,
-  internal val presencePenalty: Float?,
-  internal val frequencyPenalty: Float?,
-  internal val responseModality: ResponseModality?,
-  internal val speechConfig: SpeechConfig?,
-  internal val inputAudioTranscription: AudioTranscriptionConfig?,
-  internal val outputAudioTranscription: AudioTranscriptionConfig?,
-  internal val contextWindowCompression: ContextWindowCompressionConfig?,
-  internal val realtimeInputConfig: RealtimeInputConfig?,
+    internal val temperature: Float?,
+    internal val topK: Int?,
+    internal val topP: Float?,
+    internal val maxOutputTokens: Int?,
+    internal val presencePenalty: Float?,
+    internal val frequencyPenalty: Float?,
+    internal val responseModality: ResponseModality?,
+    internal val speechConfig: SpeechConfig?,
+    internal val inputAudioTranscription: AudioTranscriptionConfig?,
+    internal val outputAudioTranscription: AudioTranscriptionConfig?,
+    internal val contextWindowCompression: ContextWindowCompressionConfig?,
+    internal val realtimeInputConfig: RealtimeInputConfig?,
 ) {
-  /**
-   * Builder for creating a [LiveGenerationConfig].
-   *
-   * Mainly intended for Java interop. Kotlin consumers should use [liveGenerationConfig] for a more
-   * idiomatic experience.
-   *
-   * @property temperature See [LiveGenerationConfig.temperature].
-   *
-   * @property topK See [LiveGenerationConfig.topK].
-   *
-   * @property topP See [LiveGenerationConfig.topP].
-   *
-   * @property presencePenalty See [LiveGenerationConfig.presencePenalty]
-   *
-   * @property frequencyPenalty See [LiveGenerationConfig.frequencyPenalty]
-   *
-   * @property maxOutputTokens See [LiveGenerationConfig.maxOutputTokens].
-   *
-   * @property responseModality See [LiveGenerationConfig.responseModality]
-   *
-   * @property speechConfig See [LiveGenerationConfig.speechConfig]
-   *
-   * @property inputAudioTranscription see [LiveGenerationConfig.inputAudioTranscription]
-   *
-   * @property outputAudioTranscription see [LiveGenerationConfig.outputAudioTranscription]
-   *
-   * @property contextWindowCompression see [LiveGenerationConfig.contextWindowCompression]
-   *
-   * @property realtimeInputConfig see [LiveGenerationConfig.realtimeInputConfig]
-   */
-  public class Builder {
-    @JvmField public var temperature: Float? = null
-    @JvmField public var topK: Int? = null
-    @JvmField public var topP: Float? = null
-    @JvmField public var maxOutputTokens: Int? = null
-    @JvmField public var presencePenalty: Float? = null
-    @JvmField public var frequencyPenalty: Float? = null
-    @JvmField public var responseModality: ResponseModality? = null
-    @JvmField public var speechConfig: SpeechConfig? = null
-    @JvmField public var inputAudioTranscription: AudioTranscriptionConfig? = null
-    @JvmField public var outputAudioTranscription: AudioTranscriptionConfig? = null
-    @JvmField public var contextWindowCompression: ContextWindowCompressionConfig? = null
-    @JvmField public var realtimeInputConfig: RealtimeInputConfig? = null
-
-    public fun setTemperature(temperature: Float?): Builder = apply {
-      this.temperature = temperature
-    }
-    public fun setTopK(topK: Int?): Builder = apply { this.topK = topK }
-    public fun setTopP(topP: Float?): Builder = apply { this.topP = topP }
-    public fun setMaxOutputTokens(maxOutputTokens: Int?): Builder = apply {
-      this.maxOutputTokens = maxOutputTokens
-    }
-    public fun setPresencePenalty(presencePenalty: Float?): Builder = apply {
-      this.presencePenalty = presencePenalty
-    }
-    public fun setFrequencyPenalty(frequencyPenalty: Float?): Builder = apply {
-      this.frequencyPenalty = frequencyPenalty
-    }
-    public fun setResponseModality(responseModality: ResponseModality?): Builder = apply {
-      this.responseModality = responseModality
-    }
-    public fun setSpeechConfig(speechConfig: SpeechConfig?): Builder = apply {
-      this.speechConfig = speechConfig
-    }
-
-    public fun setInputAudioTranscription(config: AudioTranscriptionConfig?): Builder = apply {
-      this.inputAudioTranscription = config
-    }
-
-    public fun setOutputAudioTranscription(config: AudioTranscriptionConfig?): Builder = apply {
-      this.outputAudioTranscription = config
-    }
-
-    public fun setContextWindowCompression(config: ContextWindowCompressionConfig?): Builder =
-      apply {
-        this.contextWindowCompression = config
-      }
-
-    public fun setRealtimeInputConfig(config: RealtimeInputConfig): Builder = apply {
-      this.realtimeInputConfig = config
-    }
-
-    /** Create a new [LiveGenerationConfig] with the attached arguments. */
-    public fun build(): LiveGenerationConfig =
-      LiveGenerationConfig(
-        temperature = temperature,
-        topK = topK,
-        topP = topP,
-        maxOutputTokens = maxOutputTokens,
-        presencePenalty = presencePenalty,
-        frequencyPenalty = frequencyPenalty,
-        speechConfig = speechConfig,
-        responseModality = responseModality,
-        inputAudioTranscription = inputAudioTranscription,
-        outputAudioTranscription = outputAudioTranscription,
-        contextWindowCompression = contextWindowCompression,
-        realtimeInputConfig = realtimeInputConfig,
-      )
-  }
-
-  public companion object {
     /**
-     * Alternative casing for [LiveGenerationConfig.Builder]:
-     * ```
-     * val config = LiveGenerationConfig.builder()
-     * ```
+     * Builder for creating a [LiveGenerationConfig].
+     *
+     * Mainly intended for Java interop. Kotlin consumers should use [liveGenerationConfig] for a more
+     * idiomatic experience.
+     *
+     * @property temperature See [LiveGenerationConfig.temperature].
+     *
+     * @property topK See [LiveGenerationConfig.topK].
+     *
+     * @property topP See [LiveGenerationConfig.topP].
+     *
+     * @property presencePenalty See [LiveGenerationConfig.presencePenalty]
+     *
+     * @property frequencyPenalty See [LiveGenerationConfig.frequencyPenalty]
+     *
+     * @property maxOutputTokens See [LiveGenerationConfig.maxOutputTokens].
+     *
+     * @property responseModality See [LiveGenerationConfig.responseModality]
+     *
+     * @property speechConfig See [LiveGenerationConfig.speechConfig]
+     *
+     * @property inputAudioTranscription see [LiveGenerationConfig.inputAudioTranscription]
+     *
+     * @property outputAudioTranscription see [LiveGenerationConfig.outputAudioTranscription]
+     *
+     * @property contextWindowCompression see [LiveGenerationConfig.contextWindowCompression]
+     *
+     * @property realtimeInputConfig see [LiveGenerationConfig.realtimeInputConfig]
      */
-    public fun builder(): Builder = Builder()
-  }
+    public class Builder {
+        @JvmField public var temperature: Float? = null
+
+        @JvmField public var topK: Int? = null
+
+        @JvmField public var topP: Float? = null
+
+        @JvmField public var maxOutputTokens: Int? = null
+
+        @JvmField public var presencePenalty: Float? = null
+
+        @JvmField public var frequencyPenalty: Float? = null
+
+        @JvmField public var responseModality: ResponseModality? = null
+
+        @JvmField public var speechConfig: SpeechConfig? = null
+
+        @JvmField public var inputAudioTranscription: AudioTranscriptionConfig? = null
+
+        @JvmField public var outputAudioTranscription: AudioTranscriptionConfig? = null
+
+        @JvmField public var contextWindowCompression: ContextWindowCompressionConfig? = null
+
+        @JvmField public var realtimeInputConfig: RealtimeInputConfig? = null
+
+        public fun setTemperature(temperature: Float?): Builder = apply {
+            this.temperature = temperature
+        }
+        public fun setTopK(topK: Int?): Builder = apply { this.topK = topK }
+        public fun setTopP(topP: Float?): Builder = apply { this.topP = topP }
+        public fun setMaxOutputTokens(maxOutputTokens: Int?): Builder = apply {
+            this.maxOutputTokens = maxOutputTokens
+        }
+        public fun setPresencePenalty(presencePenalty: Float?): Builder = apply {
+            this.presencePenalty = presencePenalty
+        }
+        public fun setFrequencyPenalty(frequencyPenalty: Float?): Builder = apply {
+            this.frequencyPenalty = frequencyPenalty
+        }
+        public fun setResponseModality(responseModality: ResponseModality?): Builder = apply {
+            this.responseModality = responseModality
+        }
+        public fun setSpeechConfig(speechConfig: SpeechConfig?): Builder = apply {
+            this.speechConfig = speechConfig
+        }
+
+        public fun setInputAudioTranscription(config: AudioTranscriptionConfig?): Builder = apply {
+            this.inputAudioTranscription = config
+        }
+
+        public fun setOutputAudioTranscription(config: AudioTranscriptionConfig?): Builder = apply {
+            this.outputAudioTranscription = config
+        }
+
+        public fun setContextWindowCompression(config: ContextWindowCompressionConfig?): Builder = apply {
+            this.contextWindowCompression = config
+        }
+
+        public fun setRealtimeInputConfig(config: RealtimeInputConfig): Builder = apply {
+            this.realtimeInputConfig = config
+        }
+
+        /** Create a new [LiveGenerationConfig] with the attached arguments. */
+        public fun build(): LiveGenerationConfig = LiveGenerationConfig(
+            temperature = temperature,
+            topK = topK,
+            topP = topP,
+            maxOutputTokens = maxOutputTokens,
+            presencePenalty = presencePenalty,
+            frequencyPenalty = frequencyPenalty,
+            speechConfig = speechConfig,
+            responseModality = responseModality,
+            inputAudioTranscription = inputAudioTranscription,
+            outputAudioTranscription = outputAudioTranscription,
+            contextWindowCompression = contextWindowCompression,
+            realtimeInputConfig = realtimeInputConfig,
+        )
+    }
+
+    public companion object {
+        /**
+         * Alternative casing for [LiveGenerationConfig.Builder]:
+         * ```
+         * val config = LiveGenerationConfig.builder()
+         * ```
+         */
+        public fun builder(): Builder = Builder()
+    }
 }
 
 /**
@@ -208,9 +217,9 @@ private constructor(
  */
 @OptIn(PublicPreviewAPI::class)
 public fun liveGenerationConfig(
-  init: LiveGenerationConfig.Builder.() -> Unit
+    init: LiveGenerationConfig.Builder.() -> Unit,
 ): LiveGenerationConfig {
-  val builder = LiveGenerationConfig.builder()
-  builder.init()
-  return builder.build()
+    val builder = LiveGenerationConfig.builder()
+    builder.init()
+    return builder.build()
 }

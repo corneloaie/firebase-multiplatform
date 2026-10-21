@@ -22,35 +22,35 @@ import kotlin.jvm.JvmField
 
 /** Represents the aspect ratio that the generated image should conform to. */
 public class AspectRatio private constructor(internal val value: String) {
-  public companion object {
-    /** Square (1:1) aspect ratio. */
-    @JvmField public val SQUARE_1x1: AspectRatio = AspectRatio("1:1")
+    public companion object {
+        /** Square (1:1) aspect ratio. */
+        @JvmField public val SQUARE_1x1: AspectRatio = AspectRatio("1:1")
 
-    /** Portrait (2:3) aspect ratio. */
-    @JvmField public val PORTRAIT_2x3: AspectRatio = AspectRatio("2:3")
+        /** Portrait (2:3) aspect ratio. */
+        @JvmField public val PORTRAIT_2x3: AspectRatio = AspectRatio("2:3")
 
-    /** Landscape (3:2) aspect ratio. */
-    @JvmField public val LANDSCAPE_3x2: AspectRatio = AspectRatio("3:2")
+        /** Landscape (3:2) aspect ratio. */
+        @JvmField public val LANDSCAPE_3x2: AspectRatio = AspectRatio("3:2")
 
-    /** Portrait full screen (3:4) aspect ratio. */
-    @JvmField public val PORTRAIT_3x4: AspectRatio = AspectRatio("3:4")
+        /** Portrait full screen (3:4) aspect ratio. */
+        @JvmField public val PORTRAIT_3x4: AspectRatio = AspectRatio("3:4")
 
-    /** Fullscreen (4:3) aspect ratio. */
-    @JvmField public val LANDSCAPE_4x3: AspectRatio = AspectRatio("4:3")
+        /** Fullscreen (4:3) aspect ratio. */
+        @JvmField public val LANDSCAPE_4x3: AspectRatio = AspectRatio("4:3")
 
-    /** Portrait (4:5) aspect ratio. */
-    @JvmField public val PORTRAIT_4x5: AspectRatio = AspectRatio("4:5")
+        /** Portrait (4:5) aspect ratio. */
+        @JvmField public val PORTRAIT_4x5: AspectRatio = AspectRatio("4:5")
 
-    /** Landscape (5:4) aspect ratio. */
-    @JvmField public val LANDSCAPE_5x4: AspectRatio = AspectRatio("5:4")
+        /** Landscape (5:4) aspect ratio. */
+        @JvmField public val LANDSCAPE_5x4: AspectRatio = AspectRatio("5:4")
 
-    /** Portrait widescreen (9:16) aspect ratio. */
-    @JvmField public val PORTRAIT_9x16: AspectRatio = AspectRatio("9:16")
+        /** Portrait widescreen (9:16) aspect ratio. */
+        @JvmField public val PORTRAIT_9x16: AspectRatio = AspectRatio("9:16")
 
-    /** Widescreen (16:9) aspect ratio. */
-    @JvmField public val LANDSCAPE_16x9: AspectRatio = AspectRatio("16:9")
+        /** Widescreen (16:9) aspect ratio. */
+        @JvmField public val LANDSCAPE_16x9: AspectRatio = AspectRatio("16:9")
 
-    /** Landscape (21:9) aspect ratio. */
-    @JvmField public val LANDSCAPE_21x9: AspectRatio = AspectRatio("21:9")
-  }
+        /** Landscape (21:9) aspect ratio. */
+        @JvmField public val LANDSCAPE_21x9: AspectRatio = AspectRatio("21:9")
+    }
 }

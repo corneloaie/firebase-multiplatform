@@ -27,25 +27,25 @@ import kotlin.time.toDuration
 /** Configurable options unique to how requests to the backend are performed. */
 public class RequestOptions
 internal constructor(
-  internal val timeout: Duration,
-  internal val endpoint: String = "https://firebasevertexai.googleapis.com",
-  internal val apiVersion: String = "v1beta",
-  internal val autoFunctionCallingTurnLimit: Int,
-  internal val customApiClientHeader: String? = null
+    internal val timeout: Duration,
+    internal val endpoint: String = "https://firebasevertexai.googleapis.com",
+    internal val apiVersion: String = "v1beta",
+    internal val autoFunctionCallingTurnLimit: Int,
+    internal val customApiClientHeader: String? = null,
 ) {
-  /**
-   * Constructor for RequestOptions.
-   *
-   * @param timeoutInMillis the maximum amount of time, in milliseconds, for a request to take, from
-   * the first request to first response.
-   */
-  @JvmOverloads
-  public constructor(
-    timeoutInMillis: Long = 180.seconds.inWholeMilliseconds,
-    autoFunctionCallingTurnLimit: Int = 10,
-  ) : this(
-    timeout = timeoutInMillis.toDuration(DurationUnit.MILLISECONDS),
-    autoFunctionCallingTurnLimit = autoFunctionCallingTurnLimit,
-    customApiClientHeader = null
-  )
+    /**
+     * Constructor for RequestOptions.
+     *
+     * @param timeoutInMillis the maximum amount of time, in milliseconds, for a request to take, from
+     * the first request to first response.
+     */
+    @JvmOverloads
+    public constructor(
+        timeoutInMillis: Long = 180.seconds.inWholeMilliseconds,
+        autoFunctionCallingTurnLimit: Int = 10,
+    ) : this(
+        timeout = timeoutInMillis.toDuration(DurationUnit.MILLISECONDS),
+        autoFunctionCallingTurnLimit = autoFunctionCallingTurnLimit,
+        customApiClientHeader = null,
+    )
 }

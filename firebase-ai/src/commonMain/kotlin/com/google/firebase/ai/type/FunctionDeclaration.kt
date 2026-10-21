@@ -53,11 +53,11 @@ package com.google.firebase.ai.type
  * @see Schema
  */
 public class FunctionDeclaration(
-  internal val name: String,
-  internal val description: String,
-  internal val parameters: Map<String, Schema>,
-  internal val optionalParameters: List<String> = emptyList(),
+    internal val name: String,
+    internal val description: String,
+    internal val parameters: Map<String, Schema>,
+    internal val optionalParameters: List<String> = emptyList(),
 ) {
-  internal val schema: Schema =
-    Schema.obj(properties = parameters, optionalProperties = optionalParameters, nullable = false)
+    internal val schema: Schema =
+        Schema.obj(properties = parameters, optionalProperties = optionalParameters, nullable = false)
 }

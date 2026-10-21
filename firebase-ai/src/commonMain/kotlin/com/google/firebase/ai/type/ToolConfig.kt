@@ -29,6 +29,6 @@ import kotlin.jvm.JvmOverloads
 public class ToolConfig
 @JvmOverloads
 constructor(
-  internal val functionCallingConfig: FunctionCallingConfig? = null,
-  internal val retrievalConfig: RetrievalConfig? = null,
+    internal val functionCallingConfig: FunctionCallingConfig? = null,
+    internal val retrievalConfig: RetrievalConfig? = null,
 )

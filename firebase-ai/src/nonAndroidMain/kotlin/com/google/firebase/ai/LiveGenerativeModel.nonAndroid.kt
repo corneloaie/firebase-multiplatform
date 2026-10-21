@@ -29,8 +29,7 @@ public actual class LiveGenerativeModel internal constructor(
     private val systemInstruction: Content?,
     private val requestOptions: RequestOptions,
 ) {
-    private suspend fun open(sessionResumption: SessionResumptionConfig?): NativeLiveSession =
-        native.connect(modelName, liveSetup(config, tools, systemInstruction, sessionResumption), NativeRequestOptions(requestOptions.timeout))
+    private suspend fun open(sessionResumption: SessionResumptionConfig?): NativeLiveSession = native.connect(modelName, liveSetup(config, tools, systemInstruction, sessionResumption), NativeRequestOptions(requestOptions.timeout))
 
     public actual suspend fun connect(sessionResumption: SessionResumptionConfig?): LiveSession = catchAsync {
         LiveSession(open(sessionResumption), ::open, ::hasFunction, ::executeFunction)

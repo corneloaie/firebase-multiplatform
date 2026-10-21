@@ -28,92 +28,91 @@ import kotlin.jvm.JvmStatic
 @PublicPreviewAPI
 public class RealtimeInputConfig
 private constructor(
-  internal val automaticActivityDetection: ActivityDetectionConfig?,
-  internal val activityHandling: ActivityHandling?,
-  internal val turnCoverage: TurnCoverage?
+    internal val automaticActivityDetection: ActivityDetectionConfig?,
+    internal val activityHandling: ActivityHandling?,
+    internal val turnCoverage: TurnCoverage?,
 ) {
-  /** How a model handles user input activity. */
-  public class ActivityHandling private constructor(internal val value: String) {
+    /** How a model handles user input activity. */
+    public class ActivityHandling private constructor(internal val value: String) {
+        public companion object {
+            /**
+             * When the user sends input marking the start of activity, the model's current response will
+             * be cut-off immediately.
+             */
+            @JvmField
+            public val INTERRUPT: ActivityHandling = ActivityHandling("START_OF_ACTIVITY_INTERRUPTS")
+
+            /**
+             * When the user sends input marking the start of activity, the model will process it, but
+             * won't cut-off its current response.
+             */
+            @JvmField public val NO_INTERRUPT: ActivityHandling = ActivityHandling("NO_INTERRUPTION")
+        }
+    }
+
+    /** How the model considers which input is included in the user's turn. */
+    public class TurnCoverage private constructor(internal val value: String) {
+        public companion object {
+            /**
+             * The model will exclude inactivity (for example, silence on the audio stream) from the
+             * user's input.
+             */
+            @JvmField public val ONLY_ACTIVITY: TurnCoverage = TurnCoverage("TURN_INCLUDES_ONLY_ACTIVITY")
+
+            /**
+             * The model will include all input (including inactivity) since the last turn as the user's
+             * input.
+             */
+            @JvmField public val ALL_INPUT: TurnCoverage = TurnCoverage("TURN_INCLUDES_ALL_INPUT")
+        }
+    }
+
+    /** Builder for creating a [RealtimeInputConfig]. */
+    public class Builder {
+        /**
+         * Configures automatic activity detection on the model.
+         *
+         * When not set, automatic activity detection is enabled by default. If set, the user must send
+         * activity signals.
+         */
+        @JvmField public var automaticActivityDetection: ActivityDetectionConfig? = null
+
+        /** Defines how the model treats user input activity. */
+        @JvmField public var activityHandling: ActivityHandling? = null
+
+        /**
+         * Defines which input is included in the user's turn, relative to the starting and ending of
+         * the activity.
+         */
+        @JvmField public var turnCoverage: TurnCoverage? = null
+
+        /** Sets [automaticActivityDetection]. */
+        public fun setAutomaticActivityDetection(config: ActivityDetectionConfig): Builder = apply {
+            automaticActivityDetection = config
+        }
+
+        /** Sets [activityHandling]. */
+        public fun setActivityHandling(handling: ActivityHandling): Builder = apply {
+            activityHandling = handling
+        }
+
+        /** Sets [turnCoverage]. */
+        public fun setTurnCoverage(coverage: TurnCoverage): Builder = apply { turnCoverage = coverage }
+
+        /** Creates a new [RealtimeInputConfig] with the configured options. */
+        public fun build(): RealtimeInputConfig = RealtimeInputConfig(automaticActivityDetection, activityHandling, turnCoverage)
+    }
+
     public companion object {
-      /**
-       * When the user sends input marking the start of activity, the model's current response will
-       * be cut-off immediately.
-       */
-      @JvmField
-      public val INTERRUPT: ActivityHandling = ActivityHandling("START_OF_ACTIVITY_INTERRUPTS")
-
-      /**
-       * When the user sends input marking the start of activity, the model will process it, but
-       * won't cut-off its current response.
-       */
-      @JvmField public val NO_INTERRUPT: ActivityHandling = ActivityHandling("NO_INTERRUPTION")
+        /** Creates a new [Builder]. */
+        @JvmStatic public fun builder(): Builder = Builder()
     }
-  }
-
-  /** How the model considers which input is included in the user's turn. */
-  public class TurnCoverage private constructor(internal val value: String) {
-    public companion object {
-      /**
-       * The model will exclude inactivity (for example, silence on the audio stream) from the
-       * user's input.
-       */
-      @JvmField public val ONLY_ACTIVITY: TurnCoverage = TurnCoverage("TURN_INCLUDES_ONLY_ACTIVITY")
-
-      /**
-       * The model will include all input (including inactivity) since the last turn as the user's
-       * input.
-       */
-      @JvmField public val ALL_INPUT: TurnCoverage = TurnCoverage("TURN_INCLUDES_ALL_INPUT")
-    }
-  }
-
-  /** Builder for creating a [RealtimeInputConfig]. */
-  public class Builder {
-    /**
-     * Configures automatic activity detection on the model.
-     *
-     * When not set, automatic activity detection is enabled by default. If set, the user must send
-     * activity signals.
-     */
-    @JvmField public var automaticActivityDetection: ActivityDetectionConfig? = null
-
-    /** Defines how the model treats user input activity. */
-    @JvmField public var activityHandling: ActivityHandling? = null
-
-    /**
-     * Defines which input is included in the user's turn, relative to the starting and ending of
-     * the activity.
-     */
-    @JvmField public var turnCoverage: TurnCoverage? = null
-
-    /** Sets [automaticActivityDetection]. */
-    public fun setAutomaticActivityDetection(config: ActivityDetectionConfig): Builder = apply {
-      automaticActivityDetection = config
-    }
-
-    /** Sets [activityHandling]. */
-    public fun setActivityHandling(handling: ActivityHandling): Builder = apply {
-      activityHandling = handling
-    }
-
-    /** Sets [turnCoverage]. */
-    public fun setTurnCoverage(coverage: TurnCoverage): Builder = apply { turnCoverage = coverage }
-
-    /** Creates a new [RealtimeInputConfig] with the configured options. */
-    public fun build(): RealtimeInputConfig =
-      RealtimeInputConfig(automaticActivityDetection, activityHandling, turnCoverage)
-  }
-
-  public companion object {
-    /** Creates a new [Builder]. */
-    @JvmStatic public fun builder(): Builder = Builder()
-  }
 }
 
 /** Helper method to construct a [RealtimeInputConfig] in a DSL-like manner. */
 @OptIn(PublicPreviewAPI::class)
 public fun realtimeInputConfig(init: RealtimeInputConfig.Builder.() -> Unit): RealtimeInputConfig {
-  val builder = RealtimeInputConfig.builder()
-  builder.init()
-  return builder.build()
+    val builder = RealtimeInputConfig.builder()
+    builder.init()
+    return builder.build()
 }

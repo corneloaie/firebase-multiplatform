@@ -29,42 +29,41 @@ import kotlin.jvm.JvmStatic
  */
 public class RetrievalConfig
 internal constructor(
-  internal val latLng: LatLng? = null,
-  internal val languageCode: String? = null
+    internal val latLng: LatLng? = null,
+    internal val languageCode: String? = null,
 ) {
-  /**
-   * Builder for creating a [RetrievalConfig].
-   *
-   * Mainly intended for Java interop. Kotlin consumers should use [retrievalConfig] for a more
-   * idiomatic experience.
-   *
-   * @property latLng See [RetrievalConfig.latLng].
-   * @property languageCode See [RetrievalConfig.languageCode].
-   */
-  public class Builder {
-    @JvmField public var latLng: LatLng? = null
-    @JvmField public var languageCode: String? = null
-
-    public fun setLatLng(latLng: LatLng?): Builder = apply { this.latLng = latLng }
-    public fun setLanguageCode(languageCode: String?): Builder = apply {
-      this.languageCode = languageCode
-    }
-
-    /** Create a new [RetrievalConfig] with the attached arguments. */
-    public fun build(): RetrievalConfig {
-      return RetrievalConfig(latLng, languageCode)
-    }
-  }
-
-  public companion object {
     /**
-     * Alternative casing for [RetrievalConfig.Builder]:
-     * ```
-     * val config = RetrievalConfig.builder()
-     * ```
+     * Builder for creating a [RetrievalConfig].
+     *
+     * Mainly intended for Java interop. Kotlin consumers should use [retrievalConfig] for a more
+     * idiomatic experience.
+     *
+     * @property latLng See [RetrievalConfig.latLng].
+     * @property languageCode See [RetrievalConfig.languageCode].
      */
-    @JvmStatic public fun builder(): Builder = Builder()
-  }
+    public class Builder {
+        @JvmField public var latLng: LatLng? = null
+
+        @JvmField public var languageCode: String? = null
+
+        public fun setLatLng(latLng: LatLng?): Builder = apply { this.latLng = latLng }
+        public fun setLanguageCode(languageCode: String?): Builder = apply {
+            this.languageCode = languageCode
+        }
+
+        /** Create a new [RetrievalConfig] with the attached arguments. */
+        public fun build(): RetrievalConfig = RetrievalConfig(latLng, languageCode)
+    }
+
+    public companion object {
+        /**
+         * Alternative casing for [RetrievalConfig.Builder]:
+         * ```
+         * val config = RetrievalConfig.builder()
+         * ```
+         */
+        @JvmStatic public fun builder(): Builder = Builder()
+    }
 }
 
 /**
@@ -79,7 +78,7 @@ internal constructor(
  * ```
  */
 public fun retrievalConfig(init: RetrievalConfig.Builder.() -> Unit): RetrievalConfig {
-  val builder = Builder()
-  init(builder)
-  return builder.build()
+    val builder = Builder()
+    init(builder)
+    return builder.build()
 }

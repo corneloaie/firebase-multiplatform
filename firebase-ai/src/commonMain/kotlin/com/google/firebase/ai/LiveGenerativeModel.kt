@@ -30,12 +30,12 @@ import com.google.firebase.ai.type.SessionResumptionConfig
  */
 @PublicPreviewAPI
 public expect class LiveGenerativeModel {
-  /**
-   * Start a [LiveSession] with the server for bidirectional streaming.
-   *
-   * @return A [LiveSession] that you can use to stream messages to and from the server.
-   * @throws [ServiceConnectionHandshakeFailedException] If the client was not able to establish a
-   * connection with the server.
-   */
-  public suspend fun connect(sessionResumption: SessionResumptionConfig? = null): LiveSession
+    /**
+     * Start a [LiveSession] with the server for bidirectional streaming.
+     *
+     * @return A [LiveSession] that you can use to stream messages to and from the server.
+     * @throws [ServiceConnectionHandshakeFailedException] If the client was not able to establish a
+     * connection with the server.
+     */
+    public suspend fun connect(sessionResumption: SessionResumptionConfig? = null): LiveSession
 }

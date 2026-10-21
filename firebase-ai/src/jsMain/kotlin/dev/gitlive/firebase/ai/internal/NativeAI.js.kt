@@ -47,14 +47,11 @@ internal actual class NativeAI actual constructor(app: FirebaseApp, backend: Gen
 
     private fun model(model: String, options: NativeRequestOptions) = getGenerativeModel(ai, json("model" to model), options.toJs())
 
-    actual suspend fun generateContent(model: String, request: JsonObject, options: NativeRequestOptions): JsonObject =
-        jsCall { model(model, options).generateContent(request.toJs()).await() }.response.toJsonObject()
+    actual suspend fun generateContent(model: String, request: JsonObject, options: NativeRequestOptions): JsonObject = jsCall { model(model, options).generateContent(request.toJs()).await() }.response.toJsonObject()
 
-    actual fun generateContentStream(model: String, request: JsonObject, options: NativeRequestOptions): Flow<JsonObject> =
-        streamOf { model(model, options).generateContentStream(request.toJs()).await() }
+    actual fun generateContentStream(model: String, request: JsonObject, options: NativeRequestOptions): Flow<JsonObject> = streamOf { model(model, options).generateContentStream(request.toJs()).await() }
 
-    actual suspend fun countTokens(model: String, request: JsonObject, options: NativeRequestOptions): JsonObject =
-        jsCall { model(model, options).countTokens(request.toJs()).await() }.toJsonObject()
+    actual suspend fun countTokens(model: String, request: JsonObject, options: NativeRequestOptions): JsonObject = jsCall { model(model, options).countTokens(request.toJs()).await() }.toJsonObject()
 
     actual suspend fun templateGenerateContent(templateId: String, request: JsonObject, options: NativeRequestOptions): JsonObject {
         val templates = getTemplateGenerativeModel(ai, options.toJs())

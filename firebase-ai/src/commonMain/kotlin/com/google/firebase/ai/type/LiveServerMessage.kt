@@ -42,57 +42,57 @@ import kotlin.time.Duration
 @PublicPreviewAPI
 public class LiveServerContent
 internal constructor(
-  /**
-   * The content that the model has generated as part of the current conversation with the user.
-   *
-   * This can be `null` if there is no content.
-   */
-  public val content: Content?,
+    /**
+     * The content that the model has generated as part of the current conversation with the user.
+     *
+     * This can be `null` if there is no content.
+     */
+    public val content: Content?,
 
-  /**
-   * The model was interrupted by the client while generating data.
-   *
-   * An interruption occurs when the client sends a message while the model is actively sending
-   * data.
-   */
-  public val interrupted: Boolean,
+    /**
+     * The model was interrupted by the client while generating data.
+     *
+     * An interruption occurs when the client sends a message while the model is actively sending
+     * data.
+     */
+    public val interrupted: Boolean,
 
-  /**
-   * The model has finished sending data in the current turn.
-   *
-   * Generation will only start in response to additional client messages.
-   *
-   * Can be set alongside [content], indicating that the [content] is the last in the turn.
-   *
-   * @see generationComplete
-   */
-  public val turnComplete: Boolean,
+    /**
+     * The model has finished sending data in the current turn.
+     *
+     * Generation will only start in response to additional client messages.
+     *
+     * Can be set alongside [content], indicating that the [content] is the last in the turn.
+     *
+     * @see generationComplete
+     */
+    public val turnComplete: Boolean,
 
-  /**
-   * The model has finished _generating_ data for the current turn.
-   *
-   * For realtime playback, there will be a delay between when the model finishes generating content
-   * and the client has finished playing back the generated content. [generationComplete] indicates
-   * that the model is done generating data, while [turnComplete] indicates the model is waiting for
-   * additional client messages. Sending a message during this delay may cause an [interrupted]
-   * message to be sent.
-   *
-   * Note that if the model was [interrupted], this will not be set. The model will go from
-   * [interrupted] -> [turnComplete].
-   */
-  public val generationComplete: Boolean,
+    /**
+     * The model has finished _generating_ data for the current turn.
+     *
+     * For realtime playback, there will be a delay between when the model finishes generating content
+     * and the client has finished playing back the generated content. [generationComplete] indicates
+     * that the model is done generating data, while [turnComplete] indicates the model is waiting for
+     * additional client messages. Sending a message during this delay may cause an [interrupted]
+     * message to be sent.
+     *
+     * Note that if the model was [interrupted], this will not be set. The model will go from
+     * [interrupted] -> [turnComplete].
+     */
+    public val generationComplete: Boolean,
 
-  /**
-   * The input transcription. The transcription is independent to the model turn which means it
-   * doesn't imply any ordering between transcription and model turn.
-   */
-  public val inputTranscription: Transcription?,
+    /**
+     * The input transcription. The transcription is independent to the model turn which means it
+     * doesn't imply any ordering between transcription and model turn.
+     */
+    public val inputTranscription: Transcription?,
 
-  /**
-   * The output transcription. The transcription is independent to the model turn which means it
-   * doesn't imply any ordering between transcription and model turn.
-   */
-  public val outputTranscription: Transcription?
+    /**
+     * The output transcription. The transcription is independent to the model turn which means it
+     * doesn't imply any ordering between transcription and model turn.
+     */
+    public val outputTranscription: Transcription?,
 ) : LiveServerMessage
 
 /** The model is ready to receive client messages. */
@@ -101,9 +101,9 @@ internal constructor(
 /** A message from the server that this version of the SDK does not know. */
 @PublicPreviewAPI
 public class LiveServerUnknownMessage private constructor() : LiveServerMessage {
-  internal companion object {
-    fun create(): LiveServerUnknownMessage = LiveServerUnknownMessage()
-  }
+    internal companion object {
+        fun create(): LiveServerUnknownMessage = LiveServerUnknownMessage()
+    }
 }
 
 /**
@@ -116,7 +116,9 @@ public class LiveServerUnknownMessage private constructor() : LiveServerMessage 
  */
 @PublicPreviewAPI
 public class LiveServerToolCall
-internal constructor(public val functionCalls: List<FunctionCallPart>) : LiveServerMessage
+internal constructor(
+    public val functionCalls: List<FunctionCallPart>,
+) : LiveServerMessage
 
 /**
  * Notification for the client to cancel a previous function call from [LiveServerToolCall].
@@ -128,7 +130,9 @@ internal constructor(public val functionCalls: List<FunctionCallPart>) : LiveSer
  */
 @PublicPreviewAPI
 public class LiveServerToolCallCancellation
-internal constructor(public val functionIds: List<String>) : LiveServerMessage
+internal constructor(
+    public val functionIds: List<String>,
+) : LiveServerMessage
 
 /**
  * Notification that the server is initiating a disconnect of the session.
@@ -142,8 +146,7 @@ internal constructor(public val functionIds: List<String>) : LiveServerMessage
  * @property timeLeft The time remaining before the connection terminates.
  */
 @PublicPreviewAPI
-public class LiveServerGoAway internal constructor(public val timeLeft: Duration?) :
-  LiveServerMessage
+public class LiveServerGoAway internal constructor(public val timeLeft: Duration?) : LiveServerMessage
 
 /**
  * An update of the session resumption state.
@@ -159,7 +162,7 @@ public class LiveServerGoAway internal constructor(public val timeLeft: Duration
 @PublicPreviewAPI
 public class LiveSessionResumptionUpdate
 internal constructor(
-  public val newHandle: String? = null,
-  public val resumable: Boolean? = null,
-  public val lastConsumedClientMessageIndex: Int? = null
+    public val newHandle: String? = null,
+    public val resumable: Boolean? = null,
+    public val lastConsumedClientMessageIndex: Int? = null,
 ) : LiveServerMessage

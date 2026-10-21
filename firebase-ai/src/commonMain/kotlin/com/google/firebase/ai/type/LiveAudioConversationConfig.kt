@@ -48,66 +48,68 @@ import kotlin.jvm.JvmField
 @PublicPreviewAPI
 public class LiveAudioConversationConfig
 private constructor(
-  internal val functionCallHandler: ((FunctionCallPart) -> FunctionResponsePart)?,
-  internal val transcriptHandler: ((Transcription?, Transcription?) -> Unit)?,
-  internal val goAwayHandler: ((LiveServerGoAway) -> Unit)?,
-  internal val enableInterruptions: Boolean
+    internal val functionCallHandler: ((FunctionCallPart) -> FunctionResponsePart)?,
+    internal val transcriptHandler: ((Transcription?, Transcription?) -> Unit)?,
+    internal val goAwayHandler: ((LiveServerGoAway) -> Unit)?,
+    internal val enableInterruptions: Boolean,
 ) {
-  /**
-   * Builder for creating a [LiveAudioConversationConfig].
-   *
-   * Mainly intended for Java interop. Kotlin consumers should use [liveAudioConversationConfig] for
-   * a more idiomatic experience.
-   *
-   * @property functionCallHandler See [LiveAudioConversationConfig.functionCallHandler].
-   *
-   * @property transcriptHandler See [LiveAudioConversationConfig.transcriptHandler].
-   *
-   * @property goAwayHandler See [LiveAudioConversationConfig.goAwayHandler].
-   *
-   * @property enableInterruptions See [LiveAudioConversationConfig.enableInterruptions].
-   */
-  public class Builder {
-    @JvmField public var functionCallHandler: ((FunctionCallPart) -> FunctionResponsePart)? = null
-    @JvmField public var transcriptHandler: ((Transcription?, Transcription?) -> Unit)? = null
-    @JvmField public var goAwayHandler: ((LiveServerGoAway) -> Unit)? = null
-    @JvmField public var enableInterruptions: Boolean = false
-
-    public fun setFunctionCallHandler(
-      functionCallHandler: ((FunctionCallPart) -> FunctionResponsePart)?
-    ): Builder = apply { this.functionCallHandler = functionCallHandler }
-
-    public fun setTranscriptHandler(
-      transcriptHandler: ((Transcription?, Transcription?) -> Unit)?
-    ): Builder = apply { this.transcriptHandler = transcriptHandler }
-
-    public fun setGoAwayHandler(goAwayHandler: ((LiveServerGoAway) -> Unit)?): Builder = apply {
-      this.goAwayHandler = goAwayHandler
-    }
-
-    public fun setEnableInterruptions(enableInterruptions: Boolean): Builder = apply {
-      this.enableInterruptions = enableInterruptions
-    }
-
-    /** Create a new [LiveAudioConversationConfig] with the attached arguments. */
-    public fun build(): LiveAudioConversationConfig =
-      LiveAudioConversationConfig(
-        functionCallHandler = functionCallHandler,
-        transcriptHandler = transcriptHandler,
-        goAwayHandler = goAwayHandler,
-        enableInterruptions = enableInterruptions
-      )
-  }
-
-  public companion object {
     /**
-     * Alternative casing for [LiveAudioConversationConfig.Builder]:
-     * ```
-     * val config = LiveAudioConversationConfig.builder()
-     * ```
+     * Builder for creating a [LiveAudioConversationConfig].
+     *
+     * Mainly intended for Java interop. Kotlin consumers should use [liveAudioConversationConfig] for
+     * a more idiomatic experience.
+     *
+     * @property functionCallHandler See [LiveAudioConversationConfig.functionCallHandler].
+     *
+     * @property transcriptHandler See [LiveAudioConversationConfig.transcriptHandler].
+     *
+     * @property goAwayHandler See [LiveAudioConversationConfig.goAwayHandler].
+     *
+     * @property enableInterruptions See [LiveAudioConversationConfig.enableInterruptions].
      */
-    public fun builder(): Builder = Builder()
-  }
+    public class Builder {
+        @JvmField public var functionCallHandler: ((FunctionCallPart) -> FunctionResponsePart)? = null
+
+        @JvmField public var transcriptHandler: ((Transcription?, Transcription?) -> Unit)? = null
+
+        @JvmField public var goAwayHandler: ((LiveServerGoAway) -> Unit)? = null
+
+        @JvmField public var enableInterruptions: Boolean = false
+
+        public fun setFunctionCallHandler(
+            functionCallHandler: ((FunctionCallPart) -> FunctionResponsePart)?,
+        ): Builder = apply { this.functionCallHandler = functionCallHandler }
+
+        public fun setTranscriptHandler(
+            transcriptHandler: ((Transcription?, Transcription?) -> Unit)?,
+        ): Builder = apply { this.transcriptHandler = transcriptHandler }
+
+        public fun setGoAwayHandler(goAwayHandler: ((LiveServerGoAway) -> Unit)?): Builder = apply {
+            this.goAwayHandler = goAwayHandler
+        }
+
+        public fun setEnableInterruptions(enableInterruptions: Boolean): Builder = apply {
+            this.enableInterruptions = enableInterruptions
+        }
+
+        /** Create a new [LiveAudioConversationConfig] with the attached arguments. */
+        public fun build(): LiveAudioConversationConfig = LiveAudioConversationConfig(
+            functionCallHandler = functionCallHandler,
+            transcriptHandler = transcriptHandler,
+            goAwayHandler = goAwayHandler,
+            enableInterruptions = enableInterruptions,
+        )
+    }
+
+    public companion object {
+        /**
+         * Alternative casing for [LiveAudioConversationConfig.Builder]:
+         * ```
+         * val config = LiveAudioConversationConfig.builder()
+         * ```
+         */
+        public fun builder(): Builder = Builder()
+    }
 }
 
 /**
@@ -123,9 +125,9 @@ private constructor(
  */
 @OptIn(PublicPreviewAPI::class)
 public fun liveAudioConversationConfig(
-  init: LiveAudioConversationConfig.Builder.() -> Unit
+    init: LiveAudioConversationConfig.Builder.() -> Unit,
 ): LiveAudioConversationConfig {
-  val builder = LiveAudioConversationConfig.builder()
-  builder.init()
-  return builder.build()
+    val builder = LiveAudioConversationConfig.builder()
+    builder.init()
+    return builder.build()
 }

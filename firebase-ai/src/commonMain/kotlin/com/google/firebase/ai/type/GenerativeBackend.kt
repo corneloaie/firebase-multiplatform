@@ -23,46 +23,48 @@ import kotlin.jvm.JvmStatic
 
 /** Represents a reference to a backend for generative AI. */
 public class GenerativeBackend
-internal constructor(internal val location: String, internal val backend: GenerativeBackendEnum) {
-  public companion object {
-    /** References the Google Developer API backend. */
-    @JvmStatic
-    public fun googleAI(): GenerativeBackend =
-      GenerativeBackend("", GenerativeBackendEnum.GOOGLE_AI)
+internal constructor(
+    internal val location: String,
+    internal val backend: GenerativeBackendEnum,
+) {
+    public companion object {
+        /** References the Google Developer API backend. */
+        @JvmStatic
+        public fun googleAI(): GenerativeBackend = GenerativeBackend("", GenerativeBackendEnum.GOOGLE_AI)
 
-    /**
-     * References the Agent Platform Gemini API.
-     *
-     * @param location passes a valid cloud server location, defaults to "global"
-     */
-    @JvmStatic
-    @JvmOverloads
-    public fun agentPlatform(location: String = "global"): GenerativeBackend {
-      if (location.isBlank() || location.contains("/")) {
-        throw InvalidLocationException(location)
-      }
-      return GenerativeBackend(location, GenerativeBackendEnum.AGENT_PLATFORM)
-    }
-  }
-
-  override fun equals(other: Any?): Boolean {
-    if (other is GenerativeBackend) {
-      return when (other.backend) {
-        GenerativeBackendEnum.GOOGLE_AI -> {
-          other.backend == this.backend
+        /**
+         * References the Agent Platform Gemini API.
+         *
+         * @param location passes a valid cloud server location, defaults to "global"
+         */
+        @JvmStatic
+        @JvmOverloads
+        public fun agentPlatform(location: String = "global"): GenerativeBackend {
+            if (location.isBlank() || location.contains("/")) {
+                throw InvalidLocationException(location)
+            }
+            return GenerativeBackend(location, GenerativeBackendEnum.AGENT_PLATFORM)
         }
-        GenerativeBackendEnum.AGENT_PLATFORM -> {
-          other.backend == this.backend && other.location == this.location
-        }
-      }
     }
-    return false
-  }
 
-  override fun hashCode(): Int = 31 * backend.hashCode() + location.hashCode()
+    override fun equals(other: Any?): Boolean {
+        if (other is GenerativeBackend) {
+            return when (other.backend) {
+                GenerativeBackendEnum.GOOGLE_AI -> {
+                    other.backend == this.backend
+                }
+                GenerativeBackendEnum.AGENT_PLATFORM -> {
+                    other.backend == this.backend && other.location == this.location
+                }
+            }
+        }
+        return false
+    }
+
+    override fun hashCode(): Int = 31 * backend.hashCode() + location.hashCode()
 }
 
 internal enum class GenerativeBackendEnum {
-  GOOGLE_AI,
-  AGENT_PLATFORM,
+    GOOGLE_AI,
+    AGENT_PLATFORM,
 }

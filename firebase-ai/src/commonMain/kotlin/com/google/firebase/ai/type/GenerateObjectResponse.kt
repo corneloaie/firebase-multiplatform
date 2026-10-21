@@ -27,54 +27,53 @@ import kotlinx.serialization.json.Json
  */
 public class GenerateObjectResponse<T : Any>
 internal constructor(
-  public val response: GenerateContentResponse,
-  internal val schema: JsonSchema<T>? = null,
-  internal var instances: MutableList<T?>? = null
+    public val response: GenerateContentResponse,
+    internal val schema: JsonSchema<T>? = null,
+    internal var instances: MutableList<T?>? = null,
 ) {
-  /**
-   * Deserialize a candidate (default first) and convert it into the type associated with this
-   * response.
-   *
-   * @param candidateIndex which candidate to deserialize
-   * @throws RuntimeException if class is not @Serializable
-   * @throws SerializationException if an error occurs during deserialization
-   */
-  public fun getObject(candidateIndex: Int = 0): T? =
-    run {
-      val insts = instances
+    /**
+     * Deserialize a candidate (default first) and convert it into the type associated with this
+     * response.
+     *
+     * @param candidateIndex which candidate to deserialize
+     * @throws RuntimeException if class is not @Serializable
+     * @throws SerializationException if an error occurs during deserialization
+     */
+    public fun getObject(candidateIndex: Int = 0): T? = run {
+        val insts = instances
 
-      // 1. Fast Path / Cache Hit: Return immediately if already resolved or in memory
-      insts?.getOrNull(candidateIndex)?.let {
-        return it
-      }
-
-      // 2. Cache Miss (Cloud response on first access): Deserialize using schema
-      if (schema == null) return null
-      val candidate = response.candidates.getOrNull(candidateIndex) ?: return null
-      val text =
-        candidate.content.parts
-          .filter { !it.isThought }
-          .filterIsInstance<TextPart>()
-          .joinToString(" ") { it.text }
-
-      val deserialized =
-        if (text.isEmpty()) {
-          null
-        } else {
-          try {
-            Json.decodeFromString(schema.getSerializer(), text) as T?
-          } catch (e: Exception) {
-            null
-          }
+        // 1. Fast Path / Cache Hit: Return immediately if already resolved or in memory
+        insts?.getOrNull(candidateIndex)?.let {
+            return it
         }
 
-      // 3. Save to instances list for future accesses (lazy loading) and return
-      val currentInstances =
-        insts ?: MutableList<T?>(response.candidates.size) { null }.also { instances = it }
+        // 2. Cache Miss (Cloud response on first access): Deserialize using schema
+        if (schema == null) return null
+        val candidate = response.candidates.getOrNull(candidateIndex) ?: return null
+        val text =
+            candidate.content.parts
+                .filter { !it.isThought }
+                .filterIsInstance<TextPart>()
+                .joinToString(" ") { it.text }
 
-      if (candidateIndex < currentInstances.size) {
-        currentInstances[candidateIndex] = deserialized
-      }
-      return deserialized
+        val deserialized =
+            if (text.isEmpty()) {
+                null
+            } else {
+                try {
+                    Json.decodeFromString(schema.getSerializer(), text) as T?
+                } catch (e: Exception) {
+                    null
+                }
+            }
+
+        // 3. Save to instances list for future accesses (lazy loading) and return
+        val currentInstances =
+            insts ?: MutableList<T?>(response.candidates.size) { null }.also { instances = it }
+
+        if (candidateIndex < currentInstances.size) {
+            currentInstances[candidateIndex] = deserialized
+        }
+        return deserialized
     }
 }

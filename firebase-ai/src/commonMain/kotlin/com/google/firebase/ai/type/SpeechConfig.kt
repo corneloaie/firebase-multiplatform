@@ -31,8 +31,8 @@ import kotlin.jvm.JvmOverloads
  */
 @PublicPreviewAPI
 public class SpeakerVoiceConfig(
-  public val speaker: String,
-  public val voice: Voice,
+    public val speaker: String,
+    public val voice: Voice,
 )
 
 /**
@@ -48,7 +48,7 @@ public class SpeakerVoiceConfig(
  */
 @PublicPreviewAPI
 public class MultiSpeakerVoiceConfig(
-  public val speakerVoiceConfigs: List<SpeakerVoiceConfig>,
+    public val speakerVoiceConfigs: List<SpeakerVoiceConfig>,
 )
 
 /**
@@ -66,39 +66,39 @@ public class MultiSpeakerVoiceConfig(
 @PublicPreviewAPI
 public class SpeechConfig
 private constructor(
-  public val voice: Voice? = null,
-  public val multiSpeakerVoiceConfig: MultiSpeakerVoiceConfig? = null,
-  public val languageCode: String? = null,
+    public val voice: Voice? = null,
+    public val multiSpeakerVoiceConfig: MultiSpeakerVoiceConfig? = null,
+    public val languageCode: String? = null,
 ) {
-  /**
-   * Constructs a [SpeechConfig] for a single-speaker setup.
-   *
-   * @param voice The specific [Voice] to use for speech generation.
-   * @param languageCode An optional IETF BCP-47 language code to guide speech generation.
-   */
-  @JvmOverloads
-  public constructor(
-    voice: Voice,
-    languageCode: String? = null,
-  ) : this(voice = voice, multiSpeakerVoiceConfig = null, languageCode = languageCode)
+    /**
+     * Constructs a [SpeechConfig] for a single-speaker setup.
+     *
+     * @param voice The specific [Voice] to use for speech generation.
+     * @param languageCode An optional IETF BCP-47 language code to guide speech generation.
+     */
+    @JvmOverloads
+    public constructor(
+        voice: Voice,
+        languageCode: String? = null,
+    ) : this(voice = voice, multiSpeakerVoiceConfig = null, languageCode = languageCode)
 
-  /**
-   * Constructs a [SpeechConfig] for a multi-speaker setup.
-   *
-   * **Note:** Multi-speaker configurations are not supported by the Live API (like
-   * [LiveGenerationConfig]).
-   *
-   * @param multiSpeakerVoiceConfig The configuration detailing multiple speakers and their
-   * corresponding voices.
-   * @param languageCode An optional IETF BCP-47 language code to guide speech generation.
-   */
-  @JvmOverloads
-  public constructor(
-    multiSpeakerVoiceConfig: MultiSpeakerVoiceConfig,
-    languageCode: String? = null,
-  ) : this(
-    voice = null,
-    multiSpeakerVoiceConfig = multiSpeakerVoiceConfig,
-    languageCode = languageCode
-  )
+    /**
+     * Constructs a [SpeechConfig] for a multi-speaker setup.
+     *
+     * **Note:** Multi-speaker configurations are not supported by the Live API (like
+     * [LiveGenerationConfig]).
+     *
+     * @param multiSpeakerVoiceConfig The configuration detailing multiple speakers and their
+     * corresponding voices.
+     * @param languageCode An optional IETF BCP-47 language code to guide speech generation.
+     */
+    @JvmOverloads
+    public constructor(
+        multiSpeakerVoiceConfig: MultiSpeakerVoiceConfig,
+        languageCode: String? = null,
+    ) : this(
+        voice = null,
+        multiSpeakerVoiceConfig = multiSpeakerVoiceConfig,
+        languageCode = languageCode,
+    )
 }

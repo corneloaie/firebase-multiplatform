@@ -37,127 +37,127 @@ import com.google.firebase.app
 /** Entry point for all _Firebase AI_ functionality. */
 public expect class FirebaseAI {
 
-  /**
-   * Instantiates a new [GenerativeModel] given the provided parameters.
-   *
-   * @param modelName The name of the model to use. See the documentation for a list of
-   * [supported models](https://firebase.google.com/docs/ai-logic/models).
-   * @param generationConfig The configuration parameters to use for content generation.
-   * @param safetySettings The safety bounds the model will abide to during content generation.
-   * @param tools A list of [Tool]s the model may use to generate content.
-   * @param toolConfig The [ToolConfig] that defines how the model handles the tools provided.
-   * @param systemInstruction [Content] instructions that direct the model to behave a certain way.
-   * Currently only text content is supported.
-   * @param requestOptions Configuration options for sending requests to the backend.
-   * @return The initialized [GenerativeModel] instance.
-   */
-  public fun generativeModel(
-    modelName: String,
-    generationConfig: GenerationConfig? = null,
-    safetySettings: List<SafetySetting>? = null,
-    tools: List<Tool>? = null,
-    toolConfig: ToolConfig? = null,
-    systemInstruction: Content? = null,
-    requestOptions: RequestOptions = RequestOptions(),
-  ): GenerativeModel
-
-  /**
-   * Instantiates a new [GenerativeModel] given the provided parameters.
-   *
-   * @param modelName The name of the model to use. See the documentation for a list of
-   * [supported models](https://firebase.google.com/docs/ai-logic/models).
-   * @param generationConfig The configuration parameters to use for content generation.
-   * @param safetySettings The safety bounds the model will abide to during content generation.
-   * @param tools A list of [Tool]s the model may use to generate content.
-   * @param toolConfig The [ToolConfig] that defines how the model handles the tools provided.
-   * @param systemInstruction [Content] instructions that direct the model to behave a certain way.
-   * Currently only text content is supported.
-   * @param requestOptions Configuration options for sending requests to the backend.
-   * @param onDeviceConfig Configuration for on-device inference.
-   * @return The initialized [GenerativeModel] instance.
-   */
-  @PublicPreviewAPI
-  public fun generativeModel(
-    modelName: String,
-    generationConfig: GenerationConfig? = null,
-    safetySettings: List<SafetySetting>? = null,
-    tools: List<Tool>? = null,
-    toolConfig: ToolConfig? = null,
-    systemInstruction: Content? = null,
-    requestOptions: RequestOptions = RequestOptions(),
-    onDeviceConfig: OnDeviceConfig,
-  ): GenerativeModel
-
-  /**
-   * Instantiates a new [TemplateGenerativeModel] given the provided parameters.
-   *
-   * @param requestOptions Configuration options for sending requests to the backend.
-   * @return The initialized [TemplateGenerativeModel] instance.
-   */
-  @PublicPreviewAPI
-  public fun templateGenerativeModel(
-    requestOptions: RequestOptions = RequestOptions(),
-    tools: List<TemplateTool>? = null,
-    toolConfig: TemplateToolConfig? = null,
-  ): TemplateGenerativeModel
-
-  /**
-   * Instantiates a new [LiveGenerationConfig] given the provided parameters.
-   *
-   * @param modelName The name of the model to use. See the documentation for a list of
-   * [supported models](https://firebase.google.com/docs/ai-logic/models).
-   * @param generationConfig The configuration parameters to use for content generation.
-   * @param tools A list of [Tool]s the model may use to generate content.
-   * @param systemInstruction [Content] instructions that direct the model to behave a certain way.
-   * Currently only text content is supported.
-   * @param requestOptions Configuration options for sending requests to the backend.
-   * @return The initialized [LiveGenerativeModel] instance.
-   */
-  @PublicPreviewAPI
-  public fun liveModel(
-    modelName: String,
-    generationConfig: LiveGenerationConfig? = null,
-    tools: List<Tool>? = null,
-    systemInstruction: Content? = null,
-    requestOptions: RequestOptions = RequestOptions(),
-  ): LiveGenerativeModel
-
-  public companion object {
-    /** The [FirebaseAI] instance for the default [FirebaseApp] using the Google AI Backend. */
-    public val instance: FirebaseAI
+    /**
+     * Instantiates a new [GenerativeModel] given the provided parameters.
+     *
+     * @param modelName The name of the model to use. See the documentation for a list of
+     * [supported models](https://firebase.google.com/docs/ai-logic/models).
+     * @param generationConfig The configuration parameters to use for content generation.
+     * @param safetySettings The safety bounds the model will abide to during content generation.
+     * @param tools A list of [Tool]s the model may use to generate content.
+     * @param toolConfig The [ToolConfig] that defines how the model handles the tools provided.
+     * @param systemInstruction [Content] instructions that direct the model to behave a certain way.
+     * Currently only text content is supported.
+     * @param requestOptions Configuration options for sending requests to the backend.
+     * @return The initialized [GenerativeModel] instance.
+     */
+    public fun generativeModel(
+        modelName: String,
+        generationConfig: GenerationConfig? = null,
+        safetySettings: List<SafetySetting>? = null,
+        tools: List<Tool>? = null,
+        toolConfig: ToolConfig? = null,
+        systemInstruction: Content? = null,
+        requestOptions: RequestOptions = RequestOptions(),
+    ): GenerativeModel
 
     /**
-     * Returns the [FirebaseAI] instance for the provided [FirebaseApp] and [backend].
+     * Instantiates a new [GenerativeModel] given the provided parameters.
      *
-     * @param backend the backend reference to make generative AI requests to.
+     * @param modelName The name of the model to use. See the documentation for a list of
+     * [supported models](https://firebase.google.com/docs/ai-logic/models).
+     * @param generationConfig The configuration parameters to use for content generation.
+     * @param safetySettings The safety bounds the model will abide to during content generation.
+     * @param tools A list of [Tool]s the model may use to generate content.
+     * @param toolConfig The [ToolConfig] that defines how the model handles the tools provided.
+     * @param systemInstruction [Content] instructions that direct the model to behave a certain way.
+     * Currently only text content is supported.
+     * @param requestOptions Configuration options for sending requests to the backend.
+     * @param onDeviceConfig Configuration for on-device inference.
+     * @return The initialized [GenerativeModel] instance.
      */
-    public fun getInstance(app: FirebaseApp = Firebase.app, backend: GenerativeBackend): FirebaseAI
+    @PublicPreviewAPI
+    public fun generativeModel(
+        modelName: String,
+        generationConfig: GenerationConfig? = null,
+        safetySettings: List<SafetySetting>? = null,
+        tools: List<Tool>? = null,
+        toolConfig: ToolConfig? = null,
+        systemInstruction: Content? = null,
+        requestOptions: RequestOptions = RequestOptions(),
+        onDeviceConfig: OnDeviceConfig,
+    ): GenerativeModel
 
     /**
-     * Returns the [FirebaseAI] instance for the provided [FirebaseApp] and [backend].
+     * Instantiates a new [TemplateGenerativeModel] given the provided parameters.
      *
-     * @param backend the backend reference to make generative AI requests to.
-     * @param useLimitedUseAppCheckTokens when sending tokens to the backend, this option enables
-     * the usage of App Check's limited-use tokens instead of the standard cached tokens. Learn more
-     * about [limited-use tokens](https://firebase.google.com/docs/ai-logic/app-check), including
-     * their nuances, when to use them, and best practices for integrating them into your app.
-     *
-     * _This flag is set to `false` by default._
+     * @param requestOptions Configuration options for sending requests to the backend.
+     * @return The initialized [TemplateGenerativeModel] instance.
      */
-    public fun getInstance(
-      app: FirebaseApp = Firebase.app,
-      backend: GenerativeBackend,
-      useLimitedUseAppCheckTokens: Boolean,
-    ): FirebaseAI
+    @PublicPreviewAPI
+    public fun templateGenerativeModel(
+        requestOptions: RequestOptions = RequestOptions(),
+        tools: List<TemplateTool>? = null,
+        toolConfig: TemplateToolConfig? = null,
+    ): TemplateGenerativeModel
 
-    /** The [FirebaseAI] instance for the provided [FirebaseApp] using the Google AI Backend. */
-    public fun getInstance(app: FirebaseApp): FirebaseAI
-  }
+    /**
+     * Instantiates a new [LiveGenerationConfig] given the provided parameters.
+     *
+     * @param modelName The name of the model to use. See the documentation for a list of
+     * [supported models](https://firebase.google.com/docs/ai-logic/models).
+     * @param generationConfig The configuration parameters to use for content generation.
+     * @param tools A list of [Tool]s the model may use to generate content.
+     * @param systemInstruction [Content] instructions that direct the model to behave a certain way.
+     * Currently only text content is supported.
+     * @param requestOptions Configuration options for sending requests to the backend.
+     * @return The initialized [LiveGenerativeModel] instance.
+     */
+    @PublicPreviewAPI
+    public fun liveModel(
+        modelName: String,
+        generationConfig: LiveGenerationConfig? = null,
+        tools: List<Tool>? = null,
+        systemInstruction: Content? = null,
+        requestOptions: RequestOptions = RequestOptions(),
+    ): LiveGenerativeModel
+
+    public companion object {
+        /** The [FirebaseAI] instance for the default [FirebaseApp] using the Google AI Backend. */
+        public val instance: FirebaseAI
+
+        /**
+         * Returns the [FirebaseAI] instance for the provided [FirebaseApp] and [backend].
+         *
+         * @param backend the backend reference to make generative AI requests to.
+         */
+        public fun getInstance(app: FirebaseApp = Firebase.app, backend: GenerativeBackend): FirebaseAI
+
+        /**
+         * Returns the [FirebaseAI] instance for the provided [FirebaseApp] and [backend].
+         *
+         * @param backend the backend reference to make generative AI requests to.
+         * @param useLimitedUseAppCheckTokens when sending tokens to the backend, this option enables
+         * the usage of App Check's limited-use tokens instead of the standard cached tokens. Learn more
+         * about [limited-use tokens](https://firebase.google.com/docs/ai-logic/app-check), including
+         * their nuances, when to use them, and best practices for integrating them into your app.
+         *
+         * _This flag is set to `false` by default._
+         */
+        public fun getInstance(
+            app: FirebaseApp = Firebase.app,
+            backend: GenerativeBackend,
+            useLimitedUseAppCheckTokens: Boolean,
+        ): FirebaseAI
+
+        /** The [FirebaseAI] instance for the provided [FirebaseApp] using the Google AI Backend. */
+        public fun getInstance(app: FirebaseApp): FirebaseAI
+    }
 }
 
 /** The [FirebaseAI] instance for the default [FirebaseApp] using the Google AI Backend. */
 public val Firebase.ai: FirebaseAI
-  get() = FirebaseAI.instance
+    get() = FirebaseAI.instance
 
 /**
  * Returns the [FirebaseAI] instance for the provided [FirebaseApp] and [backend].
@@ -165,8 +165,8 @@ public val Firebase.ai: FirebaseAI
  * @param backend the backend reference to make generative AI requests to.
  */
 public fun Firebase.ai(
-  app: FirebaseApp = Firebase.app,
-  backend: GenerativeBackend = GenerativeBackend.googleAI()
+    app: FirebaseApp = Firebase.app,
+    backend: GenerativeBackend = GenerativeBackend.googleAI(),
 ): FirebaseAI = FirebaseAI.getInstance(app, backend)
 
 /**
@@ -179,7 +179,7 @@ public fun Firebase.ai(
  * nuances, when to use them, and best practices for integrating them into your app.
  */
 public fun Firebase.ai(
-  app: FirebaseApp = Firebase.app,
-  backend: GenerativeBackend = GenerativeBackend.googleAI(),
-  useLimitedUseAppCheckTokens: Boolean
+    app: FirebaseApp = Firebase.app,
+    backend: GenerativeBackend = GenerativeBackend.googleAI(),
+    useLimitedUseAppCheckTokens: Boolean,
 ): FirebaseAI = FirebaseAI.getInstance(app, backend, useLimitedUseAppCheckTokens)

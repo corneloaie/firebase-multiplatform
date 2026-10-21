@@ -74,171 +74,205 @@ import kotlin.jvm.JvmStatic
 @OptIn(PublicPreviewAPI::class)
 public class GenerationConfig
 private constructor(
-  internal val temperature: Float?,
-  internal val topK: Int?,
-  internal val topP: Float?,
-  internal val candidateCount: Int?,
-  internal val maxOutputTokens: Int?,
-  internal val presencePenalty: Float?,
-  internal val frequencyPenalty: Float?,
-  internal val stopSequences: List<String>?,
-  internal val responseMimeType: String?,
-  internal val responseSchema: Schema?,
-  internal val responseJsonSchema: JsonSchema<*>?,
-  internal val responseModalities: List<ResponseModality>?,
-  internal val thinkingConfig: ThinkingConfig?,
-  internal val imageConfig: ImageConfig?,
-  internal val speechConfig: SpeechConfig?,
+    internal val temperature: Float?,
+    internal val topK: Int?,
+    internal val topP: Float?,
+    internal val candidateCount: Int?,
+    internal val maxOutputTokens: Int?,
+    internal val presencePenalty: Float?,
+    internal val frequencyPenalty: Float?,
+    internal val stopSequences: List<String>?,
+    internal val responseMimeType: String?,
+    internal val responseSchema: Schema?,
+    internal val responseJsonSchema: JsonSchema<*>?,
+    internal val responseModalities: List<ResponseModality>?,
+    internal val thinkingConfig: ThinkingConfig?,
+    internal val imageConfig: ImageConfig?,
+    internal val speechConfig: SpeechConfig?,
 ) {
-  /**
-   * Builder for creating a [GenerationConfig].
-   *
-   * Mainly intended for Java interop. Kotlin consumers should use [generationConfig] for a more
-   * idiomatic experience.
-   *
-   * @property temperature *Deprecated.* See [GenerationConfig.temperature].
-   *
-   * @property topK *Deprecated.* See [GenerationConfig.topK].
-   *
-   * @property topP *Deprecated.* See [GenerationConfig.topP].
-   *
-   * @property presencePenalty *Deprecated.* See [GenerationConfig.presencePenalty]
-   *
-   * @property frequencyPenalty *Deprecated.* See [GenerationConfig.frequencyPenalty]
-   *
-   * @property candidateCount *Deprecated.* See [GenerationConfig.candidateCount].
-   *
-   * @property maxOutputTokens See [GenerationConfig.maxOutputTokens].
-   *
-   * @property stopSequences See [GenerationConfig.stopSequences].
-   *
-   * @property responseMimeType See [GenerationConfig.responseMimeType].
-   *
-   * @property responseSchema See [GenerationConfig.responseSchema].
-   *
-   * @property responseJsonSchema See [GenerationConfig.responseJsonSchema]
-   *
-   * @property responseModalities See [GenerationConfig.responseModalities].
-   *
-   * @property imageConfig See [GenerationConfig.imageConfig].
-   *
-   * @property speechConfig See [GenerationConfig.speechConfig].
-   *
-   * @see [generationConfig]
-   */
-  public class Builder {
-    @JvmField public var temperature: Float? = null
-    @JvmField public var topK: Int? = null
-    @JvmField public var topP: Float? = null
-    @JvmField public var candidateCount: Int? = null
-    @JvmField public var maxOutputTokens: Int? = null
-    @JvmField public var presencePenalty: Float? = null
-    @JvmField public var frequencyPenalty: Float? = null
-    @JvmField public var stopSequences: List<String>? = null
-    @JvmField public var responseMimeType: String? = null
-    @JvmField public var responseSchema: Schema? = null
-    @JvmField public var responseJsonSchema: JsonSchema<*>? = null
-    @JvmField public var responseModalities: List<ResponseModality>? = null
-    @JvmField public var thinkingConfig: ThinkingConfig? = null
-    @JvmField public var imageConfig: ImageConfig? = null
-    @JvmField public var speechConfig: SpeechConfig? = null
+    /**
+     * Builder for creating a [GenerationConfig].
+     *
+     * Mainly intended for Java interop. Kotlin consumers should use [generationConfig] for a more
+     * idiomatic experience.
+     *
+     * @property temperature *Deprecated.* See [GenerationConfig.temperature].
+     *
+     * @property topK *Deprecated.* See [GenerationConfig.topK].
+     *
+     * @property topP *Deprecated.* See [GenerationConfig.topP].
+     *
+     * @property presencePenalty *Deprecated.* See [GenerationConfig.presencePenalty]
+     *
+     * @property frequencyPenalty *Deprecated.* See [GenerationConfig.frequencyPenalty]
+     *
+     * @property candidateCount *Deprecated.* See [GenerationConfig.candidateCount].
+     *
+     * @property maxOutputTokens See [GenerationConfig.maxOutputTokens].
+     *
+     * @property stopSequences See [GenerationConfig.stopSequences].
+     *
+     * @property responseMimeType See [GenerationConfig.responseMimeType].
+     *
+     * @property responseSchema See [GenerationConfig.responseSchema].
+     *
+     * @property responseJsonSchema See [GenerationConfig.responseJsonSchema]
+     *
+     * @property responseModalities See [GenerationConfig.responseModalities].
+     *
+     * @property imageConfig See [GenerationConfig.imageConfig].
+     *
+     * @property speechConfig See [GenerationConfig.speechConfig].
+     *
+     * @see [generationConfig]
+     */
+    public class Builder {
+        @JvmField public var temperature: Float? = null
 
-    public constructor()
+        @JvmField public var topK: Int? = null
 
-    internal constructor(
-      temperature: Float?,
-      topK: Int?,
-      topP: Float?,
-      candidateCount: Int?,
-      maxOutputTokens: Int?,
-      presencePenalty: Float?,
-      frequencyPenalty: Float?,
-      stopSequences: List<String>?,
-      responseMimeType: String?,
-      responseSchema: Schema?,
-      responseJsonSchema: JsonSchema<*>?,
-      responseModalities: List<ResponseModality>?,
-      thinkingConfig: ThinkingConfig?,
-      imageConfig: ImageConfig?,
-      speechConfig: SpeechConfig?,
-    ) {
-      this.temperature = temperature
-      this.topK = topK
-      this.topP = topP
-      this.candidateCount = candidateCount
-      this.maxOutputTokens = maxOutputTokens
-      this.stopSequences = stopSequences
-      this.presencePenalty = presencePenalty
-      this.frequencyPenalty = frequencyPenalty
-      this.responseMimeType = responseMimeType
-      this.responseSchema = responseSchema
-      this.responseJsonSchema = responseJsonSchema
-      this.responseModalities = responseModalities
-      this.thinkingConfig = thinkingConfig
-      this.imageConfig = imageConfig
-      this.speechConfig = speechConfig
+        @JvmField public var topP: Float? = null
+
+        @JvmField public var candidateCount: Int? = null
+
+        @JvmField public var maxOutputTokens: Int? = null
+
+        @JvmField public var presencePenalty: Float? = null
+
+        @JvmField public var frequencyPenalty: Float? = null
+
+        @JvmField public var stopSequences: List<String>? = null
+
+        @JvmField public var responseMimeType: String? = null
+
+        @JvmField public var responseSchema: Schema? = null
+
+        @JvmField public var responseJsonSchema: JsonSchema<*>? = null
+
+        @JvmField public var responseModalities: List<ResponseModality>? = null
+
+        @JvmField public var thinkingConfig: ThinkingConfig? = null
+
+        @JvmField public var imageConfig: ImageConfig? = null
+
+        @JvmField public var speechConfig: SpeechConfig? = null
+
+        public constructor()
+
+        internal constructor(
+            temperature: Float?,
+            topK: Int?,
+            topP: Float?,
+            candidateCount: Int?,
+            maxOutputTokens: Int?,
+            presencePenalty: Float?,
+            frequencyPenalty: Float?,
+            stopSequences: List<String>?,
+            responseMimeType: String?,
+            responseSchema: Schema?,
+            responseJsonSchema: JsonSchema<*>?,
+            responseModalities: List<ResponseModality>?,
+            thinkingConfig: ThinkingConfig?,
+            imageConfig: ImageConfig?,
+            speechConfig: SpeechConfig?,
+        ) {
+            this.temperature = temperature
+            this.topK = topK
+            this.topP = topP
+            this.candidateCount = candidateCount
+            this.maxOutputTokens = maxOutputTokens
+            this.stopSequences = stopSequences
+            this.presencePenalty = presencePenalty
+            this.frequencyPenalty = frequencyPenalty
+            this.responseMimeType = responseMimeType
+            this.responseSchema = responseSchema
+            this.responseJsonSchema = responseJsonSchema
+            this.responseModalities = responseModalities
+            this.thinkingConfig = thinkingConfig
+            this.imageConfig = imageConfig
+            this.speechConfig = speechConfig
+        }
+
+        @Deprecated("`temperature` is unsupported in Gemini 3.x and later models")
+        public fun setTemperature(temperature: Float?): Builder = apply {
+            this.temperature = temperature
+        }
+
+        @Deprecated("`topK` is unsupported in Gemini 3.x and later models")
+        public fun setTopK(topK: Int?): Builder = apply { this.topK = topK }
+
+        @Deprecated("`topP` is unsupported in Gemini 3.x and later models")
+        public fun setTopP(topP: Float?): Builder = apply { this.topP = topP }
+
+        @Deprecated("`candidateCount` is unsupported in Gemini 3.x and later models")
+        public fun setCandidateCount(candidateCount: Int?): Builder = apply {
+            this.candidateCount = candidateCount
+        }
+
+        public fun setMaxOutputTokens(maxOutputTokens: Int?): Builder = apply {
+            this.maxOutputTokens = maxOutputTokens
+        }
+
+        @Deprecated("`presencePenalty` is unsupported in Gemini 3.x and later models")
+        public fun setPresencePenalty(presencePenalty: Float?): Builder = apply {
+            this.presencePenalty = presencePenalty
+        }
+
+        @Deprecated("`frequencyPenalty` is unsupported in Gemini 3.x and later models")
+        public fun setFrequencyPenalty(frequencyPenalty: Float?): Builder = apply {
+            this.frequencyPenalty = frequencyPenalty
+        }
+        public fun setStopSequences(stopSequences: List<String>?): Builder = apply {
+            this.stopSequences = stopSequences
+        }
+        public fun setResponseMimeType(responseMimeType: String?): Builder = apply {
+            this.responseMimeType = responseMimeType
+        }
+        public fun setResponseSchema(responseSchema: Schema?): Builder = apply {
+            this.responseSchema = responseSchema
+        }
+        public fun setResponseSchemaJson(responseSchemaJson: JsonSchema<*>?): Builder = apply {
+            this.responseJsonSchema = responseSchemaJson
+        }
+        public fun setResponseModalities(responseModalities: List<ResponseModality>?): Builder = apply {
+            this.responseModalities = responseModalities
+        }
+        public fun setThinkingConfig(thinkingConfig: ThinkingConfig?): Builder = apply {
+            this.thinkingConfig = thinkingConfig
+        }
+        public fun setImageConfig(imageConfig: ImageConfig?): Builder = apply {
+            this.imageConfig = imageConfig
+        }
+        public fun setSpeechConfig(speechConfig: SpeechConfig?): Builder = apply {
+            this.speechConfig = speechConfig
+        }
+
+        /** Create a new [GenerationConfig] with the attached arguments. */
+        public fun build(): GenerationConfig {
+            if (responseSchema != null && responseJsonSchema != null) {
+                throw InvalidStateException("responseSchema and responseJsonSchema are mutually exclusive.")
+            }
+            return GenerationConfig(
+                temperature = temperature,
+                topK = topK,
+                topP = topP,
+                candidateCount = candidateCount,
+                maxOutputTokens = maxOutputTokens,
+                stopSequences = stopSequences,
+                presencePenalty = presencePenalty,
+                frequencyPenalty = frequencyPenalty,
+                responseMimeType = responseMimeType,
+                responseSchema = responseSchema,
+                responseJsonSchema = responseJsonSchema,
+                responseModalities = responseModalities,
+                thinkingConfig = thinkingConfig,
+                imageConfig = imageConfig,
+                speechConfig = speechConfig,
+            )
+        }
     }
 
-    @Deprecated("`temperature` is unsupported in Gemini 3.x and later models")
-    public fun setTemperature(temperature: Float?): Builder = apply {
-      this.temperature = temperature
-    }
-
-    @Deprecated("`topK` is unsupported in Gemini 3.x and later models")
-    public fun setTopK(topK: Int?): Builder = apply { this.topK = topK }
-
-    @Deprecated("`topP` is unsupported in Gemini 3.x and later models")
-    public fun setTopP(topP: Float?): Builder = apply { this.topP = topP }
-
-    @Deprecated("`candidateCount` is unsupported in Gemini 3.x and later models")
-    public fun setCandidateCount(candidateCount: Int?): Builder = apply {
-      this.candidateCount = candidateCount
-    }
-
-    public fun setMaxOutputTokens(maxOutputTokens: Int?): Builder = apply {
-      this.maxOutputTokens = maxOutputTokens
-    }
-
-    @Deprecated("`presencePenalty` is unsupported in Gemini 3.x and later models")
-    public fun setPresencePenalty(presencePenalty: Float?): Builder = apply {
-      this.presencePenalty = presencePenalty
-    }
-
-    @Deprecated("`frequencyPenalty` is unsupported in Gemini 3.x and later models")
-    public fun setFrequencyPenalty(frequencyPenalty: Float?): Builder = apply {
-      this.frequencyPenalty = frequencyPenalty
-    }
-    public fun setStopSequences(stopSequences: List<String>?): Builder = apply {
-      this.stopSequences = stopSequences
-    }
-    public fun setResponseMimeType(responseMimeType: String?): Builder = apply {
-      this.responseMimeType = responseMimeType
-    }
-    public fun setResponseSchema(responseSchema: Schema?): Builder = apply {
-      this.responseSchema = responseSchema
-    }
-    public fun setResponseSchemaJson(responseSchemaJson: JsonSchema<*>?): Builder = apply {
-      this.responseJsonSchema = responseSchemaJson
-    }
-    public fun setResponseModalities(responseModalities: List<ResponseModality>?): Builder = apply {
-      this.responseModalities = responseModalities
-    }
-    public fun setThinkingConfig(thinkingConfig: ThinkingConfig?): Builder = apply {
-      this.thinkingConfig = thinkingConfig
-    }
-    public fun setImageConfig(imageConfig: ImageConfig?): Builder = apply {
-      this.imageConfig = imageConfig
-    }
-    public fun setSpeechConfig(speechConfig: SpeechConfig?): Builder = apply {
-      this.speechConfig = speechConfig
-    }
-
-    /** Create a new [GenerationConfig] with the attached arguments. */
-    public fun build(): GenerationConfig {
-      if (responseSchema != null && responseJsonSchema != null) {
-        throw InvalidStateException("responseSchema and responseJsonSchema are mutually exclusive.")
-      }
-      return GenerationConfig(
+    public fun toBuilder(): Builder = Builder(
         temperature = temperature,
         topK = topK,
         topP = topP,
@@ -254,38 +288,17 @@ private constructor(
         thinkingConfig = thinkingConfig,
         imageConfig = imageConfig,
         speechConfig = speechConfig,
-      )
-    }
-  }
-
-  public fun toBuilder(): Builder =
-    Builder(
-      temperature = temperature,
-      topK = topK,
-      topP = topP,
-      candidateCount = candidateCount,
-      maxOutputTokens = maxOutputTokens,
-      stopSequences = stopSequences,
-      presencePenalty = presencePenalty,
-      frequencyPenalty = frequencyPenalty,
-      responseMimeType = responseMimeType,
-      responseSchema = responseSchema,
-      responseJsonSchema = responseJsonSchema,
-      responseModalities = responseModalities,
-      thinkingConfig = thinkingConfig,
-      imageConfig = imageConfig,
-      speechConfig = speechConfig,
     )
 
-  public companion object {
-    /**
-     * Alternative casing for [GenerationConfig.Builder]:
-     * ```
-     * val config = GenerationConfig.builder()
-     * ```
-     */
-    @JvmStatic public fun builder(): Builder = Builder()
-  }
+    public companion object {
+        /**
+         * Alternative casing for [GenerationConfig.Builder]:
+         * ```
+         * val config = GenerationConfig.builder()
+         * ```
+         */
+        @JvmStatic public fun builder(): Builder = Builder()
+    }
 }
 
 /**
@@ -300,7 +313,7 @@ private constructor(
  * ```
  */
 public fun generationConfig(init: GenerationConfig.Builder.() -> Unit): GenerationConfig {
-  val builder = GenerationConfig.builder()
-  builder.init()
-  return builder.build()
+    val builder = GenerationConfig.builder()
+    builder.init()
+    return builder.build()
 }

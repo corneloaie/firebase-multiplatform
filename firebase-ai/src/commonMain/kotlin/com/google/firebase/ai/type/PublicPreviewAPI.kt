@@ -20,10 +20,10 @@ package com.google.firebase.ai.type
 
 @Retention(AnnotationRetention.BINARY)
 @RequiresOptIn(
-  level = RequiresOptIn.Level.ERROR,
-  message =
+    level = RequiresOptIn.Level.ERROR,
+    message =
     "This API is part of an experimental public preview and may change in " +
-      "backwards-incompatible ways without notice.",
+        "backwards-incompatible ways without notice.",
 )
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY)
-public annotation class PublicPreviewAPI()
+public annotation class PublicPreviewAPI

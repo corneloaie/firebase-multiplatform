@@ -20,17 +20,16 @@ package com.google.firebase.ai.type
 
 import kotlin.jvm.JvmField
 
-
 /** Represents the type of content present in a response (for example, text, image, audio). */
 public class ResponseModality private constructor(public val ordinal: Int) {
-  public companion object {
-    /** Represents a plain text response modality. */
-    @JvmField public val TEXT: ResponseModality = ResponseModality(1)
+    public companion object {
+        /** Represents a plain text response modality. */
+        @JvmField public val TEXT: ResponseModality = ResponseModality(1)
 
-    /** Represents an image response modality. */
-    @JvmField public val IMAGE: ResponseModality = ResponseModality(2)
+        /** Represents an image response modality. */
+        @JvmField public val IMAGE: ResponseModality = ResponseModality(2)
 
-    /** Represents an audio response modality. */
-    @JvmField public val AUDIO: ResponseModality = ResponseModality(4)
-  }
+        /** Represents an audio response modality. */
+        @JvmField public val AUDIO: ResponseModality = ResponseModality(4)
+    }
 }

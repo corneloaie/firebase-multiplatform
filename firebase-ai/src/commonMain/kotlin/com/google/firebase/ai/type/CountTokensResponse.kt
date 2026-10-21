@@ -30,10 +30,10 @@ package com.google.firebase.ai.type
  */
 public class CountTokensResponse
 internal constructor(
-  public val totalTokens: Int,
-  public val promptTokensDetails: List<ModalityTokenCount> = emptyList(),
+    public val totalTokens: Int,
+    public val promptTokensDetails: List<ModalityTokenCount> = emptyList(),
 ) {
-  public operator fun component1(): Int = totalTokens
+    public operator fun component1(): Int = totalTokens
 
-  public operator fun component2(): List<ModalityTokenCount> = promptTokensDetails
+    public operator fun component2(): List<ModalityTokenCount> = promptTokensDetails
 }

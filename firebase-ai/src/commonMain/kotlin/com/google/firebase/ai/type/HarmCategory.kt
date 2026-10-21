@@ -20,41 +20,40 @@ package com.google.firebase.ai.type
 
 import kotlin.jvm.JvmField
 
-
 /** Category for a given harm rating. */
 public class HarmCategory private constructor(public val ordinal: Int) {
-  public companion object {
-    /** A new and not yet supported value. */
-    @JvmField public val UNKNOWN: HarmCategory = HarmCategory(0)
+    public companion object {
+        /** A new and not yet supported value. */
+        @JvmField public val UNKNOWN: HarmCategory = HarmCategory(0)
 
-    /** Represents the harm category for content that is classified as harassment. */
-    @JvmField public val HARASSMENT: HarmCategory = HarmCategory(1)
+        /** Represents the harm category for content that is classified as harassment. */
+        @JvmField public val HARASSMENT: HarmCategory = HarmCategory(1)
 
-    /** Represents the harm category for content that is classified as hate speech. */
-    @JvmField public val HATE_SPEECH: HarmCategory = HarmCategory(2)
+        /** Represents the harm category for content that is classified as hate speech. */
+        @JvmField public val HATE_SPEECH: HarmCategory = HarmCategory(2)
 
-    /** Represents the harm category for content that is classified as sexually explicit content. */
-    @JvmField public val SEXUALLY_EXPLICIT: HarmCategory = HarmCategory(3)
+        /** Represents the harm category for content that is classified as sexually explicit content. */
+        @JvmField public val SEXUALLY_EXPLICIT: HarmCategory = HarmCategory(3)
 
-    /** Represents the harm category for content that is classified as dangerous content. */
-    @JvmField public val DANGEROUS_CONTENT: HarmCategory = HarmCategory(4)
+        /** Represents the harm category for content that is classified as dangerous content. */
+        @JvmField public val DANGEROUS_CONTENT: HarmCategory = HarmCategory(4)
 
-    /**
-     * Represents the harm category for content that is classified as content that may be used to
-     * harm civic integrity.
-     */
-    @JvmField public val CIVIC_INTEGRITY: HarmCategory = HarmCategory(5)
+        /**
+         * Represents the harm category for content that is classified as content that may be used to
+         * harm civic integrity.
+         */
+        @JvmField public val CIVIC_INTEGRITY: HarmCategory = HarmCategory(5)
 
-    /** Represents the harm category for image content that is classified as hateful. */
-    @JvmField public val IMAGE_HATE: HarmCategory = HarmCategory(6)
+        /** Represents the harm category for image content that is classified as hateful. */
+        @JvmField public val IMAGE_HATE: HarmCategory = HarmCategory(6)
 
-    /** Represents the harm category for image content that is classified as dangerous. */
-    @JvmField public val IMAGE_DANGEROUS_CONTENT: HarmCategory = HarmCategory(7)
+        /** Represents the harm category for image content that is classified as dangerous. */
+        @JvmField public val IMAGE_DANGEROUS_CONTENT: HarmCategory = HarmCategory(7)
 
-    /** Represents the harm category for image content that is classified as harassment. */
-    @JvmField public val IMAGE_HARASSMENT: HarmCategory = HarmCategory(8)
+        /** Represents the harm category for image content that is classified as harassment. */
+        @JvmField public val IMAGE_HARASSMENT: HarmCategory = HarmCategory(8)
 
-    /** Represents the harm category for image content that is classified as sexually explicit. */
-    @JvmField public val IMAGE_SEXUALLY_EXPLICIT: HarmCategory = HarmCategory(9)
-  }
+        /** Represents the harm category for image content that is classified as sexually explicit. */
+        @JvmField public val IMAGE_SEXUALLY_EXPLICIT: HarmCategory = HarmCategory(9)
+    }
 }

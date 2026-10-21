@@ -22,21 +22,27 @@ import com.google.firebase.ai.FirebaseAI
 
 /** Parent class for any errors that occur from the [FirebaseAI] SDK. */
 public abstract class FirebaseAIException
-internal constructor(message: String, cause: Throwable? = null) : RuntimeException(message, cause)
+internal constructor(
+    message: String,
+    cause: Throwable? = null,
+) : RuntimeException(message, cause)
 
 /** Something went wrong while trying to deserialize a response from the server. */
 public class SerializationException
-internal constructor(message: String, cause: Throwable? = null) :
-  FirebaseAIException(message, cause)
+internal constructor(
+    message: String,
+    cause: Throwable? = null,
+) : FirebaseAIException(message, cause)
 
 /** The server responded with a non 200 response code. */
-public class ServerException internal constructor(message: String, cause: Throwable? = null) :
-  FirebaseAIException(message, cause)
+public class ServerException internal constructor(message: String, cause: Throwable? = null) : FirebaseAIException(message, cause)
 
 /** The provided API Key is not valid. */
 public class InvalidAPIKeyException
-internal constructor(message: String, cause: Throwable? = null) :
-  FirebaseAIException(message, cause)
+internal constructor(
+    message: String,
+    cause: Throwable? = null,
+) : FirebaseAIException(message, cause)
 
 /**
  * A request was blocked.
@@ -47,20 +53,21 @@ internal constructor(message: String, cause: Throwable? = null) :
  */
 public class PromptBlockedException
 internal constructor(
-  public val response: GenerateContentResponse?,
-  cause: Throwable? = null,
-  message: String? = null,
-) :
-  FirebaseAIException(
-    "Prompt was blocked: ${response?.promptFeedback?.blockReason?.name?: message}",
+    public val response: GenerateContentResponse?,
+    cause: Throwable? = null,
+    message: String? = null,
+) : FirebaseAIException(
+    "Prompt was blocked: ${response?.promptFeedback?.blockReason?.name ?: message}",
     cause,
-  ) {
-  internal constructor(message: String, cause: Throwable? = null) : this(null, cause, message)
+) {
+    internal constructor(message: String, cause: Throwable? = null) : this(null, cause, message)
 }
 
 public class ContentBlockedException
-internal constructor(message: String, cause: Throwable? = null) :
-  FirebaseAIException(message, cause)
+internal constructor(
+    message: String,
+    cause: Throwable? = null,
+) : FirebaseAIException(message, cause)
 
 /**
  * The user's location (region) is not supported by the API.
@@ -70,8 +77,7 @@ internal constructor(message: String, cause: Throwable? = null) :
  * (countries and territories) where the API is available.
  */
 // TODO(rlazo): Add secondary constructor to pass through the message?
-public class UnsupportedUserLocationException internal constructor(cause: Throwable? = null) :
-  FirebaseAIException("User location is not supported for the API use.", cause)
+public class UnsupportedUserLocationException internal constructor(cause: Throwable? = null) : FirebaseAIException("User location is not supported for the API use.", cause)
 
 /**
  * The Firebase project has not been configured and enabled for the selected API.
@@ -80,16 +86,17 @@ public class UnsupportedUserLocationException internal constructor(cause: Throwa
  * [steps](https://firebase.google.com/docs/ai-logic/faq-and-troubleshooting#error-genai-config-not-found)
  */
 public class APINotConfiguredException
-internal constructor(message: String, cause: Throwable? = null) :
-  FirebaseAIException(message, cause)
+internal constructor(
+    message: String,
+    cause: Throwable? = null,
+) : FirebaseAIException(message, cause)
 
 /**
  * Some form of state occurred that shouldn't have.
  *
  * Usually indicative of consumer error.
  */
-public class InvalidStateException internal constructor(message: String, cause: Throwable? = null) :
-  FirebaseAIException(message, cause)
+public class InvalidStateException internal constructor(message: String, cause: Throwable? = null) : FirebaseAIException(message, cause)
 
 /**
  * A request was stopped during generation for some reason.
@@ -97,11 +104,13 @@ public class InvalidStateException internal constructor(message: String, cause: 
  * @property response The full server response.
  */
 public class ResponseStoppedException
-internal constructor(public val response: GenerateContentResponse, cause: Throwable? = null) :
-  FirebaseAIException(
+internal constructor(
+    public val response: GenerateContentResponse,
+    cause: Throwable? = null,
+) : FirebaseAIException(
     "Content generation stopped. Reason: ${response.candidates.first().finishReason?.name}",
     cause,
-  )
+)
 
 /**
  * A request took too long to complete.
@@ -110,9 +119,9 @@ internal constructor(public val response: GenerateContentResponse, cause: Throwa
  */
 public class RequestTimeoutException
 internal constructor(
-  message: String,
-  cause: Throwable? = null,
-  history: List<Content> = emptyList()
+    message: String,
+    cause: Throwable? = null,
+    history: List<Content> = emptyList(),
 ) : FirebaseAIException(message, cause)
 
 /**
@@ -122,8 +131,10 @@ internal constructor(
  * [locations.](https://firebase.google.com/docs/ai-logic/locations?api=vertex#available-locations)
  */
 public class InvalidLocationException
-internal constructor(location: String, cause: Throwable? = null) :
-  FirebaseAIException("Invalid location \"${location}\"", cause)
+internal constructor(
+    location: String,
+    cause: Throwable? = null,
+) : FirebaseAIException("Invalid location \"${location}\"", cause)
 
 /**
  * The service is not enabled for this Firebase project. Learn how to enable the required services
@@ -131,34 +142,35 @@ internal constructor(location: String, cause: Throwable? = null) :
  * [Firebase documentation.](https://firebase.google.com/docs/ai-logic/faq-and-troubleshooting#required-apis)
  */
 public class ServiceDisabledException
-internal constructor(message: String, cause: Throwable? = null) :
-  FirebaseAIException(message, cause)
+internal constructor(
+    message: String,
+    cause: Throwable? = null,
+) : FirebaseAIException(message, cause)
 
 /**
  * The request has hit a quota limit. Learn more about quotas in the
  * [Firebase documentation.](https://firebase.google.com/docs/ai-logic/quotas)
  */
 public class QuotaExceededException
-internal constructor(message: String, cause: Throwable? = null) :
-  FirebaseAIException(message, cause)
+internal constructor(
+    message: String,
+    cause: Throwable? = null,
+) : FirebaseAIException(message, cause)
 
 /** Streaming session already receiving. */
 public class SessionAlreadyReceivingException :
-  FirebaseAIException(
-    "This session is already receiving. Please call stopReceiving() before calling this again."
-  )
+    FirebaseAIException(
+        "This session is already receiving. Please call stopReceiving() before calling this again.",
+    )
 
 /** Audio record initialization failures for audio streaming */
-public class AudioRecordInitializationFailedException(message: String) :
-  FirebaseAIException(message)
+public class AudioRecordInitializationFailedException(message: String) : FirebaseAIException(message)
 
 /** Handshake failed with the server */
-public class ServiceConnectionHandshakeFailedException(message: String, cause: Throwable? = null) :
-  FirebaseAIException(message, cause)
+public class ServiceConnectionHandshakeFailedException(message: String, cause: Throwable? = null) : FirebaseAIException(message, cause)
 
 /** The request is missing a permission that is required to perform the requested operation. */
-public class PermissionMissingException(message: String, cause: Throwable? = null) :
-  FirebaseAIException(message, cause)
+public class PermissionMissingException(message: String, cause: Throwable? = null) : FirebaseAIException(message, cause)
 
 /** Thrown when a function invoked by the model has an error that should be returned to the model */
 public class FirebaseAutoFunctionException(message: String) : FirebaseAIException(message)
@@ -173,42 +185,49 @@ public class FirebaseAutoFunctionException(message: String) : FirebaseAIExceptio
 @PublicPreviewAPI
 public class FirebaseAIOnDeviceNotAvailableException
 // The Android SDK's constructor takes the exception of its Android-only on-device interop library (see exclusions.txt).
-private constructor(message: String, cause: Throwable?) : FirebaseAIException(message, cause) {
-  internal companion object {
-    fun create(
-      message: String = "Device doesn't support local models",
-      cause: Throwable? = null
-    ): FirebaseAIOnDeviceNotAvailableException = FirebaseAIOnDeviceNotAvailableException(message, cause)
-  }
+private constructor(
+    message: String,
+    cause: Throwable?,
+) : FirebaseAIException(message, cause) {
+    internal companion object {
+        fun create(
+            message: String = "Device doesn't support local models",
+            cause: Throwable? = null,
+        ): FirebaseAIOnDeviceNotAvailableException = FirebaseAIOnDeviceNotAvailableException(message, cause)
+    }
 }
 
 /** The parameters used in the request are not valid. */
 @PublicPreviewAPI
 public class FirebaseAIOnDeviceInvalidRequestException
 // The Android SDK's constructor takes the exception of its Android-only on-device interop library (see exclusions.txt).
-private constructor(message: String, cause: Throwable?) : FirebaseAIException(message, cause) {
-  internal companion object {
-    fun create(
-      message: String = "Invalid on-device request",
-      cause: Throwable? = null
-    ): FirebaseAIOnDeviceInvalidRequestException =
-      FirebaseAIOnDeviceInvalidRequestException(message, cause)
-  }
+private constructor(
+    message: String,
+    cause: Throwable?,
+) : FirebaseAIException(message, cause) {
+    internal companion object {
+        fun create(
+            message: String = "Invalid on-device request",
+            cause: Throwable? = null,
+        ): FirebaseAIOnDeviceInvalidRequestException = FirebaseAIOnDeviceInvalidRequestException(message, cause)
+    }
 }
 
 /** Catch all case for exceptions not explicitly expected. */
 @PublicPreviewAPI
 public class FirebaseAIOnDeviceUnknownException
 // The Android SDK's constructor takes the exception of its Android-only on-device interop library (see exclusions.txt).
-private constructor(message: String, cause: Throwable?) : FirebaseAIException(message, cause) {
-  internal companion object {
-    fun create(
-      message: String = "Unknown on-device exception",
-      cause: Throwable? = null
-    ): FirebaseAIOnDeviceUnknownException = FirebaseAIOnDeviceUnknownException(message, cause)
-  }
+private constructor(
+    message: String,
+    cause: Throwable?,
+) : FirebaseAIException(message, cause) {
+    internal companion object {
+        fun create(
+            message: String = "Unknown on-device exception",
+            cause: Throwable? = null,
+        ): FirebaseAIOnDeviceUnknownException = FirebaseAIOnDeviceUnknownException(message, cause)
+    }
 }
 
 /** Catch all case for exceptions not explicitly expected. */
-public class UnknownException internal constructor(message: String, cause: Throwable? = null) :
-  FirebaseAIException(message, cause)
+public class UnknownException internal constructor(message: String, cause: Throwable? = null) : FirebaseAIException(message, cause)

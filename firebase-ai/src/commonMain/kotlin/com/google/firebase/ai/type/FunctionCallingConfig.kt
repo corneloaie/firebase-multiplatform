@@ -28,44 +28,43 @@ import kotlin.jvm.JvmStatic
  */
 public class FunctionCallingConfig
 internal constructor(
-  internal val mode: Mode,
-  internal val allowedFunctionNames: List<String>? = null
+    internal val mode: Mode,
+    internal val allowedFunctionNames: List<String>? = null,
 ) {
-  /** Configuration for dictating when the model should call the attached function. */
-  internal enum class Mode {
-    /**
-     * The default behavior for function calling. The model calls functions to answer queries at its
-     * discretion
-     */
-    AUTO,
+    /** Configuration for dictating when the model should call the attached function. */
+    internal enum class Mode {
+        /**
+         * The default behavior for function calling. The model calls functions to answer queries at its
+         * discretion
+         */
+        AUTO,
 
-    /** The model always predicts a provided function call to answer every query. */
-    ANY,
+        /** The model always predicts a provided function call to answer every query. */
+        ANY,
 
-    /**
-     * The model will never predict a function call to answer a query. This can also be achieved by
-     * not passing any tools to the model.
-     */
-    NONE,
-  }
+        /**
+         * The model will never predict a function call to answer a query. This can also be achieved by
+         * not passing any tools to the model.
+         */
+        NONE,
+    }
 
-  public companion object {
-    /**
-     * The default behavior for function calling. The model calls functions to answer queries at its
-     * discretion.
-     */
-    @JvmStatic public fun auto(): FunctionCallingConfig = FunctionCallingConfig(Mode.AUTO)
+    public companion object {
+        /**
+         * The default behavior for function calling. The model calls functions to answer queries at its
+         * discretion.
+         */
+        @JvmStatic public fun auto(): FunctionCallingConfig = FunctionCallingConfig(Mode.AUTO)
 
-    /** The model always predicts a provided function call to answer every query. */
-    @JvmStatic
-    @JvmOverloads
-    public fun any(allowedFunctionNames: List<String>? = null): FunctionCallingConfig =
-      FunctionCallingConfig(Mode.ANY, allowedFunctionNames)
+        /** The model always predicts a provided function call to answer every query. */
+        @JvmStatic
+        @JvmOverloads
+        public fun any(allowedFunctionNames: List<String>? = null): FunctionCallingConfig = FunctionCallingConfig(Mode.ANY, allowedFunctionNames)
 
-    /**
-     * The model will never predict a function call to answer a query. This can also be achieved by
-     * not passing any tools to the model.
-     */
-    @JvmStatic public fun none(): FunctionCallingConfig = FunctionCallingConfig(Mode.NONE)
-  }
+        /**
+         * The model will never predict a function call to answer a query. This can also be achieved by
+         * not passing any tools to the model.
+         */
+        @JvmStatic public fun none(): FunctionCallingConfig = FunctionCallingConfig(Mode.NONE)
+    }
 }

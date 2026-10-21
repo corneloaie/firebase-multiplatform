@@ -22,16 +22,17 @@ import kotlin.jvm.JvmField
 
 /** Specifies the quality of the thinking response. */
 public class ThinkingLevel private constructor(public val ordinal: Int) {
-  public companion object {
-    /** A minimal quality thinking response, which provides the lowest latency. */
-    @JvmField public val MINIMAL: ThinkingLevel = ThinkingLevel(0)
-    /** A lower quality thinking response, which provides low latency. */
-    @JvmField public val LOW: ThinkingLevel = ThinkingLevel(1)
+    public companion object {
+        /** A minimal quality thinking response, which provides the lowest latency. */
+        @JvmField public val MINIMAL: ThinkingLevel = ThinkingLevel(0)
 
-    /** A medium quality thinking response. */
-    @JvmField public val MEDIUM: ThinkingLevel = ThinkingLevel(2)
+        /** A lower quality thinking response, which provides low latency. */
+        @JvmField public val LOW: ThinkingLevel = ThinkingLevel(1)
 
-    /** A higher quality thinking response, which may increase latency. */
-    @JvmField public val HIGH: ThinkingLevel = ThinkingLevel(3)
-  }
+        /** A medium quality thinking response. */
+        @JvmField public val MEDIUM: ThinkingLevel = ThinkingLevel(2)
+
+        /** A higher quality thinking response, which may increase latency. */
+        @JvmField public val HIGH: ThinkingLevel = ThinkingLevel(3)
+    }
 }

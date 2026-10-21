@@ -35,50 +35,50 @@ import kotlin.jvm.JvmOverloads
  */
 public class Content
 @JvmOverloads
-constructor(public val role: String? = "user", public val parts: List<Part>) {
-  /** Returns a copy of this object, with the provided parameters overwriting the originals. */
-  public fun copy(role: String? = this.role, parts: List<Part> = this.parts): Content {
-    return Content(role, parts)
-  }
+constructor(
+    public val role: String? = "user",
+    public val parts: List<Part>,
+) {
+    /** Returns a copy of this object, with the provided parameters overwriting the originals. */
+    public fun copy(role: String? = this.role, parts: List<Part> = this.parts): Content = Content(role, parts)
 
-  /** Builder class to facilitate constructing complex [Content] objects. */
-  public class Builder {
-    /** The producer of the content. Must be either 'user' or 'model'. By default, it's "user". */
-    @JvmField public var role: String? = "user"
+    /** Builder class to facilitate constructing complex [Content] objects. */
+    public class Builder {
+        /** The producer of the content. Must be either 'user' or 'model'. By default, it's "user". */
+        @JvmField public var role: String? = "user"
 
-    /**
-     * The mutable list of [Part]s comprising the [Content].
-     *
-     * Prefer using the provided helper methods over modifying this list directly.
-     */
-    @JvmField public var parts: MutableList<Part> = arrayListOf()
+        /**
+         * The mutable list of [Part]s comprising the [Content].
+         *
+         * Prefer using the provided helper methods over modifying this list directly.
+         */
+        @JvmField public var parts: MutableList<Part> = arrayListOf()
 
-    public fun setRole(role: String?): Content.Builder = apply { this.role = role }
-    public fun setParts(parts: MutableList<Part>): Content.Builder = apply { this.parts = parts }
+        public fun setRole(role: String?): Content.Builder = apply { this.role = role }
+        public fun setParts(parts: MutableList<Part>): Content.Builder = apply { this.parts = parts }
 
-    /** Adds a new [Part] to [parts]. */
-    @JvmName("addPart")
-    public fun <T : Part> part(data: T): Content.Builder = apply { parts.add(data) }
+        /** Adds a new [Part] to [parts]. */
+        @JvmName("addPart")
+        public fun <T : Part> part(data: T): Content.Builder = apply { parts.add(data) }
 
-    /** Adds a new [TextPart] with the provided [text] to [parts]. */
-    @JvmName("addText") public fun text(text: String): Content.Builder = part(TextPart(text))
+        /** Adds a new [TextPart] with the provided [text] to [parts]. */
+        @JvmName("addText")
+        public fun text(text: String): Content.Builder = part(TextPart(text))
 
-    /**
-     * Adds a new [InlineDataPart] with the provided [bytes], which should be interpreted by the
-     * model based on the [mimeType], to [parts].
-     */
-    @JvmName("addInlineData")
-    public fun inlineData(bytes: ByteArray, mimeType: String): Content.Builder =
-      part(InlineDataPart(bytes, mimeType))
+        /**
+         * Adds a new [InlineDataPart] with the provided [bytes], which should be interpreted by the
+         * model based on the [mimeType], to [parts].
+         */
+        @JvmName("addInlineData")
+        public fun inlineData(bytes: ByteArray, mimeType: String): Content.Builder = part(InlineDataPart(bytes, mimeType))
 
-    /** Adds a new [FileDataPart] with the provided [uri] and [mimeType] to [parts]. */
-    @JvmName("addFileData")
-    public fun fileData(uri: String, mimeType: String): Content.Builder =
-      part(FileDataPart(uri, mimeType))
+        /** Adds a new [FileDataPart] with the provided [uri] and [mimeType] to [parts]. */
+        @JvmName("addFileData")
+        public fun fileData(uri: String, mimeType: String): Content.Builder = part(FileDataPart(uri, mimeType))
 
-    /** Returns a new [Content] using the defined [role] and [parts]. */
-    public fun build(): Content = Content(role, parts)
-  }
+        /** Returns a new [Content] using the defined [role] and [parts]. */
+        public fun build(): Content = Content(role, parts)
+    }
 }
 
 /**
@@ -94,8 +94,8 @@ constructor(public val role: String? = "user", public val parts: List<Part>) {
  * ```
  */
 public fun content(role: String? = "user", init: Content.Builder.() -> Unit): Content {
-  val builder = Content.Builder()
-  builder.role = role
-  builder.init()
-  return builder.build()
+    val builder = Content.Builder()
+    builder.role = role
+    builder.init()
+    return builder.build()
 }

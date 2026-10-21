@@ -39,6 +39,6 @@ public class SlidingWindow(public val targetTokens: Int? = null)
  */
 @PublicPreviewAPI
 public class ContextWindowCompressionConfig(
-  public val triggerTokens: Int? = null,
-  public val slidingWindow: SlidingWindow? = null
+    public val triggerTokens: Int? = null,
+    public val slidingWindow: SlidingWindow? = null,
 )

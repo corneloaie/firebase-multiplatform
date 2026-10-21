@@ -288,8 +288,7 @@ private fun JsonObject.toCitation(content: Content): Citation {
 }
 
 /** Citation metadata: `citations` on the Agent Platform backend, `citationSources` on the Google Developer API. */
-private fun JsonObject.toCitationMetadata(content: Content): CitationMetadata =
-    CitationMetadata((objects("citations") ?: objects("citationSources")).orEmpty().map { it.toCitation(content) })
+private fun JsonObject.toCitationMetadata(content: Content): CitationMetadata = CitationMetadata((objects("citations") ?: objects("citationSources")).orEmpty().map { it.toCitation(content) })
 
 private fun JsonObject.toSegment(content: Content): Segment {
     val partIndex = int("partIndex") ?: 0
@@ -343,8 +342,7 @@ internal fun JsonObject.toCandidate(): Candidate {
     )
 }
 
-internal fun JsonObject.toModalityTokenCount(): ModalityTokenCount =
-    ModalityTokenCount.create(string("modality")?.toContentModality() ?: ContentModality.UNSPECIFIED, int("tokenCount") ?: 0)
+internal fun JsonObject.toModalityTokenCount(): ModalityTokenCount = ModalityTokenCount.create(string("modality")?.toContentModality() ?: ContentModality.UNSPECIFIED, int("tokenCount") ?: 0)
 
 private fun JsonObject.modalityTokenCounts(key: String): List<ModalityTokenCount> = objects(key).orEmpty().map { it.toModalityTokenCount() }
 
@@ -375,8 +373,7 @@ internal fun JsonObject.toGenerateContentResponse(): GenerateContentResponse = G
     string("modelVersion"),
 )
 
-internal fun JsonObject.toCountTokensResponse(): CountTokensResponse =
-    CountTokensResponse(int("totalTokens") ?: 0, modalityTokenCounts("promptTokensDetails"))
+internal fun JsonObject.toCountTokensResponse(): CountTokensResponse = CountTokensResponse(int("totalTokens") ?: 0, modalityTokenCounts("promptTokensDetails"))
 
 private fun JsonObject.toTranscription(): Transcription = Transcription(string("text"))
 
@@ -420,8 +417,7 @@ internal fun JsonObject.toLiveServerMessage(): LiveServerMessage {
 }
 
 /** Parses [text] as a JSON object; anything else (a JSON `null` included) is an empty object. */
-internal fun parseJsonObject(text: String?): JsonObject =
-    text?.let { runCatching { Json.parseToJsonElement(it) }.getOrNull() as? JsonObject } ?: JsonObject(emptyMap())
+internal fun parseJsonObject(text: String?): JsonObject = text?.let { runCatching { Json.parseToJsonElement(it) }.getOrNull() as? JsonObject } ?: JsonObject(emptyMap())
 
 /** The element, or null for JSON `null`. */
 internal fun JsonElement.orNull(): JsonElement? = if (this is JsonNull) null else this

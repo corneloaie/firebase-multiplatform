@@ -27,13 +27,13 @@ package com.google.firebase.ai.type
  */
 @PublicPreviewAPI
 public class SessionResumptionConfig {
-  internal val handle: String?
+    internal val handle: String?
 
-  public constructor() {
-    this.handle = null
-  }
+    public constructor() {
+        this.handle = null
+    }
 
-  public constructor(handle: String) {
-    this.handle = handle
-  }
+    public constructor(handle: String) {
+        this.handle = handle
+    }
 }

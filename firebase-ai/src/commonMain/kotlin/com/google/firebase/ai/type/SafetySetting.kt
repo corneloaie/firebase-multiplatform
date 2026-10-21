@@ -28,7 +28,7 @@ package com.google.firebase.ai.type
  * specified it will default to [HarmBlockMethod.PROBABILITY].
  */
 public class SafetySetting(
-  internal val harmCategory: HarmCategory,
-  internal val threshold: HarmBlockThreshold,
-  internal val method: HarmBlockMethod? = null,
+    internal val harmCategory: HarmCategory,
+    internal val threshold: HarmBlockThreshold,
+    internal val method: HarmBlockMethod? = null,
 )

@@ -22,17 +22,17 @@ import kotlin.jvm.JvmField
 
 /** The size of images to generate. */
 public class ImageSize private constructor(internal val value: String) {
-  public companion object {
-    /** 512px (0.5K) image size. */
-    @JvmField public val SIZE_512: ImageSize = ImageSize("512")
+    public companion object {
+        /** 512px (0.5K) image size. */
+        @JvmField public val SIZE_512: ImageSize = ImageSize("512")
 
-    /** 1K image size. */
-    @JvmField public val SIZE_1K: ImageSize = ImageSize("1K")
+        /** 1K image size. */
+        @JvmField public val SIZE_1K: ImageSize = ImageSize("1K")
 
-    /** 2K image size. */
-    @JvmField public val SIZE_2K: ImageSize = ImageSize("2K")
+        /** 2K image size. */
+        @JvmField public val SIZE_2K: ImageSize = ImageSize("2K")
 
-    /** 4K image size. */
-    @JvmField public val SIZE_4K: ImageSize = ImageSize("4K")
-  }
+        /** 4K image size. */
+        @JvmField public val SIZE_4K: ImageSize = ImageSize("4K")
+    }
 }

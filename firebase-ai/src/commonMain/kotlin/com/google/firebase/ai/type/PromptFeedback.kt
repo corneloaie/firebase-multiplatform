@@ -20,7 +20,6 @@ package com.google.firebase.ai.type
 
 import kotlin.jvm.JvmField
 
-
 /**
  * Feedback on the prompt provided in the request.
  *
@@ -30,27 +29,27 @@ import kotlin.jvm.JvmField
  */
 public class PromptFeedback
 internal constructor(
-  public val blockReason: BlockReason?,
-  public val safetyRatings: List<SafetyRating>,
-  public val blockReasonMessage: String?
+    public val blockReason: BlockReason?,
+    public val safetyRatings: List<SafetyRating>,
+    public val blockReasonMessage: String?,
 )
 
 /** Describes why content was blocked. */
 public class BlockReason private constructor(public val name: String, public val ordinal: Int) {
-  public companion object {
-    /** A new and not yet supported value. */
-    @JvmField public val UNKNOWN: BlockReason = BlockReason("UNKNOWN", 0)
+    public companion object {
+        /** A new and not yet supported value. */
+        @JvmField public val UNKNOWN: BlockReason = BlockReason("UNKNOWN", 0)
 
-    /** Content was blocked for violating provided [SafetySetting]. */
-    @JvmField public val SAFETY: BlockReason = BlockReason("SAFETY", 1)
+        /** Content was blocked for violating provided [SafetySetting]. */
+        @JvmField public val SAFETY: BlockReason = BlockReason("SAFETY", 1)
 
-    /** Content was blocked for another reason. */
-    @JvmField public val OTHER: BlockReason = BlockReason("OTHER", 2)
+        /** Content was blocked for another reason. */
+        @JvmField public val OTHER: BlockReason = BlockReason("OTHER", 2)
 
-    /** Content was blocked for another reason. */
-    @JvmField public val BLOCKLIST: BlockReason = BlockReason("BLOCKLIST", 3)
+        /** Content was blocked for another reason. */
+        @JvmField public val BLOCKLIST: BlockReason = BlockReason("BLOCKLIST", 3)
 
-    /** Candidates blocked due to the terms which are included from the terminology blocklist. */
-    @JvmField public val PROHIBITED_CONTENT: BlockReason = BlockReason("PROHIBITED_CONTENT", 4)
-  }
+        /** Candidates blocked due to the terms which are included from the terminology blocklist. */
+        @JvmField public val PROHIBITED_CONTENT: BlockReason = BlockReason("PROHIBITED_CONTENT", 4)
+    }
 }

@@ -20,26 +20,25 @@ package com.google.firebase.ai.type
 
 import kotlin.jvm.JvmField
 
-
 /** Content part modality. */
 public class ContentModality private constructor(public val ordinal: Int) {
-  public companion object {
-    /** Unspecified modality. */
-    @JvmField public val UNSPECIFIED: ContentModality = ContentModality(0)
+    public companion object {
+        /** Unspecified modality. */
+        @JvmField public val UNSPECIFIED: ContentModality = ContentModality(0)
 
-    /** Plain text. */
-    @JvmField public val TEXT: ContentModality = ContentModality(1)
+        /** Plain text. */
+        @JvmField public val TEXT: ContentModality = ContentModality(1)
 
-    /** Image. */
-    @JvmField public val IMAGE: ContentModality = ContentModality(2)
+        /** Image. */
+        @JvmField public val IMAGE: ContentModality = ContentModality(2)
 
-    /** Video. */
-    @JvmField public val VIDEO: ContentModality = ContentModality(3)
+        /** Video. */
+        @JvmField public val VIDEO: ContentModality = ContentModality(3)
 
-    /** Audio. */
-    @JvmField public val AUDIO: ContentModality = ContentModality(4)
+        /** Audio. */
+        @JvmField public val AUDIO: ContentModality = ContentModality(4)
 
-    /** Document (for example, PDF). */
-    @JvmField public val DOCUMENT: ContentModality = ContentModality(5)
-  }
+        /** Document (for example, PDF). */
+        @JvmField public val DOCUMENT: ContentModality = ContentModality(5)
+    }
 }

@@ -82,8 +82,7 @@ public actual class FirebaseAI internal constructor(
 
         public actual fun getInstance(app: FirebaseApp, backend: GenerativeBackend): FirebaseAI = getInstance(app, backend, false)
 
-        public actual fun getInstance(app: FirebaseApp, backend: GenerativeBackend, useLimitedUseAppCheckTokens: Boolean): FirebaseAI =
-            instances.getOrPut(Triple(app.name, backend, useLimitedUseAppCheckTokens)) { FirebaseAI(app, backend, useLimitedUseAppCheckTokens) }
+        public actual fun getInstance(app: FirebaseApp, backend: GenerativeBackend, useLimitedUseAppCheckTokens: Boolean): FirebaseAI = instances.getOrPut(Triple(app.name, backend, useLimitedUseAppCheckTokens)) { FirebaseAI(app, backend, useLimitedUseAppCheckTokens) }
 
         public actual fun getInstance(app: FirebaseApp): FirebaseAI = getInstance(app, GenerativeBackend.googleAI())
     }
