@@ -1,6 +1,7 @@
 include(
     "firebase-analytics",
     "firebase-app",
+    "firebase-appdistribution",
     "firebase-auth",
     "firebase-common",
     "firebase-common-internal",

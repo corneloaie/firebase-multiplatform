@@ -1,0 +1,78 @@
+# Android SDK source compatibility of firebase-appdistribution
+# Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
+# 100% of 62 public members available (62 identical, 0 mapped, 0 missing, 0 omitted)
+#
+com.google.firebase.appdistribution.AppDistributionRelease
+  OK    BinaryType getBinaryType()
+  OK    String getDisplayVersion()
+  OK    String getReleaseNotes()
+  OK    long getVersionCode()
+com.google.firebase.appdistribution.BinaryType
+  OK    static BinaryType AAB
+  OK    static BinaryType APK
+com.google.firebase.appdistribution.FirebaseAppDistribution
+  OK    void cancelFeedbackNotification()
+  OK    Task checkForNewRelease()
+  OK    static FirebaseAppDistribution getInstance()
+  OK    boolean isTesterSignedIn()
+  OK    void showFeedbackNotification(int, InterruptionLevel)
+  OK    void showFeedbackNotification(CharSequence, InterruptionLevel)
+  OK    Task signInTester()
+  OK    void signOutTester()
+  OK    void startFeedback(int)
+  OK    void startFeedback(CharSequence)
+  OK    void startFeedback(int, Uri)
+  OK    void startFeedback(CharSequence, Uri)
+  OK    UpdateTask updateApp()
+  OK    UpdateTask updateIfNewReleaseAvailable()
+com.google.firebase.appdistribution.FirebaseAppDistributionException
+  OK    Status getErrorCode()
+  OK    AppDistributionRelease getRelease()
+com.google.firebase.appdistribution.FirebaseAppDistributionException.Status
+  OK    static Status API_DISABLED
+  OK    static Status AUTHENTICATION_CANCELED
+  OK    static Status AUTHENTICATION_FAILURE
+  OK    static Status DOWNLOAD_FAILURE
+  OK    static Status HOST_ACTIVITY_INTERRUPTED
+  OK    static Status INSTALLATION_CANCELED
+  OK    static Status INSTALLATION_FAILURE
+  OK    static Status NETWORK_FAILURE
+  OK    static Status NOT_IMPLEMENTED
+  OK    static Status UNKNOWN
+  OK    static Status UPDATE_NOT_AVAILABLE
+com.google.firebase.appdistribution.FirebaseAppDistributionKt
+  OK    static BinaryType component1(AppDistributionRelease)
+  OK    static long component1(UpdateProgress)
+  OK    static String component2(AppDistributionRelease)
+  OK    static long component2(UpdateProgress)
+  OK    static long component3(AppDistributionRelease)
+  OK    static UpdateStatus component3(UpdateProgress)
+  OK    static String component4(AppDistributionRelease)
+  OK    static FirebaseAppDistribution getAppDistribution(Firebase)
+com.google.firebase.appdistribution.InterruptionLevel
+  OK    static InterruptionLevel DEFAULT
+  OK    static InterruptionLevel HIGH
+  OK    static InterruptionLevel LOW
+  OK    static InterruptionLevel MAX
+  OK    static InterruptionLevel MIN
+com.google.firebase.appdistribution.OnProgressListener
+  OK    void onProgressUpdate(UpdateProgress)
+com.google.firebase.appdistribution.UpdateProgress
+  OK    long getApkBytesDownloaded()
+  OK    long getApkFileTotalBytes()
+  OK    UpdateStatus getUpdateStatus()
+com.google.firebase.appdistribution.UpdateStatus
+  OK    static UpdateStatus DOWNLOADED
+  OK    static UpdateStatus DOWNLOADING
+  OK    static UpdateStatus DOWNLOAD_FAILED
+  OK    static UpdateStatus INSTALL_CANCELED
+  OK    static UpdateStatus INSTALL_FAILED
+  OK    static UpdateStatus NEW_RELEASE_CHECK_FAILED
+  OK    static UpdateStatus NEW_RELEASE_NOT_AVAILABLE
+  OK    static UpdateStatus PENDING
+  OK    static UpdateStatus REDIRECTED_TO_PLAY
+  OK    static UpdateStatus UPDATE_CANCELED
+com.google.firebase.appdistribution.UpdateTask
+  OK    UpdateTask()
+  OK    UpdateTask addOnProgressListener(OnProgressListener)
+  PLAT  UpdateTask addOnProgressListener(Executor, OnProgressListener)
