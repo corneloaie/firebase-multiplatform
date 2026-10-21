@@ -1,0 +1,62 @@
+# Android SDK source compatibility of firebase-pnv
+# Android SDK api.txt ref: com.google.firebase:firebase-pnv:17.0.0
+# 100% of 47 public members available (47 identical, 0 mapped, 0 missing, 0 omitted)
+#
+com.google.firebase.pnv.FirebasePhoneNumberVerification
+  OK    void enableTestSession(String)
+  OK    Task exchangeCredentialResponseForPhoneNumber(String)
+  OK    Task getDigitalCredentialPayload(String)
+  OK    static FirebasePhoneNumberVerification getInstance()
+  OK    static FirebasePhoneNumberVerification getInstance(FirebaseApp)
+  OK    Task getVerificationSupportInfo()
+  OK    Task getVerificationSupportInfo(int)
+  OK    Task getVerifiedPhoneNumber(Context)
+com.google.firebase.pnv.FirebasePhoneNumberVerification.Companion
+  OK    FirebasePhoneNumberVerification getInstance()
+  OK    FirebasePhoneNumberVerification getInstance(FirebaseApp)
+com.google.firebase.pnv.FirebasePhoneNumberVerificationException
+  OK    FirebasePhoneNumberVerificationException(int, String, Throwable)
+  OK    int getErrorCode()
+com.google.firebase.pnv.FirebasePhoneNumberVerificationException.Companion
+com.google.firebase.pnv.FirebasePnvStatusCodes
+  OK    String getMessage(int)
+  OK    static int ACTIVITY_CONTEXT_REQUIRED
+  OK    static int CARRIER_NOT_SUPPORTED
+  OK    static int CREDENTIAL_MANAGER_ERROR
+  OK    static FirebasePnvStatusCodes INSTANCE
+  OK    static int INTEGRITY_CHECK_FAILED
+  OK    static int INVALID_DIGITAL_CREDENTIAL_RESPONSE
+  OK    static int INVALID_TEST_NUMBER_ID
+  OK    static int PREFLIGHT_CHECK_FAILED
+  OK    static int TEST_SESSION_ALREADY_ENABLED
+  OK    static int UNSUPPORTED_OPERATION
+com.google.firebase.pnv.VerificationSupportResult
+  OK    VerificationSupportResult(int, String, int)
+  OK    boolean equals(Object)
+  OK    String getCarrierId()
+  OK    int getReason()
+  OK    int getSimSlot()
+  OK    int hashCode()
+  OK    boolean isSupported()
+com.google.firebase.pnv.VerificationSupportResult.Companion
+com.google.firebase.pnv.VerificationSupportStatus
+  OK    static int CAPABILITY_STATUS_UNSPECIFIED
+  OK    static int CAPABLE
+  OK    static int INCAPABLE_DUE_TO_ANDROID_VERSION
+  OK    static int INCAPABLE_DUE_TO_CARRIER_UNSUPPORTED
+  OK    static int INCAPABLE_DUE_TO_SIM_STATE
+com.google.firebase.pnv.VerificationSupportStatus.Companion
+  OK    static int CAPABILITY_STATUS_UNSPECIFIED
+  OK    static int CAPABLE
+  OK    static int INCAPABLE_DUE_TO_ANDROID_VERSION
+  OK    static int INCAPABLE_DUE_TO_CARRIER_UNSUPPORTED
+  OK    static int INCAPABLE_DUE_TO_SIM_STATE
+com.google.firebase.pnv.VerifiedPhoneNumberTokenResult
+  OK    VerifiedPhoneNumberTokenResult(String)
+  OK    Map getClaims()
+  OK    long getExpirationTimestamp()
+  OK    long getIssuedAtTimestamp()
+  OK    String getNonce()
+  OK    String getPhoneNumber()
+  OK    String getToken()
+com.google.firebase.pnv.VerifiedPhoneNumberTokenResult.Companion

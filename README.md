@@ -18,7 +18,7 @@ Firebase SDK and moved onto their newest releases every week.
 ## Coverage
 
 <!-- coverage:start -->
-**16 Firebase products: 1,883 of 1,883 Android API members available from common code (100%)**, measured against firebase-android-sdk [`3199128`](https://github.com/firebase/firebase-android-sdk/tree/3199128480a6619779fa2feda823922f10b91009). Built on the Firebase Android BoM 35.0.2 (App Distribution 16.0.0-beta21), iOS SDK 13.0.1 and JS SDK 13.0.0.
+**17 Firebase products: 1,930 of 1,930 Android API members available from common code (100%)**, measured against firebase-android-sdk [`3199128`](https://github.com/firebase/firebase-android-sdk/tree/3199128480a6619779fa2feda823922f10b91009). Built on the Firebase Android BoM 35.0.2 (App Distribution 16.0.0-beta21), iOS SDK 13.0.1 and JS SDK 13.0.0.
 
 | Product | Artifact | Android API | Members | Android | iOS | macOS | tvOS | JVM | JS | Wasm |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -37,12 +37,13 @@ Firebase SDK and moved onto their newest releases every week.
 | [Installations](https://firebase.google.com/docs/projects/manage-installations) | `firebase-installations` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-installations/api/android-sdk-compat.txt) | 11 / 11 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) | `firebase-messaging` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-messaging/api/android-sdk-compat.txt) | 67 / 67 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [Performance Monitoring](https://firebase.google.com/docs/perf-mon) | `firebase-perf` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-perf/api/android-sdk-compat.txt) | 50 / 50 | ✅ | ✅ | – | ✅ | ✅ | ✅ | ✅ |
+| [Phone Number Verification](https://firebase.google.com/docs/phone-number-verification) | `firebase-pnv` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-pnv/api/android-sdk-compat.txt) | 47 / 47 | ✅ | ✅ | ✅ | ✅ | – | ✅ | ✅ |
 | [Cloud Storage](https://firebase.google.com/docs/storage) | `firebase-storage` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-storage/api/android-sdk-compat.txt) | 166 / 166 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 <!-- coverage:end -->
 
 A module's coverage is the share of its Firebase Android SDK API that common code can call: the public, non-deprecated
-members of its `api.txt`, or of the published classes for the closed-source Authentication and Analytics. The report
-behind each badge lists every member with one of these statuses:
+members of its `api.txt`, or of the published classes for the closed-source Authentication, Analytics and Phone Number
+Verification. The report behind each badge lists every member with one of these statuses:
 
 | Status | Meaning | Counted |
 |---|---|---|
@@ -62,6 +63,9 @@ platform: `@UnsupportedOnJs` (JS and Wasm) or `@UnsupportedOnApple` (iOS, macOS 
   of the Android SDK. It compiles and is tested where upstream tests it, but it is not held to the same coverage as
   Android, iOS and the web.
 - **Web.** Crashlytics, App Distribution and In-App Messaging have no web SDK.
+- **Android only.** Phone Number Verification has no iOS, web or Java SDK. `firebase-pnv` compiles for Apple platforms,
+  JS and Wasm so that common code using it builds there, but its operations fail with `UnsupportedOperationException`
+  and carry `@UnsupportedOnApple` or `@UnsupportedOnJs`; only its value types, such as the token's claims, work there.
 - **Not in the Java SDK.** It has no Data Connect and does not run App Check, so those two have no JVM target. It also
   lacks App Distribution and In-App Messaging; on the JVM those two act as the Android SDK does without its full library.
   App Distribution's tasks fail with `NOT_IMPLEMENTED`, and no in-app message is displayed.
@@ -72,7 +76,6 @@ platform: `@UnsupportedOnJs` (JS and Wasm) or `@UnsupportedOnApple` (iOS, macOS 
   wrapper package, as Data Connect has.
 - **Firestore Pipelines** (`com.google.firebase.firestore.pipeline`, about 1,300 members, an Enterprise edition
   preview): in progress. Until then Firestore's report marks it `UNAV`.
-- **Phone Number Verification** (`firebase-pnv`): Android-only and closed source.
 - **ML Model Downloader**: not planned. Firebase removed it from iOS SDK 13 and Android BoM 35.
 
 ## Getting started
@@ -107,6 +110,7 @@ it is released, run `./gradlew publishToMavenLocal` in this repository and add `
 
 The minimum SDK is 24, as Firebase BoM 35 requires. Remote Config needs
 [core library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring) below API 26.
+Phone Number Verification needs compileSdk 35 or newer, which its androidx.core dependency requires.
 
 ### iOS, macOS and tvOS
 
@@ -280,8 +284,8 @@ This fork keeps their packages and adds the following:
   [#915](https://github.com/GitLiveApp/firebase-kotlin-sdk/pull/915)), tracked in
   [`.github/upstream-merges.tsv`](.github/upstream-merges.tsv).
 - **Wasm for the whole layer.** Those pull requests predate `v3.0.0`'s Wasm target.
-- **More coverage and new modules:** every module at 100% of its Android API, and App Check, App Distribution and
-  In-App Messaging.
+- **More coverage and new modules:** every module at 100% of its Android API, and App Check, App Distribution, In-App
+  Messaging and Phone Number Verification.
 - **Weekly updates** to the newest Firebase SDKs.
 - **Its own Maven coordinates** (`io.github.corneloaie`), so GitLive's `dev.gitlive` artifacts are left alone.
 

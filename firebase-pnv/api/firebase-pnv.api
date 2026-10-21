@@ -1,0 +1,23 @@
+public final class com/google/firebase/pnv/VerifiedPhoneNumberKt {
+	public static final fun getVerifiedPhoneNumber (Lcom/google/firebase/pnv/FirebasePhoneNumberVerification;Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
+}
+
+public final class dev/gitlive/firebase/pnv/FirebasePhoneNumberVerification {
+	public final fun enableTestSession (Ljava/lang/String;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun exchangeCredentialResponseForPhoneNumber (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getCompat ()Lcom/google/firebase/pnv/FirebasePhoneNumberVerification;
+	public final fun getDigitalCredentialPayload (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getVerificationSupportInfo (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getVerificationSupportInfo (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getVerifiedPhoneNumber (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/gitlive/firebase/pnv/PhoneNumberVerificationKt {
+	public static final fun getAndroid (Ldev/gitlive/firebase/pnv/FirebasePhoneNumberVerification;)Lcom/google/firebase/pnv/FirebasePhoneNumberVerification;
+	public static final fun getPhoneNumberVerification (Ldev/gitlive/firebase/Firebase;)Ldev/gitlive/firebase/pnv/FirebasePhoneNumberVerification;
+	public static final fun phoneNumberVerification (Ldev/gitlive/firebase/Firebase;Ldev/gitlive/firebase/FirebaseApp;)Ldev/gitlive/firebase/pnv/FirebasePhoneNumberVerification;
+}
+

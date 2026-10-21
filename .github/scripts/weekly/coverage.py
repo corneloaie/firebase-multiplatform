@@ -45,6 +45,7 @@ PRODUCTS = {
     'firebase-messaging': ('Cloud Messaging', 'https://firebase.google.com/docs/cloud-messaging'),
     'firebase-ml-modeldownloader': ('ML Model Downloader', 'https://firebase.google.com/docs/ml/android/use-custom-models'),
     'firebase-perf': ('Performance Monitoring', 'https://firebase.google.com/docs/perf-mon'),
+    'firebase-pnv': ('Phone Number Verification', 'https://firebase.google.com/docs/phone-number-verification'),
     'firebase-storage': ('Cloud Storage', 'https://firebase.google.com/docs/storage'),
 }
 
