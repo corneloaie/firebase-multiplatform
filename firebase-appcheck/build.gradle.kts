@@ -212,9 +212,7 @@ stripHeaderStubs(
     jvmStubs = false,
 )
 
-// firebase-android-sdk keeps the App Check modules under appcheck/, and api/android-sdk/ holds their api.txt files named
-// after the module directory (firebase-appcheck.api.txt, ...). updateAndroidSdkApi names a download after the first path
-// segment, so for these paths it writes all four to appcheck.api.txt until buildSrc names it after the module directory.
+// firebase-android-sdk keeps the App Check modules under appcheck/; each api.txt is saved as <module directory>.api.txt.
 registerAndroidSourceCompat(
     "appcheck/firebase-appcheck/api.txt",
     "appcheck/firebase-appcheck-debug/api.txt",

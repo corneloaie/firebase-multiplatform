@@ -40,7 +40,7 @@ fun Project.registerAndroidSourceCompat(vararg androidSdkApiFiles: String, gener
             outputFile.set(sdkDir.file("${api.name}.api.txt"))
         }
     }
-    tasks.register("updateAndroidSdkApi", UpdateAndroidSdkApiTask::class.java) {
+    val update = tasks.register("updateAndroidSdkApi", UpdateAndroidSdkApiTask::class.java) {
         group = "api"
         description = "Downloads the Firebase Android SDK api.txt files this module is compared against"
         sources.set(androidSdkApiFiles.toList())
@@ -52,8 +52,9 @@ fun Project.registerAndroidSourceCompat(vararg androidSdkApiFiles: String, gener
         group = "api"
         moduleName.set(project.name)
         // binary-compatibility-validator writes a module with a single JVM-like target (android without jvm) to api/<module>.api.
+        // Decided when the task runs, so that an apiDump earlier in the same build that creates api/android/ is seen.
         val androidDump = layout.projectDirectory.file("api/android/${project.name}.api")
-        bcvDump.set(if (androidDump.asFile.parentFile.isDirectory) androidDump else layout.projectDirectory.file("api/${project.name}.api"))
+        bcvDump.set(provider { if (androidDump.asFile.parentFile.isDirectory) androidDump else layout.projectDirectory.file("api/${project.name}.api") })
         this.androidSdkApiFiles.from(fileTree(sdkDir) { include("*.api.txt") })
         sdkDir.file("exclusions.txt").takeIf { it.asFile.exists() }?.let { exclusionsFile.set(it) }
         headerStubDumps.from(layout.buildDirectory.file("header-stubs/compileReleaseKotlinAndroid.api"))
@@ -61,7 +62,7 @@ fun Project.registerAndroidSourceCompat(vararg androidSdkApiFiles: String, gener
         check.set(checkMode)
         reportFile.set(layout.projectDirectory.file("api/android-sdk-compat.txt"))
         mustRunAfter(tasks.matching { it.name == "androidApiDump" || it.name == "apiDump" })
-        mustRunAfter(generateTasks)
+        mustRunAfter(generateTasks, update)
     }
     tasks.register("androidSourceCompatDump", AndroidSourceCompatTask::class.java) {
         description = "Writes api/android-sdk-compat.txt: which Firebase Android SDK APIs this module provides"
