@@ -1,0 +1,31 @@
+/*
+ * Copyright 2026 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Modified in firebase-multiplatform for Kotlin Multiplatform: the public API of the Firebase AI Logic
+ * Android SDK without its Android implementation (see firebase-ai/documentation.md).
+ */
+package com.google.firebase.ai.type
+
+/**
+ * A tool that allows a Gemini model to connect to Google Maps to access and incorporate
+ * location-based information into its responses.
+ *
+ * Important: If using Grounding with Google Maps, you are required to comply with the "Grounding
+ * with Google Maps" usage requirements for your chosen API provider:
+ * [Gemini Developer API](https://ai.google.dev/gemini-api/terms#grounding-with-google-maps) or
+ * Agent Platform Gemini API (see [Service Terms](https://cloud.google.com/terms/service-terms))
+ * section within the Service Specific Terms).
+ */
+public class GoogleMaps

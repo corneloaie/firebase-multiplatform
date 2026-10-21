@@ -1,0 +1,34 @@
+// Firebase Android SDK APIs intentionally not mirrored by firebase-ai (see documentation.md).
+// @platform: the signature involves an Android/JVM-only type and has no multiplatform replacement to point at (not counted).
+
+// android.graphics.Bitmap: common code sends images as InlineDataPart (raw bytes and their MIME type), which is also what
+// responses carry on the other platforms. ImagePart itself is declared (with its non-Bitmap members), so code that
+// matches on it compiles everywhere; on Android the SDK's own members are available.
+com.google.firebase.ai.type.ImagePart#<init>  // @platform android.graphics.Bitmap
+com.google.firebase.ai.type.ImagePart#createWithThinking  // @platform android.graphics.Bitmap
+com.google.firebase.ai.type.ImagePart#getImage  // @platform android.graphics.Bitmap
+com.google.firebase.ai.type.ImagePart$Companion  // @platform android.graphics.Bitmap (createWithThinking)
+com.google.firebase.ai.type.Content$Builder#addImage  // @platform android.graphics.Bitmap
+com.google.firebase.ai.type.PartKt#asImageOrNull  // @platform android.graphics.Bitmap
+com.google.firebase.ai.Chat#sendMessage(Bitmap,Continuation)  // @platform android.graphics.Bitmap
+com.google.firebase.ai.Chat#sendMessageStream(Bitmap)  // @platform android.graphics.Bitmap
+com.google.firebase.ai.GenerativeModel#generateContent(Bitmap,Continuation)  // @platform android.graphics.Bitmap
+com.google.firebase.ai.GenerativeModel#generateContentStream(Bitmap)  // @platform android.graphics.Bitmap
+com.google.firebase.ai.GenerativeModel#countTokens(Bitmap,Continuation)  // @platform android.graphics.Bitmap
+
+// java.util.Calendar: the publication date of a citation.
+com.google.firebase.ai.type.Citation#getPublicationDate  // @platform java.util.Calendar
+
+// android.media.AudioRecord.Builder and AudioTrack.Builder: the Android audio session of startAudioConversation.
+com.google.firebase.ai.type.LiveAudioConversationConfig$Builder#setInitializationHandler  // @platform android.media.AudioRecord.Builder
+com.google.firebase.ai.type.LiveAudioConversationConfig$Builder#initializationHandler  // @platform android.media.AudioRecord.Builder
+
+// The exceptions of the Android-only on-device inference library (firebase-ai-ondevice-interop). The exception classes
+// are declared, so common code can catch them; only these constructors are missing.
+com.google.firebase.ai.type.FirebaseAIOnDeviceInvalidRequestException#<init>  // @platform takes an exception of the Android-only firebase-ai-ondevice-interop
+com.google.firebase.ai.type.FirebaseAIOnDeviceNotAvailableException#<init>  // @platform takes an exception of the Android-only firebase-ai-ondevice-interop
+com.google.firebase.ai.type.FirebaseAIOnDeviceUnknownException#<init>  // @platform takes an exception of the Android-only firebase-ai-ondevice-interop
+
+// Java interop: Guava's ListenableFuture and reactive-streams' Publisher are JVM-only. Kotlin code (common code included)
+// uses the suspend functions and Flows of the classes these wrap.
+com.google.firebase.ai.java.*  // @platform com.google.common.util.concurrent.ListenableFuture, org.reactivestreams.Publisher
