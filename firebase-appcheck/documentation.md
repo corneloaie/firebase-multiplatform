@@ -1,0 +1,5 @@
+# Module firebase-appcheck
+This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.
+
+The platform SDKs install a provider factory differently. On Android `installAppCheckProviderFactory` applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with `FirebaseAppCheck.setAppCheckProviderFactory` before `Firebase.initialize`. The JS SDK starts App Check for an app once, with the first factory installed.
+On Android the module brings the Firebase libraries of every provider it mirrors (`firebase-appcheck-debug`, `firebase-appcheck-playintegrity` and `firebase-appcheck-recaptcha`), so that common code can use any of them. An app that does not use one can exclude its library, for example `exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")`; the module's own classes do not refer to them.

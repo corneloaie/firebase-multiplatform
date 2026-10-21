@@ -21,6 +21,7 @@ This is a fork of [GitLive's firebase-kotlin-sdk](https://github.com/GitLiveApp/
 |---|---|:---:|---|
 | [Analytics](https://firebase.google.com/docs/analytics) | `io.github.corneloaie:firebase-analytics` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-analytics/api/android-sdk-compat.txt) | 153: 152 / 1 / 0 / 0 |
 | [App (core)](https://firebase.google.com/docs/reference/android/com/google/firebase/FirebaseApp) | `io.github.corneloaie:firebase-app` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-app/api/android-sdk-compat.txt) | 46: 33 / 13 / 0 / 0 |
+| [App Check](https://firebase.google.com/docs/app-check) | `io.github.corneloaie:firebase-appcheck` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-appcheck/api/android-sdk-compat.txt) | 28: 28 / 0 / 0 / 0 |
 | [App Distribution](https://firebase.google.com/docs/app-distribution) | `io.github.corneloaie:firebase-appdistribution` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-appdistribution/api/android-sdk-compat.txt) | 62: 62 / 0 / 0 / 0 |
 | [Authentication](https://firebase.google.com/docs/auth) | `io.github.corneloaie:firebase-auth` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-auth/api/android-sdk-compat.txt) | 272: 266 / 6 / 0 / 0 |
 | [Remote Config](https://firebase.google.com/docs/remote-config) | `io.github.corneloaie:firebase-config` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-config/api/android-sdk-compat.txt) | 92: 91 / 1 / 0 / 0 |
@@ -59,6 +60,7 @@ weekly update moves it to the newest Firebase Android release.
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | `firebase-analytics` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `firebase-app` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| `firebase-appcheck` | ✅ | ✅ | ✅ | ✅ | – | ✅ | ✅ |
 | `firebase-appdistribution` | ✅ | ✅ | – | – | ✅ | – | – |
 | `firebase-auth` | ✅ | ✅ | – | ✅ | ✅ | ✅ | ✅ |
 | `firebase-config` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -75,10 +77,10 @@ weekly update moves it to the newest Firebase Android release.
 
 The JVM target runs GitLive's [Firebase Java SDK](https://github.com/GitLiveApp/firebase-java-sdk), a port of the
 Android SDK. It compiles and is tested where upstream tests it, but it is not held to the same coverage as Android, iOS
-and the web. Crashlytics, App Distribution and In-App Messaging have no web SDK, and Data Connect has no Java
-implementation. firebase-java-sdk has neither App Distribution nor In-App Messaging, so on the JVM those two compile and
-act as the Android SDK does without its full library: App Distribution's tasks fail with `NOT_IMPLEMENTED`, and no
-in-app message is ever displayed.
+and the web. Crashlytics, App Distribution and In-App Messaging have no web SDK, the Java SDK does not run App Check,
+and Data Connect has no Java implementation. firebase-java-sdk has neither App Distribution nor In-App Messaging, so on
+the JVM those two compile and act as the Android SDK does without its full library: App Distribution's tasks fail with
+`NOT_IMPLEMENTED`, and no in-app message is ever displayed.
 
 ### Gradle
 
