@@ -18,6 +18,8 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmField
+
 /**
  * Configuration parameters to use for conversation config.
  *

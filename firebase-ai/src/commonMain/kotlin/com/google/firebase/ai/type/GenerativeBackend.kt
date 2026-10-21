@@ -18,6 +18,9 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmOverloads
+import kotlin.jvm.JvmStatic
+
 /** Represents a reference to a backend for generative AI. */
 public class GenerativeBackend
 internal constructor(internal val location: String, internal val backend: GenerativeBackendEnum) {

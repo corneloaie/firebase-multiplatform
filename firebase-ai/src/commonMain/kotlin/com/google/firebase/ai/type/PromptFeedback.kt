@@ -18,6 +18,8 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmField
+
 
 /**
  * Feedback on the prompt provided in the request.

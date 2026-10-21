@@ -18,6 +18,8 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmField
+
 
 /** Represents the probability that some [HarmCategory] is applicable in a [SafetyRating]. */
 public class HarmProbability private constructor(public val ordinal: Int) {

@@ -18,6 +18,8 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmOverloads
+
 /**
  * Configures a speaker with a unique name/identifier and a specific voice.
  *

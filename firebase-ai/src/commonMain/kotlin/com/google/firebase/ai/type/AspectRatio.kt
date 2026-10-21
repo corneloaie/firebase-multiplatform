@@ -18,6 +18,8 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmField
+
 /** Represents the aspect ratio that the generated image should conform to. */
 public class AspectRatio private constructor(internal val value: String) {
   public companion object {

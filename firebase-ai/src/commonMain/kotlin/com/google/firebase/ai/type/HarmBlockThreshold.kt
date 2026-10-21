@@ -18,6 +18,8 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmField
+
 /** Represents the threshold for a [HarmCategory] to be allowed by [SafetySetting]. */
 public class HarmBlockThreshold private constructor(public val ordinal: Int) {
   public companion object {

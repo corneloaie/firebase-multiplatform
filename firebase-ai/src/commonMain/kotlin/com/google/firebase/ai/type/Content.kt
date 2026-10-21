@@ -19,6 +19,9 @@
 package com.google.firebase.ai.type
 
 import kotlin.collections.filterNot
+import kotlin.jvm.JvmField
+import kotlin.jvm.JvmName
+import kotlin.jvm.JvmOverloads
 
 /**
  * Represents content sent to and received from the model.

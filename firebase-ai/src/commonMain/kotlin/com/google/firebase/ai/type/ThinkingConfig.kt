@@ -18,6 +18,9 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmField
+import kotlin.jvm.JvmSynthetic
+
 /**
  * Gemini 2.5 series models and newer utilize a thinking process before generating a response. This
  * allows them to reason through complex problems and plan a more coherent and accurate answer. See

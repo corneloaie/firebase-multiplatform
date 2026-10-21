@@ -18,6 +18,8 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmField
+
 /**
  * Specifies how the block method computes the score that will be compared against the
  * [HarmBlockThreshold] in [SafetySetting].

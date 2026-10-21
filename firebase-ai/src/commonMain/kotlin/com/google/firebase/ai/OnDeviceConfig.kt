@@ -20,6 +20,8 @@ package com.google.firebase.ai
 
 import com.google.firebase.ai.type.FirebaseAIException
 import com.google.firebase.ai.type.PublicPreviewAPI
+import kotlin.jvm.JvmField
+import kotlin.jvm.JvmOverloads
 
 /**
  * Configuration for on-device AI model inference.

@@ -18,6 +18,9 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmOverloads
+import kotlin.jvm.JvmStatic
+
 /**
  * Contains a set of tools (like function declarations) that the server template model has access
  * to.

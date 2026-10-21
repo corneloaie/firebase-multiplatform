@@ -18,6 +18,8 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmField
+
 /** Specifies the quality of the thinking response. */
 public class ThinkingLevel private constructor(public val ordinal: Int) {
   public companion object {

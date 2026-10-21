@@ -18,6 +18,8 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmField
+
 
 /** Category for a given harm rating. */
 public class HarmCategory private constructor(public val ordinal: Int) {

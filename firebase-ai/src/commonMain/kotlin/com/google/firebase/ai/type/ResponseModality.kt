@@ -18,6 +18,8 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmField
+
 
 /** Represents the type of content present in a response (for example, text, image, audio). */
 public class ResponseModality private constructor(public val ordinal: Int) {

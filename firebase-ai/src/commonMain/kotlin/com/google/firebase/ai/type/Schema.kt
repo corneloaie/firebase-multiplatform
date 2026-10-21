@@ -18,6 +18,10 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmName
+import kotlin.jvm.JvmOverloads
+import kotlin.jvm.JvmStatic
+
 public abstract class StringFormat private constructor(internal val value: String) {
   public class Custom(value: String) : StringFormat(value)
 }

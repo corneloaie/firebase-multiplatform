@@ -18,6 +18,7 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmOverloads
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.DurationUnit

@@ -18,6 +18,9 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmName
+import kotlin.jvm.JvmOverloads
+import kotlin.jvm.JvmStatic
 import kotlin.reflect.KClass
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer

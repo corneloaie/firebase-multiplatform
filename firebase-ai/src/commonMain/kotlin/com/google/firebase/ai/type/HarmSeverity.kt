@@ -18,6 +18,8 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmField
+
 
 /** Represents the severity of a [HarmCategory] being applicable in a [SafetyRating]. */
 public class HarmSeverity private constructor(public val ordinal: Int) {

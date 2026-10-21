@@ -29,4 +29,9 @@ private constructor(public val modality: ContentModality, public val tokenCount:
   public operator fun component1(): ContentModality = modality
 
   public operator fun component2(): Int = tokenCount
+
+  internal companion object {
+    fun create(modality: ContentModality, tokenCount: Int): ModalityTokenCount =
+      ModalityTokenCount(modality, tokenCount)
+  }
 }

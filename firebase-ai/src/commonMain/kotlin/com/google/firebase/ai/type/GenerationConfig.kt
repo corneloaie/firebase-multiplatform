@@ -18,6 +18,9 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmField
+import kotlin.jvm.JvmStatic
+
 /**
  * Configuration parameters to use for content generation.
  *

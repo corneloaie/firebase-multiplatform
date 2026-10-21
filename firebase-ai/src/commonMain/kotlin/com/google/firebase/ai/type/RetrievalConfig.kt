@@ -19,6 +19,8 @@
 package com.google.firebase.ai.type
 
 import com.google.firebase.ai.type.RetrievalConfig.Builder
+import kotlin.jvm.JvmField
+import kotlin.jvm.JvmStatic
 
 /**
  * The configuration that specifies information which can be used by tools during inference calls.

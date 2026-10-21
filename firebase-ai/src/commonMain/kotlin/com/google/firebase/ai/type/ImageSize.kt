@@ -18,6 +18,8 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmField
+
 /** The size of images to generate. */
 public class ImageSize private constructor(internal val value: String) {
   public companion object {

@@ -18,6 +18,8 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmOverloads
+import kotlin.jvm.JvmStatic
 import kotlinx.serialization.json.JsonObject
 
 /**

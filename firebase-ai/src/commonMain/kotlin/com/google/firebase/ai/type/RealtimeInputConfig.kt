@@ -18,6 +18,9 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmField
+import kotlin.jvm.JvmStatic
+
 /**
  * Configures model input behavior when generating content in the Live API via realtime supported
  * methods.

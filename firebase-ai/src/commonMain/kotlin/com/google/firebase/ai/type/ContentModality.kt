@@ -18,6 +18,8 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmField
+
 
 /** Content part modality. */
 public class ContentModality private constructor(public val ordinal: Int) {

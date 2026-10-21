@@ -18,6 +18,8 @@
  */
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmOverloads
+
 /**
  * Contains configuration for the function calling tools of the model. This can be used to change
  * when the model can predict function calls.
