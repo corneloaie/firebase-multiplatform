@@ -145,7 +145,10 @@ subprojects {
                     "jvmTestImplementation"(kotlin("test-junit"))
                     "jvmTestImplementation"(libs.junit)
                 }
-                "jsTestImplementation"(kotlin("test-js"))
+                // Modules without a JS target (firebase-appdistribution, firebase-inappmessaging) have no js configurations.
+                if (configurations.findByName("jsTestImplementation") != null) {
+                    "jsTestImplementation"(kotlin("test-js"))
+                }
             }
             "androidInstrumentedTestImplementation"(kotlin("test-junit"))
             "androidUnitTestImplementation"(kotlin("test-junit"))

@@ -22,14 +22,6 @@ plugins {
     alias(libs.plugins.publish)
 }
 
-// The root build adds kotlin("test-js") to the jsTestImplementation of every module but firebase-crashlytics; this module
-// has no JS target, so an unused dependency bucket of that name keeps that from failing. Remove it once the root build
-// checks for the configuration, as it does for the JVM ones.
-configurations.maybeCreate("jsTestImplementation").apply {
-    isCanBeConsumed = false
-    isCanBeResolved = false
-}
-
 if (supportedPlatforms.contains(TargetPlatform.Android)) {
     android {
         val minSdkVersion: Int by project
