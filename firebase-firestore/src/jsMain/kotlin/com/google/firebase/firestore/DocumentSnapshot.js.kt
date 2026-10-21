@@ -82,6 +82,13 @@ public actual open class DocumentSnapshot internal constructor(public open val j
     public actual fun getBlob(field: String): Blob? = typed(field, get(field))
     public actual fun getGeoPoint(field: String): GeoPoint? = typed(field, get(field))
     public actual fun getDocumentReference(field: String): DocumentReference? = typed(field, get(field))
+    public actual fun getBsonObjectId(field: String): BsonObjectId? = cast(field, get(field))
+    public actual fun getBsonTimestamp(field: String): BsonTimestamp? = cast(field, get(field))
+    public actual fun getDecimal128Value(field: String): Decimal128Value? = cast(field, get(field))
+    public actual fun getInt32Value(field: String): Int32Value? = cast(field, get(field))
+    public actual fun getMaxKey(field: String): MaxKey? = cast(field, get(field))
+    public actual fun getMinKey(field: String): MinKey? = cast(field, get(field))
+    public actual fun getRegexValue(field: String): RegexValue? = cast(field, get(field))
 
     /** The data as the JS SDK reads it with the leaves as the layer's value types, which the dev.gitlive layer's decoders take. */
     internal fun nativeData(serverTimestampBehavior: ServerTimestampBehavior): Any? = rethrow { js.data(serverTimestampBehavior.toJs()) }.toCompatLeaves()
@@ -108,6 +115,13 @@ private inline fun <reified T> typed(field: String, value: Any?): T? = when (val
     null -> null
     is T -> value
     else -> throw RuntimeException("Field '$field' is not a ${T::class.simpleName}, but is ${value::class.simpleName}")
+}
+
+/** As [typed] for the BSON getters, which the Android SDK implements as a cast of the value: a [ClassCastException]. */
+private inline fun <reified T> cast(field: String, value: Any?): T? = when (value) {
+    null -> null
+    is T -> value
+    else -> throw ClassCastException("Field '$field' is not a ${T::class.simpleName}, but is ${value::class.simpleName}")
 }
 
 /** @property js The underlying Firebase JS SDK object. */

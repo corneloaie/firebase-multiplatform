@@ -64,12 +64,19 @@ public class GeoPoint(public val latitude: Double, public val longitude: Double)
     override fun toString(): String = "GeoPoint { latitude=$latitude, longitude=$longitude }"
 }
 
-/** Binary data stored in a document, mirroring `com.google.firebase.firestore.Blob` from the Firebase Android SDK. */
-public class Blob private constructor(private val bytes: ByteArray) : Comparable<Blob> {
+/**
+ * Binary data stored in a document, mirroring `com.google.firebase.firestore.Blob` from the Firebase Android SDK: plain
+ * bytes, or BSON binary data with a [subType]. A blob of subtype 0 is stored as plain bytes, as the SDKs do.
+ *
+ * @property subType The BSON binary subtype, in `[0, 255]`; 0 (generic binary) for plain bytes.
+ */
+public class Blob private constructor(private val bytes: ByteArray, public val subType: Int) : Comparable<Blob> {
     /** A copy of the bytes. */
     public fun toBytes(): ByteArray = bytes.copyOf()
 
+    /** Orders by [subType], then by the bytes as unsigned values, as the Android SDK does. */
     override fun compareTo(other: Blob): Int {
+        if (subType != other.subType) return subType.compareTo(other.subType)
         val size = minOf(bytes.size, other.bytes.size)
         for (i in 0 until size) {
             val comparison = (bytes[i].toInt() and 0xff).compareTo(other.bytes[i].toInt() and 0xff)
@@ -78,16 +85,31 @@ public class Blob private constructor(private val bytes: ByteArray) : Comparable
         return bytes.size.compareTo(other.bytes.size)
     }
 
-    override fun equals(other: Any?): Boolean = other is Blob && other.bytes.contentEquals(bytes)
+    override fun equals(other: Any?): Boolean = other is Blob && other.subType == subType && other.bytes.contentEquals(bytes)
 
-    override fun hashCode(): Int = bytes.contentHashCode()
+    override fun hashCode(): Int = 31 * bytes.contentHashCode() + subType
 
-    override fun toString(): String = "Blob { bytes=${bytes.joinToString("") { (it.toInt() and 0xff).toString(16).padStart(2, '0') }} }"
+    override fun toString(): String = "Blob { bytes=${bytes.joinToString("") { (it.toInt() and 0xff).toString(16).padStart(2, '0') }}, subtype=$subType }"
 
     public companion object {
         /** A [Blob] of a copy of [bytes]. */
         @JvmStatic
-        public fun fromBytes(bytes: ByteArray): Blob = Blob(bytes.copyOf())
+        public fun fromBytes(bytes: ByteArray): Blob = Blob(bytes.copyOf(), 0)
+
+        /** BSON binary data of the generic subtype 0 of a copy of [bytes], which is stored as plain bytes. */
+        @JvmStatic
+        public fun createBsonBinary(bytes: ByteArray): Blob = Blob(bytes.copyOf(), 0)
+
+        /**
+         * BSON binary data of [subtype] of a copy of [bytes].
+         *
+         * @throws IllegalArgumentException if [subtype] is not in `[0, 255]`.
+         */
+        @JvmStatic
+        public fun createBsonBinary(subtype: Int, bytes: ByteArray): Blob {
+            require(subtype in 0..255) { "The subtype for Blob must be a value in the inclusive [0, 255] range." }
+            return Blob(bytes.copyOf(), subtype)
+        }
     }
 }
 

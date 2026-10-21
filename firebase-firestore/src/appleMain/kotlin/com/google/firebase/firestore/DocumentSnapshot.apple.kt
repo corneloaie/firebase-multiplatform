@@ -89,6 +89,13 @@ public actual open class DocumentSnapshot internal constructor(public open val i
     public actual fun getBlob(field: String): Blob? = typed(field, get(field))
     public actual fun getGeoPoint(field: String): GeoPoint? = typed(field, get(field))
     public actual fun getDocumentReference(field: String): DocumentReference? = typed(field, get(field))
+    public actual fun getBsonObjectId(field: String): BsonObjectId? = cast(field, get(field))
+    public actual fun getBsonTimestamp(field: String): BsonTimestamp? = cast(field, get(field))
+    public actual fun getDecimal128Value(field: String): Decimal128Value? = cast(field, get(field))
+    public actual fun getInt32Value(field: String): Int32Value? = cast(field, get(field))
+    public actual fun getMaxKey(field: String): MaxKey? = cast(field, get(field))
+    public actual fun getMinKey(field: String): MinKey? = cast(field, get(field))
+    public actual fun getRegexValue(field: String): RegexValue? = cast(field, get(field))
 
     override fun equals(other: Any?): Boolean = other is DocumentSnapshot && other.ios == ios
 
@@ -107,6 +114,13 @@ private inline fun <reified T> typed(field: String, value: Any?): T? = when (val
     null -> null
     is T -> value
     else -> throw RuntimeException("Field '$field' is not a ${T::class.simpleName}, but is ${value::class.simpleName}")
+}
+
+/** As [typed] for the BSON getters, which the Android SDK implements as a cast of the value: a [ClassCastException]. */
+private inline fun <reified T> cast(field: String, value: Any?): T? = when (value) {
+    null -> null
+    is T -> value
+    else -> throw ClassCastException("Field '$field' is not a ${T::class.simpleName}, but is ${value::class.simpleName}")
 }
 
 /** @property ios The underlying Firebase iOS SDK object. */
