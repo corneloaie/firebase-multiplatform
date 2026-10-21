@@ -136,6 +136,19 @@ Optionally, a Claude Code job then implements those members on every platform an
 pushing to the second pull request (see [MAINTAINING.md](MAINTAINING.md)). Dependabot keeps the build tooling and
 GitHub Actions up to date.
 
+## Not covered yet
+
+The coverage table counts every member of each module's Android API except the ones its report marks `PLAT` (the
+signature needs an Android/JVM-only type) or `UNAV`/`HIDE`/`SKIP`. Larger surfaces outside it so far:
+
+- **Firestore Pipelines** (`com.google.firebase.firestore.pipeline`, about 1,300 Android members, an Enterprise
+  edition preview): excluded as unavailable while the iOS and JS SDKs lacked it. The JS SDK 13 now ships
+  `firebase/firestore/pipelines`.
+- **AI Logic** (`firebase-ai`, about 1,200 members): no module yet. Its iOS SDK is Swift-only, so it needs an Objective-C
+  wrapper package like Data Connect's.
+- **Phone Number Verification** (`firebase-pnv`): Android-only and closed source; no module yet.
+- **ML Model Downloader** is not planned: Firebase removed it from the iOS SDK 13 and from the Android BoM 35.
+
 ## Multiplatform
 
 The Firebase Kotlin SDK provides a common API to access Firebase for projects targeting *iOS*, *Android*, *JVM*, *JS* and *Wasm (wasmJs)* meaning you can use Firebase directly in your common code. Under the hood, the SDK achieves this by binding to the respective official Firebase SDK for each supported platform.
