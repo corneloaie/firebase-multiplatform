@@ -6,7 +6,7 @@ package dev.gitlive.firebase.inappmessaging
 
 actual val context: Any = Unit
 
-internal actual fun createInAppMessaging() {}
+internal actual fun <T> onAppThread(block: () -> T): T = block()
 
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
 actual annotation class IgnoreForAndroidUnitTest

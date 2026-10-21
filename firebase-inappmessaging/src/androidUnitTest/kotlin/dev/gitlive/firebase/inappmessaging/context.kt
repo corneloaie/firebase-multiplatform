@@ -10,6 +10,6 @@ import org.junit.Ignore
 
 actual val context: Any = ""
 
-internal actual fun createInAppMessaging() {}
+internal actual fun <T> onAppThread(block: () -> T): T = block()
 
 actual typealias IgnoreForAndroidUnitTest = Ignore
