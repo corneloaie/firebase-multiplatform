@@ -2,7 +2,7 @@
 
 The Firebase Kotlin SDK is distributed as **Maven Central klibs** and consumed by a Kotlin
 Multiplatform (KMP) app, whose iOS framework is then integrated into an Xcode project. On iOS the
-GitLive klibs call the Firebase Obj-C API through cinterop; the official Firebase iOS SDK is **not
+The klibs call the Firebase Obj-C API through cinterop; the official Firebase iOS SDK is **not
 bundled** into the klibs. Instead, each module records the `firebase-ios-sdk` SwiftPM dependency it
 needs and **publishes that as metadata in its Maven module**, so a downstream KMP consumer inherits
 it transitively — no manual re-declaration.
@@ -18,10 +18,10 @@ publication:
   `FirebaseCore`, deployment targets, and `isModulesDiscoveryEnabled = false`. The declared version
   is a `from(...)` lower bound, so SwiftPM may resolve any newer 12.x minor or patch release, up to
   but not including 13.0.0.
-- A downstream KMP module that depends on `dev.gitlive:firebase-*` from Maven resolves this via its
+- A downstream KMP module that depends on `io.github.corneloaie:firebase-*` from Maven resolves this via its
   `swiftPMDependenciesMetadataClasspath`, aggregating the SwiftPM dependencies across the whole
   dependency graph — **without declaring any `swiftPMDependencies` of its own**. (Verified: a
-  consumer depending only on `dev.gitlive:firebase-app` produced an aggregated
+  consumer depending only on `io.github.corneloaie:firebase-app` produced an aggregated
   `build/kotlin/swiftPMDependenciesMetadataForLockFiles` listing `firebase-ios-sdk` / `FirebaseCore`
   / `13.0.1`.)
 - The Kotlin Gradle plugin then generates a synthetic Swift package containing all transitive
@@ -34,7 +34,7 @@ app does not re-declare `firebase-ios-sdk`.
 
 ## What a downstream KMP app does
 
-1. **Depend on the SDK via Maven** as usual — e.g. `implementation("dev.gitlive:firebase-auth:<v>")`.
+1. **Depend on the SDK via Maven** as usual — e.g. `implementation("io.github.corneloaie:firebase-auth:<v>")`.
    Nothing extra is required to obtain the Firebase iOS SDK; it is inherited from the SDK's published
    SwiftPM metadata.
 2. **Integrate your shared framework into Xcode with _direct integration_.** Kotlin offers two ways
@@ -93,7 +93,7 @@ officially tested up to Xcode 26.4; full Xcode 27 support is planned for Kotlin 
   this SDK that pins `firebase-ios-sdk` 11.x.
 - **"module.modulemap has been modified since the module file … was built" (Kotlin 2.4.20).**
   After the resolved `firebase-ios-sdk` version changes, for example when you upgrade
-  `dev.gitlive:firebase-*`, Kotlin 2.4.20 can reuse stale Xcode build state and fail with this error
+  `io.github.corneloaie:firebase-*`, Kotlin 2.4.20 can reuse stale Xcode build state and fail with this error
   ([KT-88106](https://youtrack.jetbrains.com/issue/KT-88106), fix planned for Kotlin 2.5.0). Delete
   `build/kotlin/swiftPMXcodeDumps` in your root project, or run `./gradlew clean`.
 - **Don't mix package managers for Firebase.** All Firebase products share transitive C/C++
@@ -127,7 +127,7 @@ expose Obj-C via an `*Internal` module):
 
 ## Notes
 
-- The GitLive SDK ships no `Package.swift` or podspecs; it is Maven-only, and the Firebase linkage
+- The SDK ships no `Package.swift` or podspecs; it is Maven-only, and the Firebase linkage
   travels via the published SwiftPM metadata described above.
 - Resolving `firebase-ios-sdk` pulls its full transitive source graph (gRPC/abseil/leveldb/
   BoringSSL/nanopb for Firestore), which is large — budget disk/time on CI accordingly.

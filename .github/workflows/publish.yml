@@ -79,25 +79,6 @@ jobs:
   documentation:
     needs: publish
     if: github.event_name == 'release' || !inputs.dry_run
-    runs-on: macos-latest
     permissions:
       contents: write
-    steps:
-      - uses: actions/checkout@v7
-      - name: Set up JDK
-        uses: actions/setup-java@v6
-        with:
-          distribution: 'temurin'
-          java-version: '21'
-      - uses: gradle/actions/setup-gradle@v6
-      - uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: '26.2.0'
-      - name: Generate documentation
-        run: ./gradlew dokkaHtmlMultiModule
-      - name: Deploy API documentation to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: build/dokka/htmlMultiModule
-          target-folder: docs
+    uses: ./.github/workflows/docs.yml

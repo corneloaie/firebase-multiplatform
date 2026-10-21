@@ -19,6 +19,7 @@ Usage (from the repository root):
 import argparse
 import re
 import subprocess
+from urllib.parse import quote
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -27,6 +28,7 @@ PLATFORMS = [('android', 'Android'), ('ios', 'iOS'), ('macos', 'macOS'), ('tvos'
              ('wasmjs', 'Wasm')]
 HEADER = re.compile(r'^# (\d+)% of (\d+) public members available \((\d+) identical, (\d+) mapped, (\d+) missing, (\d+) omitted\)')
 START, END = '<!-- coverage:start -->', '<!-- coverage:end -->'
+BADGE_START, BADGE_END = '<!-- coverage-badge:start -->', '<!-- coverage-badge:end -->'
 PRODUCTS = {
     'firebase-ai': ('AI Logic', 'https://firebase.google.com/docs/ai-logic'),
     'firebase-analytics': ('Analytics', 'https://firebase.google.com/docs/analytics'),
@@ -124,6 +126,30 @@ def table(current):
     return summary + '\n\n' + '\n'.join(lines)
 
 
+def overall_badge(current):
+    """A badge with the coverage of every module together, for the top of the README."""
+    available = total = products = 0
+    for text in current.values():
+        header, _ = parse(text)
+        if header is None:
+            continue
+        products += 1
+        available += header[2] + header[3]
+        total += header[1]
+    percent = available * 100 // total if total else 0
+    colour = 'brightgreen' if percent == 100 else 'green' if percent > 60 else 'orange'
+    message = quote(f'{percent}%: {available:,} of {total:,} members, {products} products', safe='')
+    return f'[![Android API coverage](https://img.shields.io/badge/Android%20API%20coverage-{message}-{colour}?style=flat-square)](#coverage)'
+
+
+def replace_between(text, start, end, body, path):
+    before, found_start, rest = text.partition(start)
+    _, found_end, after = rest.partition(end)
+    if not found_start or not found_end:
+        raise SystemExit(f'{path} has no {start} ... {end} section')
+    return f'{before}{start}{body}{end}{after}'
+
+
 def compare(current, previous, ref):
     out = [f'### Android API coverage against `{ref}`', '', '| Module | Before | After |', '|---|---:|---:|']
     regressions = []
@@ -150,12 +176,10 @@ def main():
     rendered = table(current)
     print(rendered)
     if args.readme:
-        text = args.readme.read_text()
-        before, start, rest = text.partition(START)
-        _, end, after = rest.partition(END)
-        if not start or not end:
-            raise SystemExit(f'{args.readme} has no {START} ... {END} section')
-        args.readme.write_text(f'{before}{START}\n{rendered}\n{END}{after}')
+        text = replace_between(args.readme.read_text(), START, END, f'\n{rendered}\n', args.readme)
+        if BADGE_START in text:
+            text = replace_between(text, BADGE_START, BADGE_END, overall_badge(current), args.readme)
+        args.readme.write_text(text)
     if args.compare:
         markdown = compare(current, reports(args.compare), args.compare)
         if args.summary:

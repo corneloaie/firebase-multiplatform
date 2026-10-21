@@ -1,10 +1,10 @@
-# GitHub Copilot Instructions — firebase-kotlin-sdk
+# GitHub Copilot Instructions — firebase-multiplatform
 
 ## Project Overview
 
 This is a **Kotlin-first, multiplatform SDK for Firebase**. It wraps the official Firebase platform SDKs (Android, iOS, JS, JVM) behind a unified Kotlin common API, enabling Firebase to be used directly from shared Kotlin Multiplatform (KMP) source sets targeting **Android**, **iOS**, **Desktop (JVM)**, and **Web (JS and Wasm)**.
 
-All modules are published under the `dev.gitlive` group ID (e.g. `dev.gitlive:firebase-firestore`).
+All modules are published under the `io.github.corneloaie` group ID (e.g. `io.github.corneloaie:firebase-firestore`); the Gradle `group` and the Kotlin packages stay `dev.gitlive`, see `buildSrc/src/main/kotlin/fork/Fork.kt`.
 
 ---
 

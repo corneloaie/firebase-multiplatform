@@ -34,17 +34,17 @@ val compileSdkVersion by extra(34)
 val targetSdkVersion by extra(34)
 val minSdkVersion by extra(24) // firebase-common 23 (BoM 35) requires 24
 
-private val dokkaCopyrightMessage = "© 2024 GitLive Ltd."
-private val dokkaHomepageUrl = "https://github.com/GitLiveApp/firebase-kotlin-sdk"
+private val dokkaFooterMessage = "${fork.Fork.NAME}, Apache License 2.0. Based on " +
+    "<a href=\"https://github.com/GitLiveApp/firebase-kotlin-sdk\">GitLive's firebase-kotlin-sdk</a>."
+private val dokkaHomepageUrl = fork.Fork.URL
 
 tasks.withType<AbstractDokkaTask>().configureEach {
     moduleVersion.set(project.version.toString())
-    moduleName.set("Firebase Kotlin SDK")
+    moduleName.set(fork.Fork.NAME)
 
     pluginConfiguration<DokkaBase, DokkaBaseConfiguration> {
-        customAssets = listOf(file("documentation/gitlive-logo.png"), file("documentation/homepage.svg"))
-        customStyleSheets = listOf(file("documentation/logo-styles.css"))
-        footerMessage = dokkaCopyrightMessage
+        customAssets = listOf(file("documentation/homepage.svg"))
+        footerMessage = dokkaFooterMessage
         homepageLink = dokkaHomepageUrl
     }
 }
@@ -63,7 +63,7 @@ subprojects {
 
     this.tasks.withType<DokkaTaskPartial>().configureEach {
         pluginConfiguration<DokkaBase, DokkaBaseConfiguration> {
-            footerMessage = dokkaCopyrightMessage
+            footerMessage = dokkaFooterMessage
             separateInheritedMembers = false
             homepageLink = dokkaHomepageUrl
         }
@@ -74,7 +74,7 @@ subprojects {
 
                 sourceLink {
                     localDirectory.set(projectDir.resolve("src"))
-                    remoteUrl.set(URL("$dokkaHomepageUrl/tree/master/${project.name}/src"))
+                    remoteUrl.set(URL("$dokkaHomepageUrl/tree/main/${project.name}/src"))
                 }
             }
             if (this.names.contains("jsMain")) {
