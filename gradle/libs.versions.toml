@@ -62,6 +62,7 @@ google-firebase-inappmessaging-display = { module = "com.google.firebase:firebas
 google-firebase-installations = { module = "com.google.firebase:firebase-installations"}
 google-firebase-messaging = { module = "com.google.firebase:firebase-messaging"}
 google-firebase-perf = { module = "com.google.firebase:firebase-perf"}
+google-firebase-pnv = { module = "com.google.firebase:firebase-pnv"}
 google-firebase-storage = { module = "com.google.firebase:firebase-storage"}
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { module = "junit:junit", version.ref = "junit" }

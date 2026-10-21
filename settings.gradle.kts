@@ -16,6 +16,7 @@ include(
     "firebase-installations",
     "firebase-messaging",
     "firebase-perf",
+    "firebase-pnv",
     "firebase-storage",
     "test-utils"
 )

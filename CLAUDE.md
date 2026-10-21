@@ -6,7 +6,7 @@ Kotlin-first multiplatform Firebase SDK maintained by GitLive. Wraps official Fi
 
 ## Module Structure
 
-- `firebase-app`, `firebase-analytics`, `firebase-appcheck`, `firebase-appdistribution`, `firebase-auth`, `firebase-config`, `firebase-crashlytics`, `firebase-database`, `firebase-dataconnect`, `firebase-firestore`, `firebase-functions`, `firebase-inappmessaging`, `firebase-installations`, `firebase-messaging`, `firebase-perf`, `firebase-storage` — Firebase service modules
+- `firebase-app`, `firebase-analytics`, `firebase-appcheck`, `firebase-appdistribution`, `firebase-auth`, `firebase-config`, `firebase-crashlytics`, `firebase-database`, `firebase-dataconnect`, `firebase-firestore`, `firebase-functions`, `firebase-inappmessaging`, `firebase-installations`, `firebase-messaging`, `firebase-perf`, `firebase-pnv`, `firebase-storage` — Firebase service modules
 - `firebase-common` / `firebase-common-internal` — Shared utilities
 - `test-utils` — Shared test helpers
 - `buildSrc` — Gradle build conventions
@@ -44,7 +44,7 @@ Kotlin-first multiplatform Firebase SDK maintained by GitLive. Wraps official Fi
 - firebase-ios-sdk: 13.0.1 (minimum deployment targets iOS 15 / tvOS 15 / macOS 12; Firebase itself allows macOS 11, but Kotlin/Native builds macOS code for 12)
 - Firebase JS SDK: 13.0.0 (the `npm("firebase", ...)` pins in firebase-common and firebase-common-internal)
 - Java target: 17
-- Android minSdk: 23, compileSdk: 34
+- Android minSdk: 23, compileSdk: 34 (35 in `firebase-pnv`, whose androidx.core 1.16 dependency requires it)
 
 ## KMP Targets
 
@@ -76,7 +76,7 @@ Android, iOS (arm64, x64, simulatorArm64), macOS (arm64), tvOS (arm64, simulator
 Some platform code is hand-mirrored with **no compiler enforcement that the copies stay in sync**. A change to one side must be made to the other, in the same commit.
 
 - **`jsMain` ↔ `wasmJsMain`** (~3,900 / ~4,200 lines, all modules with a JS target) and **`jsTest` ↔ `wasmJsTest`**. Every JS change has to be made twice. `test-utils/src/wasmJsMain` additionally re-implements JS-value conversion a third time, because it cannot depend on `firebase-common`. The `com.google.firebase` actuals in `jsMain` (`*.js.kt`) are mirrored as `*.wasmJs.kt` in `wasmJsMain`; `nonJvmMain` is source compiled for js, wasmJs and apple alike, so it is shared rather than mirrored.
-- **`androidMain` ↔ `jvmMain`**, but **only** in the modules whose `jvmMain` has sources of its own: `firebase-analytics`, `firebase-appdistribution`, `firebase-auth`, `firebase-inappmessaging`, `firebase-messaging` and `firebase-perf`. In the compat modules `androidMain` holds the header stubs and `jvmMain` implements the same API over firebase-java-sdk (or as a no-op where it has no such SDK), so an API change touches both. The other modules share source physically via `kotlin.srcDir("src/androidMain/kotlin")` in their `jvmMain` source set, or have no JVM target (`firebase-appcheck`, `firebase-dataconnect`).
+- **`androidMain` ↔ `jvmMain`**, but **only** in the modules whose `jvmMain` has sources of its own: `firebase-analytics`, `firebase-appdistribution`, `firebase-auth`, `firebase-inappmessaging`, `firebase-messaging` and `firebase-perf`. In the compat modules `androidMain` holds the header stubs and `jvmMain` implements the same API over firebase-java-sdk (or as a no-op where it has no such SDK), so an API change touches both. The other modules share source physically via `kotlin.srcDir("src/androidMain/kotlin")` in their `jvmMain` source set, or have no JVM target (`firebase-appcheck`, `firebase-dataconnect`, `firebase-pnv`).
 
 `androidUnitTest` and `jvmTest` are **not** mirrors — those files are per-platform `actual` test config (test context, `@Ignore` aliasing) and are expected to differ.
 
