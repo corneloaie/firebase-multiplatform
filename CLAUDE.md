@@ -6,7 +6,7 @@ Kotlin-first multiplatform Firebase SDK maintained by GitLive. Wraps official Fi
 
 ## Module Structure
 
-- `firebase-app`, `firebase-auth`, `firebase-firestore`, `firebase-database`, `firebase-functions`, `firebase-analytics`, `firebase-storage`, `firebase-messaging`, `firebase-config`, `firebase-crashlytics`, `firebase-installations`, `firebase-perf` — Firebase service modules
+- `firebase-app`, `firebase-analytics`, `firebase-appcheck`, `firebase-appdistribution`, `firebase-auth`, `firebase-config`, `firebase-crashlytics`, `firebase-database`, `firebase-dataconnect`, `firebase-firestore`, `firebase-functions`, `firebase-inappmessaging`, `firebase-installations`, `firebase-messaging`, `firebase-perf`, `firebase-storage` — Firebase service modules
 - `firebase-common` / `firebase-common-internal` — Shared utilities
 - `test-utils` — Shared test helpers
 - `buildSrc` — Gradle build conventions
@@ -21,7 +21,7 @@ Kotlin-first multiplatform Firebase SDK maintained by GitLive. Wraps official Fi
 # API compatibility
 ./gradlew apiDump         # update .api files after public API changes
 ./gradlew apiCheck        # validate no breaking changes
-./gradlew :<module>:androidSourceCompatDump   # modules with api/android-sdk/ (firebase-app, firebase-installations): regenerate api/android-sdk-compat.txt, checked by `check`
+./gradlew :<module>:androidSourceCompatDump   # every service module (api/android-sdk/): regenerate api/android-sdk-compat.txt, checked by `check`
 
 # Tests by platform
 ./gradlew jvmTest
@@ -40,8 +40,9 @@ Kotlin-first multiplatform Firebase SDK maintained by GitLive. Wraps official Fi
 - Kotlin: 2.4.20 (2.4+ is required by the SwiftPM import used on Apple targets)
 - Coroutines: 1.10.2
 - Serialization: 1.9.0
-- Firebase BOM: 34.18.0
-- firebase-ios-sdk: 12.17.0 (minimum deployment targets iOS 15 / tvOS 15 / macOS 12; Firebase itself allows macOS 10.15, but Kotlin/Native builds macOS code for 12)
+- Firebase BOM: 35.0.2 (Android minSdk 24, which firebase-common 23 requires)
+- firebase-ios-sdk: 13.0.1 (minimum deployment targets iOS 15 / tvOS 15 / macOS 12; Firebase itself allows macOS 11, but Kotlin/Native builds macOS code for 12)
+- Firebase JS SDK: 13.0.0 (the `npm("firebase", ...)` pins in firebase-common and firebase-common-internal)
 - Java target: 17
 - Android minSdk: 23, compileSdk: 34
 
@@ -57,10 +58,10 @@ Android, iOS (arm64, x64, simulatorArm64), macOS (arm64), tvOS (arm64, simulator
   - `Flow` instead of listeners
   - Default arguments instead of builder pattern
   - `@Serializable` data classes for Firestore/Database models
-  - These apply to the `dev.gitlive.firebase` API. The `com.google.firebase.*` source-compatibility layer (firebase-app, firebase-installations) mirrors the Firebase Android SDK exactly, `Task` and listener interfaces included; see "API Compatibility Goal" in `.github/copilot-instructions.md`.
+  - These apply to the `dev.gitlive.firebase` API. The `com.google.firebase.*` source-compatibility layer (every service module) mirrors the Firebase Android SDK exactly, `Task` and listener interfaces included; see "API Compatibility Goal" in `.github/copilot-instructions.md`.
 - **Visibility:** `explicitApi()` is enforced — all public declarations need explicit visibility modifiers.
-- **Expect/actual:** Public APIs declared as `expect` in `commonMain`; platform implementations in `androidMain`, `appleMain`, `jsMain`, `wasmJsMain`, `jvmMain`. Modules using `utils.applyFirebaseHierarchy()` (firebase-app, firebase-installations) also have `nonJsMain` (android, jvm, apple) and `nonJvmMain` (js, wasmJs, apple).
-- **After any public API change:** run `./gradlew apiDump` to update `.api` files (and `androidSourceCompatDump` for firebase-app / firebase-installations) and commit them alongside the change.
+- **Expect/actual:** Public APIs declared as `expect` in `commonMain`; platform implementations in `androidMain`, `appleMain`, `jsMain`, `wasmJsMain`, `jvmMain`. Modules using `utils.applyFirebaseHierarchy()` (every service module) also have `nonJsMain` (android, jvm, apple) and `nonJvmMain` (js, wasmJs, apple).
+- **After any public API change:** run `./gradlew apiDump` to update `.api` files (and `androidSourceCompatDump` for the service modules) and commit them alongside the change.
 - **KDoc** required on all public APIs.
 
 ## Important Notes
@@ -75,10 +76,14 @@ Android, iOS (arm64, x64, simulatorArm64), macOS (arm64), tvOS (arm64, simulator
 Some platform code is hand-mirrored with **no compiler enforcement that the copies stay in sync**. A change to one side must be made to the other, in the same commit.
 
 - **`jsMain` ↔ `wasmJsMain`** (~3,900 / ~4,200 lines, all modules with a JS target) and **`jsTest` ↔ `wasmJsTest`**. Every JS change has to be made twice. `test-utils/src/wasmJsMain` additionally re-implements JS-value conversion a third time, because it cannot depend on `firebase-common`. The `com.google.firebase` actuals in `jsMain` (`*.js.kt`) are mirrored as `*.wasmJs.kt` in `wasmJsMain`; `nonJvmMain` is source compiled for js, wasmJs and apple alike, so it is shared rather than mirrored.
-- **`androidMain` ↔ `jvmMain`**, but **only** in `firebase-auth`, `firebase-analytics`, `firebase-crashlytics` and `firebase-messaging`. The other 10 modules share source physically via `kotlin.srcDir("src/androidMain/kotlin")` in their `jvmMain` source set, so drift there is impossible and no manual sync is needed.
+- **`androidMain` ↔ `jvmMain`**, but **only** in the modules whose `jvmMain` has sources of its own: `firebase-analytics`, `firebase-appdistribution`, `firebase-auth`, `firebase-inappmessaging`, `firebase-messaging` and `firebase-perf`. In the compat modules `androidMain` holds the header stubs and `jvmMain` implements the same API over firebase-java-sdk (or as a no-op where it has no such SDK), so an API change touches both. The other modules share source physically via `kotlin.srcDir("src/androidMain/kotlin")` in their `jvmMain` source set, or have no JVM target (`firebase-appcheck`, `firebase-dataconnect`).
 
 `androidUnitTest` and `jvmTest` are **not** mirrors — those files are per-platform `actual` test config (test context, `@Ignore` aliasing) and are expected to differ.
 
 Divergence between mirrors is sometimes deliberate — a platform genuinely lacking an API — so a difference is not automatically a bug. But an *unexplained* one usually is.
 
 `firebase-auth` is forked rather than shared because the GitLive Firebase Java SDK lacks four APIs that `androidMain` uses: `PhoneAuthOptions`, `AuthResult.getCredential()`, `AuthResult.getAdditionalUserInfo()`/`AdditionalUserInfo`, and `ActionCodeSettings.Builder.setLinkDomain()`. Tracked in GitLiveApp/firebase-java-sdk#68; when that lands the fork can be deleted and `srcDir` sharing restored.
+
+## This fork
+
+This repository is corneloaie/firebase-multiplatform, a fork of GitLive's SDK published as `io.github.corneloaie`. Read @MAINTAINING.md before changing build, publishing or upstream-merge setup.

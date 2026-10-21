@@ -95,9 +95,9 @@ public external fun increment(n: Double): FieldValue
 
 public external fun initializeFirestore(app: FirebaseApp, settings: JsAny? = definedExternally, databaseId: String? = definedExternally): Firestore
 
-public external fun limit(limit: Double): QueryConstraint
+public external fun limit(limit: Int): QueryConstraint
 
-public external fun limitToLast(limit: Double): QueryConstraint
+public external fun limitToLast(limit: Int): QueryConstraint
 
 public external fun onSnapshot(
     reference: DocumentReference,
@@ -131,11 +131,11 @@ public external fun orderBy(field: FieldPath, direction: String): QueryConstrain
 
 public external fun query(query: Query, vararg queryConstraints: QueryConstraint): Query
 
-public external fun runTransaction(
+public external fun <T : JsAny?> runTransaction(
     firestore: Firestore,
-    updateFunction: (transaction: Transaction) -> Promise<JsAny?>,
+    updateFunction: (transaction: Transaction) -> Promise<T>,
     options: JsAny? = definedExternally,
-): Promise<JsAny?>
+): Promise<T>
 
 public external fun serverTimestamp(): FieldValue
 
@@ -208,6 +208,7 @@ public external class DocumentReference : JsAny {
     public val id: String
     public val path: String
     public val parent: CollectionReference
+    public val firestore: Firestore
 }
 
 public external interface DocumentSnapshot : JsAny {
@@ -224,7 +225,9 @@ public external class FieldValue : JsAny {
     public fun isEqual(other: FieldValue): Boolean
 }
 
-public external interface Query : JsAny
+public external interface Query : JsAny {
+    public val firestore: Firestore
+}
 
 public external interface QueryConstraint : JsAny
 
@@ -247,8 +250,10 @@ public external fun getAggregateFromServer(query: Query, aggregateSpec: JsAny): 
 public external interface QuerySnapshot : JsAny {
     public val docs: JsArray<DocumentSnapshot>
     public val empty: Boolean
+    public val size: Int
+    public val query: Query
     public val metadata: SnapshotMetadata
-    public fun docChanges(): JsArray<DocumentChange>
+    public fun docChanges(options: JsAny? = definedExternally): JsArray<DocumentChange>
 }
 
 public external interface SnapshotMetadata : JsAny {
@@ -351,9 +356,105 @@ public external interface PersistentTabManager : JsAny {
     public val kind: String
 }
 
-public external fun memoryLocalCache(settings: JsAny): MemoryLocalCache
+public external fun memoryLocalCache(settings: MemoryCacheSettings): MemoryLocalCache
 public external fun memoryEagerGarbageCollector(): MemoryEagerGarbageCollector
 public external fun memoryLruGarbageCollector(settings: JsAny? = definedExternally): MemoryLruGarbageCollector
-public external fun persistentLocalCache(settings: JsAny): PersistentLocalCache
+public external fun persistentLocalCache(settings: PersistentCacheSettings): PersistentLocalCache
 public external fun persistentSingleTabManager(settings: JsAny? = definedExternally): PersistentTabManager
 public external fun persistentMultipleTabManager(): PersistentTabManager
+
+// Additions for the com.google.firebase.firestore compatibility layer.
+
+/**
+ * The `Uint8Array`s are typed [JsAny]: this module does not depend on kotlinx-browser, which declares
+ * `org.khronos.webgl` for Kotlin/Wasm (see `Values.wasmJs.kt` for the conversions).
+ */
+public external class Bytes : JsAny {
+    /** The BSON binary subtype, 0 for plain bytes. */
+    public val subtype: Int
+
+    public fun toUint8Array(): JsAny
+
+    public companion object {
+        public fun fromUint8Array(array: JsAny, subtype: Int = definedExternally): Bytes
+    }
+}
+
+public external class BsonObjectId(value: String) : JsAny {
+    public val value: String
+}
+
+public external class BsonTimestamp(seconds: Double, increment: Double) : JsAny {
+    public val seconds: Double
+    public val increment: Double
+}
+
+public external class Decimal128Value(value: String) : JsAny {
+    public val stringValue: String
+}
+
+public external class Int32Value(value: Int) : JsAny {
+    public val value: Int
+}
+
+public external class MaxKey : JsAny {
+    public companion object {
+        public fun instance(): MaxKey
+    }
+}
+
+public external class MinKey : JsAny {
+    public companion object {
+        public fun instance(): MinKey
+    }
+}
+
+public external class RegexValue(pattern: String, options: String) : JsAny {
+    public val pattern: String
+    public val options: String
+}
+
+public external fun minimum(n: Double): FieldValue
+
+public external fun maximum(n: Double): FieldValue
+
+public external fun vector(values: JsArray<JsNumber>): VectorValue
+
+public external class VectorValue : JsAny {
+    public fun toArray(): JsArray<JsNumber>
+}
+
+public external interface LoadBundleTask : JsAny {
+    public fun onProgress(next: (progress: LoadBundleTaskProgress) -> Unit, error: (error: JsAny) -> Unit, complete: () -> Unit)
+    public fun then(onFulfilled: (progress: LoadBundleTaskProgress) -> Unit, onRejected: (error: JsAny) -> Unit): Promise<JsAny?>
+}
+
+public external interface LoadBundleTaskProgress : JsAny {
+    public val documentsLoaded: Int
+    public val totalDocuments: Int
+    public val bytesLoaded: Double
+    public val totalBytes: Double
+    public val taskState: String
+}
+
+public external interface PersistentCacheIndexManager : JsAny
+
+public external fun loadBundle(firestore: Firestore, bundleData: JsAny): LoadBundleTask
+
+public external fun namedQuery(firestore: Firestore, name: String): Promise<Query?>
+
+public external fun getPersistentCacheIndexManager(firestore: Firestore): PersistentCacheIndexManager?
+
+public external fun enablePersistentCacheIndexAutoCreation(indexManager: PersistentCacheIndexManager)
+
+public external fun disablePersistentCacheIndexAutoCreation(indexManager: PersistentCacheIndexManager)
+
+public external fun deleteAllPersistentCacheIndexes(indexManager: PersistentCacheIndexManager)
+
+public external fun onSnapshotsInSync(firestore: Firestore, onSync: () -> Unit): Unsubscribe
+
+public external fun count(): AggregateField
+
+public external fun queryEqual(left: Query, right: Query): Boolean
+
+public external fun snapshotEqual(left: JsAny, right: JsAny): Boolean

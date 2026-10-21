@@ -1,0 +1,141 @@
+public abstract interface class com/google/firebase/appdistribution/AppDistributionRelease {
+	public abstract fun getBinaryType ()Lcom/google/firebase/appdistribution/BinaryType;
+	public abstract fun getDisplayVersion ()Ljava/lang/String;
+	public abstract fun getReleaseNotes ()Ljava/lang/String;
+	public abstract fun getVersionCode ()J
+}
+
+public final class com/google/firebase/appdistribution/BinaryType : java/lang/Enum {
+	public static final field AAB Lcom/google/firebase/appdistribution/BinaryType;
+	public static final field APK Lcom/google/firebase/appdistribution/BinaryType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/google/firebase/appdistribution/BinaryType;
+	public static fun values ()[Lcom/google/firebase/appdistribution/BinaryType;
+}
+
+public final class com/google/firebase/appdistribution/FeedbackScreenshotKt {
+	public static final fun startFeedback (Lcom/google/firebase/appdistribution/FirebaseAppDistribution;ILjava/lang/String;)V
+	public static final fun startFeedback (Lcom/google/firebase/appdistribution/FirebaseAppDistribution;Ljava/lang/CharSequence;Ljava/lang/String;)V
+}
+
+public abstract interface class com/google/firebase/appdistribution/FirebaseAppDistribution {
+	public static final field Companion Lcom/google/firebase/appdistribution/FirebaseAppDistribution$Companion;
+	public abstract fun cancelFeedbackNotification ()V
+	public abstract fun checkForNewRelease ()Lcom/google/android/gms/tasks/Task;
+	public static fun getInstance ()Lcom/google/firebase/appdistribution/FirebaseAppDistribution;
+	public abstract fun isTesterSignedIn ()Z
+	public abstract fun showFeedbackNotification (ILcom/google/firebase/appdistribution/InterruptionLevel;)V
+	public abstract fun showFeedbackNotification (Ljava/lang/CharSequence;Lcom/google/firebase/appdistribution/InterruptionLevel;)V
+	public abstract fun signInTester ()Lcom/google/android/gms/tasks/Task;
+	public abstract fun signOutTester ()V
+	public abstract fun startFeedback (I)V
+	public abstract fun startFeedback (Ljava/lang/CharSequence;)V
+	public abstract fun updateApp ()Lcom/google/firebase/appdistribution/UpdateTask;
+	public abstract fun updateIfNewReleaseAvailable ()Lcom/google/firebase/appdistribution/UpdateTask;
+}
+
+public final class com/google/firebase/appdistribution/FirebaseAppDistribution$Companion {
+	public final fun getInstance ()Lcom/google/firebase/appdistribution/FirebaseAppDistribution;
+}
+
+public class com/google/firebase/appdistribution/FirebaseAppDistributionException : com/google/firebase/FirebaseException {
+	public fun <init> (Ljava/lang/String;Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;)V
+	public fun <init> (Ljava/lang/String;Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;Lcom/google/firebase/appdistribution/AppDistributionRelease;)V
+	public fun <init> (Ljava/lang/String;Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;Lcom/google/firebase/appdistribution/AppDistributionRelease;Ljava/lang/Throwable;)V
+	public fun <init> (Ljava/lang/String;Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;Ljava/lang/Throwable;)V
+	public final fun getErrorCode ()Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;
+	public final fun getRelease ()Lcom/google/firebase/appdistribution/AppDistributionRelease;
+}
+
+public final class com/google/firebase/appdistribution/FirebaseAppDistributionException$Status : java/lang/Enum {
+	public static final field API_DISABLED Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;
+	public static final field AUTHENTICATION_CANCELED Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;
+	public static final field AUTHENTICATION_FAILURE Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;
+	public static final field DOWNLOAD_FAILURE Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;
+	public static final field HOST_ACTIVITY_INTERRUPTED Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;
+	public static final field INSTALLATION_CANCELED Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;
+	public static final field INSTALLATION_FAILURE Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;
+	public static final field NETWORK_FAILURE Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;
+	public static final field NOT_IMPLEMENTED Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;
+	public static final field UNKNOWN Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;
+	public static final field UPDATE_NOT_AVAILABLE Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;
+	public static fun values ()[Lcom/google/firebase/appdistribution/FirebaseAppDistributionException$Status;
+}
+
+public final class com/google/firebase/appdistribution/FirebaseAppDistributionKt {
+	public static final fun component1 (Lcom/google/firebase/appdistribution/AppDistributionRelease;)Lcom/google/firebase/appdistribution/BinaryType;
+	public static final fun component1 (Lcom/google/firebase/appdistribution/UpdateProgress;)J
+	public static final fun component2 (Lcom/google/firebase/appdistribution/AppDistributionRelease;)Ljava/lang/String;
+	public static final fun component2 (Lcom/google/firebase/appdistribution/UpdateProgress;)J
+	public static final fun component3 (Lcom/google/firebase/appdistribution/AppDistributionRelease;)J
+	public static final fun component3 (Lcom/google/firebase/appdistribution/UpdateProgress;)Lcom/google/firebase/appdistribution/UpdateStatus;
+	public static final fun component4 (Lcom/google/firebase/appdistribution/AppDistributionRelease;)Ljava/lang/String;
+	public static final fun getAppDistribution (Lcom/google/firebase/Firebase;)Lcom/google/firebase/appdistribution/FirebaseAppDistribution;
+}
+
+public final class com/google/firebase/appdistribution/InterruptionLevel : java/lang/Enum {
+	public static final field DEFAULT Lcom/google/firebase/appdistribution/InterruptionLevel;
+	public static final field HIGH Lcom/google/firebase/appdistribution/InterruptionLevel;
+	public static final field LOW Lcom/google/firebase/appdistribution/InterruptionLevel;
+	public static final field MAX Lcom/google/firebase/appdistribution/InterruptionLevel;
+	public static final field MIN Lcom/google/firebase/appdistribution/InterruptionLevel;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/google/firebase/appdistribution/InterruptionLevel;
+	public static fun values ()[Lcom/google/firebase/appdistribution/InterruptionLevel;
+}
+
+public abstract interface class com/google/firebase/appdistribution/OnProgressListener {
+	public abstract fun onProgressUpdate (Lcom/google/firebase/appdistribution/UpdateProgress;)V
+}
+
+public abstract interface class com/google/firebase/appdistribution/UpdateProgress {
+	public abstract fun getApkBytesDownloaded ()J
+	public abstract fun getApkFileTotalBytes ()J
+	public abstract fun getUpdateStatus ()Lcom/google/firebase/appdistribution/UpdateStatus;
+}
+
+public final class com/google/firebase/appdistribution/UpdateStatus : java/lang/Enum {
+	public static final field DOWNLOADED Lcom/google/firebase/appdistribution/UpdateStatus;
+	public static final field DOWNLOADING Lcom/google/firebase/appdistribution/UpdateStatus;
+	public static final field DOWNLOAD_FAILED Lcom/google/firebase/appdistribution/UpdateStatus;
+	public static final field INSTALL_CANCELED Lcom/google/firebase/appdistribution/UpdateStatus;
+	public static final field INSTALL_FAILED Lcom/google/firebase/appdistribution/UpdateStatus;
+	public static final field NEW_RELEASE_CHECK_FAILED Lcom/google/firebase/appdistribution/UpdateStatus;
+	public static final field NEW_RELEASE_NOT_AVAILABLE Lcom/google/firebase/appdistribution/UpdateStatus;
+	public static final field PENDING Lcom/google/firebase/appdistribution/UpdateStatus;
+	public static final field REDIRECTED_TO_PLAY Lcom/google/firebase/appdistribution/UpdateStatus;
+	public static final field UPDATE_CANCELED Lcom/google/firebase/appdistribution/UpdateStatus;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/google/firebase/appdistribution/UpdateStatus;
+	public static fun values ()[Lcom/google/firebase/appdistribution/UpdateStatus;
+}
+
+public abstract class com/google/firebase/appdistribution/UpdateTask : com/google/android/gms/tasks/Task {
+	public fun <init> ()V
+	public abstract fun addOnProgressListener (Lcom/google/firebase/appdistribution/OnProgressListener;)Lcom/google/firebase/appdistribution/UpdateTask;
+}
+
+public final class dev/gitlive/firebase/appdistribution/AppDistributionKt {
+	public static final fun getAppDistribution (Ldev/gitlive/firebase/Firebase;)Ldev/gitlive/firebase/appdistribution/FirebaseAppDistribution;
+}
+
+public final class dev/gitlive/firebase/appdistribution/FirebaseAppDistribution {
+	public final fun cancelFeedbackNotification ()V
+	public final fun checkForNewRelease (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCompat ()Lcom/google/firebase/appdistribution/FirebaseAppDistribution;
+	public fun hashCode ()I
+	public final fun isTesterSignedIn ()Z
+	public final fun showFeedbackNotification (Ljava/lang/CharSequence;Lcom/google/firebase/appdistribution/InterruptionLevel;)V
+	public static synthetic fun showFeedbackNotification$default (Ldev/gitlive/firebase/appdistribution/FirebaseAppDistribution;Ljava/lang/CharSequence;Lcom/google/firebase/appdistribution/InterruptionLevel;ILjava/lang/Object;)V
+	public final fun signInTester (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun signOutTester ()V
+	public final fun startFeedback (Ljava/lang/CharSequence;Ljava/lang/String;)V
+	public static synthetic fun startFeedback$default (Ldev/gitlive/firebase/appdistribution/FirebaseAppDistribution;Ljava/lang/CharSequence;Ljava/lang/String;ILjava/lang/Object;)V
+	public fun toString ()Ljava/lang/String;
+	public final fun updateApp ()Lkotlinx/coroutines/flow/Flow;
+	public final fun updateIfNewReleaseAvailable ()Lkotlinx/coroutines/flow/Flow;
+}
+

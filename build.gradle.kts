@@ -1,3 +1,4 @@
+import fork.applyFork
 import org.apache.tools.ant.taskdefs.condition.Os
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
@@ -31,7 +32,7 @@ buildscript {
 
 val compileSdkVersion by extra(34)
 val targetSdkVersion by extra(34)
-val minSdkVersion by extra(23)
+val minSdkVersion by extra(24) // firebase-common 23 (BoM 35) requires 24
 
 private val dokkaCopyrightMessage = "© 2024 GitLive Ltd."
 private val dokkaHomepageUrl = "https://github.com/GitLiveApp/firebase-kotlin-sdk"
@@ -51,6 +52,8 @@ tasks.withType<AbstractDokkaTask>().configureEach {
 subprojects {
 
     group = "dev.gitlive"
+    // This fork's version and Maven coordinates (buildSrc/src/main/kotlin/fork/Fork.kt); the group above must stay.
+    applyFork()
 
     val nonDocumentationList = listOf("test-utils", "firebase-common", "firebase-common-internal")
     val skipDocumentation = nonDocumentationList.contains(project.name)
@@ -131,14 +134,21 @@ subprojects {
             "androidMainApi"(platform(libs.firebase.bom))
             "commonTestImplementation"(kotlin("test-common"))
             "commonTestImplementation"(kotlin("test-annotations-common"))
+            // Modules without a JVM target (firebase-dataconnect: firebase-java-sdk has no Data Connect) have no jvm configurations.
+            val hasJvm = configurations.findByName("jvmMainApi") != null
             if (this@afterEvaluate.name != "firebase-crashlytics") {
-                "jvmMainApi"(libs.gitlive.firebase.java.sdk)
-                "jvmMainApi"(libs.kotlinx.coroutines.play.services) {
-                    exclude("com.google.android.gms")
+                if (hasJvm) {
+                    "jvmMainApi"(libs.gitlive.firebase.java.sdk)
+                    "jvmMainApi"(libs.kotlinx.coroutines.play.services) {
+                        exclude("com.google.android.gms")
+                    }
+                    "jvmTestImplementation"(kotlin("test-junit"))
+                    "jvmTestImplementation"(libs.junit)
                 }
-                "jsTestImplementation"(kotlin("test-js"))
-                "jvmTestImplementation"(kotlin("test-junit"))
-                "jvmTestImplementation"(libs.junit)
+                // Modules without a JS target (firebase-appdistribution, firebase-inappmessaging) have no js configurations.
+                if (configurations.findByName("jsTestImplementation") != null) {
+                    "jsTestImplementation"(kotlin("test-js"))
+                }
             }
             "androidInstrumentedTestImplementation"(kotlin("test-junit"))
             "androidUnitTestImplementation"(kotlin("test-junit"))

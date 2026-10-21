@@ -1,5 +1,7 @@
-# This workflow will build a Java project with Gradle
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+# Publishes every library module to Maven Central as io.github.corneloaie:<module>:<forkVersion> when a GitHub release
+# is published (its tag must be v<forkVersion>, see gradle.properties). Run by hand, it is a dry run by default: it
+# builds and checks every publication without signing or uploading anything, and keeps them as a workflow artifact.
+# A real publish needs the four repository secrets below; MAINTAINING.md has the one-time Central Portal and GPG setup.
 
 name: Publish
 
@@ -7,80 +9,93 @@ on:
   release:
     types: [ prereleased, released ]
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run: build and check every publication, without signing or uploading'
+        type: boolean
+        default: true
 
 env:
   ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPEUSERNAME }}
   ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPEPASSWORD }}
   ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.GPG_PRIVATE_KEY }}
   ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.PASSPHRASE }}
+  DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
 
 jobs:
-  build:
+  publish:
     runs-on: macos-latest
+    timeout-minutes: 300
     steps:
       - uses: actions/checkout@v7
       - name: Set up JDK
         uses: actions/setup-java@v6
         with:
-          distribution: 'zulu'
-          java-version: '17'
+          distribution: 'temurin'
+          java-version: '21'
       - uses: gradle/actions/setup-gradle@v6.3.0
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
       - uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '26.4.1'
-      - name: Publish Firebase Analytics
-        run: ./gradlew :firebase-analytics:publish
-      - name: Publish Firebase App
-        run: ./gradlew :firebase-app:publish
-      - name: Publish Firebase Auth
-        run: ./gradlew :firebase-auth:publish
-      - name: Publish Firebase Common
-        run: ./gradlew :firebase-common:publish
-      - name: Publish Firebase Common Internal
-        run: ./gradlew :firebase-common-internal:publish
-      - name: Publish Firebase Config
-        run: ./gradlew :firebase-config:publish
-      - name: Publish Firebase Database
-        run: ./gradlew :firebase-database:publish
-      - name: Publish Firebase Firestore
-        run: ./gradlew :firebase-firestore:publish
-      - name: Publish Firebase Functions
-        run: ./gradlew :firebase-functions:publish
-      - name: Publish Firebase Messaging
-        run: ./gradlew :firebase-messaging:publish
-      - name: Publish Firebase Storage
-        run: ./gradlew :firebase-storage:publish
-      - name: Publish Firebase Installations
-        run: ./gradlew :firebase-installations:publish
-      - name: Publish Firebase Performance
-        run: ./gradlew :firebase-perf:publish
-      - name: Publish Firebase Crashlytics
-        run: ./gradlew :firebase-crashlytics:publish
+          xcode-version: '26.2.0'
+      - name: Check the release tag against forkVersion
+        if: github.event_name == 'release'
+        run: |
+          version=$(sed -n 's/^forkVersion=//p' gradle.properties)
+          if [ "${GITHUB_REF_NAME#v}" != "$version" ]; then
+            echo "::error::Release tag $GITHUB_REF_NAME does not match forkVersion=$version in gradle.properties"
+            exit 1
+          fi
+      - name: Check the publishing secrets
+        if: env.DRY_RUN != 'true'
+        run: |
+          for name in ORG_GRADLE_PROJECT_mavenCentralUsername ORG_GRADLE_PROJECT_mavenCentralPassword ORG_GRADLE_PROJECT_signingInMemoryKey ORG_GRADLE_PROJECT_signingInMemoryKeyPassword; do
+            if [ -z "${!name}" ]; then echo "::error::Secret for $name is not set (see MAINTAINING.md)"; exit 1; fi
+          done
+      # One module per Gradle run keeps the runner's memory in bounds. Into Maven local, so nothing is signed (see the
+      # root build) or uploaded yet.
+      - name: Build every publication
+        run: |
+          for module in $(grep -l 'alias(libs.plugins.publish)' */build.gradle.kts | cut -d/ -f1); do
+            echo "::group::$module"
+            ./gradlew ":$module:publishToMavenLocal"
+            echo "::endgroup::"
+          done
+      - name: Check the publications
+        run: python3 .github/scripts/publish/check_publications.py "$HOME/.m2/repository"
+      - name: Keep the publications
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: publications
+          path: ~/.m2/repository/io/github/corneloaie/
+          if-no-files-found: ignore
+      # A single Gradle run, so every module goes into one Central Portal deployment, which the plugin uploads only if
+      # the whole build succeeds: a failure publishes nothing rather than part of the release. What the step before
+      # built is up to date; this signs and uploads.
+      - name: Publish to Maven Central
+        if: env.DRY_RUN != 'true'
+        run: ./gradlew publishToMavenCentral
+
   documentation:
+    needs: publish
+    if: github.event_name == 'release' || !inputs.dry_run
     runs-on: macos-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v7
       - name: Set up JDK
         uses: actions/setup-java@v6
         with:
-          distribution: 'zulu'
-          java-version: '17'
-      - uses: gradle/gradle-build-action@v3
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+          distribution: 'temurin'
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v6.3.0
       - uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '26.4.1'
+          xcode-version: '26.2.0'
       - name: Generate documentation
         run: ./gradlew dokkaHtmlMultiModule
-      - name: Uploading build folder
-        uses: actions/upload-artifact@v7
-        with:
-          name: artefact
-          path: build/dokka/htmlMultiModule
-      - name: Deploy API documentation to Github Pages
+      - name: Deploy API documentation to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages

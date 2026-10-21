@@ -1,0 +1,31 @@
+public final class dev/gitlive/firebase/appcheck/AppCheckKt {
+	public static final fun appCheck (Ldev/gitlive/firebase/Firebase;Ldev/gitlive/firebase/FirebaseApp;)Ldev/gitlive/firebase/appcheck/FirebaseAppCheck;
+	public static final fun getAndroid (Ldev/gitlive/firebase/appcheck/FirebaseAppCheck;)Lcom/google/firebase/appcheck/FirebaseAppCheck;
+	public static final fun getAppCheck (Ldev/gitlive/firebase/Firebase;)Ldev/gitlive/firebase/appcheck/FirebaseAppCheck;
+}
+
+public final class dev/gitlive/firebase/appcheck/AppCheckToken {
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()J
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCompat ()Lcom/google/firebase/appcheck/AppCheckToken;
+	public final fun getExpireTimeMillis ()J
+	public final fun getToken ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/gitlive/firebase/appcheck/FirebaseAppCheck {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAppCheckToken (ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun getAppCheckToken$default (Ldev/gitlive/firebase/appcheck/FirebaseAppCheck;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun getAppCheckTokenChanged ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getCompat ()Lcom/google/firebase/appcheck/FirebaseAppCheck;
+	public final fun getLimitedUseAppCheckToken (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun hashCode ()I
+	public final fun installAppCheckProviderFactory (Lcom/google/firebase/appcheck/AppCheckProviderFactory;Ljava/lang/Boolean;)V
+	public static synthetic fun installAppCheckProviderFactory$default (Ldev/gitlive/firebase/appcheck/FirebaseAppCheck;Lcom/google/firebase/appcheck/AppCheckProviderFactory;Ljava/lang/Boolean;ILjava/lang/Object;)V
+	public final fun setTokenAutoRefreshEnabled (Z)V
+	public fun toString ()Ljava/lang/String;
+}
+

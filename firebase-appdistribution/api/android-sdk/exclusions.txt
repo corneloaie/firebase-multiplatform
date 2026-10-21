@@ -1,0 +1,2 @@
+# Firebase Android SDK APIs intentionally not mirrored by firebase-appdistribution.
+com.google.firebase.appdistribution.UpdateTask#addOnProgressListener(Executor, OnProgressListener)  // @platform java.util.concurrent.Executor

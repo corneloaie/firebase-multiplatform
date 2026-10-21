@@ -5,7 +5,10 @@ androidx-test-core = "1.7.0"
 androidx-test-junit = "1.3.0"
 androidx-test-runner = "1.7.0"
 ben-manes-versions = "0.61.0"
-firebase-bom = "34.18.0"
+firebase-bom = "35.0.2"
+# Not in the BoM (App Distribution is in beta). The API library and the full firebase-appdistribution SDK, which apps add
+# to pre-release builds only, share this version. 16.0.0-beta21 is the first release on firebase-common 23 (BoM 35).
+firebase-appdistribution = "16.0.0-beta21"
 gitlive-firebase-java-sdk = "0.6.3"
 gson = "2.14.0"
 junit = "4.13.2"
@@ -18,8 +21,8 @@ kotlinx-browser = "0.5.0"
 kotlinter = "5.2.0"
 settings-api = "2.2"
 settings-language = "2.2"
-firebase-ios-sdk = "12.17.0"
-# firebase-ios-sdk 12 declares platforms: [.iOS(.v15), .macCatalyst(.v15), .macOS(.v10_15), .tvOS(.v15), .watchOS(.v7)]
+firebase-ios-sdk = "13.0.1"
+# firebase-ios-sdk 13 declares platforms: [.iOS(.v15), .macCatalyst(.v15), .macOS(.v11), .tvOS(.v15), .watchOS(.v8)]
 # Kotlin/Native builds for iOS 15 / macOS 12 / tvOS 15 (minVersion in konan.properties), so macOS uses its 12.0 floor
 # rather than Firebase's 10.15.
 ios-deploymentTarget = "15.0"
@@ -41,13 +44,21 @@ androidx-test-runner = { module = "androidx.test:runner", version.ref = "android
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
 gitlive-firebase-java-sdk = { module = "dev.gitlive:firebase-java-sdk", version.ref = "gitlive-firebase-java-sdk" }
 google-firebase-analytics = { module = "com.google.firebase:firebase-analytics"}
+google-firebase-appcheck = { module = "com.google.firebase:firebase-appcheck"}
+google-firebase-appcheck-debug = { module = "com.google.firebase:firebase-appcheck-debug"}
+google-firebase-appcheck-playintegrity = { module = "com.google.firebase:firebase-appcheck-playintegrity"}
+google-firebase-appcheck-recaptcha = { module = "com.google.firebase:firebase-appcheck-recaptcha"}
+google-firebase-appdistribution-api = { module = "com.google.firebase:firebase-appdistribution-api", version.ref = "firebase-appdistribution" }
 google-firebase-auth = { module = "com.google.firebase:firebase-auth"}
 google-firebase-common = { module = "com.google.firebase:firebase-common"}
 google-firebase-config = { module = "com.google.firebase:firebase-config"}
 google-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics"}
 google-firebase-database = { module = "com.google.firebase:firebase-database"}
+google-firebase-dataconnect = { module = "com.google.firebase:firebase-dataconnect"}
 google-firebase-firestore = { module = "com.google.firebase:firebase-firestore"}
 google-firebase-functions = { module = "com.google.firebase:firebase-functions"}
+google-firebase-inappmessaging = { module = "com.google.firebase:firebase-inappmessaging"}
+google-firebase-inappmessaging-display = { module = "com.google.firebase:firebase-inappmessaging-display"}
 google-firebase-installations = { module = "com.google.firebase:firebase-installations"}
 google-firebase-messaging = { module = "com.google.firebase:firebase-messaging"}
 google-firebase-perf = { module = "com.google.firebase:firebase-perf"}
@@ -59,6 +70,7 @@ kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-cor
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 kotlinx-browser = { module = "org.jetbrains.kotlinx:kotlinx-browser", version.ref = "kotlinx-browser" }
 dokka-base = { module = "org.jetbrains.dokka:dokka-base", version.ref = "dokka" }

@@ -30,3 +30,14 @@ exports.throwHttpsError = functions.https.onCall((dataOrRequest) => {
     httpResponseCode: error.httpResponseCode,
   });
 });
+
+// Streams `count` chunks ({ chunk: i }) to clients that accept streaming, then returns { done: count }.
+exports.streamCounter = functions.https.onCall(async (request, response) => {
+  const count = (request && request.data && request.data.count) || 3;
+  for (let i = 1; i <= count; i++) {
+    if (response && request.acceptsStreaming) {
+      await response.sendChunk({ chunk: i });
+    }
+  }
+  return { done: count };
+});

@@ -210,6 +210,7 @@ public external class DocumentReference {
     public val id: String
     public val path: String
     public val parent: CollectionReference
+    public val firestore: Firestore
 }
 
 public external interface DocumentSnapshot {
@@ -226,7 +227,9 @@ public external class FieldValue {
     public fun isEqual(other: FieldValue): Boolean
 }
 
-public external interface Query
+public external interface Query {
+    public val firestore: Firestore
+}
 
 public external interface QueryConstraint
 
@@ -249,8 +252,10 @@ public external fun getAggregateFromServer(query: Query, aggregateSpec: Json): P
 public external interface QuerySnapshot {
     public val docs: Array<DocumentSnapshot>
     public val empty: Boolean
+    public val size: Int
+    public val query: Query
     public val metadata: SnapshotMetadata
-    public fun docChanges(): Array<DocumentChange>
+    public fun docChanges(options: Any? = definedExternally): Array<DocumentChange>
 }
 
 public external interface SnapshotMetadata {
@@ -359,3 +364,99 @@ public external fun memoryLruGarbageCollector(settings: dynamic = definedExterna
 public external fun persistentLocalCache(settings: PersistentCacheSettings): PersistentLocalCache
 public external fun persistentSingleTabManager(settings: dynamic = definedExternally): PersistentTabManager
 public external fun persistentMultipleTabManager(): PersistentTabManager
+
+// Additions for the com.google.firebase.firestore compatibility layer.
+
+public external class Bytes {
+    /** The BSON binary subtype, 0 for plain bytes. */
+    public val subtype: Int
+
+    public fun toUint8Array(): org.khronos.webgl.Uint8Array
+
+    public companion object {
+        public fun fromUint8Array(array: org.khronos.webgl.Uint8Array, subtype: Int = definedExternally): Bytes
+    }
+}
+
+public external class BsonObjectId(value: String) {
+    public val value: String
+}
+
+public external class BsonTimestamp(seconds: Double, increment: Double) {
+    public val seconds: Double
+    public val increment: Double
+}
+
+public external class Decimal128Value(value: String) {
+    public val stringValue: String
+}
+
+public external class Int32Value(value: Int) {
+    public val value: Int
+}
+
+public external class MaxKey {
+    public companion object {
+        public fun instance(): MaxKey
+    }
+}
+
+public external class MinKey {
+    public companion object {
+        public fun instance(): MinKey
+    }
+}
+
+public external class RegexValue(pattern: String, options: String) {
+    public val pattern: String
+    public val options: String
+}
+
+public external fun minimum(n: Double): FieldValue
+
+public external fun maximum(n: Double): FieldValue
+
+/**
+ * [values] is a JS array, not a `Float64Array` (a Kotlin `DoubleArray`): the SDK writes it by mapping each value to an
+ * object, which a typed array cannot hold.
+ */
+public external fun vector(values: Array<Double>): VectorValue
+
+public external class VectorValue {
+    public fun toArray(): Array<Double>
+}
+
+public external interface LoadBundleTask {
+    public fun onProgress(next: (progress: LoadBundleTaskProgress) -> Unit, error: (error: Throwable) -> Unit, complete: () -> Unit)
+    public fun then(onFulfilled: (progress: LoadBundleTaskProgress) -> Unit, onRejected: (error: Throwable) -> Unit): Promise<Unit>
+}
+
+public external interface LoadBundleTaskProgress {
+    public val documentsLoaded: Int
+    public val totalDocuments: Int
+    public val bytesLoaded: Double
+    public val totalBytes: Double
+    public val taskState: String
+}
+
+public external interface PersistentCacheIndexManager
+
+public external fun loadBundle(firestore: Firestore, bundleData: Any): LoadBundleTask
+
+public external fun namedQuery(firestore: Firestore, name: String): Promise<Query?>
+
+public external fun getPersistentCacheIndexManager(firestore: Firestore): PersistentCacheIndexManager?
+
+public external fun enablePersistentCacheIndexAutoCreation(indexManager: PersistentCacheIndexManager)
+
+public external fun disablePersistentCacheIndexAutoCreation(indexManager: PersistentCacheIndexManager)
+
+public external fun deleteAllPersistentCacheIndexes(indexManager: PersistentCacheIndexManager)
+
+public external fun onSnapshotsInSync(firestore: Firestore, onSync: () -> Unit): Unsubscribe
+
+public external fun count(): AggregateField
+
+public external fun queryEqual(left: Query, right: Query): Boolean
+
+public external fun snapshotEqual(left: Any, right: Any): Boolean

@@ -1,0 +1,127 @@
+# Android SDK source compatibility of firebase-inappmessaging
+# Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
+# 100% of 76 public members available (76 identical, 0 mapped, 0 missing, 0 omitted)
+#
+com.google.firebase.inappmessaging.FirebaseInAppMessaging
+  OK    void addClickListener(FirebaseInAppMessagingClickListener)
+  PLAT  void addClickListener(FirebaseInAppMessagingClickListener, Executor)
+  OK    void addDismissListener(FirebaseInAppMessagingDismissListener)
+  PLAT  void addDismissListener(FirebaseInAppMessagingDismissListener, Executor)
+  OK    void addDisplayErrorListener(FirebaseInAppMessagingDisplayErrorListener)
+  PLAT  void addDisplayErrorListener(FirebaseInAppMessagingDisplayErrorListener, Executor)
+  OK    void addImpressionListener(FirebaseInAppMessagingImpressionListener)
+  PLAT  void addImpressionListener(FirebaseInAppMessagingImpressionListener, Executor)
+  OK    boolean areMessagesSuppressed()
+  OK    static FirebaseInAppMessaging getInstance()
+  OK    boolean isAutomaticDataCollectionEnabled()
+  OK    void removeClickListener(FirebaseInAppMessagingClickListener)
+  OK    void removeDismissListener(FirebaseInAppMessagingDismissListener)
+  OK    void removeDisplayErrorListener(FirebaseInAppMessagingDisplayErrorListener)
+  OK    void removeImpressionListener(FirebaseInAppMessagingImpressionListener)
+  OK    void setAutomaticDataCollectionEnabled(boolean)
+  OK    void setAutomaticDataCollectionEnabled(Boolean)
+  OK    void setMessageDisplayComponent(FirebaseInAppMessagingDisplay)
+  OK    void setMessagesSuppressed(Boolean)
+  OK    void triggerEvent(String)
+com.google.firebase.inappmessaging.FirebaseInAppMessagingClickListener
+  OK    void messageClicked(InAppMessage, Action)
+com.google.firebase.inappmessaging.FirebaseInAppMessagingContextualTrigger
+  OK    FirebaseInAppMessagingContextualTrigger(String)
+  OK    String getTriggerName()
+com.google.firebase.inappmessaging.FirebaseInAppMessagingDismissListener
+  OK    void messageDismissed(InAppMessage)
+com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplay
+  OK    void displayMessage(InAppMessage, FirebaseInAppMessagingDisplayCallbacks)
+com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplayCallbacks
+  OK    Task displayErrorEncountered(InAppMessagingErrorReason)
+  OK    Task impressionDetected()
+  OK    Task messageClicked(Action)
+  OK    Task messageDismissed(InAppMessagingDismissType)
+com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType
+  OK    static InAppMessagingDismissType AUTO
+  OK    static InAppMessagingDismissType CLICK
+  OK    static InAppMessagingDismissType SWIPE
+  OK    static InAppMessagingDismissType UNKNOWN_DISMISS_TYPE
+com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason
+  OK    static InAppMessagingErrorReason IMAGE_DISPLAY_ERROR
+  OK    static InAppMessagingErrorReason IMAGE_FETCH_ERROR
+  OK    static InAppMessagingErrorReason IMAGE_UNSUPPORTED_FORMAT
+  OK    static InAppMessagingErrorReason UNSPECIFIED_RENDER_ERROR
+com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplayErrorListener
+  OK    void displayErrorEncountered(InAppMessage, InAppMessagingErrorReason)
+com.google.firebase.inappmessaging.FirebaseInAppMessagingImpressionListener
+  OK    void impressionDetected(InAppMessage)
+com.google.firebase.inappmessaging.InAppMessagingKt
+  OK    static FirebaseInAppMessaging getInAppMessaging(Firebase)
+com.google.firebase.inappmessaging.display.FirebaseInAppMessagingDisplay
+  OK    void displayMessage(InAppMessage, FirebaseInAppMessagingDisplayCallbacks)
+  OK    static FirebaseInAppMessagingDisplay getInstance()
+  PLAT  void onActivityCreated(Activity, Bundle)
+  PLAT  void onActivityDestroyed(Activity)
+  PLAT  void onActivityPaused(Activity)
+  PLAT  void onActivityResumed(Activity)
+  PLAT  void onActivitySaveInstanceState(Activity, Bundle)
+  PLAT  void onActivityStarted(Activity)
+  PLAT  void onActivityStopped(Activity)
+com.google.firebase.inappmessaging.display.InAppMessagingDisplayKt
+  OK    static FirebaseInAppMessagingDisplay getInAppMessagingDisplay(Firebase)
+com.google.firebase.inappmessaging.model.Action
+  OK    String getActionUrl()
+  OK    Button getButton()
+com.google.firebase.inappmessaging.model.BannerMessage
+  OK    Action getAction()
+  OK    String getBackgroundHexColor()
+  OK    Text getBody()
+  OK    ImageData getImageData()
+  OK    Text getTitle()
+com.google.firebase.inappmessaging.model.Button
+  OK    String getButtonHexColor()
+  OK    Text getText()
+com.google.firebase.inappmessaging.model.CampaignMetadata
+  OK    String getCampaignId()
+  OK    String getCampaignName()
+  OK    boolean getIsTestMessage()
+com.google.firebase.inappmessaging.model.CardMessage
+  SKIP  Action getAction()
+  OK    String getBackgroundHexColor()
+  OK    Text getBody()
+  OK    ImageData getLandscapeImageData()
+  OK    ImageData getPortraitImageData()
+  OK    Action getPrimaryAction()
+  OK    Action getSecondaryAction()
+  OK    Text getTitle()
+com.google.firebase.inappmessaging.model.ImageData
+  PLAT  Bitmap getBitmapData()
+  OK    String getImageUrl()
+com.google.firebase.inappmessaging.model.ImageOnlyMessage
+  OK    Action getAction()
+  OK    ImageData getImageData()
+com.google.firebase.inappmessaging.model.InAppMessage
+  SKIP  Action getAction()
+  SKIP  Button getActionButton()
+  SKIP  String getBackgroundHexColor()
+  SKIP  Text getBody()
+  SKIP  String getCampaignId()
+  OK    CampaignMetadata getCampaignMetadata()
+  SKIP  String getCampaignName()
+  OK    Map getData()
+  SKIP  ImageData getImageData()
+  SKIP  String getImageUrl()
+  SKIP  Boolean getIsTestMessage()
+  OK    MessageType getMessageType()
+  SKIP  Text getTitle()
+com.google.firebase.inappmessaging.model.MessageType
+  OK    static MessageType BANNER
+  OK    static MessageType CARD
+  OK    static MessageType IMAGE_ONLY
+  OK    static MessageType MODAL
+  OK    static MessageType UNSUPPORTED
+com.google.firebase.inappmessaging.model.ModalMessage
+  OK    Action getAction()
+  OK    String getBackgroundHexColor()
+  OK    Text getBody()
+  OK    ImageData getImageData()
+  OK    Text getTitle()
+com.google.firebase.inappmessaging.model.Text
+  OK    String getHexColor()
+  OK    String getText()

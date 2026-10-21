@@ -143,20 +143,46 @@ The SDK has two public API layers per module:
    name as a shipped top-level function (`Firebase.getApps(context)`, `Firebase.fromResource(context)`, next to
    `Firebase.initialize` in `Initialize.kt`), calling the real static through the Java helper on Android. JVM-only types
    get a `kotlin.time` counterpart as shipped top-level functions (`Timestamp(Instant)`, `Timestamp.toKotlinInstant` in
-   `TimestampInstant.kt`; `kotlin.time.ExperimentalTime` is opted in at the build level).
+   `TimestampInstant.kt`; `kotlin.time.ExperimentalTime` is opted in at the build level). An instance member whose
+   replacement has the same arity cannot be deprecated (a member shadows a same-named extension), so only the
+   replacement is shipped, as a same-named extension taking the multiplatform type (`getHttpsCallableFromUrl(url: String)`
+   in `FunctionsUrl.kt`); the report maps such a member to the extension. On Android the shipped facades reach the SDK's
+   JVM-only members through a package-private Java helper (`FunctionsJvmApi.java`): javac compiles after the stubs are
+   stripped, so the stub need not (and must not) declare members common code cannot call. Members the Android SDK has
+   but `firebase-java-sdk` lacks or keeps non-public are listed in `jvmMissingMembers` and verified against Android only.
    - An Android API that cannot be mapped onto a platform and has no replacement to point at is **omitted** on purpose so
      callers get a compile error and adapt.
-   - An API that maps onto Android, JVM and Apple but not JS/wasmJs goes in the `nonJsMain` source set (`utils.applyFirebaseHierarchy()`).
+   - An API that maps onto Android, JVM and Apple but not JS/wasmJs is still declared in common; its JS and wasmJs actuals do nothing (or fail where they must return a value) and carry `@dev.gitlive.firebase.UnsupportedOnJs`, an opt-in marker that warns at call sites compiled for JS only.
+   - **This fork goes further:** every Android SDK member is declared in common unless its signature needs an Android/JVM-only
+     type (`@platform` below). Where a platform's SDK lacks it, that platform's actual does nothing, or throws
+     `UnsupportedOperationException` where it must return a value, and carries the opt-in marker for it:
+     `@dev.gitlive.firebase.UnsupportedOnJs` (js and wasmJs) or `@dev.gitlive.firebase.UnsupportedOnApple` (iOS, macOS,
+     tvOS). Android-only features are declared the same way (Play Games sign-in, Play Integrity). `@unavailable` marks only
+     work not done yet (the Firestore pipeline API).
    - Coverage is measured, not assumed: `./gradlew :<module>:androidSourceCompatDump` compares `api/android/<module>.api` with the
      vendored Android SDK `api/android-sdk/*.api.txt` and writes `api/android-sdk-compat.txt` (committed, checked by `check`); its
      percentage is the module's README badge. A member deprecated with an error on our side is reported as `MAP` with its
      message and counts as provided. `api/android-sdk/exclusions.txt` lists members deliberately not mirrored: they count as
-     unavailable unless the comment says `@hide` (hidden in the Android SDK) or `@platform` (the signature involves an
-     Android/JVM-only type with no replacement, such as `Parcel`), which drops them from the count; a single overload
+     unavailable unless the comment says `@hide` (hidden in the Android SDK), `@platform` (the signature involves an
+     Android/JVM-only type with no replacement, such as `Parcel`) or `@unavailable` (the feature does not exist in the
+     pinned iOS or JS SDK, such as the Firestore pipeline API), which drops them from the count; a single overload
      is selected with `Class#member(Type, Type)`.
 2. **`dev.gitlive.firebase.*` (Kotlin-first layer)** — the existing API, implemented in `commonMain` *on top of* the
    `com.google.firebase` layer (suspend functions instead of `Task`, `Flow` instead of listeners, default arguments instead of
-   builders). New modules are migrated to this structure one at a time; `firebase-app` and `firebase-installations` are the reference.
+   builders). New modules are migrated to this structure one at a time; `firebase-app`, `firebase-installations`, `firebase-crashlytics`, `firebase-config`, `firebase-functions`, `firebase-perf`, `firebase-messaging`, `firebase-analytics`, `firebase-storage`, `firebase-database`, `firebase-firestore`, `firebase-auth`, `firebase-appcheck`, `firebase-appdistribution` and `firebase-inappmessaging` are the reference.
+   `firebase-dataconnect` shows a module whose Android SDK API is already coroutine- and kotlinx-serialization-based, so it is
+   used as is from common code with almost no `dev.gitlive` layer: the `com.google.firebase.dataconnect` interfaces, value
+   types and serializers are plain common code (verified against the Android SDK and stripped on Android), and `nonAndroidMain`
+   implements them over an `expect class NativeDataConnect` that exchanges JSON with the platform SDK: the JS SDK's
+   `firebase/data-connect` on JS and wasmJs, and on Apple the Swift-only iOS SDK through the Objective-C wrapper Swift package in
+   `firebase-dataconnect/apple` (imported with `localSwiftPackage`). There is no JVM target (the Java SDK has no Data
+   Connect). Its `test/dataconnect` project runs in the Data Connect emulator.
+   `firebase-analytics` shows a closed-source Android module (its `api/android-sdk/*.api.txt` is generated from the published
+   classes by `generateAndroidSdkApi*`), a plain common class in the stripped package with real bodies for the other platforms
+   (`FirebaseAnalytics` over an internal `NativeAnalytics` expect), a header stub for a platform class (`android.os.Bundle`) and a
+   module the JVM SDK lacks entirely (`jvmKeepClasses` ships the module's own no-op implementation).
+   `firebase-auth` shows a closed-source Android module (its `api/android-sdk/*.api.txt` is generated from the published classes by
+   `generateAndroidSdkApi*`) and a JVM SDK that lacks members (`jvmMissingMembersFile`, `jvmKeepClasses` in `stripHeaderStubs`).
 
 When adding to the `dev.gitlive` layer, keep matching class, function and parameter names from the Android SDK; the
 `com.google.firebase` layer takes the exact Android shape, the `dev.gitlive` layer the Kotlin-idiomatic one.

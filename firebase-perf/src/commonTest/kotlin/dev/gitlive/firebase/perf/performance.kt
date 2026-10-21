@@ -8,11 +8,8 @@ import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.FirebaseOptions
 import dev.gitlive.firebase.apps
 import dev.gitlive.firebase.initialize
-import dev.gitlive.firebase.runBlockingTest
 import dev.gitlive.firebase.runTest
-import kotlinx.coroutines.delay
 import kotlin.test.*
-import kotlin.time.Duration.Companion.seconds
 
 expect val context: Any
 expect annotation class IgnoreForAndroidUnitTest()
@@ -39,14 +36,10 @@ class FirebasePerformanceTest {
         performance = Firebase.performance(app)
     }
 
-    @AfterTest
-    fun deinitializeFirebase() = runBlockingTest {
-        // Performance runs installation in the background, which crashes if the app is deleted before completion
-        delay(5.seconds)
-        Firebase.apps(context).forEach {
-            it.delete()
-        }
-    }
+    // The default app is kept for the whole test process instead of being deleted after each test: with BoM 35,
+    // Firebase Sessions (which Performance pulls in) opens a DataStore per app initialisation and crashes the process
+    // ("There are multiple DataStores active for the same file") when the default app is re-created, and the background
+    // installation work fails on a deleted app.
 
     @Test
     fun testNewTrace() = runTest {
