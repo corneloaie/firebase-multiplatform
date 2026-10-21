@@ -9,7 +9,9 @@ PLAT (the signature needs an Android/JVM-only type) or HIDE (hidden in the Andro
 
 Usage (from the repository root):
     python3 .github/scripts/weekly/coverage.py                     # print the table
-    python3 .github/scripts/weekly/coverage.py --readme README.md   # rewrite the table between the coverage markers
+    python3 .github/scripts/weekly/coverage.py --readme README.md   # rewrite the summary and table between the
+                                                                    # coverage markers; platforms come from each
+                                                                    # module's supportedTargets in gradle.properties
     python3 .github/scripts/weekly/coverage.py --compare origin/main --summary FILE
                                        # Markdown with the change against a git ref and every member that became
                                        # MISS/OMIT, for a pull request body
@@ -21,6 +23,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 REPORT = 'api/android-sdk-compat.txt'
+PLATFORMS = [('android', 'Android'), ('ios', 'iOS'), ('macos', 'macOS'), ('tvos', 'tvOS'), ('jvm', 'JVM'), ('js', 'JS'),
+             ('wasmjs', 'Wasm')]
 HEADER = re.compile(r'^# (\d+)% of (\d+) public members available \((\d+) identical, (\d+) mapped, (\d+) missing, (\d+) omitted\)')
 START, END = '<!-- coverage:start -->', '<!-- coverage:end -->'
 PRODUCTS = {
@@ -75,19 +79,48 @@ def badge(percent):
     return f'![{percent}%](https://img.shields.io/badge/-{percent}%25-{colour}?style=flat-square)'
 
 
+def toml_version(key):
+    match = re.search(rf'^{re.escape(key)}\s*=\s*"([^"]+)"', (ROOT / 'gradle' / 'libs.versions.toml').read_text(), flags=re.M)
+    return match.group(1) if match else '?'
+
+
+def js_sdk_version():
+    match = re.search(r'npm\("firebase",\s*"([^"]+)"\)', (ROOT / 'firebase-common' / 'build.gradle.kts').read_text())
+    return match.group(1) if match else '?'
+
+
+def gradle_property(key):
+    match = re.search(rf'^{re.escape(key)}=(.*)$', (ROOT / 'gradle.properties').read_text(), flags=re.M)
+    return match.group(1).strip() if match else None
+
+
 def table(current):
-    lines = ['| Product | Gradle dependency | Android API coverage | Members (identical / mapped / missing / omitted) |',
-             '|---|---|:---:|---|']
+    """The summary line and the table of every module: its Android API coverage and the platforms it supports."""
+    lines = ['| Product | Artifact | Android API | Members | ' + ' | '.join(label for _, label in PLATFORMS) + ' |',
+             '|---|---|:---:|:---:|' + ':---:|' * len(PLATFORMS)]
+    products = available_total = total_total = 0
     for module, text in current.items():
         header, _ = parse(text)
         if header is None:
             continue
         percent, total, identical, mapped, missing, omitted = header
+        products += 1
+        available_total += identical + mapped
+        total_total += total
         name, url = PRODUCTS.get(module, (module, ''))
         product = f'[{name}]({url})' if url else name
-        lines.append(f'| {product} | `io.github.corneloaie:{module}` | [{badge(percent)}]({module}/{REPORT}) | '
-                     f'{total}: {identical} / {mapped} / {missing} / {omitted} |')
-    return '\n'.join(lines)
+        targets = (gradle_property(f'{module}.supportedTargets') or '').split(',')
+        platforms = ' | '.join('✅' if key in targets else '–' for key, _ in PLATFORMS)
+        lines.append(f'| {product} | `{module}` | [{badge(percent)}]({module}/{REPORT}) | {identical + mapped} / {total} | '
+                     f'{platforms} |')
+    ref = gradle_property('androidSdk.apiRef') or 'main'
+    percent = available_total * 100 // total_total if total_total else 0
+    summary = (f'**{products} Firebase products: {available_total:,} of {total_total:,} Android API members available from '
+               f'common code ({percent}%)**, measured against firebase-android-sdk '
+               f'[`{ref[:7]}`](https://github.com/firebase/firebase-android-sdk/tree/{ref}). Built on the Firebase Android '
+               f'BoM {toml_version("firebase-bom")} (App Distribution {toml_version("firebase-appdistribution")}), '
+               f'iOS SDK {toml_version("firebase-ios-sdk")} and JS SDK {js_sdk_version()}.')
+    return summary + '\n\n' + '\n'.join(lines)
 
 
 def compare(current, previous, ref):
