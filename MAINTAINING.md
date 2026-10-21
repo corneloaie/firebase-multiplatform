@@ -82,7 +82,8 @@ Claude token. Each run picks up where the update stands:
 - It implements, on every platform, the members the SDK pull request lists as newly missing.
 - It fixes what the new SDKs or upstream changes broke, and pushes to the weekly branches.
 - It resolves the merges reported in "Upstream GitLive changes need a manual merge".
-- It re-runs CI jobs that failed for transient reasons.
+- It approves the weekly pull requests' CI runs if GitHub still holds them for approval, and re-runs CI jobs that failed
+  for transient reasons.
 - It arms auto-merge (a merge commit) on a weekly pull request once coverage is 100% and no public API was removed, and
   comments on what it did. The workflow turns auto-merge off again whenever it refreshes a pull request.
 

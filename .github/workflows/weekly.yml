@@ -6,9 +6,10 @@
 # A Claude Code routine on the maintainer's machine then implements the Android API members the update reports
 # missing, fixes what the new SDKs or upstream changes broke, and gets both pull requests merged (MAINTAINING.md).
 #
-# Pull requests opened with GITHUB_TOKEN do not trigger other workflows, so CI ("Pull Request") is started on each
-# branch with workflow_dispatch; its checks show on the pull request's head commit. A refreshed pull request has new
-# content, so its auto-merge is turned off until it has been checked again.
+# GitHub holds the CI runs of these pull requests for approval while github-actions[bot] counts as a first-time
+# contributor, and a workflow_dispatch run would not count (its checks do not show on the pull request), so each job
+# approves its pull request's runs (.github/scripts/weekly/approve_ci.sh). A refreshed pull request has new content, so
+# its auto-merge is turned off until it has been checked again.
 
 name: Weekly update
 
@@ -64,7 +65,7 @@ jobs:
           else
             gh pr create --base main --head "$BRANCH" --title "Weekly: merge upstream GitLive" --body-file "$RUNNER_TEMP/upstream.md"
           fi
-          gh workflow run pull_request.yml --ref "$BRANCH"
+          .github/scripts/weekly/approve_ci.sh "$(git rev-parse HEAD)"
       - name: Report the merges that need a hand
         if: steps.sync.outputs.exit == '3'
         run: |
@@ -144,4 +145,4 @@ jobs:
           else
             gh pr create --base main --head "$BRANCH" --title "Weekly: Firebase SDK updates" --body-file "$RUNNER_TEMP/body.md"
           fi
-          gh workflow run pull_request.yml --ref "$BRANCH"
+          .github/scripts/weekly/approve_ci.sh "$(git rev-parse HEAD)"
