@@ -1,4 +1,5 @@
 include(
+    "firebase-ai",
     "firebase-analytics",
     "firebase-app",
     "firebase-appcheck",

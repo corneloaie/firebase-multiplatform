@@ -18,10 +18,11 @@ Firebase SDK and moved onto their newest releases every week.
 ## Coverage
 
 <!-- coverage:start -->
-**17 Firebase products: 1,930 of 1,930 Android API members available from common code (100%)**, measured against firebase-android-sdk [`3199128`](https://github.com/firebase/firebase-android-sdk/tree/3199128480a6619779fa2feda823922f10b91009). Built on the Firebase Android BoM 35.0.2 (App Distribution 16.0.0-beta21), iOS SDK 13.0.1 and JS SDK 13.0.0.
+**18 Firebase products: 2,804 of 2,804 Android API members available from common code (100%)**, measured against firebase-android-sdk [`3199128`](https://github.com/firebase/firebase-android-sdk/tree/3199128480a6619779fa2feda823922f10b91009). Built on the Firebase Android BoM 35.0.2 (App Distribution 16.0.0-beta21), iOS SDK 13.0.1 and JS SDK 13.0.0.
 
 | Product | Artifact | Android API | Members | Android | iOS | macOS | tvOS | JVM | JS | Wasm |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| [AI Logic](https://firebase.google.com/docs/ai-logic) | `firebase-ai` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-ai/api/android-sdk-compat.txt) | 874 / 874 | ✅ | ✅ | ✅ | ✅ | – | ✅ | ✅ |
 | [Analytics](https://firebase.google.com/docs/analytics) | `firebase-analytics` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-analytics/api/android-sdk-compat.txt) | 153 / 153 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [App (core)](https://firebase.google.com/docs/reference/android/com/google/firebase/FirebaseApp) | `firebase-app` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-app/api/android-sdk-compat.txt) | 46 / 46 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [App Check](https://firebase.google.com/docs/app-check) | `firebase-appcheck` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-appcheck/api/android-sdk-compat.txt) | 28 / 28 | ✅ | ✅ | ✅ | ✅ | – | ✅ | ✅ |
@@ -66,14 +67,14 @@ platform: `@UnsupportedOnJs` (JS and Wasm) or `@UnsupportedOnApple` (iOS, macOS 
 - **Android only.** Phone Number Verification has no iOS, web or Java SDK. `firebase-pnv` compiles for Apple platforms,
   JS and Wasm so that common code using it builds there, but its operations fail with `UnsupportedOperationException`
   and carry `@UnsupportedOnApple` or `@UnsupportedOnJs`; only its value types, such as the token's claims, work there.
-- **Not in the Java SDK.** It has no Data Connect and does not run App Check, so those two have no JVM target. It also
-  lacks App Distribution and In-App Messaging; on the JVM those two act as the Android SDK does without its full library.
-  App Distribution's tasks fail with `NOT_IMPLEMENTED`, and no in-app message is displayed.
+- **Not in the Java SDK.** It has no Data Connect or AI Logic and does not run App Check, so those three have no JVM
+  target. It also lacks App Distribution and In-App Messaging; on the JVM those two act as the Android SDK does without
+  its full library. App Distribution's tasks fail with `NOT_IMPLEMENTED`, and no in-app message is displayed.
 
 ### Not covered yet
 
-- **AI Logic** (`firebase-ai`, about 1,200 members): in progress. Its iOS SDK is Swift-only, so it needs an Objective-C
-  wrapper package, as Data Connect has.
+- **AI Logic on-device inference** (`firebase-ai-ondevice`, a beta library outside the BoM whose API is deprecated in
+  favor of `GenerativeModel.onDeviceExtension`): not mirrored yet. `firebase-ai` covers the rest of AI Logic.
 - **Firestore Pipelines** (`com.google.firebase.firestore.pipeline`, about 1,300 members, an Enterprise edition
   preview): in progress. Until then Firestore's report marks it `UNAV`.
 - **ML Model Downloader**: not planned. Firebase removed it from iOS SDK 13 and Android BoM 35.
@@ -243,6 +244,18 @@ wrapper package under `firebase-dataconnect/apple`, as the iOS SDK is Swift-only
 Common code uses `kotlinx.datetime.LocalDate` with `KotlinxDatetimeLocalDateSerializer` and `kotlin.uuid.Uuid` with
 `dev.gitlive.firebase.dataconnect.serializers.UuidSerializer`; the `java.time` and `java.util.UUID` variants are
 Android-only.
+
+### AI Logic
+
+The AI Logic Android SDK is also built on coroutines, `Flow` and kotlinx.serialization, so `firebase-ai` provides it as
+it is in common code, on Android, iOS, macOS, tvOS, JS and Wasm: the Gemini models with streaming, chats, structured
+output (`generateObject` with a `JsonSchema`) and automatic function calling, server prompt templates and the Live API.
+JS and Wasm run the JS SDK's `firebase/ai`; Apple platforms go through a small Objective-C wrapper package under
+`firebase-ai/apple`, as the iOS SDK is Swift-only. Requests and responses cross to those SDKs as the JSON of the REST
+API, and responses are checked and errors mapped as on Android. Common code sends images as `InlineDataPart`s (the
+Android API's `Bitmap` overloads are Android-only). Off Android there is no on-device model (the models fall back to the
+cloud, as Android does without the `firebase-ai-ondevice` library) and no audio conversation of the SDK's own
+(`LiveSession.startAudioConversation`); see [the module's documentation](firebase-ai/documentation.md).
 
 ### The platform SDK objects
 

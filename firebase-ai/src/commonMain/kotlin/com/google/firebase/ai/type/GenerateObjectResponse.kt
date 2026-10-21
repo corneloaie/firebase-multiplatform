@@ -1,0 +1,79 @@
+/*
+ * Copyright 2025 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Modified in firebase-multiplatform for Kotlin Multiplatform: the public API of the Firebase AI Logic
+ * Android SDK without its Android implementation (see firebase-ai/documentation.md).
+ */
+package com.google.firebase.ai.type
+
+import kotlinx.serialization.json.Json
+
+/**
+ * A [GenerateContentResponse] augmented with class information.
+ *
+ * Use [getObject] to parse the response and extract the strongly typed object.
+ */
+public class GenerateObjectResponse<T : Any>
+internal constructor(
+    public val response: GenerateContentResponse,
+    internal val schema: JsonSchema<T>? = null,
+    internal var instances: MutableList<T?>? = null,
+) {
+    /**
+     * Deserialize a candidate (default first) and convert it into the type associated with this
+     * response.
+     *
+     * @param candidateIndex which candidate to deserialize
+     * @throws RuntimeException if class is not @Serializable
+     * @throws SerializationException if an error occurs during deserialization
+     */
+    public fun getObject(candidateIndex: Int = 0): T? = run {
+        val insts = instances
+
+        // 1. Fast Path / Cache Hit: Return immediately if already resolved or in memory
+        insts?.getOrNull(candidateIndex)?.let {
+            return it
+        }
+
+        // 2. Cache Miss (Cloud response on first access): Deserialize using schema
+        if (schema == null) return null
+        val candidate = response.candidates.getOrNull(candidateIndex) ?: return null
+        val text =
+            candidate.content.parts
+                .filter { !it.isThought }
+                .filterIsInstance<TextPart>()
+                .joinToString(" ") { it.text }
+
+        val deserialized =
+            if (text.isEmpty()) {
+                null
+            } else {
+                try {
+                    Json.decodeFromString(schema.getSerializer(), text) as T?
+                } catch (e: Exception) {
+                    null
+                }
+            }
+
+        // 3. Save to instances list for future accesses (lazy loading) and return
+        val currentInstances =
+            insts ?: MutableList<T?>(response.candidates.size) { null }.also { instances = it }
+
+        if (candidateIndex < currentInstances.size) {
+            currentInstances[candidateIndex] = deserialized
+        }
+        return deserialized
+    }
+}

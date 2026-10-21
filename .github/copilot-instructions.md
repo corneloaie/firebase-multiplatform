@@ -170,6 +170,11 @@ The SDK has two public API layers per module:
 2. **`dev.gitlive.firebase.*` (Kotlin-first layer)** — the existing API, implemented in `commonMain` *on top of* the
    `com.google.firebase` layer (suspend functions instead of `Task`, `Flow` instead of listeners, default arguments instead of
    builders). New modules are migrated to this structure one at a time; `firebase-app`, `firebase-installations`, `firebase-crashlytics`, `firebase-config`, `firebase-functions`, `firebase-perf`, `firebase-messaging`, `firebase-analytics`, `firebase-storage`, `firebase-database`, `firebase-firestore`, `firebase-auth`, `firebase-appcheck`, `firebase-appdistribution`, `firebase-inappmessaging` and `firebase-pnv` are the reference.
+   `firebase-ai` follows `firebase-dataconnect`: the AI Logic Android SDK's API is coroutine- and Flow-based, so the
+   `com.google.firebase.ai` value types are plain common code (verified against the Android SDK and stripped on Android) and
+   the models, chats and the Live session run in `nonAndroidMain` over an `expect class NativeAI` that exchanges the JSON of
+   the REST API with the platform SDK: `firebase/ai` on JS and wasmJs, and on Apple the Swift-only FirebaseAILogic through
+   the Objective-C wrapper Swift package in `firebase-ai/apple`. There is no JVM target.
    `firebase-dataconnect` shows a module whose Android SDK API is already coroutine- and kotlinx-serialization-based, so it is
    used as is from common code with almost no `dev.gitlive` layer: the `com.google.firebase.dataconnect` interfaces, value
    types and serializers are plain common code (verified against the Android SDK and stripped on Android), and `nonAndroidMain`

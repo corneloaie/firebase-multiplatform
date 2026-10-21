@@ -56,7 +56,7 @@ It moves these four to their newest stable release:
 | What | Where |
 |---|---|
 | `firebase-bom` | `gradle/libs.versions.toml` |
-| `firebase-ios-sdk` | `gradle/libs.versions.toml`, the SwiftPM minimum version |
+| `firebase-ios-sdk` | `gradle/libs.versions.toml`, the SwiftPM minimum version; also the minimum of the Objective-C wrapper packages (`*/apple/*/Package.swift`) |
 | the `firebase` npm pins | the module build files |
 | `androidSdk.apiRef` | `gradle.properties`, the newest `m<NNN> mergeback` commit of firebase-android-sdk, i.e. the API of the latest Firebase Android release |
 

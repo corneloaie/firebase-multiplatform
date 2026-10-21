@@ -1,0 +1,6 @@
+public final class dev/gitlive/firebase/ai/AIKt {
+	public static final fun ai (Ldev/gitlive/firebase/Firebase;Ldev/gitlive/firebase/FirebaseApp;Lcom/google/firebase/ai/type/GenerativeBackend;Z)Lcom/google/firebase/ai/FirebaseAI;
+	public static synthetic fun ai$default (Ldev/gitlive/firebase/Firebase;Ldev/gitlive/firebase/FirebaseApp;Lcom/google/firebase/ai/type/GenerativeBackend;ZILjava/lang/Object;)Lcom/google/firebase/ai/FirebaseAI;
+	public static final fun getAi (Ldev/gitlive/firebase/Firebase;)Lcom/google/firebase/ai/FirebaseAI;
+}
+

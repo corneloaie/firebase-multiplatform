@@ -16,6 +16,7 @@ object AndroidSdkApiTxtParser {
         var currentPackage = ""
         var currentClass: String? = null
         var currentDeprecated = false
+        var currentIsAnnotation = false
         var members = mutableListOf<ApiMember>()
 
         fun flush() {
@@ -40,6 +41,7 @@ object AndroidSdkApiTxtParser {
                 val name = header.groupValues[4]
                 currentClass = "$currentPackage." + name.replace('.', '$')
                 currentDeprecated = line.contains("@Deprecated")
+                currentIsAnnotation = header.groupValues[3] == "@interface"
                 continue
             }
             if (line == "}") {
@@ -47,6 +49,9 @@ object AndroidSdkApiTxtParser {
                 continue
             }
             val className = currentClass ?: continue
+            // The element of a Kotlin annotation class is listed twice, as `method description()` and as
+            // `property description`; it has no getter, so only the method is a member.
+            if (currentIsAnnotation && line.startsWith("property ")) continue
             parseMember(line, className)?.let { members += it }
         }
         flush()

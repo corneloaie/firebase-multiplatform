@@ -5,6 +5,7 @@ What is tracked, and where it lives:
   Android  com.google.firebase:firebase-bom        gradle/libs.versions.toml  firebase-bom
   Android  firebase-appdistribution(-api), beta    gradle/libs.versions.toml  firebase-appdistribution
   iOS      firebase/firebase-ios-sdk (SwiftPM)     gradle/libs.versions.toml  firebase-ios-sdk
+                                                   */apple/*/Package.swift    (the Objective-C wrapper packages)
   JS       the `firebase` npm package              npm("firebase", "x.y.z") in the module build files
   API      firebase-android-sdk api.txt revision   gradle.properties          androidSdk.apiRef
 
@@ -36,6 +37,7 @@ ROOT = Path(__file__).resolve().parents[3]
 TOML = ROOT / 'gradle' / 'libs.versions.toml'
 PROPERTIES = ROOT / 'gradle.properties'
 NPM_PIN = re.compile(r'npm\("firebase",\s*"([^"]+)"\)')
+SWIFT_PIN = re.compile(r'(\.package\(url: "https://github\.com/firebase/firebase-ios-sdk\.git", from: )"[^"]+"')
 STABLE = re.compile(r'^\d+\.\d+\.\d+$')
 
 
@@ -80,8 +82,7 @@ def latest_appdistribution(api_ref):
 
 # api.txt files of firebase-android-sdk that no module is compared against, on purpose or not yet.
 KNOWN_UNTRACKED = {
-    'ai-logic/firebase-ai/api.txt': 'AI Logic, not covered yet',
-    'ai-logic/firebase-ai-ondevice/api.txt': 'AI Logic on-device inference, not covered yet',
+    'ai-logic/firebase-ai-ondevice/api.txt': 'AI Logic on-device inference: a beta library outside the BoM, its API deprecated for GenerativeModel.onDeviceExtension',
     'firebase-ml-modeldownloader/api.txt': 'ML Model Downloader, not planned: gone from iOS SDK 13 and BoM 35',
     'appcheck/firebase-appcheck-debug-testing/api.txt': 'an Android instrumentation-test helper',
     'firebase-sessions/api.txt': 'internal to Crashlytics and Performance Monitoring',
@@ -194,6 +195,10 @@ def main():
                 set_toml_value('firebase-appdistribution', latest)
             elif name == 'iOS SDK':
                 set_toml_value('firebase-ios-sdk', latest)
+                # The Objective-C wrapper packages of the Swift-only SDKs (Data Connect, AI Logic) depend on
+                # firebase-ios-sdk from the same minimum, so that SwiftPM resolves one version for every module.
+                for package in sorted(ROOT.glob('*/apple/*/Package.swift')):
+                    package.write_text(SWIFT_PIN.sub(rf'\g<1>"{latest}"', package.read_text()))
             elif name == 'JS SDK':
                 for path in build_files():
                     path.write_text(NPM_PIN.sub(f'npm("firebase", "{latest}")', path.read_text()))
