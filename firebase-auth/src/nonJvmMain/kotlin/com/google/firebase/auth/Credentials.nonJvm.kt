@@ -10,42 +10,42 @@ public actual abstract class AuthCredential internal constructor(internal val na
     public actual abstract val signInMethod: String
 }
 
-public actual class EmailAuthCredential internal constructor(native: Any, override val signInMethod: String) : AuthCredential(native) {
-    override val provider: String get() = EmailAuthProvider.PROVIDER_ID
+public actual class EmailAuthCredential internal constructor(native: Any, actual override val signInMethod: String) : AuthCredential(native) {
+    actual override val provider: String get() = EmailAuthProvider.PROVIDER_ID
 }
 
 public actual class FacebookAuthCredential internal constructor(native: Any) : AuthCredential(native) {
-    override val provider: String get() = FacebookAuthProvider.PROVIDER_ID
-    override val signInMethod: String get() = FacebookAuthProvider.FACEBOOK_SIGN_IN_METHOD
+    actual override val provider: String get() = FacebookAuthProvider.PROVIDER_ID
+    actual override val signInMethod: String get() = FacebookAuthProvider.FACEBOOK_SIGN_IN_METHOD
 }
 
 public actual class GithubAuthCredential internal constructor(native: Any) : AuthCredential(native) {
-    override val provider: String get() = GithubAuthProvider.PROVIDER_ID
-    override val signInMethod: String get() = GithubAuthProvider.GITHUB_SIGN_IN_METHOD
+    actual override val provider: String get() = GithubAuthProvider.PROVIDER_ID
+    actual override val signInMethod: String get() = GithubAuthProvider.GITHUB_SIGN_IN_METHOD
 }
 
 public actual class GoogleAuthCredential internal constructor(native: Any) : AuthCredential(native) {
-    override val provider: String get() = GoogleAuthProvider.PROVIDER_ID
-    override val signInMethod: String get() = GoogleAuthProvider.GOOGLE_SIGN_IN_METHOD
+    actual override val provider: String get() = GoogleAuthProvider.PROVIDER_ID
+    actual override val signInMethod: String get() = GoogleAuthProvider.GOOGLE_SIGN_IN_METHOD
 }
 
 public actual class TwitterAuthCredential internal constructor(native: Any) : AuthCredential(native) {
-    override val provider: String get() = TwitterAuthProvider.PROVIDER_ID
-    override val signInMethod: String get() = TwitterAuthProvider.TWITTER_SIGN_IN_METHOD
+    actual override val provider: String get() = TwitterAuthProvider.PROVIDER_ID
+    actual override val signInMethod: String get() = TwitterAuthProvider.TWITTER_SIGN_IN_METHOD
 }
 
 /** Never created on these platforms: their SDKs have no Play Games sign-in, so [PlayGamesAuthProvider.getCredential] fails. */
 public actual class PlayGamesAuthCredential private constructor() : AuthCredential(Unit) {
-    override val provider: String get() = PlayGamesAuthProvider.PROVIDER_ID
-    override val signInMethod: String get() = PlayGamesAuthProvider.PLAY_GAMES_SIGN_IN_METHOD
+    actual override val provider: String get() = PlayGamesAuthProvider.PROVIDER_ID
+    actual override val signInMethod: String get() = PlayGamesAuthProvider.PLAY_GAMES_SIGN_IN_METHOD
 }
 
 /** The failure of [PlayGamesAuthProvider.getCredential] on the platforms whose SDK ([sdk]) has no Play Games sign-in. */
 internal fun playGamesUnsupported(sdk: String): Nothing = throw UnsupportedOperationException("PlayGamesAuthProvider.getCredential is not provided by the Firebase $sdk SDK: Play Games sign-in exists only on Android")
 
 public actual class PhoneAuthCredential internal constructor(native: Any, public actual val smsCode: String?) : AuthCredential(native) {
-    override val provider: String get() = PhoneAuthProvider.PROVIDER_ID
-    override val signInMethod: String get() = PhoneAuthProvider.PHONE_SIGN_IN_METHOD
+    actual override val provider: String get() = PhoneAuthProvider.PROVIDER_ID
+    actual override val signInMethod: String get() = PhoneAuthProvider.PHONE_SIGN_IN_METHOD
 }
 
 public actual abstract class OAuthCredential actual constructor() : AuthCredential(Unit) {
