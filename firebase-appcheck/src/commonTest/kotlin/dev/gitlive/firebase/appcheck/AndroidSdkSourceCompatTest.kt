@@ -76,7 +76,7 @@ class AndroidSdkSourceCompatTest {
         val (raw, expireTimeMillis) = token
         assertEquals(FAKE_TOKEN, raw)
         assertEquals(FAKE_EXPIRE_TIME_MILLIS, expireTimeMillis)
-        // The token is valid until 2100, so it is cached.
+        // The token is valid until 2038, so it is cached.
         assertEquals(FAKE_TOKEN, appCheck.getAppCheckToken(false).await().getToken())
         assertEquals(FAKE_LIMITED_USE_TOKEN, appCheck.getLimitedUseAppCheckToken().await().token)
         appCheck.setTokenAutoRefreshEnabled(false)
@@ -87,7 +87,7 @@ class AndroidSdkSourceCompatTest {
     fun testAppCheckListener() = runTest {
         val appCheck = Firebase.appCheck
         appCheck.installAppCheckProviderFactory(FakeProviderFactory())
-        // The JS SDK would refresh the fake token, which expires in 2100, in a loop: its timer overflows.
+        // The JS SDK would refresh the fake token, which expires in 2038, in a loop: its timer overflows.
         appCheck.setTokenAutoRefreshEnabled(false)
         val received = TaskCompletionSource<AppCheckToken>()
         val listener = FirebaseAppCheck.AppCheckListener { received.trySetResult(it) }

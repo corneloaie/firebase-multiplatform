@@ -42,10 +42,13 @@ fun initializeTestApp() {
 }
 
 /** A JWT whose `exp` claim is [FAKE_EXPIRE_TIME_MILLIS], so that the JS SDK, which reports the JWT alone, agrees. */
-const val FAKE_TOKEN = "eyJhbGciOiJub25lIn0.eyJleHAiOjQxMDI0NDQ4MDB9.c2ln"
+const val FAKE_TOKEN = "eyJhbGciOiJub25lIn0.eyJleHAiOjIxNDU5MTY4MDB9.c2ln"
 
-/** 1 January 2100. */
-const val FAKE_EXPIRE_TIME_MILLIS = 4_102_444_800_000L
+/**
+ * 1 January 2038. The Android SDK reads a token's `exp` claim as a 32-bit `Integer`, so a later one (past 19 January
+ * 2038) fails with a ClassCastException there.
+ */
+const val FAKE_EXPIRE_TIME_MILLIS = 2_145_916_800_000L
 
 const val FAKE_LIMITED_USE_TOKEN = "limited-use"
 

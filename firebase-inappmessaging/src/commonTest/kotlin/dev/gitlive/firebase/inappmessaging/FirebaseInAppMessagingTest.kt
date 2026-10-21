@@ -27,6 +27,9 @@ expect val context: Any
 /** Android unit tests have no Android runtime, which the In-App Messaging SDK needs, so these tests are skipped there. */
 expect annotation class IgnoreForAndroidUnitTest()
 
+/** Creates the SDK instance where an app would, if the platform cares on which thread that happens. */
+internal expect fun createInAppMessaging()
+
 /** Configures the default app once per test process: In-App Messaging only works with the default app. */
 internal fun initializeFirebase() {
     Firebase.apps(context).firstOrNull() ?: Firebase.initialize(
@@ -40,6 +43,7 @@ internal fun initializeFirebase() {
             gcmSenderId = "846484016111",
         ),
     )
+    createInAppMessaging()
 }
 
 @IgnoreForAndroidUnitTest

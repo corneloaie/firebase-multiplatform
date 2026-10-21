@@ -38,6 +38,8 @@ class FileDownloadTest {
     private lateinit var app: dev.gitlive.firebase.FirebaseApp
     private lateinit var storage: FirebaseStorage
 
+    // As in AndroidSdkSourceCompatTest: useEmulator fails on a storage instance that has been used (the iOS SDK stops the
+    // process), and another test class may have used this app's, so the emulator is only configured when the app is created.
     @BeforeTest
     fun initializeFirebase() {
         app = dev.gitlive.firebase.Firebase.apps(context).firstOrNull() ?: dev.gitlive.firebase.Firebase.initialize(
@@ -50,12 +52,14 @@ class FileDownloadTest {
                 projectId = "fir-kotlin-sdk",
                 gcmSenderId = "846484016111",
             ),
-        )
-        storage = FirebaseStorage.getInstance(app.compat).apply {
-            useEmulator(emulatorHost, 9199)
-            maxOperationRetryTimeMillis = 30_000
-            maxUploadRetryTimeMillis = 30_000
+        ).also {
+            FirebaseStorage.getInstance(it.compat).apply {
+                useEmulator(emulatorHost, 9199)
+                maxOperationRetryTimeMillis = 30_000
+                maxUploadRetryTimeMillis = 30_000
+            }
         }
+        storage = FirebaseStorage.getInstance(app.compat)
     }
 
     @Test
@@ -80,6 +84,6 @@ class FileDownloadTest {
         assertEquals(13, bytesTransferred)
         assertTrue(ref.activeDownloadTasks.isEmpty())
         val reUploaded = ref.child("../compatReupload.txt").putFile(destination).await()
-        assertEquals(13, reUploaded.totalByteCount)
+        assertUploadedBytes(13, reUploaded.totalByteCount)
     }
 }

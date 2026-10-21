@@ -8,5 +8,7 @@ import dev.gitlive.firebase.testContext
 
 actual val context: Any = testContext
 
+internal actual fun createInAppMessaging() {}
+
 @Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION)
 actual annotation class IgnoreForAndroidUnitTest
