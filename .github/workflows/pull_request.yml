@@ -139,9 +139,9 @@ jobs:
     # Compilations that publishing runs and no test job does: the metadata of every shared source set of every module,
     # which reports errors the platform compilations accept (an expect class missing an inherited abstract member, an
     # actual whose modality differs), and the tvOS code, which no pull request job tests. --continue reports every
-    # module's errors at once.
+    # module's errors at once. It builds every module's Apple dependencies from scratch, about two hours on a runner.
     runs-on: macos-latest
-    timeout-minutes: 90
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v7
       - name: Set up JDK
