@@ -7,3 +7,7 @@ copyright headers; the full license text is in LICENSE.
 
 It binds to, but does not include, the official Firebase SDKs for Android, Apple platforms and JavaScript, which are
 Copyright Google LLC and licensed under the Apache License, Version 2.0.
+
+The firebase-ai module's com.google.firebase.ai declarations and their documentation are adapted from the Firebase
+Android SDK (https://github.com/firebase/firebase-android-sdk, ai-logic/firebase-ai), Copyright Google LLC, licensed under
+the Apache License, Version 2.0; the adapted files keep Google's copyright headers and say how they were modified.

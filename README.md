@@ -19,6 +19,7 @@ This is a fork of [GitLive's firebase-kotlin-sdk](https://github.com/GitLiveApp/
 <!-- coverage:start -->
 | Product | Gradle dependency | Android API coverage | Members (identical / mapped / missing / omitted) |
 |---|---|:---:|---|
+| [AI Logic](https://firebase.google.com/docs/ai-logic) | `io.github.corneloaie:firebase-ai` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-ai/api/android-sdk-compat.txt) | 874: 874 / 0 / 0 / 0 |
 | [Analytics](https://firebase.google.com/docs/analytics) | `io.github.corneloaie:firebase-analytics` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-analytics/api/android-sdk-compat.txt) | 153: 152 / 1 / 0 / 0 |
 | [App (core)](https://firebase.google.com/docs/reference/android/com/google/firebase/FirebaseApp) | `io.github.corneloaie:firebase-app` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-app/api/android-sdk-compat.txt) | 46: 33 / 13 / 0 / 0 |
 | [App Check](https://firebase.google.com/docs/app-check) | `io.github.corneloaie:firebase-appcheck` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-appcheck/api/android-sdk-compat.txt) | 28: 28 / 0 / 0 / 0 |
@@ -58,6 +59,7 @@ weekly update moves it to the newest Firebase Android release.
 
 | Module | Android | iOS | macOS | tvOS | JVM | JS | Wasm |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| `firebase-ai` | ✅ | ✅ | ✅ | ✅ | – | ✅ | ✅ |
 | `firebase-analytics` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `firebase-app` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `firebase-appcheck` | ✅ | ✅ | ✅ | ✅ | – | ✅ | ✅ |
@@ -78,9 +80,9 @@ weekly update moves it to the newest Firebase Android release.
 The JVM target runs GitLive's [Firebase Java SDK](https://github.com/GitLiveApp/firebase-java-sdk), a port of the
 Android SDK. It compiles and is tested where upstream tests it, but it is not held to the same coverage as Android, iOS
 and the web. Crashlytics, App Distribution and In-App Messaging have no web SDK, the Java SDK does not run App Check,
-and Data Connect has no Java implementation. firebase-java-sdk has neither App Distribution nor In-App Messaging, so on
-the JVM those two compile and act as the Android SDK does without its full library: App Distribution's tasks fail with
-`NOT_IMPLEMENTED`, and no in-app message is ever displayed.
+and Data Connect and AI Logic have no Java implementation. firebase-java-sdk has neither App Distribution nor In-App
+Messaging, so on the JVM those two compile and act as the Android SDK does without its full library: App Distribution's
+tasks fail with `NOT_IMPLEMENTED`, and no in-app message is ever displayed.
 
 ### Gradle
 
@@ -153,8 +155,8 @@ signature needs an Android/JVM-only type) or `UNAV`/`HIDE`/`SKIP`. Larger surfac
 - **Firestore Pipelines** (`com.google.firebase.firestore.pipeline`, about 1,300 Android members, an Enterprise
   edition preview): excluded as unavailable while the iOS and JS SDKs lacked it. The JS SDK 13 now ships
   `firebase/firestore/pipelines`.
-- **AI Logic** (`firebase-ai`, about 1,200 members): no module yet. Its iOS SDK is Swift-only, so it needs an Objective-C
-  wrapper package like Data Connect's.
+- **AI Logic on-device inference** (`firebase-ai-ondevice`, a beta library outside the BoM whose API is deprecated in
+  favor of `GenerativeModel.onDeviceExtension`): not mirrored yet. `firebase-ai` covers the rest of AI Logic.
 - **Phone Number Verification** (`firebase-pnv`): Android-only and closed source; no module yet.
 - **ML Model Downloader** is not planned: Firebase removed it from the iOS SDK 13 and from the Android BoM 35.
 
@@ -270,6 +272,17 @@ Data Connect. The
 `java.time.LocalDate` conversions, `JavaTimeLocalDateSerializer` and `UUIDSerializer` exist on Android only; common code
 uses `kotlinx.datetime.LocalDate` with `KotlinxDatetimeLocalDateSerializer` and `kotlin.uuid.Uuid` with
 `dev.gitlive.firebase.dataconnect.serializers.UuidSerializer`, which writes the same 32 hexadecimal digits.
+
+`firebase-ai` provides the `com.google.firebase.ai` API of the Firebase AI Logic Android SDK, which is built on
+coroutines, `Flow` and kotlinx.serialization like Data Connect's, on Android, iOS, macOS, tvOS, JS and Wasm: the Gemini
+models with streaming, chats, structured output (`generateObject` with a `JsonSchema`) and automatic function calling,
+server prompt templates and the Live API. On Android the Android SDK runs; on JS and Wasm the Firebase JS SDK's
+`firebase/ai`; on Apple the Firebase AI Logic iOS SDK, through the Objective-C wrapper package under
+`firebase-ai/apple` (the SDK is Swift-only). Requests and responses cross to the JS and iOS SDKs as the JSON of the REST
+API, and responses are checked and errors mapped as on Android. Images are `android.graphics.Bitmap`s in parts of the
+Android API; common code sends them as `InlineDataPart`s. There is no on-device model off Android (the models fall back
+to the cloud, as Android does without the `firebase-ai-ondevice` library), and the Live API's audio conversation, which
+records and plays audio itself, is Android-only. See [the module's documentation](firebase-ai/documentation.md).
 
 ### Accessing the underlying Firebase SDK
 
