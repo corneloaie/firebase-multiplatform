@@ -168,7 +168,7 @@ The SDK has two public API layers per module:
    used as is from common code with almost no `dev.gitlive` layer: the `com.google.firebase.dataconnect` interfaces, value
    types and serializers are plain common code (verified against the Android SDK and stripped on Android), and `nonAndroidMain`
    implements them over an `expect class NativeDataConnect` that exchanges JSON with the platform SDK: the JS SDK's
-   `firebase/data-connect` on JS, and on Apple the Swift-only iOS SDK through the Objective-C wrapper Swift package in
+   `firebase/data-connect` on JS and wasmJs, and on Apple the Swift-only iOS SDK through the Objective-C wrapper Swift package in
    `firebase-dataconnect/apple` (imported with `localSwiftPackage`). There is no JVM target (the Java SDK has no Data
    Connect). Its `test/dataconnect` project runs in the Data Connect emulator.
    `firebase-analytics` shows a closed-source Android module (its `api/android-sdk/*.api.txt` is generated from the published

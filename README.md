@@ -61,7 +61,7 @@ weekly update moves it to the newest Firebase Android release.
 | `firebase-config` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `firebase-crashlytics` | ✅ | ✅ | ✅ | – | ✅ | – | – |
 | `firebase-database` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `firebase-dataconnect` | ✅ | ✅ | – | ✅ | – | ✅ | – |
+| `firebase-dataconnect` | ✅ | ✅ | – | ✅ | – | ✅ | ✅ |
 | `firebase-firestore` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `firebase-functions` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `firebase-installations` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -71,7 +71,7 @@ weekly update moves it to the newest Firebase Android release.
 
 The JVM target runs GitLive's [Firebase Java SDK](https://github.com/GitLiveApp/firebase-java-sdk), a port of the
 Android SDK. It compiles and is tested where upstream tests it, but it is not held to the same coverage as Android, iOS
-and the web. Crashlytics has no web SDK, and Data Connect has neither a Java nor (yet) a Wasm implementation.
+and the web. Crashlytics has no web SDK, and Data Connect has no Java implementation.
 
 ### Gradle
 
@@ -239,8 +239,8 @@ of the Android-only members, see [Migrating from the Firebase Android SDK](docum
 
 `firebase-dataconnect` provides the whole `com.google.firebase.dataconnect` API of the Firebase Data Connect Android SDK
 (the one Firebase SDK built on kotlinx.serialization: `query(operationName, variables, dataDeserializer, variablesSerializer)`,
-`OptionalVariable`, `EnumValue`, `LocalDate`, `AnyValue` and the `serializers` package) on Android, iOS, tvOS and JS. On
-Android the Android SDK runs; on JS the Firebase JS SDK's `firebase/data-connect` (`CacheSettings.Storage.PERSISTENT`
+`OptionalVariable`, `EnumValue`, `LocalDate`, `AnyValue` and the `serializers` package) on Android, iOS, tvOS, JS and Wasm. On
+Android the Android SDK runs; on JS and Wasm the Firebase JS SDK's `firebase/data-connect` (`CacheSettings.Storage.PERSISTENT`
 behaves like `MEMORY`, and `DataConnectSettings.host`/`sslEnabled` are ignored, as the JS SDK has no such settings); on
 Apple the Firebase iOS Data Connect SDK, through the small Objective-C wrapper package under `firebase-dataconnect/apple`
 that the Kotlin SwiftPM import builds (the SDK is Swift-only). There is no JVM target, as the Firebase Java SDK has no
