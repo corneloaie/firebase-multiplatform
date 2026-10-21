@@ -127,7 +127,10 @@ def table(current):
 
 
 def overall_badge(current):
-    """A badge with the coverage of every module together, for the top of the README."""
+    """The link reference definition of the README's coverage badge, the coverage of every module together.
+
+    The badge row uses it as `[![Android API coverage][coverage-badge]](#coverage)`. Its markers stay on lines of their
+    own: on a line that starts with an HTML comment, GitHub shows the rest of the line as raw text."""
     available = total = products = 0
     for text in current.values():
         header, _ = parse(text)
@@ -139,7 +142,7 @@ def overall_badge(current):
     percent = available * 100 // total if total else 0
     colour = 'brightgreen' if percent == 100 else 'green' if percent > 60 else 'orange'
     message = quote(f'{percent}%: {available:,} of {total:,} members, {products} products', safe='')
-    return f'[![Android API coverage](https://img.shields.io/badge/Android%20API%20coverage-{message}-{colour}?style=flat-square)](#coverage)'
+    return f'[coverage-badge]: https://img.shields.io/badge/Android%20API%20coverage-{message}-{colour}?style=flat-square'
 
 
 def replace_between(text, start, end, body, path):
@@ -178,7 +181,7 @@ def main():
     if args.readme:
         text = replace_between(args.readme.read_text(), START, END, f'\n{rendered}\n', args.readme)
         if BADGE_START in text:
-            text = replace_between(text, BADGE_START, BADGE_END, overall_badge(current), args.readme)
+            text = replace_between(text, BADGE_START, BADGE_END, f'\n{overall_badge(current)}\n', args.readme)
         args.readme.write_text(text)
     if args.compare:
         markdown = compare(current, reports(args.compare), args.compare)

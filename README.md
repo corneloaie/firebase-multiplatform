@@ -1,9 +1,13 @@
 # firebase-multiplatform
 
-<!-- coverage-badge:start -->[![Android API coverage](https://img.shields.io/badge/Android%20API%20coverage-100%25%3A%204%2C092%20of%204%2C092%20members%2C%2018%20products-brightgreen?style=flat-square)](#coverage)<!-- coverage-badge:end -->
+[![Android API coverage][coverage-badge]](#coverage)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.corneloaie/firebase-app?style=flat-square&label=Maven%20Central)](https://central.sonatype.com/namespace/io.github.corneloaie)
 [![Weekly update](https://img.shields.io/github/actions/workflow/status/corneloaie/firebase-multiplatform/weekly.yml?label=weekly%20update&style=flat-square)](.github/workflows/weekly.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square)](LICENSE)
+
+<!-- coverage-badge:start -->
+[coverage-badge]: https://img.shields.io/badge/Android%20API%20coverage-100%25%3A%204%2C092%20of%204%2C092%20members%2C%2018%20products-brightgreen?style=flat-square
+<!-- coverage-badge:end -->
 
 **The complete Firebase Android SDK API in Kotlin Multiplatform common code**, for every Firebase client product, on
 Android, iOS, macOS, tvOS, the JVM, JS and Wasm. It is built on each platform's official Firebase SDK and moved onto
