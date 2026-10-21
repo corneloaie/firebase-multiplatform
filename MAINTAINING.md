@@ -88,8 +88,10 @@ Implement each member in the module's `com.google.firebase` layer on every platf
 - **Location:** an `expect` in `commonMain`, or plain common code with header stubs on Android and the JVM.
 - **Apple:** over the iOS SDK.
 - **js and wasmJs:** over the JS SDK.
-- **When a platform cannot provide it:** mark it `@UnsupportedOnJs`, or list it in `api/android-sdk/exclusions.txt`
-  with `@platform`. Never leave it out silently.
+- **When a platform cannot provide it:** declare it anyway. That platform's actual does nothing, or throws where it must
+  return a value, and is marked `@UnsupportedOnJs` (js and wasmJs) or `@UnsupportedOnApple` (Apple platforms). Only a
+  signature that needs an Android-only type goes in `api/android-sdk/exclusions.txt`, with `@platform`. Never leave a
+  member out silently.
 
 Then run `./gradlew apiDump androidSourceCompatDump formatKotlin` and
 `python3 .github/scripts/weekly/coverage.py --readme README.md`.
