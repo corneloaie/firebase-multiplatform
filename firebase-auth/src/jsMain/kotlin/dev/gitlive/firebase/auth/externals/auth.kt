@@ -244,6 +244,9 @@ public external interface TotpSecret {
     public val codeIntervalSeconds: Int
     public val enrollmentCompletionDeadline: String
     public fun generateQrCodeUrl(accountName: String? = definedExternally, issuer: String? = definedExternally): String
+
+    /** With no arguments, so that the SDK applies its defaults (it does for `undefined`, not for `null`). */
+    public fun generateQrCodeUrl(): String
 }
 
 public external object PhoneMultiFactorGenerator {

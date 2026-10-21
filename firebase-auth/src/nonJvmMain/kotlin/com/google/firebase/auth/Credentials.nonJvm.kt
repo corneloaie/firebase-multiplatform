@@ -34,6 +34,15 @@ public actual class TwitterAuthCredential internal constructor(native: Any) : Au
     override val signInMethod: String get() = TwitterAuthProvider.TWITTER_SIGN_IN_METHOD
 }
 
+/** Never created on these platforms: their SDKs have no Play Games sign-in, so [PlayGamesAuthProvider.getCredential] fails. */
+public actual class PlayGamesAuthCredential private constructor() : AuthCredential(Unit) {
+    override val provider: String get() = PlayGamesAuthProvider.PROVIDER_ID
+    override val signInMethod: String get() = PlayGamesAuthProvider.PLAY_GAMES_SIGN_IN_METHOD
+}
+
+/** The failure of [PlayGamesAuthProvider.getCredential] on the platforms whose SDK ([sdk]) has no Play Games sign-in. */
+internal fun playGamesUnsupported(sdk: String): Nothing = throw UnsupportedOperationException("PlayGamesAuthProvider.getCredential is not provided by the Firebase $sdk SDK: Play Games sign-in exists only on Android")
+
 public actual class PhoneAuthCredential internal constructor(native: Any, public actual val smsCode: String?) : AuthCredential(native) {
     override val provider: String get() = PhoneAuthProvider.PROVIDER_ID
     override val signInMethod: String get() = PhoneAuthProvider.PHONE_SIGN_IN_METHOD

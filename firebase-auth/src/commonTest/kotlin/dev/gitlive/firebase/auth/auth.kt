@@ -18,6 +18,9 @@ expect val emulatorHost: String
 expect val context: Any
 expect annotation class IgnoreForAndroidUnitTest()
 
+/** Whether the platform SDK has Play Games sign-in: only Android's does. */
+expect val supportsPlayGamesSignIn: Boolean
+
 @IgnoreForAndroidUnitTest
 class FirebaseAuthTest {
 

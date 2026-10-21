@@ -59,7 +59,8 @@ public actual class TotpMultiFactorInfo internal constructor(
 
 public actual abstract class MultiFactorSession actual constructor()
 
-internal class MultiFactorSessionImpl(val native: Any) : MultiFactorSession()
+/** @property auth The instance of the session's user, where the platform needs it later (the TOTP secret's defaults on Apple). */
+internal class MultiFactorSessionImpl(val native: Any, val auth: FirebaseAuth? = null) : MultiFactorSession()
 
 public actual abstract class MultiFactorResolver actual constructor() {
     public actual abstract val firebaseAuth: FirebaseAuth
@@ -82,8 +83,24 @@ public actual class PhoneMultiFactorGenerator actual constructor() {
     }
 }
 
-public actual class TotpMultiFactorAssertion internal constructor(override val native: Any) : MultiFactorAssertion() {
+/**
+ * The platform SDKs only create TOTP assertions through their generators, so the SDK's assertion is made when this one
+ * is first used: for enrolling [secret] when it is set, otherwise for signing in with [enrollmentId].
+ */
+public actual class TotpMultiFactorAssertion actual constructor(oneTimePassword: String, secret: TotpSecret?, enrollmentId: String?) : MultiFactorAssertion() {
+    init {
+        // As the Android SDK's constructor checks it.
+        require(oneTimePassword.isNotEmpty()) { "Given String is empty or null" }
+    }
+
     override val factorId: String get() = TotpMultiFactorGenerator.FACTOR_ID
+    override val native: Any by lazy {
+        when {
+            secret != null -> nativeTotpAssertionForEnrollment(secret, oneTimePassword)
+            enrollmentId != null -> nativeTotpAssertionForSignIn(enrollmentId, oneTimePassword)
+            else -> throw IllegalArgumentException("A TOTP assertion needs the secret to enroll or the enrollment ID to sign in with")
+        }
+    }
 }
 
 public actual class TotpMultiFactorGenerator private constructor() {
@@ -92,14 +109,8 @@ public actual class TotpMultiFactorGenerator private constructor() {
 
         public actual fun generateSecret(session: MultiFactorSession): Task<TotpSecret> = nativeTotpGenerateSecret(session)
 
-        public actual fun getAssertionForEnrollment(secret: TotpSecret, oneTimePassword: String): TotpMultiFactorAssertion = TotpMultiFactorAssertion(nativeTotpAssertionForEnrollment(secret, oneTimePassword))
+        public actual fun getAssertionForEnrollment(secret: TotpSecret, oneTimePassword: String): TotpMultiFactorAssertion = TotpMultiFactorAssertion(oneTimePassword, secret, null)
 
-        public actual fun getAssertionForSignIn(enrollmentId: String, oneTimePassword: String): TotpMultiFactorAssertion = TotpMultiFactorAssertion(nativeTotpAssertionForSignIn(enrollmentId, oneTimePassword))
+        public actual fun getAssertionForSignIn(enrollmentId: String, oneTimePassword: String): TotpMultiFactorAssertion = TotpMultiFactorAssertion(oneTimePassword, null, enrollmentId)
     }
-}
-
-public actual interface TotpSecret {
-    public actual val sharedSecretKey: String
-    public actual fun generateQrCodeUrl(accountName: String, issuer: String): String
-    public actual fun openInOtpApp(qrCodeUrl: String)
 }
