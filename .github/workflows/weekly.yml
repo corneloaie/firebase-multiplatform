@@ -179,8 +179,8 @@ jobs:
 
             1. Make every target compile again: `./gradlew --continue compileReleaseKotlinAndroid compileKotlinJvm
                compileKotlinJs compileKotlinWasmJs compileKotlinIosSimulatorArm64 compileKotlinMacosArm64
-               allMetadataJar` (tvOS too if the runner has it; allMetadataJar is the common metadata compilation
-               that publishing runs, which catches errors the platform compilations accept). Fix what the new SDK
+               compileAllKotlinMetadata` (tvOS too if the runner has it; compileAllKotlinMetadata runs the metadata
+               compilations that publishing runs, which catch errors the platform compilations accept). Fix what the new SDK
                versions broke, following each SDK's release notes; never delete public API to make it compile.
             2. Implement each newly MISS member of the com.google.firebase compatibility layer on every platform, the way
                the module already does it (commonMain expect or plain common code, android/jvm typealias or header
