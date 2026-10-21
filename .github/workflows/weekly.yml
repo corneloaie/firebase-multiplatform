@@ -32,6 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
+      # gh would otherwise pick the `upstream` remote (GitLive) that sync.sh adds
+      GH_REPO: ${{ github.repository }}
       BRANCH: weekly/upstream-sync
     steps:
       - uses: actions/checkout@v7
@@ -79,6 +81,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
+      # pin gh to this repository, as in the upstream job
+      GH_REPO: ${{ github.repository }}
       GITHUB_TOKEN: ${{ github.token }}
       BRANCH: weekly/firebase-sdks
     steps:
