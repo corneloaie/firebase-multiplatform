@@ -86,6 +86,24 @@ class SourceCompatReportTest {
     }
 
     @Test
+    fun annotationPropertiesAreNotGetters() {
+        val classes = AndroidSdkApiTxtParser.parse(
+            """
+            // Signature format: 3.0
+            package com.google.firebase.ai.annotations {
+
+              @kotlin.annotation.Retention(kotlin.annotation.AnnotationRetention.SOURCE) @kotlin.annotation.Target(allowedTargets=kotlin.annotation.AnnotationTarget.CLASS) public @interface Generable {
+                method public abstract String description() default "";
+                property public abstract String description;
+              }
+
+            }
+            """.trimIndent(),
+        )
+        assertEquals(listOf("description"), classes.single().members.map { it.name })
+    }
+
+    @Test
     fun parsesApiTxt() {
         val classes = AndroidSdkApiTxtParser.parse(apiTxt).associateBy { it.name }
         val installations = classes.getValue("com.google.firebase.installations.FirebaseInstallations")

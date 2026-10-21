@@ -14,6 +14,8 @@ internal actual fun fieldPathOf(vararg fieldNames: String): FieldPath = FieldPat
 
 internal actual fun fieldPathDocumentId(): FieldPath = FieldPath.documentId()
 
+internal actual fun fieldPathSegments(fieldPath: FieldPath): List<String> = fieldPath.segments
+
 internal actual fun fieldValueServerTimestamp(): FieldValue = FieldValue.serverTimestamp()
 
 internal actual fun fieldValueDelete(): FieldValue = FieldValue.delete()

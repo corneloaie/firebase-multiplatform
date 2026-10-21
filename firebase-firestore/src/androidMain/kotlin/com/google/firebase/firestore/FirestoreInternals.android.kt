@@ -19,6 +19,13 @@ internal actual fun fieldPathOf(vararg fieldNames: String): FieldPath = Firestor
 
 internal actual fun fieldPathDocumentId(): FieldPath = FirestoreStatics.documentId()
 
+// Only the pipeline API calls it, and Android and the JVM run the SDK's own pipeline classes instead.
+internal actual fun fieldPathSegments(fieldPath: FieldPath): List<String> = throw UnsupportedOperationException("The Android SDK's pipeline API is used on Android and the JVM")
+
+internal actual fun isIntegerValue(number: Number): Boolean = number is Byte || number is Short || number is Int || number is Long
+
+internal actual fun isSameFirestore(a: FirebaseFirestore, b: FirebaseFirestore): Boolean = a == b
+
 internal actual fun fieldValueServerTimestamp(): FieldValue = FirestoreStatics.serverTimestamp()
 
 internal actual fun fieldValueDelete(): FieldValue = FirestoreStatics.delete()

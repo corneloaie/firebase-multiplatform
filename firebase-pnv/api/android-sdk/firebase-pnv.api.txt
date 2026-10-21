@@ -1,0 +1,86 @@
+// Source: generated from the published classes (the module is not open source) of com.google.firebase:firebase-pnv:17.0.0
+// Signature format: 3.0
+package com.google.firebase.pnv {
+
+  public interface FirebasePhoneNumberVerification {
+    method public void enableTestSession(String);
+    method public com.google.android.gms.tasks.Task exchangeCredentialResponseForPhoneNumber(String);
+    method public com.google.android.gms.tasks.Task getDigitalCredentialPayload(String);
+    method public static com.google.firebase.pnv.FirebasePhoneNumberVerification getInstance();
+    method public static com.google.firebase.pnv.FirebasePhoneNumberVerification getInstance(com.google.firebase.FirebaseApp);
+    method public com.google.android.gms.tasks.Task getVerificationSupportInfo();
+    method public com.google.android.gms.tasks.Task getVerificationSupportInfo(int);
+    method public com.google.android.gms.tasks.Task getVerifiedPhoneNumber(android.content.Context);
+  }
+
+  public static final class FirebasePhoneNumberVerification.Companion {
+    method public final com.google.firebase.pnv.FirebasePhoneNumberVerification getInstance();
+    method public final com.google.firebase.pnv.FirebasePhoneNumberVerification getInstance(com.google.firebase.FirebaseApp);
+  }
+
+  public final class FirebasePhoneNumberVerificationException extends com.google.firebase.FirebaseException {
+    ctor public FirebasePhoneNumberVerificationException(int, String, Throwable);
+    method public final int getErrorCode();
+  }
+
+  public static final class FirebasePhoneNumberVerificationException.Companion {
+  }
+
+  public final class FirebasePnvStatusCodes extends com.google.android.gms.common.api.CommonStatusCodes {
+    method public final String getMessage(int);
+    field public static final int ACTIVITY_CONTEXT_REQUIRED = 55509;
+    field public static final int CARRIER_NOT_SUPPORTED = 55501;
+    field public static final int CREDENTIAL_MANAGER_ERROR = 55506;
+    field public static final com.google.firebase.pnv.FirebasePnvStatusCodes INSTANCE;
+    field public static final int INTEGRITY_CHECK_FAILED = 55503;
+    field public static final int INVALID_DIGITAL_CREDENTIAL_RESPONSE = 55502;
+    field public static final int INVALID_TEST_NUMBER_ID = 55507;
+    field public static final int PREFLIGHT_CHECK_FAILED = 55504;
+    field public static final int TEST_SESSION_ALREADY_ENABLED = 55508;
+    field public static final int UNSUPPORTED_OPERATION = 55505;
+  }
+
+  public final class VerificationSupportResult {
+    ctor public VerificationSupportResult(int, String, int);
+    method public boolean equals(Object);
+    method public final String getCarrierId();
+    method public final int getReason();
+    method public final int getSimSlot();
+    method public int hashCode();
+    method public final boolean isSupported();
+  }
+
+  public static final class VerificationSupportResult.Companion {
+  }
+
+  public @interface VerificationSupportStatus {
+    field public static final int CAPABILITY_STATUS_UNSPECIFIED = 0;
+    field public static final int CAPABLE = 1;
+    field public static final int INCAPABLE_DUE_TO_ANDROID_VERSION = 3;
+    field public static final int INCAPABLE_DUE_TO_CARRIER_UNSUPPORTED = 2;
+    field public static final int INCAPABLE_DUE_TO_SIM_STATE = 4;
+  }
+
+  public static final class VerificationSupportStatus.Companion {
+    field public static final int CAPABILITY_STATUS_UNSPECIFIED = 0;
+    field public static final int CAPABLE = 1;
+    field public static final int INCAPABLE_DUE_TO_ANDROID_VERSION = 3;
+    field public static final int INCAPABLE_DUE_TO_CARRIER_UNSUPPORTED = 2;
+    field public static final int INCAPABLE_DUE_TO_SIM_STATE = 4;
+  }
+
+  public final class VerifiedPhoneNumberTokenResult {
+    ctor public VerifiedPhoneNumberTokenResult(String);
+    method public final java.util.Map getClaims();
+    method public final long getExpirationTimestamp();
+    method public final long getIssuedAtTimestamp();
+    method public final String getNonce();
+    method public final String getPhoneNumber();
+    method public final String getToken();
+  }
+
+  public static final class VerifiedPhoneNumberTokenResult.Companion {
+  }
+
+}
+

@@ -1,0 +1,1101 @@
+# Android SDK source compatibility of firebase-ai
+# Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
+# 100% of 874 public members available (874 identical, 0 mapped, 0 missing, 0 omitted)
+#
+com.google.firebase.ai.Chat
+  OK    Chat(GenerativeModel, List)
+  OK    List getHistory()
+  PLAT  Object sendMessage(Bitmap, Continuation)
+  OK    Object sendMessage(Content, Continuation)
+  OK    Object sendMessage(String, Continuation)
+  PLAT  Flow sendMessageStream(Bitmap)
+  OK    Flow sendMessageStream(Content)
+  OK    Flow sendMessageStream(String)
+com.google.firebase.ai.DownloadStatus
+com.google.firebase.ai.DownloadStatus.DownloadCompleted
+  OK    static DownloadCompleted INSTANCE
+com.google.firebase.ai.DownloadStatus.DownloadFailed
+  OK    FirebaseAIException getException()
+com.google.firebase.ai.DownloadStatus.DownloadInProgress
+  OK    long getTotalBytesDownloaded()
+com.google.firebase.ai.DownloadStatus.DownloadStarted
+  OK    long getBytesToDownload()
+com.google.firebase.ai.FirebaseAI
+  OK    GenerativeModel generativeModel(String)
+  OK    GenerativeModel generativeModel(String, GenerationConfig)
+  OK    GenerativeModel generativeModel(String, GenerationConfig, List)
+  OK    GenerativeModel generativeModel(String, GenerationConfig, List, List)
+  OK    GenerativeModel generativeModel(String, GenerationConfig, List, List, ToolConfig)
+  OK    GenerativeModel generativeModel(String, GenerationConfig, List, List, ToolConfig, Content)
+  OK    GenerativeModel generativeModel(String, GenerationConfig, List, List, ToolConfig, Content, RequestOptions)
+  OK    GenerativeModel generativeModel(String, GenerationConfig, List, List, ToolConfig, Content, RequestOptions, OnDeviceConfig)
+  OK    static FirebaseAI getInstance()
+  OK    static FirebaseAI getInstance(GenerativeBackend)
+  OK    static FirebaseAI getInstance(FirebaseApp)
+  OK    static FirebaseAI getInstance(GenerativeBackend, boolean)
+  OK    static FirebaseAI getInstance(FirebaseApp, GenerativeBackend)
+  OK    static FirebaseAI getInstance(FirebaseApp, GenerativeBackend, boolean)
+  OK    LiveGenerativeModel liveModel(String)
+  OK    LiveGenerativeModel liveModel(String, LiveGenerationConfig)
+  OK    LiveGenerativeModel liveModel(String, LiveGenerationConfig, List)
+  OK    LiveGenerativeModel liveModel(String, LiveGenerationConfig, List, Content)
+  OK    LiveGenerativeModel liveModel(String, LiveGenerationConfig, List, Content, RequestOptions)
+  OK    TemplateGenerativeModel templateGenerativeModel()
+  OK    TemplateGenerativeModel templateGenerativeModel(RequestOptions)
+  OK    TemplateGenerativeModel templateGenerativeModel(RequestOptions, List)
+  OK    TemplateGenerativeModel templateGenerativeModel(RequestOptions, List, TemplateToolConfig)
+com.google.firebase.ai.FirebaseAI.Companion
+  OK    FirebaseAI getInstance()
+  OK    FirebaseAI getInstance(GenerativeBackend)
+  OK    FirebaseAI getInstance(FirebaseApp)
+  OK    FirebaseAI getInstance(GenerativeBackend, boolean)
+  OK    FirebaseAI getInstance(FirebaseApp, GenerativeBackend)
+  OK    FirebaseAI getInstance(FirebaseApp, GenerativeBackend, boolean)
+com.google.firebase.ai.FirebaseAIKt
+  OK    static FirebaseAI ai(Firebase, FirebaseApp, GenerativeBackend)
+  OK    static FirebaseAI ai(Firebase, FirebaseApp, GenerativeBackend, boolean)
+  OK    static FirebaseAI getAi(Firebase)
+com.google.firebase.ai.GenerativeModel
+  PLAT  Object countTokens(Bitmap, Continuation)
+  OK    Object countTokens(String, Continuation)
+  OK    Object countTokens(List, Continuation)
+  OK    Object countTokens(Content, Content[], Continuation)
+  PLAT  Object generateContent(Bitmap, Continuation)
+  OK    Object generateContent(String, Continuation)
+  OK    Object generateContent(List, Continuation)
+  OK    Object generateContent(Content, Content[], Continuation)
+  PLAT  Flow generateContentStream(Bitmap)
+  OK    Flow generateContentStream(String)
+  OK    Flow generateContentStream(List)
+  OK    Flow generateContentStream(Content, Content[])
+  OK    Object generateObject(JsonSchema, String, Continuation)
+  OK    Object generateObject(JsonSchema, Content, Content[], Continuation)
+  OK    OnDeviceExtension getOnDeviceExtension()
+  OK    Chat startChat(List)
+com.google.firebase.ai.InferenceMode
+  OK    static InferenceMode ONLY_IN_CLOUD
+  OK    static InferenceMode ONLY_ON_DEVICE
+  OK    static InferenceMode PREFER_IN_CLOUD
+  OK    static InferenceMode PREFER_ON_DEVICE
+com.google.firebase.ai.InferenceMode.Companion
+com.google.firebase.ai.InferenceSource
+  OK    static InferenceSource IN_CLOUD
+  OK    static InferenceSource ON_DEVICE
+com.google.firebase.ai.InferenceSource.Companion
+com.google.firebase.ai.LiveGenerativeModel
+  OK    Object connect(Continuation)
+  OK    Object connect(SessionResumptionConfig, Continuation)
+com.google.firebase.ai.OnDeviceConfig
+  OK    OnDeviceConfig(InferenceMode)
+  OK    OnDeviceConfig(InferenceMode, Integer)
+  OK    OnDeviceConfig(InferenceMode, Integer, Float)
+  OK    OnDeviceConfig(InferenceMode, Integer, Float, Integer)
+  OK    OnDeviceConfig(InferenceMode, Integer, Float, Integer, Integer)
+  OK    OnDeviceConfig(InferenceMode, Integer, Float, Integer, Integer, int)
+  OK    OnDeviceConfig(InferenceMode, Integer, Float, Integer, Integer, int, OnDeviceModelOption)
+  OK    int getCandidateCount()
+  OK    Integer getMaxOutputTokens()
+  OK    InferenceMode getMode()
+  OK    OnDeviceModelOption getModelOption()
+  OK    Integer getSeed()
+  OK    Float getTemperature()
+  OK    Integer getTopK()
+  OK    static OnDeviceConfig IN_CLOUD
+com.google.firebase.ai.OnDeviceConfig.Companion
+com.google.firebase.ai.OnDeviceExtension
+  OK    Object checkStatus(Continuation)
+  OK    Flow download()
+  OK    Object getModelName(Continuation)
+  OK    Object warmUp(Continuation)
+com.google.firebase.ai.OnDeviceModelOption
+  OK    static OnDeviceModelOption PREVIEW
+  OK    static OnDeviceModelOption PREVIEW_FAST
+  OK    static OnDeviceModelOption STABLE
+com.google.firebase.ai.OnDeviceModelOption.Companion
+com.google.firebase.ai.OnDeviceModelStatus
+  OK    static OnDeviceModelStatus AVAILABLE
+  OK    static OnDeviceModelStatus DOWNLOADABLE
+  OK    static OnDeviceModelStatus DOWNLOADING
+  OK    static OnDeviceModelStatus UNAVAILABLE
+com.google.firebase.ai.OnDeviceModelStatus.Companion
+com.google.firebase.ai.TemplateChat
+  OK    List getHistory()
+  OK    Object sendMessage(Content, Continuation)
+  OK    Object sendMessage(String, Continuation)
+  OK    Flow sendMessageStream(Content)
+  OK    Flow sendMessageStream(String)
+com.google.firebase.ai.TemplateGenerativeModel
+  OK    Object generateContent(String, Map, Continuation)
+  OK    Flow generateContentStream(String, Map)
+  OK    TemplateChat startChat(String, Map, List)
+com.google.firebase.ai.annotations.Generable
+  OK    String description()
+com.google.firebase.ai.annotations.Guide
+  OK    String description()
+  OK    String[] enumValues()
+  OK    String format()
+  OK    int maxItems()
+  OK    double maximum()
+  OK    int minItems()
+  OK    double minimum()
+com.google.firebase.ai.type.APINotConfiguredException
+com.google.firebase.ai.type.ActivityDetectionConfig
+  OK    static Builder builder()
+  OK    static ActivityDetectionConfig disabled()
+com.google.firebase.ai.type.ActivityDetectionConfig.Builder
+  OK    Builder()
+  OK    ActivityDetectionConfig build()
+  OK    Builder setEndSensitivity(Sensitivity)
+  OK    Builder setPrefixPaddingMs(int)
+  OK    Builder setSilenceDurationMs(int)
+  OK    Builder setStartSensitivity(Sensitivity)
+  OK    Sensitivity endSensitivity
+  OK    Integer prefixPaddingMs
+  OK    Integer silenceDurationMs
+  OK    Sensitivity startSensitivity
+com.google.firebase.ai.type.ActivityDetectionConfig.Companion
+  OK    Builder builder()
+  OK    ActivityDetectionConfig disabled()
+com.google.firebase.ai.type.ActivityDetectionConfig.Sensitivity
+  OK    static Sensitivity HIGH
+  OK    static Sensitivity LOW
+com.google.firebase.ai.type.ActivityDetectionConfig.Sensitivity.Companion
+com.google.firebase.ai.type.ActivityDetectionConfigKt
+  OK    static ActivityDetectionConfig activityDetectionConfig(Function1)
+com.google.firebase.ai.type.AspectRatio
+  OK    static AspectRatio LANDSCAPE_16x9
+  OK    static AspectRatio LANDSCAPE_21x9
+  OK    static AspectRatio LANDSCAPE_3x2
+  OK    static AspectRatio LANDSCAPE_4x3
+  OK    static AspectRatio LANDSCAPE_5x4
+  OK    static AspectRatio PORTRAIT_2x3
+  OK    static AspectRatio PORTRAIT_3x4
+  OK    static AspectRatio PORTRAIT_4x5
+  OK    static AspectRatio PORTRAIT_9x16
+  OK    static AspectRatio SQUARE_1x1
+com.google.firebase.ai.type.AspectRatio.Companion
+com.google.firebase.ai.type.AudioRecordInitializationFailedException
+  OK    AudioRecordInitializationFailedException(String)
+com.google.firebase.ai.type.AudioTranscriptionConfig
+  OK    AudioTranscriptionConfig()
+com.google.firebase.ai.type.AutoFunctionDeclaration
+  OK    String getDescription()
+  OK    Function2 getFunctionReference()
+  OK    JsonSchema getInputSchema()
+  OK    String getName()
+  OK    JsonSchema getOutputSchema()
+com.google.firebase.ai.type.AutoFunctionDeclaration.Companion
+  OK    AutoFunctionDeclaration create(String, String, JsonSchema, Function2)
+  OK    AutoFunctionDeclaration create(String, String, JsonSchema, JsonSchema, Function2)
+com.google.firebase.ai.type.BlockReason
+  OK    String getName()
+  OK    int getOrdinal()
+  OK    static BlockReason BLOCKLIST
+  OK    static BlockReason OTHER
+  OK    static BlockReason PROHIBITED_CONTENT
+  OK    static BlockReason SAFETY
+  OK    static BlockReason UNKNOWN
+com.google.firebase.ai.type.BlockReason.Companion
+com.google.firebase.ai.type.Candidate
+  OK    CitationMetadata getCitationMetadata()
+  OK    Content getContent()
+  OK    String getFinishMessage()
+  OK    FinishReason getFinishReason()
+  OK    GroundingMetadata getGroundingMetadata()
+  OK    List getSafetyRatings()
+  OK    UrlContextMetadata getUrlContextMetadata()
+com.google.firebase.ai.type.Citation
+  OK    int getEndIndex()
+  OK    String getLicense()
+  PLAT  Calendar getPublicationDate()
+  OK    int getStartIndex()
+  OK    String getTitle()
+  OK    String getUri()
+com.google.firebase.ai.type.CitationMetadata
+  OK    List getCitations()
+com.google.firebase.ai.type.CodeExecutionResultPart
+  OK    static CodeExecutionResultPart createWithThinking(String, String, boolean, String)
+  OK    boolean executionSucceeded()
+  OK    String getOutcome()
+  OK    String getOutput()
+  OK    String getThoughtSignature()
+  OK    boolean isThought()
+com.google.firebase.ai.type.CodeExecutionResultPart.Companion
+  OK    CodeExecutionResultPart createWithThinking(String, String, boolean, String)
+com.google.firebase.ai.type.Content
+  OK    Content(List)
+  OK    Content(String, List)
+  OK    Content copy(String, List)
+  OK    List getParts()
+  OK    String getRole()
+com.google.firebase.ai.type.Content.Builder
+  OK    Builder()
+  OK    Builder addFileData(String, String)
+  PLAT  Builder addImage(Bitmap)
+  OK    Builder addInlineData(byte[], String)
+  OK    Builder addPart(T)
+  OK    Builder addText(String)
+  OK    Content build()
+  OK    Builder setParts(List)
+  OK    Builder setRole(String)
+  OK    List parts
+  OK    String role
+com.google.firebase.ai.type.ContentBlockedException
+com.google.firebase.ai.type.ContentKt
+  OK    static Content content(String, Function1)
+com.google.firebase.ai.type.ContentModality
+  OK    int getOrdinal()
+  OK    static ContentModality AUDIO
+  OK    static ContentModality DOCUMENT
+  OK    static ContentModality IMAGE
+  OK    static ContentModality TEXT
+  OK    static ContentModality UNSPECIFIED
+  OK    static ContentModality VIDEO
+com.google.firebase.ai.type.ContentModality.Companion
+com.google.firebase.ai.type.ContextWindowCompressionConfig
+  OK    ContextWindowCompressionConfig(Integer, SlidingWindow)
+  OK    SlidingWindow getSlidingWindow()
+  OK    Integer getTriggerTokens()
+com.google.firebase.ai.type.CountTokensResponse
+  OK    int component1()
+  OK    List component2()
+  OK    List getPromptTokensDetails()
+  OK    int getTotalTokens()
+com.google.firebase.ai.type.ExecutableCodePart
+  OK    static ExecutableCodePart createWithThinking(String, String, boolean, String)
+  OK    String getCode()
+  OK    String getLanguage()
+  OK    String getThoughtSignature()
+  OK    boolean isThought()
+com.google.firebase.ai.type.ExecutableCodePart.Companion
+  OK    ExecutableCodePart createWithThinking(String, String, boolean, String)
+com.google.firebase.ai.type.FileDataPart
+  OK    FileDataPart(String, String)
+  OK    static FileDataPart createWithThinking(String, String, boolean, String)
+  OK    String getMimeType()
+  OK    String getThoughtSignature()
+  OK    String getUri()
+  OK    boolean isThought()
+com.google.firebase.ai.type.FileDataPart.Companion
+  OK    FileDataPart createWithThinking(String, String, boolean, String)
+com.google.firebase.ai.type.FinishReason
+  OK    String getName()
+  OK    int getOrdinal()
+  OK    static FinishReason BLOCKLIST
+  OK    static FinishReason IMAGE_OTHER
+  OK    static FinishReason IMAGE_PROHIBITED_CONTENT
+  OK    static FinishReason IMAGE_RECITATION
+  OK    static FinishReason IMAGE_SAFETY
+  OK    static FinishReason LANGUAGE
+  OK    static FinishReason MALFORMED_FUNCTION_CALL
+  OK    static FinishReason MALFORMED_RESPONSE
+  OK    static FinishReason MAX_TOKENS
+  OK    static FinishReason MISSING_THOUGHT_SIGNATURE
+  OK    static FinishReason NO_IMAGE
+  OK    static FinishReason OTHER
+  OK    static FinishReason PROHIBITED_CONTENT
+  OK    static FinishReason RECITATION
+  OK    static FinishReason SAFETY
+  OK    static FinishReason SPII
+  OK    static FinishReason STOP
+  OK    static FinishReason TOO_MANY_TOOL_CALLS
+  OK    static FinishReason UNEXPECTED_TOOL_CALL
+  OK    static FinishReason UNKNOWN
+com.google.firebase.ai.type.FinishReason.Companion
+com.google.firebase.ai.type.FirebaseAIException
+com.google.firebase.ai.type.FirebaseAIOnDeviceInvalidRequestException
+  PLAT  FirebaseAIOnDeviceInvalidRequestException(FirebaseAIOnDeviceInvalidRequestException)
+com.google.firebase.ai.type.FirebaseAIOnDeviceNotAvailableException
+  PLAT  FirebaseAIOnDeviceNotAvailableException(FirebaseAIOnDeviceNotAvailableException)
+com.google.firebase.ai.type.FirebaseAIOnDeviceUnknownException
+  PLAT  FirebaseAIOnDeviceUnknownException(FirebaseAIOnDeviceException)
+com.google.firebase.ai.type.FirebaseAutoFunctionException
+  OK    FirebaseAutoFunctionException(String)
+com.google.firebase.ai.type.FunctionCallPart
+  OK    FunctionCallPart(String, Map)
+  OK    FunctionCallPart(String, Map, String)
+  OK    static FunctionCallPart createWithThinking(String, Map, String, boolean, String)
+  OK    Map getArgs()
+  OK    String getId()
+  OK    String getName()
+  OK    String getThoughtSignature()
+  OK    boolean isThought()
+com.google.firebase.ai.type.FunctionCallPart.Companion
+  OK    FunctionCallPart createWithThinking(String, Map, String, boolean, String)
+com.google.firebase.ai.type.FunctionCallingConfig
+  OK    static FunctionCallingConfig any()
+  OK    static FunctionCallingConfig any(List)
+  OK    static FunctionCallingConfig auto()
+  OK    static FunctionCallingConfig none()
+com.google.firebase.ai.type.FunctionCallingConfig.Companion
+  OK    FunctionCallingConfig any()
+  OK    FunctionCallingConfig any(List)
+  OK    FunctionCallingConfig auto()
+  OK    FunctionCallingConfig none()
+com.google.firebase.ai.type.FunctionDeclaration
+  OK    FunctionDeclaration(String, String, Map, List)
+com.google.firebase.ai.type.FunctionResponsePart
+  OK    FunctionResponsePart(String, JsonObject)
+  OK    FunctionResponsePart(String, JsonObject, String)
+  OK    FunctionResponsePart(String, JsonObject, String, List)
+  OK    static FunctionResponsePart createWithThinking(String, JsonObject, String, List, boolean, String)
+  OK    String getId()
+  OK    String getName()
+  OK    List getParts()
+  OK    JsonObject getResponse()
+  OK    String getThoughtSignature()
+  OK    boolean isThought()
+com.google.firebase.ai.type.FunctionResponsePart.Companion
+  OK    FunctionResponsePart createWithThinking(String, JsonObject, String, List, boolean, String)
+  OK    FunctionResponsePart from(JsonObject, List)
+com.google.firebase.ai.type.GenerateContentResponse
+  OK    List getCandidates()
+  OK    List getFunctionCalls()
+  OK    InferenceSource getInferenceSource()
+  OK    List getInlineDataParts()
+  OK    String getModelVersion()
+  OK    PromptFeedback getPromptFeedback()
+  OK    String getText()
+  OK    String getThoughtSummary()
+  OK    UsageMetadata getUsageMetadata()
+com.google.firebase.ai.type.GenerateObjectResponse
+  OK    T getObject(int)
+  OK    GenerateContentResponse getResponse()
+com.google.firebase.ai.type.GenerationConfig
+  OK    static Builder builder()
+  OK    Builder toBuilder()
+com.google.firebase.ai.type.GenerationConfig.Builder
+  OK    Builder()
+  OK    GenerationConfig build()
+  SKIP  Builder setCandidateCount(Integer)
+  SKIP  Builder setFrequencyPenalty(Float)
+  OK    Builder setImageConfig(ImageConfig)
+  OK    Builder setMaxOutputTokens(Integer)
+  SKIP  Builder setPresencePenalty(Float)
+  OK    Builder setResponseMimeType(String)
+  OK    Builder setResponseModalities(List)
+  OK    Builder setResponseSchema(Schema)
+  OK    Builder setResponseSchemaJson(JsonSchema)
+  OK    Builder setSpeechConfig(SpeechConfig)
+  OK    Builder setStopSequences(List)
+  SKIP  Builder setTemperature(Float)
+  OK    Builder setThinkingConfig(ThinkingConfig)
+  SKIP  Builder setTopK(Integer)
+  SKIP  Builder setTopP(Float)
+  OK    Integer candidateCount
+  OK    Float frequencyPenalty
+  OK    ImageConfig imageConfig
+  OK    Integer maxOutputTokens
+  OK    Float presencePenalty
+  OK    JsonSchema responseJsonSchema
+  OK    String responseMimeType
+  OK    List responseModalities
+  OK    Schema responseSchema
+  OK    SpeechConfig speechConfig
+  OK    List stopSequences
+  OK    Float temperature
+  OK    ThinkingConfig thinkingConfig
+  OK    Integer topK
+  OK    Float topP
+com.google.firebase.ai.type.GenerationConfig.Companion
+  OK    Builder builder()
+com.google.firebase.ai.type.GenerationConfigKt
+  OK    static GenerationConfig generationConfig(Function1)
+com.google.firebase.ai.type.GenerativeBackend
+  OK    static GenerativeBackend agentPlatform()
+  OK    static GenerativeBackend agentPlatform(String)
+  OK    static GenerativeBackend googleAI()
+com.google.firebase.ai.type.GenerativeBackend.Companion
+  OK    GenerativeBackend agentPlatform()
+  OK    GenerativeBackend agentPlatform(String)
+  OK    GenerativeBackend googleAI()
+com.google.firebase.ai.type.GoogleMaps
+  OK    GoogleMaps()
+com.google.firebase.ai.type.GoogleMapsGroundingChunk
+  OK    String getPlaceId()
+  OK    String getTitle()
+  OK    String getUri()
+com.google.firebase.ai.type.GoogleSearch
+  OK    GoogleSearch()
+com.google.firebase.ai.type.GroundingChunk
+  OK    GoogleMapsGroundingChunk getMaps()
+  OK    WebGroundingChunk getWeb()
+com.google.firebase.ai.type.GroundingMetadata
+  OK    List getGroundingChunks()
+  OK    List getGroundingSupports()
+  OK    List getRetrievalQueries()
+  OK    SearchEntryPoint getSearchEntryPoint()
+  OK    List getWebSearchQueries()
+com.google.firebase.ai.type.GroundingSupport
+  OK    List getGroundingChunkIndices()
+  OK    Segment getSegment()
+com.google.firebase.ai.type.HarmBlockMethod
+  OK    int getOrdinal()
+  OK    static HarmBlockMethod PROBABILITY
+  OK    static HarmBlockMethod SEVERITY
+com.google.firebase.ai.type.HarmBlockMethod.Companion
+com.google.firebase.ai.type.HarmBlockThreshold
+  OK    int getOrdinal()
+  OK    static HarmBlockThreshold LOW_AND_ABOVE
+  OK    static HarmBlockThreshold MEDIUM_AND_ABOVE
+  OK    static HarmBlockThreshold NONE
+  OK    static HarmBlockThreshold OFF
+  OK    static HarmBlockThreshold ONLY_HIGH
+com.google.firebase.ai.type.HarmBlockThreshold.Companion
+com.google.firebase.ai.type.HarmCategory
+  OK    int getOrdinal()
+  OK    static HarmCategory CIVIC_INTEGRITY
+  OK    static HarmCategory DANGEROUS_CONTENT
+  OK    static HarmCategory HARASSMENT
+  OK    static HarmCategory HATE_SPEECH
+  OK    static HarmCategory IMAGE_DANGEROUS_CONTENT
+  OK    static HarmCategory IMAGE_HARASSMENT
+  OK    static HarmCategory IMAGE_HATE
+  OK    static HarmCategory IMAGE_SEXUALLY_EXPLICIT
+  OK    static HarmCategory SEXUALLY_EXPLICIT
+  OK    static HarmCategory UNKNOWN
+com.google.firebase.ai.type.HarmCategory.Companion
+com.google.firebase.ai.type.HarmProbability
+  OK    int getOrdinal()
+  OK    static HarmProbability HIGH
+  OK    static HarmProbability LOW
+  OK    static HarmProbability MEDIUM
+  OK    static HarmProbability NEGLIGIBLE
+  OK    static HarmProbability UNKNOWN
+com.google.firebase.ai.type.HarmProbability.Companion
+com.google.firebase.ai.type.HarmSeverity
+  OK    int getOrdinal()
+  OK    static HarmSeverity HIGH
+  OK    static HarmSeverity LOW
+  OK    static HarmSeverity MEDIUM
+  OK    static HarmSeverity NEGLIGIBLE
+  OK    static HarmSeverity UNKNOWN
+com.google.firebase.ai.type.HarmSeverity.Companion
+com.google.firebase.ai.type.ImageConfig
+  OK    static Builder builder()
+com.google.firebase.ai.type.ImageConfig.Builder
+  OK    Builder()
+  OK    ImageConfig build()
+  OK    Builder setAspectRatio(AspectRatio)
+  OK    Builder setImageSize(ImageSize)
+  OK    AspectRatio aspectRatio
+  OK    ImageSize imageSize
+com.google.firebase.ai.type.ImageConfig.Companion
+  OK    Builder builder()
+com.google.firebase.ai.type.ImageConfigKt
+  OK    static ImageConfig imageConfig(Function1)
+com.google.firebase.ai.type.ImagePart
+  PLAT  ImagePart(Bitmap)
+  PLAT  ImagePart(Bitmap, String)
+  PLAT  static ImagePart createWithThinking(Bitmap, String, boolean, String)
+  OK    String getDisplayName()
+  PLAT  Bitmap getImage()
+  OK    String getThoughtSignature()
+  OK    boolean isThought()
+com.google.firebase.ai.type.ImageSize
+  OK    static ImageSize SIZE_1K
+  OK    static ImageSize SIZE_2K
+  OK    static ImageSize SIZE_4K
+  OK    static ImageSize SIZE_512
+com.google.firebase.ai.type.ImageSize.Companion
+com.google.firebase.ai.type.InlineData
+  OK    InlineData(byte[], String)
+  OK    InlineData(byte[], String, String)
+  OK    byte[] getData()
+  OK    String getDisplayName()
+  OK    String getMimeType()
+com.google.firebase.ai.type.InlineDataPart
+  OK    InlineDataPart(byte[], String)
+  OK    InlineDataPart(byte[], String, String)
+  OK    static InlineDataPart createWithThinking(byte[], String, String, boolean, String)
+  OK    String getDisplayName()
+  OK    byte[] getInlineData()
+  OK    String getMimeType()
+  OK    String getThoughtSignature()
+  OK    boolean isThought()
+com.google.firebase.ai.type.InlineDataPart.Companion
+  OK    InlineDataPart createWithThinking(byte[], String, String, boolean, String)
+com.google.firebase.ai.type.InvalidAPIKeyException
+com.google.firebase.ai.type.InvalidLocationException
+com.google.firebase.ai.type.InvalidStateException
+com.google.firebase.ai.type.JsonSchema
+  OK    static JsonSchema anyOf(List)
+  OK    static JsonSchema array(JsonSchema)
+  OK    static JsonSchema array(JsonSchema, String)
+  OK    static JsonSchema array(JsonSchema, String, boolean)
+  OK    static JsonSchema array(JsonSchema, String, boolean, String)
+  OK    static JsonSchema array(JsonSchema, String, boolean, String, Integer)
+  OK    static JsonSchema array(JsonSchema, String, boolean, String, Integer, Integer)
+  OK    static JsonSchema bool()
+  OK    static JsonSchema bool(String)
+  OK    static JsonSchema bool(String, boolean)
+  OK    static JsonSchema bool(String, boolean, String)
+  OK    static JsonSchema enumeration(List)
+  OK    static JsonSchema enumeration(List, String)
+  OK    static JsonSchema enumeration(List, KClass)
+  OK    static JsonSchema enumeration(List, String, boolean)
+  OK    static JsonSchema enumeration(List, KClass, String)
+  OK    static JsonSchema enumeration(List, String, boolean, String)
+  OK    static JsonSchema enumeration(List, KClass, String, boolean)
+  OK    static JsonSchema enumeration(List, KClass, String, boolean, String)
+  OK    List getAnyOf()
+  OK    KClass getClazz()
+  OK    String getDescription()
+  OK    List getEnum()
+  OK    String getFormat()
+  OK    JsonSchema getItems()
+  OK    Integer getMaxItems()
+  OK    Double getMaximum()
+  OK    Integer getMinItems()
+  OK    Double getMinimum()
+  OK    Boolean getNullable()
+  OK    Map getProperties()
+  OK    List getRequired()
+  OK    KSerializer getSerializer()
+  OK    String getTitle()
+  OK    String getType()
+  OK    static JsonSchema numDouble()
+  OK    static JsonSchema numDouble(String)
+  OK    static JsonSchema numDouble(String, boolean)
+  OK    static JsonSchema numDouble(String, boolean, String)
+  OK    static JsonSchema numDouble(String, boolean, String, Double)
+  OK    static JsonSchema numDouble(String, boolean, String, Double, Double)
+  OK    static JsonSchema numFloat()
+  OK    static JsonSchema numFloat(String)
+  OK    static JsonSchema numFloat(String, boolean)
+  OK    static JsonSchema numFloat(String, boolean, String)
+  OK    static JsonSchema numFloat(String, boolean, String, Double)
+  OK    static JsonSchema numFloat(String, boolean, String, Double, Double)
+  OK    static JsonSchema numInt()
+  OK    static JsonSchema numInt(String)
+  OK    static JsonSchema numInt(String, boolean)
+  OK    static JsonSchema numInt(String, boolean, String)
+  OK    static JsonSchema numInt(String, boolean, String, Double)
+  OK    static JsonSchema numInt(String, boolean, String, Double, Double)
+  OK    static JsonSchema numLong()
+  OK    static JsonSchema numLong(String)
+  OK    static JsonSchema numLong(String, boolean)
+  OK    static JsonSchema numLong(String, boolean, String)
+  OK    static JsonSchema numLong(String, boolean, String, Double)
+  OK    static JsonSchema numLong(String, boolean, String, Double, Double)
+  OK    static JsonSchema obj(Map)
+  OK    static JsonSchema obj(Map, List)
+  OK    static JsonSchema obj(Map, KClass)
+  OK    static JsonSchema obj(Map, List, String)
+  OK    static JsonSchema obj(Map, KClass, List)
+  OK    static JsonSchema obj(Map, List, String, boolean)
+  OK    static JsonSchema obj(Map, KClass, List, String)
+  OK    static JsonSchema obj(Map, List, String, boolean, String)
+  OK    static JsonSchema obj(Map, KClass, List, String, boolean)
+  OK    static JsonSchema obj(Map, KClass, List, String, boolean, String)
+  OK    static JsonSchema string()
+  OK    static JsonSchema string(String)
+  OK    static JsonSchema string(String, boolean)
+  OK    static JsonSchema string(String, boolean, StringFormat)
+  OK    static JsonSchema string(String, boolean, StringFormat, String)
+com.google.firebase.ai.type.JsonSchema.Companion
+  OK    JsonSchema anyOf(List)
+  OK    JsonSchema array(JsonSchema)
+  OK    JsonSchema array(JsonSchema, String)
+  OK    JsonSchema array(JsonSchema, String, boolean)
+  OK    JsonSchema array(JsonSchema, String, boolean, String)
+  OK    JsonSchema array(JsonSchema, String, boolean, String, Integer)
+  OK    JsonSchema array(JsonSchema, String, boolean, String, Integer, Integer)
+  OK    JsonSchema bool()
+  OK    JsonSchema bool(String)
+  OK    JsonSchema bool(String, boolean)
+  OK    JsonSchema bool(String, boolean, String)
+  OK    JsonSchema enumeration(List)
+  OK    JsonSchema enumeration(List, String)
+  OK    JsonSchema enumeration(List, KClass)
+  OK    JsonSchema enumeration(List, String, boolean)
+  OK    JsonSchema enumeration(List, KClass, String)
+  OK    JsonSchema enumeration(List, String, boolean, String)
+  OK    JsonSchema enumeration(List, KClass, String, boolean)
+  OK    JsonSchema enumeration(List, KClass, String, boolean, String)
+  OK    JsonSchema numDouble()
+  OK    JsonSchema numDouble(String)
+  OK    JsonSchema numDouble(String, boolean)
+  OK    JsonSchema numDouble(String, boolean, String)
+  OK    JsonSchema numDouble(String, boolean, String, Double)
+  OK    JsonSchema numDouble(String, boolean, String, Double, Double)
+  OK    JsonSchema numFloat()
+  OK    JsonSchema numFloat(String)
+  OK    JsonSchema numFloat(String, boolean)
+  OK    JsonSchema numFloat(String, boolean, String)
+  OK    JsonSchema numFloat(String, boolean, String, Double)
+  OK    JsonSchema numFloat(String, boolean, String, Double, Double)
+  OK    JsonSchema numInt()
+  OK    JsonSchema numInt(String)
+  OK    JsonSchema numInt(String, boolean)
+  OK    JsonSchema numInt(String, boolean, String)
+  OK    JsonSchema numInt(String, boolean, String, Double)
+  OK    JsonSchema numInt(String, boolean, String, Double, Double)
+  OK    JsonSchema numLong()
+  OK    JsonSchema numLong(String)
+  OK    JsonSchema numLong(String, boolean)
+  OK    JsonSchema numLong(String, boolean, String)
+  OK    JsonSchema numLong(String, boolean, String, Double)
+  OK    JsonSchema numLong(String, boolean, String, Double, Double)
+  OK    JsonSchema obj(Map)
+  OK    JsonSchema obj(Map, List)
+  OK    JsonSchema obj(Map, KClass)
+  OK    JsonSchema obj(Map, List, String)
+  OK    JsonSchema obj(Map, KClass, List)
+  OK    JsonSchema obj(Map, List, String, boolean)
+  OK    JsonSchema obj(Map, KClass, List, String)
+  OK    JsonSchema obj(Map, List, String, boolean, String)
+  OK    JsonSchema obj(Map, KClass, List, String, boolean)
+  OK    JsonSchema obj(Map, KClass, List, String, boolean, String)
+  OK    JsonSchema string()
+  OK    JsonSchema string(String)
+  OK    JsonSchema string(String, boolean)
+  OK    JsonSchema string(String, boolean, StringFormat)
+  OK    JsonSchema string(String, boolean, StringFormat, String)
+com.google.firebase.ai.type.LatLng
+  OK    LatLng(double, double)
+  OK    double component1()
+  OK    double component2()
+  OK    LatLng copy(double, double)
+  OK    double getLatitude()
+  OK    double getLongitude()
+com.google.firebase.ai.type.LiveAudioConversationConfig
+com.google.firebase.ai.type.LiveAudioConversationConfig.Builder
+  OK    Builder()
+  OK    LiveAudioConversationConfig build()
+  OK    Builder setEnableInterruptions(boolean)
+  OK    Builder setFunctionCallHandler(Function1)
+  OK    Builder setGoAwayHandler(Function1)
+  PLAT  Builder setInitializationHandler(Function2)
+  OK    Builder setTranscriptHandler(Function2)
+  OK    boolean enableInterruptions
+  OK    Function1 functionCallHandler
+  OK    Function1 goAwayHandler
+  PLAT  Function2 initializationHandler
+  OK    Function2 transcriptHandler
+com.google.firebase.ai.type.LiveAudioConversationConfig.Companion
+  OK    Builder builder()
+com.google.firebase.ai.type.LiveAudioConversationConfigKt
+  OK    static LiveAudioConversationConfig liveAudioConversationConfig(Function1)
+com.google.firebase.ai.type.LiveGenerationConfig
+com.google.firebase.ai.type.LiveGenerationConfig.Builder
+  OK    Builder()
+  OK    LiveGenerationConfig build()
+  OK    Builder setContextWindowCompression(ContextWindowCompressionConfig)
+  OK    Builder setFrequencyPenalty(Float)
+  OK    Builder setInputAudioTranscription(AudioTranscriptionConfig)
+  OK    Builder setMaxOutputTokens(Integer)
+  OK    Builder setOutputAudioTranscription(AudioTranscriptionConfig)
+  OK    Builder setPresencePenalty(Float)
+  OK    Builder setRealtimeInputConfig(RealtimeInputConfig)
+  OK    Builder setResponseModality(ResponseModality)
+  OK    Builder setSpeechConfig(SpeechConfig)
+  OK    Builder setTemperature(Float)
+  OK    Builder setTopK(Integer)
+  OK    Builder setTopP(Float)
+  OK    ContextWindowCompressionConfig contextWindowCompression
+  OK    Float frequencyPenalty
+  OK    AudioTranscriptionConfig inputAudioTranscription
+  OK    Integer maxOutputTokens
+  OK    AudioTranscriptionConfig outputAudioTranscription
+  OK    Float presencePenalty
+  OK    RealtimeInputConfig realtimeInputConfig
+  OK    ResponseModality responseModality
+  OK    SpeechConfig speechConfig
+  OK    Float temperature
+  OK    Integer topK
+  OK    Float topP
+com.google.firebase.ai.type.LiveGenerationConfig.Companion
+  OK    Builder builder()
+com.google.firebase.ai.type.LiveGenerationConfigKt
+  OK    static LiveGenerationConfig liveGenerationConfig(Function1)
+com.google.firebase.ai.type.LiveServerContent
+  OK    Content getContent()
+  OK    boolean getGenerationComplete()
+  OK    Transcription getInputTranscription()
+  OK    boolean getInterrupted()
+  OK    Transcription getOutputTranscription()
+  OK    boolean getTurnComplete()
+com.google.firebase.ai.type.LiveServerGoAway
+  OK    Duration getTimeLeft()
+com.google.firebase.ai.type.LiveServerMessage
+com.google.firebase.ai.type.LiveServerSetupComplete
+  OK    static LiveServerSetupComplete INSTANCE
+com.google.firebase.ai.type.LiveServerToolCall
+  OK    List getFunctionCalls()
+com.google.firebase.ai.type.LiveServerToolCallCancellation
+  OK    List getFunctionIds()
+com.google.firebase.ai.type.LiveServerUnknownMessage
+com.google.firebase.ai.type.LiveSession
+  OK    Object close(Continuation)
+  OK    boolean isAudioConversationActive()
+  OK    boolean isClosed()
+  OK    Flow receive()
+  OK    Object resumeSession(Continuation)
+  OK    Object resumeSession(SessionResumptionConfig, Continuation)
+  OK    Object send(Content, Continuation)
+  OK    Object send(String, Continuation)
+  OK    Object send(Content, boolean, Continuation)
+  OK    Object send(String, boolean, Continuation)
+  OK    Object sendAudioRealtime(InlineData, Continuation)
+  OK    Object sendFunctionResponse(List, Continuation)
+  OK    Object sendStartActivityRealtime(Continuation)
+  OK    Object sendStopActivityRealtime(Continuation)
+  OK    Object sendTextRealtime(String, Continuation)
+  OK    Object sendVideoRealtime(InlineData, Continuation)
+  OK    Object startAudioConversation(LiveAudioConversationConfig, Continuation)
+  OK    Object startAudioConversation(Function1, Continuation)
+  OK    Object startAudioConversation(Function1, boolean, Continuation)
+  OK    Object startAudioConversation(Function1, Function2, boolean, Continuation)
+  OK    Object startAudioConversation(Function1, Function2, Function1, boolean, Continuation)
+  OK    void stopAudioConversation()
+  OK    void stopReceiving()
+com.google.firebase.ai.type.LiveSessionResumptionUpdate
+  OK    Integer getLastConsumedClientMessageIndex()
+  OK    String getNewHandle()
+  OK    Boolean getResumable()
+com.google.firebase.ai.type.ModalityTokenCount
+  OK    ContentModality component1()
+  OK    int component2()
+  OK    ContentModality getModality()
+  OK    int getTokenCount()
+com.google.firebase.ai.type.MultiSpeakerVoiceConfig
+  OK    MultiSpeakerVoiceConfig(List)
+  OK    List getSpeakerVoiceConfigs()
+com.google.firebase.ai.type.Part
+  OK    boolean isThought()
+com.google.firebase.ai.type.PartKt
+  OK    static FileDataPart asFileDataOrNull(Part)
+  PLAT  static Bitmap asImageOrNull(Part)
+  OK    static InlineDataPart asInlineDataPartOrNull(Part)
+  OK    static String asTextOrNull(Part)
+com.google.firebase.ai.type.PermissionMissingException
+  OK    PermissionMissingException(String, Throwable)
+com.google.firebase.ai.type.PromptBlockedException
+  OK    GenerateContentResponse getResponse()
+com.google.firebase.ai.type.PromptFeedback
+  OK    BlockReason getBlockReason()
+  OK    String getBlockReasonMessage()
+  OK    List getSafetyRatings()
+com.google.firebase.ai.type.PublicPreviewAPI
+com.google.firebase.ai.type.QuotaExceededException
+com.google.firebase.ai.type.RealtimeInputConfig
+  OK    static Builder builder()
+com.google.firebase.ai.type.RealtimeInputConfig.ActivityHandling
+  OK    static ActivityHandling INTERRUPT
+  OK    static ActivityHandling NO_INTERRUPT
+com.google.firebase.ai.type.RealtimeInputConfig.ActivityHandling.Companion
+com.google.firebase.ai.type.RealtimeInputConfig.Builder
+  OK    Builder()
+  OK    RealtimeInputConfig build()
+  OK    Builder setActivityHandling(ActivityHandling)
+  OK    Builder setAutomaticActivityDetection(ActivityDetectionConfig)
+  OK    Builder setTurnCoverage(TurnCoverage)
+  OK    ActivityHandling activityHandling
+  OK    ActivityDetectionConfig automaticActivityDetection
+  OK    TurnCoverage turnCoverage
+com.google.firebase.ai.type.RealtimeInputConfig.Companion
+  OK    Builder builder()
+com.google.firebase.ai.type.RealtimeInputConfig.TurnCoverage
+  OK    static TurnCoverage ALL_INPUT
+  OK    static TurnCoverage ONLY_ACTIVITY
+com.google.firebase.ai.type.RealtimeInputConfig.TurnCoverage.Companion
+com.google.firebase.ai.type.RealtimeInputConfigKt
+  OK    static RealtimeInputConfig realtimeInputConfig(Function1)
+com.google.firebase.ai.type.RequestOptions
+  OK    RequestOptions()
+  OK    RequestOptions(long)
+  OK    RequestOptions(long, int)
+com.google.firebase.ai.type.RequestOptionsFactory
+  OK    RequestOptions createWithCustomHeader(RequestOptions, String)
+  OK    static RequestOptionsFactory INSTANCE
+com.google.firebase.ai.type.RequestTimeoutException
+com.google.firebase.ai.type.ResponseModality
+  OK    int getOrdinal()
+  OK    static ResponseModality AUDIO
+  OK    static ResponseModality IMAGE
+  OK    static ResponseModality TEXT
+com.google.firebase.ai.type.ResponseModality.Companion
+com.google.firebase.ai.type.ResponseStoppedException
+  OK    GenerateContentResponse getResponse()
+com.google.firebase.ai.type.RetrievalConfig
+  OK    static Builder builder()
+com.google.firebase.ai.type.RetrievalConfig.Builder
+  OK    Builder()
+  OK    RetrievalConfig build()
+  OK    Builder setLanguageCode(String)
+  OK    Builder setLatLng(LatLng)
+  OK    String languageCode
+  OK    LatLng latLng
+com.google.firebase.ai.type.RetrievalConfig.Companion
+  OK    Builder builder()
+com.google.firebase.ai.type.RetrievalConfigKt
+  OK    static RetrievalConfig retrievalConfig(Function1)
+com.google.firebase.ai.type.SafetyRating
+  OK    Boolean getBlocked()
+  OK    HarmCategory getCategory()
+  OK    HarmProbability getProbability()
+  OK    float getProbabilityScore()
+  OK    HarmSeverity getSeverity()
+  OK    Float getSeverityScore()
+com.google.firebase.ai.type.SafetySetting
+  OK    SafetySetting(HarmCategory, HarmBlockThreshold, HarmBlockMethod)
+com.google.firebase.ai.type.Schema
+  OK    static Schema anyOf(List)
+  OK    static Schema array(Schema)
+  OK    static Schema array(Schema, String)
+  OK    static Schema array(Schema, String, boolean)
+  OK    static Schema array(Schema, String, boolean, String)
+  OK    static Schema array(Schema, String, boolean, String, Integer)
+  OK    static Schema array(Schema, String, boolean, String, Integer, Integer)
+  OK    static Schema boolean()
+  OK    static Schema boolean(String)
+  OK    static Schema boolean(String, boolean)
+  OK    static Schema boolean(String, boolean, String)
+  OK    static Schema enumeration(List)
+  OK    static Schema enumeration(List, String)
+  OK    static Schema enumeration(List, String, boolean)
+  OK    static Schema enumeration(List, String, boolean, String)
+  OK    List getAnyOf()
+  OK    String getDescription()
+  OK    List getEnum()
+  OK    String getFormat()
+  OK    Schema getItems()
+  OK    Integer getMaxItems()
+  OK    Double getMaximum()
+  OK    Integer getMinItems()
+  OK    Double getMinimum()
+  OK    Boolean getNullable()
+  OK    Map getProperties()
+  OK    List getRequired()
+  OK    String getTitle()
+  OK    String getType()
+  OK    static Schema numDouble()
+  OK    static Schema numDouble(String)
+  OK    static Schema numDouble(String, boolean)
+  OK    static Schema numDouble(String, boolean, String)
+  OK    static Schema numDouble(String, boolean, String, Double)
+  OK    static Schema numDouble(String, boolean, String, Double, Double)
+  OK    static Schema numFloat()
+  OK    static Schema numFloat(String)
+  OK    static Schema numFloat(String, boolean)
+  OK    static Schema numFloat(String, boolean, String)
+  OK    static Schema numFloat(String, boolean, String, Double)
+  OK    static Schema numFloat(String, boolean, String, Double, Double)
+  OK    static Schema numInt()
+  OK    static Schema numInt(String)
+  OK    static Schema numInt(String, boolean)
+  OK    static Schema numInt(String, boolean, String)
+  OK    static Schema numInt(String, boolean, String, Double)
+  OK    static Schema numInt(String, boolean, String, Double, Double)
+  OK    static Schema numLong()
+  OK    static Schema numLong(String)
+  OK    static Schema numLong(String, boolean)
+  OK    static Schema numLong(String, boolean, String)
+  OK    static Schema numLong(String, boolean, String, Double)
+  OK    static Schema numLong(String, boolean, String, Double, Double)
+  OK    static Schema obj(Map)
+  OK    static Schema obj(Map, List)
+  OK    static Schema obj(Map, List, String)
+  OK    static Schema obj(Map, List, String, boolean)
+  OK    static Schema obj(Map, List, String, boolean, String)
+  OK    static Schema str()
+  OK    static Schema str(String)
+  OK    static Schema str(String, boolean)
+  OK    static Schema str(String, boolean, StringFormat)
+  OK    static Schema str(String, boolean, StringFormat, String)
+com.google.firebase.ai.type.Schema.Companion
+  OK    Schema anyOf(List)
+  OK    Schema array(Schema)
+  OK    Schema array(Schema, String)
+  OK    Schema array(Schema, String, boolean)
+  OK    Schema array(Schema, String, boolean, String)
+  OK    Schema array(Schema, String, boolean, String, Integer)
+  OK    Schema array(Schema, String, boolean, String, Integer, Integer)
+  OK    Schema boolean()
+  OK    Schema boolean(String)
+  OK    Schema boolean(String, boolean)
+  OK    Schema boolean(String, boolean, String)
+  OK    Schema enumeration(List)
+  OK    Schema enumeration(List, String)
+  OK    Schema enumeration(List, String, boolean)
+  OK    Schema enumeration(List, String, boolean, String)
+  OK    Schema numDouble()
+  OK    Schema numDouble(String)
+  OK    Schema numDouble(String, boolean)
+  OK    Schema numDouble(String, boolean, String)
+  OK    Schema numDouble(String, boolean, String, Double)
+  OK    Schema numDouble(String, boolean, String, Double, Double)
+  OK    Schema numFloat()
+  OK    Schema numFloat(String)
+  OK    Schema numFloat(String, boolean)
+  OK    Schema numFloat(String, boolean, String)
+  OK    Schema numFloat(String, boolean, String, Double)
+  OK    Schema numFloat(String, boolean, String, Double, Double)
+  OK    Schema numInt()
+  OK    Schema numInt(String)
+  OK    Schema numInt(String, boolean)
+  OK    Schema numInt(String, boolean, String)
+  OK    Schema numInt(String, boolean, String, Double)
+  OK    Schema numInt(String, boolean, String, Double, Double)
+  OK    Schema numLong()
+  OK    Schema numLong(String)
+  OK    Schema numLong(String, boolean)
+  OK    Schema numLong(String, boolean, String)
+  OK    Schema numLong(String, boolean, String, Double)
+  OK    Schema numLong(String, boolean, String, Double, Double)
+  OK    Schema obj(Map)
+  OK    Schema obj(Map, List)
+  OK    Schema obj(Map, List, String)
+  OK    Schema obj(Map, List, String, boolean)
+  OK    Schema obj(Map, List, String, boolean, String)
+  OK    Schema str()
+  OK    Schema str(String)
+  OK    Schema str(String, boolean)
+  OK    Schema str(String, boolean, StringFormat)
+  OK    Schema str(String, boolean, StringFormat, String)
+com.google.firebase.ai.type.SearchEntryPoint
+  OK    String getRenderedContent()
+  OK    String getSdkBlob()
+com.google.firebase.ai.type.Segment
+  OK    int getEndIndex()
+  OK    int getPartIndex()
+  OK    int getStartIndex()
+  OK    String getText()
+com.google.firebase.ai.type.SerializationException
+com.google.firebase.ai.type.ServerException
+com.google.firebase.ai.type.ServiceConnectionHandshakeFailedException
+  OK    ServiceConnectionHandshakeFailedException(String, Throwable)
+com.google.firebase.ai.type.ServiceDisabledException
+com.google.firebase.ai.type.SessionAlreadyReceivingException
+  OK    SessionAlreadyReceivingException()
+com.google.firebase.ai.type.SessionResumptionConfig
+  OK    SessionResumptionConfig()
+  OK    SessionResumptionConfig(String)
+com.google.firebase.ai.type.SlidingWindow
+  OK    SlidingWindow(Integer)
+  OK    Integer getTargetTokens()
+com.google.firebase.ai.type.SpeakerVoiceConfig
+  OK    SpeakerVoiceConfig(String, Voice)
+  OK    String getSpeaker()
+  OK    Voice getVoice()
+com.google.firebase.ai.type.SpeechConfig
+  OK    SpeechConfig(MultiSpeakerVoiceConfig)
+  OK    SpeechConfig(Voice)
+  OK    SpeechConfig(MultiSpeakerVoiceConfig, String)
+  OK    SpeechConfig(Voice, String)
+  OK    String getLanguageCode()
+  OK    MultiSpeakerVoiceConfig getMultiSpeakerVoiceConfig()
+  OK    Voice getVoice()
+com.google.firebase.ai.type.StringFormat
+com.google.firebase.ai.type.StringFormat.Custom
+  OK    Custom(String)
+com.google.firebase.ai.type.TemplateAutoFunctionDeclaration
+  OK    Function2 getFunctionReference()
+  OK    JsonSchema getInputSchema()
+  OK    String getName()
+  OK    JsonSchema getOutputSchema()
+com.google.firebase.ai.type.TemplateAutoFunctionDeclaration.Companion
+  OK    TemplateAutoFunctionDeclaration create(String, JsonSchema, JsonSchema, Function2)
+com.google.firebase.ai.type.TemplateFunctionDeclaration
+  OK    TemplateFunctionDeclaration(String, JsonSchema, JsonSchema)
+  OK    JsonSchema getInputSchema()
+  OK    String getName()
+  OK    JsonSchema getOutputSchema()
+com.google.firebase.ai.type.TemplateTool
+  OK    static TemplateTool functionDeclarations(List, List)
+  OK    static TemplateTool googleMaps()
+  OK    static TemplateTool googleMaps(GoogleMaps)
+com.google.firebase.ai.type.TemplateTool.Companion
+  OK    TemplateTool functionDeclarations(List, List)
+  OK    TemplateTool googleMaps()
+  OK    TemplateTool googleMaps(GoogleMaps)
+com.google.firebase.ai.type.TemplateToolConfig
+  OK    TemplateToolConfig()
+  OK    TemplateToolConfig(RetrievalConfig)
+com.google.firebase.ai.type.TextPart
+  OK    TextPart(String)
+  OK    static TextPart createWithThinking(String, boolean, String)
+  OK    String getText()
+  OK    String getThoughtSignature()
+  OK    boolean isThought()
+com.google.firebase.ai.type.TextPart.Companion
+  OK    TextPart createWithThinking(String, boolean, String)
+com.google.firebase.ai.type.ThinkingConfig
+com.google.firebase.ai.type.ThinkingConfig.Builder
+  OK    Builder()
+  OK    ThinkingConfig build()
+  OK    Builder setIncludeThoughts(boolean)
+  OK    Builder setThinkingBudget(int)
+  OK    Builder setThinkingLevel(ThinkingLevel)
+com.google.firebase.ai.type.ThinkingConfigKt
+  OK    static ThinkingConfig thinkingConfig(Function1)
+com.google.firebase.ai.type.ThinkingLevel
+  OK    int getOrdinal()
+  OK    static ThinkingLevel HIGH
+  OK    static ThinkingLevel LOW
+  OK    static ThinkingLevel MEDIUM
+  OK    static ThinkingLevel MINIMAL
+com.google.firebase.ai.type.ThinkingLevel.Companion
+com.google.firebase.ai.type.Tool
+  OK    static Tool codeExecution()
+  OK    static Tool functionDeclarations(List)
+  OK    static Tool functionDeclarations(List, List)
+  OK    static Tool googleMaps()
+  OK    static Tool googleMaps(GoogleMaps)
+  OK    static Tool googleSearch()
+  OK    static Tool googleSearch(GoogleSearch)
+  OK    static Tool urlContext()
+  OK    static Tool urlContext(UrlContext)
+com.google.firebase.ai.type.Tool.Companion
+  OK    Tool codeExecution()
+  OK    Tool functionDeclarations(List)
+  OK    Tool functionDeclarations(List, List)
+  OK    Tool googleMaps()
+  OK    Tool googleMaps(GoogleMaps)
+  OK    Tool googleSearch()
+  OK    Tool googleSearch(GoogleSearch)
+  OK    Tool urlContext()
+  OK    Tool urlContext(UrlContext)
+com.google.firebase.ai.type.ToolConfig
+  OK    ToolConfig()
+  OK    ToolConfig(FunctionCallingConfig)
+  OK    ToolConfig(FunctionCallingConfig, RetrievalConfig)
+com.google.firebase.ai.type.Transcription
+  OK    String getText()
+com.google.firebase.ai.type.UnknownException
+com.google.firebase.ai.type.UnsupportedUserLocationException
+com.google.firebase.ai.type.UrlContext
+  OK    UrlContext()
+com.google.firebase.ai.type.UrlContextMetadata
+  OK    List getUrlMetadata()
+com.google.firebase.ai.type.UrlMetadata
+  OK    String getRetrievedUrl()
+  OK    UrlRetrievalStatus getUrlRetrievalStatus()
+com.google.firebase.ai.type.UrlRetrievalStatus
+  OK    String getName()
+  OK    int getOrdinal()
+  OK    static UrlRetrievalStatus ERROR
+  OK    static UrlRetrievalStatus PAYWALL
+  OK    static UrlRetrievalStatus SUCCESS
+  OK    static UrlRetrievalStatus UNSAFE
+  OK    static UrlRetrievalStatus UNSPECIFIED
+com.google.firebase.ai.type.UrlRetrievalStatus.Companion
+com.google.firebase.ai.type.UsageMetadata
+  OK    List getCacheTokensDetails()
+  OK    int getCachedContentTokenCount()
+  OK    Integer getCandidatesTokenCount()
+  OK    List getCandidatesTokensDetails()
+  OK    int getPromptTokenCount()
+  OK    List getPromptTokensDetails()
+  OK    int getThoughtsTokenCount()
+  OK    int getToolUsePromptTokenCount()
+  OK    List getToolUsePromptTokensDetails()
+  OK    int getTotalTokenCount()
+com.google.firebase.ai.type.Voice
+  OK    Voice(String)
+  OK    String getVoiceName()
+com.google.firebase.ai.type.WebGroundingChunk
+  OK    String getDomain()
+  OK    String getTitle()
+  OK    String getUri()

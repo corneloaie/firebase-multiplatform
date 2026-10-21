@@ -1,9 +1,16 @@
 # Firebase Android SDK APIs intentionally not mirrored by firebase-firestore.
 
-# The pipeline API (Firestore Pipelines) does not exist in the pinned iOS and JS SDKs.
-com.google.firebase.firestore.pipeline.*  // @unavailable Firestore Pipelines are not in the pinned iOS/JS SDKs
-com.google.firebase.firestore.Pipeline*  // @unavailable Firestore Pipelines are not in the pinned iOS/JS SDKs
-com.google.firebase.firestore.FirebaseFirestore#pipeline  // @unavailable Firestore Pipelines are not in the pinned iOS/JS SDKs
+# Pipeline API members whose signature needs an Android/JVM-only type: java.util.Date, java.time, or the SDK's protobuf
+# Value (metalava lists it as error.NonExistentClass).
+com.google.firebase.firestore.pipeline.Expression*#constant(Date)  // @platform java.util.Date
+com.google.firebase.firestore.pipeline.AbstractOptions#with(String, NonExistentClass)  // @platform com.google.firestore.v1.Value
+com.google.firebase.firestore.pipeline.Stage#withOption(String, NonExistentClass)  // @platform com.google.firestore.v1.Value
+com.google.firebase.firestore.pipeline.Ordering$Direction#getProto  // @platform com.google.firestore.v1.Value
+com.google.firebase.firestore.pipeline.evaluation.TimestampKt#convertUnit  // @platform java.time.temporal.ChronoUnit
+
+# Internal in the SDK's classes (getAlias$..., getExpr$...): metalava lists these overrides of internal properties as public.
+com.google.firebase.firestore.pipeline.AliasedExpression#getAlias  // @hide internal in the Android SDK
+com.google.firebase.firestore.pipeline.AliasedExpression#getExpr  // @hide internal in the Android SDK
 
 # Reflective mapping of documents to custom classes is Android-only.
 com.google.firebase.firestore.DocumentSnapshot#get(FieldPath, Class)  // @platform java.lang.Class

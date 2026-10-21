@@ -233,9 +233,17 @@ stripHeaderStubs(
         "com/google/firebase/firestore/FirestoreStatics.class",
     ),
     // firebase-java-sdk ports an older Android SDK without the cache-only listen source, the gRPC flow control window
-    // setting, the restricted FieldPath.fromDotSeparatedPath, vector values, the minimum and maximum transforms and the
-    // BSON types (BSON binary data is a Blob subtype).
+    // setting, the restricted FieldPath.fromDotSeparatedPath, vector values, the minimum and maximum transforms, the
+    // BSON types (BSON binary data is a Blob subtype) and the pipeline API.
     jvmMissingMembers = listOf(
+        "com/google/firebase/firestore/pipeline/",
+        "com/google/firebase/firestore/Pipeline",
+        "com/google/firebase/firestore/Pipeline\$ExecuteOptions",
+        "com/google/firebase/firestore/Pipeline\$ExecuteOptions\$IndexMode",
+        "com/google/firebase/firestore/Pipeline\$Snapshot",
+        "com/google/firebase/firestore/PipelineResult",
+        "com/google/firebase/firestore/PipelineSource",
+        "com/google/firebase/firestore/FirebaseFirestore.pipeline()Lcom/google/firebase/firestore/PipelineSource;",
         "com/google/firebase/firestore/ListenSource",
         "com/google/firebase/firestore/SnapshotListenOptions",
         "com/google/firebase/firestore/SnapshotListenOptions\$Builder",

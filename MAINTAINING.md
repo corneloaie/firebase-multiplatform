@@ -56,13 +56,21 @@ It moves these four to their newest stable release:
 | What | Where |
 |---|---|
 | `firebase-bom` | `gradle/libs.versions.toml` |
-| `firebase-ios-sdk` | `gradle/libs.versions.toml`, the SwiftPM minimum version |
+| `firebase-ios-sdk` | `gradle/libs.versions.toml`, the SwiftPM minimum version; also the minimum of the Objective-C wrapper packages (`*/apple/*/Package.swift`) |
 | the `firebase` npm pins | the module build files |
 | `androidSdk.apiRef` | `gradle.properties`, the newest `m<NNN> mergeback` commit of firebase-android-sdk, i.e. the API of the latest Firebase Android release |
 
-It then runs `updateAndroidSdkApi` and `androidSourceCompatDump` and refreshes the README table. The pull request body
-lists every member that became `MISS` or `OMIT`. A major version bump usually needs code changes; CI on the pull request
-shows where.
+It then runs `updateAndroidSdkApi`, regenerates the Firestore pipeline expressions (below), runs
+`androidSourceCompatDump` and refreshes the README table. The pull request body lists every member that became `MISS` or
+`OMIT`. A major version bump usually needs code changes; CI on the pull request shows where.
+
+The ~650 functions of the Firestore pipeline API's `Expression` and its aggregate functions are generated:
+`python3 firebase-firestore/codegen/generate_pipeline.py` reads the Android SDK's `expressions.kt` and `aggregates.kt` at
+`androidSdk.apiRef` and writes `Expression.kt` and `AggregateFunction.kt` in
+`firebase-firestore/src/commonMain/kotlin/com/google/firebase/firestore/pipeline/`, keeping each function's name,
+parameters and the backend function it builds. It fails on a function it cannot translate: add an override for it in
+the script (`OVERRIDES`). The rest of the pipeline API (stages, options, `Pipeline`, the expression classes) is written
+by hand, and the Android compilation checks all of it against the SDK's classes.
 
 ### 3. Optional: Claude Code implements the gaps
 
@@ -106,7 +114,9 @@ Then run `./gradlew apiDump androidSourceCompatDump formatKotlin` and
   `-Dorg.gradle.jvmargs=-Xmx4g -Pkotlin.daemon.jvmargs=-Xmx3g`, and compile per target
   (`compileKotlinIosSimulatorArm64`, `compileKotlinWasmJs`, ...) rather than `assemble`.
 - **Tests:** most tests need the Firebase emulators. Install `firebase-tools`, then run
-  `firebase emulators:start --config=./test/firebase.json`. CI runs the full matrix on every pull request.
+  `firebase emulators:start --config=./test/firebase.json`. It starts the Firestore emulator in Enterprise edition, which
+  runs pipelines (it still rejects BSON values, so `BsonTypesTest` stays ignored). CI runs the full matrix on every pull
+  request.
 
 ## Releasing
 

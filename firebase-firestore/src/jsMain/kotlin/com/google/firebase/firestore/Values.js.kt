@@ -190,3 +190,8 @@ internal inline fun <R> rethrow(function: () -> R): R = try {
 } catch (e: Throwable) {
     throw e.toFirestoreException()
 }
+
+/** Kotlin/JS numbers other than Long are JS numbers, whose type checks match any number: the JS SDK sends the integral ones as integers. */
+internal actual fun isIntegerValue(number: Number): Boolean = number is Long || number.toDouble().let { it == floor(it) && abs(it) < MAX_EXACT_INTEGER }
+
+internal actual fun isSameFirestore(a: FirebaseFirestore, b: FirebaseFirestore): Boolean = a === b || a.js === b.js

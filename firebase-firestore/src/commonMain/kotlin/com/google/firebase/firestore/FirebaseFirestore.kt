@@ -13,7 +13,7 @@ import kotlinx.coroutines.Runnable
  * Android SDK: obtained per [FirebaseApp] and database with the static accessors (or the `Firebase.firestore`
  * extensions), it creates references, batches and transactions and manages the network and the local cache.
  *
- * Not mirrored: the pipeline API and `loadBundle` from JVM streams (see `api/android-sdk/exclusions.txt`).
+ * Not mirrored: `loadBundle` from JVM streams (see `api/android-sdk/exclusions.txt`).
  */
 public expect class FirebaseFirestore {
     /** The [FirebaseApp] this instance belongs to. */
@@ -72,6 +72,9 @@ public expect class FirebaseFirestore {
 
     /** Completes when all the pending writes have been acknowledged by the backend. */
     public fun waitForPendingWrites(): Task<Nothing?>
+
+    /** The sources of pipelines over this database (Firestore Pipelines, a Firestore Enterprise edition feature). */
+    public fun pipeline(): PipelineSource
 
     public companion object {
         /** The instance of the default [FirebaseApp] and the default database. */

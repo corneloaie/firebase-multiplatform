@@ -11,14 +11,14 @@ import java.util.zip.ZipFile
 
 /**
  * Writes a Metalava-style signature file (`// Signature format: 3.0`, see [AndroidSdkApiTxtParser]) for the public API
- * of compiled classes, for the Firebase Android SDK modules that are not open source (`firebase-auth`, `firebase-analytics`)
- * and so publish no `api.txt`.
+ * of compiled classes, for the Firebase Android SDK modules that are not open source (`firebase-auth`, `firebase-analytics`,
+ * `firebase-pnv`) and so publish no `api.txt`.
  *
  * The public API is read from the bytecode: public and protected, non-synthetic members of public classes under the given
  * packages. What the SDK keeps out of its documented API is left out here too: obfuscated members and classes (`zz`
- * names), the `internal` packages and members whose signature involves an internal or obfuscated type, members marked
- * `@KeepForSdk`, `@Hide`, `@ShowFirstParty` or `@RestrictTo`, and the `Parcelable` plumbing (`CREATOR`, `writeToParcel`).
- * Types are erased, and `@Deprecated` members are marked as such.
+ * names, and R8's minified class names such as `a` or `b0`), the `internal` packages and members whose signature involves
+ * an internal or obfuscated type, members marked `@KeepForSdk`, `@Hide`, `@ShowFirstParty` or `@RestrictTo`, and the
+ * `Parcelable` plumbing (`CREATOR`, `writeToParcel`). Types are erased, and `@Deprecated` members are marked as such.
  */
 object AndroidSdkApiJarDumper {
 
@@ -208,13 +208,21 @@ object AndroidSdkApiJarDumper {
     /** `java.lang.String` as Metalava writes it (`String`); other types fully qualified, nested classes dotted. */
     private fun String.simple(): String = if (startsWith("java.lang.") && substringAfter("java.lang.").none { it == '.' }) substringAfter("java.lang.") else this
 
+    /** A class name as R8 minifies it (`a`, `z`, `b0`): never an API class, whose names start with an uppercase letter. */
+    private val minifiedClassName = Regex("[a-z][a-z0-9]{0,2}")
+
     /** The internal names of the classes a descriptor references. */
     private fun String.referencedTypes(): List<String> = Regex("L([^;]+);").findAll(this).map { it.groupValues[1] }.toList()
 
-    /** Obfuscated (`zz`), library-internal or injected (components, inject) types are not part of the documented API. */
+    /**
+     * Obfuscated (`zz`, or a class name R8 minified to a few lowercase characters, e.g. firebase-pnv's public
+     * `com.google.firebase.pnv.a0`), library-internal or injected (components, inject) types are not part of the
+     * documented API. Only the class name segments are tested for minification, as package names are lowercase too.
+     */
     private fun String.isHiddenType(): Boolean {
         val segments = split('/', '$')
-        return segments.any { it.startsWith("zz") } || segments.dropLast(1).any { it == "internal" } ||
+        return segments.any { it.startsWith("zz") } || substringAfterLast('/').split('$').any { it.matches(minifiedClassName) } ||
+            segments.dropLast(1).any { it == "internal" } ||
             startsWith("com/google/firebase/components/") || startsWith("com/google/firebase/inject/") || startsWith("com/google/firebase/heartbeatinfo/") ||
             startsWith("com/google/android/gms/common/internal/safeparcel/")
     }

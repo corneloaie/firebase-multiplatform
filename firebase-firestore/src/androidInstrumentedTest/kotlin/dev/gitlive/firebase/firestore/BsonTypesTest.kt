@@ -106,7 +106,7 @@ class BsonValuesTest {
  * batch, at the top level, in lists and in maps, read back with the typed getters, `get` and `data`, and used in query
  * filters, ordering and cursors.
  */
-@Ignore // BSON types need a Firestore Enterprise edition database: enable once test/firebase.json starts the emulator as one.
+@Ignore // BSON types need a Firestore Enterprise edition database; the emulator (1.21.0) rejects them even when started as one.
 class BsonTypesTest {
 
     companion object {
