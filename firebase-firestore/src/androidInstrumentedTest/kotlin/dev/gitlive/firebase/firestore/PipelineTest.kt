@@ -379,7 +379,8 @@ class PipelineTest {
         // Checked before the request is sent, as the Android SDK checks them.
         assertFailsWith<IllegalArgumentException> { firestore.pipeline().collection(books).select(field("title").alias("x"), field("genre").alias("x")).execute() }
         assertFailsWith<IllegalArgumentException> { firestore.pipeline().collection(books).addFields(field("title").alias("__name__")) }
-        assertFailsWith<IllegalArgumentException> { firestore.pipeline().collection(books).removeFields("__name__") }
+        // Firestore 27.1.0 for Android lets removeFields remove the reserved fields (firebase/firebase-android-sdk#8524).
+        firestore.pipeline().collection(books).removeFields("__name__")
         assertFailsWith<IllegalStateException> { PipelineSource.subcollection("reviews").execute() }
     }
 }

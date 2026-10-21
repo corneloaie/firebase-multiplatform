@@ -436,11 +436,9 @@ internal class DistinctStage(internal val groups: Array<out Selectable>, options
     override fun hashCode(): Int = 31 * groups.contentHashCode() + options.hashCode()
 }
 
+// Removing the reserved fields (__name__, __create_time__, __update_time__) is allowed, as in Firestore 27.1.0 for
+// Android (firebase/firebase-android-sdk#8524)
 internal class RemoveFieldsStage(internal val fields: Array<out Field>, options: InternalOptions = InternalOptions.EMPTY) : Stage<RemoveFieldsStage>("remove_fields", options) {
-    init {
-        requireNoReservedAlias(fields) { "Alias $it is required" }
-    }
-
     override fun self(options: InternalOptions) = RemoveFieldsStage(fields, options)
 
     override fun equals(other: Any?): Boolean = this === other || other is RemoveFieldsStage && fields.contentEquals(other.fields) && options == other.options
