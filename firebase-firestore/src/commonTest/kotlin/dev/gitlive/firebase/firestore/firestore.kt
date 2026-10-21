@@ -30,6 +30,9 @@ expect val context: Any
 /** Whether the platform SDK reads inside a transaction synchronously; the JS SDK does not. */
 expect val transactionGetIsSynchronous: Boolean
 
+/** Whether the platform SDK can execute a pipeline with execute options; the iOS SDK's pipeline bridge cannot. */
+expect val pipelineExecuteOptionsSupported: Boolean
+
 /** @return a map extracted from the encoded data. */
 expect fun encodedAsMap(encoded: Any?): Map<String, Any?>
 

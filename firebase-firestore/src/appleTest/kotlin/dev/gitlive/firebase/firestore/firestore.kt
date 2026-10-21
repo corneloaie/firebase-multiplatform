@@ -13,3 +13,5 @@ actual fun encodedAsMap(encoded: Any?): Map<String, Any?> = encoded as Map<Strin
 actual fun Map<String, Any?>.asEncoded(): Any = this
 
 actual val transactionGetIsSynchronous: Boolean = true
+
+actual val pipelineExecuteOptionsSupported: Boolean = false
