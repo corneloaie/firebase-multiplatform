@@ -20,6 +20,15 @@ internal expect fun fieldPathOf(vararg fieldNames: String): FieldPath
 
 internal expect fun fieldPathDocumentId(): FieldPath
 
+/** The field names of [fieldPath] (`__name__` for the document id); used by the pipeline API, which is stripped on Android and the JVM. */
+internal expect fun fieldPathSegments(fieldPath: FieldPath): List<String>
+
+/** Whether the platform SDK sends [number] as an integer rather than a double: by its type, or on JS by its value. */
+internal expect fun isIntegerValue(number: Number): Boolean
+
+/** Whether [a] and [b] are the same database's instances, as the pipeline API checks its references to be. */
+internal expect fun isSameFirestore(a: FirebaseFirestore, b: FirebaseFirestore): Boolean
+
 internal expect fun fieldValueServerTimestamp(): FieldValue
 
 internal expect fun fieldValueDelete(): FieldValue

@@ -6,7 +6,7 @@ package compat
  * parameter types (constructors are `class#<init>(...)`). [uncountedStatus] is the report status of a member that is excluded from
  * the count: `HIDE` when the comment contains `@hide` (hidden in the Android SDK), `PLAT` when it contains `@platform`
  * (the member's signature involves an Android/JVM-only type such as `Context`, `Parcel`, `Date` or `Instant`) and `UNAV`
- * when it contains `@unavailable` (the feature does not exist in the pinned iOS or JS SDK, such as the Firestore pipeline API).
+ * when it contains `@unavailable` (the feature does not exist in the pinned iOS or JS SDK).
  * Any other exclusion is intentionally not mirrored and counts as unavailable (`OMIT`).
  */
 data class Exclusion(val pattern: Regex, val uncountedStatus: String?) {

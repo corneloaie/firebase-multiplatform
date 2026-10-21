@@ -253,3 +253,7 @@ internal inline fun <R> rethrow(function: () -> R): R = try {
 } catch (e: Throwable) {
     throw e.toFirestoreException()
 }
+
+internal actual fun isIntegerValue(number: Number): Boolean = number is Byte || number is Short || number is Int || number is Long
+
+internal actual fun isSameFirestore(a: FirebaseFirestore, b: FirebaseFirestore): Boolean = a === b || a.js === b.js

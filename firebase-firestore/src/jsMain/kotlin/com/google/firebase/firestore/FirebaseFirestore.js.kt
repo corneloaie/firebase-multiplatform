@@ -142,6 +142,8 @@ public actual class FirebaseFirestore private constructor(private val jsApp: JsF
 
     public actual fun waitForPendingWrites(): Task<Nothing?> = write { waitForPendingWrites(js) }
 
+    public actual fun pipeline(): PipelineSource = PipelineSource(this)
+
     override fun toString(): String = "FirebaseFirestore(app=${jsApp.name}, database=${databaseId ?: DEFAULT_DATABASE})"
 
     private object Instances {

@@ -42,6 +42,7 @@ public actual class FirebaseFirestore private constructor() {
     public actual fun enableNetwork(): Task<Nothing?> = stub()
     public actual fun terminate(): Task<Nothing?> = stub()
     public actual fun waitForPendingWrites(): Task<Nothing?> = stub()
+    public actual fun pipeline(): PipelineSource = stub()
 
     public actual companion object {
         @JvmStatic
