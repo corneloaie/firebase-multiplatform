@@ -135,9 +135,10 @@ jobs:
           platform-name: JVM
           report-paths: |
             **/build/reports/tests/jvmTest/
-  build-metadata:
-    # The common and shared source set metadata compilations, which publishing runs and no test job does. They report
-    # errors that the platform compilations accept, such as an expect class that misses an inherited abstract member.
+  build-publication:
+    # Compilations that publishing runs and no test job does: every module's common and shared source set metadata, which
+    # reports errors the platform compilations accept (an expect class missing an inherited abstract member), and its
+    # tvOS code, which no pull request job tests. --continue reports every module's errors at once.
     runs-on: macos-latest
     timeout-minutes: 90
     steps:
@@ -159,5 +160,5 @@ jobs:
       - uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: '26.4.1'
-      - name: Compile the metadata of every module
-        run: ./gradlew allMetadataJar
+      - name: Compile the metadata and tvOS code of every module
+        run: ./gradlew --continue allMetadataJar compileKotlinTvosArm64 compileKotlinTvosSimulatorArm64
