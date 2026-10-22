@@ -7,7 +7,7 @@
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-support-FF5E5B?style=flat-square&logo=ko-fi&logoColor=white)](https://ko-fi.com/corneloaie)
 
 <!-- coverage-badge:start -->
-[coverage-badge]: https://img.shields.io/badge/Android%20API%20coverage-100%25%3A%204%2C092%20of%204%2C092%20members%2C%2018%20products-brightgreen?style=flat-square
+[coverage-badge]: https://img.shields.io/badge/Android%20API%20coverage-100%25%3A%204%2C117%20of%204%2C117%20members%2C%2018%20products-brightgreen?style=flat-square
 <!-- coverage-badge:end -->
 
 **The complete Firebase Android SDK API in Kotlin Multiplatform common code**, for every Firebase client product, on
@@ -25,11 +25,11 @@ their newest releases every week.
 ## Coverage
 
 <!-- coverage:start -->
-**18 Firebase products: 4,092 of 4,092 Android API members available from common code (100%)**, measured against firebase-android-sdk [`3199128`](https://github.com/firebase/firebase-android-sdk/tree/3199128480a6619779fa2feda823922f10b91009). Built on the Firebase Android BoM 35.1.0 (App Distribution 16.0.0-beta21), iOS SDK 13.1.0 and JS SDK 13.1.0.
+**18 Firebase products: 4,117 of 4,117 Android API members available from common code (100%)**, measured against firebase-android-sdk [`2c58acb`](https://github.com/firebase/firebase-android-sdk/tree/2c58acbb9da02dfa1b9d77a2bfd7c0ad937285be). Built on the Firebase Android BoM 35.1.0 (App Distribution 16.0.0-beta21), iOS SDK 13.1.0 and JS SDK 13.1.0.
 
 | Product | Artifact | Android API | Members | Android | iOS | macOS | tvOS | JVM | JS | Wasm |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| [AI Logic](https://firebase.google.com/docs/ai-logic) | `firebase-ai` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-ai/api/android-sdk-compat.txt) | 874 / 874 | ✅ | ✅ | ✅ | ✅ | – | ✅ | ✅ |
+| [AI Logic](https://firebase.google.com/docs/ai-logic) | `firebase-ai` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-ai/api/android-sdk-compat.txt) | 884 / 884 | ✅ | ✅ | ✅ | ✅ | – | ✅ | ✅ |
 | [Analytics](https://firebase.google.com/docs/analytics) | `firebase-analytics` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-analytics/api/android-sdk-compat.txt) | 153 / 153 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [App (core)](https://firebase.google.com/docs/reference/android/com/google/firebase/FirebaseApp) | `firebase-app` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-app/api/android-sdk-compat.txt) | 46 / 46 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [App Check](https://firebase.google.com/docs/app-check) | `firebase-appcheck` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-appcheck/api/android-sdk-compat.txt) | 28 / 28 | ✅ | ✅ | ✅ | ✅ | – | ✅ | ✅ |
@@ -39,7 +39,7 @@ their newest releases every week.
 | [Crashlytics](https://firebase.google.com/docs/crashlytics) | `firebase-crashlytics` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-crashlytics/api/android-sdk-compat.txt) | 36 / 36 | ✅ | ✅ | ✅ | – | ✅ | – | – |
 | [Realtime Database](https://firebase.google.com/docs/database) | `firebase-database` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-database/api/android-sdk-compat.txt) | 191 / 191 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [Data Connect](https://firebase.google.com/docs/data-connect) | `firebase-dataconnect` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-dataconnect/api/android-sdk-compat.txt) | 197 / 197 | ✅ | ✅ | – | ✅ | – | ✅ | ✅ |
-| [Cloud Firestore](https://firebase.google.com/docs/firestore) | `firebase-firestore` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-firestore/api/android-sdk-compat.txt) | 1652 / 1652 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| [Cloud Firestore](https://firebase.google.com/docs/firestore) | `firebase-firestore` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-firestore/api/android-sdk-compat.txt) | 1667 / 1667 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [Cloud Functions](https://firebase.google.com/docs/functions) | `firebase-functions` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-functions/api/android-sdk-compat.txt) | 60 / 60 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [In-App Messaging](https://firebase.google.com/docs/in-app-messaging) | `firebase-inappmessaging` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-inappmessaging/api/android-sdk-compat.txt) | 76 / 76 | ✅ | ✅ | – | ✅ | ✅ | – | – |
 | [Installations](https://firebase.google.com/docs/projects/manage-installations) | `firebase-installations` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-installations/api/android-sdk-compat.txt) | 11 / 11 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -102,8 +102,8 @@ dependencyResolutionManagement {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("io.github.corneloaie:firebase-firestore:0.1.1")
-            implementation("io.github.corneloaie:firebase-auth:0.1.1")
+            implementation("io.github.corneloaie:firebase-firestore:0.1.2")
+            implementation("io.github.corneloaie:firebase-auth:0.1.2")
         }
     }
 }
