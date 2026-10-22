@@ -59,7 +59,7 @@ It moves these four to their newest stable release:
 | `firebase-bom` | `gradle/libs.versions.toml` |
 | `firebase-ios-sdk` | `gradle/libs.versions.toml`, the SwiftPM minimum version; also the minimum of the Objective-C wrapper packages (`*/apple/*/Package.swift`) |
 | the `firebase` npm pins | the module build files |
-| `androidSdk.apiRef` | `gradle.properties`, the newest `m<NNN> mergeback` commit of firebase-android-sdk, i.e. the API of the latest Firebase Android release |
+| `androidSdk.apiRef` | `gradle.properties`, the newest `m<NNN> mergeback` commit of firebase-android-sdk, i.e. the API of the latest Firebase Android release. The mergeback can land days after a release: to cover a release sooner, set it by hand to the head of its `releases/m<NNN>.release` branch, which the update keeps until a newer mergeback contains it |
 
 It then runs `updateAndroidSdkApi`, regenerates the Firestore pipeline expressions (below), runs
 `androidSourceCompatDump` and refreshes the README table. The pull request body lists every member that became `MISS` or
