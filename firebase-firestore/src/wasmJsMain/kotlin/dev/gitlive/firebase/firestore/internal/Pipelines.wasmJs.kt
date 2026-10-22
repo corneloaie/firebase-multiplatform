@@ -24,6 +24,7 @@ import com.google.firebase.firestore.pipeline.CollectionSource
 import com.google.firebase.firestore.pipeline.Constant
 import com.google.firebase.firestore.pipeline.DatabaseSource
 import com.google.firebase.firestore.pipeline.DefineStage
+import com.google.firebase.firestore.pipeline.DeleteStage
 import com.google.firebase.firestore.pipeline.DistinctStage
 import com.google.firebase.firestore.pipeline.DocumentsSource
 import com.google.firebase.firestore.pipeline.Expression
@@ -31,8 +32,10 @@ import com.google.firebase.firestore.pipeline.Field
 import com.google.firebase.firestore.pipeline.FindNearestStage
 import com.google.firebase.firestore.pipeline.FunctionExpression
 import com.google.firebase.firestore.pipeline.GenericArg
+import com.google.firebase.firestore.pipeline.InsertStage
 import com.google.firebase.firestore.pipeline.InternalOptions
 import com.google.firebase.firestore.pipeline.LimitStage
+import com.google.firebase.firestore.pipeline.LiteralsSource
 import com.google.firebase.firestore.pipeline.OffsetStage
 import com.google.firebase.firestore.pipeline.Ordering
 import com.google.firebase.firestore.pipeline.PipelineValueExpression
@@ -49,6 +52,8 @@ import com.google.firebase.firestore.pipeline.Stage
 import com.google.firebase.firestore.pipeline.SubcollectionSource
 import com.google.firebase.firestore.pipeline.UnionStage
 import com.google.firebase.firestore.pipeline.UnnestStage
+import com.google.firebase.firestore.pipeline.UpdateStage
+import com.google.firebase.firestore.pipeline.UpsertStage
 import com.google.firebase.firestore.pipeline.Variable
 import com.google.firebase.firestore.pipeline.WhereStage
 import com.google.firebase.firestore.task
@@ -86,7 +91,11 @@ import dev.gitlive.firebase.firestore.externals.pipelines.variable as jsVariable
 
 internal actual fun executePipeline(firestore: FirebaseFirestore, pipeline: Pipeline, options: InternalOptions?): Task<Pipeline.Snapshot> {
     val request = json("pipeline" to pipeline.toJsPipeline())
-    if (options != null && !options.isEmpty()) jsSet(request, "rawOptions", options.toJsRawOptions("execute"))
+    // As in the Android SDK, atomic is no pipeline option: it runs the request in a transaction it commits, which the JS
+    // SDK's typed option opens.
+    if (options?.entries?.get("atomic") == true) jsSet(request, "atomic", true.toJsBoolean())
+    val rawOptions = options?.without("atomic")
+    if (rawOptions != null && !rawOptions.isEmpty()) jsSet(request, "rawOptions", rawOptions.toJsRawOptions("execute"))
     return task({ jsExecute(request) }) { it.toSnapshot() }
 }
 
@@ -112,6 +121,7 @@ private fun Stage<*>.toJsSource(firestore: FirebaseFirestore?): JsPipeline {
         is CollectionGroupSource -> source().collectionGroup(stageOptions("collectionId" to collectionId))
         is DatabaseSource -> source().database(stageOptions())
         is DocumentsSource -> source().documents(stageOptions("docs" to documents))
+        is LiteralsSource -> source().literals(stageOptions("documents" to data.map { it.toJsLiteralDocument() }.toJsArray()))
         is QuerySource -> source().createFrom(query.js)
         is SubcollectionSource -> jsSubcollection(stageOptions("path" to path))
         else -> throw IllegalArgumentException("A pipeline starts with a source stage, not $name")
@@ -158,8 +168,21 @@ private fun Stage<*>.appendTo(js: JsPipeline): JsPipeline = when (this) {
     is UnionStage -> js.union(stageOptions("other" to other.toJsPipeline()))
     is UnnestStage -> js.unnest(stageOptions("selectable" to selectable(selectable.alias, selectable.expr)))
     is RawStage -> js.rawStage(name, arguments.map { it.toJsArgument() }.toJsArray(), options.toJsRawOptions(name))
+    is DeleteStage -> js.delete(stageOptions())
+    is UpdateStage -> js.update(stageOptions("transformedFields" to selectables(fields).takeIf { fields.isNotEmpty() }))
+    is InsertStage -> js.insert(stageOptions("collection" to collectionPath, "documentIdExpression" to documentIdExpression?.toJsExpression()))
+    is UpsertStage -> js.upsert(
+        stageOptions(
+            "collection" to collectionPath,
+            "documentIdExpression" to documentIdExpression?.toJsExpression(),
+            "additionalFields" to selectables(fields).takeIf { fields.isNotEmpty() },
+        ),
+    )
     else -> throw IllegalArgumentException("The $name stage starts a pipeline")
 }
+
+/** A literal document, each value as an expression: a constant, or evaluated (maps and lists holding expressions as `map` and `array`). */
+private fun Map<String, Any?>.toJsLiteralDocument(): JsAny = json(*map { (key, value) -> key to Expression.toExprOrConstant(value).toJsExpression() }.toTypedArray())
 
 /** The selectables by alias, as JS selectables; an alias may appear once. */
 private fun selectables(fields: Array<out Selectable>): JsArray<JsExpression> = Stage.associateWithoutDuplications(fields).map { (alias, expr) -> selectable(alias, expr) }.toJsArray()

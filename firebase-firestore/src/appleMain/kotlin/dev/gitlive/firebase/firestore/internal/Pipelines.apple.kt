@@ -22,6 +22,7 @@ import com.google.firebase.firestore.pipeline.CollectionSource
 import com.google.firebase.firestore.pipeline.Constant
 import com.google.firebase.firestore.pipeline.DatabaseSource
 import com.google.firebase.firestore.pipeline.DefineStage
+import com.google.firebase.firestore.pipeline.DeleteStage
 import com.google.firebase.firestore.pipeline.DistinctStage
 import com.google.firebase.firestore.pipeline.DocumentsSource
 import com.google.firebase.firestore.pipeline.Expression
@@ -29,8 +30,10 @@ import com.google.firebase.firestore.pipeline.Field
 import com.google.firebase.firestore.pipeline.FindNearestStage
 import com.google.firebase.firestore.pipeline.FunctionExpression
 import com.google.firebase.firestore.pipeline.GenericArg
+import com.google.firebase.firestore.pipeline.InsertStage
 import com.google.firebase.firestore.pipeline.InternalOptions
 import com.google.firebase.firestore.pipeline.LimitStage
+import com.google.firebase.firestore.pipeline.LiteralsSource
 import com.google.firebase.firestore.pipeline.OffsetStage
 import com.google.firebase.firestore.pipeline.Ordering
 import com.google.firebase.firestore.pipeline.PipelineValueExpression
@@ -47,6 +50,8 @@ import com.google.firebase.firestore.pipeline.Stage
 import com.google.firebase.firestore.pipeline.SubcollectionSource
 import com.google.firebase.firestore.pipeline.UnionStage
 import com.google.firebase.firestore.pipeline.UnnestStage
+import com.google.firebase.firestore.pipeline.UpdateStage
+import com.google.firebase.firestore.pipeline.UpsertStage
 import com.google.firebase.firestore.pipeline.Variable
 import com.google.firebase.firestore.pipeline.WhereStage
 import com.google.firebase.firestore.task
@@ -67,13 +72,16 @@ import swiftPMImport.dev.gitlive.firebase.firestore.__FIRCollectionSourceStageBr
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRConstantBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRDatabaseSourceStageBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRDefineStageBridge
+import swiftPMImport.dev.gitlive.firebase.firestore.__FIRDeleteStageBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRDistinctStageBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRDocumentsSourceStageBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRExprBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRFieldBridge
+import swiftPMImport.dev.gitlive.firebase.firestore.__FIRInsertStageBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRFindNearestStageBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRFunctionExprBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRLimitStageBridge
+import swiftPMImport.dev.gitlive.firebase.firestore.__FIRLiteralsSourceStageBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIROffsetStageBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIROrderingBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRPipelineBridge
@@ -91,6 +99,8 @@ import swiftPMImport.dev.gitlive.firebase.firestore.__FIRStageBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRSubcollectionSourceStageBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRUnionStageBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRUnnestStageBridge
+import swiftPMImport.dev.gitlive.firebase.firestore.__FIRUpdateStageBridge
+import swiftPMImport.dev.gitlive.firebase.firestore.__FIRUpsertStageBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRVariableBridge
 import swiftPMImport.dev.gitlive.firebase.firestore.__FIRWhereStageBridge
 
@@ -99,14 +109,17 @@ import swiftPMImport.dev.gitlive.firebase.firestore.__FIRWhereStageBridge
  * FirebaseFirestoreInternal), which its Swift pipeline API is built on: functions and aggregates by their backend name,
  * each stage through its bridge class. A stage with options goes as a raw stage (name, arguments and options, as the
  * Android SDK sends them), as the stage bridges take no options; source stages have no raw form, so they only take the
- * forced index. The bridge executes without options, so execute options are not supported either.
+ * forced index. The bridge executes with no options but atomic, so the other execute options are not supported either.
  */
 
 internal actual fun executePipeline(firestore: FirebaseFirestore, pipeline: Pipeline, options: InternalOptions?): Task<Pipeline.Snapshot> {
-    if (options != null && !options.isEmpty()) {
-        throw UnsupportedOperationException("The Firebase iOS SDK does not support execute options: ${options.entries.keys}")
+    val unsupported = options?.entries?.keys.orEmpty() - "atomic"
+    if (unsupported.isNotEmpty()) throw UnsupportedOperationException("The Firebase iOS SDK does not support execute options: $unsupported")
+    val bridge = if (options?.entries?.get("atomic") == true) {
+        __FIRPipelineBridge(pipeline.toIosStages(), firestore.ios, atomic = true)
+    } else {
+        __FIRPipelineBridge(pipeline.toIosStages(), firestore.ios)
     }
-    val bridge = __FIRPipelineBridge(pipeline.toIosStages(), firestore.ios)
     return task { completion ->
         bridge.executeWithCompletion { snapshot, error -> completion(snapshot?.toSnapshot(), error) }
     }
@@ -147,6 +160,8 @@ private fun Stage<*>.toIosSource(firestore: FirebaseFirestore?): __FIRStageBridg
         is DatabaseSource -> __FIRDatabaseSourceStageBridge()
         is DocumentsSource -> __FIRDocumentsSourceStageBridge(documents.map { db().documentWithPath(it) }, db())
         is SubcollectionSource -> __FIRSubcollectionSourceStageBridge(path)
+        // each value as an expression: a constant, or evaluated (maps and lists holding expressions as map and array)
+        is LiteralsSource -> __FIRLiteralsSourceStageBridge(data.map { document -> document.mapValues { (_, value) -> Expression.toExprOrConstant(value).toIosExpression() } })
         else -> throw IllegalArgumentException("A pipeline starts with a source stage, not $name")
     }
 }
@@ -195,6 +210,10 @@ private fun Stage<*>.toIosStage(): __FIRStageBridge {
         is UnionStage -> __FIRUnionStageBridge(__FIRPipelineBridge(other.toIosStages(), checkNotNull(other.firestore) { "A union needs a pipeline with a database" }.ios))
         is UnnestStage -> __FIRUnnestStageBridge(selectable.expr.toIosExpression(), Expression.field(selectable.alias).toIosExpression(), (options.entries["index_field"] as Field?)?.toIosField())
         is RawStage -> __FIRRawStageBridge(name, arguments.map { it.toIosArgument() }, options.toIosOptions(name))
+        is DeleteStage -> __FIRDeleteStageBridge()
+        is UpdateStage -> __FIRUpdateStageBridge(selectables(fields))
+        is InsertStage -> __FIRInsertStageBridge(collectionPath, documentIdExpression?.toIosExpression())
+        is UpsertStage -> __FIRUpsertStageBridge(selectables(fields), collectionPath, documentIdExpression?.toIosExpression())
         else -> throw IllegalArgumentException("The $name stage starts a pipeline")
     }
 }

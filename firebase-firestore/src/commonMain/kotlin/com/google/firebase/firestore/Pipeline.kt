@@ -20,6 +20,7 @@ import com.google.firebase.firestore.pipeline.CollectionSource
 import com.google.firebase.firestore.pipeline.CollectionSourceOptions
 import com.google.firebase.firestore.pipeline.DatabaseSource
 import com.google.firebase.firestore.pipeline.DefineStage
+import com.google.firebase.firestore.pipeline.DeleteStage
 import com.google.firebase.firestore.pipeline.DistinctStage
 import com.google.firebase.firestore.pipeline.DocumentsSource
 import com.google.firebase.firestore.pipeline.Expression
@@ -27,8 +28,10 @@ import com.google.firebase.firestore.pipeline.Field
 import com.google.firebase.firestore.pipeline.FindNearestOptions
 import com.google.firebase.firestore.pipeline.FindNearestStage
 import com.google.firebase.firestore.pipeline.FunctionExpression
+import com.google.firebase.firestore.pipeline.InsertStage
 import com.google.firebase.firestore.pipeline.InternalOptions
 import com.google.firebase.firestore.pipeline.LimitStage
+import com.google.firebase.firestore.pipeline.LiteralsSource
 import com.google.firebase.firestore.pipeline.OffsetStage
 import com.google.firebase.firestore.pipeline.Ordering
 import com.google.firebase.firestore.pipeline.QuerySource
@@ -45,6 +48,8 @@ import com.google.firebase.firestore.pipeline.SubcollectionSource
 import com.google.firebase.firestore.pipeline.UnionStage
 import com.google.firebase.firestore.pipeline.UnnestOptions
 import com.google.firebase.firestore.pipeline.UnnestStage
+import com.google.firebase.firestore.pipeline.UpdateStage
+import com.google.firebase.firestore.pipeline.UpsertStage
 import com.google.firebase.firestore.pipeline.WhereStage
 import dev.gitlive.firebase.firestore.internal.executePipeline
 import kotlin.jvm.JvmField
@@ -61,8 +66,9 @@ import kotlin.jvm.JvmStatic
  * A pipeline: a source (from [FirebaseFirestore.pipeline]) followed by stages that filter, transform and aggregate the
  * documents, run by [execute]. Immutable: each stage method returns a new pipeline with the stage appended.
  *
- * On Apple platforms, [execute] with [ExecuteOptions] that set options, and source stages with options other than the
- * forced index (`CollectionHints.withForceIndex`), fail: the iOS SDK's pipeline bridge has no way to pass them.
+ * On Apple platforms, [execute] with [ExecuteOptions] that set options other than [ExecuteOptions.withAtomic], and source
+ * stages with options other than the forced index (`CollectionHints.withForceIndex`), fail: the iOS SDK's pipeline bridge
+ * has no way to pass them.
  */
 public class Pipeline internal constructor(
     internal val firestore: FirebaseFirestore?,
@@ -74,7 +80,7 @@ public class Pipeline internal constructor(
 
     /**
      * The options of an execution; besides the typed ones, [with] sets an option by its backend name. The iOS SDK takes
-     * no execute options: on Apple platforms, executing with any fails with [UnsupportedOperationException].
+     * only [withAtomic]: on Apple platforms, executing with any other fails with [UnsupportedOperationException].
      */
     public class ExecuteOptions private constructor(options: InternalOptions) : AbstractOptions<ExecuteOptions>(options) {
         /** No options. */
@@ -93,6 +99,9 @@ public class Pipeline internal constructor(
 
         /** A copy with the index mode [indexMode]. */
         public fun withIndexMode(indexMode: IndexMode): ExecuteOptions = with("index_mode", indexMode.value)
+
+        /** A copy that runs the pipeline's writes atomically, all or none, if [atomic]. */
+        public fun withAtomic(atomic: Boolean): ExecuteOptions = with("atomic", atomic)
     }
 
     /** The results of an execution, in order, and when the backend computed them. */
@@ -217,6 +226,60 @@ public class Pipeline internal constructor(
 
     /** Appends the search [searchStage]. Beta in the Android SDK. */
     public fun search(searchStage: SearchStage): Pipeline = append(searchStage)
+
+    /** Deletes each document of the previous stages from the database. */
+    public fun delete(): Pipeline = append(DeleteStage())
+
+    /**
+     * Writes each document of the previous stages back to its path, with [fields] set under their aliases; the stored
+     * document is replaced, so fields earlier stages removed are removed from it too. Creates no documents.
+     */
+    public fun update(vararg fields: Selectable): Pipeline = append(UpdateStage(fields))
+
+    /** Inserts each document of the previous stages at the path in its `__name__` field; fails if the document exists. */
+    public fun insert(): Pipeline = append(InsertStage(null, null))
+
+    /** Inserts each document of the previous stages into the collection at [collectionPath], with its own id or a new one. */
+    public fun insert(collectionPath: String): Pipeline = append(InsertStage(collectionPath, null))
+
+    /** Inserts each document of the previous stages into [collection], with its own id or a new one. */
+    public fun insert(collection: CollectionReference): Pipeline = append(InsertStage(collectionPathOf(collection), null))
+
+    /** Inserts each document of the previous stages into its own collection, with the id [documentIdExpression] evaluates to. */
+    public fun insert(documentIdExpression: Expression): Pipeline = append(InsertStage(null, documentIdExpression))
+
+    /** Inserts each document of the previous stages into the collection at [collectionPath], with the id [documentIdExpression] evaluates to. */
+    public fun insert(collectionPath: String, documentIdExpression: Expression): Pipeline = append(InsertStage(collectionPath, documentIdExpression))
+
+    /** Inserts each document of the previous stages into [collection], with the id [documentIdExpression] evaluates to. */
+    public fun insert(collection: CollectionReference, documentIdExpression: Expression): Pipeline = append(InsertStage(collectionPathOf(collection), documentIdExpression))
+
+    /**
+     * Writes each document of the previous stages, with [additionalFields] added, to the path in its `__name__` field,
+     * creating or replacing the document (stored fields are not merged).
+     */
+    public fun upsert(vararg additionalFields: Selectable): Pipeline = append(UpsertStage(additionalFields, null, null))
+
+    /** Writes each document of the previous stages to the collection at [collectionPath], with its own id or a new one, creating or replacing the document. */
+    public fun upsert(collectionPath: String): Pipeline = append(UpsertStage(emptyArray(), collectionPath, null))
+
+    /** Writes each document of the previous stages to [collection], with its own id or a new one, creating or replacing the document. */
+    public fun upsert(collection: CollectionReference): Pipeline = append(UpsertStage(emptyArray(), collectionPathOf(collection), null))
+
+    /** Writes each document of the previous stages to the collection at [collectionPath], with the id [documentIdExpression] evaluates to, creating or replacing the document. */
+    public fun upsert(collectionPath: String, documentIdExpression: Expression): Pipeline = append(UpsertStage(emptyArray(), collectionPath, documentIdExpression))
+
+    /** Writes each document of the previous stages to [collection], with the id [documentIdExpression] evaluates to, creating or replacing the document. */
+    public fun upsert(collection: CollectionReference, documentIdExpression: Expression): Pipeline = append(UpsertStage(emptyArray(), collectionPathOf(collection), documentIdExpression))
+
+    private fun collectionPathOf(collection: CollectionReference): String {
+        if (firestore != null) {
+            require(isSameFirestore(collection.firestore, firestore)) {
+                "Invalid CollectionReference. The Firestore instance of the CollectionReference must match the Firestore instance of the Pipeline."
+            }
+        }
+        return collection.path
+    }
 }
 
 /** The sources of the pipelines of a [FirebaseFirestore], from [FirebaseFirestore.pipeline]. */
@@ -255,6 +318,13 @@ public class PipelineSource internal constructor(private val firestore: Firebase
 
     /** A pipeline over every document of the database. */
     public fun database(): Pipeline = Pipeline(firestore, DatabaseSource())
+
+    /**
+     * A pipeline over the literal documents [data], one per map: values are constants or expressions, also nested in maps
+     * and lists (FieldValue sentinels are not supported). To give a document a path, set its `__name__` to a
+     * [DocumentReference].
+     */
+    public fun literals(vararg data: Map<String, Any?>): Pipeline = Pipeline(firestore, LiteralsSource(data.toList()))
 
     /** A pipeline over the documents at the paths [documents]. */
     public fun documents(vararg documents: String): Pipeline = documents(*documents.map { firestore.document(it) }.toTypedArray())

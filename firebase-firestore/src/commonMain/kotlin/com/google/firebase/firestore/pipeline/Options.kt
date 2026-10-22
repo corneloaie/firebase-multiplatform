@@ -13,6 +13,8 @@ import kotlin.jvm.JvmField
 internal class InternalOptions private constructor(internal val entries: Map<String, Any>) {
     fun with(key: String, value: Any): InternalOptions = InternalOptions(entries + (key to value))
 
+    fun without(key: String): InternalOptions = InternalOptions(entries - key)
+
     fun adding(newOptions: InternalOptions): InternalOptions {
         val duplicate = newOptions.entries.keys.firstOrNull { it in entries }
         require(duplicate == null) { "Multiple entries with same key: $duplicate" }

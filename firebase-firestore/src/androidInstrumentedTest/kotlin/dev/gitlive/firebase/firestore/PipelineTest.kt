@@ -381,6 +381,17 @@ class PipelineTest {
         assertFailsWith<IllegalArgumentException> { firestore.pipeline().collection(books).addFields(field("title").alias("__name__")) }
         // Firestore 27.1.0 for Android lets removeFields remove the reserved fields (firebase/firebase-android-sdk#8524).
         firestore.pipeline().collection(books).removeFields("__name__")
+        // The write stages and literal documents build as on Android (the emulator does not run them).
+        firestore.pipeline().collection(books).where(field("rating").lessThan(2)).delete()
+        firestore.pipeline().collection(books).update(constant("Updated").alias("status"))
+        firestore.pipeline().literals(mapOf("title" to "Dune", "rating" to field("x")), mapOf("__name__" to books.document("emma"))).insert()
+        firestore.pipeline().literals(mapOf("title" to "Dune")).insert(books)
+        firestore.pipeline().literals(mapOf("title" to "Dune")).insert(books, constant("dune"))
+        firestore.pipeline().collection(books).upsert(constant(1).alias("version"))
+        firestore.pipeline().collection(books).upsert(books, field("title"))
+        firestore.pipeline().literals(mapOf("title" to "Dune")).insert(books.path, field("title"))
+        firestore.pipeline().collection(books).upsert(books.path)
+        Pipeline.ExecuteOptions().withAtomic(true)
         assertFailsWith<IllegalStateException> { PipelineSource.subcollection("reviews").execute() }
     }
 }

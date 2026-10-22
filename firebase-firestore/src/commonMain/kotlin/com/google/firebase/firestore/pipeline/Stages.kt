@@ -177,6 +177,18 @@ internal class QuerySource(internal val query: Query, options: InternalOptions =
     override fun self(options: InternalOptions) = QuerySource(query, options)
 }
 
+/**
+ * Literal documents, the source of [com.google.firebase.firestore.PipelineSource.literals]: each map is one input document,
+ * its values constants or expressions (also nested in maps and lists), converted when the pipeline is executed.
+ */
+public class LiteralsSource internal constructor(internal val data: List<Map<String, Any?>>, options: InternalOptions = InternalOptions.EMPTY) : Stage<LiteralsSource>("literals", options) {
+    override fun self(options: InternalOptions): LiteralsSource = LiteralsSource(data, options)
+
+    override fun equals(other: Any?): Boolean = this === other || other is LiteralsSource && data == other.data && options == other.options
+
+    override fun hashCode(): Int = 31 * data.hashCode() + options.hashCode()
+}
+
 /** The documents of a subcollection of each input document, the source of a subquery; created with [of]. */
 public class SubcollectionSource private constructor(internal val path: String, options: InternalOptions = InternalOptions.EMPTY) : Stage<SubcollectionSource>("subcollection", options) {
     override fun self(options: InternalOptions): SubcollectionSource = SubcollectionSource(path, options)
@@ -543,4 +555,52 @@ internal class DefineStage(internal val aliasedExpressions: Array<out AliasedExp
     override fun equals(other: Any?): Boolean = this === other || other is DefineStage && aliasedExpressions.contentEquals(other.aliasedExpressions) && options == other.options
 
     override fun hashCode(): Int = 31 * aliasedExpressions.contentHashCode() + options.hashCode()
+}
+
+/** Deletes each input document from the database. */
+internal class DeleteStage(options: InternalOptions = InternalOptions.EMPTY) : Stage<DeleteStage>("delete", options) {
+    override fun self(options: InternalOptions) = DeleteStage(options)
+
+    override fun equals(other: Any?): Boolean = this === other || other is DeleteStage && options == other.options
+
+    override fun hashCode(): Int = options.hashCode()
+}
+
+/** Writes each input document back to its path, with [fields] set under their aliases. */
+internal class UpdateStage(internal val fields: Array<out Selectable>, options: InternalOptions = InternalOptions.EMPTY) : Stage<UpdateStage>("update", options) {
+    override fun self(options: InternalOptions) = UpdateStage(fields, options)
+
+    override fun equals(other: Any?): Boolean = this === other || other is UpdateStage && fields.contentEquals(other.fields) && options == other.options
+
+    override fun hashCode(): Int = 31 * fields.contentHashCode() + options.hashCode()
+}
+
+/**
+ * Writes each input document as a new document: in the collection at [collectionPath], or else at its own path, with the id
+ * [documentIdExpression] evaluates to, or else its own id.
+ */
+internal class InsertStage(internal val collectionPath: String?, internal val documentIdExpression: Expression?, options: InternalOptions = InternalOptions.EMPTY) : Stage<InsertStage>("insert", options) {
+    override fun self(options: InternalOptions) = InsertStage(collectionPath, documentIdExpression, options)
+
+    override fun equals(other: Any?): Boolean = this === other || other is InsertStage && collectionPath == other.collectionPath && documentIdExpression == other.documentIdExpression && options == other.options
+
+    override fun hashCode(): Int = 31 * (31 * (collectionPath?.hashCode() ?: 0) + (documentIdExpression?.hashCode() ?: 0)) + options.hashCode()
+}
+
+/**
+ * Writes each input document, with [fields] added, creating or replacing the document: in the collection at
+ * [collectionPath], or else at its own path, with the id [documentIdExpression] evaluates to, or else its own id.
+ */
+internal class UpsertStage(
+    internal val fields: Array<out Selectable>,
+    internal val collectionPath: String?,
+    internal val documentIdExpression: Expression?,
+    options: InternalOptions = InternalOptions.EMPTY,
+) : Stage<UpsertStage>("upsert", options) {
+    override fun self(options: InternalOptions) = UpsertStage(fields, collectionPath, documentIdExpression, options)
+
+    override fun equals(other: Any?): Boolean = this === other || other is UpsertStage && fields.contentEquals(other.fields) && collectionPath == other.collectionPath &&
+        documentIdExpression == other.documentIdExpression && options == other.options
+
+    override fun hashCode(): Int = 31 * (31 * (31 * fields.contentHashCode() + (collectionPath?.hashCode() ?: 0)) + (documentIdExpression?.hashCode() ?: 0)) + options.hashCode()
 }
