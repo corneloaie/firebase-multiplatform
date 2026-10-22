@@ -101,8 +101,8 @@ dependencyResolutionManagement {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("io.github.corneloaie:firebase-firestore:0.1.0")
-            implementation("io.github.corneloaie:firebase-auth:0.1.0")
+            implementation("io.github.corneloaie:firebase-firestore:0.1.1")
+            implementation("io.github.corneloaie:firebase-auth:0.1.1")
         }
     }
 }
