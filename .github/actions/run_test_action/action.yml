@@ -45,6 +45,31 @@ runs:
         sudo udevadm control --reload-rules
         sudo udevadm trigger --name-match=kvm
 
+    # The managed device of every Android job (gradleManagedDevice: API 33, google_atd, x86_64) needs the emulator and
+    # its system image. Without a cache each of the ~20 Android jobs downloads them, about 1 GB, and now and then a
+    # download is corrupt. The key changes monthly, so a newer emulator is picked up. The runner's own emulator is
+    # removed first so a restored one is not mixed with it; the SDK manager installs a fresh one on a cache miss.
+    - name: Locate the Android SDK
+      id: android-sdk
+      if: inputs.android == 'true'
+      shell: bash
+      run: |
+        rm -rf "$ANDROID_HOME/emulator"
+        echo "path=$ANDROID_HOME" >> "$GITHUB_OUTPUT"
+        echo "month=$(date -u +%Y-%m)" >> "$GITHUB_OUTPUT"
+
+    - name: Restore Android emulator cache
+      id: emulator-cache
+      if: inputs.android == 'true'
+      uses: actions/cache/restore@v5
+      with:
+        path: |
+          ${{ steps.android-sdk.outputs.path }}/emulator
+          ${{ steps.android-sdk.outputs.path }}/system-images/android-33/google_atd/x86_64
+        key: android-emulator-${{ runner.os }}-api33-google_atd-x86_64-${{ steps.android-sdk.outputs.month }}
+        restore-keys: |
+          android-emulator-${{ runner.os }}-api33-google_atd-x86_64-
+
     - name: Restore SwiftPM cache
       id: swiftpm-cache
       if: inputs.apple == 'true'
@@ -97,9 +122,37 @@ runs:
       shell: bash
       run: ./gradlew ciSdkManagerLicenses
 
+    # A corrupt Android SDK download, or a dependency a Maven repository could not serve (throttled, failing, or briefly
+    # missing: Maven Central once answered 404 for kotlin-test-common 2.4.21), fails the job before any test runs: run
+    # the tasks once more then. Any other failure stands.
     - name: Run ${{ inputs.platform-name }} Tests
       shell: bash
-      run: ./gradlew ${{ inputs.gradle-tasks }}
+      run: |
+        log="$RUNNER_TEMP/gradle-tasks.log"
+        ./gradlew ${{ inputs.gradle-tasks }} 2>&1 | tee "$log" && exit 0
+        grep -qE 'Archive is not a ZIP archive|Failed to install the following SDK components|Could not resolve all (dependencies|files) for configuration|Received status code (429|5[0-9][0-9])' "$log" || exit 1
+        echo "::warning::A download failed; running the tasks once more in a minute"
+        sleep 60
+        ./gradlew ${{ inputs.gradle-tasks }}
+
+    - name: Check the Android emulator download
+      id: emulator-downloaded
+      if: always() && inputs.android == 'true' && steps.emulator-cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: |
+        sdk="${{ steps.android-sdk.outputs.path }}"
+        if [ -f "$sdk/emulator/package.xml" ] && [ -f "$sdk/system-images/android-33/google_atd/x86_64/package.xml" ]; then
+          echo "complete=true" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Save Android emulator cache
+      if: always() && steps.emulator-downloaded.outputs.complete == 'true'
+      uses: actions/cache/save@v5
+      with:
+        path: |
+          ${{ steps.android-sdk.outputs.path }}/emulator
+          ${{ steps.android-sdk.outputs.path }}/system-images/android-33/google_atd/x86_64
+        key: ${{ steps.emulator-cache.outputs.cache-primary-key }}
 
     # Only a job that resolved packages writes the SwiftPM cache. The modules without SwiftPM dependencies
     # (firebase-common, firebase-common-internal, test-utils) resolve nothing and finish first, so letting them
