@@ -38,6 +38,7 @@ import kotlin.jvm.JvmOverloads
  * @property candidateCount The number of generated responses to return. See [GenerationConfig] for
  * more detail. By default it's set to `1`.
  * @property modelOption Configuration for the on-device model selection and performance.
+ * @property enableThinking Whether the on-device model thinks before it answers; `null` leaves the model's default.
  */
 @PublicPreviewAPI
 public class OnDeviceConfig
@@ -50,6 +51,7 @@ constructor(
     public val seed: Int? = null,
     public val candidateCount: Int = 1,
     public val modelOption: OnDeviceModelOption? = null,
+    public val enableThinking: Boolean? = null,
 ) {
     public companion object {
         /** A default configuration that only uses in-cloud inference. */

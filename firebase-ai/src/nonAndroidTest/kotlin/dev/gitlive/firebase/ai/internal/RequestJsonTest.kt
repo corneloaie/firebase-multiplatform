@@ -24,6 +24,7 @@ import com.google.firebase.ai.type.Schema
 import com.google.firebase.ai.type.SessionResumptionConfig
 import com.google.firebase.ai.type.SlidingWindow
 import com.google.firebase.ai.type.SpeechConfig
+import com.google.firebase.ai.type.SpeechMetadata
 import com.google.firebase.ai.type.TemplateFunctionDeclaration
 import com.google.firebase.ai.type.TemplateTool
 import com.google.firebase.ai.type.TemplateToolConfig
@@ -110,6 +111,26 @@ class RequestJsonTest {
     fun countTokensRequestLeavesOutSafetyAndToolConfig() {
         val request = countTokensRequest(listOf(content { text("Hi") }), generationConfig { maxOutputTokens = 5 }, emptyList(), null)
         assertJson("""{"contents": [{"role": "user", "parts": [{"text": "Hi", "thought": false}]}], "generationConfig": {"maxOutputTokens": 5}}""", request)
+    }
+
+    @Test
+    fun speechMetadata() {
+        val contents = listOf(
+            content {
+                text("Hello", SpeechMetadata("Joe", "cheerfully"))
+                text("Hi", SpeechMetadata(speaker = "Jane"))
+            },
+        )
+        val request = countTokensRequest(contents, generationConfig { maxOutputTokens = 5 }, emptyList(), null)
+        assertJson(
+            """
+            {"contents": [{"role": "user", "parts": [
+              {"text": "Hello", "thought": false, "speechMetadata": {"speaker": "Joe", "style": "cheerfully"}},
+              {"text": "Hi", "thought": false, "speechMetadata": {"speaker": "Jane"}}
+            ]}], "generationConfig": {"maxOutputTokens": 5}}
+            """,
+            request,
+        )
     }
 
     @Test
