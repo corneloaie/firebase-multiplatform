@@ -28,6 +28,9 @@ updates:
       - dependency-name: "com.google.firebase:firebase-bom"
       - dependency-name: "com.google.firebase:firebase-appdistribution-api"
   - package-ecosystem: "github-actions"
-    directory: "/"
+    # "/" covers .github/workflows only; the composite actions under .github/actions need listing too.
+    directories:
+      - "/"
+      - "/.github/actions/*"
     schedule:
       interval: "weekly"
