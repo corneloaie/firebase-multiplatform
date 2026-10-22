@@ -122,14 +122,15 @@ runs:
       shell: bash
       run: ./gradlew ciSdkManagerLicenses
 
-    # A corrupt Android SDK download, or a throttled or failing Maven repository, fails the job before any test runs:
-    # run the tasks once more then. Any other failure stands.
+    # A corrupt Android SDK download, or a dependency a Maven repository could not serve (throttled, failing, or briefly
+    # missing: Maven Central once answered 404 for kotlin-test-common 2.4.21), fails the job before any test runs: run
+    # the tasks once more then. Any other failure stands.
     - name: Run ${{ inputs.platform-name }} Tests
       shell: bash
       run: |
         log="$RUNNER_TEMP/gradle-tasks.log"
         ./gradlew ${{ inputs.gradle-tasks }} 2>&1 | tee "$log" && exit 0
-        grep -qE 'Archive is not a ZIP archive|Failed to install the following SDK components|Received status code (429|5[0-9][0-9])' "$log" || exit 1
+        grep -qE 'Archive is not a ZIP archive|Failed to install the following SDK components|Could not resolve all (dependencies|files) for configuration|Received status code (429|5[0-9][0-9])' "$log" || exit 1
         echo "::warning::A download failed; running the tasks once more"
         ./gradlew ${{ inputs.gradle-tasks }}
 
