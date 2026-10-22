@@ -4,6 +4,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.corneloaie/firebase-app?style=flat-square&label=Maven%20Central)](https://central.sonatype.com/namespace/io.github.corneloaie)
 [![Weekly update](https://img.shields.io/github/actions/workflow/status/corneloaie/firebase-multiplatform/weekly.yml?label=weekly%20update&style=flat-square)](.github/workflows/weekly.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square)](LICENSE)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-support-FF5E5B?style=flat-square&logo=ko-fi&logoColor=white)](https://ko-fi.com/corneloaie)
 
 <!-- coverage-badge:start -->
 [coverage-badge]: https://img.shields.io/badge/Android%20API%20coverage-100%25%3A%204%2C092%20of%204%2C092%20members%2C%2018%20products-brightgreen?style=flat-square
@@ -326,6 +327,10 @@ Before committing a change to the public API:
 
 [MAINTAINING.md](MAINTAINING.md) covers the API rules, the weekly automation, the upstream merges and releasing. API
 documentation for each release is published [here](https://corneloaie.github.io/firebase-multiplatform/).
+
+## Support
+
+If firebase-multiplatform saves you time, you can support its upkeep on [Ko-fi](https://ko-fi.com/corneloaie).
 
 ## Acknowledgements
 
