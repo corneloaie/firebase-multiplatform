@@ -35,8 +35,13 @@ internal constructor(
     public val text: String,
     public override val isThought: Boolean,
     public val thoughtSignature: String?,
+    /** How the text is spoken when the model generates speech from it. */
+    @PublicPreviewAPI public val speechMetadata: SpeechMetadata? = null,
 ) : Part {
     public constructor(text: String) : this(text, false, null)
+
+    /** A text part with [speechMetadata], how the model speaks [text] when it generates speech. */
+    public constructor(text: String, speechMetadata: SpeechMetadata) : this(text, false, null, speechMetadata)
 
     public companion object {
         /**

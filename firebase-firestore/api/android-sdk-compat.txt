@@ -1,6 +1,6 @@
 # Android SDK source compatibility of firebase-firestore
-# Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
-# 100% of 1652 public members available (1635 identical, 17 mapped, 0 missing, 0 omitted)
+# Android SDK api.txt ref: 2c58acbb9da02dfa1b9d77a2bfd7c0ad937285be
+# 100% of 1667 public members available (1650 identical, 17 mapped, 0 missing, 0 omitted)
 #
 com.google.firebase.firestore.AggregateField
   OK    static AverageAggregateField average(FieldPath)
@@ -369,6 +369,7 @@ com.google.firebase.firestore.Pipeline
   OK    Pipeline aggregate(AggregateStage, AggregateOptions)
   OK    Pipeline aggregate(AliasedAggregate, AliasedAggregate[])
   OK    Pipeline define(AliasedExpression, AliasedExpression[])
+  OK    Pipeline delete()
   OK    Pipeline distinct(Selectable, Object[])
   OK    Pipeline distinct(String, Object[])
   OK    Task execute()
@@ -376,6 +377,12 @@ com.google.firebase.firestore.Pipeline
   OK    Pipeline findNearest(Field, double[], DistanceMeasure)
   OK    Pipeline findNearest(String, double[], DistanceMeasure)
   OK    Pipeline findNearest(String, Expression, DistanceMeasure, FindNearestOptions)
+  OK    Pipeline insert()
+  OK    Pipeline insert(CollectionReference)
+  OK    Pipeline insert(Expression)
+  OK    Pipeline insert(String)
+  OK    Pipeline insert(CollectionReference, Expression)
+  OK    Pipeline insert(String, Expression)
   OK    Pipeline limit(int)
   OK    Pipeline offset(int)
   OK    Pipeline rawStage(RawStage)
@@ -396,9 +403,16 @@ com.google.firebase.firestore.Pipeline
   OK    Pipeline unnest(UnnestStage)
   OK    Pipeline unnest(Selectable, UnnestOptions)
   OK    Pipeline unnest(String, String)
+  OK    Pipeline update(Selectable[])
+  OK    Pipeline upsert(CollectionReference)
+  OK    Pipeline upsert(Selectable[])
+  OK    Pipeline upsert(String)
+  OK    Pipeline upsert(CollectionReference, Expression)
+  OK    Pipeline upsert(String, Expression)
   OK    Pipeline where(BooleanExpression)
 com.google.firebase.firestore.Pipeline.ExecuteOptions
   OK    ExecuteOptions()
+  OK    ExecuteOptions withAtomic(boolean)
   OK    ExecuteOptions withIndexMode(IndexMode)
 com.google.firebase.firestore.Pipeline.ExecuteOptions.IndexMode
   OK    static IndexMode RECOMMENDED
@@ -426,6 +440,7 @@ com.google.firebase.firestore.PipelineSource
   OK    Pipeline database()
   OK    Pipeline documents(DocumentReference[])
   OK    Pipeline documents(String[])
+  OK    Pipeline literals(Map[])
   OK    static Pipeline subcollection(SubcollectionSource)
   OK    static Pipeline subcollection(String)
 com.google.firebase.firestore.PipelineSource.Companion
@@ -1762,6 +1777,7 @@ com.google.firebase.firestore.pipeline.FindNearestStage.DistanceMeasure
   MAP   static NonExistentClass EUCLIDEAN  [returns DistanceMeasure]
 com.google.firebase.firestore.pipeline.FindNearestStage.DistanceMeasure.Companion
 com.google.firebase.firestore.pipeline.FunctionExpression
+com.google.firebase.firestore.pipeline.LiteralsSource
 com.google.firebase.firestore.pipeline.Ordering
   OK    static Ordering ascending(Expression)
   OK    static Ordering ascending(String)

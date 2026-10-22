@@ -56,6 +56,7 @@ public external interface PipelineSource {
     public fun collectionGroup(options: Json): Pipeline
     public fun database(options: Json): Pipeline
     public fun documents(options: Json): Pipeline
+    public fun literals(options: Json): Pipeline
     public fun createFrom(query: Query): Pipeline
 }
 
@@ -76,6 +77,10 @@ public external interface Pipeline {
     public fun union(options: Json): Pipeline
     public fun unnest(options: Json): Pipeline
     public fun define(options: Json): Pipeline
+    public fun delete(options: Json): Pipeline
+    public fun update(options: Json): Pipeline
+    public fun insert(options: Json): Pipeline
+    public fun upsert(options: Json): Pipeline
     public fun rawStage(name: String, params: Array<Any?>, options: Json): Pipeline
     public fun toArrayExpression(): FunctionExpression
 }

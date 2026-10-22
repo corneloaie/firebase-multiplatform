@@ -1,6 +1,6 @@
 # Android SDK source compatibility of firebase-ai
-# Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
-# 100% of 874 public members available (874 identical, 0 mapped, 0 missing, 0 omitted)
+# Android SDK api.txt ref: 2c58acbb9da02dfa1b9d77a2bfd7c0ad937285be
+# 100% of 884 public members available (884 identical, 0 mapped, 0 missing, 0 omitted)
 #
 com.google.firebase.ai.Chat
   OK    Chat(GenerativeModel, List)
@@ -93,7 +93,9 @@ com.google.firebase.ai.OnDeviceConfig
   OK    OnDeviceConfig(InferenceMode, Integer, Float, Integer, Integer)
   OK    OnDeviceConfig(InferenceMode, Integer, Float, Integer, Integer, int)
   OK    OnDeviceConfig(InferenceMode, Integer, Float, Integer, Integer, int, OnDeviceModelOption)
+  OK    OnDeviceConfig(InferenceMode, Integer, Float, Integer, Integer, int, OnDeviceModelOption, Boolean)
   OK    int getCandidateCount()
+  OK    Boolean getEnableThinking()
   OK    Integer getMaxOutputTokens()
   OK    InferenceMode getMode()
   OK    OnDeviceModelOption getModelOption()
@@ -235,6 +237,7 @@ com.google.firebase.ai.type.Content.Builder
   OK    Builder addInlineData(byte[], String)
   OK    Builder addPart(T)
   OK    Builder addText(String)
+  OK    Builder addText(String, SpeechMetadata)
   OK    Content build()
   OK    Builder setParts(List)
   OK    Builder setRole(String)
@@ -987,6 +990,12 @@ com.google.firebase.ai.type.SpeechConfig
   OK    String getLanguageCode()
   OK    MultiSpeakerVoiceConfig getMultiSpeakerVoiceConfig()
   OK    Voice getVoice()
+com.google.firebase.ai.type.SpeechMetadata
+  OK    SpeechMetadata()
+  OK    SpeechMetadata(String)
+  OK    SpeechMetadata(String, String)
+  OK    String getSpeaker()
+  OK    String getStyle()
 com.google.firebase.ai.type.StringFormat
 com.google.firebase.ai.type.StringFormat.Custom
   OK    Custom(String)
@@ -1015,7 +1024,9 @@ com.google.firebase.ai.type.TemplateToolConfig
   OK    TemplateToolConfig(RetrievalConfig)
 com.google.firebase.ai.type.TextPart
   OK    TextPart(String)
+  OK    TextPart(String, SpeechMetadata)
   OK    static TextPart createWithThinking(String, boolean, String)
+  OK    SpeechMetadata getSpeechMetadata()
   OK    String getText()
   OK    String getThoughtSignature()
   OK    boolean isThought()

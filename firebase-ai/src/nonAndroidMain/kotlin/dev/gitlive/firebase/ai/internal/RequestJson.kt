@@ -178,6 +178,15 @@ internal fun Part.toJson(ignoreThoughtFlag: Boolean = false): JsonObject {
         is TextPart -> buildJsonObject {
             put("text", text)
             thinking(thoughtSignature)
+            speechMetadata?.let { metadata ->
+                put(
+                    "speechMetadata",
+                    buildJsonObject {
+                        putIfNotNull("speaker", metadata.speaker)
+                        putIfNotNull("style", metadata.style)
+                    },
+                )
+            }
         }
         is InlineDataPart -> buildJsonObject {
             put(

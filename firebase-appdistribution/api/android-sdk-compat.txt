@@ -1,5 +1,5 @@
 # Android SDK source compatibility of firebase-appdistribution
-# Android SDK api.txt ref: 3199128480a6619779fa2feda823922f10b91009
+# Android SDK api.txt ref: 2c58acbb9da02dfa1b9d77a2bfd7c0ad937285be
 # 100% of 62 public members available (62 identical, 0 mapped, 0 missing, 0 omitted)
 #
 com.google.firebase.appdistribution.AppDistributionRelease

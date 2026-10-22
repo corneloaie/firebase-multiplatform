@@ -11,9 +11,10 @@ What is tracked, and where it lives:
 
 The api.txt revision is the newest "m<NNN> mergeback" commit on firebase-android-sdk's main branch: the point where a
 Firebase Android release (the BoM's libraries) was merged back, so the API compared against is the released one rather
-than whatever main has gained since. App Distribution is not in the BoM: it moves to the version that the same revision
-records as released (`latestReleasedVersion` in firebase-appdistribution-api/gradle.properties), so its library and its
-api.txt match.
+than whatever main has gained since. A revision set by hand ahead of that mergeback (a releases/mNNN.release branch, for
+a release whose mergeback has not landed yet) is kept until a newer mergeback contains it. App Distribution is not in the
+BoM: it moves to the version that the same revision records as released (`latestReleasedVersion` in
+firebase-appdistribution-api/gradle.properties), so its library and its api.txt match.
 
 The summary also lists firebase-android-sdk modules with a public api.txt that no module here is compared against and
 that are not known below, which is how a new Firebase product shows up.
@@ -137,6 +138,12 @@ def latest_android_api_ref():
     sys.exit('no "mNNN mergeback" commit found in the last 500 commits of firebase-android-sdk main')
 
 
+def contains(descendant, ancestor):
+    """Whether the history of firebase-android-sdk commit `descendant` contains commit `ancestor`."""
+    compare = json.loads(fetch(f'https://api.github.com/repos/firebase/firebase-android-sdk/compare/{ancestor}...{descendant}'))
+    return compare['status'] in ('ahead', 'identical')
+
+
 def toml_value(key):
     return re.search(rf'^{re.escape(key)}\s*=\s*"([^"]+)"', TOML.read_text(), flags=re.M).group(1)
 
@@ -173,13 +180,19 @@ def main():
     args = parser.parse_args()
 
     api_sha, milestone, api_date = latest_android_api_ref()
+    api_note = f'firebase-android-sdk {milestone} mergeback, {api_date}'
+    current_api = property_value('androidSdk.apiRef')
+    if current_api != api_sha and contains(current_api, api_sha):
+        # Set by hand to a release (its releases/mNNN.release branch) whose mergeback has not landed on main yet: keep
+        # it until a newer mergeback contains it, rather than going back to an older API.
+        api_sha, api_note = current_api, f'ahead of the firebase-android-sdk {milestone} mergeback, kept until a newer one'
     rows = [
         # name, current, latest, note
         ('Android BoM', toml_value('firebase-bom'), latest_bom(), 'com.google.firebase:firebase-bom'),
         ('App Distribution', toml_value('firebase-appdistribution'), latest_appdistribution(api_sha), 'beta, not in the BoM'),
         ('iOS SDK', toml_value('firebase-ios-sdk'), latest_ios(), 'SwiftPM minimum; resolves to the newest release of that major'),
         ('JS SDK', current_js(), latest_js(), 'npm firebase'),
-        ('Android API (api.txt)', property_value('androidSdk.apiRef'), api_sha, f'firebase-android-sdk {milestone} mergeback, {api_date}'),
+        ('Android API (api.txt)', current_api, api_sha, api_note),
     ]
     changed = [row for row in rows if row[1] != row[2]]
 

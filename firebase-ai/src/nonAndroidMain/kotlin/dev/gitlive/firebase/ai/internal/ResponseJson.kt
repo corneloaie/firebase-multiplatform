@@ -45,6 +45,7 @@ import com.google.firebase.ai.type.SafetyRating
 import com.google.firebase.ai.type.SearchEntryPoint
 import com.google.firebase.ai.type.Segment
 import com.google.firebase.ai.type.SerializationException
+import com.google.firebase.ai.type.SpeechMetadata
 import com.google.firebase.ai.type.TextPart
 import com.google.firebase.ai.type.Transcription
 import com.google.firebase.ai.type.UrlContextMetadata
@@ -141,7 +142,10 @@ internal fun JsonObject.toPart(): Part {
     obj("codeExecutionResult")?.let { result ->
         return CodeExecutionResultPart(result.string("outcome") ?: "", result.string("output") ?: "", thought, thoughtSignature)
     }
-    if (containsKey("text")) return TextPart(string("text") ?: "", thought, thoughtSignature)
+    if (containsKey("text")) {
+        val speechMetadata = obj("speechMetadata")?.let { SpeechMetadata(it.string("speaker"), it.string("style")) }
+        return TextPart(string("text") ?: "", thought, thoughtSignature, speechMetadata)
+    }
     return UnknownPart(thought, thoughtSignature)
 }
 

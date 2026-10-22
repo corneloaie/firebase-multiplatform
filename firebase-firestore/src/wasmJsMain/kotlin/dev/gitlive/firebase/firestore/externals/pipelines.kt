@@ -56,6 +56,7 @@ public external interface PipelineSource : JsAny {
     public fun collectionGroup(options: JsAny): Pipeline
     public fun database(options: JsAny): Pipeline
     public fun documents(options: JsAny): Pipeline
+    public fun literals(options: JsAny): Pipeline
     public fun createFrom(query: Query): Pipeline
 }
 
@@ -76,6 +77,10 @@ public external interface Pipeline : JsAny {
     public fun union(options: JsAny): Pipeline
     public fun unnest(options: JsAny): Pipeline
     public fun define(options: JsAny): Pipeline
+    public fun delete(options: JsAny): Pipeline
+    public fun update(options: JsAny): Pipeline
+    public fun insert(options: JsAny): Pipeline
+    public fun upsert(options: JsAny): Pipeline
     public fun rawStage(name: String, params: JsArray<JsAny?>, options: JsAny): Pipeline
     public fun toArrayExpression(): FunctionExpression
 }

@@ -33,6 +33,7 @@ import com.google.firebase.ai.type.ResponseStoppedException
 import com.google.firebase.ai.type.SerializationException
 import com.google.firebase.ai.type.ServerException
 import com.google.firebase.ai.type.ServiceDisabledException
+import com.google.firebase.ai.type.SpeechMetadata
 import com.google.firebase.ai.type.TextPart
 import com.google.firebase.ai.type.UnknownException
 import com.google.firebase.ai.type.UnsupportedUserLocationException
@@ -158,6 +159,13 @@ class ResponseJsonTest {
     fun emptyContentKeepsASpace() {
         assertEquals(listOf(" "), json("""{"role": "model", "parts": [{"text": ""}]}""").toContent().parts.map { (it as TextPart).text })
         assertEquals(emptyList(), json("""{"role": "model", "parts": [{"other": 1}]}""").toContent().parts)
+    }
+
+    @Test
+    fun speechMetadata() {
+        val parts = json("""{"role": "model", "parts": [{"text": "Hello", "speechMetadata": {"speaker": "Joe", "style": "cheerfully"}}, {"text": "Hi"}]}""").toContent().parts
+        val metadata: List<SpeechMetadata?> = parts.map { (it as TextPart).speechMetadata }
+        assertEquals(listOf("Joe" to "cheerfully", null), metadata.map { it?.let { m -> m.speaker to m.style } })
     }
 
     @Test
