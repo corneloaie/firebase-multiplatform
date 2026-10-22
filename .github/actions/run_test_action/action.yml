@@ -124,7 +124,8 @@ runs:
 
     # A corrupt Android SDK download, a dependency a Maven repository could not serve (throttled, failing, or briefly
     # missing: Maven Central once answered 404 for kotlin-test-common 2.4.21), or a package SwiftPM could not fetch (a
-    # git clone or fetch, as when #22's iOS job could not reach github.com, or a binary target's download) fails the job
+    # git clone or fetch, as when #22's iOS job could not reach github.com, or a binary target's download), or a package
+    # yarn could not fetch for the JS and Wasm tooling (#24's Wasm job got a 502 from registry.yarnpkg.com) fails the job
     # before any test runs: run the tasks once more then. Any other failure stands. "Couldn.t" matches "Couldn't": an
     # apostrophe would end the quoted pattern.
     - name: Run ${{ inputs.platform-name }} Tests
@@ -132,7 +133,7 @@ runs:
       run: |
         log="$RUNNER_TEMP/gradle-tasks.log"
         ./gradlew ${{ inputs.gradle-tasks }} 2>&1 | tee "$log" && exit 0
-        grep -qE 'Archive is not a ZIP archive|Failed to install the following SDK components|Could not resolve all (dependencies|files) for configuration|Received status code (429|5[0-9][0-9])|Failed to clone repository|Couldn.t connect to server|Could not resolve host|which is required by binary target' "$log" || exit 1
+        grep -qE 'Archive is not a ZIP archive|Failed to install the following SDK components|Could not resolve all (dependencies|files) for configuration|Received status code (429|5[0-9][0-9])|Request failed "(429|5[0-9][0-9])|Failed to clone repository|Couldn.t connect to server|Could not resolve host|which is required by binary target' "$log" || exit 1
         echo "::warning::A download failed; running the tasks once more in a minute"
         sleep 60
         ./gradlew ${{ inputs.gradle-tasks }}
