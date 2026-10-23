@@ -26,7 +26,7 @@ runs:
       uses: gradle/actions/setup-gradle@v4
 
     - name: Kotlin/Native cache
-      uses: actions/cache@v5
+      uses: actions/cache@v6
       with:
         path: ~/.konan
         key: konan-${{ runner.os }}-${{ hashFiles('gradle/libs.versions.toml') }}
@@ -34,7 +34,7 @@ runs:
           konan-${{ runner.os }}-
 
     - name: Firebase emulator cache
-      uses: actions/cache@v5
+      uses: actions/cache@v6
       with:
         path: ~/.cache/firebase/emulators
         key: firebase-emulators-${{ runner.os }}-${{ hashFiles('test/firebase.json') }}
