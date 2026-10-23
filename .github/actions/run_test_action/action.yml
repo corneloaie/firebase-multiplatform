@@ -61,7 +61,7 @@ runs:
     - name: Restore Android emulator cache
       id: emulator-cache
       if: inputs.android == 'true'
-      uses: actions/cache/restore@v5
+      uses: actions/cache/restore@v6
       with:
         path: |
           ${{ steps.android-sdk.outputs.path }}/emulator
@@ -73,7 +73,7 @@ runs:
     - name: Restore SwiftPM cache
       id: swiftpm-cache
       if: inputs.apple == 'true'
-      uses: actions/cache/restore@v5
+      uses: actions/cache/restore@v6
       with:
         path: |
           ~/Library/Caches/org.swift.swiftpm
@@ -150,7 +150,7 @@ runs:
 
     - name: Save Android emulator cache
       if: always() && steps.emulator-downloaded.outputs.complete == 'true'
-      uses: actions/cache/save@v5
+      uses: actions/cache/save@v6
       with:
         path: |
           ${{ steps.android-sdk.outputs.path }}/emulator
@@ -176,7 +176,7 @@ runs:
 
     - name: Save SwiftPM cache
       if: steps.swiftpm-cache-used.outputs.used == 'true'
-      uses: actions/cache/save@v5
+      uses: actions/cache/save@v6
       with:
         path: |
           ~/Library/Caches/org.swift.swiftpm
