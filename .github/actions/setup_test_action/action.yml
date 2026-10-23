@@ -23,7 +23,7 @@ runs:
       run: npm update
 
     - name: Gradle cache
-      uses: gradle/actions/setup-gradle@v4
+      uses: gradle/actions/setup-gradle@v6
 
     - name: Kotlin/Native cache
       uses: actions/cache@v5
