@@ -302,8 +302,8 @@ runs the full CI matrix:
    [Acknowledgements](#acknowledgements)), and reports conflicts it cannot resolve in an issue.
 
 A Claude Code routine then implements the new members on every platform, fixes whatever the new SDKs or upstream
-changes broke, and merges both pull requests once CI passes. Dependabot keeps the build tooling and GitHub Actions
-current.
+changes broke, and merges both pull requests once CI passes. A second routine keeps the other libraries, the build
+tooling and the GitHub Actions current, in one more weekly pull request.
 [MAINTAINING.md](MAINTAINING.md) has the details.
 
 ## Contributing
