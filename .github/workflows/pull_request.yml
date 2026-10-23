@@ -10,6 +10,9 @@ on:
   # the only way to validate a commit that did not arrive through a pull request.
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 concurrency:
   group: ci-pull-request-${{ github.head_ref || github.ref }}
   cancel-in-progress: true

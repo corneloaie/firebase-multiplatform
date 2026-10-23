@@ -15,6 +15,10 @@ on:
         type: boolean
         default: true
 
+# The documentation job widens this to contents: write for its push to gh-pages.
+permissions:
+  contents: read
+
 env:
   ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.SONATYPEUSERNAME }}
   ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPEPASSWORD }}
