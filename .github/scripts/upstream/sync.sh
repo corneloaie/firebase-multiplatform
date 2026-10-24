@@ -3,10 +3,12 @@
 # fork carries ahead of upstream (.github/upstream-merges.tsv), re-merged when its head has moved and dropped once
 # upstream has merged the pull request into v3.0.0.
 #
-# Only mechanical conflicts are resolved here: README.md (this fork's own), Apple sources whose only upstream-side
-# change is the CocoaPods -> SwiftPM import rewrite (resolve_apple.py), and version pins that both sides moved
-# (resolve_versions.py: the higher version wins, androidSdk.apiRef and forkVersion stay this fork's). Anything else
-# aborts that merge and is listed in the summary for a person (or Claude) to resolve by hand.
+# Only mechanical conflicts are resolved here: README.md (this fork's own), .github/dependabot.yml (deleted here: the
+# dependency routine, .claude/skills/dependency-update, replaced Dependabot; an upstream edit to it is listed to check
+# against that routine's pins.txt), Apple sources whose only upstream-side change is the CocoaPods -> SwiftPM import
+# rewrite (resolve_apple.py), and version pins that both sides moved (resolve_versions.py: the higher version wins,
+# androidSdk.apiRef and forkVersion stay this fork's). Anything else aborts that merge and is listed in the summary for
+# a person (or Claude) to resolve by hand.
 #
 # usage: sync.sh <summary.md>   (needs GH_TOKEN for `gh`; exit 0 = everything merged, 3 = some merges need a hand)
 set -uo pipefail
@@ -16,6 +18,7 @@ tracked=.github/upstream-merges.tsv
 upstream_repo=GitLiveApp/firebase-kotlin-sdk
 needs_hand=()
 merged=()
+to_check=()
 
 git remote get-url upstream >/dev/null 2>&1 || git remote add upstream "https://github.com/$upstream_repo.git"
 git fetch --quiet --no-tags upstream '+refs/heads/*:refs/remotes/upstream/*'
@@ -25,6 +28,10 @@ merge() {
   local ref="$1" message="$2" module="${3:-}"
   if git merge --no-ff --no-edit -m "$message" "$ref" >/dev/null 2>&1; then return 0; fi
   if git diff --name-only --diff-filter=U | grep -qx README.md; then git checkout --ours README.md && git add README.md; fi
+  if git diff --name-only --diff-filter=U | grep -qx .github/dependabot.yml; then
+    git rm -q .github/dependabot.yml
+    to_check+=("\`$ref\` changed \`.github/dependabot.yml\`, which this fork deleted: if it ignores a new version, add the pin to \`.claude/skills/dependency-update/pins.txt\`.")
+  fi
   if [ -n "$module" ]; then python3 "$here/resolve_apple.py" "$ref" "$module" >/dev/null 2>&1 || true; fi
   local pins
   pins="$(git diff --name-only --diff-filter=U | grep -E '(^gradle/libs\.versions\.toml|^gradle\.properties|/build\.gradle\.kts)$' || true)"
@@ -75,6 +82,12 @@ fi
   echo
   for line in "${merged[@]}"; do echo "- $line"; done
   [ ${#merged[@]} -eq 0 ] && echo "- Nothing new upstream."
+  if [ ${#to_check[@]} -gt 0 ]; then
+    echo
+    echo "### To check"
+    echo
+    for line in "${to_check[@]}"; do echo "- $line"; done
+  fi
   if [ ${#needs_hand[@]} -gt 0 ]; then
     echo
     echo "### Needs a manual merge"

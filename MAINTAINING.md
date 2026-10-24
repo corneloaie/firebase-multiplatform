@@ -9,6 +9,7 @@ mechanical:
 | Maven coordinates, version, POM | `buildSrc/src/main/kotlin/fork/Fork.kt`, `forkVersion` in `gradle.properties` |
 | Upstream PRs merged ahead of upstream | `.github/upstream-merges.tsv` |
 | Weekly automation | `.github/workflows/weekly.yml`, `.github/scripts/` |
+| Dependency updates | `.claude/skills/dependency-update/` (the routine's procedure, `check_updates.py`, `pins.txt`) |
 | Publishing | `.github/workflows/publish.yml` |
 | Docs | `README.md` (this fork's own, kept on upstream merges), `NOTICE`, this file |
 
@@ -23,6 +24,8 @@ packages (`swiftPMImport.dev.gitlive.firebase.<module>`) that every Apple source
   which uses SwiftPM, Kotlin 2.4 and Wasm, not its `master` (2.x, CocoaPods).
 - `weekly/upstream-sync` and `weekly/firebase-sdks` are rewritten by the weekly workflow, one pull request each. A
   commit pushed to one of them is lost the next Monday unless its pull request has merged.
+- `deps/weekly` is the dependency routine's branch, one pull request. The routine deletes it once that pull request has
+  merged and starts the next one from `main`.
 
 ## The weekly workflow
 
@@ -35,6 +38,8 @@ It runs every Monday at 05:23 UTC, and on demand from the Actions tab (`Weekly u
   - if the PR is merged into `v3.0.0` upstream, it drops the line;
   - if the branch head moved, it merges the new head and records it.
 - Conflicts in `README.md` keep this fork's version.
+- This fork deleted `.github/dependabot.yml` (see "Dependency updates" below), so an upstream edit to it keeps it
+  deleted. The edit is listed under "To check" in the upstream pull request: move a new ignore entry into `pins.txt`.
 - Apple sources whose only upstream-side change is the CocoaPods to SwiftPM import rewrite are resolved by
   `.github/scripts/upstream/resolve_apple.py`.
 - Any other conflict aborts that merge and is reported in the issue "Upstream GitLive changes need a manual merge". Then
@@ -88,6 +93,43 @@ Claude token. Each run picks up where the update stands:
   comments on what it did. The workflow turns auto-merge off again whenever it refreshes a pull request.
 
 It never releases. Without the routine, do the same by hand: see "Closing coverage gaps by hand" below.
+
+## Dependency updates
+
+Everything the weekly workflow doesn't move is kept current by a second Claude Code routine on the maintainer's Mac,
+which replaced Dependabot. It covers:
+- the version catalog;
+- versions hard-coded in build scripts;
+- the Gradle wrapper;
+- the GitHub Actions of `.github/workflows` and `.github/actions`.
+
+Its procedure is the repository skill [`.claude/skills/dependency-update`](.claude/skills/dependency-update/SKILL.md),
+so a change to it is reviewed like any other. It runs on Wednesdays and Thursdays, away from the Monday and Tuesday
+weekly pull requests, which edit the same catalog:
+
+- **Wednesday:** `check_updates.py` lists what is newer. The routine bumps it in groups (Actions; patches and minors by
+  family; Kotlin; then each major on its own), checks each group locally, and pushes one pull request from
+  `deps/weekly`, "Weekly: dependency updates".
+- **Thursday:** it reads that pull request's CI. It re-runs transient failures, and fixes or reverts the group that broke
+  something.
+- **Majors:** it tries each one on its own, and holds it back if it can't make it pass, taking the newest version of
+  the current major instead.
+- **Auto-merge:** it arms auto-merge (a merge commit) once no public API was removed and nothing it bumped needs a
+  decision.
+
+[`pins.txt`](.claude/skills/dependency-update/pins.txt) says what it must not bump, and why:
+- `<X.Y` stays below a version line (kotlinx-coroutines below 1.11, dokka below 2.2);
+- `hold` is left for a person (dokka and the publish plugin: pull request CI never publishes, so they need a Publish
+  dry run);
+- `weekly` is the weekly workflow's (the Firebase SDKs).
+
+Remove a pin in the pull request that makes its reason go away.
+
+To see what is outdated without the routine, run:
+
+```bash
+python3 .claude/skills/dependency-update/check_updates.py
+```
 
 ## Closing coverage gaps by hand
 
