@@ -4,6 +4,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.corneloaie/firebase-app?style=flat-square&label=Maven%20Central)](https://central.sonatype.com/namespace/io.github.corneloaie)
 [![Weekly update](https://img.shields.io/github/actions/workflow/status/corneloaie/firebase-multiplatform/weekly.yml?label=weekly%20update&style=flat-square)](.github/workflows/weekly.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square)](LICENSE)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/corneloaie?label=sponsors&logo=githubsponsors&style=flat-square)](https://github.com/sponsors/corneloaie)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-support-FF5E5B?style=flat-square&logo=ko-fi&logoColor=white)](https://ko-fi.com/corneloaie)
 
 <!-- coverage-badge:start -->
@@ -330,7 +331,16 @@ documentation for each release is published [here](https://corneloaie.github.io/
 
 ## Support
 
-If firebase-multiplatform saves you time, you can support its upkeep on [Ko-fi](https://ko-fi.com/corneloaie).
+If firebase-multiplatform saves you time, you can support its upkeep through
+[GitHub Sponsors](https://github.com/sponsors/corneloaie) or on [Ko-fi](https://ko-fi.com/corneloaie).
+
+### Sponsors
+
+Thank you to everyone who sponsors firebase-multiplatform. Monthly sponsors from $25 are listed here.
+
+<!-- sponsors:start -->
+_Be the first: [become a sponsor](https://github.com/sponsors/corneloaie)._
+<!-- sponsors:end -->
 
 ## Acknowledgements
 
