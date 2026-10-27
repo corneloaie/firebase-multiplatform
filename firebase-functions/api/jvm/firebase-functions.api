@@ -14,19 +14,6 @@ public final class com/google/firebase/functions/HttpsCallableTimeoutKt {
 	public static final fun withTimeout-HG0u8IE (Lcom/google/firebase/functions/HttpsCallableReference;J)Lcom/google/firebase/functions/HttpsCallableReference;
 }
 
-public abstract class com/google/firebase/functions/StreamResponse {
-}
-
-public final class com/google/firebase/functions/StreamResponse$Message : com/google/firebase/functions/StreamResponse {
-	public fun <init> (Lcom/google/firebase/functions/HttpsCallableResult;)V
-	public final fun getMessage ()Lcom/google/firebase/functions/HttpsCallableResult;
-}
-
-public final class com/google/firebase/functions/StreamResponse$Result : com/google/firebase/functions/StreamResponse {
-	public fun <init> (Lcom/google/firebase/functions/HttpsCallableResult;)V
-	public final fun getResult ()Lcom/google/firebase/functions/HttpsCallableResult;
-}
-
 public final class dev/gitlive/firebase/functions/AndroidFunctions {
 	public static final fun functions (Ldev/gitlive/firebase/Firebase;Ldev/gitlive/firebase/FirebaseApp;)Ldev/gitlive/firebase/functions/FirebaseFunctions;
 	public static final fun functions (Ldev/gitlive/firebase/Firebase;Ldev/gitlive/firebase/FirebaseApp;Ljava/lang/String;)Ldev/gitlive/firebase/functions/FirebaseFunctions;
