@@ -16,7 +16,7 @@ import kotlin.jvm.JvmName
  *
  * The multiplatform counterpart of the Android SDK's `stream(data)`, whose `org.reactivestreams.Publisher` common code
  * cannot name; shipped on Android and the JVM too (see keepClasses in the build file). Not available on Apple
- * platforms, where the iOS SDK's streaming API is Swift-only, or on the JVM, whose firebase-java-sdk has no streaming:
+ * platforms, where the iOS SDK's streaming API is Swift-only, or on the JVM with a firebase-java-sdk older than 0.7.0:
  * there the flow fails with an [UnsupportedOperationException].
  */
 public expect fun HttpsCallableReference.streamAsFlow(data: Any? = null): Flow<StreamResponse>

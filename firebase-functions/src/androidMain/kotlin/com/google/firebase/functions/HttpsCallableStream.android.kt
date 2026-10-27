@@ -15,7 +15,7 @@ import org.reactivestreams.Subscription
 
 /*
  * Unlike the header stubs around it, this file is shipped (see keepClasses in the build file): it adapts the SDK's
- * org.reactivestreams.Publisher to a Flow. The JVM's firebase-java-sdk has no stream(), so there the call fails.
+ * org.reactivestreams.Publisher to a Flow. firebase-java-sdk before 0.7.0 has no stream(), so there the call fails.
  */
 
 public actual fun HttpsCallableReference.streamAsFlow(data: Any?): Flow<StreamResponse> = callbackFlow {

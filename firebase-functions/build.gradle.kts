@@ -195,10 +195,6 @@ kotlin {
         if (supportedPlatforms.contains(TargetPlatform.Jvm)) {
             getByName("jvmMain") {
                 kotlin.srcDir("src/androidMain/kotlin")
-                dependencies {
-                    // The Android SDK brings it; the shared streamAsFlow and the stubs name its Publisher.
-                    implementation("org.reactivestreams:reactive-streams:1.0.4")
-                }
             }
             project.extensions.getByType<SourceSetContainer>().getByName("jvmMain").java.srcDir("src/androidMain/java")
         }
