@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-firebase-multiplatform: the Firebase Android SDK API, plus a Kotlin-first API, for Kotlin Multiplatform common code. It wraps the official Firebase SDKs for Android, iOS, JVM, JS and Wasm (wasmJs), is published as `io.github.corneloaie:<module>`, and started from GitLive's firebase-kotlin-sdk (see "This fork" below).
+firebase-multiplatform: the Firebase Android SDK API, plus a Kotlin-first API, for Kotlin Multiplatform common code. It wraps the official Firebase SDKs for Android, iOS, JVM, JS and Wasm (wasmJs), is published as `io.github.corneloaie:<module>`, and started from GitLive's firebase-kotlin-sdk (see "This project" below).
 
 ## Module Structure
 
@@ -85,6 +85,6 @@ Divergence between mirrors is sometimes deliberate — a platform genuinely lack
 
 `firebase-auth` is forked rather than shared because the GitLive Firebase Java SDK lacks four APIs that `androidMain` uses: `PhoneAuthOptions`, `AuthResult.getCredential()`, `AuthResult.getAdditionalUserInfo()`/`AdditionalUserInfo`, and `ActionCodeSettings.Builder.setLinkDomain()`. Tracked in GitLiveApp/firebase-java-sdk#68; when that lands the fork can be deleted and `srcDir` sharing restored.
 
-## This fork
+## This project
 
-This repository is corneloaie/firebase-multiplatform, a fork of GitLive's SDK published as `io.github.corneloaie`. Read @MAINTAINING.md before changing build, publishing or upstream-merge setup.
+This repository is corneloaie/firebase-multiplatform, published as `io.github.corneloaie`. It started from GitLive's SDK and is maintained on its own: it no longer merges GitLive's changes. Read @MAINTAINING.md before changing build or publishing setup.

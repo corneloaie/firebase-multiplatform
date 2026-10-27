@@ -293,17 +293,13 @@ Firebase.firestore.android.firestoreSettings = FirebaseFirestoreSettings.Builder
 
 ## How it stays current
 
-Every Monday the [weekly workflow](.github/workflows/weekly.yml) opens or refreshes two pull requests, and each one
-runs the full CI matrix:
+Every Monday the [weekly workflow](.github/workflows/weekly.yml) opens or refreshes the pull request "Weekly: Firebase
+SDK updates", which runs the full CI matrix. It moves to the newest Firebase Android BoM, iOS SDK and JS SDK, and to
+the Android API of the newest Firebase Android release. It regenerates the coverage reports and the table above, and
+lists every new Android API member that is not available yet, and any new Firebase Android product no module covers.
 
-1. **Weekly: Firebase SDK updates.** It moves to the newest Firebase Android BoM, iOS SDK and JS SDK, and to the
-   Android API of the newest Firebase Android release. It regenerates the coverage reports and the table above, and
-   lists every new Android API member that is not available yet, and any new Firebase Android product no module covers.
-2. **Weekly: merge upstream.** It merges the newest work of the upstream project this one started from (see
-   [Acknowledgements](#acknowledgements)), and reports conflicts it cannot resolve in an issue.
-
-A Claude Code routine then implements the new members on every platform, fixes whatever the new SDKs or upstream
-changes broke, and merges both pull requests once CI passes. A second routine keeps the other libraries, the build
+A Claude Code routine then implements the new members on every platform, fixes whatever the new SDKs broke, and merges
+the pull request once CI passes. A second routine keeps the other libraries, the build
 tooling and the GitHub Actions current, in one more weekly pull request.
 [MAINTAINING.md](MAINTAINING.md) has the details.
 
@@ -326,7 +322,7 @@ Before committing a change to the public API:
 - run `python3 .github/scripts/weekly/coverage.py --readme README.md`;
 - document every public declaration in KDoc.
 
-[MAINTAINING.md](MAINTAINING.md) covers the API rules, the weekly automation, the upstream merges and releasing. API
+[MAINTAINING.md](MAINTAINING.md) covers the API rules, the weekly automation and releasing. API
 documentation for each release is published [here](https://corneloaie.github.io/firebase-multiplatform/).
 
 ## Support

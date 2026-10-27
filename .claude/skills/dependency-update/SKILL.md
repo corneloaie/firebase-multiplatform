@@ -34,7 +34,7 @@ Never touch, even if it looks outdated:
   `npm("firebase", …)` pins in the build files, `androidSdk.apiRef`, and the `*/apple/*/Package.swift` minimums. The
   weekly workflow moves those together and regenerates the coverage reports.
 - what `pins.txt` holds (`hold`, or above a `<X.Y` line). Report it; don't edit `pins.txt`.
-- `forkVersion`, `.github/upstream-merges.tsv`, minSdk, compileSdk, targetSdk, the Java target, and the Node version
+- `forkVersion`, minSdk, compileSdk, targetSdk, the Java target, and the Node version
   and npm packages of the test setup (`test/functions`, `setup_test_action`).
 
 Never re-add Dependabot.
