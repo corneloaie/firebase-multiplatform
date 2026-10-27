@@ -9,6 +9,7 @@ import dev.gitlive.firebase.externals.jsObject
 import dev.gitlive.firebase.externals.jsObjectKeys
 import dev.gitlive.firebase.externals.jsSet
 import dev.gitlive.firebase.externals.jsonStringify
+import dev.gitlive.firebase.externals.toJs
 import dev.gitlive.firebase.externals.toKotlinString
 import dev.gitlive.firebase.externals.toList
 
@@ -23,16 +24,14 @@ public actual class CustomSignals internal constructor(public val js: JsAny) {
     public actual class Builder actual constructor() {
         private val signals = jsObject()
 
-        public actual fun put(key: String, value: String?): Builder = apply { jsSet(signals, key, value?.toJsString()) }
+        public actual fun put(key: String, value: String?): Builder = apply { jsSet(signals, key, value.toJs()) }
 
-        public actual fun put(key: String, value: Long): Builder = apply { jsSet(signals, key, value.toDouble().toJsNumber()) }
+        public actual fun put(key: String, value: Long): Builder = apply { jsSet(signals, key, value.toDouble().toJs()) }
 
-        public actual fun put(key: String, value: Double): Builder = apply { jsSet(signals, key, value.toJsNumber()) }
+        public actual fun put(key: String, value: Double): Builder = apply { jsSet(signals, key, value.toJs()) }
 
         public actual fun build(): CustomSignals = CustomSignals(
-            jsObject().also { copy ->
-                jsObjectKeys(signals).toList().map { it.toKotlinString() }.forEach { jsSet(copy, it, jsGet(signals, it)) }
-            },
+            jsObject().also { copy -> jsObjectKeys(signals).toList().forEach { key -> jsSet(copy, key.toKotlinString(), jsGet(signals, key.toKotlinString())) } },
         )
     }
 }

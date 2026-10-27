@@ -38,20 +38,21 @@ public actual class FirebaseCrashlytics internal constructor(public val ios: FIR
 
     /**
      * Records the exception as a Crashlytics exception model: its class as the name, its message as the reason and its
-     * own stack frames as code addresses, which Crashlytics symbolicates from the Kotlin framework's dSYM (see the README),
-     * each cause following after a `Caused by:` frame. Recording an `NSError` instead would only capture the native stack
-     * of this call.
+     * own stack frames as code addresses, which Crashlytics symbolicates from the Kotlin framework's dSYM, each cause
+     * following after a `Caused by:` frame. Recording an `NSError` instead would only capture the native stack of this
+     * call. See [Crashlytics on iOS](https://github.com/GitLiveApp/firebase-kotlin-sdk#crashlytics-on-ios) in the README.
      */
     public actual fun recordException(throwable: Throwable): Unit = ios.recordExceptionModel(throwable.asExceptionModel())
 
     /**
-     * Records the exception as [recordException] does, with the keys logged just before it as `key = value` lines, so
+     * Records the exception as [recordException] does, with the keys logged just before it as `🔑 key = value` lines, so
      * that they show in the event's logs. The iOS SDK takes per-event keys only on an `NSError`, which carries the native
      * stack of the recording call instead of the exception's frames, and its custom keys are session state that the
-     * report carries as one final map, so neither attaches keys to a single event.
+     * report carries as one final map, so neither attaches keys to a single event. See [Crashlytics on iOS](https://github.com/GitLiveApp/firebase-kotlin-sdk#crashlytics-on-ios) in
+     * the README.
      */
     public actual fun recordException(throwable: Throwable, keysAndValues: CustomKeysAndValues) {
-        keysAndValues.keysAndValues.forEach { (key, value) -> ios.log("$key = $value") }
+        keysAndValues.keysAndValues.forEach { (key, value) -> ios.log("🔑 $key = $value") }
         ios.recordExceptionModel(throwable.asExceptionModel())
     }
 
@@ -135,20 +136,47 @@ private fun CustomKeysAndValues.asNSDictionary(): Map<Any?, *> = keysAndValues a
 /**
  * The exception's class, message and stack frames as a Crashlytics exception model. The frames are the exception's own
  * code addresses (not the native stack of the recording call), for Crashlytics to symbolicate from the framework's dSYM,
- * as the Kotlin/Native crash reporters (CrashKiOS, Sentry) submit them; the frames of each cause follow after a frame
- * naming it, as Crashlytics models a single stack.
+ * as the Kotlin/Native crash reporters (CrashKiOS, NSExceptionKt) submit them. The frames of each cause follow after a
+ * frame naming it, as Crashlytics models a single stack, without the tail they share with the exception's own frames:
+ * below the point where the cause was created the two stacks are the same.
  */
 @OptIn(ExperimentalNativeApi::class)
 private fun Throwable.asExceptionModel(): FIRExceptionModel {
     val frames = mutableListOf<FIRStackFrame>()
-    val seen = mutableSetOf<Throwable>()
-    var throwable: Throwable? = this
-    while (throwable != null && seen.add(throwable)) {
-        if (throwable !== this) frames += FIRStackFrame.stackFrameWithSymbol("Caused by: ${throwable.description()}", "", 0)
-        throwable.getStackTraceAddresses().mapTo(frames) { FIRStackFrame.stackFrameWithAddress(it.toULong()) }
-        throwable = throwable.cause
+    val own = frameAddresses()
+    own.mapTo(frames) { FIRStackFrame.stackFrameWithAddress(it.toULong()) }
+    val seen = mutableSetOf(this)
+    var cause = this.cause
+    while (cause != null && seen.add(cause)) {
+        frames += FIRStackFrame.stackFrameWithSymbol("Caused by: ${cause.description()}", "", 0)
+        cause.frameAddresses().dropCommonTail(own).mapTo(frames) { FIRStackFrame.stackFrameWithAddress(it.toULong()) }
+        cause = cause.cause
     }
     return FIRExceptionModel(name = this::class.qualifiedName ?: "KotlinException", reason = message ?: "").apply { stackTrace = frames }
+}
+
+/**
+ * The addresses of this throwable's stack frames without the leading frames of its constructors, so the first frame,
+ * which Crashlytics names and groups the issue by, is where the exception was created rather than
+ * `kotlin.Throwable.<init>`. Kotlin/Native captures the stack inside the constructor chain, so the frames up to and
+ * including the throwable's own class's `<init>` are dropped (its superclass constructors sit above it), the rule
+ * NSExceptionKt applies; when no such frame is found, nothing is dropped.
+ */
+@OptIn(ExperimentalNativeApi::class)
+private fun Throwable.frameAddresses(): List<Long> {
+    val addresses = getStackTraceAddresses()
+    val symbols = getStackTrace()
+    if (symbols.size != addresses.size) return addresses
+    val init = "kfun:${this::class.qualifiedName ?: Throwable::class.qualifiedName}#<init>"
+    val lastInit = symbols.indexOfLast { it.contains(init) }
+    return addresses.drop(lastInit + 1)
+}
+
+/** This list without the trailing elements it shares with [other]. */
+private fun List<Long>.dropCommonTail(other: List<Long>): List<Long> {
+    var common = 0
+    while (common < size && common < other.size && this[size - 1 - common] == other[other.size - 1 - common]) common++
+    return dropLast(common)
 }
 
 private fun Throwable.description(): String = (this::class.qualifiedName ?: "KotlinException") + (message?.let { ": $it" } ?: "")
