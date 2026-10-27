@@ -7,10 +7,12 @@ package com.google.firebase.functions
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.FirebaseApp
+import dev.gitlive.firebase.externals.errorCode
 import dev.gitlive.firebase.externals.jsGet
 import dev.gitlive.firebase.externals.json
 import dev.gitlive.firebase.externals.toJs
 import dev.gitlive.firebase.externals.toKotlin
+import dev.gitlive.firebase.functions.GET_HTTPS_CALLABLE_FROM_URL_JVM_ONLY
 import dev.gitlive.firebase.functions.SET_TIMEOUT_JVM_ONLY
 import dev.gitlive.firebase.functions.WITH_TIMEOUT_JVM_ONLY
 import dev.gitlive.firebase.functions.externals.Functions
@@ -35,6 +37,14 @@ public actual class FirebaseFunctions internal constructor(public val js: Functi
     public actual fun getHttpsCallable(name: String): HttpsCallableReference = HttpsCallableReference(js, name, fromUrl = false, limitedUseAppCheckTokens = false)
 
     public actual fun getHttpsCallable(name: String, options: HttpsCallableOptions): HttpsCallableReference = HttpsCallableReference(js, name, fromUrl = false, limitedUseAppCheckTokens = options.limitedUseAppCheckTokens)
+
+    @Suppress("DEPRECATION_ERROR")
+    @Deprecated(GET_HTTPS_CALLABLE_FROM_URL_JVM_ONLY, level = DeprecationLevel.ERROR)
+    public actual fun getHttpsCallableFromUrl(url: java.net.URL): HttpsCallableReference = throw UnsupportedOperationException(GET_HTTPS_CALLABLE_FROM_URL_JVM_ONLY)
+
+    @Suppress("DEPRECATION_ERROR")
+    @Deprecated(GET_HTTPS_CALLABLE_FROM_URL_JVM_ONLY, level = DeprecationLevel.ERROR)
+    public actual fun getHttpsCallableFromUrl(url: java.net.URL, options: HttpsCallableOptions): HttpsCallableReference = throw UnsupportedOperationException(GET_HTTPS_CALLABLE_FROM_URL_JVM_ONLY)
 
     internal fun httpsCallableFromUrl(url: String, options: HttpsCallableOptions?): HttpsCallableReference = HttpsCallableReference(js, url, fromUrl = true, limitedUseAppCheckTokens = options?.limitedUseAppCheckTokens ?: false)
 
@@ -77,10 +87,9 @@ public actual class HttpsCallableReference internal constructor(
             if (fromUrl) httpsCallableFromURL(functions, nameOrUrl, options) else httpsCallable(functions, nameOrUrl, options)
         }
 
-    public actual fun call(): Task<HttpsCallableResult> = task { js.invoke() }
+    public actual fun call(): Task<HttpsCallableResult> = task { js() }
 
-    /** Kotlin collections passed as call data become JS objects and arrays, as the JS SDK serializes them to JSON. */
-    public actual fun call(data: Any?): Task<HttpsCallableResult> = task { js.invoke(data.toJs()) }
+    public actual fun call(data: Any?): Task<HttpsCallableResult> = task { js(data.toJs()) }
 
     public actual val timeout: Long get() = timeoutMillis
 
@@ -99,9 +108,11 @@ public actual class HttpsCallableReference internal constructor(
     override fun toString(): String = "HttpsCallableReference($nameOrUrl)"
 }
 
-/** @property js The underlying Firebase JS SDK object. */
+/**
+ * @property js The underlying Firebase JS SDK object. [data] is the JS value with its primitives converted, as the
+ * `dev.gitlive` decoders take it on this target.
+ */
 public actual class HttpsCallableResult internal constructor(public val js: JsHttpsCallableResult) {
-    /** JS primitives become their Kotlin equivalents; objects and arrays stay JS values, as on the JS target. */
     public actual val data: Any? get() = js.data.toKotlin()
 
     override fun equals(other: Any?): Boolean = other is HttpsCallableResult && other.js == js
@@ -144,7 +155,7 @@ private suspend fun <T : JsAny?> Promise<T>.awaitFunctions(): T = suspendCancell
             null
         },
         onRejected = {
-            continuation.resumeWithException(it.toFunctionsException(null))
+            continuation.resumeWithException(it.toFunctionsException())
             null
         },
     )
@@ -159,7 +170,7 @@ private inline fun task(start: () -> Promise<JsHttpsCallableResult>): Task<Https
                 null
             },
             onRejected = {
-                source.setException(it.toFunctionsException(null))
+                source.setException(it.toFunctionsException())
                 null
             },
         )
@@ -175,18 +186,21 @@ private inline fun <R> rethrow(function: () -> R): R = try {
     throw e.toFunctionsException()
 }
 
+/** The JS SDK reports the canonical error code as `functions/<code-in-kebab-case>`. */
 private fun Throwable.toFunctionsException(): FirebaseFunctionsException = when (this) {
     is FirebaseFunctionsException -> this
-    is JsException -> thrownValue?.toFunctionsException(this) ?: FirebaseFunctionsException(message ?: "Unknown error", FirebaseFunctionsException.Code.UNKNOWN, null, this)
-    else -> FirebaseFunctionsException(message ?: "Unknown error", FirebaseFunctionsException.Code.UNKNOWN, null, this)
+    is JsException -> functionsException(errorCode(), thrownValue?.let { jsGet(it, "details") }, message, this)
+    else -> functionsException(null, null, message, this)
 }
 
-/** The JS SDK reports the canonical error code as `functions/<code-in-kebab-case>`; a rejection carries the JS error itself. */
-private fun JsAny.toFunctionsException(cause: Throwable?): FirebaseFunctionsException {
-    val jsCode = jsGet(this, "code").toKotlin()?.toString()
+/** A promise rejection carries the JS error itself rather than a [Throwable]. */
+private fun JsAny.toFunctionsException(): FirebaseFunctionsException {
     val message = jsGet(this, "message").toKotlin()?.toString()
+    return functionsException(jsGet(this, "code").toKotlin()?.toString(), jsGet(this, "details"), message, toThrowableOrNull() ?: Exception(message))
+}
+
+private fun functionsException(jsCode: String?, details: JsAny?, message: String?, cause: Throwable): FirebaseFunctionsException {
     val codeName = jsCode?.substringAfter('/')?.uppercase()?.replace('-', '_')
     val code = FirebaseFunctionsException.Code.entries.firstOrNull { it.name == codeName } ?: FirebaseFunctionsException.Code.UNKNOWN
-    val throwable = cause ?: toThrowableOrNull() ?: Exception(message ?: jsCode)
-    return FirebaseFunctionsException(message ?: jsCode ?: "Unknown error", code, jsGet(this, "details").toKotlin(), throwable)
+    return FirebaseFunctionsException(message ?: jsCode ?: "Unknown error", code, details.toKotlin(), cause)
 }

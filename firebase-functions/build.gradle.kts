@@ -213,7 +213,8 @@ tasks.withType<JavaCompile>().configureEach {
 
 // The com.google.* declarations are header stubs on Android/JVM (see buildSrc utils/HeaderStubs.kt).
 stripHeaderStubs(
-    packageDirs = listOf("com/google/firebase"),
+    // java/net holds the deprecated stand-in for java.net.URL that lets the SDK's URL members be declared in common code.
+    packageDirs = listOf("com/google/firebase", "java/net"),
     androidReferenceJars = files({
         configurations.findByName("releaseCompileClasspath")?.incoming?.artifactView {
             attributes.attribute(Attribute.of("artifactType", String::class.java), "android-classes-jar")
@@ -226,24 +227,6 @@ stripHeaderStubs(
         "com/google/firebase/functions/HttpsCallableTimeoutKt.class",
         "com/google/firebase/functions/HttpsCallableStreamKt.class",
         "com/google/firebase/functions/FunctionsJvmApi.class",
-    ),
-    // firebase-java-sdk keeps these package-private / private (they are public in the Android SDK).
-    jvmMissingMembers = listOf(
-        "com/google/firebase/functions/FirebaseFunctionsException.<init>(Ljava/lang/String;Lcom/google/firebase/functions/FirebaseFunctionsException\$Code;Ljava/lang/Object;)V",
-        "com/google/firebase/functions/FirebaseFunctionsException.<init>(Ljava/lang/String;Lcom/google/firebase/functions/FirebaseFunctionsException\$Code;Ljava/lang/Object;Ljava/lang/Throwable;)V",
-        "com/google/firebase/functions/FirebaseFunctionsException\$Code.fromValue(I)Lcom/google/firebase/functions/FirebaseFunctionsException\$Code;",
-        "com/google/firebase/functions/FirebaseFunctionsException\$Code.fromHttpStatus(I)Lcom/google/firebase/functions/FirebaseFunctionsException\$Code;",
-        "com/google/firebase/functions/HttpsCallableOptions.limitedUseAppCheckTokens",
-        "com/google/firebase/functions/HttpsCallableOptions\$Builder.limitedUseAppCheckTokens",
-        // firebase-java-sdk 0.6.3 predates streaming.
-        "com/google/firebase/functions/HttpsCallableReference.stream()Lorg/reactivestreams/Publisher;",
-        "com/google/firebase/functions/HttpsCallableReference.stream(Ljava/lang/Object;)Lorg/reactivestreams/Publisher;",
-    ),
-    // firebase-java-sdk 0.6.3 has no StreamResponse, so this module's own is shipped on the JVM (streamAsFlow fails there).
-    jvmKeepClasses = listOf(
-        "com/google/firebase/functions/StreamResponse.class",
-        "com/google/firebase/functions/StreamResponse\$Message.class",
-        "com/google/firebase/functions/StreamResponse\$Result.class",
     ),
 )
 
