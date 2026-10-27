@@ -1,4 +1,4 @@
-// Members of the Android SDK's auth API that dev.gitlive:firebase-java-sdk 0.6.3 does not port (see stripHeaderStubs in build.gradle.kts):
+// Members of the Android SDK's auth API that dev.gitlive:firebase-java-sdk 0.7.0 does not port (see stripHeaderStubs in build.gradle.kts):
 // the header stubs are verified against the Android SDK only, and JVM code using them fails at runtime as it would without this layer.
 com/google/firebase/auth/ActionCodeEmailInfo.<init>()V
 com/google/firebase/auth/ActionCodeInfo.<init>()V
@@ -61,10 +61,10 @@ com/google/firebase/auth/FirebaseUser.verifyBeforeUpdateEmail(Ljava/lang/String;
 com/google/firebase/auth/GithubAuthCredential
 com/google/firebase/auth/GithubAuthProvider.GITHUB_SIGN_IN_METHOD
 com/google/firebase/auth/GithubAuthProvider.PROVIDER_ID
-com/google/firebase/auth/GoogleAuthCredential
 com/google/firebase/auth/GoogleAuthProvider.GOOGLE_SIGN_IN_METHOD
 com/google/firebase/auth/GoogleAuthProvider.PROVIDER_ID
 com/google/firebase/auth/MultiFactorInfo.FACTOR_ID_KEY
+com/google/firebase/auth/OAuthCredential.<init>()V
 com/google/firebase/auth/OAuthCredential.getAccessToken()Ljava/lang/String;
 com/google/firebase/auth/OAuthCredential.getIdToken()Ljava/lang/String;
 com/google/firebase/auth/OAuthCredential.getSecret()Ljava/lang/String;

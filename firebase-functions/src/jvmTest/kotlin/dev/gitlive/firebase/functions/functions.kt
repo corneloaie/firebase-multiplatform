@@ -14,4 +14,4 @@ actual fun detailValue(details: Any?, key: String): Any? = (details as Map<Any?,
 
 actual annotation class IgnoreForAndroidUnitTest
 
-actual val streamingSupported: Boolean = false
+actual val streamingSupported: Boolean = true

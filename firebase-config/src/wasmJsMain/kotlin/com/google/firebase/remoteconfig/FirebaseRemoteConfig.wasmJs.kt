@@ -7,6 +7,7 @@ package com.google.firebase.remoteconfig
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.FirebaseApp
+import dev.gitlive.firebase.externals.errorCode
 import dev.gitlive.firebase.externals.jsGet
 import dev.gitlive.firebase.externals.jsObject
 import dev.gitlive.firebase.externals.jsObjectKeys
@@ -29,7 +30,6 @@ import dev.gitlive.firebase.remoteconfig.externals.onConfigUpdate
 import dev.gitlive.firebase.remoteconfig.externals.setCustomSignals
 import kotlin.js.JsException
 import kotlin.js.Promise
-import dev.gitlive.firebase.remoteconfig.externals.ConfigUpdate as JsConfigUpdate
 
 private const val MILLIS_PER_SECOND = 1000
 
@@ -42,7 +42,7 @@ public actual class FirebaseRemoteConfig internal constructor(public val js: Rem
         val unsubscribe = onConfigUpdate(
             js,
             configUpdateObserver(
-                next = { update -> listener.onUpdate(ConfigUpdate.create(arrayFrom(update.getUpdatedKeys()).toList().map { it.toKotlinString() }.toSet())) },
+                next = { update -> listener.onUpdate(ConfigUpdate.create(setToArray(update.getUpdatedKeys()).toList().mapTo(mutableSetOf()) { it.toKotlinString() })) },
                 error = { error -> listener.onError(error.toRemoteConfigException()) },
             ),
         )
@@ -192,11 +192,14 @@ internal class JsRemoteConfigValue(val js: Value) : FirebaseRemoteConfigValue {
     override fun toString(): String = "FirebaseRemoteConfigValue(${asString()})"
 }
 
-/** The `{ next, error, complete }` observer `onConfigUpdate` takes. */
-private fun configUpdateObserver(next: (JsConfigUpdate) -> Unit, error: (JsAny) -> Unit): ConfigUpdateObserver = js("({ next: next, error: error, complete: function() {} })")
+/** The observer object `onConfigUpdate` takes, with the two callbacks the listener needs. */
+private fun configUpdateObserver(
+    next: (dev.gitlive.firebase.remoteconfig.externals.ConfigUpdate) -> Unit,
+    error: (JsAny) -> Unit,
+): ConfigUpdateObserver = js("({ next: next, error: error, complete: () => {} })")
 
 /** The elements of a JS `Set` (or any iterable) as an array. */
-private fun arrayFrom(iterable: JsAny): JsArray<JsString> = js("Array.from(iterable)")
+private fun setToArray(iterable: JsAny): JsArray<JsString> = js("Array.from(iterable)")
 
 private inline fun <T : JsAny?, R> task(start: () -> Promise<T>, crossinline result: (T) -> R): Task<R> {
     val source = TaskCompletionSource<R>()
@@ -226,19 +229,21 @@ internal inline fun <R> rethrow(function: () -> R): R = try {
 /** Maps the JS SDK's `remoteconfig/<code>` errors to the Android SDK's exception classes. */
 internal fun Throwable.toRemoteConfigException(): FirebaseRemoteConfigException = when (this) {
     is FirebaseRemoteConfigException -> this
-    is JsException -> thrownValue?.toRemoteConfigException(this) ?: FirebaseRemoteConfigClientException(message ?: "", this)
-    else -> FirebaseRemoteConfigClientException(message ?: toString(), this)
+    is JsException -> remoteConfigException(errorCode(), thrownValue?.let { jsGet(it, "customData") }, message, this)
+    else -> remoteConfigException(null, null, message, this)
 }
 
-/** A promise rejection carries the JS error itself rather than a [Throwable]. */
-private fun JsAny.toRemoteConfigException(cause: Throwable? = null): FirebaseRemoteConfigException {
-    val code = jsGet(this, "code").toKotlin()?.toString() ?: ""
-    val text = jsGet(this, "message").toKotlin()?.toString() ?: code
-    val customData = jsGet(this, "customData")
-    val throwable = cause ?: toThrowableOrNull() ?: Exception(text)
-    return when (code.substringAfter('/')) {
-        "fetch-throttle" -> FirebaseRemoteConfigFetchThrottledException((customData?.let { jsGet(it, "throttleEndTimeMillis").toKotlin() } as? Number)?.toLong() ?: 0L)
-        "fetch-status" -> FirebaseRemoteConfigServerException((customData?.let { jsGet(it, "httpStatus").toKotlin() } as? Number)?.toInt() ?: -1, text, throwable)
-        else -> FirebaseRemoteConfigClientException(text, throwable)
+/** A promise rejection or an observer error carries the JS error itself rather than a [Throwable]. */
+internal fun JsAny.toRemoteConfigException(): FirebaseRemoteConfigException {
+    val message = jsGet(this, "message").toKotlin()?.toString()
+    return remoteConfigException(jsGet(this, "code").toKotlin()?.toString(), jsGet(this, "customData"), message, toThrowableOrNull() ?: Exception(message))
+}
+
+private fun remoteConfigException(code: String?, customData: JsAny?, message: String?, cause: Throwable): FirebaseRemoteConfigException {
+    val text = message ?: code ?: ""
+    return when ((code ?: "").substringAfter('/')) {
+        "fetch-throttle" -> FirebaseRemoteConfigFetchThrottledException((customData?.let { jsGet(it, "throttleEndTimeMillis") }.toKotlin() as? Number)?.toLong() ?: 0L)
+        "fetch-status" -> FirebaseRemoteConfigServerException((customData?.let { jsGet(it, "httpStatus") }.toKotlin() as? Number)?.toInt() ?: -1, text, cause)
+        else -> FirebaseRemoteConfigClientException(text, cause)
     }
 }

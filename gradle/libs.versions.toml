@@ -9,7 +9,7 @@ firebase-bom = "35.1.0"
 # Not in the BoM (App Distribution is in beta). The API library and the full firebase-appdistribution SDK, which apps add
 # to pre-release builds only, share this version. 16.0.0-beta21 is the first release on firebase-common 23 (BoM 35).
 firebase-appdistribution = "16.0.0-beta21"
-gitlive-firebase-java-sdk = "0.6.3"
+gitlive-firebase-java-sdk = "0.7.0"
 gson = "2.14.0"
 junit = "4.13.2"
 kotlin = "2.4.21"
