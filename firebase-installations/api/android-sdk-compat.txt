@@ -1,5 +1,5 @@
 # Android SDK source compatibility of firebase-installations
-# Android SDK api.txt ref: 2c58acbb9da02dfa1b9d77a2bfd7c0ad937285be
+# Android SDK api.txt ref: 5b34dd98780b50f0f07d4381042ad35230d69b57
 # 100% of 11 public members available (11 identical, 0 mapped, 0 missing, 0 omitted)
 #
 com.google.firebase.installations.FirebaseInstallations

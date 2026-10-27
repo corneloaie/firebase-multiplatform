@@ -1,4 +1,4 @@
-// Source: https://raw.githubusercontent.com/firebase/firebase-android-sdk/2c58acbb9da02dfa1b9d77a2bfd7c0ad937285be/ai-logic/firebase-ai/api.txt
+// Source: https://raw.githubusercontent.com/firebase/firebase-android-sdk/5b34dd98780b50f0f07d4381042ad35230d69b57/ai-logic/firebase-ai/api.txt
 // Signature format: 3.0
 package com.google.firebase.ai {
 
