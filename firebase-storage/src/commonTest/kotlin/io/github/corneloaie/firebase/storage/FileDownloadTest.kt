@@ -1,0 +1,89 @@
+/*
+ * Copyright (c) 2026 GitLive Ltd.  Use of this source code is governed by the Apache 2.0 license.
+ */
+
+package io.github.corneloaie.firebase.storage
+
+import com.google.firebase.storage.FileDownloadTask
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.activeDownloadTasks
+import com.google.firebase.storage.component1
+import com.google.firebase.storage.component2
+import com.google.firebase.storage.getFile
+import com.google.firebase.storage.maxDownloadRetryTimeMillis
+import com.google.firebase.storage.putFile
+import io.github.corneloaie.firebase.apps
+import io.github.corneloaie.firebase.UnsupportedOnJs
+import io.github.corneloaie.firebase.initialize
+import io.github.corneloaie.firebase.runTest
+import kotlinx.coroutines.tasks.await
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFails
+import kotlin.test.assertIs
+import kotlin.test.assertTrue
+
+/** A file the platform test can write and read: a java.io.File on Android and the JVM, an NSURL on Apple platforms. */
+expect fun temporaryFile(name: String): Any
+
+/** Whether the platform SDK downloads to files; the JS SDK does not. */
+expect val supportsFileDownloads: Boolean
+
+/** The file download part of the `com.google.firebase.storage` layer; on JS, whose SDK has no file downloads, the download fails. */
+@OptIn(UnsupportedOnJs::class)
+@IgnoreForAndroidUnitTest
+class FileDownloadTest {
+
+    private lateinit var app: io.github.corneloaie.firebase.FirebaseApp
+    private lateinit var storage: FirebaseStorage
+
+    // As in AndroidSdkSourceCompatTest: useEmulator fails on a storage instance that has been used (the iOS SDK stops the
+    // process), and another test class may have used this app's, so the emulator is only configured when the app is created.
+    @BeforeTest
+    fun initializeFirebase() {
+        app = io.github.corneloaie.firebase.Firebase.apps(context).firstOrNull() ?: io.github.corneloaie.firebase.Firebase.initialize(
+            context,
+            io.github.corneloaie.firebase.FirebaseOptions(
+                applicationId = "1:846484016111:ios:dd1f6688bad7af768c841a",
+                apiKey = "AIzaSyCK87dcMFhzCz_kJVs2cT2AVlqOTLuyWV0",
+                databaseUrl = "https://fir-kotlin-sdk.firebaseio.com",
+                storageBucket = "fir-kotlin-sdk.appspot.com",
+                projectId = "fir-kotlin-sdk",
+                gcmSenderId = "846484016111",
+            ),
+        ).also {
+            FirebaseStorage.getInstance(it.compat).apply {
+                useEmulator(emulatorHost, 9199)
+                maxOperationRetryTimeMillis = 30_000
+                maxUploadRetryTimeMillis = 30_000
+            }
+        }
+        storage = FirebaseStorage.getInstance(app.compat)
+    }
+
+    @Test
+    fun testDownloadRetryTime() {
+        storage.maxDownloadRetryTimeMillis = 20_000
+        assertEquals(20_000, storage.maxDownloadRetryTimeMillis)
+    }
+
+    @Test
+    fun testFileUploadAndDownload() = runTest {
+        val ref = storage.getReference("test/compatFile.txt")
+        ref.putBytes("file contents".encodeToByteArray()).await()
+        val destination = temporaryFile("compatDownload.txt")
+        val task: FileDownloadTask = ref.getFile(destination)
+        if (!supportsFileDownloads) {
+            assertIs<UnsupportedOperationException>(assertFails { task.await() })
+            assertTrue(ref.activeDownloadTasks.isEmpty())
+            return@runTest
+        }
+        val (bytesTransferred, totalByteCount) = task.await()
+        assertEquals(13, totalByteCount)
+        assertEquals(13, bytesTransferred)
+        assertTrue(ref.activeDownloadTasks.isEmpty())
+        val reUploaded = ref.child("../compatReupload.txt").putFile(destination).await()
+        assertUploadedBytes(13, reUploaded.totalByteCount)
+    }
+}

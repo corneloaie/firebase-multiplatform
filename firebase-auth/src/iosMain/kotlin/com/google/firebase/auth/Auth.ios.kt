@@ -4,23 +4,23 @@
 
 package com.google.firebase.auth
 
-import swiftPMImport.dev.gitlive.firebase.auth.FIRAuth
-import swiftPMImport.dev.gitlive.firebase.auth.FIRAuthUIDelegateProtocol
-import swiftPMImport.dev.gitlive.firebase.auth.FIRMultiFactor
-import swiftPMImport.dev.gitlive.firebase.auth.FIRMultiFactorAssertion
-import swiftPMImport.dev.gitlive.firebase.auth.FIRMultiFactorInfo
-import swiftPMImport.dev.gitlive.firebase.auth.FIRMultiFactorResolver
-import swiftPMImport.dev.gitlive.firebase.auth.FIRMultiFactorSession
-import swiftPMImport.dev.gitlive.firebase.auth.FIRPhoneAuthCredential
-import swiftPMImport.dev.gitlive.firebase.auth.FIRPhoneAuthProvider
-import swiftPMImport.dev.gitlive.firebase.auth.FIRPhoneMultiFactorGenerator
-import swiftPMImport.dev.gitlive.firebase.auth.FIRPhoneMultiFactorInfo
-import swiftPMImport.dev.gitlive.firebase.auth.FIRTOTPMultiFactorGenerator
-import swiftPMImport.dev.gitlive.firebase.auth.FIRTOTPSecret
-import swiftPMImport.dev.gitlive.firebase.auth.FIRUser
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRAuth
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRAuthUIDelegateProtocol
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRMultiFactor
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRMultiFactorAssertion
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRMultiFactorInfo
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRMultiFactorResolver
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRMultiFactorSession
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRPhoneAuthCredential
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRPhoneAuthProvider
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRPhoneMultiFactorGenerator
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRPhoneMultiFactorInfo
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRTOTPMultiFactorGenerator
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRTOTPSecret
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRUser
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
-import dev.gitlive.firebase.UnsupportedOnApple
+import io.github.corneloaie.firebase.UnsupportedOnApple
 import platform.Foundation.NSError
 
 /*

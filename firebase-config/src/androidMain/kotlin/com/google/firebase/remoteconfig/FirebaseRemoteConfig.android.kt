@@ -7,8 +7,8 @@ package com.google.firebase.remoteconfig
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
-import dev.gitlive.firebase.remoteconfig.SET_DEFAULTS_XML_ANDROID_ONLY
-import dev.gitlive.firebase.remoteconfig.stub
+import io.github.corneloaie.firebase.remoteconfig.SET_DEFAULTS_XML_ANDROID_ONLY
+import io.github.corneloaie.firebase.remoteconfig.stub
 
 /*
  * Header stubs for com.google.firebase:firebase-config (see buildSrc utils/HeaderStubs.kt): compiled against, verified

@@ -1,29 +1,26 @@
 # Maintaining firebase-multiplatform
 
-This fork of [GitLive's firebase-kotlin-sdk](https://github.com/GitLiveApp/firebase-kotlin-sdk) tracks upstream closely.
-Everything that makes it a separate project is kept in a few places, so that the weekly upstream merges stay
-mechanical:
+firebase-multiplatform started from [GitLive's firebase-kotlin-sdk](https://github.com/GitLiveApp/firebase-kotlin-sdk)
+and is maintained on its own: it no longer merges GitLive's changes. What sets the project up is kept in a few places:
 
 | What | Where |
 |---|---|
 | Maven coordinates, version, POM | `buildSrc/src/main/kotlin/fork/Fork.kt`, `forkVersion` in `gradle.properties` |
-| Upstream PRs merged ahead of upstream | `.github/upstream-merges.tsv` |
 | Weekly automation | `.github/workflows/weekly.yml`, `.github/scripts/` |
 | Dependency updates | `.claude/skills/dependency-update/` (the routine's procedure, `check_updates.py`, `pins.txt`) |
 | Publishing | `.github/workflows/publish.yml` |
-| Docs | `README.md` (this fork's own, kept on upstream merges), `NOTICE`, this file |
+| Docs | `README.md`, `NOTICE`, this file |
 
-Do not rename the Kotlin packages (`dev.gitlive.firebase.*`, `com.google.firebase.*`), or the Gradle `group`
-(`dev.gitlive`). Renaming either turns every upstream merge into conflicts. The group also names the SwiftPM cinterop
-packages (`swiftPMImport.dev.gitlive.firebase.<module>`) that every Apple source imports.
+The Kotlin-first API lives in `io.github.corneloaie.firebase.*`, and the Gradle `group` is `io.github.corneloaie`, which
+also names the SwiftPM cinterop packages (`swiftPMImport.io.github.corneloaie.firebase.<module>`) that every Apple
+source imports. Never rename `com.google.firebase.*`: it mirrors the Firebase Android SDK, so that Android code compiles
+unchanged in common code.
 
 ## Branches and remotes
 
 - `main` is the default branch and what gets released.
-- `upstream` is GitLive (`https://github.com/GitLiveApp/firebase-kotlin-sdk.git`). This fork follows its `v3.0.0` line,
-  which uses SwiftPM, Kotlin 2.4 and Wasm, not its `master` (2.x, CocoaPods).
-- `weekly/upstream-sync` and `weekly/firebase-sdks` are rewritten by the weekly workflow, one pull request each. A
-  commit pushed to one of them is lost the next Monday unless its pull request has merged.
+- `weekly/firebase-sdks` is rewritten by the weekly workflow, one pull request. A commit pushed to it is lost the next
+  Monday unless its pull request has merged.
 - `deps/weekly` is the dependency routine's branch, one pull request. The routine deletes it once that pull request has
   merged and starts the next one from `main`.
 
@@ -31,31 +28,7 @@ packages (`swiftPMImport.dev.gitlive.firebase.<module>`) that every Apple source
 
 It runs every Monday at 05:23 UTC, and on demand from the Actions tab (`Weekly update`, `Run workflow`).
 
-### 1. Upstream merge (`.github/scripts/upstream/sync.sh`)
-
-- Merges `upstream/v3.0.0`.
-- For each line in `.github/upstream-merges.tsv` (branch, upstream PR number, merged head):
-  - if the PR is merged into `v3.0.0` upstream, it drops the line;
-  - if the branch head moved, it merges the new head and records it.
-- Conflicts in `README.md` keep this fork's version.
-- This fork deleted `.github/dependabot.yml` (see "Dependency updates" below), so an upstream edit to it keeps it
-  deleted. The edit is listed under "To check" in the upstream pull request: move a new ignore entry into `pins.txt`.
-- Apple sources whose only upstream-side change is the CocoaPods to SwiftPM import rewrite are resolved by
-  `.github/scripts/upstream/resolve_apple.py`.
-- Any other conflict aborts that merge and is reported in the issue "Upstream GitLive changes need a manual merge". Then
-  resolve it by hand:
-
-```bash
-git switch -c merge-upstream main
-git fetch upstream
-git merge upstream/<branch>
-python3 .github/scripts/upstream/resolve_apple.py upstream/<branch> <module>
-```
-
-When upstream lands a pull request this fork merged early, expect the same files to conflict once. Upstream's version
-is usually the one to keep, except for this fork's Wasm actuals: upstream may write its own, and then theirs win.
-
-### 2. Firebase SDK update (`.github/scripts/weekly/firebase_versions.py`, `coverage.py`)
+### Firebase SDK update (`.github/scripts/weekly/firebase_versions.py`, `coverage.py`)
 
 It moves these four to their newest stable release:
 
@@ -78,19 +51,18 @@ parameters and the backend function it builds. It fails on a function it cannot 
 the script (`OVERRIDES`). The rest of the pipeline API (stages, options, `Pipeline`, the expression classes) is written
 by hand, and the Android compilation checks all of it against the SDK's classes.
 
-### 3. The weekly routine
+### The weekly routine
 
 A Claude Code routine on the maintainer's Mac (a scheduled task in the Claude desktop app) finishes the update. It runs
 on Mondays after the workflow and again on Tuesdays, as the maintainer in their own checkout, so the repository needs no
 Claude token. Each run picks up where the update stands:
 
 - It implements, on every platform, the members the SDK pull request lists as newly missing.
-- It fixes what the new SDKs or upstream changes broke, and pushes to the weekly branches.
-- It resolves the merges reported in "Upstream GitLive changes need a manual merge".
-- It approves the weekly pull requests' CI runs if GitHub still holds them for approval, and re-runs CI jobs that failed
+- It fixes what the new SDKs broke, and pushes to the weekly branch.
+- It approves the weekly pull request's CI runs if GitHub still holds them for approval, and re-runs CI jobs that failed
   for transient reasons.
-- It arms auto-merge (a merge commit) on a weekly pull request once coverage is 100% and no public API was removed, and
-  comments on what it did. The workflow turns auto-merge off again whenever it refreshes a pull request.
+- It arms auto-merge (a merge commit) on the weekly pull request once coverage is 100% and no public API was removed,
+  and comments on what it did. The workflow turns auto-merge off again whenever it refreshes the pull request.
 
 It never releases. Without the routine, do the same by hand: see "Closing coverage gaps by hand" below.
 
@@ -105,7 +77,7 @@ which replaced Dependabot. It covers:
 
 Its procedure is the repository skill [`.claude/skills/dependency-update`](.claude/skills/dependency-update/SKILL.md),
 so a change to it is reviewed like any other. It runs on Wednesdays and Thursdays, away from the Monday and Tuesday
-weekly pull requests, which edit the same catalog:
+weekly pull request, which edits the same catalog:
 
 - **Wednesday:** `check_updates.py` lists what is newer. The routine bumps it in groups (Actions; patches and minors by
   family; Kotlin; then each major on its own), checks each group locally, and pushes one pull request from
@@ -168,7 +140,7 @@ Then run `./gradlew apiDump androidSourceCompatDump formatKotlin` and
 
 ## Releasing
 
-1. Set `forkVersion` in `gradle.properties` (semantic versioning; `0.x` while upstream's `v3.0.0` is in alpha). Commit
+1. Set `forkVersion` in `gradle.properties` (semantic versioning; `0.x` while the API is still settling). Commit
    it to `main`.
 2. Run the `Publish` workflow by hand on `main` (`gh workflow run publish.yml`). Run by hand it is a dry run: it builds
    every publication, tvOS included, and `.github/scripts/publish/check_publications.py` checks their POMs and Gradle

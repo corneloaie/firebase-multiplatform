@@ -6,8 +6,8 @@ package com.google.firebase.analytics
 
 import android.os.Bundle
 import com.google.android.gms.tasks.Task
-import dev.gitlive.firebase.analytics.internal.GET_INSTANCE_ANDROID_ONLY
-import dev.gitlive.firebase.analytics.internal.NativeAnalytics
+import io.github.corneloaie.firebase.analytics.internal.GET_INSTANCE_ANDROID_ONLY
+import io.github.corneloaie.firebase.analytics.internal.NativeAnalytics
 import kotlin.jvm.JvmStatic
 
 /**

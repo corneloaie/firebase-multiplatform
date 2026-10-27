@@ -4,17 +4,17 @@
 
 package com.google.firebase
 
-import dev.gitlive.firebase.APPLICATION_CONTEXT_ANDROID_ONLY
-import dev.gitlive.firebase.FROM_RESOURCE_ANDROID_ONLY
-import dev.gitlive.firebase.GET_APPS_ANDROID_ONLY
-import dev.gitlive.firebase.INITIALIZE_APP_ANDROID_ONLY
-import dev.gitlive.firebase.externals.jsObject
-import dev.gitlive.firebase.externals.jsSet
-import dev.gitlive.firebase.externals.toJs
-import dev.gitlive.firebase.externals.FirebaseApp as JsFirebaseApp
-import dev.gitlive.firebase.externals.FirebaseOptions as JsFirebaseOptions
-import dev.gitlive.firebase.externals.deleteApp as jsDeleteApp
-import dev.gitlive.firebase.externals.getApp as jsGetApp
+import io.github.corneloaie.firebase.APPLICATION_CONTEXT_ANDROID_ONLY
+import io.github.corneloaie.firebase.FROM_RESOURCE_ANDROID_ONLY
+import io.github.corneloaie.firebase.GET_APPS_ANDROID_ONLY
+import io.github.corneloaie.firebase.INITIALIZE_APP_ANDROID_ONLY
+import io.github.corneloaie.firebase.externals.jsObject
+import io.github.corneloaie.firebase.externals.jsSet
+import io.github.corneloaie.firebase.externals.toJs
+import io.github.corneloaie.firebase.externals.FirebaseApp as JsFirebaseApp
+import io.github.corneloaie.firebase.externals.FirebaseOptions as JsFirebaseOptions
+import io.github.corneloaie.firebase.externals.deleteApp as jsDeleteApp
+import io.github.corneloaie.firebase.externals.getApp as jsGetApp
 
 public actual open class FirebaseException : Exception {
     public actual constructor(message: String) : super(message)

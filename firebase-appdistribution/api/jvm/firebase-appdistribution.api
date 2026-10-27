@@ -117,11 +117,11 @@ public abstract class com/google/firebase/appdistribution/UpdateTask : com/googl
 	public abstract fun addOnProgressListener (Lcom/google/firebase/appdistribution/OnProgressListener;)Lcom/google/firebase/appdistribution/UpdateTask;
 }
 
-public final class dev/gitlive/firebase/appdistribution/AppDistributionKt {
-	public static final fun getAppDistribution (Ldev/gitlive/firebase/Firebase;)Ldev/gitlive/firebase/appdistribution/FirebaseAppDistribution;
+public final class io/github/corneloaie/firebase/appdistribution/AppDistributionKt {
+	public static final fun getAppDistribution (Lio/github/corneloaie/firebase/Firebase;)Lio/github/corneloaie/firebase/appdistribution/FirebaseAppDistribution;
 }
 
-public final class dev/gitlive/firebase/appdistribution/FirebaseAppDistribution {
+public final class io/github/corneloaie/firebase/appdistribution/FirebaseAppDistribution {
 	public final fun cancelFeedbackNotification ()V
 	public final fun checkForNewRelease (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun equals (Ljava/lang/Object;)Z
@@ -129,11 +129,11 @@ public final class dev/gitlive/firebase/appdistribution/FirebaseAppDistribution 
 	public fun hashCode ()I
 	public final fun isTesterSignedIn ()Z
 	public final fun showFeedbackNotification (Ljava/lang/CharSequence;Lcom/google/firebase/appdistribution/InterruptionLevel;)V
-	public static synthetic fun showFeedbackNotification$default (Ldev/gitlive/firebase/appdistribution/FirebaseAppDistribution;Ljava/lang/CharSequence;Lcom/google/firebase/appdistribution/InterruptionLevel;ILjava/lang/Object;)V
+	public static synthetic fun showFeedbackNotification$default (Lio/github/corneloaie/firebase/appdistribution/FirebaseAppDistribution;Ljava/lang/CharSequence;Lcom/google/firebase/appdistribution/InterruptionLevel;ILjava/lang/Object;)V
 	public final fun signInTester (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun signOutTester ()V
 	public final fun startFeedback (Ljava/lang/CharSequence;Ljava/lang/String;)V
-	public static synthetic fun startFeedback$default (Ldev/gitlive/firebase/appdistribution/FirebaseAppDistribution;Ljava/lang/CharSequence;Ljava/lang/String;ILjava/lang/Object;)V
+	public static synthetic fun startFeedback$default (Lio/github/corneloaie/firebase/appdistribution/FirebaseAppDistribution;Ljava/lang/CharSequence;Ljava/lang/String;ILjava/lang/Object;)V
 	public fun toString ()Ljava/lang/String;
 	public final fun updateApp ()Lkotlinx/coroutines/flow/Flow;
 	public final fun updateIfNewReleaseAvailable ()Lkotlinx/coroutines/flow/Flow;

@@ -4,19 +4,19 @@
 
 package com.google.firebase.appcheck
 
-import swiftPMImport.dev.gitlive.firebase.app.FIRApp
-import swiftPMImport.dev.gitlive.firebase.appcheck.FIRAppCheckErrorDomain
-import swiftPMImport.dev.gitlive.firebase.appcheck.FIRAppCheckProviderFactoryProtocol
-import swiftPMImport.dev.gitlive.firebase.appcheck.FIRAppCheckProviderProtocol
-import swiftPMImport.dev.gitlive.firebase.appcheck.FIRAppCheckToken
+import swiftPMImport.io.github.corneloaie.firebase.app.FIRApp
+import swiftPMImport.io.github.corneloaie.firebase.appcheck.FIRAppCheckErrorDomain
+import swiftPMImport.io.github.corneloaie.firebase.appcheck.FIRAppCheckProviderFactoryProtocol
+import swiftPMImport.io.github.corneloaie.firebase.appcheck.FIRAppCheckProviderProtocol
+import swiftPMImport.io.github.corneloaie.firebase.appcheck.FIRAppCheckToken
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.appcheck.debug.DebugAppCheckProviderFactory
-import dev.gitlive.firebase.appcheck.AppAttestProviderFactory
-import dev.gitlive.firebase.appcheck.DeviceCheckProviderFactory
+import io.github.corneloaie.firebase.appcheck.AppAttestProviderFactory
+import io.github.corneloaie.firebase.appcheck.DeviceCheckProviderFactory
 import platform.Foundation.NSDate
 import platform.Foundation.NSError
 import platform.Foundation.NSLocalizedDescriptionKey

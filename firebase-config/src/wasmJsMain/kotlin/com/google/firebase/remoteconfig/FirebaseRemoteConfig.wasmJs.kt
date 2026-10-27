@@ -7,27 +7,27 @@ package com.google.firebase.remoteconfig
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.FirebaseApp
-import dev.gitlive.firebase.externals.errorCode
-import dev.gitlive.firebase.externals.jsGet
-import dev.gitlive.firebase.externals.jsObject
-import dev.gitlive.firebase.externals.jsObjectKeys
-import dev.gitlive.firebase.externals.json
-import dev.gitlive.firebase.externals.toKotlin
-import dev.gitlive.firebase.externals.toKotlinString
-import dev.gitlive.firebase.externals.toList
-import dev.gitlive.firebase.remoteconfig.SET_DEFAULTS_XML_ANDROID_ONLY
-import dev.gitlive.firebase.remoteconfig.externals.ConfigUpdateObserver
-import dev.gitlive.firebase.remoteconfig.externals.RemoteConfig
-import dev.gitlive.firebase.remoteconfig.externals.Value
-import dev.gitlive.firebase.remoteconfig.externals.activate
-import dev.gitlive.firebase.remoteconfig.externals.ensureInitialized
-import dev.gitlive.firebase.remoteconfig.externals.fetchAndActivate
-import dev.gitlive.firebase.remoteconfig.externals.fetchConfig
-import dev.gitlive.firebase.remoteconfig.externals.getAll
-import dev.gitlive.firebase.remoteconfig.externals.getRemoteConfig
-import dev.gitlive.firebase.remoteconfig.externals.getValue
-import dev.gitlive.firebase.remoteconfig.externals.onConfigUpdate
-import dev.gitlive.firebase.remoteconfig.externals.setCustomSignals
+import io.github.corneloaie.firebase.externals.errorCode
+import io.github.corneloaie.firebase.externals.jsGet
+import io.github.corneloaie.firebase.externals.jsObject
+import io.github.corneloaie.firebase.externals.jsObjectKeys
+import io.github.corneloaie.firebase.externals.json
+import io.github.corneloaie.firebase.externals.toKotlin
+import io.github.corneloaie.firebase.externals.toKotlinString
+import io.github.corneloaie.firebase.externals.toList
+import io.github.corneloaie.firebase.remoteconfig.SET_DEFAULTS_XML_ANDROID_ONLY
+import io.github.corneloaie.firebase.remoteconfig.externals.ConfigUpdateObserver
+import io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig
+import io.github.corneloaie.firebase.remoteconfig.externals.Value
+import io.github.corneloaie.firebase.remoteconfig.externals.activate
+import io.github.corneloaie.firebase.remoteconfig.externals.ensureInitialized
+import io.github.corneloaie.firebase.remoteconfig.externals.fetchAndActivate
+import io.github.corneloaie.firebase.remoteconfig.externals.fetchConfig
+import io.github.corneloaie.firebase.remoteconfig.externals.getAll
+import io.github.corneloaie.firebase.remoteconfig.externals.getRemoteConfig
+import io.github.corneloaie.firebase.remoteconfig.externals.getValue
+import io.github.corneloaie.firebase.remoteconfig.externals.onConfigUpdate
+import io.github.corneloaie.firebase.remoteconfig.externals.setCustomSignals
 import kotlin.js.JsException
 import kotlin.js.Promise
 
@@ -194,7 +194,7 @@ internal class JsRemoteConfigValue(val js: Value) : FirebaseRemoteConfigValue {
 
 /** The observer object `onConfigUpdate` takes, with the two callbacks the listener needs. */
 private fun configUpdateObserver(
-    next: (dev.gitlive.firebase.remoteconfig.externals.ConfigUpdate) -> Unit,
+    next: (io.github.corneloaie.firebase.remoteconfig.externals.ConfigUpdate) -> Unit,
     error: (JsAny) -> Unit,
 ): ConfigUpdateObserver = js("({ next: next, error: error, complete: () => {} })")
 

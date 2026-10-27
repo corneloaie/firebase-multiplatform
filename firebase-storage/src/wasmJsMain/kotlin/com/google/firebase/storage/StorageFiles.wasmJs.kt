@@ -4,7 +4,7 @@
 
 package com.google.firebase.storage
 
-import dev.gitlive.firebase.externals.toJs
+import io.github.corneloaie.firebase.externals.toJs
 
 /*
  * The file is handed to the JS SDK as the JS value it is: a File, Blob or other JS object passes through unchanged, and

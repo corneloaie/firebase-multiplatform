@@ -13,7 +13,7 @@ SDK and the Firebase JS SDK.
 
 > This guide covers the `com.google.firebase` API only, and the modules migrated so far: `firebase-app` (`FirebaseApp`,
 > `FirebaseOptions`, `Timestamp`, the exceptions, `Task` and `Task.await()`) and `firebase-installations`. The Kotlin-first
-> `dev.gitlive.firebase` API, which the SDK also provides, is described in [the Kotlin-first API guide](kotlin-first-api.md).
+> `io.github.corneloaie.firebase` API, which the SDK also provides, is described in [the Kotlin-first API guide](kotlin-first-api.md).
 
 ## Checklist for a migration
 
@@ -259,10 +259,10 @@ Run the shared module's tests on the other targets to confirm the migrated code 
 
 ## What's next
 
-- New multiplatform code can use the Kotlin-first `dev.gitlive.firebase` API (suspend functions instead of `Task`,
-  `Flow` instead of listeners), which is built on the same `com.google.firebase` layer; a `dev.gitlive` object exposes
+- New multiplatform code can use the Kotlin-first `io.github.corneloaie.firebase` API (suspend functions instead of `Task`,
+  `Flow` instead of listeners), which is built on the same `com.google.firebase` layer; a Kotlin-first object exposes
   its `com.google` counterpart as `compat`. See [the Kotlin-first API guide](kotlin-first-api.md).
 - The other Firebase modules are being migrated to the same structure one at a time. Until a module is, its Android
-  SDK API is not available in common code and its `dev.gitlive` API is the multiplatform entry point.
+  SDK API is not available in common code and its Kotlin-first API is the multiplatform entry point.
 - [The Firebase Android SDK API](../README.md#the-firebase-android-sdk-api)
   in the README describes the rules of the compatibility layer and how its coverage is measured.

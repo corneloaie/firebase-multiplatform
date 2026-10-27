@@ -1,5 +1,5 @@
-public final class dev/gitlive/firebase/dataconnect/serializers/UuidSerializer : kotlinx/serialization/KSerializer {
-	public static final field INSTANCE Ldev/gitlive/firebase/dataconnect/serializers/UuidSerializer;
+public final class io/github/corneloaie/firebase/dataconnect/serializers/UuidSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/github/corneloaie/firebase/dataconnect/serializers/UuidSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lkotlin/uuid/Uuid;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;

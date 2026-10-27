@@ -205,7 +205,7 @@ public final class com/google/firebase/inappmessaging/model/Text {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/gitlive/firebase/inappmessaging/FirebaseInAppMessaging {
+public final class io/github/corneloaie/firebase/inappmessaging/FirebaseInAppMessaging {
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getClicks ()Lkotlinx/coroutines/flow/Flow;
 	public final fun getCompat ()Lcom/google/firebase/inappmessaging/FirebaseInAppMessaging;
@@ -223,12 +223,12 @@ public final class dev/gitlive/firebase/inappmessaging/FirebaseInAppMessaging {
 	public final fun triggerEvent (Ljava/lang/String;)V
 }
 
-public final class dev/gitlive/firebase/inappmessaging/InAppMessageClick {
+public final class io/github/corneloaie/firebase/inappmessaging/InAppMessageClick {
 	public fun <init> (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/model/Action;)V
 	public final fun component1 ()Lcom/google/firebase/inappmessaging/model/InAppMessage;
 	public final fun component2 ()Lcom/google/firebase/inappmessaging/model/Action;
-	public final fun copy (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/model/Action;)Ldev/gitlive/firebase/inappmessaging/InAppMessageClick;
-	public static synthetic fun copy$default (Ldev/gitlive/firebase/inappmessaging/InAppMessageClick;Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/model/Action;ILjava/lang/Object;)Ldev/gitlive/firebase/inappmessaging/InAppMessageClick;
+	public final fun copy (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/model/Action;)Lio/github/corneloaie/firebase/inappmessaging/InAppMessageClick;
+	public static synthetic fun copy$default (Lio/github/corneloaie/firebase/inappmessaging/InAppMessageClick;Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/model/Action;ILjava/lang/Object;)Lio/github/corneloaie/firebase/inappmessaging/InAppMessageClick;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAction ()Lcom/google/firebase/inappmessaging/model/Action;
 	public final fun getInAppMessage ()Lcom/google/firebase/inappmessaging/model/InAppMessage;
@@ -236,12 +236,12 @@ public final class dev/gitlive/firebase/inappmessaging/InAppMessageClick {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/gitlive/firebase/inappmessaging/InAppMessageDisplayError {
+public final class io/github/corneloaie/firebase/inappmessaging/InAppMessageDisplayError {
 	public fun <init> (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;)V
 	public final fun component1 ()Lcom/google/firebase/inappmessaging/model/InAppMessage;
 	public final fun component2 ()Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;
-	public final fun copy (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;)Ldev/gitlive/firebase/inappmessaging/InAppMessageDisplayError;
-	public static synthetic fun copy$default (Ldev/gitlive/firebase/inappmessaging/InAppMessageDisplayError;Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;ILjava/lang/Object;)Ldev/gitlive/firebase/inappmessaging/InAppMessageDisplayError;
+	public final fun copy (Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;)Lio/github/corneloaie/firebase/inappmessaging/InAppMessageDisplayError;
+	public static synthetic fun copy$default (Lio/github/corneloaie/firebase/inappmessaging/InAppMessageDisplayError;Lcom/google/firebase/inappmessaging/model/InAppMessage;Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;ILjava/lang/Object;)Lio/github/corneloaie/firebase/inappmessaging/InAppMessageDisplayError;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getErrorReason ()Lcom/google/firebase/inappmessaging/FirebaseInAppMessagingDisplayCallbacks$InAppMessagingErrorReason;
 	public final fun getInAppMessage ()Lcom/google/firebase/inappmessaging/model/InAppMessage;
@@ -249,7 +249,7 @@ public final class dev/gitlive/firebase/inappmessaging/InAppMessageDisplayError 
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/gitlive/firebase/inappmessaging/InAppMessagingKt {
-	public static final fun getInAppMessaging (Ldev/gitlive/firebase/Firebase;)Ldev/gitlive/firebase/inappmessaging/FirebaseInAppMessaging;
+public final class io/github/corneloaie/firebase/inappmessaging/InAppMessagingKt {
+	public static final fun getInAppMessaging (Lio/github/corneloaie/firebase/Firebase;)Lio/github/corneloaie/firebase/inappmessaging/FirebaseInAppMessaging;
 }
 

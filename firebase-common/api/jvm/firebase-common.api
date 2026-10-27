@@ -1,53 +1,53 @@
-public abstract interface class dev/gitlive/firebase/DecodeSettings : dev/gitlive/firebase/EncodeDecodeSettings {
+public abstract interface class io/github/corneloaie/firebase/DecodeSettings : io/github/corneloaie/firebase/EncodeDecodeSettings {
 }
 
-public abstract interface class dev/gitlive/firebase/DecodeSettings$Builder {
+public abstract interface class io/github/corneloaie/firebase/DecodeSettings$Builder {
 	public abstract fun getSerializersModule ()Lkotlinx/serialization/modules/SerializersModule;
 	public abstract fun setSerializersModule (Lkotlinx/serialization/modules/SerializersModule;)V
 }
 
-public abstract interface class dev/gitlive/firebase/EncodeDecodeSettings {
+public abstract interface class io/github/corneloaie/firebase/EncodeDecodeSettings {
 	public abstract fun getSerializersModule ()Lkotlinx/serialization/modules/SerializersModule;
 }
 
-public abstract interface class dev/gitlive/firebase/EncodeDecodeSettingsBuilder : dev/gitlive/firebase/DecodeSettings$Builder, dev/gitlive/firebase/EncodeSettings$Builder {
+public abstract interface class io/github/corneloaie/firebase/EncodeDecodeSettingsBuilder : io/github/corneloaie/firebase/DecodeSettings$Builder, io/github/corneloaie/firebase/EncodeSettings$Builder {
 }
 
-public abstract interface class dev/gitlive/firebase/EncodeSettings : dev/gitlive/firebase/EncodeDecodeSettings {
+public abstract interface class io/github/corneloaie/firebase/EncodeSettings : io/github/corneloaie/firebase/EncodeDecodeSettings {
 	public abstract fun getEncodeDefaults ()Z
 }
 
-public abstract interface class dev/gitlive/firebase/EncodeSettings$Builder {
+public abstract interface class io/github/corneloaie/firebase/EncodeSettings$Builder {
 	public abstract fun getEncodeDefaults ()Z
 	public abstract fun getSerializersModule ()Lkotlinx/serialization/modules/SerializersModule;
 	public abstract fun setEncodeDefaults (Z)V
 	public abstract fun setSerializersModule (Lkotlinx/serialization/modules/SerializersModule;)V
 }
 
-public abstract interface annotation class dev/gitlive/firebase/FirebaseClassDiscriminator : java/lang/annotation/Annotation {
+public abstract interface annotation class io/github/corneloaie/firebase/FirebaseClassDiscriminator : java/lang/annotation/Annotation {
 	public abstract fun discriminator ()Ljava/lang/String;
 }
 
-public final synthetic class dev/gitlive/firebase/FirebaseClassDiscriminator$Impl : dev/gitlive/firebase/FirebaseClassDiscriminator {
+public final synthetic class io/github/corneloaie/firebase/FirebaseClassDiscriminator$Impl : io/github/corneloaie/firebase/FirebaseClassDiscriminator {
 	public fun <init> (Ljava/lang/String;)V
 	public final synthetic fun discriminator ()Ljava/lang/String;
 }
 
-public abstract interface class dev/gitlive/firebase/FirebaseDecoder : kotlinx/serialization/encoding/Decoder {
+public abstract interface class io/github/corneloaie/firebase/FirebaseDecoder : kotlinx/serialization/encoding/Decoder {
 }
 
-public final class dev/gitlive/firebase/FirebaseDecoder$DefaultImpls {
-	public static fun decodeNullableSerializableValue (Ldev/gitlive/firebase/FirebaseDecoder;Lkotlinx/serialization/DeserializationStrategy;)Ljava/lang/Object;
-	public static fun decodeSerializableValue (Ldev/gitlive/firebase/FirebaseDecoder;Lkotlinx/serialization/DeserializationStrategy;)Ljava/lang/Object;
+public final class io/github/corneloaie/firebase/FirebaseDecoder$DefaultImpls {
+	public static fun decodeNullableSerializableValue (Lio/github/corneloaie/firebase/FirebaseDecoder;Lkotlinx/serialization/DeserializationStrategy;)Ljava/lang/Object;
+	public static fun decodeSerializableValue (Lio/github/corneloaie/firebase/FirebaseDecoder;Lkotlinx/serialization/DeserializationStrategy;)Ljava/lang/Object;
 }
 
-public abstract interface class dev/gitlive/firebase/FirebaseEncoder : kotlinx/serialization/encoding/Encoder {
+public abstract interface class io/github/corneloaie/firebase/FirebaseEncoder : kotlinx/serialization/encoding/Encoder {
 }
 
-public final class dev/gitlive/firebase/FirebaseEncoder$DefaultImpls {
-	public static fun beginCollection (Ldev/gitlive/firebase/FirebaseEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;I)Lkotlinx/serialization/encoding/CompositeEncoder;
-	public static fun encodeNotNullMark (Ldev/gitlive/firebase/FirebaseEncoder;)V
-	public static fun encodeNullableSerializableValue (Ldev/gitlive/firebase/FirebaseEncoder;Lkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
-	public static fun encodeSerializableValue (Ldev/gitlive/firebase/FirebaseEncoder;Lkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+public final class io/github/corneloaie/firebase/FirebaseEncoder$DefaultImpls {
+	public static fun beginCollection (Lio/github/corneloaie/firebase/FirebaseEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;I)Lkotlinx/serialization/encoding/CompositeEncoder;
+	public static fun encodeNotNullMark (Lio/github/corneloaie/firebase/FirebaseEncoder;)V
+	public static fun encodeNullableSerializableValue (Lio/github/corneloaie/firebase/FirebaseEncoder;Lkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+	public static fun encodeSerializableValue (Lio/github/corneloaie/firebase/FirebaseEncoder;Lkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
 }
 

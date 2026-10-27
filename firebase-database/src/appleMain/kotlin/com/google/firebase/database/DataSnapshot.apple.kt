@@ -4,8 +4,8 @@
 
 package com.google.firebase.database
 
-import swiftPMImport.dev.gitlive.firebase.database.FIRDataSnapshot
-import swiftPMImport.dev.gitlive.firebase.database.FIRMutableData
+import swiftPMImport.io.github.corneloaie.firebase.database.FIRDataSnapshot
+import swiftPMImport.io.github.corneloaie.firebase.database.FIRMutableData
 import kotlinx.cinterop.toKString
 import platform.Foundation.NSNull
 import platform.Foundation.NSNumber

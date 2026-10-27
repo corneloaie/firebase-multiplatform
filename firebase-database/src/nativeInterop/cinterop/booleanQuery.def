@@ -1,5 +1,5 @@
 language = Objective-C
-package = dev.gitlive.firebase.database.cinterop
+package = io.github.corneloaie.firebase.database.cinterop
 ---
 #import <Foundation/Foundation.h>
 

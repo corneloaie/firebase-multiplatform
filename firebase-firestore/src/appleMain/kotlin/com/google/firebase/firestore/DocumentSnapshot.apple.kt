@@ -4,13 +4,13 @@
 
 package com.google.firebase.firestore
 
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRDocumentChange
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRDocumentChangeType
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRDocumentSnapshot
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRQueryDocumentSnapshot
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRQuerySnapshot
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRServerTimestampBehavior
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRSnapshotMetadata
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRDocumentChange
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRDocumentChangeType
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRDocumentSnapshot
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRQueryDocumentSnapshot
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRQuerySnapshot
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRServerTimestampBehavior
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRSnapshotMetadata
 import com.google.firebase.Timestamp
 
 private fun DocumentSnapshot.ServerTimestampBehavior.toIos(): FIRServerTimestampBehavior = when (this) {

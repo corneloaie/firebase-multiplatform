@@ -51,8 +51,7 @@ tasks.withType<AbstractDokkaTask>().configureEach {
 
 subprojects {
 
-    group = "dev.gitlive"
-    // This fork's version and Maven coordinates (buildSrc/src/main/kotlin/fork/Fork.kt); the group above must stay.
+    // The group, version and POM (buildSrc/src/main/kotlin/fork/Fork.kt).
     applyFork()
 
     val nonDocumentationList = listOf("test-utils", "firebase-common", "firebase-common-internal")

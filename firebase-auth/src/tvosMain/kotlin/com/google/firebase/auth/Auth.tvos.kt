@@ -4,11 +4,11 @@
 
 package com.google.firebase.auth
 
-import swiftPMImport.dev.gitlive.firebase.auth.FIRAuth
-import swiftPMImport.dev.gitlive.firebase.auth.FIRUser
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRAuth
+import swiftPMImport.io.github.corneloaie.firebase.auth.FIRUser
 import com.google.android.gms.tasks.Task
-import dev.gitlive.firebase.auth.TvOsMultifactorNotSupportedException
-import dev.gitlive.firebase.auth.TvOsPhoneAuthNotSupportedException
+import io.github.corneloaie.firebase.auth.TvOsMultifactorNotSupportedException
+import io.github.corneloaie.firebase.auth.TvOsPhoneAuthNotSupportedException
 import platform.Foundation.NSError
 
 /*

@@ -5,8 +5,8 @@
 package com.google.firebase.functions
 
 import com.google.android.gms.tasks.Task
-import dev.gitlive.firebase.functions.SET_TIMEOUT_JVM_ONLY
-import dev.gitlive.firebase.functions.WITH_TIMEOUT_JVM_ONLY
+import io.github.corneloaie.firebase.functions.SET_TIMEOUT_JVM_ONLY
+import io.github.corneloaie.firebase.functions.WITH_TIMEOUT_JVM_ONLY
 
 /**
  * A reference to a callable HTTPS trigger in Cloud Functions, mirroring

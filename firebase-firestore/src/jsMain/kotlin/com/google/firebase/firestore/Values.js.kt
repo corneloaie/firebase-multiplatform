@@ -7,10 +7,10 @@ package com.google.firebase.firestore
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.Timestamp
-import dev.gitlive.firebase.firestore.externals.Bytes
-import dev.gitlive.firebase.firestore.externals.QueryConstraint
-import dev.gitlive.firebase.firestore.externals.deleteField
-import dev.gitlive.firebase.firestore.externals.documentId
+import io.github.corneloaie.firebase.firestore.externals.Bytes
+import io.github.corneloaie.firebase.firestore.externals.QueryConstraint
+import io.github.corneloaie.firebase.firestore.externals.deleteField
+import io.github.corneloaie.firebase.firestore.externals.documentId
 import org.khronos.webgl.Uint8Array
 import org.khronos.webgl.get
 import kotlin.js.Json
@@ -18,28 +18,28 @@ import kotlin.js.Promise
 import kotlin.js.json
 import kotlin.math.abs
 import kotlin.math.floor
-import dev.gitlive.firebase.firestore.externals.BsonObjectId as JsBsonObjectId
-import dev.gitlive.firebase.firestore.externals.BsonTimestamp as JsBsonTimestamp
-import dev.gitlive.firebase.firestore.externals.Decimal128Value as JsDecimal128Value
-import dev.gitlive.firebase.firestore.externals.DocumentReference as JsDocumentReference
-import dev.gitlive.firebase.firestore.externals.FieldPath as JsFieldPath
-import dev.gitlive.firebase.firestore.externals.GeoPoint as JsGeoPoint
-import dev.gitlive.firebase.firestore.externals.Int32Value as JsInt32Value
-import dev.gitlive.firebase.firestore.externals.MaxKey as JsMaxKey
-import dev.gitlive.firebase.firestore.externals.MinKey as JsMinKey
-import dev.gitlive.firebase.firestore.externals.RegexValue as JsRegexValue
-import dev.gitlive.firebase.firestore.externals.Timestamp as JsTimestamp
-import dev.gitlive.firebase.firestore.externals.VectorValue as JsVectorValue
-import dev.gitlive.firebase.firestore.externals.and as jsAnd
-import dev.gitlive.firebase.firestore.externals.arrayRemove as jsArrayRemove
-import dev.gitlive.firebase.firestore.externals.arrayUnion as jsArrayUnion
-import dev.gitlive.firebase.firestore.externals.increment as jsIncrement
-import dev.gitlive.firebase.firestore.externals.maximum as jsMaximum
-import dev.gitlive.firebase.firestore.externals.minimum as jsMinimum
-import dev.gitlive.firebase.firestore.externals.or as jsOr
-import dev.gitlive.firebase.firestore.externals.serverTimestamp as jsServerTimestamp
-import dev.gitlive.firebase.firestore.externals.vector as jsVector
-import dev.gitlive.firebase.firestore.externals.where as jsWhere
+import io.github.corneloaie.firebase.firestore.externals.BsonObjectId as JsBsonObjectId
+import io.github.corneloaie.firebase.firestore.externals.BsonTimestamp as JsBsonTimestamp
+import io.github.corneloaie.firebase.firestore.externals.Decimal128Value as JsDecimal128Value
+import io.github.corneloaie.firebase.firestore.externals.DocumentReference as JsDocumentReference
+import io.github.corneloaie.firebase.firestore.externals.FieldPath as JsFieldPath
+import io.github.corneloaie.firebase.firestore.externals.GeoPoint as JsGeoPoint
+import io.github.corneloaie.firebase.firestore.externals.Int32Value as JsInt32Value
+import io.github.corneloaie.firebase.firestore.externals.MaxKey as JsMaxKey
+import io.github.corneloaie.firebase.firestore.externals.MinKey as JsMinKey
+import io.github.corneloaie.firebase.firestore.externals.RegexValue as JsRegexValue
+import io.github.corneloaie.firebase.firestore.externals.Timestamp as JsTimestamp
+import io.github.corneloaie.firebase.firestore.externals.VectorValue as JsVectorValue
+import io.github.corneloaie.firebase.firestore.externals.and as jsAnd
+import io.github.corneloaie.firebase.firestore.externals.arrayRemove as jsArrayRemove
+import io.github.corneloaie.firebase.firestore.externals.arrayUnion as jsArrayUnion
+import io.github.corneloaie.firebase.firestore.externals.increment as jsIncrement
+import io.github.corneloaie.firebase.firestore.externals.maximum as jsMaximum
+import io.github.corneloaie.firebase.firestore.externals.minimum as jsMinimum
+import io.github.corneloaie.firebase.firestore.externals.or as jsOr
+import io.github.corneloaie.firebase.firestore.externals.serverTimestamp as jsServerTimestamp
+import io.github.corneloaie.firebase.firestore.externals.vector as jsVector
+import io.github.corneloaie.firebase.firestore.externals.where as jsWhere
 
 /*
  * The JS SDK reads and writes plain JS values with its own Timestamp, GeoPoint, DocumentReference, Bytes (with a BSON
@@ -92,7 +92,7 @@ internal fun Any?.toCompat(): Any? {
 
 /**
  * A value read by the JS SDK with only the leaves converted to the layer's value types, objects and arrays kept as the
- * JS SDK's; what the dev.gitlive layer's decoders take.
+ * JS SDK's; what the Kotlin-first layer's decoders take.
  */
 internal fun Any?.toCompatLeaves(): Any? {
     if (this == null || this == undefined) return null

@@ -4,7 +4,7 @@
 
 package com.google.firebase.appcheck.debug
 
-import swiftPMImport.dev.gitlive.firebase.appcheck.FIRAppCheckDebugProviderFactory
+import swiftPMImport.io.github.corneloaie.firebase.appcheck.FIRAppCheckDebugProviderFactory
 import com.google.firebase.FirebaseApp
 import com.google.firebase.appcheck.AppCheckProvider
 import com.google.firebase.appcheck.AppCheckProviderFactory

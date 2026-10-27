@@ -8,76 +8,76 @@ import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
-import dev.gitlive.firebase.Unsubscribe
-import dev.gitlive.firebase.UnsupportedOnJs
-import dev.gitlive.firebase.auth.externals.ActionCodeURL
-import dev.gitlive.firebase.auth.externals.ApplicationVerifier
-import dev.gitlive.firebase.auth.externals.Auth
-import dev.gitlive.firebase.auth.externals.AuthError
-import dev.gitlive.firebase.auth.externals.User
-import dev.gitlive.firebase.auth.externals.UserCredential
-import dev.gitlive.firebase.auth.externals.applyActionCode
-import dev.gitlive.firebase.auth.externals.checkActionCode
-import dev.gitlive.firebase.auth.externals.confirmPasswordReset
-import dev.gitlive.firebase.auth.externals.connectAuthEmulator
-import dev.gitlive.firebase.auth.externals.createUserWithEmailAndPassword
-import dev.gitlive.firebase.auth.externals.deleteUser
-import dev.gitlive.firebase.auth.externals.fetchSignInMethodsForEmail
-import dev.gitlive.firebase.auth.externals.getAdditionalUserInfo
-import dev.gitlive.firebase.auth.externals.getAuth
-import dev.gitlive.firebase.auth.externals.getIdTokenResult
-import dev.gitlive.firebase.auth.externals.getMultiFactorResolver
-import dev.gitlive.firebase.auth.externals.initializeRecaptchaConfig
-import dev.gitlive.firebase.auth.externals.isSignInWithEmailLink
-import dev.gitlive.firebase.auth.externals.linkWithCredential
-import dev.gitlive.firebase.auth.externals.multiFactor
-import dev.gitlive.firebase.auth.externals.onAuthStateChanged
-import dev.gitlive.firebase.auth.externals.onIdTokenChanged
-import dev.gitlive.firebase.auth.externals.reauthenticateWithCredential
-import dev.gitlive.firebase.auth.externals.reload
-import dev.gitlive.firebase.auth.externals.revokeAccessToken
-import dev.gitlive.firebase.auth.externals.sendEmailVerification
-import dev.gitlive.firebase.auth.externals.sendPasswordResetEmail
-import dev.gitlive.firebase.auth.externals.sendSignInLinkToEmail
-import dev.gitlive.firebase.auth.externals.signInAnonymously
-import dev.gitlive.firebase.auth.externals.signInWithCredential
-import dev.gitlive.firebase.auth.externals.signInWithCustomToken
-import dev.gitlive.firebase.auth.externals.signInWithEmailAndPassword
-import dev.gitlive.firebase.auth.externals.signInWithEmailLink
-import dev.gitlive.firebase.auth.externals.signOut
-import dev.gitlive.firebase.auth.externals.unlink
-import dev.gitlive.firebase.auth.externals.updateCurrentUser
-import dev.gitlive.firebase.auth.externals.updateEmail
-import dev.gitlive.firebase.auth.externals.updatePassword
-import dev.gitlive.firebase.auth.externals.updatePhoneNumber
-import dev.gitlive.firebase.auth.externals.updateProfile
-import dev.gitlive.firebase.auth.externals.useDeviceLanguage
-import dev.gitlive.firebase.auth.externals.verifyBeforeUpdateEmail
-import dev.gitlive.firebase.auth.externals.verifyPasswordResetCode
+import io.github.corneloaie.firebase.Unsubscribe
+import io.github.corneloaie.firebase.UnsupportedOnJs
+import io.github.corneloaie.firebase.auth.externals.ActionCodeURL
+import io.github.corneloaie.firebase.auth.externals.ApplicationVerifier
+import io.github.corneloaie.firebase.auth.externals.Auth
+import io.github.corneloaie.firebase.auth.externals.AuthError
+import io.github.corneloaie.firebase.auth.externals.User
+import io.github.corneloaie.firebase.auth.externals.UserCredential
+import io.github.corneloaie.firebase.auth.externals.applyActionCode
+import io.github.corneloaie.firebase.auth.externals.checkActionCode
+import io.github.corneloaie.firebase.auth.externals.confirmPasswordReset
+import io.github.corneloaie.firebase.auth.externals.connectAuthEmulator
+import io.github.corneloaie.firebase.auth.externals.createUserWithEmailAndPassword
+import io.github.corneloaie.firebase.auth.externals.deleteUser
+import io.github.corneloaie.firebase.auth.externals.fetchSignInMethodsForEmail
+import io.github.corneloaie.firebase.auth.externals.getAdditionalUserInfo
+import io.github.corneloaie.firebase.auth.externals.getAuth
+import io.github.corneloaie.firebase.auth.externals.getIdTokenResult
+import io.github.corneloaie.firebase.auth.externals.getMultiFactorResolver
+import io.github.corneloaie.firebase.auth.externals.initializeRecaptchaConfig
+import io.github.corneloaie.firebase.auth.externals.isSignInWithEmailLink
+import io.github.corneloaie.firebase.auth.externals.linkWithCredential
+import io.github.corneloaie.firebase.auth.externals.multiFactor
+import io.github.corneloaie.firebase.auth.externals.onAuthStateChanged
+import io.github.corneloaie.firebase.auth.externals.onIdTokenChanged
+import io.github.corneloaie.firebase.auth.externals.reauthenticateWithCredential
+import io.github.corneloaie.firebase.auth.externals.reload
+import io.github.corneloaie.firebase.auth.externals.revokeAccessToken
+import io.github.corneloaie.firebase.auth.externals.sendEmailVerification
+import io.github.corneloaie.firebase.auth.externals.sendPasswordResetEmail
+import io.github.corneloaie.firebase.auth.externals.sendSignInLinkToEmail
+import io.github.corneloaie.firebase.auth.externals.signInAnonymously
+import io.github.corneloaie.firebase.auth.externals.signInWithCredential
+import io.github.corneloaie.firebase.auth.externals.signInWithCustomToken
+import io.github.corneloaie.firebase.auth.externals.signInWithEmailAndPassword
+import io.github.corneloaie.firebase.auth.externals.signInWithEmailLink
+import io.github.corneloaie.firebase.auth.externals.signOut
+import io.github.corneloaie.firebase.auth.externals.unlink
+import io.github.corneloaie.firebase.auth.externals.updateCurrentUser
+import io.github.corneloaie.firebase.auth.externals.updateEmail
+import io.github.corneloaie.firebase.auth.externals.updatePassword
+import io.github.corneloaie.firebase.auth.externals.updatePhoneNumber
+import io.github.corneloaie.firebase.auth.externals.updateProfile
+import io.github.corneloaie.firebase.auth.externals.useDeviceLanguage
+import io.github.corneloaie.firebase.auth.externals.verifyBeforeUpdateEmail
+import io.github.corneloaie.firebase.auth.externals.verifyPasswordResetCode
 import kotlin.js.Date
 import kotlin.js.Json
 import kotlin.js.Promise
 import kotlin.js.json
-import dev.gitlive.firebase.auth.externals.AuthCredential as JsAuthCredential
-import dev.gitlive.firebase.auth.externals.AuthResult as JsAuthResult
-import dev.gitlive.firebase.auth.externals.EmailAuthProvider as JsEmailAuthProvider
-import dev.gitlive.firebase.auth.externals.FacebookAuthProvider as JsFacebookAuthProvider
-import dev.gitlive.firebase.auth.externals.GithubAuthProvider as JsGithubAuthProvider
-import dev.gitlive.firebase.auth.externals.GoogleAuthProvider as JsGoogleAuthProvider
-import dev.gitlive.firebase.auth.externals.MultiFactorAssertion as JsMultiFactorAssertion
-import dev.gitlive.firebase.auth.externals.MultiFactorInfo as JsMultiFactorInfo
-import dev.gitlive.firebase.auth.externals.MultiFactorResolver as JsMultiFactorResolver
-import dev.gitlive.firebase.auth.externals.MultiFactorSession as JsMultiFactorSession
-import dev.gitlive.firebase.auth.externals.MultiFactorUser as JsMultiFactorUser
-import dev.gitlive.firebase.auth.externals.OAuthCredential as JsOAuthCredential
-import dev.gitlive.firebase.auth.externals.OAuthProvider as JsOAuthProvider
-import dev.gitlive.firebase.auth.externals.PhoneAuthProvider as JsPhoneAuthProvider
-import dev.gitlive.firebase.auth.externals.PhoneMultiFactorGenerator as JsPhoneMultiFactorGenerator
-import dev.gitlive.firebase.auth.externals.PhoneMultiFactorInfo as JsPhoneMultiFactorInfo
-import dev.gitlive.firebase.auth.externals.TotpMultiFactorGenerator as JsTotpMultiFactorGenerator
-import dev.gitlive.firebase.auth.externals.TotpSecret as JsTotpSecret
-import dev.gitlive.firebase.auth.externals.TwitterAuthProvider as JsTwitterAuthProvider
-import dev.gitlive.firebase.auth.externals.UserInfo as JsUserInfo
+import io.github.corneloaie.firebase.auth.externals.AuthCredential as JsAuthCredential
+import io.github.corneloaie.firebase.auth.externals.AuthResult as JsAuthResult
+import io.github.corneloaie.firebase.auth.externals.EmailAuthProvider as JsEmailAuthProvider
+import io.github.corneloaie.firebase.auth.externals.FacebookAuthProvider as JsFacebookAuthProvider
+import io.github.corneloaie.firebase.auth.externals.GithubAuthProvider as JsGithubAuthProvider
+import io.github.corneloaie.firebase.auth.externals.GoogleAuthProvider as JsGoogleAuthProvider
+import io.github.corneloaie.firebase.auth.externals.MultiFactorAssertion as JsMultiFactorAssertion
+import io.github.corneloaie.firebase.auth.externals.MultiFactorInfo as JsMultiFactorInfo
+import io.github.corneloaie.firebase.auth.externals.MultiFactorResolver as JsMultiFactorResolver
+import io.github.corneloaie.firebase.auth.externals.MultiFactorSession as JsMultiFactorSession
+import io.github.corneloaie.firebase.auth.externals.MultiFactorUser as JsMultiFactorUser
+import io.github.corneloaie.firebase.auth.externals.OAuthCredential as JsOAuthCredential
+import io.github.corneloaie.firebase.auth.externals.OAuthProvider as JsOAuthProvider
+import io.github.corneloaie.firebase.auth.externals.PhoneAuthProvider as JsPhoneAuthProvider
+import io.github.corneloaie.firebase.auth.externals.PhoneMultiFactorGenerator as JsPhoneMultiFactorGenerator
+import io.github.corneloaie.firebase.auth.externals.PhoneMultiFactorInfo as JsPhoneMultiFactorInfo
+import io.github.corneloaie.firebase.auth.externals.TotpMultiFactorGenerator as JsTotpMultiFactorGenerator
+import io.github.corneloaie.firebase.auth.externals.TotpSecret as JsTotpSecret
+import io.github.corneloaie.firebase.auth.externals.TwitterAuthProvider as JsTwitterAuthProvider
+import io.github.corneloaie.firebase.auth.externals.UserInfo as JsUserInfo
 
 /** @property js The underlying Firebase JS SDK object. */
 public actual class FirebaseAuth internal constructor(public val js: Auth) {

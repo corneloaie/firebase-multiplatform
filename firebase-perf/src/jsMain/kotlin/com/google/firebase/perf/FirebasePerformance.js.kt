@@ -5,10 +5,10 @@
 package com.google.firebase.perf
 
 import com.google.firebase.perf.metrics.Trace
-import dev.gitlive.firebase.perf.FirebasePerformanceException
-import dev.gitlive.firebase.perf.externals.getPerformance
-import dev.gitlive.firebase.perf.externals.trace
-import dev.gitlive.firebase.perf.externals.FirebasePerformance as JsFirebasePerformance
+import io.github.corneloaie.firebase.perf.FirebasePerformanceException
+import io.github.corneloaie.firebase.perf.externals.getPerformance
+import io.github.corneloaie.firebase.perf.externals.trace
+import io.github.corneloaie.firebase.perf.externals.FirebasePerformance as JsFirebasePerformance
 
 /** @property js The underlying Firebase JS SDK object. */
 public actual class FirebasePerformance internal constructor(public val js: JsFirebasePerformance) {

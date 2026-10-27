@@ -6,7 +6,7 @@ package com.google.firebase.appdistribution
 
 import android.net.Uri
 import com.google.android.gms.tasks.Task
-import dev.gitlive.firebase.appdistribution.stub
+import io.github.corneloaie.firebase.appdistribution.stub
 
 /*
  * Header stubs for com.google.firebase:firebase-appdistribution-api (see buildSrc utils/HeaderStubs.kt): compiled

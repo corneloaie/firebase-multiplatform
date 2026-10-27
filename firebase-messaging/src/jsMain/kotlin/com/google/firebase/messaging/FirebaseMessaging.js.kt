@@ -7,11 +7,11 @@ package com.google.firebase.messaging
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.FirebaseException
-import dev.gitlive.firebase.UnsupportedOnJs
-import dev.gitlive.firebase.messaging.externals.Messaging
-import dev.gitlive.firebase.messaging.externals.deleteToken
-import dev.gitlive.firebase.messaging.externals.getMessaging
-import dev.gitlive.firebase.messaging.externals.getToken
+import io.github.corneloaie.firebase.UnsupportedOnJs
+import io.github.corneloaie.firebase.messaging.externals.Messaging
+import io.github.corneloaie.firebase.messaging.externals.deleteToken
+import io.github.corneloaie.firebase.messaging.externals.getMessaging
+import io.github.corneloaie.firebase.messaging.externals.getToken
 import kotlin.js.Promise
 
 /** @property js The underlying Firebase JS SDK object. */

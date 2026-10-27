@@ -6,7 +6,7 @@ package com.google.firebase.messaging
 
 import android.net.Uri
 import com.google.android.gms.tasks.Task
-import dev.gitlive.firebase.messaging.stub
+import io.github.corneloaie.firebase.messaging.stub
 
 /*
  * Header stubs for com.google.firebase:firebase-messaging (see buildSrc utils/HeaderStubs.kt): compiled against,

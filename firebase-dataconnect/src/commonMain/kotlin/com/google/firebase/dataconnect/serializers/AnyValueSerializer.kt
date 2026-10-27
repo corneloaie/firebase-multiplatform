@@ -5,8 +5,8 @@
 package com.google.firebase.dataconnect.serializers
 
 import com.google.firebase.dataconnect.AnyValue
-import dev.gitlive.firebase.dataconnect.internal.decodeAnyValue
-import dev.gitlive.firebase.dataconnect.internal.encodeAnyValue
+import io.github.corneloaie.firebase.dataconnect.internal.decodeAnyValue
+import io.github.corneloaie.firebase.dataconnect.internal.encodeAnyValue
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor

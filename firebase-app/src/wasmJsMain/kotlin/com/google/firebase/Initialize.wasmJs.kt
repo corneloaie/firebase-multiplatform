@@ -4,9 +4,9 @@
 
 package com.google.firebase
 
-import dev.gitlive.firebase.externals.toList
-import dev.gitlive.firebase.externals.getApps as jsGetApps
-import dev.gitlive.firebase.externals.initializeApp as jsInitializeApp
+import io.github.corneloaie.firebase.externals.toList
+import io.github.corneloaie.firebase.externals.getApps as jsGetApps
+import io.github.corneloaie.firebase.externals.initializeApp as jsInitializeApp
 
 /** Not supported on wasmJs, where the options cannot be read from a default configuration: always throws. */
 public actual fun Firebase.initialize(context: Any?): FirebaseApp? = throw UnsupportedOperationException("Cannot initialize firebase without options in JS")

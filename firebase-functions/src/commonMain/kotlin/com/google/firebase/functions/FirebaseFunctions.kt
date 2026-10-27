@@ -5,7 +5,7 @@
 package com.google.firebase.functions
 
 import com.google.firebase.FirebaseApp
-import dev.gitlive.firebase.functions.GET_HTTPS_CALLABLE_FROM_URL_JVM_ONLY
+import io.github.corneloaie.firebase.functions.GET_HTTPS_CALLABLE_FROM_URL_JVM_ONLY
 
 /**
  * The entry point for Cloud Functions for Firebase, mirroring `com.google.firebase.functions.FirebaseFunctions` from the

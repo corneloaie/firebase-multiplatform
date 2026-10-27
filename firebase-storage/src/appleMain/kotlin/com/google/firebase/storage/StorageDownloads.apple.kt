@@ -4,13 +4,13 @@
 
 package com.google.firebase.storage
 
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageDownloadTask
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageTaskSnapshot
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageTaskStatusFailure
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageTaskStatusPause
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageTaskStatusProgress
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageTaskStatusResume
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageTaskStatusSuccess
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageDownloadTask
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageTaskSnapshot
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageTaskStatusFailure
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageTaskStatusPause
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageTaskStatusProgress
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageTaskStatusResume
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageTaskStatusSuccess
 
 /**
  * Leaves the members it inherits from [StorageTask] to [FileDownloadTaskImpl], as the expect class does: implementing them

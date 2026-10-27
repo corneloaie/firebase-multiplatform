@@ -5,7 +5,7 @@
 package com.google.firebase.perf.metrics
 
 import com.google.firebase.perf.session.PerfSession
-import dev.gitlive.firebase.perf.stub
+import io.github.corneloaie.firebase.perf.stub
 import kotlin.jvm.JvmField
 
 /** Header stub; see FirebasePerformance.android.kt. */
@@ -20,7 +20,7 @@ public actual class Trace private constructor() {
     public actual fun putMetric(metricName: String, value: Long): Unit = stub()
     public actual fun removeAttribute(attribute: String): Unit = stub()
 
-    /** Android-only (hidden in the SDK's API); reached by the `dev.gitlive` wrapper's `Trace.updateSession`. */
+    /** Android-only (hidden in the SDK's API); reached by the Kotlin-first wrapper's `Trace.updateSession`. */
     public fun updateSession(session: PerfSession): Unit = stub()
 
     public actual companion object {

@@ -3,7 +3,7 @@ public final class com/google/firebase/messaging/RemoteMessageUriKt {
 	public static final fun getLink (Lcom/google/firebase/messaging/RemoteMessage$Notification;)Ljava/lang/String;
 }
 
-public final class dev/gitlive/firebase/messaging/FirebaseMessaging {
+public final class io/github/corneloaie/firebase/messaging/FirebaseMessaging {
 	public final fun deleteToken (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCompat ()Lcom/google/firebase/messaging/FirebaseMessaging;
@@ -14,8 +14,8 @@ public final class dev/gitlive/firebase/messaging/FirebaseMessaging {
 	public final fun unsubscribeFromTopic (Ljava/lang/String;)V
 }
 
-public final class dev/gitlive/firebase/messaging/android {
-	public static final fun getAndroid (Ldev/gitlive/firebase/messaging/FirebaseMessaging;)Lcom/google/firebase/messaging/FirebaseMessaging;
-	public static final fun getMessaging (Ldev/gitlive/firebase/Firebase;)Ldev/gitlive/firebase/messaging/FirebaseMessaging;
+public final class io/github/corneloaie/firebase/messaging/android {
+	public static final fun getAndroid (Lio/github/corneloaie/firebase/messaging/FirebaseMessaging;)Lcom/google/firebase/messaging/FirebaseMessaging;
+	public static final fun getMessaging (Lio/github/corneloaie/firebase/Firebase;)Lio/github/corneloaie/firebase/messaging/FirebaseMessaging;
 }
 

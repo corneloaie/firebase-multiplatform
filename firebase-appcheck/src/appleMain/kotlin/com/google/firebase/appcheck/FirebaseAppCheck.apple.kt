@@ -4,10 +4,10 @@
 
 package com.google.firebase.appcheck
 
-import swiftPMImport.dev.gitlive.firebase.appcheck.FIRAppCheck
-import swiftPMImport.dev.gitlive.firebase.appcheck.FIRAppCheckAppCheckTokenDidChangeNotification
-import swiftPMImport.dev.gitlive.firebase.appcheck.kFIRAppCheckAppNameNotificationKey
-import swiftPMImport.dev.gitlive.firebase.appcheck.kFIRAppCheckTokenNotificationKey
+import swiftPMImport.io.github.corneloaie.firebase.appcheck.FIRAppCheck
+import swiftPMImport.io.github.corneloaie.firebase.appcheck.FIRAppCheckAppCheckTokenDidChangeNotification
+import swiftPMImport.io.github.corneloaie.firebase.appcheck.kFIRAppCheckAppNameNotificationKey
+import swiftPMImport.io.github.corneloaie.firebase.appcheck.kFIRAppCheckTokenNotificationKey
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.FirebaseApp

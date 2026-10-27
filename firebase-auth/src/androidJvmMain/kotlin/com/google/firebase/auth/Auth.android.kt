@@ -9,7 +9,7 @@ import android.net.Uri
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
-import dev.gitlive.firebase.auth.stub
+import io.github.corneloaie.firebase.auth.stub
 import java.util.concurrent.TimeUnit
 
 /*

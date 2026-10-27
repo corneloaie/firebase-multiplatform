@@ -51,7 +51,7 @@ import com.google.firebase.firestore.pipeline.UnnestStage
 import com.google.firebase.firestore.pipeline.UpdateStage
 import com.google.firebase.firestore.pipeline.UpsertStage
 import com.google.firebase.firestore.pipeline.WhereStage
-import dev.gitlive.firebase.firestore.internal.executePipeline
+import io.github.corneloaie.firebase.firestore.internal.executePipeline
 import kotlin.jvm.JvmField
 import kotlin.jvm.JvmStatic
 

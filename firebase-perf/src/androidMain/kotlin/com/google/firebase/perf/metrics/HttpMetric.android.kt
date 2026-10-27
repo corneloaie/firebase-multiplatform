@@ -4,7 +4,7 @@
 
 package com.google.firebase.perf.metrics
 
-import dev.gitlive.firebase.perf.stub
+import io.github.corneloaie.firebase.perf.stub
 import kotlin.jvm.JvmField
 
 /** Header stub; see FirebasePerformance.android.kt. */

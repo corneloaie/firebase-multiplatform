@@ -6,35 +6,35 @@ package com.google.firebase.storage
 
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
-import dev.gitlive.firebase.externals.jsGet
-import dev.gitlive.firebase.externals.jsObject
-import dev.gitlive.firebase.externals.jsObjectKeys
-import dev.gitlive.firebase.externals.jsSet
-import dev.gitlive.firebase.externals.json
-import dev.gitlive.firebase.externals.parseDateStringToMillis
-import dev.gitlive.firebase.externals.toKotlin
-import dev.gitlive.firebase.externals.toKotlinString
-import dev.gitlive.firebase.externals.toList
-import dev.gitlive.firebase.storage.externals.FullMetadata
-import dev.gitlive.firebase.storage.externals.StorageError
-import dev.gitlive.firebase.storage.externals.deleteObject
-import dev.gitlive.firebase.storage.externals.getBytes
-import dev.gitlive.firebase.storage.externals.getDownloadURL
-import dev.gitlive.firebase.storage.externals.getMetadata
-import dev.gitlive.firebase.storage.externals.list
-import dev.gitlive.firebase.storage.externals.listAll
-import dev.gitlive.firebase.storage.externals.ref
-import dev.gitlive.firebase.storage.externals.updateMetadata
-import dev.gitlive.firebase.storage.externals.uploadBytesResumable
+import io.github.corneloaie.firebase.externals.jsGet
+import io.github.corneloaie.firebase.externals.jsObject
+import io.github.corneloaie.firebase.externals.jsObjectKeys
+import io.github.corneloaie.firebase.externals.jsSet
+import io.github.corneloaie.firebase.externals.json
+import io.github.corneloaie.firebase.externals.parseDateStringToMillis
+import io.github.corneloaie.firebase.externals.toKotlin
+import io.github.corneloaie.firebase.externals.toKotlinString
+import io.github.corneloaie.firebase.externals.toList
+import io.github.corneloaie.firebase.storage.externals.FullMetadata
+import io.github.corneloaie.firebase.storage.externals.StorageError
+import io.github.corneloaie.firebase.storage.externals.deleteObject
+import io.github.corneloaie.firebase.storage.externals.getBytes
+import io.github.corneloaie.firebase.storage.externals.getDownloadURL
+import io.github.corneloaie.firebase.storage.externals.getMetadata
+import io.github.corneloaie.firebase.storage.externals.list
+import io.github.corneloaie.firebase.storage.externals.listAll
+import io.github.corneloaie.firebase.storage.externals.ref
+import io.github.corneloaie.firebase.storage.externals.updateMetadata
+import io.github.corneloaie.firebase.storage.externals.uploadBytesResumable
 import org.khronos.webgl.Int8Array
 import org.khronos.webgl.Uint8Array
 import org.khronos.webgl.toByteArray
 import org.khronos.webgl.toInt8Array
 import kotlin.js.JsException
 import kotlin.js.Promise
-import dev.gitlive.firebase.storage.externals.ListResult as JsListResult
-import dev.gitlive.firebase.storage.externals.StorageReference as JsStorageReference
-import dev.gitlive.firebase.storage.externals.UploadTask as JsUploadTask
+import io.github.corneloaie.firebase.storage.externals.ListResult as JsListResult
+import io.github.corneloaie.firebase.storage.externals.StorageReference as JsStorageReference
+import io.github.corneloaie.firebase.storage.externals.UploadTask as JsUploadTask
 
 /** @property js The underlying Firebase JS SDK object. */
 public actual class StorageReference internal constructor(public val js: JsStorageReference) : Comparable<StorageReference> {

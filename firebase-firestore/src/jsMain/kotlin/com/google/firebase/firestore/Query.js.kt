@@ -4,45 +4,45 @@
 
 package com.google.firebase.firestore
 
-import dev.gitlive.firebase.UnsupportedOnJs
+import io.github.corneloaie.firebase.UnsupportedOnJs
 import com.google.android.gms.tasks.Task
-import dev.gitlive.firebase.firestore.externals.QueryConstraint
-import dev.gitlive.firebase.firestore.externals.addDoc
-import dev.gitlive.firebase.firestore.externals.deleteDoc
-import dev.gitlive.firebase.firestore.externals.doc
-import dev.gitlive.firebase.firestore.externals.getAggregateFromServer
-import dev.gitlive.firebase.firestore.externals.getDoc
-import dev.gitlive.firebase.firestore.externals.getDocFromCache
-import dev.gitlive.firebase.firestore.externals.getDocFromServer
-import dev.gitlive.firebase.firestore.externals.getDocs
-import dev.gitlive.firebase.firestore.externals.getDocsFromCache
-import dev.gitlive.firebase.firestore.externals.getDocsFromServer
-import dev.gitlive.firebase.firestore.externals.onSnapshot
-import dev.gitlive.firebase.firestore.externals.query
-import dev.gitlive.firebase.firestore.externals.queryEqual
-import dev.gitlive.firebase.firestore.externals.refEqual
-import dev.gitlive.firebase.firestore.externals.setDoc
-import dev.gitlive.firebase.firestore.externals.updateDoc
+import io.github.corneloaie.firebase.firestore.externals.QueryConstraint
+import io.github.corneloaie.firebase.firestore.externals.addDoc
+import io.github.corneloaie.firebase.firestore.externals.deleteDoc
+import io.github.corneloaie.firebase.firestore.externals.doc
+import io.github.corneloaie.firebase.firestore.externals.getAggregateFromServer
+import io.github.corneloaie.firebase.firestore.externals.getDoc
+import io.github.corneloaie.firebase.firestore.externals.getDocFromCache
+import io.github.corneloaie.firebase.firestore.externals.getDocFromServer
+import io.github.corneloaie.firebase.firestore.externals.getDocs
+import io.github.corneloaie.firebase.firestore.externals.getDocsFromCache
+import io.github.corneloaie.firebase.firestore.externals.getDocsFromServer
+import io.github.corneloaie.firebase.firestore.externals.onSnapshot
+import io.github.corneloaie.firebase.firestore.externals.query
+import io.github.corneloaie.firebase.firestore.externals.queryEqual
+import io.github.corneloaie.firebase.firestore.externals.refEqual
+import io.github.corneloaie.firebase.firestore.externals.setDoc
+import io.github.corneloaie.firebase.firestore.externals.updateDoc
 import kotlin.js.Json
 import kotlin.js.json
-import dev.gitlive.firebase.firestore.externals.AggregateField as JsAggregateField
-import dev.gitlive.firebase.firestore.externals.CollectionReference as JsCollectionReference
-import dev.gitlive.firebase.firestore.externals.DocumentReference as JsDocumentReference
-import dev.gitlive.firebase.firestore.externals.Query as JsQuery
-import dev.gitlive.firebase.firestore.externals.Transaction as JsTransaction
-import dev.gitlive.firebase.firestore.externals.WriteBatch as JsWriteBatch
-import dev.gitlive.firebase.firestore.externals.average as jsAverage
-import dev.gitlive.firebase.firestore.externals.collection as jsCollection
-import dev.gitlive.firebase.firestore.externals.count as jsCount
-import dev.gitlive.firebase.firestore.externals.endAt as jsEndAt
-import dev.gitlive.firebase.firestore.externals.endBefore as jsEndBefore
-import dev.gitlive.firebase.firestore.externals.limit as jsLimit
-import dev.gitlive.firebase.firestore.externals.limitToLast as jsLimitToLast
-import dev.gitlive.firebase.firestore.externals.orderBy as jsOrderBy
-import dev.gitlive.firebase.firestore.externals.startAfter as jsStartAfter
-import dev.gitlive.firebase.firestore.externals.startAt as jsStartAt
-import dev.gitlive.firebase.firestore.externals.sum as jsSum
-import dev.gitlive.firebase.firestore.externals.where as jsWhere
+import io.github.corneloaie.firebase.firestore.externals.AggregateField as JsAggregateField
+import io.github.corneloaie.firebase.firestore.externals.CollectionReference as JsCollectionReference
+import io.github.corneloaie.firebase.firestore.externals.DocumentReference as JsDocumentReference
+import io.github.corneloaie.firebase.firestore.externals.Query as JsQuery
+import io.github.corneloaie.firebase.firestore.externals.Transaction as JsTransaction
+import io.github.corneloaie.firebase.firestore.externals.WriteBatch as JsWriteBatch
+import io.github.corneloaie.firebase.firestore.externals.average as jsAverage
+import io.github.corneloaie.firebase.firestore.externals.collection as jsCollection
+import io.github.corneloaie.firebase.firestore.externals.count as jsCount
+import io.github.corneloaie.firebase.firestore.externals.endAt as jsEndAt
+import io.github.corneloaie.firebase.firestore.externals.endBefore as jsEndBefore
+import io.github.corneloaie.firebase.firestore.externals.limit as jsLimit
+import io.github.corneloaie.firebase.firestore.externals.limitToLast as jsLimitToLast
+import io.github.corneloaie.firebase.firestore.externals.orderBy as jsOrderBy
+import io.github.corneloaie.firebase.firestore.externals.startAfter as jsStartAfter
+import io.github.corneloaie.firebase.firestore.externals.startAt as jsStartAt
+import io.github.corneloaie.firebase.firestore.externals.sum as jsSum
+import io.github.corneloaie.firebase.firestore.externals.where as jsWhere
 
 /** The `includeMetadataChanges` and `source` options of a snapshot listener as the JS SDK takes them. */
 private fun listenOptions(metadataChanges: MetadataChanges, source: ListenSource = ListenSource.DEFAULT): Json = json("includeMetadataChanges" to (metadataChanges == MetadataChanges.INCLUDE), "source" to source.name.lowercase())
@@ -223,7 +223,7 @@ public actual class DocumentReference internal constructor(public val js: JsDocu
 
 /** @property js The underlying Firebase JS SDK object. */
 public actual class Transaction internal constructor(public val js: JsTransaction) {
-    /** Throws: the JS SDK reads inside a transaction asynchronously; use the suspending `dev.gitlive.firebase.firestore.Transaction.get`. */
+    /** Throws: the JS SDK reads inside a transaction asynchronously; use the suspending `io.github.corneloaie.firebase.firestore.Transaction.get`. */
     @UnsupportedOnJs
     public actual fun get(documentRef: DocumentReference): DocumentSnapshot = throw UnsupportedOperationException(TRANSACTION_GET_ASYNC_ON_JS)
 
@@ -265,4 +265,4 @@ public actual class WriteBatch internal constructor(public val js: JsWriteBatch)
     }
 }
 
-internal const val TRANSACTION_GET_ASYNC_ON_JS = "The Firebase JS SDK reads inside a transaction asynchronously: use the suspending dev.gitlive.firebase.firestore.Transaction.get"
+internal const val TRANSACTION_GET_ASYNC_ON_JS = "The Firebase JS SDK reads inside a transaction asynchronously: use the suspending io.github.corneloaie.firebase.firestore.Transaction.get"

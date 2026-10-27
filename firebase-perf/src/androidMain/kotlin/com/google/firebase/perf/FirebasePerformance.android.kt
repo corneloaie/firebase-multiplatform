@@ -6,7 +6,7 @@ package com.google.firebase.perf
 
 import com.google.firebase.perf.metrics.HttpMetric
 import com.google.firebase.perf.metrics.Trace
-import dev.gitlive.firebase.perf.stub
+import io.github.corneloaie.firebase.perf.stub
 import kotlin.jvm.JvmField
 
 /*

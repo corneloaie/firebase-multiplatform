@@ -5,7 +5,7 @@
 package com.google.firebase.analytics
 
 import com.google.firebase.Firebase
-import dev.gitlive.firebase.analytics.internal.compatAnalytics
+import io.github.corneloaie.firebase.analytics.internal.compatAnalytics
 
 /*
  * The `AnalyticsKt` file facade of the Firebase Android SDK (`Firebase.analytics`, `logEvent { }`, `setConsent { }`).

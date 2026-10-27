@@ -6,7 +6,7 @@ package com.google.firebase.remoteconfig
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
-import dev.gitlive.firebase.remoteconfig.SET_DEFAULTS_XML_ANDROID_ONLY
+import io.github.corneloaie.firebase.remoteconfig.SET_DEFAULTS_XML_ANDROID_ONLY
 
 /**
  * The entry point of Firebase Remote Config, as the Android SDK's `com.google.firebase.remoteconfig.FirebaseRemoteConfig`.

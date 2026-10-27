@@ -4,9 +4,9 @@
 
 package com.google.firebase
 
-import dev.gitlive.firebase.TIMESTAMP_OF_DATE_ANDROID_ONLY
-import dev.gitlive.firebase.TO_DATE_ANDROID_ONLY
-import dev.gitlive.firebase.TO_INSTANT_ANDROID_ONLY
+import io.github.corneloaie.firebase.TIMESTAMP_OF_DATE_ANDROID_ONLY
+import io.github.corneloaie.firebase.TO_DATE_ANDROID_ONLY
+import io.github.corneloaie.firebase.TO_INSTANT_ANDROID_ONLY
 
 /**
  * A point in time with nanosecond precision, mirroring `com.google.firebase.Timestamp` from the Firebase Android SDK.

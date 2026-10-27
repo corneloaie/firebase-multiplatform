@@ -1,0 +1,41 @@
+package io.github.corneloaie.firebase.storage
+
+import com.google.firebase.storage.toCompat
+import io.github.corneloaie.firebase.Firebase
+import io.github.corneloaie.firebase.FirebaseOptions
+import io.github.corneloaie.firebase.apps
+import io.github.corneloaie.firebase.initialize
+import io.github.corneloaie.firebase.runTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
+
+class WasmStorageInteropTest {
+
+    @Test
+    fun storageBucketOverloadOmitsTheOptionalApp() = runTest {
+        val existingDefaultApp = Firebase.apps(Unit).firstOrNull { it.name == "[DEFAULT]" }
+        val app = existingDefaultApp ?: Firebase.initialize(
+            Unit,
+            FirebaseOptions(
+                applicationId = "test-app-id",
+                apiKey = "test-api-key",
+                projectId = "test-project",
+            ),
+        )
+
+        try {
+            assertEquals("test-bucket", Firebase.storage("gs://test-bucket").reference.bucket)
+        } finally {
+            if (existingDefaultApp == null) app.delete()
+        }
+    }
+
+    @Test
+    fun absentNextPageTokenIsNull() {
+        val result = ListResult(listResultWithoutPageToken().toCompat())
+        assertNull(result.pageToken)
+    }
+}
+
+private fun listResultWithoutPageToken(): io.github.corneloaie.firebase.storage.externals.ListResult = js("({ items: [], prefixes: [] })")

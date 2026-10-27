@@ -4,7 +4,7 @@
 
 package com.google.firebase.perf
 
-import swiftPMImport.dev.gitlive.firebase.perf.FIRPerformance
+import swiftPMImport.io.github.corneloaie.firebase.perf.FIRPerformance
 import com.google.firebase.perf.metrics.Trace
 
 /** @property ios The underlying Firebase iOS SDK object. */

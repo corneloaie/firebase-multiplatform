@@ -7,8 +7,8 @@ package com.google.firebase.pnv
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.FirebaseApp
-import dev.gitlive.firebase.UnsupportedOnApple
-import dev.gitlive.firebase.UnsupportedOnJs
+import io.github.corneloaie.firebase.UnsupportedOnApple
+import io.github.corneloaie.firebase.UnsupportedOnJs
 
 /**
  * The [FirebasePhoneNumberVerification] of [app] on a platform without Phone Number Verification, which [platform] names

@@ -6,7 +6,7 @@ package com.google.firebase.pnv
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
-import dev.gitlive.firebase.UnsupportedOnApple
+import io.github.corneloaie.firebase.UnsupportedOnApple
 
 /*
  * Firebase has no Apple SDK for Phone Number Verification: every task fails with UnsupportedOperationException, and

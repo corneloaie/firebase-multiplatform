@@ -6,7 +6,7 @@ package com.google.firebase.appcheck
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
-import dev.gitlive.firebase.appcheck.stub
+import io.github.corneloaie.firebase.appcheck.stub
 
 /*
  * Header stubs for com.google.firebase:firebase-appcheck (see buildSrc utils/HeaderStubs.kt): compiled against,

@@ -4,11 +4,11 @@
 
 package com.google.firebase.messaging
 
-import swiftPMImport.dev.gitlive.firebase.messaging.FIRMessaging
+import swiftPMImport.io.github.corneloaie.firebase.messaging.FIRMessaging
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.FirebaseException
-import dev.gitlive.firebase.UnsupportedOnApple
+import io.github.corneloaie.firebase.UnsupportedOnApple
 import platform.Foundation.NSError
 
 /** @property ios The underlying Firebase iOS SDK object. */

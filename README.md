@@ -19,7 +19,7 @@ their newest releases every week.
   app's Firebase code moves into `commonMain` as it is.
 - **The whole API, measured.** Every module is checked member by member against the Firebase Android SDK's API, and
   covers all of it; [the table below](#coverage) shows each one.
-- **A Kotlin-first API next to it** (`dev.gitlive.firebase.*`), with suspending functions, `Flow` and
+- **A Kotlin-first API next to it** (`io.github.corneloaie.firebase.*`), with suspending functions, `Flow` and
   kotlinx.serialization.
 - **Published on Maven Central** as `io.github.corneloaie:<module>`.
 
@@ -103,15 +103,16 @@ dependencyResolutionManagement {
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("io.github.corneloaie:firebase-firestore:0.1.2")
-            implementation("io.github.corneloaie:firebase-auth:0.1.2")
+            implementation("io.github.corneloaie:firebase-firestore:0.2.0")
+            implementation("io.github.corneloaie:firebase-auth:0.2.0")
         }
     }
 }
 ```
 
-Coming from GitLive's firebase-kotlin-sdk? The Kotlin packages are the same (`dev.gitlive.firebase.*` and
-`com.google.firebase.*`), so changing the group from `dev.gitlive` to `io.github.corneloaie` is enough.
+Coming from GitLive's firebase-kotlin-sdk, or from version 0.1 of this one? Change the group to `io.github.corneloaie`
+and the imports of `dev.gitlive.firebase.*` to `io.github.corneloaie.firebase.*`. The `com.google.firebase.*` packages
+are unchanged.
 
 To try a build of `main` before it is released, run `./gradlew publishToMavenLocal` in this repository and add
 `mavenLocal()` to the repositories.
@@ -226,11 +227,11 @@ a shared module, including the compiler-guided replacement of the few Android-on
 
 ### The Kotlin-first API
 
-The `dev.gitlive.firebase` packages wrap the same layer in suspending functions, `Flow` and kotlinx.serialization:
+The `io.github.corneloaie.firebase` packages wrap the same layer in suspending functions, `Flow` and kotlinx.serialization:
 
 ```kotlin
-import dev.gitlive.firebase.Firebase
-import dev.gitlive.firebase.firestore.firestore
+import io.github.corneloaie.firebase.Firebase
+import io.github.corneloaie.firebase.firestore.firestore
 
 @Serializable
 data class City(val name: String, val state: String)
@@ -251,7 +252,7 @@ provides it as it is in common code, on Android, iOS, tvOS, JS and Wasm. Apple p
 wrapper package under `firebase-dataconnect/apple`, as the iOS SDK is Swift-only. On JS and Wasm,
 `CacheSettings.Storage.PERSISTENT` behaves like `MEMORY`, and `DataConnectSettings.host` and `sslEnabled` are ignored.
 Common code uses `kotlinx.datetime.LocalDate` with `KotlinxDatetimeLocalDateSerializer` and `kotlin.uuid.Uuid` with
-`dev.gitlive.firebase.dataconnect.serializers.UuidSerializer`; the `java.time` and `java.util.UUID` variants are
+`io.github.corneloaie.firebase.dataconnect.serializers.UuidSerializer`; the `java.time` and `java.util.UUID` variants are
 Android-only.
 
 ### AI Logic
@@ -293,17 +294,13 @@ Firebase.firestore.android.firestoreSettings = FirebaseFirestoreSettings.Builder
 
 ## How it stays current
 
-Every Monday the [weekly workflow](.github/workflows/weekly.yml) opens or refreshes two pull requests, and each one
-runs the full CI matrix:
+Every Monday the [weekly workflow](.github/workflows/weekly.yml) opens or refreshes the pull request "Weekly: Firebase
+SDK updates", which runs the full CI matrix. It moves to the newest Firebase Android BoM, iOS SDK and JS SDK, and to
+the Android API of the newest Firebase Android release. It regenerates the coverage reports and the table above, and
+lists every new Android API member that is not available yet, and any new Firebase Android product no module covers.
 
-1. **Weekly: Firebase SDK updates.** It moves to the newest Firebase Android BoM, iOS SDK and JS SDK, and to the
-   Android API of the newest Firebase Android release. It regenerates the coverage reports and the table above, and
-   lists every new Android API member that is not available yet, and any new Firebase Android product no module covers.
-2. **Weekly: merge upstream.** It merges the newest work of the upstream project this one started from (see
-   [Acknowledgements](#acknowledgements)), and reports conflicts it cannot resolve in an issue.
-
-A Claude Code routine then implements the new members on every platform, fixes whatever the new SDKs or upstream
-changes broke, and merges both pull requests once CI passes. A second routine keeps the other libraries, the build
+A Claude Code routine then implements the new members on every platform, fixes whatever the new SDKs broke, and merges
+the pull request once CI passes. A second routine keeps the other libraries, the build
 tooling and the GitHub Actions current, in one more weekly pull request.
 [MAINTAINING.md](MAINTAINING.md) has the details.
 
@@ -326,7 +323,7 @@ Before committing a change to the public API:
 - run `python3 .github/scripts/weekly/coverage.py --readme README.md`;
 - document every public declaration in KDoc.
 
-[MAINTAINING.md](MAINTAINING.md) covers the API rules, the weekly automation, the upstream merges and releasing. API
+[MAINTAINING.md](MAINTAINING.md) covers the API rules, the weekly automation and releasing. API
 documentation for each release is published [here](https://corneloaie.github.io/firebase-multiplatform/).
 
 ## Support

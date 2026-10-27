@@ -29,7 +29,7 @@ if (supportedPlatforms.contains(TargetPlatform.Android)) {
         val compileSdkVersion: Int by project
 
         compileSdk = compileSdkVersion
-        namespace = "dev.gitlive.firebase.dataconnect"
+        namespace = "io.github.corneloaie.firebase.dataconnect"
 
         defaultConfig {
             minSdk = minSdkVersion
@@ -60,7 +60,7 @@ kotlin {
     @OptIn(ExperimentalKotlinGradlePluginApi::class)
     compilerOptions {
         freeCompilerArgs.add("-Xexpect-actual-classes")
-        // com.google.firebase.Timestamp converts to kotlin.time.Instant; the UUID serializer of the dev.gitlive layer uses kotlin.uuid.Uuid.
+        // com.google.firebase.Timestamp converts to kotlin.time.Instant; the UUID serializer of the Kotlin-first layer uses kotlin.uuid.Uuid.
         optIn.add("kotlin.time.ExperimentalTime")
         optIn.add("kotlin.uuid.ExperimentalUuidApi")
         optIn.add("kotlinx.serialization.ExperimentalSerializationApi")
@@ -241,43 +241,8 @@ mavenPublishing {
     signAllPublications()
 
     coordinates(
-        groupId = "dev.gitlive",
+        groupId = project.group.toString(),
         artifactId = "firebase-dataconnect",
         version = project.version.toString()
     )
-
-    pom {
-        name.set("firebase-kotlin-sdk")
-        description.set("The Firebase Kotlin SDK is a Kotlin-first SDK for Firebase. It's API is similar to the Firebase Android SDK Kotlin Extensions but also supports multiplatform projects, enabling you to use Firebase directly from your common source targeting iOS, Android or JS.")
-        url.set("https://github.com/GitLiveApp/firebase-kotlin-sdk")
-        inceptionYear.set("2019")
-
-        scm {
-            url.set("https://github.com/GitLiveApp/firebase-kotlin-sdk")
-            connection.set("scm:git:https://github.com/GitLiveApp/firebase-kotlin-sdk.git")
-            developerConnection.set("scm:git:https://github.com/GitLiveApp/firebase-kotlin-sdk.git")
-            tag.set("HEAD")
-        }
-
-        issueManagement {
-            system.set("GitHub Issues")
-            url.set("https://github.com/GitLiveApp/firebase-kotlin-sdk/issues")
-        }
-
-        developers {
-            developer {
-                name.set("Nicholas Bransby-Williams")
-                email.set("nbransby@gmail.com")
-            }
-        }
-
-        licenses {
-            license {
-                name.set("The Apache Software License, Version 2.0")
-                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                distribution.set("repo")
-                comments.set("A business-friendly OSS license")
-            }
-        }
-    }
 }

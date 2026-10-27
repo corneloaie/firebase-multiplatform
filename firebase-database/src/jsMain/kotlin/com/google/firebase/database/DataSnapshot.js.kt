@@ -4,9 +4,9 @@
 
 package com.google.firebase.database
 
-import dev.gitlive.firebase.database.externals.Database
+import io.github.corneloaie.firebase.database.externals.Database
 import kotlin.js.json
-import dev.gitlive.firebase.database.externals.DataSnapshot as JsDataSnapshot
+import io.github.corneloaie.firebase.database.externals.DataSnapshot as JsDataSnapshot
 
 /**
  * @property js The underlying Firebase JS SDK object.

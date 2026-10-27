@@ -16,7 +16,7 @@ import kotlin.jvm.JvmStatic
  * SDK. Like the rest of this package it is plain common code: on Android and the JVM it is compiled against, verified to
  * match the SDK's classes and stripped (see buildSrc utils/HeaderStubs.kt), so the SDK's own classes run there; on the
  * other platforms it is the implementation, a tree of functions by their backend name that `Pipeline.execute` hands to
- * the platform SDK (dev.gitlive.firebase.firestore.internal.executePipeline).
+ * the platform SDK (io.github.corneloaie.firebase.firestore.internal.executePipeline).
  *
  * The public functions of Expression and AggregateFunction are generated (Expression.kt, AggregateFunction.kt).
  */

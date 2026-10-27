@@ -8,7 +8,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.appcheck.AppCheckProvider
 import com.google.firebase.appcheck.AppCheckProviderFactory
 import com.google.firebase.appcheck.unavailableProvider
-import dev.gitlive.firebase.UnsupportedOnApple
+import io.github.corneloaie.firebase.UnsupportedOnApple
 
 /** The iOS SDK has no reCAPTCHA provider on tvOS: the provider fails every token request. */
 public actual class RecaptchaAppCheckProviderFactory private constructor() : AppCheckProviderFactory {

@@ -9,7 +9,7 @@ package com.google.firebase.dataconnect
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
 import com.google.firebase.app
-import dev.gitlive.firebase.dataconnect.internal.DataConnectInstances
+import io.github.corneloaie.firebase.dataconnect.internal.DataConnectInstances
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlin.jvm.JvmName
 

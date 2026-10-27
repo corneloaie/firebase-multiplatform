@@ -1,0 +1,249 @@
+/*
+ * Copyright (c) 2020 GitLive Ltd.  Use of this source code is governed by the Apache 2.0 license.
+ */
+
+package io.github.corneloaie.firebase.storage
+
+import io.github.corneloaie.firebase.Firebase
+import io.github.corneloaie.firebase.FirebaseOptions
+import io.github.corneloaie.firebase.apps
+import io.github.corneloaie.firebase.initialize
+import io.github.corneloaie.firebase.runTest
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeout
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertContentEquals
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
+import kotlin.time.Duration.Companion.seconds
+
+expect val emulatorHost: String
+expect val context: Any
+expect annotation class IgnoreForAndroidUnitTest()
+
+@IgnoreForAndroidUnitTest
+class FirebaseStorageTest {
+
+    lateinit var storage: FirebaseStorage
+
+    // One app is created for the whole class and never deleted. The iOS Storage SDK caches its
+    // instances by app name and bucket and never evicts them, so a recreated default app gets
+    // back the previous, already used instance, and calling useEmulator on it crashes the
+    // process ("Cannot connect to emulator after Storage SDK initialization"). useEmulator is
+    // only valid before the storage instance has been used, so it is applied here, on
+    // creation, rather than on every reuse.
+    @BeforeTest
+    fun initializeFirebase() {
+        val app = Firebase.apps(context).firstOrNull() ?: Firebase.initialize(
+            context,
+            FirebaseOptions(
+                applicationId = "1:846484016111:ios:dd1f6688bad7af768c841a",
+                apiKey = "AIzaSyCK87dcMFhzCz_kJVs2cT2AVlqOTLuyWV0",
+                databaseUrl = "https://fir-kotlin-sdk.firebaseio.com",
+                storageBucket = "fir-kotlin-sdk.appspot.com",
+                projectId = "fir-kotlin-sdk",
+                gcmSenderId = "846484016111",
+            ),
+        ).also {
+            Firebase.storage(it).apply {
+                useEmulator(emulatorHost, 9199)
+                setMaxOperationRetryTime(30.seconds)
+                setMaxUploadRetryTime(30.seconds)
+            }
+        }
+
+        storage = Firebase.storage(app)
+    }
+
+    @Test
+    fun testStorageNotNull() = runTest {
+        assertNotNull(storage)
+    }
+
+    @Test
+    fun testUploadShouldNotCrash() = runTest {
+        val data = createTestData()
+        val ref = storage.reference("test").child("testUploadShouldNotCrash.txt")
+
+        ref.putData(data)
+    }
+
+    @Test
+    fun testDownloadData() = runTest {
+        val data = createTestData()
+        val ref = storage.reference("test").child("testDownloadData.txt")
+        ref.putData(data)
+
+        val downloadedData = ref.getData(maxDownloadSizeBytes = 1024)
+
+        assertTestDataEquals(downloadedData)
+    }
+
+    @Test
+    fun testUploadAndDownloadByteArray() = runTest {
+        val bytes = ByteArray(256) { it.toByte() }
+        val ref = storage.reference("test").child("testUploadAndDownloadByteArray.bin")
+        ref.putData(bytes.toData())
+
+        val downloadedData = ref.getData(maxDownloadSizeBytes = 1024)
+
+        assertContentEquals(bytes, downloadedData.toByteArray())
+    }
+
+    @Test
+    fun testPutDataResumable() = runTest {
+        val data = createTestData()
+        val ref = storage.reference("test").child("testPutDataResumable.txt")
+        val metadata = storageMetadata {
+            contentType = "text/plain"
+        }
+
+        // putDataResumable emits via real async callbacks, so the timeout must run on a
+        // real dispatcher rather than runTest's virtual clock (which would fast-forward to 30s).
+        withContext(Dispatchers.Default.limitedParallelism(1)) {
+            withTimeout(30.seconds) {
+                ref.putDataResumable(data, metadata).collect {}
+            }
+        }
+
+        val metadataResult = ref.getMetadata()
+        assertNotNull(metadataResult)
+        assertEquals(metadata.contentType, metadataResult.contentType)
+    }
+
+    @Test
+    fun testUploadMetadata() = runTest {
+        val data = createTestData()
+        val ref = storage.reference("test").child("testUploadMetadata.txt")
+        val metadata = storageMetadata {
+            contentType = "text/plain"
+        }
+        ref.putData(data, metadata)
+
+        val metadataResult = ref.getMetadata()
+
+        assertNotNull(metadataResult)
+        assertNotNull(metadataResult.contentType)
+        assertEquals(metadata.contentType, metadataResult.contentType)
+    }
+
+    @Test
+    fun testUploadCustomMetadata() = runTest {
+        val data = createTestData()
+        val ref = storage.reference("test").child("testUploadCustomMetadata.txt")
+        val metadata = storageMetadata {
+            contentType = "text/plain"
+            setCustomMetadata("key", "value")
+        }
+        ref.putData(data, metadata)
+
+        val metadataResult = ref.getMetadata()
+
+        assertNotNull(metadataResult)
+        assertEquals(metadata.customMetadata["key"], metadataResult.customMetadata["key"])
+    }
+
+    @Test
+    fun testUpdateMetadata() = runTest {
+        val data = createTestData()
+        val ref = storage.reference("test").child("testUpdateMetadata.txt")
+        ref.putData(data, storageMetadata { contentType = "text/plain" })
+
+        val metadata = storageMetadata {
+            cacheControl = "public,max-age=300"
+            contentDisposition = "attachment; filename=testUpdateMetadata.txt"
+            contentEncoding = "identity"
+            contentLanguage = "en"
+            contentType = "text/markdown"
+            setCustomMetadata("updated", "true")
+        }
+
+        val updatedMetadata = ref.updateMetadata(metadata)
+        val fetchedMetadata = ref.getMetadata()
+
+        assertNotNull(updatedMetadata)
+        assertEquals(metadata.cacheControl, updatedMetadata.cacheControl)
+        assertEquals(metadata.contentDisposition, updatedMetadata.contentDisposition)
+        assertEquals(metadata.contentEncoding, updatedMetadata.contentEncoding)
+        assertEquals(metadata.contentLanguage, updatedMetadata.contentLanguage)
+        assertEquals(metadata.contentType, updatedMetadata.contentType)
+        assertEquals(metadata.customMetadata["updated"], updatedMetadata.customMetadata["updated"])
+
+        assertNotNull(fetchedMetadata)
+        assertEquals(metadata.cacheControl, fetchedMetadata.cacheControl)
+        assertEquals(metadata.contentDisposition, fetchedMetadata.contentDisposition)
+        assertEquals(metadata.contentEncoding, fetchedMetadata.contentEncoding)
+        assertEquals(metadata.contentLanguage, fetchedMetadata.contentLanguage)
+        assertEquals(metadata.contentType, fetchedMetadata.contentType)
+        assertEquals(metadata.customMetadata["updated"], fetchedMetadata.customMetadata["updated"])
+    }
+
+    @Test
+    fun testPaginatedList() = runTest {
+        val data = createTestData()
+        val ref = storage.reference("test/testPaginatedList")
+        ref.child("one.txt").putData(data)
+        ref.child("two.txt").putData(data)
+        ref.child("three.txt").putData(data)
+
+        val firstPage = ref.list(maxResults = 2)
+        val pageToken = assertNotNull(firstPage.pageToken)
+        val secondPage = ref.list(maxResults = 2, pageToken = pageToken)
+        val itemNames = (firstPage.items + secondPage.items).map { it.name }
+
+        assertEquals(2, firstPage.items.size)
+        assertEquals(1, secondPage.items.size)
+        assertTrue("one.txt" in itemNames)
+        assertTrue("two.txt" in itemNames)
+        assertTrue("three.txt" in itemNames)
+    }
+}
+
+class DataTest {
+
+    // every byte value, including the negative ones that become 128..255 as unsigned bytes
+    private val bytes = ByteArray(256) { it.toByte() }
+
+    @Test
+    fun byteArrayRoundTripsThroughData() {
+        assertContentEquals(bytes, bytes.toData().toByteArray())
+    }
+
+    @Test
+    fun emptyByteArrayRoundTripsThroughData() {
+        assertContentEquals(ByteArray(0), ByteArray(0).toData().toByteArray())
+    }
+
+    @Test
+    fun toDataMatchesPlatformData() {
+        assertTestDataEquals("test".encodeToByteArray().toData())
+    }
+
+    @Test
+    fun toByteArrayMatchesPlatformData() {
+        assertContentEquals("test".encodeToByteArray(), createTestData().toByteArray())
+    }
+
+    @Test
+    fun toDataCopiesTheByteArray() {
+        val source = bytes.copyOf()
+        val data = source.toData()
+        source.fill(0)
+
+        assertContentEquals(bytes, data.toByteArray())
+    }
+
+    @Test
+    fun toByteArrayReturnsACopy() {
+        val data = bytes.copyOf().toData()
+        data.toByteArray().fill(0)
+
+        assertContentEquals(bytes, data.toByteArray())
+    }
+}
+
+expect fun createTestData(): Data
+expect fun assertTestDataEquals(data: Data)

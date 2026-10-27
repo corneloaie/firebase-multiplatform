@@ -6,45 +6,45 @@ package com.google.firebase.database
 
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
-import dev.gitlive.firebase.Unsubscribe
-import dev.gitlive.firebase.UnsupportedOnJs
-import dev.gitlive.firebase.database.externals.Database
-import dev.gitlive.firebase.database.externals.QueryConstraint
-import dev.gitlive.firebase.database.externals.onChildAdded
-import dev.gitlive.firebase.database.externals.onChildChanged
-import dev.gitlive.firebase.database.externals.onChildMoved
-import dev.gitlive.firebase.database.externals.onChildRemoved
-import dev.gitlive.firebase.database.externals.onValue
-import dev.gitlive.firebase.database.externals.query
+import io.github.corneloaie.firebase.Unsubscribe
+import io.github.corneloaie.firebase.UnsupportedOnJs
+import io.github.corneloaie.firebase.database.externals.Database
+import io.github.corneloaie.firebase.database.externals.QueryConstraint
+import io.github.corneloaie.firebase.database.externals.onChildAdded
+import io.github.corneloaie.firebase.database.externals.onChildChanged
+import io.github.corneloaie.firebase.database.externals.onChildMoved
+import io.github.corneloaie.firebase.database.externals.onChildRemoved
+import io.github.corneloaie.firebase.database.externals.onValue
+import io.github.corneloaie.firebase.database.externals.query
 import kotlin.js.Promise
 import kotlin.js.json
-import dev.gitlive.firebase.database.externals.DatabaseReference as JsDatabaseReference
-import dev.gitlive.firebase.database.externals.child as jsChild
-import dev.gitlive.firebase.database.externals.get as jsGet
-import dev.gitlive.firebase.database.externals.getDatabase as jsGetDatabase
-import dev.gitlive.firebase.database.externals.goOffline as jsGoOffline
-import dev.gitlive.firebase.database.externals.goOnline as jsGoOnline
-import dev.gitlive.firebase.database.externals.onDisconnect as jsOnDisconnect
-import dev.gitlive.firebase.database.externals.push as jsPush
-import dev.gitlive.firebase.database.externals.remove as jsRemove
-import dev.gitlive.firebase.database.externals.set as jsSet
-import dev.gitlive.firebase.database.externals.setPriority as jsSetPriority
-import dev.gitlive.firebase.database.externals.setWithPriority as jsSetWithPriority
-import dev.gitlive.firebase.database.externals.update as jsUpdate
-import dev.gitlive.firebase.database.externals.OnDisconnect as JsOnDisconnect
-import dev.gitlive.firebase.database.externals.Query as JsQuery
-import dev.gitlive.firebase.database.externals.endAt as jsEndAt
-import dev.gitlive.firebase.database.externals.endBefore as jsEndBefore
-import dev.gitlive.firebase.database.externals.equalTo as jsEqualTo
-import dev.gitlive.firebase.database.externals.limitToFirst as jsLimitToFirst
-import dev.gitlive.firebase.database.externals.limitToLast as jsLimitToLast
-import dev.gitlive.firebase.database.externals.orderByChild as jsOrderByChild
-import dev.gitlive.firebase.database.externals.orderByKey as jsOrderByKey
-import dev.gitlive.firebase.database.externals.orderByPriority as jsOrderByPriority
-import dev.gitlive.firebase.database.externals.orderByValue as jsOrderByValue
-import dev.gitlive.firebase.database.externals.runTransaction as jsRunTransaction
-import dev.gitlive.firebase.database.externals.startAfter as jsStartAfter
-import dev.gitlive.firebase.database.externals.startAt as jsStartAt
+import io.github.corneloaie.firebase.database.externals.DatabaseReference as JsDatabaseReference
+import io.github.corneloaie.firebase.database.externals.child as jsChild
+import io.github.corneloaie.firebase.database.externals.get as jsGet
+import io.github.corneloaie.firebase.database.externals.getDatabase as jsGetDatabase
+import io.github.corneloaie.firebase.database.externals.goOffline as jsGoOffline
+import io.github.corneloaie.firebase.database.externals.goOnline as jsGoOnline
+import io.github.corneloaie.firebase.database.externals.onDisconnect as jsOnDisconnect
+import io.github.corneloaie.firebase.database.externals.push as jsPush
+import io.github.corneloaie.firebase.database.externals.remove as jsRemove
+import io.github.corneloaie.firebase.database.externals.set as jsSet
+import io.github.corneloaie.firebase.database.externals.setPriority as jsSetPriority
+import io.github.corneloaie.firebase.database.externals.setWithPriority as jsSetWithPriority
+import io.github.corneloaie.firebase.database.externals.update as jsUpdate
+import io.github.corneloaie.firebase.database.externals.OnDisconnect as JsOnDisconnect
+import io.github.corneloaie.firebase.database.externals.Query as JsQuery
+import io.github.corneloaie.firebase.database.externals.endAt as jsEndAt
+import io.github.corneloaie.firebase.database.externals.endBefore as jsEndBefore
+import io.github.corneloaie.firebase.database.externals.equalTo as jsEqualTo
+import io.github.corneloaie.firebase.database.externals.limitToFirst as jsLimitToFirst
+import io.github.corneloaie.firebase.database.externals.limitToLast as jsLimitToLast
+import io.github.corneloaie.firebase.database.externals.orderByChild as jsOrderByChild
+import io.github.corneloaie.firebase.database.externals.orderByKey as jsOrderByKey
+import io.github.corneloaie.firebase.database.externals.orderByPriority as jsOrderByPriority
+import io.github.corneloaie.firebase.database.externals.orderByValue as jsOrderByValue
+import io.github.corneloaie.firebase.database.externals.runTransaction as jsRunTransaction
+import io.github.corneloaie.firebase.database.externals.startAfter as jsStartAfter
+import io.github.corneloaie.firebase.database.externals.startAt as jsStartAt
 
 /**
  * @property js The underlying Firebase JS SDK object.

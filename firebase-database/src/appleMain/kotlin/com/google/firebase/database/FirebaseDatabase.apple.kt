@@ -4,7 +4,7 @@
 
 package com.google.firebase.database
 
-import swiftPMImport.dev.gitlive.firebase.database.FIRDatabase
+import swiftPMImport.io.github.corneloaie.firebase.database.FIRDatabase
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
 import com.google.firebase.getApps

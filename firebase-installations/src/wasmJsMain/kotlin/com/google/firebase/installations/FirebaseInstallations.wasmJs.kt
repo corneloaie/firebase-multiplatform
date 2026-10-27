@@ -10,18 +10,18 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
 import com.google.firebase.installations.internal.FidListener
 import com.google.firebase.installations.internal.FidListenerHandle
-import dev.gitlive.firebase.externals.errorCode
-import dev.gitlive.firebase.externals.jsGet
-import dev.gitlive.firebase.externals.toKotlin
-import dev.gitlive.firebase.externals.toKotlinString
-import dev.gitlive.firebase.installations.externals.Installations
+import io.github.corneloaie.firebase.externals.errorCode
+import io.github.corneloaie.firebase.externals.jsGet
+import io.github.corneloaie.firebase.externals.toKotlin
+import io.github.corneloaie.firebase.externals.toKotlinString
+import io.github.corneloaie.firebase.installations.externals.Installations
 import kotlin.js.JsException
 import kotlin.js.Promise
-import dev.gitlive.firebase.installations.externals.delete as jsDelete
-import dev.gitlive.firebase.installations.externals.getId as jsGetId
-import dev.gitlive.firebase.installations.externals.getInstallations as jsGetInstallations
-import dev.gitlive.firebase.installations.externals.getToken as jsGetToken
-import dev.gitlive.firebase.installations.externals.onIdChange as jsOnIdChange
+import io.github.corneloaie.firebase.installations.externals.delete as jsDelete
+import io.github.corneloaie.firebase.installations.externals.getId as jsGetId
+import io.github.corneloaie.firebase.installations.externals.getInstallations as jsGetInstallations
+import io.github.corneloaie.firebase.installations.externals.getToken as jsGetToken
+import io.github.corneloaie.firebase.installations.externals.onIdChange as jsOnIdChange
 
 /** @property js The underlying Firebase JS SDK object. */
 public actual class FirebaseInstallations internal constructor(public val js: Installations) {

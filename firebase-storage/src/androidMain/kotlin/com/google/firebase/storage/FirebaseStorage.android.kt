@@ -14,7 +14,7 @@ import com.google.android.gms.tasks.SuccessContinuation
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
-import dev.gitlive.firebase.storage.stub
+import io.github.corneloaie.firebase.storage.stub
 import java.io.File
 
 /*

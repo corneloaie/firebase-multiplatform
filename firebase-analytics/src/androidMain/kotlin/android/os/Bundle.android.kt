@@ -4,7 +4,7 @@
 
 package android.os
 
-import dev.gitlive.firebase.analytics.stub
+import io.github.corneloaie.firebase.analytics.stub
 
 /*
  * Header stub for android.os.Bundle (see buildSrc utils/HeaderStubs.kt): it only satisfies the `expect` declaration at

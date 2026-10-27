@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-firebase-multiplatform: the Firebase Android SDK API, plus a Kotlin-first API, for Kotlin Multiplatform common code. It wraps the official Firebase SDKs for Android, iOS, JVM, JS and Wasm (wasmJs), is published as `io.github.corneloaie:<module>`, and started from GitLive's firebase-kotlin-sdk (see "This fork" below).
+firebase-multiplatform: the Firebase Android SDK API, plus a Kotlin-first API, for Kotlin Multiplatform common code. It wraps the official Firebase SDKs for Android, iOS, JVM, JS and Wasm (wasmJs), is published as `io.github.corneloaie:<module>`, and started from GitLive's firebase-kotlin-sdk (see "This project" below).
 
 ## Module Structure
 
@@ -58,7 +58,7 @@ Android, iOS (arm64, x64, simulatorArm64), macOS (arm64), tvOS (arm64, simulator
   - `Flow` instead of listeners
   - Default arguments instead of builder pattern
   - `@Serializable` data classes for Firestore/Database models
-  - These apply to the `dev.gitlive.firebase` API. The `com.google.firebase.*` source-compatibility layer (every service module) mirrors the Firebase Android SDK exactly, `Task` and listener interfaces included; see "API Compatibility Goal" in `.github/copilot-instructions.md`.
+  - These apply to the `io.github.corneloaie.firebase` API. The `com.google.firebase.*` source-compatibility layer (every service module) mirrors the Firebase Android SDK exactly, `Task` and listener interfaces included; see "API Compatibility Goal" in `.github/copilot-instructions.md`.
 - **Visibility:** `explicitApi()` is enforced — all public declarations need explicit visibility modifiers.
 - **Expect/actual:** Public APIs declared as `expect` in `commonMain`; platform implementations in `androidMain`, `appleMain`, `jsMain`, `wasmJsMain`, `jvmMain`. Modules using `utils.applyFirebaseHierarchy()` (every service module) also have `nonJsMain` (android, jvm, apple) and `nonJvmMain` (js, wasmJs, apple).
 - **After any public API change:** run `./gradlew apiDump` to update `.api` files (and `androidSourceCompatDump` for the service modules) and commit them alongside the change.
@@ -85,6 +85,6 @@ Divergence between mirrors is sometimes deliberate — a platform genuinely lack
 
 `firebase-auth` is forked rather than shared because the GitLive Firebase Java SDK lacks four APIs that `androidMain` uses: `PhoneAuthOptions`, `AuthResult.getCredential()`, `AuthResult.getAdditionalUserInfo()`/`AdditionalUserInfo`, and `ActionCodeSettings.Builder.setLinkDomain()`. Tracked in GitLiveApp/firebase-java-sdk#68; when that lands the fork can be deleted and `srcDir` sharing restored.
 
-## This fork
+## This project
 
-This repository is corneloaie/firebase-multiplatform, a fork of GitLive's SDK published as `io.github.corneloaie`. Read @MAINTAINING.md before changing build, publishing or upstream-merge setup.
+This repository is corneloaie/firebase-multiplatform, published as `io.github.corneloaie`. It started from GitLive's SDK and is maintained on its own: it no longer merges GitLive's changes. Read @MAINTAINING.md before changing build or publishing setup.
