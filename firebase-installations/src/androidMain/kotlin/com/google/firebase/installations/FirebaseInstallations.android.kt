@@ -9,7 +9,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
 import com.google.firebase.installations.internal.FidListener
 import com.google.firebase.installations.internal.FidListenerHandle
-import dev.gitlive.firebase.installations.stub
+import io.github.corneloaie.firebase.installations.stub
 
 /*
  * Header stubs for com.google.firebase:firebase-installations (see buildSrc utils/HeaderStubs.kt): compiled against,

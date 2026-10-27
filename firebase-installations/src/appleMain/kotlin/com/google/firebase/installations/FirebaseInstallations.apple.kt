@@ -4,10 +4,10 @@
 
 package com.google.firebase.installations
 
-import swiftPMImport.dev.gitlive.firebase.installations.FIRInstallationIDDidChangeNotification
-import swiftPMImport.dev.gitlive.firebase.installations.FIRInstallations
-import swiftPMImport.dev.gitlive.firebase.installations.FIRInstallationsAuthTokenResult
-import swiftPMImport.dev.gitlive.firebase.installations.kFIRInstallationIDDidChangeNotificationAppNameKey
+import swiftPMImport.io.github.corneloaie.firebase.installations.FIRInstallationIDDidChangeNotification
+import swiftPMImport.io.github.corneloaie.firebase.installations.FIRInstallations
+import swiftPMImport.io.github.corneloaie.firebase.installations.FIRInstallationsAuthTokenResult
+import swiftPMImport.io.github.corneloaie.firebase.installations.kFIRInstallationIDDidChangeNotificationAppNameKey
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.FirebaseApp

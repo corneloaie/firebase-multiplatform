@@ -4,7 +4,7 @@
 
 package com.google.firebase.ai.type
 
-import dev.gitlive.firebase.ai.internal.stub
+import io.github.corneloaie.firebase.ai.internal.stub
 import kotlinx.coroutines.flow.Flow
 
 // Header stubs of the Android SDK's LiveSession (see utils.stripHeaderStubs).

@@ -7,7 +7,7 @@ package com.google.firebase.appcheck.recaptcha
 import com.google.firebase.FirebaseApp
 import com.google.firebase.appcheck.AppCheckProvider
 import com.google.firebase.appcheck.AppCheckProviderFactory
-import dev.gitlive.firebase.appcheck.stub
+import io.github.corneloaie.firebase.appcheck.stub
 
 /* Header stub for com.google.firebase:firebase-appcheck-recaptcha (see buildSrc utils/HeaderStubs.kt). */
 

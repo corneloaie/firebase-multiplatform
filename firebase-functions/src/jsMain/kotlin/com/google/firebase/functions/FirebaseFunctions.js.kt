@@ -7,22 +7,22 @@ package com.google.firebase.functions
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.FirebaseApp
-import dev.gitlive.firebase.functions.GET_HTTPS_CALLABLE_FROM_URL_JVM_ONLY
-import dev.gitlive.firebase.functions.SET_TIMEOUT_JVM_ONLY
-import dev.gitlive.firebase.functions.WITH_TIMEOUT_JVM_ONLY
-import dev.gitlive.firebase.functions.externals.Functions
-import dev.gitlive.firebase.functions.externals.HttpsCallable
-import dev.gitlive.firebase.functions.externals.connectFunctionsEmulator
-import dev.gitlive.firebase.functions.externals.getFunctions
-import dev.gitlive.firebase.functions.externals.httpsCallable
-import dev.gitlive.firebase.functions.externals.httpsCallableFromURL
-import dev.gitlive.firebase.functions.externals.invoke
+import io.github.corneloaie.firebase.functions.GET_HTTPS_CALLABLE_FROM_URL_JVM_ONLY
+import io.github.corneloaie.firebase.functions.SET_TIMEOUT_JVM_ONLY
+import io.github.corneloaie.firebase.functions.WITH_TIMEOUT_JVM_ONLY
+import io.github.corneloaie.firebase.functions.externals.Functions
+import io.github.corneloaie.firebase.functions.externals.HttpsCallable
+import io.github.corneloaie.firebase.functions.externals.connectFunctionsEmulator
+import io.github.corneloaie.firebase.functions.externals.getFunctions
+import io.github.corneloaie.firebase.functions.externals.httpsCallable
+import io.github.corneloaie.firebase.functions.externals.httpsCallableFromURL
+import io.github.corneloaie.firebase.functions.externals.invoke
 import kotlinx.coroutines.await
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlin.js.Promise
 import kotlin.js.json
-import dev.gitlive.firebase.functions.externals.HttpsCallableResult as JsHttpsCallableResult
+import io.github.corneloaie.firebase.functions.externals.HttpsCallableResult as JsHttpsCallableResult
 
 /** @property js The underlying Firebase JS SDK object. */
 public actual class FirebaseFunctions internal constructor(public val js: Functions) {

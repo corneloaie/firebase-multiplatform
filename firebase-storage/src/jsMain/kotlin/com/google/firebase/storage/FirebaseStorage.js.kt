@@ -4,12 +4,12 @@
 
 package com.google.firebase.storage
 
-import dev.gitlive.firebase.UnsupportedOnJs
+import io.github.corneloaie.firebase.UnsupportedOnJs
 import com.google.firebase.FirebaseApp
-import dev.gitlive.firebase.storage.externals.connectStorageEmulator
-import dev.gitlive.firebase.storage.externals.getStorage
-import dev.gitlive.firebase.storage.externals.ref
-import dev.gitlive.firebase.storage.externals.FirebaseStorage as JsFirebaseStorage
+import io.github.corneloaie.firebase.storage.externals.connectStorageEmulator
+import io.github.corneloaie.firebase.storage.externals.getStorage
+import io.github.corneloaie.firebase.storage.externals.ref
+import io.github.corneloaie.firebase.storage.externals.FirebaseStorage as JsFirebaseStorage
 
 /** @property js The underlying Firebase JS SDK object. */
 public actual class FirebaseStorage internal constructor(public val js: JsFirebaseStorage) {

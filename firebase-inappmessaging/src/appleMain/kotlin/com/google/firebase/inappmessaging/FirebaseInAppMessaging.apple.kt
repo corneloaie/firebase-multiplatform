@@ -19,14 +19,14 @@ import platform.Foundation.setValue
 import platform.darwin.NSObject
 import platform.darwin.dispatch_async
 import platform.darwin.dispatch_get_main_queue
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIAMDisplayRenderErrorType
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessaging
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessagingAction
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessagingDismissType
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessagingDisplayDelegateProtocol
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessagingDisplayMessage
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessagingDisplayProtocol
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessagingErrorDomain
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIAMDisplayRenderErrorType
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessaging
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessagingAction
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessagingDismissType
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessagingDisplayDelegateProtocol
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessagingDisplayMessage
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessagingDisplayProtocol
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessagingErrorDomain
 import kotlin.concurrent.atomics.AtomicReference
 import kotlin.concurrent.atomics.ExperimentalAtomicApi
 import com.google.firebase.inappmessaging.display.FirebaseInAppMessagingDisplay as DefaultDisplay

@@ -4,7 +4,7 @@
 
 package java.net
 
-import dev.gitlive.firebase.functions.URL_JVM_ONLY
+import io.github.corneloaie.firebase.functions.URL_JVM_ONLY
 
 /**
  * Stands in for `java.net.URL` so that the Firebase Android SDK members taking one can be declared in common code and

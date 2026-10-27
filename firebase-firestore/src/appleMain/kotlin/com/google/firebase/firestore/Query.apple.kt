@@ -4,19 +4,19 @@
 
 package com.google.firebase.firestore
 
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRAggregateField
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRAggregateQuerySnapshot
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRAggregateSource
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRCollectionReference
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRDocumentReference
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRDocumentSnapshot
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRFirestoreSource
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRListenSource
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRQuery
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRQuerySnapshot
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRSnapshotListenOptions
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRTransaction
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRWriteBatch
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRAggregateField
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRAggregateQuerySnapshot
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRAggregateSource
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRCollectionReference
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRDocumentReference
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRDocumentSnapshot
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRFirestoreSource
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRListenSource
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRQuery
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRQuerySnapshot
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRSnapshotListenOptions
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRTransaction
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRWriteBatch
 import com.google.android.gms.tasks.Task
 import kotlinx.cinterop.CPointer
 import kotlinx.cinterop.ObjCObjectVar

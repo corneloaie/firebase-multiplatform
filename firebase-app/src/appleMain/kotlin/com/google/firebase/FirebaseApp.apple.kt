@@ -4,12 +4,12 @@
 
 package com.google.firebase
 
-import swiftPMImport.dev.gitlive.firebase.app.FIRApp
-import swiftPMImport.dev.gitlive.firebase.app.FIROptions
-import dev.gitlive.firebase.APPLICATION_CONTEXT_ANDROID_ONLY
-import dev.gitlive.firebase.FROM_RESOURCE_ANDROID_ONLY
-import dev.gitlive.firebase.GET_APPS_ANDROID_ONLY
-import dev.gitlive.firebase.INITIALIZE_APP_ANDROID_ONLY
+import swiftPMImport.io.github.corneloaie.firebase.app.FIRApp
+import swiftPMImport.io.github.corneloaie.firebase.app.FIROptions
+import io.github.corneloaie.firebase.APPLICATION_CONTEXT_ANDROID_ONLY
+import io.github.corneloaie.firebase.FROM_RESOURCE_ANDROID_ONLY
+import io.github.corneloaie.firebase.GET_APPS_ANDROID_ONLY
+import io.github.corneloaie.firebase.INITIALIZE_APP_ANDROID_ONLY
 
 public actual open class FirebaseException : Exception {
     public actual constructor(message: String) : super(message)

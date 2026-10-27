@@ -4,7 +4,7 @@
 
 package com.google.android.gms.tasks
 
-import dev.gitlive.firebase.stub
+import io.github.corneloaie.firebase.stub
 
 /*
  * Header stubs for the Play Services Tasks API.

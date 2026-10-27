@@ -4,7 +4,7 @@
 
 package com.google.firebase.inappmessaging
 
-import dev.gitlive.firebase.inappmessaging.stub
+import io.github.corneloaie.firebase.inappmessaging.stub
 
 /*
  * Header stubs for com.google.firebase:firebase-inappmessaging (see buildSrc utils/HeaderStubs.kt): compiled against,

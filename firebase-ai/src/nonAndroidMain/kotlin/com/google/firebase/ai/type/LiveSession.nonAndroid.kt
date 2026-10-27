@@ -4,14 +4,14 @@
 
 package com.google.firebase.ai.type
 
-import dev.gitlive.firebase.UnsupportedOnApple
-import dev.gitlive.firebase.UnsupportedOnJs
-import dev.gitlive.firebase.ai.internal.NativeLiveSession
-import dev.gitlive.firebase.ai.internal.catchAsync
-import dev.gitlive.firebase.ai.internal.realtimeInput
-import dev.gitlive.firebase.ai.internal.toJson
-import dev.gitlive.firebase.ai.internal.toLiveServerMessage
-import dev.gitlive.firebase.ai.internal.toolResponse
+import io.github.corneloaie.firebase.UnsupportedOnApple
+import io.github.corneloaie.firebase.UnsupportedOnJs
+import io.github.corneloaie.firebase.ai.internal.NativeLiveSession
+import io.github.corneloaie.firebase.ai.internal.catchAsync
+import io.github.corneloaie.firebase.ai.internal.realtimeInput
+import io.github.corneloaie.firebase.ai.internal.toJson
+import io.github.corneloaie.firebase.ai.internal.toLiveServerMessage
+import io.github.corneloaie.firebase.ai.internal.toolResponse
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ChannelResult

@@ -7,18 +7,18 @@ package com.google.firebase.remoteconfig
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.FirebaseApp
-import dev.gitlive.firebase.remoteconfig.SET_DEFAULTS_XML_ANDROID_ONLY
-import dev.gitlive.firebase.remoteconfig.externals.RemoteConfig
-import dev.gitlive.firebase.remoteconfig.externals.Value
-import dev.gitlive.firebase.remoteconfig.externals.activate
-import dev.gitlive.firebase.remoteconfig.externals.ensureInitialized
-import dev.gitlive.firebase.remoteconfig.externals.fetchAndActivate
-import dev.gitlive.firebase.remoteconfig.externals.fetchConfig
-import dev.gitlive.firebase.remoteconfig.externals.getAll
-import dev.gitlive.firebase.remoteconfig.externals.getRemoteConfig
-import dev.gitlive.firebase.remoteconfig.externals.getValue
-import dev.gitlive.firebase.remoteconfig.externals.onConfigUpdate
-import dev.gitlive.firebase.remoteconfig.externals.setCustomSignals
+import io.github.corneloaie.firebase.remoteconfig.SET_DEFAULTS_XML_ANDROID_ONLY
+import io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig
+import io.github.corneloaie.firebase.remoteconfig.externals.Value
+import io.github.corneloaie.firebase.remoteconfig.externals.activate
+import io.github.corneloaie.firebase.remoteconfig.externals.ensureInitialized
+import io.github.corneloaie.firebase.remoteconfig.externals.fetchAndActivate
+import io.github.corneloaie.firebase.remoteconfig.externals.fetchConfig
+import io.github.corneloaie.firebase.remoteconfig.externals.getAll
+import io.github.corneloaie.firebase.remoteconfig.externals.getRemoteConfig
+import io.github.corneloaie.firebase.remoteconfig.externals.getValue
+import io.github.corneloaie.firebase.remoteconfig.externals.onConfigUpdate
+import io.github.corneloaie.firebase.remoteconfig.externals.setCustomSignals
 import kotlin.js.Promise
 import kotlin.js.json
 
@@ -33,12 +33,12 @@ public actual class FirebaseRemoteConfig internal constructor(public val js: Rem
         val unsubscribe = onConfigUpdate(
             js,
             json(
-                "next" to { update: dev.gitlive.firebase.remoteconfig.externals.ConfigUpdate ->
+                "next" to { update: io.github.corneloaie.firebase.remoteconfig.externals.ConfigUpdate ->
                     listener.onUpdate(ConfigUpdate.create(arrayFrom(update.getUpdatedKeys()).toSet()))
                 },
                 "error" to { error: Throwable -> listener.onError(error.toRemoteConfigException()) },
                 "complete" to { },
-            ).unsafeCast<dev.gitlive.firebase.remoteconfig.externals.ConfigUpdateObserver>(),
+            ).unsafeCast<io.github.corneloaie.firebase.remoteconfig.externals.ConfigUpdateObserver>(),
         )
         ConfigUpdateListenerRegistration { unsubscribe() }
     }

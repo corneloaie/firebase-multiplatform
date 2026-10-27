@@ -7,49 +7,49 @@ package com.google.firebase.firestore
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.Timestamp
-import dev.gitlive.firebase.externals.asJsAny
-import dev.gitlive.firebase.externals.asJsArray
-import dev.gitlive.firebase.externals.errorCode
-import dev.gitlive.firebase.externals.jsGet
-import dev.gitlive.firebase.externals.jsIsArray
-import dev.gitlive.firebase.externals.jsObject
-import dev.gitlive.firebase.externals.jsObjectKeys
-import dev.gitlive.firebase.externals.jsSet
-import dev.gitlive.firebase.externals.jsTypeOf
-import dev.gitlive.firebase.externals.json
-import dev.gitlive.firebase.externals.toKotlin
-import dev.gitlive.firebase.externals.toKotlinString
-import dev.gitlive.firebase.externals.toList
-import dev.gitlive.firebase.firestore.externals.Bytes
-import dev.gitlive.firebase.firestore.externals.QueryConstraint
-import dev.gitlive.firebase.firestore.externals.deleteField
-import dev.gitlive.firebase.firestore.externals.documentId
+import io.github.corneloaie.firebase.externals.asJsAny
+import io.github.corneloaie.firebase.externals.asJsArray
+import io.github.corneloaie.firebase.externals.errorCode
+import io.github.corneloaie.firebase.externals.jsGet
+import io.github.corneloaie.firebase.externals.jsIsArray
+import io.github.corneloaie.firebase.externals.jsObject
+import io.github.corneloaie.firebase.externals.jsObjectKeys
+import io.github.corneloaie.firebase.externals.jsSet
+import io.github.corneloaie.firebase.externals.jsTypeOf
+import io.github.corneloaie.firebase.externals.json
+import io.github.corneloaie.firebase.externals.toKotlin
+import io.github.corneloaie.firebase.externals.toKotlinString
+import io.github.corneloaie.firebase.externals.toList
+import io.github.corneloaie.firebase.firestore.externals.Bytes
+import io.github.corneloaie.firebase.firestore.externals.QueryConstraint
+import io.github.corneloaie.firebase.firestore.externals.deleteField
+import io.github.corneloaie.firebase.firestore.externals.documentId
 import kotlin.js.JsException
 import kotlin.js.Promise
 import kotlin.math.abs
 import kotlin.math.floor
-import dev.gitlive.firebase.firestore.externals.BsonObjectId as JsBsonObjectId
-import dev.gitlive.firebase.firestore.externals.BsonTimestamp as JsBsonTimestamp
-import dev.gitlive.firebase.firestore.externals.Decimal128Value as JsDecimal128Value
-import dev.gitlive.firebase.firestore.externals.DocumentReference as JsDocumentReference
-import dev.gitlive.firebase.firestore.externals.FieldPath as JsFieldPath
-import dev.gitlive.firebase.firestore.externals.GeoPoint as JsGeoPoint
-import dev.gitlive.firebase.firestore.externals.Int32Value as JsInt32Value
-import dev.gitlive.firebase.firestore.externals.MaxKey as JsMaxKey
-import dev.gitlive.firebase.firestore.externals.MinKey as JsMinKey
-import dev.gitlive.firebase.firestore.externals.RegexValue as JsRegexValue
-import dev.gitlive.firebase.firestore.externals.Timestamp as JsTimestamp
-import dev.gitlive.firebase.firestore.externals.VectorValue as JsVectorValue
-import dev.gitlive.firebase.firestore.externals.and as jsAnd
-import dev.gitlive.firebase.firestore.externals.arrayRemove as jsArrayRemove
-import dev.gitlive.firebase.firestore.externals.arrayUnion as jsArrayUnion
-import dev.gitlive.firebase.firestore.externals.increment as jsIncrement
-import dev.gitlive.firebase.firestore.externals.maximum as jsMaximum
-import dev.gitlive.firebase.firestore.externals.minimum as jsMinimum
-import dev.gitlive.firebase.firestore.externals.or as jsOr
-import dev.gitlive.firebase.firestore.externals.serverTimestamp as jsServerTimestamp
-import dev.gitlive.firebase.firestore.externals.vector as jsVector
-import dev.gitlive.firebase.firestore.externals.where as jsWhere
+import io.github.corneloaie.firebase.firestore.externals.BsonObjectId as JsBsonObjectId
+import io.github.corneloaie.firebase.firestore.externals.BsonTimestamp as JsBsonTimestamp
+import io.github.corneloaie.firebase.firestore.externals.Decimal128Value as JsDecimal128Value
+import io.github.corneloaie.firebase.firestore.externals.DocumentReference as JsDocumentReference
+import io.github.corneloaie.firebase.firestore.externals.FieldPath as JsFieldPath
+import io.github.corneloaie.firebase.firestore.externals.GeoPoint as JsGeoPoint
+import io.github.corneloaie.firebase.firestore.externals.Int32Value as JsInt32Value
+import io.github.corneloaie.firebase.firestore.externals.MaxKey as JsMaxKey
+import io.github.corneloaie.firebase.firestore.externals.MinKey as JsMinKey
+import io.github.corneloaie.firebase.firestore.externals.RegexValue as JsRegexValue
+import io.github.corneloaie.firebase.firestore.externals.Timestamp as JsTimestamp
+import io.github.corneloaie.firebase.firestore.externals.VectorValue as JsVectorValue
+import io.github.corneloaie.firebase.firestore.externals.and as jsAnd
+import io.github.corneloaie.firebase.firestore.externals.arrayRemove as jsArrayRemove
+import io.github.corneloaie.firebase.firestore.externals.arrayUnion as jsArrayUnion
+import io.github.corneloaie.firebase.firestore.externals.increment as jsIncrement
+import io.github.corneloaie.firebase.firestore.externals.maximum as jsMaximum
+import io.github.corneloaie.firebase.firestore.externals.minimum as jsMinimum
+import io.github.corneloaie.firebase.firestore.externals.or as jsOr
+import io.github.corneloaie.firebase.firestore.externals.serverTimestamp as jsServerTimestamp
+import io.github.corneloaie.firebase.firestore.externals.vector as jsVector
+import io.github.corneloaie.firebase.firestore.externals.where as jsWhere
 
 /*
  * The JS SDK reads and writes plain JS values with its own Timestamp, GeoPoint, DocumentReference, Bytes (with a BSON
@@ -57,7 +57,7 @@ import dev.gitlive.firebase.firestore.externals.where as jsWhere
  * Boolean, Long (integral numbers), Double, com.google.firebase.Timestamp, GeoPoint, DocumentReference, Blob,
  * VectorValue, BsonObjectId, BsonTimestamp, Decimal128Value, Int32Value, MaxKey, MinKey and RegexValue.
  *
- * Kotlin/Wasm values are not JS values: the dev.gitlive layer's encoders keep the layer's value types inside the JS
+ * Kotlin/Wasm values are not JS values: the Kotlin-first layer's encoders keep the layer's value types inside the JS
  * objects and arrays they build as references to the Kotlin objects (see `toJsReference`), which read back as `Any` are
  * the Kotlin objects again. So the Kotlin types are checked before a JS object or array is converted, at every level.
  */
@@ -131,7 +131,7 @@ private fun JsAny.toCompatValueType(): Any? = when (this) {
 
 /**
  * A value read by the JS SDK with only the leaves converted to the layer's value types, objects and arrays kept as the
- * JS SDK's; what the dev.gitlive layer's decoders take. Inside objects and arrays the leaves are references to the Kotlin
+ * JS SDK's; what the Kotlin-first layer's decoders take. Inside objects and arrays the leaves are references to the Kotlin
  * objects, which the decoders read back as the Kotlin objects; at the top level JS primitives are Kotlin's, as the
  * decoders' elements are.
  */

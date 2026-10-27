@@ -16,7 +16,7 @@ import com.google.firebase.ai.type.TemplateTool
 import com.google.firebase.ai.type.TemplateToolConfig
 import com.google.firebase.ai.type.Tool
 import com.google.firebase.ai.type.ToolConfig
-import dev.gitlive.firebase.ai.internal.stub
+import io.github.corneloaie.firebase.ai.internal.stub
 
 // Header stubs of the Android SDK's FirebaseAI (see utils.stripHeaderStubs).
 

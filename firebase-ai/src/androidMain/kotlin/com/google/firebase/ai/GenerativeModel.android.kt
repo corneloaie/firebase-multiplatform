@@ -13,7 +13,7 @@ import com.google.firebase.ai.type.GenerateObjectResponse
 import com.google.firebase.ai.type.JsonSchema
 import com.google.firebase.ai.type.PublicPreviewAPI
 import com.google.firebase.ai.type.RequestOptions
-import dev.gitlive.firebase.ai.internal.stub
+import io.github.corneloaie.firebase.ai.internal.stub
 import kotlinx.coroutines.flow.Flow
 
 // Header stubs of the Android SDK's GenerativeModel and OnDeviceExtension (see utils.stripHeaderStubs).

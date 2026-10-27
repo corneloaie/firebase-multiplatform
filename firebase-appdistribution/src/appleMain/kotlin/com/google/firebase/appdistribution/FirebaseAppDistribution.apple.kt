@@ -13,15 +13,15 @@ import com.google.android.gms.tasks.SuccessContinuation
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.appdistribution.FirebaseAppDistributionException.Status
-import dev.gitlive.firebase.UnsupportedOnApple
+import io.github.corneloaie.firebase.UnsupportedOnApple
 import platform.Foundation.NSError
 import platform.UIKit.UIApplication
 import platform.darwin.dispatch_async
 import platform.darwin.dispatch_get_main_queue
-import swiftPMImport.dev.gitlive.firebase.appdistribution.FIRAppDistribution
-import swiftPMImport.dev.gitlive.firebase.appdistribution.FIRAppDistributionErrorDetailsKey
-import swiftPMImport.dev.gitlive.firebase.appdistribution.FIRAppDistributionErrorDomain
-import swiftPMImport.dev.gitlive.firebase.appdistribution.FIRAppDistributionRelease
+import swiftPMImport.io.github.corneloaie.firebase.appdistribution.FIRAppDistribution
+import swiftPMImport.io.github.corneloaie.firebase.appdistribution.FIRAppDistributionErrorDetailsKey
+import swiftPMImport.io.github.corneloaie.firebase.appdistribution.FIRAppDistributionErrorDomain
+import swiftPMImport.io.github.corneloaie.firebase.appdistribution.FIRAppDistributionRelease
 import kotlin.concurrent.atomics.AtomicReference
 import kotlin.concurrent.atomics.ExperimentalAtomicApi
 

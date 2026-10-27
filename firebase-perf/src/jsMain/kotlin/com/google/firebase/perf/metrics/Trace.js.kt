@@ -5,7 +5,7 @@
 package com.google.firebase.perf.metrics
 
 import com.google.firebase.perf.rethrow
-import dev.gitlive.firebase.perf.externals.PerformanceTrace
+import io.github.corneloaie.firebase.perf.externals.PerformanceTrace
 import kotlin.js.Json
 
 /** @property js The underlying Firebase JS SDK object. */

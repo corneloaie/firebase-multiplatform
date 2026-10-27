@@ -4,17 +4,17 @@
 
 package com.google.firebase.firestore
 
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRFirestore
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRFirestoreSettings
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRLoadBundleTaskProgress
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRLoadBundleTaskState
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRMemoryCacheSettings
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRMemoryEagerGCSettings
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRMemoryLRUGCSettings
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRPersistentCacheIndexManager
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRPersistentCacheSettings
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRTransaction
-import swiftPMImport.dev.gitlive.firebase.firestore.FIRTransactionOptions
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRFirestore
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRFirestoreSettings
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRLoadBundleTaskProgress
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRLoadBundleTaskState
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRMemoryCacheSettings
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRMemoryEagerGCSettings
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRMemoryLRUGCSettings
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRPersistentCacheIndexManager
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRPersistentCacheSettings
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRTransaction
+import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRTransactionOptions
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.Firebase
@@ -158,7 +158,7 @@ public actual class FirebaseFirestore internal constructor(public val ios: FIRFi
     }
 }
 
-/** [this] applied to [current], the SDK's settings; the dispatch queue the dev.gitlive layer may have configured is kept. */
+/** [this] applied to [current], the SDK's settings; the dispatch queue the Kotlin-first layer may have configured is kept. */
 private fun FirebaseFirestoreSettings.toIos(current: FIRFirestoreSettings): FIRFirestoreSettings = FIRFirestoreSettings().also { settings ->
     settings.host = host
     settings.sslEnabled = isSslEnabled

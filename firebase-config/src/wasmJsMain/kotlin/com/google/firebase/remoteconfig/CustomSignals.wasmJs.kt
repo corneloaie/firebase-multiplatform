@@ -4,14 +4,14 @@
 
 package com.google.firebase.remoteconfig
 
-import dev.gitlive.firebase.externals.jsGet
-import dev.gitlive.firebase.externals.jsObject
-import dev.gitlive.firebase.externals.jsObjectKeys
-import dev.gitlive.firebase.externals.jsSet
-import dev.gitlive.firebase.externals.jsonStringify
-import dev.gitlive.firebase.externals.toJs
-import dev.gitlive.firebase.externals.toKotlinString
-import dev.gitlive.firebase.externals.toList
+import io.github.corneloaie.firebase.externals.jsGet
+import io.github.corneloaie.firebase.externals.jsObject
+import io.github.corneloaie.firebase.externals.jsObjectKeys
+import io.github.corneloaie.firebase.externals.jsSet
+import io.github.corneloaie.firebase.externals.jsonStringify
+import io.github.corneloaie.firebase.externals.toJs
+import io.github.corneloaie.firebase.externals.toKotlinString
+import io.github.corneloaie.firebase.externals.toList
 
 /** @property js The signals as the JS SDK takes them: a string, number or null (removes the signal) per key. */
 public actual class CustomSignals internal constructor(public val js: JsAny) {

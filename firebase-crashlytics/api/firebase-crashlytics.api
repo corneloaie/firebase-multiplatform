@@ -1,12 +1,12 @@
-public final class dev/gitlive/firebase/crashlytics/CrashlyticsKt {
-	public static final fun crashlytics (Ldev/gitlive/firebase/Firebase;Ldev/gitlive/firebase/FirebaseApp;)Ldev/gitlive/firebase/crashlytics/FirebaseCrashlytics;
-	public static final fun getAndroid (Ldev/gitlive/firebase/crashlytics/FirebaseCrashlytics;)Lcom/google/firebase/crashlytics/FirebaseCrashlytics;
-	public static final fun getCrashlytics (Ldev/gitlive/firebase/Firebase;)Ldev/gitlive/firebase/crashlytics/FirebaseCrashlytics;
+public final class io/github/corneloaie/firebase/crashlytics/CrashlyticsKt {
+	public static final fun crashlytics (Lio/github/corneloaie/firebase/Firebase;Lio/github/corneloaie/firebase/FirebaseApp;)Lio/github/corneloaie/firebase/crashlytics/FirebaseCrashlytics;
+	public static final fun getAndroid (Lio/github/corneloaie/firebase/crashlytics/FirebaseCrashlytics;)Lcom/google/firebase/crashlytics/FirebaseCrashlytics;
+	public static final fun getCrashlytics (Lio/github/corneloaie/firebase/Firebase;)Lio/github/corneloaie/firebase/crashlytics/FirebaseCrashlytics;
 	public static final fun recordException (Lcom/google/firebase/crashlytics/FirebaseCrashlytics;Ljava/lang/Throwable;Ljava/util/Map;)V
 	public static final fun setCustomKeys (Lcom/google/firebase/crashlytics/FirebaseCrashlytics;Ljava/util/Map;)V
 }
 
-public final class dev/gitlive/firebase/crashlytics/FirebaseCrashlytics {
+public final class io/github/corneloaie/firebase/crashlytics/FirebaseCrashlytics {
 	public final fun deleteUnsentReports ()V
 	public final fun didCrashOnPreviousExecution ()Z
 	public fun equals (Ljava/lang/Object;)Z
@@ -28,7 +28,7 @@ public final class dev/gitlive/firebase/crashlytics/FirebaseCrashlytics {
 	public fun toString ()Ljava/lang/String;
 }
 
-public class dev/gitlive/firebase/crashlytics/FirebaseCrashlyticsException : com/google/firebase/FirebaseException {
+public class io/github/corneloaie/firebase/crashlytics/FirebaseCrashlyticsException : com/google/firebase/FirebaseException {
 	public fun <init> (Ljava/lang/String;)V
 }
 

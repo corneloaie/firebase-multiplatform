@@ -9,7 +9,7 @@
 package com.google.firebase.dataconnect
 
 import com.google.firebase.FirebaseApp
-import dev.gitlive.firebase.dataconnect.internal.stub
+import io.github.corneloaie.firebase.dataconnect.internal.stub
 import kotlinx.coroutines.flow.MutableStateFlow
 
 // Header stubs of the Android SDK's FirebaseDataConnectKt (see utils.stripHeaderStubs).

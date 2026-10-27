@@ -5,7 +5,7 @@
 package com.google.firebase.firestore
 
 import com.google.android.gms.tasks.Task
-import dev.gitlive.firebase.firestore.internal.DEFAULT_MAX_ATTEMPTS
+import io.github.corneloaie.firebase.firestore.internal.DEFAULT_MAX_ATTEMPTS
 
 /**
  * A transaction, mirroring `com.google.firebase.firestore.Transaction` from the Firebase Android SDK: the writes are
@@ -16,7 +16,7 @@ public expect class Transaction {
     /**
      * Reads [documentRef] inside the transaction. The JS SDK reads inside a transaction asynchronously, so on JS this
      * throws [UnsupportedOperationException]: code that also targets JS uses the suspending
-     * `dev.gitlive.firebase.firestore.Transaction.get` instead.
+     * `io.github.corneloaie.firebase.firestore.Transaction.get` instead.
      */
     public fun get(documentRef: DocumentReference): DocumentSnapshot
 

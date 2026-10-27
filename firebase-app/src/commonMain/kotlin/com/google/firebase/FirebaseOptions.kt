@@ -4,7 +4,7 @@
 
 package com.google.firebase
 
-import dev.gitlive.firebase.FROM_RESOURCE_ANDROID_ONLY
+import io.github.corneloaie.firebase.FROM_RESOURCE_ANDROID_ONLY
 
 /**
  * Configurable Firebase options, mirroring `com.google.firebase.FirebaseOptions` from the Firebase Android SDK.

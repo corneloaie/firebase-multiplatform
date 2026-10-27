@@ -8,7 +8,7 @@ import android.app.Activity
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
 import com.google.firebase.Timestamp
-import dev.gitlive.firebase.firestore.stub
+import io.github.corneloaie.firebase.firestore.stub
 import java.util.concurrent.Executor
 
 /*
@@ -136,7 +136,7 @@ public actual open class Query {
     public actual fun addSnapshotListener(metadataChanges: MetadataChanges, listener: EventListener<QuerySnapshot>): ListenerRegistration = stub()
     public actual fun addSnapshotListener(options: SnapshotListenOptions, listener: EventListener<QuerySnapshot>): ListenerRegistration = stub()
 
-    /** Not in the common API (the executor is Android-only); the dev.gitlive layer's Android listeners bind to this member. */
+    /** Not in the common API (the executor is Android-only); the Kotlin-first layer's Android listeners bind to this member. */
     public fun addSnapshotListener(executor: Executor, metadataChanges: MetadataChanges, listener: EventListener<QuerySnapshot>): ListenerRegistration = stub()
     public actual fun count(): AggregateQuery = stub()
     public actual fun aggregate(aggregateField: AggregateField, vararg aggregateFields: AggregateField): AggregateQuery = stub()
@@ -222,7 +222,7 @@ public actual class DocumentReference private constructor() {
     public actual fun addSnapshotListener(metadataChanges: MetadataChanges, listener: EventListener<DocumentSnapshot>): ListenerRegistration = stub()
     public actual fun addSnapshotListener(options: SnapshotListenOptions, listener: EventListener<DocumentSnapshot>): ListenerRegistration = stub()
 
-    /** Not in the common API (the executor is Android-only); the dev.gitlive layer's Android listeners bind to this member. */
+    /** Not in the common API (the executor is Android-only); the Kotlin-first layer's Android listeners bind to this member. */
     public fun addSnapshotListener(executor: Executor, metadataChanges: MetadataChanges, listener: EventListener<DocumentSnapshot>): ListenerRegistration = stub()
 }
 

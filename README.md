@@ -19,7 +19,7 @@ their newest releases every week.
   app's Firebase code moves into `commonMain` as it is.
 - **The whole API, measured.** Every module is checked member by member against the Firebase Android SDK's API, and
   covers all of it; [the table below](#coverage) shows each one.
-- **A Kotlin-first API next to it** (`dev.gitlive.firebase.*`), with suspending functions, `Flow` and
+- **A Kotlin-first API next to it** (`io.github.corneloaie.firebase.*`), with suspending functions, `Flow` and
   kotlinx.serialization.
 - **Published on Maven Central** as `io.github.corneloaie:<module>`.
 
@@ -110,8 +110,9 @@ kotlin {
 }
 ```
 
-Coming from GitLive's firebase-kotlin-sdk? The Kotlin packages are the same (`dev.gitlive.firebase.*` and
-`com.google.firebase.*`), so changing the group from `dev.gitlive` to `io.github.corneloaie` is enough.
+Coming from GitLive's firebase-kotlin-sdk, or from version 0.1 of this one? Change the group to `io.github.corneloaie`
+and the imports of `dev.gitlive.firebase.*` to `io.github.corneloaie.firebase.*`. The `com.google.firebase.*` packages
+are unchanged.
 
 To try a build of `main` before it is released, run `./gradlew publishToMavenLocal` in this repository and add
 `mavenLocal()` to the repositories.
@@ -226,11 +227,11 @@ a shared module, including the compiler-guided replacement of the few Android-on
 
 ### The Kotlin-first API
 
-The `dev.gitlive.firebase` packages wrap the same layer in suspending functions, `Flow` and kotlinx.serialization:
+The `io.github.corneloaie.firebase` packages wrap the same layer in suspending functions, `Flow` and kotlinx.serialization:
 
 ```kotlin
-import dev.gitlive.firebase.Firebase
-import dev.gitlive.firebase.firestore.firestore
+import io.github.corneloaie.firebase.Firebase
+import io.github.corneloaie.firebase.firestore.firestore
 
 @Serializable
 data class City(val name: String, val state: String)
@@ -251,7 +252,7 @@ provides it as it is in common code, on Android, iOS, tvOS, JS and Wasm. Apple p
 wrapper package under `firebase-dataconnect/apple`, as the iOS SDK is Swift-only. On JS and Wasm,
 `CacheSettings.Storage.PERSISTENT` behaves like `MEMORY`, and `DataConnectSettings.host` and `sslEnabled` are ignored.
 Common code uses `kotlinx.datetime.LocalDate` with `KotlinxDatetimeLocalDateSerializer` and `kotlin.uuid.Uuid` with
-`dev.gitlive.firebase.dataconnect.serializers.UuidSerializer`; the `java.time` and `java.util.UUID` variants are
+`io.github.corneloaie.firebase.dataconnect.serializers.UuidSerializer`; the `java.time` and `java.util.UUID` variants are
 Android-only.
 
 ### AI Logic

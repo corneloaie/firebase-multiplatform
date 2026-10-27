@@ -27,7 +27,7 @@ if (supportedPlatforms.contains(TargetPlatform.Android)) {
         val compileSdkVersion: Int by project
 
         compileSdk = compileSdkVersion
-        namespace = "dev.gitlive.firebase.testUtils"
+        namespace = "io.github.corneloaie.firebase.testUtils"
 
         defaultConfig {
             minSdk = minSdkVersion

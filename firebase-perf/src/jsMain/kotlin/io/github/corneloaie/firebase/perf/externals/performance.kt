@@ -1,0 +1,28 @@
+@file:JsModule("firebase/performance")
+@file:JsNonModule
+
+package io.github.corneloaie.firebase.perf.externals
+
+import io.github.corneloaie.firebase.externals.FirebaseApp
+import kotlin.js.Json
+
+public external fun getPerformance(app: FirebaseApp? = definedExternally): FirebasePerformance
+
+public external fun trace(performance: FirebasePerformance, name: String): PerformanceTrace
+
+public external interface FirebasePerformance {
+    public var dataCollectionEnabled: Boolean
+    public var instrumentationEnabled: Boolean
+}
+
+public external interface PerformanceTrace {
+    public fun getAttribute(attr: String): String?
+    public fun getAttributes(): Json
+    public fun getMetric(metricName: String): Int
+    public fun incrementMetric(metricName: String, num: Int? = definedExternally)
+    public fun putAttribute(attr: String, value: String)
+    public fun putMetric(metricName: String, num: Int)
+    public fun removeAttribute(attr: String)
+    public fun start()
+    public fun stop()
+}

@@ -12,7 +12,7 @@ import com.google.firebase.inappmessaging.model.InAppMessage
 import com.google.firebase.inappmessaging.model.ios
 import platform.Foundation.NSClassFromString
 import platform.darwin.NSObjectMeta
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessagingDisplayProtocol
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessagingDisplayProtocol
 
 /**
  * The iOS SDK's default UI, `FIRIAMDefaultDisplayImpl`, which the iOS SDK sets as the display component when the app is

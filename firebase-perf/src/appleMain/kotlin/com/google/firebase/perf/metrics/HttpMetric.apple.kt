@@ -4,7 +4,7 @@
 
 package com.google.firebase.perf.metrics
 
-import swiftPMImport.dev.gitlive.firebase.perf.FIRHTTPMetric
+import swiftPMImport.io.github.corneloaie.firebase.perf.FIRHTTPMetric
 
 /** @property ios The underlying Firebase iOS SDK object. */
 public actual class HttpMetric internal constructor(public val ios: FIRHTTPMetric) {

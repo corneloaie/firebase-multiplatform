@@ -1,0 +1,14 @@
+/*
+ * Copyright (c) 2026 GitLive Ltd.  Use of this source code is governed by the Apache 2.0 license.
+ */
+
+package io.github.corneloaie.firebase.storage
+
+import platform.Foundation.NSTemporaryDirectory
+import platform.Foundation.NSURL
+
+actual fun temporaryFile(name: String): Any = NSURL.fileURLWithPath(NSTemporaryDirectory() + name)
+
+actual val supportsFileDownloads: Boolean = true
+
+actual val uploadProgressIncludesOverhead: Boolean = true

@@ -6,40 +6,40 @@ package com.google.firebase.firestore
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
-import dev.gitlive.firebase.externals.json
-import dev.gitlive.firebase.externals.jsSet
-import dev.gitlive.firebase.firestore.externals.clearIndexedDbPersistence
-import dev.gitlive.firebase.firestore.externals.connectFirestoreEmulator
-import dev.gitlive.firebase.firestore.externals.deleteAllPersistentCacheIndexes
-import dev.gitlive.firebase.firestore.externals.disableNetwork
-import dev.gitlive.firebase.firestore.externals.disablePersistentCacheIndexAutoCreation
-import dev.gitlive.firebase.firestore.externals.doc
-import dev.gitlive.firebase.firestore.externals.enableNetwork
-import dev.gitlive.firebase.firestore.externals.enablePersistentCacheIndexAutoCreation
-import dev.gitlive.firebase.firestore.externals.getFirestore
-import dev.gitlive.firebase.firestore.externals.getPersistentCacheIndexManager
-import dev.gitlive.firebase.firestore.externals.initializeFirestore
-import dev.gitlive.firebase.firestore.externals.memoryEagerGarbageCollector
-import dev.gitlive.firebase.firestore.externals.memoryLocalCache
-import dev.gitlive.firebase.firestore.externals.memoryLruGarbageCollector
-import dev.gitlive.firebase.firestore.externals.namedQuery
-import dev.gitlive.firebase.firestore.externals.onSnapshotsInSync
-import dev.gitlive.firebase.firestore.externals.persistentLocalCache
-import dev.gitlive.firebase.firestore.externals.setLogLevel
-import dev.gitlive.firebase.firestore.externals.terminate
-import dev.gitlive.firebase.firestore.externals.waitForPendingWrites
-import dev.gitlive.firebase.firestore.externals.writeBatch
+import io.github.corneloaie.firebase.externals.json
+import io.github.corneloaie.firebase.externals.jsSet
+import io.github.corneloaie.firebase.firestore.externals.clearIndexedDbPersistence
+import io.github.corneloaie.firebase.firestore.externals.connectFirestoreEmulator
+import io.github.corneloaie.firebase.firestore.externals.deleteAllPersistentCacheIndexes
+import io.github.corneloaie.firebase.firestore.externals.disableNetwork
+import io.github.corneloaie.firebase.firestore.externals.disablePersistentCacheIndexAutoCreation
+import io.github.corneloaie.firebase.firestore.externals.doc
+import io.github.corneloaie.firebase.firestore.externals.enableNetwork
+import io.github.corneloaie.firebase.firestore.externals.enablePersistentCacheIndexAutoCreation
+import io.github.corneloaie.firebase.firestore.externals.getFirestore
+import io.github.corneloaie.firebase.firestore.externals.getPersistentCacheIndexManager
+import io.github.corneloaie.firebase.firestore.externals.initializeFirestore
+import io.github.corneloaie.firebase.firestore.externals.memoryEagerGarbageCollector
+import io.github.corneloaie.firebase.firestore.externals.memoryLocalCache
+import io.github.corneloaie.firebase.firestore.externals.memoryLruGarbageCollector
+import io.github.corneloaie.firebase.firestore.externals.namedQuery
+import io.github.corneloaie.firebase.firestore.externals.onSnapshotsInSync
+import io.github.corneloaie.firebase.firestore.externals.persistentLocalCache
+import io.github.corneloaie.firebase.firestore.externals.setLogLevel
+import io.github.corneloaie.firebase.firestore.externals.terminate
+import io.github.corneloaie.firebase.firestore.externals.waitForPendingWrites
+import io.github.corneloaie.firebase.firestore.externals.writeBatch
 import kotlinx.coroutines.Runnable
 import kotlin.js.Promise
-import dev.gitlive.firebase.externals.FirebaseApp as JsFirebaseApp
-import dev.gitlive.firebase.firestore.externals.Firestore as JsFirestore
-import dev.gitlive.firebase.firestore.externals.MemoryCacheSettings as JsMemoryCacheSettings
-import dev.gitlive.firebase.firestore.externals.PersistentCacheIndexManager as JsPersistentCacheIndexManager
-import dev.gitlive.firebase.firestore.externals.PersistentCacheSettings as JsPersistentCacheSettings
-import dev.gitlive.firebase.firestore.externals.collection as jsCollection
-import dev.gitlive.firebase.firestore.externals.collectionGroup as jsCollectionGroup
-import dev.gitlive.firebase.firestore.externals.loadBundle as jsLoadBundle
-import dev.gitlive.firebase.firestore.externals.runTransaction as jsRunTransaction
+import io.github.corneloaie.firebase.externals.FirebaseApp as JsFirebaseApp
+import io.github.corneloaie.firebase.firestore.externals.Firestore as JsFirestore
+import io.github.corneloaie.firebase.firestore.externals.MemoryCacheSettings as JsMemoryCacheSettings
+import io.github.corneloaie.firebase.firestore.externals.PersistentCacheIndexManager as JsPersistentCacheIndexManager
+import io.github.corneloaie.firebase.firestore.externals.PersistentCacheSettings as JsPersistentCacheSettings
+import io.github.corneloaie.firebase.firestore.externals.collection as jsCollection
+import io.github.corneloaie.firebase.firestore.externals.collectionGroup as jsCollectionGroup
+import io.github.corneloaie.firebase.firestore.externals.loadBundle as jsLoadBundle
+import io.github.corneloaie.firebase.firestore.externals.runTransaction as jsRunTransaction
 
 private const val DEFAULT_DATABASE = "(default)"
 
@@ -119,7 +119,7 @@ public actual class FirebaseFirestore private constructor(private val jsApp: JsF
         (it as? JsReference<*>)?.get() as TResult
     }
 
-    /** Runs a suspending transaction body, for the dev.gitlive layer; the JS SDK takes a promise-returning function. */
+    /** Runs a suspending transaction body, for the Kotlin-first layer; the JS SDK takes a promise-returning function. */
     internal fun <TResult : JsAny?> runPromiseTransaction(options: TransactionOptions?, updateFunction: (Transaction) -> Promise<TResult>): Promise<TResult> = rethrow {
         jsRunTransaction(js, { transaction -> updateFunction(Transaction(transaction)) }, options?.let { json("maxAttempts" to it.maxAttempts) })
     }
@@ -217,7 +217,7 @@ private fun FirebaseFirestoreSettings.toJs(): JsAny = json("host" to host, "ssl"
     }
 }
 
-private fun dev.gitlive.firebase.firestore.externals.LoadBundleTaskProgress.toProgress(): LoadBundleTaskProgress = LoadBundleTaskProgress(
+private fun io.github.corneloaie.firebase.firestore.externals.LoadBundleTaskProgress.toProgress(): LoadBundleTaskProgress = LoadBundleTaskProgress(
     documentsLoaded,
     totalDocuments,
     bytesLoaded.toLong(),

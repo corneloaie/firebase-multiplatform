@@ -4,9 +4,9 @@
 
 package com.google.firebase
 
-import dev.gitlive.firebase.TIMESTAMP_OF_DATE_ANDROID_ONLY
-import dev.gitlive.firebase.TO_DATE_ANDROID_ONLY
-import dev.gitlive.firebase.TO_INSTANT_ANDROID_ONLY
+import io.github.corneloaie.firebase.TIMESTAMP_OF_DATE_ANDROID_ONLY
+import io.github.corneloaie.firebase.TO_DATE_ANDROID_ONLY
+import io.github.corneloaie.firebase.TO_INSTANT_ANDROID_ONLY
 
 private const val MIN_SECONDS = -62_135_596_800L // 0001-01-01T00:00:00Z
 private const val MAX_SECONDS = 253_402_300_799L // 9999-12-31T23:59:59Z

@@ -2,28 +2,28 @@ public final class com/google/firebase/perf/NewHttpMetricKt {
 	public static final fun newHttpMetric (Lcom/google/firebase/perf/FirebasePerformance;Ljava/lang/String;Ljava/lang/String;)Lcom/google/firebase/perf/metrics/HttpMetric;
 }
 
-public final class dev/gitlive/firebase/perf/FirebasePerformance {
+public final class io/github/corneloaie/firebase/perf/FirebasePerformance {
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCompat ()Lcom/google/firebase/perf/FirebasePerformance;
 	public fun hashCode ()I
 	public final fun isPerformanceCollectionEnabled ()Z
-	public final fun newTrace (Ljava/lang/String;)Ldev/gitlive/firebase/perf/metrics/Trace;
+	public final fun newTrace (Ljava/lang/String;)Lio/github/corneloaie/firebase/perf/metrics/Trace;
 	public final fun setPerformanceCollectionEnabled (Z)V
 	public fun toString ()Ljava/lang/String;
 }
 
-public class dev/gitlive/firebase/perf/FirebasePerformanceException : com/google/firebase/FirebaseException {
+public class io/github/corneloaie/firebase/perf/FirebasePerformanceException : com/google/firebase/FirebaseException {
 	public fun <init> (Ljava/lang/String;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
 }
 
-public final class dev/gitlive/firebase/perf/PerformanceKt {
-	public static final fun getAndroid (Ldev/gitlive/firebase/perf/FirebasePerformance;)Lcom/google/firebase/perf/FirebasePerformance;
-	public static final fun getPerformance (Ldev/gitlive/firebase/Firebase;)Ldev/gitlive/firebase/perf/FirebasePerformance;
-	public static final fun performance (Ldev/gitlive/firebase/Firebase;Ldev/gitlive/firebase/FirebaseApp;)Ldev/gitlive/firebase/perf/FirebasePerformance;
+public final class io/github/corneloaie/firebase/perf/PerformanceKt {
+	public static final fun getAndroid (Lio/github/corneloaie/firebase/perf/FirebasePerformance;)Lcom/google/firebase/perf/FirebasePerformance;
+	public static final fun getPerformance (Lio/github/corneloaie/firebase/Firebase;)Lio/github/corneloaie/firebase/perf/FirebasePerformance;
+	public static final fun performance (Lio/github/corneloaie/firebase/Firebase;Lio/github/corneloaie/firebase/FirebaseApp;)Lio/github/corneloaie/firebase/perf/FirebasePerformance;
 }
 
-public final class dev/gitlive/firebase/perf/metrics/Trace {
+public final class io/github/corneloaie/firebase/perf/metrics/Trace {
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAttribute (Ljava/lang/String;)Ljava/lang/String;
 	public final fun getAttributes ()Ljava/util/Map;
@@ -39,15 +39,15 @@ public final class dev/gitlive/firebase/perf/metrics/Trace {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/gitlive/firebase/perf/metrics/TraceKt {
-	public static final fun getAndroid (Ldev/gitlive/firebase/perf/metrics/Trace;)Lcom/google/firebase/perf/metrics/Trace;
-	public static final fun updateSession (Ldev/gitlive/firebase/perf/metrics/Trace;Ldev/gitlive/firebase/perf/session/PerfSession;)V
+public final class io/github/corneloaie/firebase/perf/metrics/TraceKt {
+	public static final fun getAndroid (Lio/github/corneloaie/firebase/perf/metrics/Trace;)Lcom/google/firebase/perf/metrics/Trace;
+	public static final fun updateSession (Lio/github/corneloaie/firebase/perf/metrics/Trace;Lio/github/corneloaie/firebase/perf/session/PerfSession;)V
 }
 
-public final class dev/gitlive/firebase/perf/session/PerfSession {
+public final class io/github/corneloaie/firebase/perf/session/PerfSession {
 }
 
-public final class dev/gitlive/firebase/perf/session/PerfSessionKt {
-	public static final fun getAndroid (Ldev/gitlive/firebase/perf/session/PerfSession;)Lcom/google/firebase/perf/session/PerfSession;
+public final class io/github/corneloaie/firebase/perf/session/PerfSessionKt {
+	public static final fun getAndroid (Lio/github/corneloaie/firebase/perf/session/PerfSession;)Lcom/google/firebase/perf/session/PerfSession;
 }
 

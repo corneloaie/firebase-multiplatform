@@ -5,15 +5,15 @@
 package com.google.firebase.database
 
 import com.google.firebase.FirebaseApp
-import dev.gitlive.firebase.database.externals.Database
-import dev.gitlive.firebase.database.externals.SDK_VERSION
-import dev.gitlive.firebase.database.externals.connectDatabaseEmulator
-import dev.gitlive.firebase.database.externals.enableLogging
-import dev.gitlive.firebase.database.externals.getDatabase
-import dev.gitlive.firebase.database.externals.ref
-import dev.gitlive.firebase.database.externals.refFromURL
-import dev.gitlive.firebase.database.externals.goOffline as jsGoOffline
-import dev.gitlive.firebase.database.externals.goOnline as jsGoOnline
+import io.github.corneloaie.firebase.database.externals.Database
+import io.github.corneloaie.firebase.database.externals.SDK_VERSION
+import io.github.corneloaie.firebase.database.externals.connectDatabaseEmulator
+import io.github.corneloaie.firebase.database.externals.enableLogging
+import io.github.corneloaie.firebase.database.externals.getDatabase
+import io.github.corneloaie.firebase.database.externals.ref
+import io.github.corneloaie.firebase.database.externals.refFromURL
+import io.github.corneloaie.firebase.database.externals.goOffline as jsGoOffline
+import io.github.corneloaie.firebase.database.externals.goOnline as jsGoOnline
 
 /** @property js The underlying Firebase JS SDK object. */
 public actual class FirebaseDatabase internal constructor(public val js: Database) {

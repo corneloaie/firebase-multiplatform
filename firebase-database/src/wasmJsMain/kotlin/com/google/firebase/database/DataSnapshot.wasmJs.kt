@@ -4,16 +4,16 @@
 
 package com.google.firebase.database
 
-import dev.gitlive.firebase.database.externals.Database
-import dev.gitlive.firebase.externals.asJsArray
-import dev.gitlive.firebase.externals.jsGet
-import dev.gitlive.firebase.externals.jsIsArray
-import dev.gitlive.firebase.externals.jsObject
-import dev.gitlive.firebase.externals.jsSet
-import dev.gitlive.firebase.externals.jsTypeOf
-import dev.gitlive.firebase.externals.json
-import dev.gitlive.firebase.externals.toJs
-import dev.gitlive.firebase.database.externals.DataSnapshot as JsDataSnapshot
+import io.github.corneloaie.firebase.database.externals.Database
+import io.github.corneloaie.firebase.externals.asJsArray
+import io.github.corneloaie.firebase.externals.jsGet
+import io.github.corneloaie.firebase.externals.jsIsArray
+import io.github.corneloaie.firebase.externals.jsObject
+import io.github.corneloaie.firebase.externals.jsSet
+import io.github.corneloaie.firebase.externals.jsTypeOf
+import io.github.corneloaie.firebase.externals.json
+import io.github.corneloaie.firebase.externals.toJs
+import io.github.corneloaie.firebase.database.externals.DataSnapshot as JsDataSnapshot
 
 /**
  * @property js The underlying Firebase JS SDK object.

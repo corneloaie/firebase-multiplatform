@@ -4,11 +4,11 @@
 
 package com.google.firebase.firestore
 
-import dev.gitlive.firebase.firestore.internal.CACHE_SIZE_UNLIMITED
-import dev.gitlive.firebase.firestore.internal.DEFAULT_CACHE_SIZE_BYTES
-import dev.gitlive.firebase.firestore.internal.DEFAULT_GRPC_FLOW_CONTROL_WINDOW
-import dev.gitlive.firebase.firestore.internal.DEFAULT_HOST
-import dev.gitlive.firebase.firestore.internal.MINIMUM_CACHE_BYTES
+import io.github.corneloaie.firebase.firestore.internal.CACHE_SIZE_UNLIMITED
+import io.github.corneloaie.firebase.firestore.internal.DEFAULT_CACHE_SIZE_BYTES
+import io.github.corneloaie.firebase.firestore.internal.DEFAULT_GRPC_FLOW_CONTROL_WINDOW
+import io.github.corneloaie.firebase.firestore.internal.DEFAULT_HOST
+import io.github.corneloaie.firebase.firestore.internal.MINIMUM_CACHE_BYTES
 
 public actual class FirebaseFirestoreSettings private constructor(
     public actual val host: String,
@@ -16,7 +16,7 @@ public actual class FirebaseFirestoreSettings private constructor(
     public actual val cacheSettings: LocalCacheSettings?,
     public actual val grpcFlowControlWindow: Int,
 ) {
-    /** The queue or executor the platform SDK calls listeners on, when the dev.gitlive layer configures one; platform-specific. */
+    /** The queue or executor the platform SDK calls listeners on, when the Kotlin-first layer configures one; platform-specific. */
     internal var callbackContext: Any? = null
 
     override fun equals(other: Any?): Boolean = other is FirebaseFirestoreSettings &&
@@ -27,8 +27,8 @@ public actual class FirebaseFirestoreSettings private constructor(
     override fun toString(): String = "FirebaseFirestoreSettings{host=$host, sslEnabled=$isSslEnabled, cacheSettings=$cacheSettings, grpcFlowControlWindow=$grpcFlowControlWindow}"
 
     public actual companion object {
-        public actual val CACHE_SIZE_UNLIMITED: Long = dev.gitlive.firebase.firestore.internal.CACHE_SIZE_UNLIMITED
-        public actual val DEFAULT_GRPC_FLOW_CONTROL_WINDOW: Int = dev.gitlive.firebase.firestore.internal.DEFAULT_GRPC_FLOW_CONTROL_WINDOW
+        public actual val CACHE_SIZE_UNLIMITED: Long = io.github.corneloaie.firebase.firestore.internal.CACHE_SIZE_UNLIMITED
+        public actual val DEFAULT_GRPC_FLOW_CONTROL_WINDOW: Int = io.github.corneloaie.firebase.firestore.internal.DEFAULT_GRPC_FLOW_CONTROL_WINDOW
     }
 
     public actual class Builder {

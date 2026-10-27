@@ -4,8 +4,8 @@
 
 package com.google.firebase
 
-import swiftPMImport.dev.gitlive.firebase.app.FIRApp
-import swiftPMImport.dev.gitlive.firebase.app.FIROptions
+import swiftPMImport.io.github.corneloaie.firebase.app.FIRApp
+import swiftPMImport.io.github.corneloaie.firebase.app.FIROptions
 
 /** Configures the default app from `GoogleService-Info.plist`; the [context] is ignored. */
 public actual fun Firebase.initialize(context: Any?): FirebaseApp? {

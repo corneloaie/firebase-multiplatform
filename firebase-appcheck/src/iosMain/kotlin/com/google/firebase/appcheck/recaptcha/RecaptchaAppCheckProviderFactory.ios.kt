@@ -4,8 +4,8 @@
 
 package com.google.firebase.appcheck.recaptcha
 
-import swiftPMImport.dev.gitlive.firebase.appcheck.FIRAppCheckProviderFactoryProtocol
-import swiftPMImport.dev.gitlive.firebase.appcheck.FIRRecaptchaProviderFactory
+import swiftPMImport.io.github.corneloaie.firebase.appcheck.FIRAppCheckProviderFactoryProtocol
+import swiftPMImport.io.github.corneloaie.firebase.appcheck.FIRRecaptchaProviderFactory
 import com.google.firebase.FirebaseApp
 import com.google.firebase.appcheck.AppCheckProvider
 import com.google.firebase.appcheck.AppCheckProviderFactory

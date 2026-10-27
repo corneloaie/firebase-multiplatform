@@ -4,9 +4,9 @@
 
 package com.google.firebase
 
-import dev.gitlive.firebase.APPLICATION_CONTEXT_ANDROID_ONLY
-import dev.gitlive.firebase.GET_APPS_ANDROID_ONLY
-import dev.gitlive.firebase.INITIALIZE_APP_ANDROID_ONLY
+import io.github.corneloaie.firebase.APPLICATION_CONTEXT_ANDROID_ONLY
+import io.github.corneloaie.firebase.GET_APPS_ANDROID_ONLY
+import io.github.corneloaie.firebase.INITIALIZE_APP_ANDROID_ONLY
 
 /**
  * The entry point of Firebase SDKs, mirroring `com.google.firebase.FirebaseApp` from the Firebase Android SDK.

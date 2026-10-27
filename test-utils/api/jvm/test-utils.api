@@ -1,4 +1,4 @@
-public final class dev/gitlive/firebase/TestUtilsJvm {
+public final class io/github/corneloaie/firebase/TestUtilsJvm {
 	public static final fun getRunBlockingTestBlocks ()Z
 	public static final fun getTestContext ()Landroid/app/Application;
 	public static final fun nativeAssertEquals (Ljava/lang/Object;Ljava/lang/Object;)V

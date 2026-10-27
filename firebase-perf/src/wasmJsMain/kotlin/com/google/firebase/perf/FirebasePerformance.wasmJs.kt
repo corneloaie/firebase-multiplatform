@@ -5,11 +5,11 @@
 package com.google.firebase.perf
 
 import com.google.firebase.perf.metrics.Trace
-import dev.gitlive.firebase.externals.errorCode
-import dev.gitlive.firebase.perf.FirebasePerformanceException
-import dev.gitlive.firebase.perf.externals.getPerformance
-import dev.gitlive.firebase.perf.externals.trace
-import dev.gitlive.firebase.perf.externals.FirebasePerformance as JsFirebasePerformance
+import io.github.corneloaie.firebase.externals.errorCode
+import io.github.corneloaie.firebase.perf.FirebasePerformanceException
+import io.github.corneloaie.firebase.perf.externals.getPerformance
+import io.github.corneloaie.firebase.perf.externals.trace
+import io.github.corneloaie.firebase.perf.externals.FirebasePerformance as JsFirebasePerformance
 import kotlin.js.JsException
 
 /** @property js The underlying Firebase JS SDK object. */

@@ -9,7 +9,7 @@ import com.google.firebase.ai.type.FunctionCallPart
 import com.google.firebase.ai.type.FunctionResponsePart
 import com.google.firebase.ai.type.GenerateContentResponse
 import com.google.firebase.ai.type.PublicPreviewAPI
-import dev.gitlive.firebase.ai.internal.stub
+import io.github.corneloaie.firebase.ai.internal.stub
 import kotlinx.coroutines.flow.Flow
 
 // Header stubs of the Android SDK's TemplateGenerativeModel (see utils.stripHeaderStubs).

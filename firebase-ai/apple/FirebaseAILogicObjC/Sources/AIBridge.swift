@@ -25,7 +25,7 @@ import Foundation
 @objc(FAIBridge)
 public final class AIBridge: NSObject {
   /// The domain of the errors the bridge reports.
-  @objc public static let errorDomain = "dev.gitlive.firebase.ai"
+  @objc public static let errorDomain = "io.github.corneloaie.firebase.ai"
 
   private static let backendAgentPlatform = 1
 

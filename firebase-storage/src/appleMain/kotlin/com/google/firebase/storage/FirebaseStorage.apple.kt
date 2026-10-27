@@ -4,8 +4,8 @@
 
 package com.google.firebase.storage
 
-import dev.gitlive.firebase.UnsupportedOnApple
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorage
+import io.github.corneloaie.firebase.UnsupportedOnApple
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorage
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
 import com.google.firebase.getApps

@@ -4,7 +4,7 @@
 
 package com.google.firebase.functions
 
-import dev.gitlive.firebase.UnsupportedOnApple
+import io.github.corneloaie.firebase.UnsupportedOnApple
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

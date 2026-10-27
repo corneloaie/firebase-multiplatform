@@ -10,14 +10,14 @@ import kotlinx.cinterop.ptr
 import kotlinx.cinterop.value
 import platform.CoreGraphics.CGFloatVar
 import platform.UIKit.UIColor
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessagingAction
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessagingActionButton
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessagingBannerDisplay
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessagingCardDisplay
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessagingDisplayMessage
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessagingImageData
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessagingImageOnlyDisplay
-import swiftPMImport.dev.gitlive.firebase.inappmessaging.FIRInAppMessagingModalDisplay
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessagingAction
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessagingActionButton
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessagingBannerDisplay
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessagingCardDisplay
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessagingDisplayMessage
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessagingImageData
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessagingImageOnlyDisplay
+import swiftPMImport.io.github.corneloaie.firebase.inappmessaging.FIRInAppMessagingModalDisplay
 import kotlin.math.roundToInt
 
 /**

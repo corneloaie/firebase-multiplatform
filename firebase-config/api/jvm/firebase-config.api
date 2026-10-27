@@ -1,25 +1,25 @@
-public final class dev/gitlive/firebase/remoteconfig/FetchStatus : java/lang/Enum {
-	public static final field Failure Ldev/gitlive/firebase/remoteconfig/FetchStatus;
-	public static final field NoFetchYet Ldev/gitlive/firebase/remoteconfig/FetchStatus;
-	public static final field Success Ldev/gitlive/firebase/remoteconfig/FetchStatus;
-	public static final field Throttled Ldev/gitlive/firebase/remoteconfig/FetchStatus;
+public final class io/github/corneloaie/firebase/remoteconfig/FetchStatus : java/lang/Enum {
+	public static final field Failure Lio/github/corneloaie/firebase/remoteconfig/FetchStatus;
+	public static final field NoFetchYet Lio/github/corneloaie/firebase/remoteconfig/FetchStatus;
+	public static final field Success Lio/github/corneloaie/firebase/remoteconfig/FetchStatus;
+	public static final field Throttled Lio/github/corneloaie/firebase/remoteconfig/FetchStatus;
 	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public static fun valueOf (Ljava/lang/String;)Ldev/gitlive/firebase/remoteconfig/FetchStatus;
-	public static fun values ()[Ldev/gitlive/firebase/remoteconfig/FetchStatus;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/corneloaie/firebase/remoteconfig/FetchStatus;
+	public static fun values ()[Lio/github/corneloaie/firebase/remoteconfig/FetchStatus;
 }
 
-public final class dev/gitlive/firebase/remoteconfig/FirebaseRemoteConfig {
+public final class io/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfig {
 	public final fun activate (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun ensureInitialized (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun fetch-dnQKTGw (Lkotlin/time/Duration;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun fetch-dnQKTGw$default (Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfig;Lkotlin/time/Duration;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun fetch-dnQKTGw$default (Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfig;Lkotlin/time/Duration;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun fetchAndActivate (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getAll ()Ljava/util/Map;
 	public final fun getCompat ()Lcom/google/firebase/remoteconfig/FirebaseRemoteConfig;
-	public final fun getInfo ()Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigInfo;
+	public final fun getInfo ()Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigInfo;
 	public final fun getKeysByPrefix (Ljava/lang/String;)Ljava/util/Set;
-	public final fun getValue (Ljava/lang/String;)Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigValue;
+	public final fun getValue (Ljava/lang/String;)Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigValue;
 	public fun hashCode ()I
 	public final fun reset (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun setDefaults ([Lkotlin/Pair;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -27,36 +27,36 @@ public final class dev/gitlive/firebase/remoteconfig/FirebaseRemoteConfig {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigInfo {
-	public fun <init> (Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigSettings;Lkotlin/time/Instant;Ldev/gitlive/firebase/remoteconfig/FetchStatus;)V
-	public final fun component1 ()Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigSettings;
+public final class io/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigInfo {
+	public fun <init> (Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigSettings;Lkotlin/time/Instant;Lio/github/corneloaie/firebase/remoteconfig/FetchStatus;)V
+	public final fun component1 ()Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigSettings;
 	public final fun component2 ()Lkotlin/time/Instant;
-	public final fun component3 ()Ldev/gitlive/firebase/remoteconfig/FetchStatus;
-	public final fun copy (Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigSettings;Lkotlin/time/Instant;Ldev/gitlive/firebase/remoteconfig/FetchStatus;)Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigInfo;
-	public static synthetic fun copy$default (Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigInfo;Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigSettings;Lkotlin/time/Instant;Ldev/gitlive/firebase/remoteconfig/FetchStatus;ILjava/lang/Object;)Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigInfo;
+	public final fun component3 ()Lio/github/corneloaie/firebase/remoteconfig/FetchStatus;
+	public final fun copy (Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigSettings;Lkotlin/time/Instant;Lio/github/corneloaie/firebase/remoteconfig/FetchStatus;)Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigInfo;
+	public static synthetic fun copy$default (Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigInfo;Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigSettings;Lkotlin/time/Instant;Lio/github/corneloaie/firebase/remoteconfig/FetchStatus;ILjava/lang/Object;)Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigInfo;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getConfigSettings ()Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigSettings;
+	public final fun getConfigSettings ()Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigSettings;
 	public final fun getFetchTime ()Lkotlin/time/Instant;
 	public final fun getFetchTimeMillis ()J
-	public final fun getLastFetchStatus ()Ldev/gitlive/firebase/remoteconfig/FetchStatus;
+	public final fun getLastFetchStatus ()Lio/github/corneloaie/firebase/remoteconfig/FetchStatus;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigKt {
-	public static final fun fetch (Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfig;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun getRemoteConfig (Ldev/gitlive/firebase/Firebase;)Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfig;
-	public static final fun remoteConfig (Ldev/gitlive/firebase/Firebase;Ldev/gitlive/firebase/FirebaseApp;)Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfig;
+public final class io/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigKt {
+	public static final fun fetch (Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfig;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun getRemoteConfig (Lio/github/corneloaie/firebase/Firebase;)Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfig;
+	public static final fun remoteConfig (Lio/github/corneloaie/firebase/Firebase;Lio/github/corneloaie/firebase/FirebaseApp;)Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfig;
 }
 
-public final class dev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigSettings {
+public final class io/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigSettings {
 	public fun <init> ()V
 	public synthetic fun <init> (JJILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (JJLkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1-UwyO8pc ()J
 	public final fun component2-UwyO8pc ()J
-	public final fun copy-QTBD994 (JJ)Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigSettings;
-	public static synthetic fun copy-QTBD994$default (Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigSettings;JJILjava/lang/Object;)Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigSettings;
+	public final fun copy-QTBD994 (JJ)Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigSettings;
+	public static synthetic fun copy-QTBD994$default (Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigSettings;JJILjava/lang/Object;)Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigSettings;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getFetchTimeout-UwyO8pc ()J
 	public final fun getFetchTimeoutInSeconds ()J
@@ -70,7 +70,7 @@ public final class dev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigSetting
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigValue {
+public final class io/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfigValue {
 	public final fun asBoolean ()Z
 	public final fun asByteArray ()[B
 	public final fun asDouble ()D
@@ -78,21 +78,21 @@ public final class dev/gitlive/firebase/remoteconfig/FirebaseRemoteConfigValue {
 	public final fun asString ()Ljava/lang/String;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getCompat ()Lcom/google/firebase/remoteconfig/FirebaseRemoteConfigValue;
-	public final fun getSource ()Ldev/gitlive/firebase/remoteconfig/ValueSource;
+	public final fun getSource ()Lio/github/corneloaie/firebase/remoteconfig/ValueSource;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class dev/gitlive/firebase/remoteconfig/ValueSource : java/lang/Enum {
-	public static final field Default Ldev/gitlive/firebase/remoteconfig/ValueSource;
-	public static final field Remote Ldev/gitlive/firebase/remoteconfig/ValueSource;
-	public static final field Static Ldev/gitlive/firebase/remoteconfig/ValueSource;
+public final class io/github/corneloaie/firebase/remoteconfig/ValueSource : java/lang/Enum {
+	public static final field Default Lio/github/corneloaie/firebase/remoteconfig/ValueSource;
+	public static final field Remote Lio/github/corneloaie/firebase/remoteconfig/ValueSource;
+	public static final field Static Lio/github/corneloaie/firebase/remoteconfig/ValueSource;
 	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public static fun valueOf (Ljava/lang/String;)Ldev/gitlive/firebase/remoteconfig/ValueSource;
-	public static fun values ()[Ldev/gitlive/firebase/remoteconfig/ValueSource;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/corneloaie/firebase/remoteconfig/ValueSource;
+	public static fun values ()[Lio/github/corneloaie/firebase/remoteconfig/ValueSource;
 }
 
-public final class dev/gitlive/firebase/remoteconfig/android {
-	public static final fun getAndroid (Ldev/gitlive/firebase/remoteconfig/FirebaseRemoteConfig;)Lcom/google/firebase/remoteconfig/FirebaseRemoteConfig;
+public final class io/github/corneloaie/firebase/remoteconfig/android {
+	public static final fun getAndroid (Lio/github/corneloaie/firebase/remoteconfig/FirebaseRemoteConfig;)Lcom/google/firebase/remoteconfig/FirebaseRemoteConfig;
 }
 

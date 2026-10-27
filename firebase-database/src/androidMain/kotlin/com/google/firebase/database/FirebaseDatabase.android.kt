@@ -6,7 +6,7 @@ package com.google.firebase.database
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
-import dev.gitlive.firebase.database.stub
+import io.github.corneloaie.firebase.database.stub
 
 /*
  * Header stubs for com.google.firebase:firebase-database (see buildSrc utils/HeaderStubs.kt): compiled against,

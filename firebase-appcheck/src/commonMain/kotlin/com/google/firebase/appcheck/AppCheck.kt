@@ -3,7 +3,7 @@
  */
 
 // The facade name of the Android SDK's Kotlin extensions: on Android this stub is stripped, and the shipped
-// dev.gitlive code that calls these functions binds to the SDK's FirebaseAppCheckKt.
+// Kotlin-first code that calls these functions binds to the SDK's FirebaseAppCheckKt.
 @file:JvmName("FirebaseAppCheckKt")
 
 package com.google.firebase.appcheck

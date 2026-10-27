@@ -4,7 +4,7 @@
 
 package com.google.firebase.appdistribution
 
-import dev.gitlive.firebase.UnsupportedOnApple
+import io.github.corneloaie.firebase.UnsupportedOnApple
 
 /** Does nothing: the iOS SDK has no in-app feedback. */
 @UnsupportedOnApple

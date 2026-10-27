@@ -8,7 +8,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.appcheck.AppCheckProvider
 import com.google.firebase.appcheck.AppCheckProviderFactory
 import com.google.firebase.appcheck.unavailableProvider
-import dev.gitlive.firebase.UnsupportedOnJs
+import io.github.corneloaie.firebase.UnsupportedOnJs
 
 /** Play Integrity is an Android API: the provider fails every token request on JS. */
 public actual class PlayIntegrityAppCheckProviderFactory @UnsupportedOnJs actual constructor() : AppCheckProviderFactory {

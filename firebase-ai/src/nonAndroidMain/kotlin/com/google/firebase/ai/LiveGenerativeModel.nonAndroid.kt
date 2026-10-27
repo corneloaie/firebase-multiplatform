@@ -13,12 +13,12 @@ import com.google.firebase.ai.type.PublicPreviewAPI
 import com.google.firebase.ai.type.RequestOptions
 import com.google.firebase.ai.type.SessionResumptionConfig
 import com.google.firebase.ai.type.Tool
-import dev.gitlive.firebase.ai.internal.NativeAI
-import dev.gitlive.firebase.ai.internal.NativeLiveSession
-import dev.gitlive.firebase.ai.internal.NativeRequestOptions
-import dev.gitlive.firebase.ai.internal.catchAsync
-import dev.gitlive.firebase.ai.internal.executeAutoFunction
-import dev.gitlive.firebase.ai.internal.liveSetup
+import io.github.corneloaie.firebase.ai.internal.NativeAI
+import io.github.corneloaie.firebase.ai.internal.NativeLiveSession
+import io.github.corneloaie.firebase.ai.internal.NativeRequestOptions
+import io.github.corneloaie.firebase.ai.internal.catchAsync
+import io.github.corneloaie.firebase.ai.internal.executeAutoFunction
+import io.github.corneloaie.firebase.ai.internal.liveSetup
 
 @PublicPreviewAPI
 public actual class LiveGenerativeModel internal constructor(

@@ -6,10 +6,10 @@ package com.google.firebase.functions
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
-import dev.gitlive.firebase.functions.GET_HTTPS_CALLABLE_FROM_URL_JVM_ONLY
-import dev.gitlive.firebase.functions.SET_TIMEOUT_JVM_ONLY
-import dev.gitlive.firebase.functions.WITH_TIMEOUT_JVM_ONLY
-import dev.gitlive.firebase.functions.stub
+import io.github.corneloaie.firebase.functions.GET_HTTPS_CALLABLE_FROM_URL_JVM_ONLY
+import io.github.corneloaie.firebase.functions.SET_TIMEOUT_JVM_ONLY
+import io.github.corneloaie.firebase.functions.WITH_TIMEOUT_JVM_ONLY
+import io.github.corneloaie.firebase.functions.stub
 
 /*
  * Header stubs for com.google.firebase:firebase-functions (see buildSrc utils/HeaderStubs.kt): compiled against,

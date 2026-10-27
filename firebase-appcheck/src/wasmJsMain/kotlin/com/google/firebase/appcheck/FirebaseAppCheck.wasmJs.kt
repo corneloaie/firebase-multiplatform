@@ -12,24 +12,24 @@ import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.appcheck.debug.DebugAppCheckProviderFactory
 import com.google.firebase.appcheck.recaptcha.RecaptchaAppCheckProviderFactory
-import dev.gitlive.firebase.appcheck.ReCaptchaV3ProviderFactory
-import dev.gitlive.firebase.appcheck.externals.AppCheck
-import dev.gitlive.firebase.appcheck.externals.AppCheckTokenResult
-import dev.gitlive.firebase.appcheck.externals.CustomProvider
-import dev.gitlive.firebase.appcheck.externals.ReCaptchaEnterpriseProvider
-import dev.gitlive.firebase.appcheck.externals.ReCaptchaV3Provider
-import dev.gitlive.firebase.externals.errorCode
-import dev.gitlive.firebase.externals.jsGet
-import dev.gitlive.firebase.externals.json
-import dev.gitlive.firebase.externals.toKotlin
+import io.github.corneloaie.firebase.appcheck.ReCaptchaV3ProviderFactory
+import io.github.corneloaie.firebase.appcheck.externals.AppCheck
+import io.github.corneloaie.firebase.appcheck.externals.AppCheckTokenResult
+import io.github.corneloaie.firebase.appcheck.externals.CustomProvider
+import io.github.corneloaie.firebase.appcheck.externals.ReCaptchaEnterpriseProvider
+import io.github.corneloaie.firebase.appcheck.externals.ReCaptchaV3Provider
+import io.github.corneloaie.firebase.externals.errorCode
+import io.github.corneloaie.firebase.externals.jsGet
+import io.github.corneloaie.firebase.externals.json
+import io.github.corneloaie.firebase.externals.toKotlin
 import kotlin.js.JsException
 import kotlin.js.Promise
-import dev.gitlive.firebase.appcheck.externals.AppCheckProvider as JsAppCheckProvider
-import dev.gitlive.firebase.appcheck.externals.getLimitedUseToken as jsGetLimitedUseToken
-import dev.gitlive.firebase.appcheck.externals.getToken as jsGetToken
-import dev.gitlive.firebase.appcheck.externals.initializeAppCheck as jsInitializeAppCheck
-import dev.gitlive.firebase.appcheck.externals.onTokenChanged as jsOnTokenChanged
-import dev.gitlive.firebase.appcheck.externals.setTokenAutoRefreshEnabled as jsSetTokenAutoRefreshEnabled
+import io.github.corneloaie.firebase.appcheck.externals.AppCheckProvider as JsAppCheckProvider
+import io.github.corneloaie.firebase.appcheck.externals.getLimitedUseToken as jsGetLimitedUseToken
+import io.github.corneloaie.firebase.appcheck.externals.getToken as jsGetToken
+import io.github.corneloaie.firebase.appcheck.externals.initializeAppCheck as jsInitializeAppCheck
+import io.github.corneloaie.firebase.appcheck.externals.onTokenChanged as jsOnTokenChanged
+import io.github.corneloaie.firebase.appcheck.externals.setTokenAutoRefreshEnabled as jsSetTokenAutoRefreshEnabled
 
 public actual abstract class FirebaseAppCheck actual constructor() {
     public actual abstract fun installAppCheckProviderFactory(factory: AppCheckProviderFactory)

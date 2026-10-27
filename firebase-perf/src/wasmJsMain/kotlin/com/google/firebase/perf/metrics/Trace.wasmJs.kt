@@ -5,10 +5,10 @@
 package com.google.firebase.perf.metrics
 
 import com.google.firebase.perf.rethrow
-import dev.gitlive.firebase.perf.externals.PerformanceTrace
-import dev.gitlive.firebase.externals.jsObjectEntries
-import dev.gitlive.firebase.externals.toKotlin
-import dev.gitlive.firebase.externals.toList
+import io.github.corneloaie.firebase.perf.externals.PerformanceTrace
+import io.github.corneloaie.firebase.externals.jsObjectEntries
+import io.github.corneloaie.firebase.externals.toKotlin
+import io.github.corneloaie.firebase.externals.toList
 
 /** @property js The underlying Firebase JS SDK object. */
 public actual class Trace internal constructor(public val js: PerformanceTrace) {

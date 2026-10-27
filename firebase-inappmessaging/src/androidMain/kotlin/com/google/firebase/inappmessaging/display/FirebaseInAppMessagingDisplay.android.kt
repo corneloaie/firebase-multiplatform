@@ -6,7 +6,7 @@ package com.google.firebase.inappmessaging.display
 
 import com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplayCallbacks
 import com.google.firebase.inappmessaging.model.InAppMessage
-import dev.gitlive.firebase.inappmessaging.stub
+import io.github.corneloaie.firebase.inappmessaging.stub
 
 /*
  * Header stub for com.google.firebase:firebase-inappmessaging-display (see buildSrc utils/HeaderStubs.kt). The real

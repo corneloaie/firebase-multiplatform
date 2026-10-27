@@ -5,7 +5,7 @@
 package com.google.firebase.analytics
 
 import android.os.Bundle
-import dev.gitlive.firebase.analytics.internal.toBundle
+import io.github.corneloaie.firebase.analytics.internal.toBundle
 
 /** The parameters of an event logged with [logEvent], mirroring `com.google.firebase.analytics.ParametersBuilder`. */
 public class ParametersBuilder {

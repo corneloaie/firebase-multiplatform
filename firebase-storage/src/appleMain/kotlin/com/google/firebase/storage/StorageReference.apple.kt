@@ -4,15 +4,15 @@
 
 package com.google.firebase.storage
 
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageMetadata
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageReference
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageTaskSnapshot
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageTaskStatusFailure
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageTaskStatusPause
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageTaskStatusProgress
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageTaskStatusResume
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageTaskStatusSuccess
-import swiftPMImport.dev.gitlive.firebase.storage.FIRStorageUploadTask
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageMetadata
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageReference
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageTaskSnapshot
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageTaskStatusFailure
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageTaskStatusPause
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageTaskStatusProgress
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageTaskStatusResume
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageTaskStatusSuccess
+import swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageUploadTask
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.TaskCompletionSource
 import kotlinx.cinterop.addressOf
@@ -160,7 +160,7 @@ internal fun NSData.toByteArray(): ByteArray = ByteArray(length.toInt()).apply {
     if (isNotEmpty()) usePinned { memcpy(it.addressOf(0), bytes, length) }
 }
 
-internal fun swiftPMImport.dev.gitlive.firebase.storage.FIRStorageListResult.toCompat(): ListResult = ListResult(
+internal fun swiftPMImport.io.github.corneloaie.firebase.storage.FIRStorageListResult.toCompat(): ListResult = ListResult(
     items = items().map { StorageReference(it as FIRStorageReference) },
     prefixes = prefixes().map { StorageReference(it as FIRStorageReference) },
     pageToken = pageToken(),

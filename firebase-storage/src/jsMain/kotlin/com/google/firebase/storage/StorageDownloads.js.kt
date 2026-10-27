@@ -4,7 +4,7 @@
 
 package com.google.firebase.storage
 
-import dev.gitlive.firebase.UnsupportedOnJs
+import io.github.corneloaie.firebase.UnsupportedOnJs
 
 internal const val FILE_DOWNLOADS_UNSUPPORTED_ON_JS = "The Firebase JS SDK downloads through URLs, not to files: use getBytes or getDownloadUrl"
 

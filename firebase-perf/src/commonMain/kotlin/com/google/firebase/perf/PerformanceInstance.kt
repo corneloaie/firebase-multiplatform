@@ -8,6 +8,6 @@ import com.google.firebase.FirebaseApp
 
 /**
  * The [FirebasePerformance] of [app]. The Android SDK creates one per app through its component runtime, which the
- * `dev.gitlive` wrapper's `Firebase.performance(app)` exposes; the other SDKs have a single instance.
+ * Kotlin-first wrapper's `Firebase.performance(app)` exposes; the other SDKs have a single instance.
  */
 internal expect fun performanceOf(app: FirebaseApp): FirebasePerformance

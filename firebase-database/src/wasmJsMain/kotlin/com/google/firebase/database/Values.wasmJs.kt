@@ -4,14 +4,14 @@
 
 package com.google.firebase.database
 
-import dev.gitlive.firebase.externals.asJsArray
-import dev.gitlive.firebase.externals.jsGet
-import dev.gitlive.firebase.externals.jsIsArray
-import dev.gitlive.firebase.externals.jsObjectKeys
-import dev.gitlive.firebase.externals.jsTypeOf
-import dev.gitlive.firebase.externals.toKotlin
-import dev.gitlive.firebase.externals.toKotlinString
-import dev.gitlive.firebase.externals.toList
+import io.github.corneloaie.firebase.externals.asJsArray
+import io.github.corneloaie.firebase.externals.jsGet
+import io.github.corneloaie.firebase.externals.jsIsArray
+import io.github.corneloaie.firebase.externals.jsObjectKeys
+import io.github.corneloaie.firebase.externals.jsTypeOf
+import io.github.corneloaie.firebase.externals.toKotlin
+import io.github.corneloaie.firebase.externals.toKotlinString
+import io.github.corneloaie.firebase.externals.toList
 import kotlin.math.abs
 import kotlin.math.floor
 
@@ -20,7 +20,7 @@ private const val MAX_EXACT_INTEGER = 9007199254740992.0
 /*
  * The JS SDK reads and writes plain JS values; the layer presents them as the natural Kotlin types the Android SDK
  * uses (Map, List, String, Boolean, Long, Double), integral numbers reading as Long like the Android SDK's. Kotlin values
- * are written with the shared `toJs()` (dev.gitlive.firebase.externals), which converts them as the JS layer does: maps
+ * are written with the shared `toJs()` (io.github.corneloaie.firebase.externals), which converts them as the JS layer does: maps
  * become objects, collections arrays, longs numbers.
  */
 

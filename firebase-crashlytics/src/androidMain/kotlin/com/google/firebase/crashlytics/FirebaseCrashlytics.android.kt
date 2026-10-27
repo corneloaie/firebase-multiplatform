@@ -5,7 +5,7 @@
 package com.google.firebase.crashlytics
 
 import com.google.android.gms.tasks.Task
-import dev.gitlive.firebase.crashlytics.stub
+import io.github.corneloaie.firebase.crashlytics.stub
 
 /*
  * Header stubs for com.google.firebase:firebase-crashlytics (see buildSrc utils/HeaderStubs.kt): compiled against,

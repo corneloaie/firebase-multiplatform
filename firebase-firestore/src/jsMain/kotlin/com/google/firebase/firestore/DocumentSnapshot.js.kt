@@ -5,13 +5,13 @@
 package com.google.firebase.firestore
 
 import com.google.firebase.Timestamp
-import dev.gitlive.firebase.firestore.externals.snapshotEqual
+import io.github.corneloaie.firebase.firestore.externals.snapshotEqual
 import kotlin.js.Json
 import kotlin.js.json
-import dev.gitlive.firebase.firestore.externals.DocumentChange as JsDocumentChange
-import dev.gitlive.firebase.firestore.externals.DocumentSnapshot as JsDocumentSnapshot
-import dev.gitlive.firebase.firestore.externals.QuerySnapshot as JsQuerySnapshot
-import dev.gitlive.firebase.firestore.externals.SnapshotMetadata as JsSnapshotMetadata
+import io.github.corneloaie.firebase.firestore.externals.DocumentChange as JsDocumentChange
+import io.github.corneloaie.firebase.firestore.externals.DocumentSnapshot as JsDocumentSnapshot
+import io.github.corneloaie.firebase.firestore.externals.QuerySnapshot as JsQuerySnapshot
+import io.github.corneloaie.firebase.firestore.externals.SnapshotMetadata as JsSnapshotMetadata
 
 private fun DocumentSnapshot.ServerTimestampBehavior.toJs(): Json = json("serverTimestamps" to name.lowercase())
 
@@ -91,7 +91,7 @@ public actual open class DocumentSnapshot internal constructor(public open val j
     public actual fun getMinKey(field: String): MinKey? = cast(field, get(field))
     public actual fun getRegexValue(field: String): RegexValue? = cast(field, get(field))
 
-    /** The data as the JS SDK reads it with the leaves as the layer's value types, which the dev.gitlive layer's decoders take. */
+    /** The data as the JS SDK reads it with the leaves as the layer's value types, which the Kotlin-first layer's decoders take. */
     internal fun nativeData(serverTimestampBehavior: ServerTimestampBehavior): Any? = rethrow { js.data(serverTimestampBehavior.toJs()) }.toCompatLeaves()
 
     internal fun nativeGet(field: String, serverTimestampBehavior: ServerTimestampBehavior): Any? = rethrow { js.get(field, serverTimestampBehavior.toJs()) }.toCompatLeaves()

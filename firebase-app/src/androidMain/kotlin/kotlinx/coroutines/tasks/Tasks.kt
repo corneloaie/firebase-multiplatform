@@ -5,7 +5,7 @@
 package kotlinx.coroutines.tasks
 
 import com.google.android.gms.tasks.Task
-import dev.gitlive.firebase.stub
+import io.github.corneloaie.firebase.stub
 
 /*
  * Header stub for kotlinx-coroutines-play-services' `TasksKt.await` (see buildSrc utils/HeaderStubs.kt): compiled

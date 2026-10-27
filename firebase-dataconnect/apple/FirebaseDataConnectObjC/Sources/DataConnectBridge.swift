@@ -20,7 +20,7 @@ import Foundation
 @objc(FDCBridge)
 public final class DataConnectBridge: NSObject {
   /// The domain of the errors the bridge reports.
-  @objc public static let errorDomain = "dev.gitlive.firebase.dataconnect"
+  @objc public static let errorDomain = "io.github.corneloaie.firebase.dataconnect"
 
   private let dataConnect: DataConnect
 

@@ -4,7 +4,7 @@
 
 This is a **Kotlin-first, multiplatform SDK for Firebase**. It wraps the official Firebase platform SDKs (Android, iOS, JS, JVM) behind a unified Kotlin common API, enabling Firebase to be used directly from shared Kotlin Multiplatform (KMP) source sets targeting **Android**, **iOS**, **Desktop (JVM)**, and **Web (JS and Wasm)**.
 
-All modules are published under the `io.github.corneloaie` group ID (e.g. `io.github.corneloaie:firebase-firestore`); the Gradle `group` and the Kotlin packages stay `dev.gitlive`, see `buildSrc/src/main/kotlin/fork/Fork.kt`.
+All modules are published under the `io.github.corneloaie` group ID (e.g. `io.github.corneloaie:firebase-firestore`), which is also the Gradle `group` (`buildSrc/src/main/kotlin/fork/Fork.kt`). The Kotlin-first API lives in `io.github.corneloaie.firebase.*`.
 
 ---
 
@@ -48,7 +48,7 @@ These principles **must** be followed in all new and modified code.
 
 ### 1. Suspend functions instead of callbacks or Tasks
 
-Async operations that return a single value use `suspend fun`. Never use callbacks, `Task`, `Promise`, or listener patterns in the `dev.gitlive.firebase` API in `commonMain` (the `com.google.firebase` source-compatibility layer described under "API Compatibility Goal" is the exception: it mirrors the Android SDK's `Task` and listeners exactly).
+Async operations that return a single value use `suspend fun`. Never use callbacks, `Task`, `Promise`, or listener patterns in the `io.github.corneloaie.firebase` API in `commonMain` (the `com.google.firebase` source-compatibility layer described under "API Compatibility Goal" is the exception: it mirrors the Android SDK's `Task` and listeners exactly).
 
 ```kotlin
 // ✅ Correct
@@ -138,7 +138,7 @@ The SDK has two public API layers per module:
    annotated `@Deprecated(level = DeprecationLevel.ERROR)`: the verifier skips it because it cannot be called, so an
    Android-only member (`FirebaseApp.initializeApp(Context)`, `FirebaseOptions.fromResource`, `Timestamp(Date)`) can be mirrored
    with the platform type widened to `Any` and a message naming the multiplatform replacement (messages live in
-   `firebase-app/src/commonMain/kotlin/dev/gitlive/firebase/AndroidOnlyApi.kt`); Android code still binds to the real member.
+   `firebase-app/src/commonMain/kotlin/io/github/corneloaie/firebase/AndroidOnlyApi.kt`); Android code still binds to the real member.
    When the replacement is a static member that only needs its `Context` widened, it moves onto `Firebase` under the same
    name as a shipped top-level function (`Firebase.getApps(context)`, `Firebase.fromResource(context)`, next to
    `Firebase.initialize` in `Initialize.kt`), calling the real static through the Java helper on Android. JVM-only types
@@ -156,11 +156,11 @@ The SDK has two public API layers per module:
    verified against Android only.
    - An Android API that cannot be mapped onto a platform and has no replacement to point at is **omitted** on purpose so
      callers get a compile error and adapt.
-   - An API that maps onto Android, JVM and Apple but not JS/wasmJs is still declared in common; its JS and wasmJs actuals do nothing (or fail where they must return a value) and carry `@dev.gitlive.firebase.UnsupportedOnJs`, an opt-in marker that warns at call sites compiled for JS only.
+   - An API that maps onto Android, JVM and Apple but not JS/wasmJs is still declared in common; its JS and wasmJs actuals do nothing (or fail where they must return a value) and carry `@io.github.corneloaie.firebase.UnsupportedOnJs`, an opt-in marker that warns at call sites compiled for JS only.
    - **This fork goes further:** every Android SDK member is declared in common unless its signature needs an Android/JVM-only
      type (`@platform` below). Where a platform's SDK lacks it, that platform's actual does nothing, or throws
      `UnsupportedOperationException` where it must return a value, and carries the opt-in marker for it:
-     `@dev.gitlive.firebase.UnsupportedOnJs` (js and wasmJs) or `@dev.gitlive.firebase.UnsupportedOnApple` (iOS, macOS,
+     `@io.github.corneloaie.firebase.UnsupportedOnJs` (js and wasmJs) or `@io.github.corneloaie.firebase.UnsupportedOnApple` (iOS, macOS,
      tvOS). Android-only features are declared the same way (Play Games sign-in, Play Integrity). `@unavailable` marks only
      work not done yet.
    - `firebase-firestore` shows the largest surface done as plain common code: the pipeline API
@@ -180,7 +180,7 @@ The SDK has two public API layers per module:
      Android/JVM-only type with no replacement, such as `Parcel`) or `@unavailable` (the feature does not exist in the
      pinned iOS or JS SDK), which drops them from the count; a single overload
      is selected with `Class#member(Type, Type)`.
-2. **`dev.gitlive.firebase.*` (Kotlin-first layer)** — the existing API, implemented in `commonMain` *on top of* the
+2. **`io.github.corneloaie.firebase.*` (Kotlin-first layer)** — the existing API, implemented in `commonMain` *on top of* the
    `com.google.firebase` layer (suspend functions instead of `Task`, `Flow` instead of listeners, default arguments instead of
    builders). New modules are migrated to this structure one at a time; `firebase-app`, `firebase-installations`, `firebase-crashlytics`, `firebase-config`, `firebase-functions`, `firebase-perf`, `firebase-messaging`, `firebase-analytics`, `firebase-storage`, `firebase-database`, `firebase-firestore`, `firebase-auth`, `firebase-appcheck`, `firebase-appdistribution`, `firebase-inappmessaging` and `firebase-pnv` are the reference.
    `firebase-ai` follows `firebase-dataconnect`: the AI Logic Android SDK's API is coroutine- and Flow-based, so the
@@ -189,7 +189,7 @@ The SDK has two public API layers per module:
    the REST API with the platform SDK: `firebase/ai` on JS and wasmJs, and on Apple the Swift-only FirebaseAILogic through
    the Objective-C wrapper Swift package in `firebase-ai/apple`. There is no JVM target.
    `firebase-dataconnect` shows a module whose Android SDK API is already coroutine- and kotlinx-serialization-based, so it is
-   used as is from common code with almost no `dev.gitlive` layer: the `com.google.firebase.dataconnect` interfaces, value
+   used as is from common code with almost no Kotlin-first layer: the `com.google.firebase.dataconnect` interfaces, value
    types and serializers are plain common code (verified against the Android SDK and stripped on Android), and `nonAndroidMain`
    implements them over an `expect class NativeDataConnect` that exchanges JSON with the platform SDK: the JS SDK's
    `firebase/data-connect` on JS and wasmJs, and on Apple the Swift-only iOS SDK through the Objective-C wrapper Swift package in
@@ -206,8 +206,8 @@ The SDK has two public API layers per module:
    classes too, the value types run everywhere (plain common code, or a `nonAndroidMain` actual), the operations' Apple, JS
    and wasmJs actuals fail with `UnsupportedOperationException`, and there is no JVM target.
 
-When adding to the `dev.gitlive` layer, keep matching class, function and parameter names from the Android SDK; the
-`com.google.firebase` layer takes the exact Android shape, the `dev.gitlive` layer the Kotlin-idiomatic one.
+When adding to the Kotlin-first layer, keep matching class, function and parameter names from the Android SDK; the
+`com.google.firebase` layer takes the exact Android shape, the Kotlin-first layer the Kotlin-idiomatic one.
 
 ---
 
@@ -220,7 +220,7 @@ Each wrapper class exposes the underlying native SDK object via extension proper
 - `.js` — Firebase JS SDK object
 
 These are only accessible from the respective platform source sets. Do **not** use them in `commonMain`.
-Migrated modules additionally expose `.compat`, the `com.google.firebase` object a `dev.gitlive` wrapper is built on, from `commonMain`.
+Migrated modules additionally expose `.compat`, the `com.google.firebase` object a Kotlin-first wrapper is built on, from `commonMain`.
 
 ---
 
@@ -245,7 +245,7 @@ Migrated modules additionally expose `.compat`, the `com.google.firebase` object
 
 - Every **public** class, function, and property must have **KDoc**.
 - Use [`@param`](https://kotlinlang.org/docs/kotlin-doc.html#param-name), [`@return`](https://kotlinlang.org/docs/kotlin-doc.html#return), and [`@throws`](https://kotlinlang.org/docs/kotlin-doc.html#throws-exception) tags where applicable.
-- Published docs live at [gitliveapp.github.io/firebase-kotlin-sdk](https://gitliveapp.github.io/firebase-kotlin-sdk/).
+- Published docs live at [corneloaie.github.io/firebase-multiplatform](https://corneloaie.github.io/firebase-multiplatform/).
 
 ---
 
