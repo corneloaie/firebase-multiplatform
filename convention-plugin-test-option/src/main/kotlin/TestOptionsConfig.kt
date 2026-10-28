@@ -1,7 +1,5 @@
-import com.android.build.api.dsl.ManagedVirtualDevice
 import com.android.build.api.dsl.TestOptions
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.provideDelegate
 
 fun TestOptions.configureTestOptions(project: Project) {
@@ -24,10 +22,7 @@ fun TestOptions.configureTestOptions(project: Project) {
         }
     }
     animationsDisabled = true
-    emulatorSnapshots {
-        enableForTestFailures = false
-    }
-    managedDevices.devices.create<ManagedVirtualDevice>("gradleManagedDevice") {
+    managedDevices.localDevices.create("gradleManagedDevice") {
         device = "Pixel 2"
         apiLevel = 33
         systemImageSource = "google-atd"
