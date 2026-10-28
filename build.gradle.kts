@@ -9,6 +9,7 @@ import org.jetbrains.dokka.gradle.AbstractDokkaTask
 import org.jetbrains.dokka.gradle.DokkaTaskPartial
 import java.net.URL
 import java.io.InputStream
+import javax.inject.Inject
 
 plugins {
     id("com.android.application") apply false // provided by buildSrc
@@ -184,7 +185,13 @@ tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 }
 // check for latest dependencies - ./gradlew dependencyUpdates -Drevision=release
 
+// Gradle 9 removed Project.exec: tasks run processes through an injected ExecOperations.
+interface InjectedExecOperations {
+    @get:Inject val execOperations: ExecOperations
+}
+
 tasks.register("devRunAllTests") {
+    val execOperations = objects.newInstance<InjectedExecOperations>().execOperations
     doLast {
         val gradleTasks = mutableListOf<List<String>>()
         gradleTasks.addAll(EmulatorJobsMatrix().getJvmTestTaskList(rootProject = rootProject))
@@ -194,7 +201,7 @@ tasks.register("devRunAllTests") {
         gradleTasks.add(listOf("ciSdkManagerLicenses"))
         gradleTasks.addAll(EmulatorJobsMatrix().getEmulatorTaskList(rootProject = rootProject))
         gradleTasks.forEach {
-            exec {
+            execOperations.exec {
                 executable = File(
                     project.rootDir,
                     if (Os.isFamily(Os.FAMILY_WINDOWS)) "gradlew.bat" else "gradlew",
@@ -223,6 +230,7 @@ tasks.register("ciJobsMatrixSetup") {
 }
 
 tasks.register("ciSdkManagerLicenses") {
+    val execOperations = objects.newInstance<InjectedExecOperations>().execOperations
     doLast {
         val sdkDirPath = getAndroidSdkPath(rootDir = rootDir)
         getSdkmanagerFile(rootDir = rootDir)?.let { sdkmanagerFile ->
@@ -231,12 +239,12 @@ tasks.register("ciSdkManagerLicenses") {
                 private var counter = 0
                 override fun read(): Int = yesString[counter % 2].also { counter++ }.code
             }
-            exec {
+            execOperations.exec {
                 executable = sdkmanagerFile.absolutePath
                 args = listOf("--list", "--sdk_root=$sdkDirPath")
                 println("exec: ${this.commandLine.joinToString(separator = " ")}")
             }.apply { println("ExecResult: $this") }
-            exec {
+            execOperations.exec {
                 executable = sdkmanagerFile.absolutePath
                 args = listOf("--licenses", "--sdk_root=$sdkDirPath")
                 standardInput = yesInputStream
