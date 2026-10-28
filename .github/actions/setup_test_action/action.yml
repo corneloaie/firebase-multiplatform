@@ -5,7 +5,7 @@ runs:
   using: "composite"
   steps:
     - name: Set up JDK
-      uses: actions/setup-java@v5
+      uses: actions/setup-java@v6
       with:
         distribution: 'temurin'
         java-version: '21'
@@ -23,10 +23,10 @@ runs:
       run: npm update
 
     - name: Gradle cache
-      uses: gradle/actions/setup-gradle@v4
+      uses: gradle/actions/setup-gradle@v6
 
     - name: Kotlin/Native cache
-      uses: actions/cache@v5
+      uses: actions/cache@v6
       with:
         path: ~/.konan
         key: konan-${{ runner.os }}-${{ hashFiles('gradle/libs.versions.toml') }}
@@ -34,7 +34,7 @@ runs:
           konan-${{ runner.os }}-
 
     - name: Firebase emulator cache
-      uses: actions/cache@v5
+      uses: actions/cache@v6
       with:
         path: ~/.cache/firebase/emulators
         key: firebase-emulators-${{ runner.os }}-${{ hashFiles('test/firebase.json') }}
