@@ -13,10 +13,6 @@
 # GitLive's #855 introduced and then reverted the bump.
 kotlinx-coroutines  <1.11   Wasm/JS Promise rejection regression (Kotlin/kotlinx.coroutines#4678)
 
-# dokka 2.2.0 rejects two source sets sharing a source root, and the modules whose jvmMain adds
-# kotlin.srcDir("src/androidMain/kotlin") do exactly that, so dokkaGeneratePublicationHtml fails during publishing.
-dokka               <2.2    rejects the android/jvm shared source roots (Kotlin/dokka#3701)
-
 # Publishing tooling: pull request CI never runs it (dokka 2.2 passed every check and broke the release), so a bump
 # needs a Publish dry run on its branch (gh workflow run publish.yml --ref <branch>) before it merges.
 dokka               hold    publishing only: needs a Publish dry run, which the routine never starts

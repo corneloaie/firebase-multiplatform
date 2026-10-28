@@ -2,12 +2,9 @@ import fork.applyFork
 import org.apache.tools.ant.taskdefs.condition.Os
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
-import org.jetbrains.dokka.DokkaConfiguration
-import org.jetbrains.dokka.base.DokkaBase
-import org.jetbrains.dokka.base.DokkaBaseConfiguration
-import org.jetbrains.dokka.gradle.AbstractDokkaTask
-import org.jetbrains.dokka.gradle.DokkaTaskPartial
-import java.net.URL
+import org.jetbrains.dokka.gradle.DokkaExtension
+import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
+import org.jetbrains.dokka.gradle.engine.plugins.DokkaHtmlPluginParameters
 import java.io.InputStream
 import javax.inject.Inject
 
@@ -24,12 +21,6 @@ plugins {
     id("testOptionsConvention")
 }
 
-buildscript {
-    dependencies {
-        classpath(libs.dokka.base)
-    }
-}
-
 val compileSdkVersion by extra(34)
 val targetSdkVersion by extra(34)
 val minSdkVersion by extra(24) // firebase-common 23 (BoM 35) requires 24
@@ -37,16 +28,24 @@ val minSdkVersion by extra(24) // firebase-common 23 (BoM 35) requires 24
 private val dokkaFooterMessage = "${fork.Fork.NAME}, Apache License 2.0. Based on " +
     "<a href=\"https://github.com/GitLiveApp/firebase-kotlin-sdk\">GitLive's firebase-kotlin-sdk</a>."
 private val dokkaHomepageUrl = fork.Fork.URL
+private val nonDocumentationList = listOf("test-utils", "firebase-common", "firebase-common-internal")
 
-tasks.withType<AbstractDokkaTask>().configureEach {
-    moduleVersion.set(project.version.toString())
-    moduleName.set(fork.Fork.NAME)
+// The API documentation site (./gradlew :dokkaGeneratePublicationHtml, written to build/dokka/html, see docs.yml),
+// aggregated from every documented module. The root project has no forkVersion of its own (applyFork sets it on the
+// modules), so it is read here.
+dokka {
+    moduleName = fork.Fork.NAME
+    moduleVersion = providers.gradleProperty("forkVersion")
 
-    pluginConfiguration<DokkaBase, DokkaBaseConfiguration> {
-        customAssets = listOf(file("documentation/homepage.svg"))
+    pluginsConfiguration.withType<DokkaHtmlPluginParameters>().configureEach {
+        customAssets.from("documentation/homepage.svg")
         footerMessage = dokkaFooterMessage
         homepageLink = dokkaHomepageUrl
     }
+}
+
+dependencies {
+    subprojects.filter { it.name !in nonDocumentationList }.forEach { dokka(it) }
 }
 
 subprojects {
@@ -63,35 +62,41 @@ subprojects {
         }
     }
 
-    val nonDocumentationList = listOf("test-utils", "firebase-common", "firebase-common-internal")
     val skipDocumentation = nonDocumentationList.contains(project.name)
     if (!skipDocumentation) {
         apply(plugin = "org.jetbrains.dokka")
-    }
 
-    this.tasks.withType<DokkaTaskPartial>().configureEach {
-        pluginConfiguration<DokkaBase, DokkaBaseConfiguration> {
-            footerMessage = dokkaFooterMessage
-            separateInheritedMembers = false
-            homepageLink = dokkaHomepageUrl
-        }
-        dokkaSourceSets {
-            configureEach {
-                documentedVisibilities.set(setOf(DokkaConfiguration.Visibility.PUBLIC))
-                includes.setFrom("documentation.md")
+        // Also the module's javadoc jar: the publish plugin builds it with dokkaGeneratePublicationHtml.
+        extensions.configure<DokkaExtension> {
+            pluginsConfiguration.withType<DokkaHtmlPluginParameters>().configureEach {
+                footerMessage = dokkaFooterMessage
+                separateInheritedMembers = false
+                homepageLink = dokkaHomepageUrl
+            }
+            dokkaSourceSets.configureEach {
+                documentedVisibilities.set(setOf(VisibilityModifier.Public))
+                includes.from("documentation.md")
 
                 sourceLink {
-                    localDirectory.set(projectDir.resolve("src"))
-                    remoteUrl.set(URL("$dokkaHomepageUrl/tree/main/${project.name}/src"))
+                    localDirectory = projectDir.resolve("src")
+                    remoteUrl("$dokkaHomepageUrl/tree/main/${project.name}/src")
                 }
             }
-            if (this.names.contains("jsMain")) {
-                named("jsMain") {
-                    perPackageOption {
-                        // External files for JS should not be documented since they will not be available
-                        matchingRegex.set(".*.externals.*")
-                        suppress.set(true)
-                    }
+            dokkaSourceSets.matching { it.name == "jsMain" }.configureEach {
+                perPackageOption {
+                    // External files for JS should not be documented since they will not be available
+                    matchingRegex = ".*.externals.*"
+                    suppress = true
+                }
+            }
+            // Dokka rejects two source sets sharing a source root (Kotlin/dokka#3701). Where jvmMain compiles
+            // androidMain's sources too (kotlin.srcDir("src/androidMain/kotlin"), or firebase-auth's
+            // src/androidJvmMain), they are documented once, under android, and jvmMain is left out: what it holds
+            // beyond them is internal Kotlin or package-private Java, which the documentation leaves out anyway.
+            dokkaSourceSets.matching { it.name == "jvmMain" }.configureEach {
+                suppress = provider {
+                    val androidSources = dokkaSourceSets.findByName("androidMain")?.sourceRoots?.files.orEmpty()
+                    sourceRoots.files.any { it in androidSources }
                 }
             }
         }
