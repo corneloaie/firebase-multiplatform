@@ -18,7 +18,6 @@ plugins {
     alias(libs.plugins.test.logger.plugin) apply false
     alias(libs.plugins.ben.manes.versions) apply false
     alias(libs.plugins.kotlinter) apply false
-    alias(libs.plugins.kotlinx.binarycompatibilityvalidator)
     alias(libs.plugins.dokka)
     alias(libs.plugins.publish) apply false
     id("base")
@@ -54,6 +53,15 @@ subprojects {
 
     // The group, version and POM (buildSrc/src/main/kotlin/fork/Fork.kt).
     applyFork()
+
+    // Binary compatibility: Kotlin's ABI validation keeps api/ (a dump per JVM-like target, api/android and api/jvm, and
+    // one KLib dump for the other targets) in step with the public API. updateKotlinAbi rewrites it, checkKotlinAbi compares.
+    plugins.withId("org.jetbrains.kotlin.multiplatform") {
+        extensions.configure<org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension> {
+            @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
+            abiValidation {}
+        }
+    }
 
     val nonDocumentationList = listOf("test-utils", "firebase-common", "firebase-common-internal")
     val skipDocumentation = nonDocumentationList.contains(project.name)
@@ -150,12 +158,15 @@ subprojects {
                     "jsTestImplementation"(kotlin("test-js"))
                 }
             }
-            "androidInstrumentedTestImplementation"(kotlin("test-junit"))
-            "androidUnitTestImplementation"(kotlin("test-junit"))
-            "androidInstrumentedTestImplementation"(libs.junit)
-            "androidInstrumentedTestImplementation"(libs.androidx.test.core)
-            "androidInstrumentedTestImplementation"(libs.androidx.test.junit)
-            "androidInstrumentedTestImplementation"(libs.androidx.test.runner)
+            // Modules without Android tests (test-utils) have no androidDeviceTest / androidHostTest configurations.
+            if (configurations.findByName("androidDeviceTestImplementation") != null) {
+                "androidDeviceTestImplementation"(kotlin("test-junit"))
+                "androidHostTestImplementation"(kotlin("test-junit"))
+                "androidDeviceTestImplementation"(libs.junit)
+                "androidDeviceTestImplementation"(libs.androidx.test.core)
+                "androidDeviceTestImplementation"(libs.androidx.test.junit)
+                "androidDeviceTestImplementation"(libs.androidx.test.runner)
+            }
         }
     }
 

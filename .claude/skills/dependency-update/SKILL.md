@@ -114,16 +114,13 @@ Never re-add Dependabot.
      - A catalog change makes that job dump every module's API, so run the same dumps:
 
        ```bash
-       tasks=""
+       tasks=()
        for d in */api; do
          m=${d%/api}
-         if [ -d "$m/api/android" ] || find "$m/api" -maxdepth 1 -name '*.api' | grep -q .; then
-           tasks="$tasks :${m}:androidApiDump"
-         fi
-         [ -d "$m/api/jvm" ] && tasks="$tasks :${m}:jvmApiDump"
-         [ -d "$m/api/android-sdk" ] && tasks="$tasks :${m}:androidSourceCompatDump"
+         tasks+=(":${m}:updateKotlinAbi")
+         [ -d "$m/api/android-sdk" ] && tasks+=(":${m}:androidSourceCompatDump")
        done
-       fmg $tasks
+       fmg "${tasks[@]}"
        ```
 
      - Commit what changed, naming the paths `git status --porcelain` lists, as `Deps: format and API dumps`.

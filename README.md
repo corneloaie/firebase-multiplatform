@@ -319,7 +319,7 @@ Enterprise edition, which runs pipelines), then for example
 Gradle-managed device in CI.
 
 Before committing a change to the public API:
-- run `./gradlew apiDump androidSourceCompatDump formatKotlin`;
+- run `./gradlew updateKotlinAbi androidSourceCompatDump formatKotlin`;
 - run `python3 .github/scripts/weekly/coverage.py --readme README.md`;
 - document every public declaration in KDoc.
 

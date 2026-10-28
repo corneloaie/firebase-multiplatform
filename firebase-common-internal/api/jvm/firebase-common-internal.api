@@ -4,7 +4,6 @@ public final class io/github/corneloaie/firebase/internal/AndroidEncodedObject {
 }
 
 public final class io/github/corneloaie/firebase/internal/DecodeSettingsImpl : io/github/corneloaie/firebase/DecodeSettings {
-	public fun <init> ()V
 	public fun getSerializersModule ()Lkotlinx/serialization/modules/SerializersModule;
 }
 

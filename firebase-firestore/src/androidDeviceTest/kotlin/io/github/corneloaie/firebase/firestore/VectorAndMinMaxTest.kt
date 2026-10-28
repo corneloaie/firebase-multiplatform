@@ -31,7 +31,7 @@ import kotlin.test.assertNull
 /*
  * Vector values and the minimum and maximum transforms of the `com.google.firebase.firestore` layer. firebase-java-sdk
  * has none of them, so these tests cannot compile for the JVM: they are in nonJvmTest for Apple and JS, and the same
- * file is in androidInstrumentedTest for Android, where VectorAndMinMaxValuesTest checks that this module's classes
+ * file is in androidDeviceTest for Android, where VectorAndMinMaxValuesTest checks that this module's classes
  * behave as the Android SDK's own.
  */
 

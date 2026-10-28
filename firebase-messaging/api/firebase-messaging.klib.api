@@ -1,0 +1,222 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, tvosArm64, tvosSimulatorArm64, wasmJs]
+// Alias: apple => [iosArm64, iosSimulatorArm64, iosX64, macosArm64, tvosArm64, tvosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-messaging>
+final class com.google.firebase.messaging/FirebaseMessaging { // com.google.firebase.messaging/FirebaseMessaging|null[0]
+    final var isAutoInitEnabled // com.google.firebase.messaging/FirebaseMessaging.isAutoInitEnabled|{}isAutoInitEnabled[0]
+        final fun <get-isAutoInitEnabled>(): kotlin/Boolean // com.google.firebase.messaging/FirebaseMessaging.isAutoInitEnabled.<get-isAutoInitEnabled>|<get-isAutoInitEnabled>(){}[0]
+        final fun <set-isAutoInitEnabled>(kotlin/Boolean) // com.google.firebase.messaging/FirebaseMessaging.isAutoInitEnabled.<set-isAutoInitEnabled>|<set-isAutoInitEnabled>(kotlin.Boolean){}[0]
+
+    final fun deleteToken(): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.messaging/FirebaseMessaging.deleteToken|deleteToken(){}[0]
+    final fun deliveryMetricsExportToBigQueryEnabled(): kotlin/Boolean // com.google.firebase.messaging/FirebaseMessaging.deliveryMetricsExportToBigQueryEnabled|deliveryMetricsExportToBigQueryEnabled(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.messaging/FirebaseMessaging.equals|equals(kotlin.Any?){}[0]
+    final fun getToken(): com.google.android.gms.tasks/Task<kotlin/String> // com.google.firebase.messaging/FirebaseMessaging.getToken|getToken(){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.messaging/FirebaseMessaging.hashCode|hashCode(){}[0]
+    final fun isNotificationDelegationEnabled(): kotlin/Boolean // com.google.firebase.messaging/FirebaseMessaging.isNotificationDelegationEnabled|isNotificationDelegationEnabled(){}[0]
+    final fun register(): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.messaging/FirebaseMessaging.register|register(){}[0]
+    final fun setDeliveryMetricsExportToBigQuery(kotlin/Boolean) // com.google.firebase.messaging/FirebaseMessaging.setDeliveryMetricsExportToBigQuery|setDeliveryMetricsExportToBigQuery(kotlin.Boolean){}[0]
+    final fun setNotificationDelegationEnabled(kotlin/Boolean): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.messaging/FirebaseMessaging.setNotificationDelegationEnabled|setNotificationDelegationEnabled(kotlin.Boolean){}[0]
+    final fun subscribeToTopic(kotlin/String): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.messaging/FirebaseMessaging.subscribeToTopic|subscribeToTopic(kotlin.String){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.messaging/FirebaseMessaging.toString|toString(){}[0]
+    final fun unregister(): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.messaging/FirebaseMessaging.unregister|unregister(){}[0]
+    final fun unsubscribeFromTopic(kotlin/String): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.messaging/FirebaseMessaging.unsubscribeFromTopic|unsubscribeFromTopic(kotlin.String){}[0]
+
+    final object Companion { // com.google.firebase.messaging/FirebaseMessaging.Companion|null[0]
+        final val INSTANCE_ID_SCOPE // com.google.firebase.messaging/FirebaseMessaging.Companion.INSTANCE_ID_SCOPE|{}INSTANCE_ID_SCOPE[0]
+            final fun <get-INSTANCE_ID_SCOPE>(): kotlin/String // com.google.firebase.messaging/FirebaseMessaging.Companion.INSTANCE_ID_SCOPE.<get-INSTANCE_ID_SCOPE>|<get-INSTANCE_ID_SCOPE>(){}[0]
+
+        final fun getInstance(): com.google.firebase.messaging/FirebaseMessaging // com.google.firebase.messaging/FirebaseMessaging.Companion.getInstance|getInstance(){}[0]
+    }
+
+    // Targets: [apple]
+    final val ios // com.google.firebase.messaging/FirebaseMessaging.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.messaging/FIRMessaging // com.google.firebase.messaging/FirebaseMessaging.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val js // com.google.firebase.messaging/FirebaseMessaging.js|{}js[0]
+        final fun <get-js>(): io.github.corneloaie.firebase.messaging.externals/Messaging // com.google.firebase.messaging/FirebaseMessaging.js.<get-js>|<get-js>(){}[0]
+}
+
+final class com.google.firebase.messaging/RemoteMessage { // com.google.firebase.messaging/RemoteMessage|null[0]
+    final val collapseKey // com.google.firebase.messaging/RemoteMessage.collapseKey|{}collapseKey[0]
+        final fun <get-collapseKey>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.collapseKey.<get-collapseKey>|<get-collapseKey>(){}[0]
+    final val data // com.google.firebase.messaging/RemoteMessage.data|{}data[0]
+        final fun <get-data>(): kotlin.collections/Map<kotlin/String, kotlin/String> // com.google.firebase.messaging/RemoteMessage.data.<get-data>|<get-data>(){}[0]
+    final val from // com.google.firebase.messaging/RemoteMessage.from|{}from[0]
+        final fun <get-from>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.from.<get-from>|<get-from>(){}[0]
+    final val messageId // com.google.firebase.messaging/RemoteMessage.messageId|{}messageId[0]
+        final fun <get-messageId>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.messageId.<get-messageId>|<get-messageId>(){}[0]
+    final val messageType // com.google.firebase.messaging/RemoteMessage.messageType|{}messageType[0]
+        final fun <get-messageType>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.messageType.<get-messageType>|<get-messageType>(){}[0]
+    final val notification // com.google.firebase.messaging/RemoteMessage.notification|{}notification[0]
+        final fun <get-notification>(): com.google.firebase.messaging/RemoteMessage.Notification? // com.google.firebase.messaging/RemoteMessage.notification.<get-notification>|<get-notification>(){}[0]
+    final val originalPriority // com.google.firebase.messaging/RemoteMessage.originalPriority|{}originalPriority[0]
+        final fun <get-originalPriority>(): kotlin/Int // com.google.firebase.messaging/RemoteMessage.originalPriority.<get-originalPriority>|<get-originalPriority>(){}[0]
+    final val priority // com.google.firebase.messaging/RemoteMessage.priority|{}priority[0]
+        final fun <get-priority>(): kotlin/Int // com.google.firebase.messaging/RemoteMessage.priority.<get-priority>|<get-priority>(){}[0]
+    final val senderId // com.google.firebase.messaging/RemoteMessage.senderId|{}senderId[0]
+        final fun <get-senderId>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.senderId.<get-senderId>|<get-senderId>(){}[0]
+    final val sentTime // com.google.firebase.messaging/RemoteMessage.sentTime|{}sentTime[0]
+        final fun <get-sentTime>(): kotlin/Long // com.google.firebase.messaging/RemoteMessage.sentTime.<get-sentTime>|<get-sentTime>(){}[0]
+    final val to // com.google.firebase.messaging/RemoteMessage.to|{}to[0]
+        final fun <get-to>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.to.<get-to>|<get-to>(){}[0]
+    final val ttl // com.google.firebase.messaging/RemoteMessage.ttl|{}ttl[0]
+        final fun <get-ttl>(): kotlin/Int // com.google.firebase.messaging/RemoteMessage.ttl.<get-ttl>|<get-ttl>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.messaging/RemoteMessage.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.messaging/RemoteMessage.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.messaging/RemoteMessage.toString|toString(){}[0]
+
+    open annotation class MessagePriority : kotlin/Annotation { // com.google.firebase.messaging/RemoteMessage.MessagePriority|null[0]
+        constructor <init>() // com.google.firebase.messaging/RemoteMessage.MessagePriority.<init>|<init>(){}[0]
+    }
+
+    final class Builder { // com.google.firebase.messaging/RemoteMessage.Builder|null[0]
+        constructor <init>(kotlin/String) // com.google.firebase.messaging/RemoteMessage.Builder.<init>|<init>(kotlin.String){}[0]
+
+        final fun addData(kotlin/String, kotlin/String?): com.google.firebase.messaging/RemoteMessage.Builder // com.google.firebase.messaging/RemoteMessage.Builder.addData|addData(kotlin.String;kotlin.String?){}[0]
+        final fun build(): com.google.firebase.messaging/RemoteMessage // com.google.firebase.messaging/RemoteMessage.Builder.build|build(){}[0]
+        final fun clearData(): com.google.firebase.messaging/RemoteMessage.Builder // com.google.firebase.messaging/RemoteMessage.Builder.clearData|clearData(){}[0]
+        final fun setCollapseKey(kotlin/String?): com.google.firebase.messaging/RemoteMessage.Builder // com.google.firebase.messaging/RemoteMessage.Builder.setCollapseKey|setCollapseKey(kotlin.String?){}[0]
+        final fun setData(kotlin.collections/Map<kotlin/String, kotlin/String>): com.google.firebase.messaging/RemoteMessage.Builder // com.google.firebase.messaging/RemoteMessage.Builder.setData|setData(kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+        final fun setMessageId(kotlin/String): com.google.firebase.messaging/RemoteMessage.Builder // com.google.firebase.messaging/RemoteMessage.Builder.setMessageId|setMessageId(kotlin.String){}[0]
+        final fun setMessageType(kotlin/String?): com.google.firebase.messaging/RemoteMessage.Builder // com.google.firebase.messaging/RemoteMessage.Builder.setMessageType|setMessageType(kotlin.String?){}[0]
+        final fun setTtl(kotlin/Int): com.google.firebase.messaging/RemoteMessage.Builder // com.google.firebase.messaging/RemoteMessage.Builder.setTtl|setTtl(kotlin.Int){}[0]
+    }
+
+    final class Notification { // com.google.firebase.messaging/RemoteMessage.Notification|null[0]
+        final val body // com.google.firebase.messaging/RemoteMessage.Notification.body|{}body[0]
+            final fun <get-body>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.Notification.body.<get-body>|<get-body>(){}[0]
+        final val bodyLocalizationArgs // com.google.firebase.messaging/RemoteMessage.Notification.bodyLocalizationArgs|{}bodyLocalizationArgs[0]
+            final fun <get-bodyLocalizationArgs>(): kotlin/Array<kotlin/String>? // com.google.firebase.messaging/RemoteMessage.Notification.bodyLocalizationArgs.<get-bodyLocalizationArgs>|<get-bodyLocalizationArgs>(){}[0]
+        final val bodyLocalizationKey // com.google.firebase.messaging/RemoteMessage.Notification.bodyLocalizationKey|{}bodyLocalizationKey[0]
+            final fun <get-bodyLocalizationKey>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.Notification.bodyLocalizationKey.<get-bodyLocalizationKey>|<get-bodyLocalizationKey>(){}[0]
+        final val channelId // com.google.firebase.messaging/RemoteMessage.Notification.channelId|{}channelId[0]
+            final fun <get-channelId>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.Notification.channelId.<get-channelId>|<get-channelId>(){}[0]
+        final val clickAction // com.google.firebase.messaging/RemoteMessage.Notification.clickAction|{}clickAction[0]
+            final fun <get-clickAction>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.Notification.clickAction.<get-clickAction>|<get-clickAction>(){}[0]
+        final val color // com.google.firebase.messaging/RemoteMessage.Notification.color|{}color[0]
+            final fun <get-color>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.Notification.color.<get-color>|<get-color>(){}[0]
+        final val defaultLightSettings // com.google.firebase.messaging/RemoteMessage.Notification.defaultLightSettings|{}defaultLightSettings[0]
+            final fun <get-defaultLightSettings>(): kotlin/Boolean // com.google.firebase.messaging/RemoteMessage.Notification.defaultLightSettings.<get-defaultLightSettings>|<get-defaultLightSettings>(){}[0]
+        final val defaultSound // com.google.firebase.messaging/RemoteMessage.Notification.defaultSound|{}defaultSound[0]
+            final fun <get-defaultSound>(): kotlin/Boolean // com.google.firebase.messaging/RemoteMessage.Notification.defaultSound.<get-defaultSound>|<get-defaultSound>(){}[0]
+        final val defaultVibrateSettings // com.google.firebase.messaging/RemoteMessage.Notification.defaultVibrateSettings|{}defaultVibrateSettings[0]
+            final fun <get-defaultVibrateSettings>(): kotlin/Boolean // com.google.firebase.messaging/RemoteMessage.Notification.defaultVibrateSettings.<get-defaultVibrateSettings>|<get-defaultVibrateSettings>(){}[0]
+        final val eventTime // com.google.firebase.messaging/RemoteMessage.Notification.eventTime|{}eventTime[0]
+            final fun <get-eventTime>(): kotlin/Long? // com.google.firebase.messaging/RemoteMessage.Notification.eventTime.<get-eventTime>|<get-eventTime>(){}[0]
+        final val icon // com.google.firebase.messaging/RemoteMessage.Notification.icon|{}icon[0]
+            final fun <get-icon>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.Notification.icon.<get-icon>|<get-icon>(){}[0]
+        final val lightSettings // com.google.firebase.messaging/RemoteMessage.Notification.lightSettings|{}lightSettings[0]
+            final fun <get-lightSettings>(): kotlin/IntArray? // com.google.firebase.messaging/RemoteMessage.Notification.lightSettings.<get-lightSettings>|<get-lightSettings>(){}[0]
+        final val localOnly // com.google.firebase.messaging/RemoteMessage.Notification.localOnly|{}localOnly[0]
+            final fun <get-localOnly>(): kotlin/Boolean // com.google.firebase.messaging/RemoteMessage.Notification.localOnly.<get-localOnly>|<get-localOnly>(){}[0]
+        final val notificationCount // com.google.firebase.messaging/RemoteMessage.Notification.notificationCount|{}notificationCount[0]
+            final fun <get-notificationCount>(): kotlin/Int? // com.google.firebase.messaging/RemoteMessage.Notification.notificationCount.<get-notificationCount>|<get-notificationCount>(){}[0]
+        final val notificationPriority // com.google.firebase.messaging/RemoteMessage.Notification.notificationPriority|{}notificationPriority[0]
+            final fun <get-notificationPriority>(): kotlin/Int? // com.google.firebase.messaging/RemoteMessage.Notification.notificationPriority.<get-notificationPriority>|<get-notificationPriority>(){}[0]
+        final val sound // com.google.firebase.messaging/RemoteMessage.Notification.sound|{}sound[0]
+            final fun <get-sound>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.Notification.sound.<get-sound>|<get-sound>(){}[0]
+        final val sticky // com.google.firebase.messaging/RemoteMessage.Notification.sticky|{}sticky[0]
+            final fun <get-sticky>(): kotlin/Boolean // com.google.firebase.messaging/RemoteMessage.Notification.sticky.<get-sticky>|<get-sticky>(){}[0]
+        final val tag // com.google.firebase.messaging/RemoteMessage.Notification.tag|{}tag[0]
+            final fun <get-tag>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.Notification.tag.<get-tag>|<get-tag>(){}[0]
+        final val ticker // com.google.firebase.messaging/RemoteMessage.Notification.ticker|{}ticker[0]
+            final fun <get-ticker>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.Notification.ticker.<get-ticker>|<get-ticker>(){}[0]
+        final val title // com.google.firebase.messaging/RemoteMessage.Notification.title|{}title[0]
+            final fun <get-title>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.Notification.title.<get-title>|<get-title>(){}[0]
+        final val titleLocalizationArgs // com.google.firebase.messaging/RemoteMessage.Notification.titleLocalizationArgs|{}titleLocalizationArgs[0]
+            final fun <get-titleLocalizationArgs>(): kotlin/Array<kotlin/String>? // com.google.firebase.messaging/RemoteMessage.Notification.titleLocalizationArgs.<get-titleLocalizationArgs>|<get-titleLocalizationArgs>(){}[0]
+        final val titleLocalizationKey // com.google.firebase.messaging/RemoteMessage.Notification.titleLocalizationKey|{}titleLocalizationKey[0]
+            final fun <get-titleLocalizationKey>(): kotlin/String? // com.google.firebase.messaging/RemoteMessage.Notification.titleLocalizationKey.<get-titleLocalizationKey>|<get-titleLocalizationKey>(){}[0]
+        final val vibrateTimings // com.google.firebase.messaging/RemoteMessage.Notification.vibrateTimings|{}vibrateTimings[0]
+            final fun <get-vibrateTimings>(): kotlin/LongArray? // com.google.firebase.messaging/RemoteMessage.Notification.vibrateTimings.<get-vibrateTimings>|<get-vibrateTimings>(){}[0]
+        final val visibility // com.google.firebase.messaging/RemoteMessage.Notification.visibility|{}visibility[0]
+            final fun <get-visibility>(): kotlin/Int? // com.google.firebase.messaging/RemoteMessage.Notification.visibility.<get-visibility>|<get-visibility>(){}[0]
+    }
+
+    final object Companion { // com.google.firebase.messaging/RemoteMessage.Companion|null[0]
+        final val PRIORITY_HIGH // com.google.firebase.messaging/RemoteMessage.Companion.PRIORITY_HIGH|{}PRIORITY_HIGH[0]
+            final fun <get-PRIORITY_HIGH>(): kotlin/Int // com.google.firebase.messaging/RemoteMessage.Companion.PRIORITY_HIGH.<get-PRIORITY_HIGH>|<get-PRIORITY_HIGH>(){}[0]
+        final val PRIORITY_NORMAL // com.google.firebase.messaging/RemoteMessage.Companion.PRIORITY_NORMAL|{}PRIORITY_NORMAL[0]
+            final fun <get-PRIORITY_NORMAL>(): kotlin/Int // com.google.firebase.messaging/RemoteMessage.Companion.PRIORITY_NORMAL.<get-PRIORITY_NORMAL>|<get-PRIORITY_NORMAL>(){}[0]
+        final val PRIORITY_UNKNOWN // com.google.firebase.messaging/RemoteMessage.Companion.PRIORITY_UNKNOWN|{}PRIORITY_UNKNOWN[0]
+            final fun <get-PRIORITY_UNKNOWN>(): kotlin/Int // com.google.firebase.messaging/RemoteMessage.Companion.PRIORITY_UNKNOWN.<get-PRIORITY_UNKNOWN>|<get-PRIORITY_UNKNOWN>(){}[0]
+    }
+}
+
+final class com.google.firebase.messaging/SendException : kotlin/Exception { // com.google.firebase.messaging/SendException|null[0]
+    final val errorCode // com.google.firebase.messaging/SendException.errorCode|{}errorCode[0]
+        final fun <get-errorCode>(): kotlin/Int // com.google.firebase.messaging/SendException.errorCode.<get-errorCode>|<get-errorCode>(){}[0]
+
+    final object Companion { // com.google.firebase.messaging/SendException.Companion|null[0]
+        final val ERROR_INVALID_PARAMETERS // com.google.firebase.messaging/SendException.Companion.ERROR_INVALID_PARAMETERS|{}ERROR_INVALID_PARAMETERS[0]
+            final fun <get-ERROR_INVALID_PARAMETERS>(): kotlin/Int // com.google.firebase.messaging/SendException.Companion.ERROR_INVALID_PARAMETERS.<get-ERROR_INVALID_PARAMETERS>|<get-ERROR_INVALID_PARAMETERS>(){}[0]
+        final val ERROR_SIZE // com.google.firebase.messaging/SendException.Companion.ERROR_SIZE|{}ERROR_SIZE[0]
+            final fun <get-ERROR_SIZE>(): kotlin/Int // com.google.firebase.messaging/SendException.Companion.ERROR_SIZE.<get-ERROR_SIZE>|<get-ERROR_SIZE>(){}[0]
+        final val ERROR_TOO_MANY_MESSAGES // com.google.firebase.messaging/SendException.Companion.ERROR_TOO_MANY_MESSAGES|{}ERROR_TOO_MANY_MESSAGES[0]
+            final fun <get-ERROR_TOO_MANY_MESSAGES>(): kotlin/Int // com.google.firebase.messaging/SendException.Companion.ERROR_TOO_MANY_MESSAGES.<get-ERROR_TOO_MANY_MESSAGES>|<get-ERROR_TOO_MANY_MESSAGES>(){}[0]
+        final val ERROR_TTL_EXCEEDED // com.google.firebase.messaging/SendException.Companion.ERROR_TTL_EXCEEDED|{}ERROR_TTL_EXCEEDED[0]
+            final fun <get-ERROR_TTL_EXCEEDED>(): kotlin/Int // com.google.firebase.messaging/SendException.Companion.ERROR_TTL_EXCEEDED.<get-ERROR_TTL_EXCEEDED>|<get-ERROR_TTL_EXCEEDED>(){}[0]
+        final val ERROR_UNKNOWN // com.google.firebase.messaging/SendException.Companion.ERROR_UNKNOWN|{}ERROR_UNKNOWN[0]
+            final fun <get-ERROR_UNKNOWN>(): kotlin/Int // com.google.firebase.messaging/SendException.Companion.ERROR_UNKNOWN.<get-ERROR_UNKNOWN>|<get-ERROR_UNKNOWN>(){}[0]
+    }
+}
+
+final class io.github.corneloaie.firebase.messaging/FirebaseMessaging { // io.github.corneloaie.firebase.messaging/FirebaseMessaging|null[0]
+    final val compat // io.github.corneloaie.firebase.messaging/FirebaseMessaging.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.messaging/FirebaseMessaging // io.github.corneloaie.firebase.messaging/FirebaseMessaging.compat.<get-compat>|<get-compat>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.messaging/FirebaseMessaging.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.messaging/FirebaseMessaging.hashCode|hashCode(){}[0]
+    final fun subscribeToTopic(kotlin/String) // io.github.corneloaie.firebase.messaging/FirebaseMessaging.subscribeToTopic|subscribeToTopic(kotlin.String){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.messaging/FirebaseMessaging.toString|toString(){}[0]
+    final fun unsubscribeFromTopic(kotlin/String) // io.github.corneloaie.firebase.messaging/FirebaseMessaging.unsubscribeFromTopic|unsubscribeFromTopic(kotlin.String){}[0]
+    final suspend fun deleteToken() // io.github.corneloaie.firebase.messaging/FirebaseMessaging.deleteToken|deleteToken(){}[0]
+    final suspend fun getToken(): kotlin/String // io.github.corneloaie.firebase.messaging/FirebaseMessaging.getToken|getToken(){}[0]
+}
+
+final val com.google.firebase.messaging/imageUrl // com.google.firebase.messaging/imageUrl|@com.google.firebase.messaging.RemoteMessage.Notification{}imageUrl[0]
+    final fun (com.google.firebase.messaging/RemoteMessage.Notification).<get-imageUrl>(): kotlin/String? // com.google.firebase.messaging/imageUrl.<get-imageUrl>|<get-imageUrl>@com.google.firebase.messaging.RemoteMessage.Notification(){}[0]
+final val com.google.firebase.messaging/link // com.google.firebase.messaging/link|@com.google.firebase.messaging.RemoteMessage.Notification{}link[0]
+    final fun (com.google.firebase.messaging/RemoteMessage.Notification).<get-link>(): kotlin/String? // com.google.firebase.messaging/link.<get-link>|<get-link>@com.google.firebase.messaging.RemoteMessage.Notification(){}[0]
+final val com.google.firebase.messaging/messaging // com.google.firebase.messaging/messaging|@com.google.firebase.Firebase{}messaging[0]
+    final fun (com.google.firebase/Firebase).<get-messaging>(): com.google.firebase.messaging/FirebaseMessaging // com.google.firebase.messaging/messaging.<get-messaging>|<get-messaging>@com.google.firebase.Firebase(){}[0]
+final val io.github.corneloaie.firebase.messaging/messaging // io.github.corneloaie.firebase.messaging/messaging|@io.github.corneloaie.firebase.Firebase{}messaging[0]
+    final fun (io.github.corneloaie.firebase/Firebase).<get-messaging>(): io.github.corneloaie.firebase.messaging/FirebaseMessaging // io.github.corneloaie.firebase.messaging/messaging.<get-messaging>|<get-messaging>@io.github.corneloaie.firebase.Firebase(){}[0]
+
+final inline fun com.google.firebase.messaging/remoteMessage(kotlin/String, kotlin/Function1<com.google.firebase.messaging/RemoteMessage.Builder, kotlin/Unit>): com.google.firebase.messaging/RemoteMessage // com.google.firebase.messaging/remoteMessage|remoteMessage(kotlin.String;kotlin.Function1<com.google.firebase.messaging.RemoteMessage.Builder,kotlin.Unit>){}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.messaging/ios // io.github.corneloaie.firebase.messaging/ios|@io.github.corneloaie.firebase.messaging.FirebaseMessaging{}ios[0]
+    final fun (io.github.corneloaie.firebase.messaging/FirebaseMessaging).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.messaging/FIRMessaging // io.github.corneloaie.firebase.messaging/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.messaging.FirebaseMessaging(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.messaging/js // io.github.corneloaie.firebase.messaging/js|@io.github.corneloaie.firebase.messaging.FirebaseMessaging{}js[0]
+    final fun (io.github.corneloaie.firebase.messaging/FirebaseMessaging).<get-js>(): io.github.corneloaie.firebase.messaging.externals/Messaging // io.github.corneloaie.firebase.messaging/js.<get-js>|<get-js>@io.github.corneloaie.firebase.messaging.FirebaseMessaging(){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.messaging.externals/getMessaging(io.github.corneloaie.firebase.externals/FirebaseApp? = ...): io.github.corneloaie.firebase.messaging.externals/Messaging // io.github.corneloaie.firebase.messaging.externals/getMessaging|getMessaging(io.github.corneloaie.firebase.externals.FirebaseApp?){}[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.messaging.externals/Messaging // io.github.corneloaie.firebase.messaging.externals/Messaging|null[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.messaging.externals/deleteToken(io.github.corneloaie.firebase.messaging.externals/Messaging = ...): kotlin.js/Promise<kotlin/Boolean> // io.github.corneloaie.firebase.messaging.externals/deleteToken|deleteToken(io.github.corneloaie.firebase.messaging.externals.Messaging){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.messaging.externals/getToken(io.github.corneloaie.firebase.messaging.externals/Messaging = ..., dynamic = ...): kotlin.js/Promise<kotlin/String> // io.github.corneloaie.firebase.messaging.externals/getToken|getToken(io.github.corneloaie.firebase.messaging.externals.Messaging;<dynamic>){}[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.messaging.externals/Messaging : kotlin.js/JsAny // io.github.corneloaie.firebase.messaging.externals/Messaging|null[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.messaging.externals/deleteToken(io.github.corneloaie.firebase.messaging.externals/Messaging = ...): kotlin.js/Promise<kotlin.js/JsBoolean> // io.github.corneloaie.firebase.messaging.externals/deleteToken|deleteToken(io.github.corneloaie.firebase.messaging.externals.Messaging){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.messaging.externals/getToken(io.github.corneloaie.firebase.messaging.externals/Messaging = ..., kotlin.js/JsAny? = ...): kotlin.js/Promise<kotlin.js/JsString> // io.github.corneloaie.firebase.messaging.externals/getToken|getToken(io.github.corneloaie.firebase.messaging.externals.Messaging;kotlin.js.JsAny?){}[0]

@@ -2,6 +2,7 @@ package utils
 
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
 
 /**
  * The default KMP hierarchy plus three intermediate source sets used by the `com.google.firebase` compatibility layer:
@@ -20,7 +21,8 @@ fun KotlinMultiplatformExtension.applyFirebaseHierarchy() {
     applyDefaultHierarchyTemplate {
         common {
             group("nonJs") {
-                withAndroidTarget()
+                // withAndroidTarget() matches only androidTarget(), not the com.android.kotlin.multiplatform.library target
+                withCompilations { it.target.platformType == KotlinPlatformType.androidJvm }
                 withJvm()
                 group("apple") {
                     withApple()

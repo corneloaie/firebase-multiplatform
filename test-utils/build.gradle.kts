@@ -16,38 +16,9 @@ version = "0.0.1"
 val supportedPlatforms = (project.property("test-utils.supportedTargets") as String).toTargetPlatforms()
 
 plugins {
-    id("com.android.library")
+    id("com.android.kotlin.multiplatform.library")
     kotlin("multiplatform")
     kotlin("plugin.serialization")
-}
-
-if (supportedPlatforms.contains(TargetPlatform.Android)) {
-    android {
-        val minSdkVersion: Int by project
-        val compileSdkVersion: Int by project
-
-        compileSdk = compileSdkVersion
-        namespace = "io.github.corneloaie.firebase.testUtils"
-
-        defaultConfig {
-            minSdk = minSdkVersion
-            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        }
-
-        compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_17
-            targetCompatibility = JavaVersion.VERSION_17
-        }
-
-        packaging {
-            resources.pickFirsts.add("META-INF/kotlinx-serialization-core.kotlin_module")
-            resources.pickFirsts.add("META-INF/AL2.0")
-            resources.pickFirsts.add("META-INF/LGPL2.1")
-        }
-        lint {
-            abortOnError = false
-        }
-    }
 }
 
 kotlin {
@@ -69,11 +40,22 @@ kotlin {
     }
 
     if (supportedPlatforms.contains(TargetPlatform.Android)) {
-        @Suppress("OPT_IN_USAGE")
-        androidTarget {
-            instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
-            unitTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
-            publishAllLibraryVariants()
+        android {
+            val minSdkVersion: Int by project
+            val compileSdkVersion: Int by project
+
+            compileSdk = compileSdkVersion
+            minSdk = minSdkVersion
+            namespace = "io.github.corneloaie.firebase.testUtils"
+
+            packaging {
+                resources.pickFirsts.add("META-INF/kotlinx-serialization-core.kotlin_module")
+                resources.pickFirsts.add("META-INF/AL2.0")
+                resources.pickFirsts.add("META-INF/LGPL2.1")
+            }
+            lint {
+                abortOnError = false
+            }
         }
     }
 

@@ -40,7 +40,7 @@ import kotlin.test.assertTrue
 
 /*
  * The BSON types of the `com.google.firebase.firestore` layer. firebase-java-sdk has no BSON types, so these tests cannot
- * compile for the JVM: they are in nonJvmTest for Apple and JS, and the same file is in androidInstrumentedTest for
+ * compile for the JVM: they are in nonJvmTest for Apple and JS, and the same file is in androidDeviceTest for
  * Android, where BsonValuesTest checks that this module's common classes behave as the Android SDK's own.
  */
 

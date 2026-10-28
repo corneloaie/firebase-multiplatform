@@ -15,7 +15,7 @@ import org.gradle.api.tasks.PathSensitivity
 import org.gradle.api.tasks.TaskAction
 
 /**
- * Compares the module's `api/android/<module>.api` (binary-compatibility-validator dump) against the vendored Firebase
+ * Compares the module's `api/android/<module>.api` (the ABI dump `updateKotlinAbi` writes) against the vendored Firebase
  * Android SDK `api.txt` files and writes/checks `api/android-sdk-compat.txt`.
  */
 abstract class AndroidSourceCompatTask : DefaultTask() {

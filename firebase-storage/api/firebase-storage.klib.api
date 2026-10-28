@@ -1,0 +1,850 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, tvosArm64, tvosSimulatorArm64, wasmJs]
+// Alias: apple => [iosArm64, iosSimulatorArm64, iosX64, macosArm64, tvosArm64, tvosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-storage>
+abstract fun interface <#A: in kotlin/Any?> com.google.firebase.storage/OnPausedListener { // com.google.firebase.storage/OnPausedListener|null[0]
+    abstract fun onPaused(#A) // com.google.firebase.storage/OnPausedListener.onPaused|onPaused(1:0){}[0]
+}
+
+abstract fun interface <#A: in kotlin/Any?> com.google.firebase.storage/OnProgressListener { // com.google.firebase.storage/OnProgressListener|null[0]
+    abstract fun onProgress(#A) // com.google.firebase.storage/OnProgressListener.onProgress|onProgress(1:0){}[0]
+}
+
+abstract interface io.github.corneloaie.firebase.storage/ProgressFlow : kotlinx.coroutines.flow/Flow<io.github.corneloaie.firebase.storage/Progress> { // io.github.corneloaie.firebase.storage/ProgressFlow|null[0]
+    abstract fun cancel() // io.github.corneloaie.firebase.storage/ProgressFlow.cancel|cancel(){}[0]
+    abstract fun pause() // io.github.corneloaie.firebase.storage/ProgressFlow.pause|pause(){}[0]
+    abstract fun resume() // io.github.corneloaie.firebase.storage/ProgressFlow.resume|resume(){}[0]
+}
+
+abstract class <#A: com.google.firebase.storage/StorageTask.ProvideError> com.google.firebase.storage/StorageTask : com.google.firebase.storage/ControllableTask<#A> { // com.google.firebase.storage/StorageTask|null[0]
+    constructor <init>() // com.google.firebase.storage/StorageTask.<init>|<init>(){}[0]
+
+    final val snapshot // com.google.firebase.storage/StorageTask.snapshot|{}snapshot[0]
+        final fun <get-snapshot>(): #A // com.google.firebase.storage/StorageTask.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+    open val isInProgress // com.google.firebase.storage/StorageTask.isInProgress|{}isInProgress[0]
+        open fun <get-isInProgress>(): kotlin/Boolean // com.google.firebase.storage/StorageTask.isInProgress.<get-isInProgress>|<get-isInProgress>(){}[0]
+    open val isPaused // com.google.firebase.storage/StorageTask.isPaused|{}isPaused[0]
+        open fun <get-isPaused>(): kotlin/Boolean // com.google.firebase.storage/StorageTask.isPaused.<get-isPaused>|<get-isPaused>(){}[0]
+
+    final fun removeOnCanceledListener(com.google.android.gms.tasks/OnCanceledListener): com.google.firebase.storage/StorageTask<#A> // com.google.firebase.storage/StorageTask.removeOnCanceledListener|removeOnCanceledListener(com.google.android.gms.tasks.OnCanceledListener){}[0]
+    final fun removeOnCompleteListener(com.google.android.gms.tasks/OnCompleteListener<#A>): com.google.firebase.storage/StorageTask<#A> // com.google.firebase.storage/StorageTask.removeOnCompleteListener|removeOnCompleteListener(com.google.android.gms.tasks.OnCompleteListener<1:0>){}[0]
+    final fun removeOnFailureListener(com.google.android.gms.tasks/OnFailureListener): com.google.firebase.storage/StorageTask<#A> // com.google.firebase.storage/StorageTask.removeOnFailureListener|removeOnFailureListener(com.google.android.gms.tasks.OnFailureListener){}[0]
+    final fun removeOnPausedListener(com.google.firebase.storage/OnPausedListener<#A>): com.google.firebase.storage/StorageTask<#A> // com.google.firebase.storage/StorageTask.removeOnPausedListener|removeOnPausedListener(com.google.firebase.storage.OnPausedListener<1:0>){}[0]
+    final fun removeOnProgressListener(com.google.firebase.storage/OnProgressListener<#A>): com.google.firebase.storage/StorageTask<#A> // com.google.firebase.storage/StorageTask.removeOnProgressListener|removeOnProgressListener(com.google.firebase.storage.OnProgressListener<1:0>){}[0]
+    final fun removeOnSuccessListener(com.google.android.gms.tasks/OnSuccessListener<in #A>): com.google.firebase.storage/StorageTask<#A> // com.google.firebase.storage/StorageTask.removeOnSuccessListener|removeOnSuccessListener(com.google.android.gms.tasks.OnSuccessListener<in|1:0>){}[0]
+    open fun <#A1: kotlin/Any?> continueWith(com.google.android.gms.tasks/Continuation<#A, #A1>): com.google.android.gms.tasks/Task<#A1> // com.google.firebase.storage/StorageTask.continueWith|continueWith(com.google.android.gms.tasks.Continuation<1:0,0:0>){0§<kotlin.Any?>}[0]
+    open fun <#A1: kotlin/Any?> continueWithTask(com.google.android.gms.tasks/Continuation<#A, com.google.android.gms.tasks/Task<#A1>>): com.google.android.gms.tasks/Task<#A1> // com.google.firebase.storage/StorageTask.continueWithTask|continueWithTask(com.google.android.gms.tasks.Continuation<1:0,com.google.android.gms.tasks.Task<0:0>>){0§<kotlin.Any?>}[0]
+    open fun <#A1: kotlin/Any?> onSuccessTask(com.google.android.gms.tasks/SuccessContinuation<#A, #A1>): com.google.android.gms.tasks/Task<#A1> // com.google.firebase.storage/StorageTask.onSuccessTask|onSuccessTask(com.google.android.gms.tasks.SuccessContinuation<1:0,0:0>){0§<kotlin.Any?>}[0]
+    open fun addOnCanceledListener(com.google.android.gms.tasks/OnCanceledListener): com.google.firebase.storage/StorageTask<#A> // com.google.firebase.storage/StorageTask.addOnCanceledListener|addOnCanceledListener(com.google.android.gms.tasks.OnCanceledListener){}[0]
+    open fun addOnCompleteListener(com.google.android.gms.tasks/OnCompleteListener<#A>): com.google.firebase.storage/StorageTask<#A> // com.google.firebase.storage/StorageTask.addOnCompleteListener|addOnCompleteListener(com.google.android.gms.tasks.OnCompleteListener<1:0>){}[0]
+    open fun addOnFailureListener(com.google.android.gms.tasks/OnFailureListener): com.google.firebase.storage/StorageTask<#A> // com.google.firebase.storage/StorageTask.addOnFailureListener|addOnFailureListener(com.google.android.gms.tasks.OnFailureListener){}[0]
+    open fun addOnPausedListener(com.google.firebase.storage/OnPausedListener<#A>): com.google.firebase.storage/StorageTask<#A> // com.google.firebase.storage/StorageTask.addOnPausedListener|addOnPausedListener(com.google.firebase.storage.OnPausedListener<1:0>){}[0]
+    open fun addOnProgressListener(com.google.firebase.storage/OnProgressListener<#A>): com.google.firebase.storage/StorageTask<#A> // com.google.firebase.storage/StorageTask.addOnProgressListener|addOnProgressListener(com.google.firebase.storage.OnProgressListener<1:0>){}[0]
+    open fun addOnSuccessListener(com.google.android.gms.tasks/OnSuccessListener<in #A>): com.google.firebase.storage/StorageTask<#A> // com.google.firebase.storage/StorageTask.addOnSuccessListener|addOnSuccessListener(com.google.android.gms.tasks.OnSuccessListener<in|1:0>){}[0]
+    open fun cancel(): kotlin/Boolean // com.google.firebase.storage/StorageTask.cancel|cancel(){}[0]
+    open fun onCanceled() // com.google.firebase.storage/StorageTask.onCanceled|onCanceled(){}[0]
+    open fun onFailure() // com.google.firebase.storage/StorageTask.onFailure|onFailure(){}[0]
+    open fun onPaused() // com.google.firebase.storage/StorageTask.onPaused|onPaused(){}[0]
+    open fun onProgress() // com.google.firebase.storage/StorageTask.onProgress|onProgress(){}[0]
+    open fun onQueued() // com.google.firebase.storage/StorageTask.onQueued|onQueued(){}[0]
+    open fun onSuccess() // com.google.firebase.storage/StorageTask.onSuccess|onSuccess(){}[0]
+    open fun pause(): kotlin/Boolean // com.google.firebase.storage/StorageTask.pause|pause(){}[0]
+    open fun resume(): kotlin/Boolean // com.google.firebase.storage/StorageTask.resume|resume(){}[0]
+
+    abstract interface ProvideError { // com.google.firebase.storage/StorageTask.ProvideError|null[0]
+        abstract val error // com.google.firebase.storage/StorageTask.ProvideError.error|{}error[0]
+            abstract fun <get-error>(): kotlin/Exception? // com.google.firebase.storage/StorageTask.ProvideError.error.<get-error>|<get-error>(){}[0]
+    }
+
+    open inner class SnapshotBase : com.google.firebase.storage/StorageTask.ProvideError { // com.google.firebase.storage/StorageTask.SnapshotBase|null[0]
+        constructor <init>(kotlin/Exception?) // com.google.firebase.storage/StorageTask.SnapshotBase.<init>|<init>(kotlin.Exception?){}[0]
+
+        final val storage // com.google.firebase.storage/StorageTask.SnapshotBase.storage|{}storage[0]
+            final fun <get-storage>(): com.google.firebase.storage/StorageReference // com.google.firebase.storage/StorageTask.SnapshotBase.storage.<get-storage>|<get-storage>(){}[0]
+        final val task // com.google.firebase.storage/StorageTask.SnapshotBase.task|{}task[0]
+            final fun <get-task>(): com.google.firebase.storage/StorageTask<#A> // com.google.firebase.storage/StorageTask.SnapshotBase.task.<get-task>|<get-task>(){}[0]
+        open val error // com.google.firebase.storage/StorageTask.SnapshotBase.error|{}error[0]
+            open fun <get-error>(): kotlin/Exception? // com.google.firebase.storage/StorageTask.SnapshotBase.error.<get-error>|<get-error>(){}[0]
+    }
+}
+
+abstract class <#A: kotlin/Any?> com.google.firebase.storage/CancellableTask : com.google.android.gms.tasks/Task<#A> { // com.google.firebase.storage/CancellableTask|null[0]
+    constructor <init>() // com.google.firebase.storage/CancellableTask.<init>|<init>(){}[0]
+
+    abstract val isInProgress // com.google.firebase.storage/CancellableTask.isInProgress|{}isInProgress[0]
+        abstract fun <get-isInProgress>(): kotlin/Boolean // com.google.firebase.storage/CancellableTask.isInProgress.<get-isInProgress>|<get-isInProgress>(){}[0]
+
+    abstract fun addOnProgressListener(com.google.firebase.storage/OnProgressListener<#A>): com.google.firebase.storage/CancellableTask<#A> // com.google.firebase.storage/CancellableTask.addOnProgressListener|addOnProgressListener(com.google.firebase.storage.OnProgressListener<1:0>){}[0]
+    abstract fun cancel(): kotlin/Boolean // com.google.firebase.storage/CancellableTask.cancel|cancel(){}[0]
+}
+
+abstract class <#A: kotlin/Any?> com.google.firebase.storage/ControllableTask : com.google.firebase.storage/CancellableTask<#A> { // com.google.firebase.storage/ControllableTask|null[0]
+    constructor <init>() // com.google.firebase.storage/ControllableTask.<init>|<init>(){}[0]
+
+    abstract val isPaused // com.google.firebase.storage/ControllableTask.isPaused|{}isPaused[0]
+        abstract fun <get-isPaused>(): kotlin/Boolean // com.google.firebase.storage/ControllableTask.isPaused.<get-isPaused>|<get-isPaused>(){}[0]
+
+    abstract fun addOnPausedListener(com.google.firebase.storage/OnPausedListener<#A>): com.google.firebase.storage/ControllableTask<#A> // com.google.firebase.storage/ControllableTask.addOnPausedListener|addOnPausedListener(com.google.firebase.storage.OnPausedListener<1:0>){}[0]
+    abstract fun pause(): kotlin/Boolean // com.google.firebase.storage/ControllableTask.pause|pause(){}[0]
+    abstract fun resume(): kotlin/Boolean // com.google.firebase.storage/ControllableTask.resume|resume(){}[0]
+}
+
+abstract class <#A: kotlin/Any?> com.google.firebase.storage/TaskState { // com.google.firebase.storage/TaskState|null[0]
+    final class <#A1: kotlin/Any?> InProgress : com.google.firebase.storage/TaskState<#A1> { // com.google.firebase.storage/TaskState.InProgress|null[0]
+        constructor <init>(#A1) // com.google.firebase.storage/TaskState.InProgress.<init>|<init>(1:0){}[0]
+
+        final val snapshot // com.google.firebase.storage/TaskState.InProgress.snapshot|{}snapshot[0]
+            final fun <get-snapshot>(): #A1 // com.google.firebase.storage/TaskState.InProgress.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+    }
+
+    final class <#A1: kotlin/Any?> Paused : com.google.firebase.storage/TaskState<#A1> { // com.google.firebase.storage/TaskState.Paused|null[0]
+        constructor <init>(#A1) // com.google.firebase.storage/TaskState.Paused.<init>|<init>(1:0){}[0]
+
+        final val snapshot // com.google.firebase.storage/TaskState.Paused.snapshot|{}snapshot[0]
+            final fun <get-snapshot>(): #A1 // com.google.firebase.storage/TaskState.Paused.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+    }
+}
+
+abstract class com.google.firebase.storage/FileDownloadTask : com.google.firebase.storage/StorageTask<com.google.firebase.storage/FileDownloadTask.TaskSnapshot> { // com.google.firebase.storage/FileDownloadTask|null[0]
+    final inner class TaskSnapshot : com.google.firebase.storage/StorageTask.SnapshotBase<com.google.firebase.storage/FileDownloadTask.TaskSnapshot> { // com.google.firebase.storage/FileDownloadTask.TaskSnapshot|null[0]
+        final val bytesTransferred // com.google.firebase.storage/FileDownloadTask.TaskSnapshot.bytesTransferred|{}bytesTransferred[0]
+            final fun <get-bytesTransferred>(): kotlin/Long // com.google.firebase.storage/FileDownloadTask.TaskSnapshot.bytesTransferred.<get-bytesTransferred>|<get-bytesTransferred>(){}[0]
+        final val totalByteCount // com.google.firebase.storage/FileDownloadTask.TaskSnapshot.totalByteCount|{}totalByteCount[0]
+            final fun <get-totalByteCount>(): kotlin/Long // com.google.firebase.storage/FileDownloadTask.TaskSnapshot.totalByteCount.<get-totalByteCount>|<get-totalByteCount>(){}[0]
+    }
+}
+
+abstract class com.google.firebase.storage/UploadTask : com.google.firebase.storage/StorageTask<com.google.firebase.storage/UploadTask.TaskSnapshot> { // com.google.firebase.storage/UploadTask|null[0]
+    open fun resetState() // com.google.firebase.storage/UploadTask.resetState|resetState(){}[0]
+    open fun schedule() // com.google.firebase.storage/UploadTask.schedule|schedule(){}[0]
+
+    final inner class TaskSnapshot : com.google.firebase.storage/StorageTask.SnapshotBase<com.google.firebase.storage/UploadTask.TaskSnapshot> { // com.google.firebase.storage/UploadTask.TaskSnapshot|null[0]
+        final val bytesTransferred // com.google.firebase.storage/UploadTask.TaskSnapshot.bytesTransferred|{}bytesTransferred[0]
+            final fun <get-bytesTransferred>(): kotlin/Long // com.google.firebase.storage/UploadTask.TaskSnapshot.bytesTransferred.<get-bytesTransferred>|<get-bytesTransferred>(){}[0]
+        final val metadata // com.google.firebase.storage/UploadTask.TaskSnapshot.metadata|{}metadata[0]
+            final fun <get-metadata>(): com.google.firebase.storage/StorageMetadata? // com.google.firebase.storage/UploadTask.TaskSnapshot.metadata.<get-metadata>|<get-metadata>(){}[0]
+        final val totalByteCount // com.google.firebase.storage/UploadTask.TaskSnapshot.totalByteCount|{}totalByteCount[0]
+            final fun <get-totalByteCount>(): kotlin/Long // com.google.firebase.storage/UploadTask.TaskSnapshot.totalByteCount.<get-totalByteCount>|<get-totalByteCount>(){}[0]
+    }
+}
+
+final class com.google.firebase.storage/FirebaseStorage { // com.google.firebase.storage/FirebaseStorage|null[0]
+    final val app // com.google.firebase.storage/FirebaseStorage.app|{}app[0]
+        final fun <get-app>(): com.google.firebase/FirebaseApp // com.google.firebase.storage/FirebaseStorage.app.<get-app>|<get-app>(){}[0]
+    final val reference // com.google.firebase.storage/FirebaseStorage.reference|{}reference[0]
+        final fun <get-reference>(): com.google.firebase.storage/StorageReference // com.google.firebase.storage/FirebaseStorage.reference.<get-reference>|<get-reference>(){}[0]
+
+    final var maxChunkUploadRetry // com.google.firebase.storage/FirebaseStorage.maxChunkUploadRetry|{}maxChunkUploadRetry[0]
+        final fun <get-maxChunkUploadRetry>(): kotlin/Long // com.google.firebase.storage/FirebaseStorage.maxChunkUploadRetry.<get-maxChunkUploadRetry>|<get-maxChunkUploadRetry>(){}[0]
+        final fun <set-maxChunkUploadRetry>(kotlin/Long) // com.google.firebase.storage/FirebaseStorage.maxChunkUploadRetry.<set-maxChunkUploadRetry>|<set-maxChunkUploadRetry>(kotlin.Long){}[0]
+    final var maxOperationRetryTimeMillis // com.google.firebase.storage/FirebaseStorage.maxOperationRetryTimeMillis|{}maxOperationRetryTimeMillis[0]
+        final fun <get-maxOperationRetryTimeMillis>(): kotlin/Long // com.google.firebase.storage/FirebaseStorage.maxOperationRetryTimeMillis.<get-maxOperationRetryTimeMillis>|<get-maxOperationRetryTimeMillis>(){}[0]
+        final fun <set-maxOperationRetryTimeMillis>(kotlin/Long) // com.google.firebase.storage/FirebaseStorage.maxOperationRetryTimeMillis.<set-maxOperationRetryTimeMillis>|<set-maxOperationRetryTimeMillis>(kotlin.Long){}[0]
+    final var maxUploadRetryTimeMillis // com.google.firebase.storage/FirebaseStorage.maxUploadRetryTimeMillis|{}maxUploadRetryTimeMillis[0]
+        final fun <get-maxUploadRetryTimeMillis>(): kotlin/Long // com.google.firebase.storage/FirebaseStorage.maxUploadRetryTimeMillis.<get-maxUploadRetryTimeMillis>|<get-maxUploadRetryTimeMillis>(){}[0]
+        final fun <set-maxUploadRetryTimeMillis>(kotlin/Long) // com.google.firebase.storage/FirebaseStorage.maxUploadRetryTimeMillis.<set-maxUploadRetryTimeMillis>|<set-maxUploadRetryTimeMillis>(kotlin.Long){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.storage/FirebaseStorage.equals|equals(kotlin.Any?){}[0]
+    final fun getReference(kotlin/String): com.google.firebase.storage/StorageReference // com.google.firebase.storage/FirebaseStorage.getReference|getReference(kotlin.String){}[0]
+    final fun getReferenceFromUrl(kotlin/String): com.google.firebase.storage/StorageReference // com.google.firebase.storage/FirebaseStorage.getReferenceFromUrl|getReferenceFromUrl(kotlin.String){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.storage/FirebaseStorage.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.storage/FirebaseStorage.toString|toString(){}[0]
+    final fun useEmulator(kotlin/String, kotlin/Int) // com.google.firebase.storage/FirebaseStorage.useEmulator|useEmulator(kotlin.String;kotlin.Int){}[0]
+
+    final object Companion { // com.google.firebase.storage/FirebaseStorage.Companion|null[0]
+        final fun getInstance(): com.google.firebase.storage/FirebaseStorage // com.google.firebase.storage/FirebaseStorage.Companion.getInstance|getInstance(){}[0]
+        final fun getInstance(com.google.firebase/FirebaseApp): com.google.firebase.storage/FirebaseStorage // com.google.firebase.storage/FirebaseStorage.Companion.getInstance|getInstance(com.google.firebase.FirebaseApp){}[0]
+        final fun getInstance(com.google.firebase/FirebaseApp, kotlin/String): com.google.firebase.storage/FirebaseStorage // com.google.firebase.storage/FirebaseStorage.Companion.getInstance|getInstance(com.google.firebase.FirebaseApp;kotlin.String){}[0]
+        final fun getInstance(kotlin/String): com.google.firebase.storage/FirebaseStorage // com.google.firebase.storage/FirebaseStorage.Companion.getInstance|getInstance(kotlin.String){}[0]
+    }
+
+    // Targets: [apple]
+    final val ios // com.google.firebase.storage/FirebaseStorage.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.storage/FIRStorage // com.google.firebase.storage/FirebaseStorage.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val js // com.google.firebase.storage/FirebaseStorage.js|{}js[0]
+        final fun <get-js>(): io.github.corneloaie.firebase.storage.externals/FirebaseStorage // com.google.firebase.storage/FirebaseStorage.js.<get-js>|<get-js>(){}[0]
+}
+
+final class com.google.firebase.storage/ListResult { // com.google.firebase.storage/ListResult|null[0]
+    final val items // com.google.firebase.storage/ListResult.items|{}items[0]
+        final fun <get-items>(): kotlin.collections/List<com.google.firebase.storage/StorageReference> // com.google.firebase.storage/ListResult.items.<get-items>|<get-items>(){}[0]
+    final val pageToken // com.google.firebase.storage/ListResult.pageToken|{}pageToken[0]
+        final fun <get-pageToken>(): kotlin/String? // com.google.firebase.storage/ListResult.pageToken.<get-pageToken>|<get-pageToken>(){}[0]
+    final val prefixes // com.google.firebase.storage/ListResult.prefixes|{}prefixes[0]
+        final fun <get-prefixes>(): kotlin.collections/List<com.google.firebase.storage/StorageReference> // com.google.firebase.storage/ListResult.prefixes.<get-prefixes>|<get-prefixes>(){}[0]
+
+    final fun toString(): kotlin/String // com.google.firebase.storage/ListResult.toString|toString(){}[0]
+}
+
+final class com.google.firebase.storage/StorageMetadata { // com.google.firebase.storage/StorageMetadata|null[0]
+    constructor <init>() // com.google.firebase.storage/StorageMetadata.<init>|<init>(){}[0]
+
+    final val bucket // com.google.firebase.storage/StorageMetadata.bucket|{}bucket[0]
+        final fun <get-bucket>(): kotlin/String? // com.google.firebase.storage/StorageMetadata.bucket.<get-bucket>|<get-bucket>(){}[0]
+    final val cacheControl // com.google.firebase.storage/StorageMetadata.cacheControl|{}cacheControl[0]
+        final fun <get-cacheControl>(): kotlin/String? // com.google.firebase.storage/StorageMetadata.cacheControl.<get-cacheControl>|<get-cacheControl>(){}[0]
+    final val contentDisposition // com.google.firebase.storage/StorageMetadata.contentDisposition|{}contentDisposition[0]
+        final fun <get-contentDisposition>(): kotlin/String? // com.google.firebase.storage/StorageMetadata.contentDisposition.<get-contentDisposition>|<get-contentDisposition>(){}[0]
+    final val contentEncoding // com.google.firebase.storage/StorageMetadata.contentEncoding|{}contentEncoding[0]
+        final fun <get-contentEncoding>(): kotlin/String? // com.google.firebase.storage/StorageMetadata.contentEncoding.<get-contentEncoding>|<get-contentEncoding>(){}[0]
+    final val contentLanguage // com.google.firebase.storage/StorageMetadata.contentLanguage|{}contentLanguage[0]
+        final fun <get-contentLanguage>(): kotlin/String? // com.google.firebase.storage/StorageMetadata.contentLanguage.<get-contentLanguage>|<get-contentLanguage>(){}[0]
+    final val contentType // com.google.firebase.storage/StorageMetadata.contentType|{}contentType[0]
+        final fun <get-contentType>(): kotlin/String? // com.google.firebase.storage/StorageMetadata.contentType.<get-contentType>|<get-contentType>(){}[0]
+    final val creationTimeMillis // com.google.firebase.storage/StorageMetadata.creationTimeMillis|{}creationTimeMillis[0]
+        final fun <get-creationTimeMillis>(): kotlin/Long // com.google.firebase.storage/StorageMetadata.creationTimeMillis.<get-creationTimeMillis>|<get-creationTimeMillis>(){}[0]
+    final val customMetadataKeys // com.google.firebase.storage/StorageMetadata.customMetadataKeys|{}customMetadataKeys[0]
+        final fun <get-customMetadataKeys>(): kotlin.collections/Set<kotlin/String> // com.google.firebase.storage/StorageMetadata.customMetadataKeys.<get-customMetadataKeys>|<get-customMetadataKeys>(){}[0]
+    final val generation // com.google.firebase.storage/StorageMetadata.generation|{}generation[0]
+        final fun <get-generation>(): kotlin/String? // com.google.firebase.storage/StorageMetadata.generation.<get-generation>|<get-generation>(){}[0]
+    final val md5Hash // com.google.firebase.storage/StorageMetadata.md5Hash|{}md5Hash[0]
+        final fun <get-md5Hash>(): kotlin/String? // com.google.firebase.storage/StorageMetadata.md5Hash.<get-md5Hash>|<get-md5Hash>(){}[0]
+    final val metadataGeneration // com.google.firebase.storage/StorageMetadata.metadataGeneration|{}metadataGeneration[0]
+        final fun <get-metadataGeneration>(): kotlin/String? // com.google.firebase.storage/StorageMetadata.metadataGeneration.<get-metadataGeneration>|<get-metadataGeneration>(){}[0]
+    final val name // com.google.firebase.storage/StorageMetadata.name|{}name[0]
+        final fun <get-name>(): kotlin/String? // com.google.firebase.storage/StorageMetadata.name.<get-name>|<get-name>(){}[0]
+    final val path // com.google.firebase.storage/StorageMetadata.path|{}path[0]
+        final fun <get-path>(): kotlin/String // com.google.firebase.storage/StorageMetadata.path.<get-path>|<get-path>(){}[0]
+    final val reference // com.google.firebase.storage/StorageMetadata.reference|{}reference[0]
+        final fun <get-reference>(): com.google.firebase.storage/StorageReference? // com.google.firebase.storage/StorageMetadata.reference.<get-reference>|<get-reference>(){}[0]
+    final val sizeBytes // com.google.firebase.storage/StorageMetadata.sizeBytes|{}sizeBytes[0]
+        final fun <get-sizeBytes>(): kotlin/Long // com.google.firebase.storage/StorageMetadata.sizeBytes.<get-sizeBytes>|<get-sizeBytes>(){}[0]
+    final val updatedTimeMillis // com.google.firebase.storage/StorageMetadata.updatedTimeMillis|{}updatedTimeMillis[0]
+        final fun <get-updatedTimeMillis>(): kotlin/Long // com.google.firebase.storage/StorageMetadata.updatedTimeMillis.<get-updatedTimeMillis>|<get-updatedTimeMillis>(){}[0]
+
+    final fun getCustomMetadata(kotlin/String): kotlin/String? // com.google.firebase.storage/StorageMetadata.getCustomMetadata|getCustomMetadata(kotlin.String){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.storage/StorageMetadata.toString|toString(){}[0]
+
+    final class Builder { // com.google.firebase.storage/StorageMetadata.Builder|null[0]
+        constructor <init>() // com.google.firebase.storage/StorageMetadata.Builder.<init>|<init>(){}[0]
+        constructor <init>(com.google.firebase.storage/StorageMetadata) // com.google.firebase.storage/StorageMetadata.Builder.<init>|<init>(com.google.firebase.storage.StorageMetadata){}[0]
+
+        final var cacheControl // com.google.firebase.storage/StorageMetadata.Builder.cacheControl|{}cacheControl[0]
+            final fun <get-cacheControl>(): kotlin/String? // com.google.firebase.storage/StorageMetadata.Builder.cacheControl.<get-cacheControl>|<get-cacheControl>(){}[0]
+            final fun <set-cacheControl>(kotlin/String?) // com.google.firebase.storage/StorageMetadata.Builder.cacheControl.<set-cacheControl>|<set-cacheControl>(kotlin.String?){}[0]
+        final var contentDisposition // com.google.firebase.storage/StorageMetadata.Builder.contentDisposition|{}contentDisposition[0]
+            final fun <get-contentDisposition>(): kotlin/String? // com.google.firebase.storage/StorageMetadata.Builder.contentDisposition.<get-contentDisposition>|<get-contentDisposition>(){}[0]
+            final fun <set-contentDisposition>(kotlin/String?) // com.google.firebase.storage/StorageMetadata.Builder.contentDisposition.<set-contentDisposition>|<set-contentDisposition>(kotlin.String?){}[0]
+        final var contentEncoding // com.google.firebase.storage/StorageMetadata.Builder.contentEncoding|{}contentEncoding[0]
+            final fun <get-contentEncoding>(): kotlin/String? // com.google.firebase.storage/StorageMetadata.Builder.contentEncoding.<get-contentEncoding>|<get-contentEncoding>(){}[0]
+            final fun <set-contentEncoding>(kotlin/String?) // com.google.firebase.storage/StorageMetadata.Builder.contentEncoding.<set-contentEncoding>|<set-contentEncoding>(kotlin.String?){}[0]
+        final var contentLanguage // com.google.firebase.storage/StorageMetadata.Builder.contentLanguage|{}contentLanguage[0]
+            final fun <get-contentLanguage>(): kotlin/String? // com.google.firebase.storage/StorageMetadata.Builder.contentLanguage.<get-contentLanguage>|<get-contentLanguage>(){}[0]
+            final fun <set-contentLanguage>(kotlin/String?) // com.google.firebase.storage/StorageMetadata.Builder.contentLanguage.<set-contentLanguage>|<set-contentLanguage>(kotlin.String?){}[0]
+        final var contentType // com.google.firebase.storage/StorageMetadata.Builder.contentType|{}contentType[0]
+            final fun <get-contentType>(): kotlin/String? // com.google.firebase.storage/StorageMetadata.Builder.contentType.<get-contentType>|<get-contentType>(){}[0]
+            final fun <set-contentType>(kotlin/String?) // com.google.firebase.storage/StorageMetadata.Builder.contentType.<set-contentType>|<set-contentType>(kotlin.String?){}[0]
+
+        final fun build(): com.google.firebase.storage/StorageMetadata // com.google.firebase.storage/StorageMetadata.Builder.build|build(){}[0]
+        final fun setCacheControl(kotlin/String?): com.google.firebase.storage/StorageMetadata.Builder // com.google.firebase.storage/StorageMetadata.Builder.setCacheControl|setCacheControl(kotlin.String?){}[0]
+        final fun setContentDisposition(kotlin/String?): com.google.firebase.storage/StorageMetadata.Builder // com.google.firebase.storage/StorageMetadata.Builder.setContentDisposition|setContentDisposition(kotlin.String?){}[0]
+        final fun setContentEncoding(kotlin/String?): com.google.firebase.storage/StorageMetadata.Builder // com.google.firebase.storage/StorageMetadata.Builder.setContentEncoding|setContentEncoding(kotlin.String?){}[0]
+        final fun setContentLanguage(kotlin/String?): com.google.firebase.storage/StorageMetadata.Builder // com.google.firebase.storage/StorageMetadata.Builder.setContentLanguage|setContentLanguage(kotlin.String?){}[0]
+        final fun setContentType(kotlin/String?): com.google.firebase.storage/StorageMetadata.Builder // com.google.firebase.storage/StorageMetadata.Builder.setContentType|setContentType(kotlin.String?){}[0]
+        final fun setCustomMetadata(kotlin/String, kotlin/String?): com.google.firebase.storage/StorageMetadata.Builder // com.google.firebase.storage/StorageMetadata.Builder.setCustomMetadata|setCustomMetadata(kotlin.String;kotlin.String?){}[0]
+    }
+}
+
+final class com.google.firebase.storage/StorageReference : kotlin/Comparable<com.google.firebase.storage/StorageReference> { // com.google.firebase.storage/StorageReference|null[0]
+    final val activeUploadTasks // com.google.firebase.storage/StorageReference.activeUploadTasks|{}activeUploadTasks[0]
+        final fun <get-activeUploadTasks>(): kotlin.collections/List<com.google.firebase.storage/UploadTask> // com.google.firebase.storage/StorageReference.activeUploadTasks.<get-activeUploadTasks>|<get-activeUploadTasks>(){}[0]
+    final val bucket // com.google.firebase.storage/StorageReference.bucket|{}bucket[0]
+        final fun <get-bucket>(): kotlin/String // com.google.firebase.storage/StorageReference.bucket.<get-bucket>|<get-bucket>(){}[0]
+    final val name // com.google.firebase.storage/StorageReference.name|{}name[0]
+        final fun <get-name>(): kotlin/String // com.google.firebase.storage/StorageReference.name.<get-name>|<get-name>(){}[0]
+    final val parent // com.google.firebase.storage/StorageReference.parent|{}parent[0]
+        final fun <get-parent>(): com.google.firebase.storage/StorageReference? // com.google.firebase.storage/StorageReference.parent.<get-parent>|<get-parent>(){}[0]
+    final val path // com.google.firebase.storage/StorageReference.path|{}path[0]
+        final fun <get-path>(): kotlin/String // com.google.firebase.storage/StorageReference.path.<get-path>|<get-path>(){}[0]
+    final val root // com.google.firebase.storage/StorageReference.root|{}root[0]
+        final fun <get-root>(): com.google.firebase.storage/StorageReference // com.google.firebase.storage/StorageReference.root.<get-root>|<get-root>(){}[0]
+    final val storage // com.google.firebase.storage/StorageReference.storage|{}storage[0]
+        final fun <get-storage>(): com.google.firebase.storage/FirebaseStorage // com.google.firebase.storage/StorageReference.storage.<get-storage>|<get-storage>(){}[0]
+
+    final fun child(kotlin/String): com.google.firebase.storage/StorageReference // com.google.firebase.storage/StorageReference.child|child(kotlin.String){}[0]
+    final fun compareTo(com.google.firebase.storage/StorageReference): kotlin/Int // com.google.firebase.storage/StorageReference.compareTo|compareTo(com.google.firebase.storage.StorageReference){}[0]
+    final fun delete(): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.storage/StorageReference.delete|delete(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.storage/StorageReference.equals|equals(kotlin.Any?){}[0]
+    final fun getBytes(kotlin/Long): com.google.android.gms.tasks/Task<kotlin/ByteArray> // com.google.firebase.storage/StorageReference.getBytes|getBytes(kotlin.Long){}[0]
+    final fun getDownloadUrl(): com.google.android.gms.tasks/Task<kotlin/Any> // com.google.firebase.storage/StorageReference.getDownloadUrl|getDownloadUrl(){}[0]
+    final fun getMetadata(): com.google.android.gms.tasks/Task<com.google.firebase.storage/StorageMetadata> // com.google.firebase.storage/StorageReference.getMetadata|getMetadata(){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.storage/StorageReference.hashCode|hashCode(){}[0]
+    final fun list(kotlin/Int): com.google.android.gms.tasks/Task<com.google.firebase.storage/ListResult> // com.google.firebase.storage/StorageReference.list|list(kotlin.Int){}[0]
+    final fun list(kotlin/Int, kotlin/String): com.google.android.gms.tasks/Task<com.google.firebase.storage/ListResult> // com.google.firebase.storage/StorageReference.list|list(kotlin.Int;kotlin.String){}[0]
+    final fun listAll(): com.google.android.gms.tasks/Task<com.google.firebase.storage/ListResult> // com.google.firebase.storage/StorageReference.listAll|listAll(){}[0]
+    final fun putBytes(kotlin/ByteArray): com.google.firebase.storage/UploadTask // com.google.firebase.storage/StorageReference.putBytes|putBytes(kotlin.ByteArray){}[0]
+    final fun putBytes(kotlin/ByteArray, com.google.firebase.storage/StorageMetadata): com.google.firebase.storage/UploadTask // com.google.firebase.storage/StorageReference.putBytes|putBytes(kotlin.ByteArray;com.google.firebase.storage.StorageMetadata){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.storage/StorageReference.toString|toString(){}[0]
+    final fun updateMetadata(com.google.firebase.storage/StorageMetadata): com.google.android.gms.tasks/Task<com.google.firebase.storage/StorageMetadata> // com.google.firebase.storage/StorageReference.updateMetadata|updateMetadata(com.google.firebase.storage.StorageMetadata){}[0]
+
+    // Targets: [apple]
+    final val ios // com.google.firebase.storage/StorageReference.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.storage/FIRStorageReference // com.google.firebase.storage/StorageReference.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val js // com.google.firebase.storage/StorageReference.js|{}js[0]
+        final fun <get-js>(): io.github.corneloaie.firebase.storage.externals/StorageReference // com.google.firebase.storage/StorageReference.js.<get-js>|<get-js>(){}[0]
+}
+
+final class io.github.corneloaie.firebase.storage/Data { // io.github.corneloaie.firebase.storage/Data|null[0]
+    final val data // io.github.corneloaie.firebase.storage/Data.data|{}data[0]
+        // Targets: [apple]
+        final fun <get-data>(): platform.Foundation/NSData // io.github.corneloaie.firebase.storage/Data.data.<get-data>|<get-data>(){}[0]
+
+        // Targets: [js, wasmJs]
+        final fun <get-data>(): org.khronos.webgl/Uint8Array // io.github.corneloaie.firebase.storage/Data.data.<get-data>|<get-data>(){}[0]
+
+    // Targets: [apple]
+    constructor <init>(platform.Foundation/NSData) // io.github.corneloaie.firebase.storage/Data.<init>|<init>(platform.Foundation.NSData){}[0]
+
+    // Targets: [js, wasmJs]
+    constructor <init>(org.khronos.webgl/Uint8Array) // io.github.corneloaie.firebase.storage/Data.<init>|<init>(org.khronos.webgl.Uint8Array){}[0]
+}
+
+final class io.github.corneloaie.firebase.storage/FirebaseStorage { // io.github.corneloaie.firebase.storage/FirebaseStorage|null[0]
+    final val compat // io.github.corneloaie.firebase.storage/FirebaseStorage.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.storage/FirebaseStorage // io.github.corneloaie.firebase.storage/FirebaseStorage.compat.<get-compat>|<get-compat>(){}[0]
+    final val maxOperationRetryTime // io.github.corneloaie.firebase.storage/FirebaseStorage.maxOperationRetryTime|{}maxOperationRetryTime[0]
+        final fun <get-maxOperationRetryTime>(): kotlin.time/Duration // io.github.corneloaie.firebase.storage/FirebaseStorage.maxOperationRetryTime.<get-maxOperationRetryTime>|<get-maxOperationRetryTime>(){}[0]
+    final val maxUploadRetryTime // io.github.corneloaie.firebase.storage/FirebaseStorage.maxUploadRetryTime|{}maxUploadRetryTime[0]
+        final fun <get-maxUploadRetryTime>(): kotlin.time/Duration // io.github.corneloaie.firebase.storage/FirebaseStorage.maxUploadRetryTime.<get-maxUploadRetryTime>|<get-maxUploadRetryTime>(){}[0]
+    final val reference // io.github.corneloaie.firebase.storage/FirebaseStorage.reference|{}reference[0]
+        final fun <get-reference>(): io.github.corneloaie.firebase.storage/StorageReference // io.github.corneloaie.firebase.storage/FirebaseStorage.reference.<get-reference>|<get-reference>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.storage/FirebaseStorage.equals|equals(kotlin.Any?){}[0]
+    final fun getReferenceFromUrl(kotlin/String): io.github.corneloaie.firebase.storage/StorageReference // io.github.corneloaie.firebase.storage/FirebaseStorage.getReferenceFromUrl|getReferenceFromUrl(kotlin.String){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.storage/FirebaseStorage.hashCode|hashCode(){}[0]
+    final fun reference(kotlin/String): io.github.corneloaie.firebase.storage/StorageReference // io.github.corneloaie.firebase.storage/FirebaseStorage.reference|reference(kotlin.String){}[0]
+    final fun setMaxOperationRetryTime(kotlin.time/Duration) // io.github.corneloaie.firebase.storage/FirebaseStorage.setMaxOperationRetryTime|setMaxOperationRetryTime(kotlin.time.Duration){}[0]
+    final fun setMaxUploadRetryTime(kotlin.time/Duration) // io.github.corneloaie.firebase.storage/FirebaseStorage.setMaxUploadRetryTime|setMaxUploadRetryTime(kotlin.time.Duration){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.storage/FirebaseStorage.toString|toString(){}[0]
+    final fun useEmulator(kotlin/String, kotlin/Int) // io.github.corneloaie.firebase.storage/FirebaseStorage.useEmulator|useEmulator(kotlin.String;kotlin.Int){}[0]
+}
+
+final class io.github.corneloaie.firebase.storage/FirebaseStorageMetadata { // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata|null[0]
+    constructor <init>(kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin.collections/MutableMap<kotlin/String, kotlin/String> = ...) // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.<init>|<init>(kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.collections.MutableMap<kotlin.String,kotlin.String>){}[0]
+
+    final var cacheControl // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.cacheControl|{}cacheControl[0]
+        final fun <get-cacheControl>(): kotlin/String? // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.cacheControl.<get-cacheControl>|<get-cacheControl>(){}[0]
+        final fun <set-cacheControl>(kotlin/String?) // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.cacheControl.<set-cacheControl>|<set-cacheControl>(kotlin.String?){}[0]
+    final var contentDisposition // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.contentDisposition|{}contentDisposition[0]
+        final fun <get-contentDisposition>(): kotlin/String? // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.contentDisposition.<get-contentDisposition>|<get-contentDisposition>(){}[0]
+        final fun <set-contentDisposition>(kotlin/String?) // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.contentDisposition.<set-contentDisposition>|<set-contentDisposition>(kotlin.String?){}[0]
+    final var contentEncoding // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.contentEncoding|{}contentEncoding[0]
+        final fun <get-contentEncoding>(): kotlin/String? // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.contentEncoding.<get-contentEncoding>|<get-contentEncoding>(){}[0]
+        final fun <set-contentEncoding>(kotlin/String?) // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.contentEncoding.<set-contentEncoding>|<set-contentEncoding>(kotlin.String?){}[0]
+    final var contentLanguage // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.contentLanguage|{}contentLanguage[0]
+        final fun <get-contentLanguage>(): kotlin/String? // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.contentLanguage.<get-contentLanguage>|<get-contentLanguage>(){}[0]
+        final fun <set-contentLanguage>(kotlin/String?) // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.contentLanguage.<set-contentLanguage>|<set-contentLanguage>(kotlin.String?){}[0]
+    final var contentType // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.contentType|{}contentType[0]
+        final fun <get-contentType>(): kotlin/String? // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.contentType.<get-contentType>|<get-contentType>(){}[0]
+        final fun <set-contentType>(kotlin/String?) // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.contentType.<set-contentType>|<set-contentType>(kotlin.String?){}[0]
+    final var customMetadata // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.customMetadata|{}customMetadata[0]
+        final fun <get-customMetadata>(): kotlin.collections/MutableMap<kotlin/String, kotlin/String> // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.customMetadata.<get-customMetadata>|<get-customMetadata>(){}[0]
+        final fun <set-customMetadata>(kotlin.collections/MutableMap<kotlin/String, kotlin/String>) // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.customMetadata.<set-customMetadata>|<set-customMetadata>(kotlin.collections.MutableMap<kotlin.String,kotlin.String>){}[0]
+    final var md5Hash // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.md5Hash|{}md5Hash[0]
+        final fun <get-md5Hash>(): kotlin/String? // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.md5Hash.<get-md5Hash>|<get-md5Hash>(){}[0]
+        final fun <set-md5Hash>(kotlin/String?) // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.md5Hash.<set-md5Hash>|<set-md5Hash>(kotlin.String?){}[0]
+
+    final fun component1(): kotlin/String? // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.component1|component1(){}[0]
+    final fun component2(): kotlin/String? // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.component2|component2(){}[0]
+    final fun component3(): kotlin/String? // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.component3|component3(){}[0]
+    final fun component4(): kotlin/String? // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.component4|component4(){}[0]
+    final fun component5(): kotlin/String? // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.component5|component5(){}[0]
+    final fun component6(): kotlin/String? // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.component6|component6(){}[0]
+    final fun component7(): kotlin.collections/MutableMap<kotlin/String, kotlin/String> // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.component7|component7(){}[0]
+    final fun copy(kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin.collections/MutableMap<kotlin/String, kotlin/String> = ...): io.github.corneloaie.firebase.storage/FirebaseStorageMetadata // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.copy|copy(kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.collections.MutableMap<kotlin.String,kotlin.String>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.hashCode|hashCode(){}[0]
+    final fun setCustomMetadata(kotlin/String, kotlin/String?) // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.setCustomMetadata|setCustomMetadata(kotlin.String;kotlin.String?){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.storage/FirebaseStorageMetadata.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.firebase.storage/ListResult { // io.github.corneloaie.firebase.storage/ListResult|null[0]
+    final val compat // io.github.corneloaie.firebase.storage/ListResult.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.storage/ListResult // io.github.corneloaie.firebase.storage/ListResult.compat.<get-compat>|<get-compat>(){}[0]
+    final val items // io.github.corneloaie.firebase.storage/ListResult.items|{}items[0]
+        final fun <get-items>(): kotlin.collections/List<io.github.corneloaie.firebase.storage/StorageReference> // io.github.corneloaie.firebase.storage/ListResult.items.<get-items>|<get-items>(){}[0]
+    final val pageToken // io.github.corneloaie.firebase.storage/ListResult.pageToken|{}pageToken[0]
+        final fun <get-pageToken>(): kotlin/String? // io.github.corneloaie.firebase.storage/ListResult.pageToken.<get-pageToken>|<get-pageToken>(){}[0]
+    final val prefixes // io.github.corneloaie.firebase.storage/ListResult.prefixes|{}prefixes[0]
+        final fun <get-prefixes>(): kotlin.collections/List<io.github.corneloaie.firebase.storage/StorageReference> // io.github.corneloaie.firebase.storage/ListResult.prefixes.<get-prefixes>|<get-prefixes>(){}[0]
+}
+
+final class io.github.corneloaie.firebase.storage/StorageReference { // io.github.corneloaie.firebase.storage/StorageReference|null[0]
+    final val bucket // io.github.corneloaie.firebase.storage/StorageReference.bucket|{}bucket[0]
+        final fun <get-bucket>(): kotlin/String // io.github.corneloaie.firebase.storage/StorageReference.bucket.<get-bucket>|<get-bucket>(){}[0]
+    final val compat // io.github.corneloaie.firebase.storage/StorageReference.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.storage/StorageReference // io.github.corneloaie.firebase.storage/StorageReference.compat.<get-compat>|<get-compat>(){}[0]
+    final val name // io.github.corneloaie.firebase.storage/StorageReference.name|{}name[0]
+        final fun <get-name>(): kotlin/String // io.github.corneloaie.firebase.storage/StorageReference.name.<get-name>|<get-name>(){}[0]
+    final val parent // io.github.corneloaie.firebase.storage/StorageReference.parent|{}parent[0]
+        final fun <get-parent>(): io.github.corneloaie.firebase.storage/StorageReference? // io.github.corneloaie.firebase.storage/StorageReference.parent.<get-parent>|<get-parent>(){}[0]
+    final val path // io.github.corneloaie.firebase.storage/StorageReference.path|{}path[0]
+        final fun <get-path>(): kotlin/String // io.github.corneloaie.firebase.storage/StorageReference.path.<get-path>|<get-path>(){}[0]
+    final val root // io.github.corneloaie.firebase.storage/StorageReference.root|{}root[0]
+        final fun <get-root>(): io.github.corneloaie.firebase.storage/StorageReference // io.github.corneloaie.firebase.storage/StorageReference.root.<get-root>|<get-root>(){}[0]
+    final val storage // io.github.corneloaie.firebase.storage/StorageReference.storage|{}storage[0]
+        final fun <get-storage>(): io.github.corneloaie.firebase.storage/FirebaseStorage // io.github.corneloaie.firebase.storage/StorageReference.storage.<get-storage>|<get-storage>(){}[0]
+
+    final fun child(kotlin/String): io.github.corneloaie.firebase.storage/StorageReference // io.github.corneloaie.firebase.storage/StorageReference.child|child(kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.storage/StorageReference.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.storage/StorageReference.hashCode|hashCode(){}[0]
+    final fun putDataResumable(io.github.corneloaie.firebase.storage/Data, io.github.corneloaie.firebase.storage/FirebaseStorageMetadata? = ...): io.github.corneloaie.firebase.storage/ProgressFlow // io.github.corneloaie.firebase.storage/StorageReference.putDataResumable|putDataResumable(io.github.corneloaie.firebase.storage.Data;io.github.corneloaie.firebase.storage.FirebaseStorageMetadata?){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.storage/StorageReference.toString|toString(){}[0]
+    final suspend fun delete() // io.github.corneloaie.firebase.storage/StorageReference.delete|delete(){}[0]
+    final suspend fun getData(kotlin/Long): io.github.corneloaie.firebase.storage/Data // io.github.corneloaie.firebase.storage/StorageReference.getData|getData(kotlin.Long){}[0]
+    final suspend fun getDownloadUrl(): kotlin/String // io.github.corneloaie.firebase.storage/StorageReference.getDownloadUrl|getDownloadUrl(){}[0]
+    final suspend fun getMetadata(): io.github.corneloaie.firebase.storage/FirebaseStorageMetadata? // io.github.corneloaie.firebase.storage/StorageReference.getMetadata|getMetadata(){}[0]
+    final suspend fun list(kotlin/Int, kotlin/String? = ...): io.github.corneloaie.firebase.storage/ListResult // io.github.corneloaie.firebase.storage/StorageReference.list|list(kotlin.Int;kotlin.String?){}[0]
+    final suspend fun listAll(): io.github.corneloaie.firebase.storage/ListResult // io.github.corneloaie.firebase.storage/StorageReference.listAll|listAll(){}[0]
+    final suspend fun putData(io.github.corneloaie.firebase.storage/Data, io.github.corneloaie.firebase.storage/FirebaseStorageMetadata? = ...) // io.github.corneloaie.firebase.storage/StorageReference.putData|putData(io.github.corneloaie.firebase.storage.Data;io.github.corneloaie.firebase.storage.FirebaseStorageMetadata?){}[0]
+    final suspend fun updateMetadata(io.github.corneloaie.firebase.storage/FirebaseStorageMetadata): io.github.corneloaie.firebase.storage/FirebaseStorageMetadata? // io.github.corneloaie.firebase.storage/StorageReference.updateMetadata|updateMetadata(io.github.corneloaie.firebase.storage.FirebaseStorageMetadata){}[0]
+
+    // Targets: [apple]
+    final fun putFileResumable(io.github.corneloaie.firebase.storage/File, io.github.corneloaie.firebase.storage/FirebaseStorageMetadata? = ...): io.github.corneloaie.firebase.storage/ProgressFlow // io.github.corneloaie.firebase.storage/StorageReference.putFileResumable|putFileResumable(io.github.corneloaie.firebase.storage.File;io.github.corneloaie.firebase.storage.FirebaseStorageMetadata?){}[0]
+
+    // Targets: [apple]
+    final suspend fun putFile(io.github.corneloaie.firebase.storage/File, io.github.corneloaie.firebase.storage/FirebaseStorageMetadata? = ...) // io.github.corneloaie.firebase.storage/StorageReference.putFile|putFile(io.github.corneloaie.firebase.storage.File;io.github.corneloaie.firebase.storage.FirebaseStorageMetadata?){}[0]
+
+    // Targets: [js, wasmJs]
+    final fun putFileResumable(org.w3c.files/File, io.github.corneloaie.firebase.storage/FirebaseStorageMetadata? = ...): io.github.corneloaie.firebase.storage/ProgressFlow // io.github.corneloaie.firebase.storage/StorageReference.putFileResumable|putFileResumable(org.w3c.files.File;io.github.corneloaie.firebase.storage.FirebaseStorageMetadata?){}[0]
+
+    // Targets: [js, wasmJs]
+    final suspend fun putFile(org.w3c.files/File, io.github.corneloaie.firebase.storage/FirebaseStorageMetadata? = ...) // io.github.corneloaie.firebase.storage/StorageReference.putFile|putFile(org.w3c.files.File;io.github.corneloaie.firebase.storage.FirebaseStorageMetadata?){}[0]
+}
+
+open class com.google.firebase.storage/StorageException : com.google.firebase/FirebaseException { // com.google.firebase.storage/StorageException|null[0]
+    final val errorCode // com.google.firebase.storage/StorageException.errorCode|{}errorCode[0]
+        final fun <get-errorCode>(): kotlin/Int // com.google.firebase.storage/StorageException.errorCode.<get-errorCode>|<get-errorCode>(){}[0]
+    final val httpResultCode // com.google.firebase.storage/StorageException.httpResultCode|{}httpResultCode[0]
+        final fun <get-httpResultCode>(): kotlin/Int // com.google.firebase.storage/StorageException.httpResultCode.<get-httpResultCode>|<get-httpResultCode>(){}[0]
+    final val isRecoverableException // com.google.firebase.storage/StorageException.isRecoverableException|{}isRecoverableException[0]
+        final fun <get-isRecoverableException>(): kotlin/Boolean // com.google.firebase.storage/StorageException.isRecoverableException.<get-isRecoverableException>|<get-isRecoverableException>(){}[0]
+
+    open annotation class ErrorCode : kotlin/Annotation { // com.google.firebase.storage/StorageException.ErrorCode|null[0]
+        constructor <init>() // com.google.firebase.storage/StorageException.ErrorCode.<init>|<init>(){}[0]
+    }
+
+    final object Companion { // com.google.firebase.storage/StorageException.Companion|null[0]
+        final val ERROR_BUCKET_NOT_FOUND // com.google.firebase.storage/StorageException.Companion.ERROR_BUCKET_NOT_FOUND|{}ERROR_BUCKET_NOT_FOUND[0]
+            final fun <get-ERROR_BUCKET_NOT_FOUND>(): kotlin/Int // com.google.firebase.storage/StorageException.Companion.ERROR_BUCKET_NOT_FOUND.<get-ERROR_BUCKET_NOT_FOUND>|<get-ERROR_BUCKET_NOT_FOUND>(){}[0]
+        final val ERROR_CANCELED // com.google.firebase.storage/StorageException.Companion.ERROR_CANCELED|{}ERROR_CANCELED[0]
+            final fun <get-ERROR_CANCELED>(): kotlin/Int // com.google.firebase.storage/StorageException.Companion.ERROR_CANCELED.<get-ERROR_CANCELED>|<get-ERROR_CANCELED>(){}[0]
+        final val ERROR_INVALID_CHECKSUM // com.google.firebase.storage/StorageException.Companion.ERROR_INVALID_CHECKSUM|{}ERROR_INVALID_CHECKSUM[0]
+            final fun <get-ERROR_INVALID_CHECKSUM>(): kotlin/Int // com.google.firebase.storage/StorageException.Companion.ERROR_INVALID_CHECKSUM.<get-ERROR_INVALID_CHECKSUM>|<get-ERROR_INVALID_CHECKSUM>(){}[0]
+        final val ERROR_NOT_AUTHENTICATED // com.google.firebase.storage/StorageException.Companion.ERROR_NOT_AUTHENTICATED|{}ERROR_NOT_AUTHENTICATED[0]
+            final fun <get-ERROR_NOT_AUTHENTICATED>(): kotlin/Int // com.google.firebase.storage/StorageException.Companion.ERROR_NOT_AUTHENTICATED.<get-ERROR_NOT_AUTHENTICATED>|<get-ERROR_NOT_AUTHENTICATED>(){}[0]
+        final val ERROR_NOT_AUTHORIZED // com.google.firebase.storage/StorageException.Companion.ERROR_NOT_AUTHORIZED|{}ERROR_NOT_AUTHORIZED[0]
+            final fun <get-ERROR_NOT_AUTHORIZED>(): kotlin/Int // com.google.firebase.storage/StorageException.Companion.ERROR_NOT_AUTHORIZED.<get-ERROR_NOT_AUTHORIZED>|<get-ERROR_NOT_AUTHORIZED>(){}[0]
+        final val ERROR_OBJECT_NOT_FOUND // com.google.firebase.storage/StorageException.Companion.ERROR_OBJECT_NOT_FOUND|{}ERROR_OBJECT_NOT_FOUND[0]
+            final fun <get-ERROR_OBJECT_NOT_FOUND>(): kotlin/Int // com.google.firebase.storage/StorageException.Companion.ERROR_OBJECT_NOT_FOUND.<get-ERROR_OBJECT_NOT_FOUND>|<get-ERROR_OBJECT_NOT_FOUND>(){}[0]
+        final val ERROR_PROJECT_NOT_FOUND // com.google.firebase.storage/StorageException.Companion.ERROR_PROJECT_NOT_FOUND|{}ERROR_PROJECT_NOT_FOUND[0]
+            final fun <get-ERROR_PROJECT_NOT_FOUND>(): kotlin/Int // com.google.firebase.storage/StorageException.Companion.ERROR_PROJECT_NOT_FOUND.<get-ERROR_PROJECT_NOT_FOUND>|<get-ERROR_PROJECT_NOT_FOUND>(){}[0]
+        final val ERROR_QUOTA_EXCEEDED // com.google.firebase.storage/StorageException.Companion.ERROR_QUOTA_EXCEEDED|{}ERROR_QUOTA_EXCEEDED[0]
+            final fun <get-ERROR_QUOTA_EXCEEDED>(): kotlin/Int // com.google.firebase.storage/StorageException.Companion.ERROR_QUOTA_EXCEEDED.<get-ERROR_QUOTA_EXCEEDED>|<get-ERROR_QUOTA_EXCEEDED>(){}[0]
+        final val ERROR_RETRY_LIMIT_EXCEEDED // com.google.firebase.storage/StorageException.Companion.ERROR_RETRY_LIMIT_EXCEEDED|{}ERROR_RETRY_LIMIT_EXCEEDED[0]
+            final fun <get-ERROR_RETRY_LIMIT_EXCEEDED>(): kotlin/Int // com.google.firebase.storage/StorageException.Companion.ERROR_RETRY_LIMIT_EXCEEDED.<get-ERROR_RETRY_LIMIT_EXCEEDED>|<get-ERROR_RETRY_LIMIT_EXCEEDED>(){}[0]
+        final val ERROR_UNKNOWN // com.google.firebase.storage/StorageException.Companion.ERROR_UNKNOWN|{}ERROR_UNKNOWN[0]
+            final fun <get-ERROR_UNKNOWN>(): kotlin/Int // com.google.firebase.storage/StorageException.Companion.ERROR_UNKNOWN.<get-ERROR_UNKNOWN>|<get-ERROR_UNKNOWN>(){}[0]
+
+        final fun fromException(kotlin/Throwable): com.google.firebase.storage/StorageException // com.google.firebase.storage/StorageException.Companion.fromException|fromException(kotlin.Throwable){}[0]
+        final fun fromExceptionAndHttpCode(kotlin/Throwable?, kotlin/Int): com.google.firebase.storage/StorageException? // com.google.firebase.storage/StorageException.Companion.fromExceptionAndHttpCode|fromExceptionAndHttpCode(kotlin.Throwable?;kotlin.Int){}[0]
+    }
+}
+
+sealed class io.github.corneloaie.firebase.storage/Progress { // io.github.corneloaie.firebase.storage/Progress|null[0]
+    final val bytesTransferred // io.github.corneloaie.firebase.storage/Progress.bytesTransferred|{}bytesTransferred[0]
+        final fun <get-bytesTransferred>(): kotlin/Number // io.github.corneloaie.firebase.storage/Progress.bytesTransferred.<get-bytesTransferred>|<get-bytesTransferred>(){}[0]
+    final val totalByteCount // io.github.corneloaie.firebase.storage/Progress.totalByteCount|{}totalByteCount[0]
+        final fun <get-totalByteCount>(): kotlin/Number // io.github.corneloaie.firebase.storage/Progress.totalByteCount.<get-totalByteCount>|<get-totalByteCount>(){}[0]
+
+    final class Paused : io.github.corneloaie.firebase.storage/Progress // io.github.corneloaie.firebase.storage/Progress.Paused|null[0]
+
+    final class Running : io.github.corneloaie.firebase.storage/Progress // io.github.corneloaie.firebase.storage/Progress.Running|null[0]
+}
+
+final val com.google.firebase.storage/activeDownloadTasks // com.google.firebase.storage/activeDownloadTasks|@com.google.firebase.storage.StorageReference{}activeDownloadTasks[0]
+    final fun (com.google.firebase.storage/StorageReference).<get-activeDownloadTasks>(): kotlin.collections/List<com.google.firebase.storage/FileDownloadTask> // com.google.firebase.storage/activeDownloadTasks.<get-activeDownloadTasks>|<get-activeDownloadTasks>@com.google.firebase.storage.StorageReference(){}[0]
+final val com.google.firebase.storage/storage // com.google.firebase.storage/storage|@com.google.firebase.Firebase{}storage[0]
+    final fun (com.google.firebase/Firebase).<get-storage>(): com.google.firebase.storage/FirebaseStorage // com.google.firebase.storage/storage.<get-storage>|<get-storage>@com.google.firebase.Firebase(){}[0]
+final val com.google.firebase.storage/taskState // com.google.firebase.storage/taskState|@com.google.firebase.storage.StorageTask<0:0>{0§<com.google.firebase.storage.StorageTask.ProvideError>}taskState[0]
+    final fun <#A1: com.google.firebase.storage/StorageTask.ProvideError> (com.google.firebase.storage/StorageTask<#A1>).<get-taskState>(): kotlinx.coroutines.flow/Flow<com.google.firebase.storage/TaskState<#A1>> // com.google.firebase.storage/taskState.<get-taskState>|<get-taskState>@com.google.firebase.storage.StorageTask<0:0>(){0§<com.google.firebase.storage.StorageTask.ProvideError>}[0]
+final val com.google.firebase.storage/uploadSessionUri // com.google.firebase.storage/uploadSessionUri|@com.google.firebase.storage.UploadTask.TaskSnapshot{}uploadSessionUri[0]
+    final fun (com.google.firebase.storage/UploadTask.TaskSnapshot).<get-uploadSessionUri>(): kotlin/String? // com.google.firebase.storage/uploadSessionUri.<get-uploadSessionUri>|<get-uploadSessionUri>@com.google.firebase.storage.UploadTask.TaskSnapshot(){}[0]
+final val io.github.corneloaie.firebase.storage/maxOperationRetryTimeMillis // io.github.corneloaie.firebase.storage/maxOperationRetryTimeMillis|@io.github.corneloaie.firebase.storage.FirebaseStorage{}maxOperationRetryTimeMillis[0]
+    final fun (io.github.corneloaie.firebase.storage/FirebaseStorage).<get-maxOperationRetryTimeMillis>(): kotlin/Long // io.github.corneloaie.firebase.storage/maxOperationRetryTimeMillis.<get-maxOperationRetryTimeMillis>|<get-maxOperationRetryTimeMillis>@io.github.corneloaie.firebase.storage.FirebaseStorage(){}[0]
+final val io.github.corneloaie.firebase.storage/maxUploadRetryTimeMillis // io.github.corneloaie.firebase.storage/maxUploadRetryTimeMillis|@io.github.corneloaie.firebase.storage.FirebaseStorage{}maxUploadRetryTimeMillis[0]
+    final fun (io.github.corneloaie.firebase.storage/FirebaseStorage).<get-maxUploadRetryTimeMillis>(): kotlin/Long // io.github.corneloaie.firebase.storage/maxUploadRetryTimeMillis.<get-maxUploadRetryTimeMillis>|<get-maxUploadRetryTimeMillis>@io.github.corneloaie.firebase.storage.FirebaseStorage(){}[0]
+final val io.github.corneloaie.firebase.storage/storage // io.github.corneloaie.firebase.storage/storage|@io.github.corneloaie.firebase.Firebase{}storage[0]
+    final fun (io.github.corneloaie.firebase/Firebase).<get-storage>(): io.github.corneloaie.firebase.storage/FirebaseStorage // io.github.corneloaie.firebase.storage/storage.<get-storage>|<get-storage>@io.github.corneloaie.firebase.Firebase(){}[0]
+
+final var com.google.firebase.storage/maxDownloadRetryTimeMillis // com.google.firebase.storage/maxDownloadRetryTimeMillis|@com.google.firebase.storage.FirebaseStorage{}maxDownloadRetryTimeMillis[0]
+    final fun (com.google.firebase.storage/FirebaseStorage).<get-maxDownloadRetryTimeMillis>(): kotlin/Long // com.google.firebase.storage/maxDownloadRetryTimeMillis.<get-maxDownloadRetryTimeMillis>|<get-maxDownloadRetryTimeMillis>@com.google.firebase.storage.FirebaseStorage(){}[0]
+    final fun (com.google.firebase.storage/FirebaseStorage).<set-maxDownloadRetryTimeMillis>(kotlin/Long) // com.google.firebase.storage/maxDownloadRetryTimeMillis.<set-maxDownloadRetryTimeMillis>|<set-maxDownloadRetryTimeMillis>@com.google.firebase.storage.FirebaseStorage(kotlin.Long){}[0]
+
+final fun (com.google.firebase.storage/FileDownloadTask.TaskSnapshot).com.google.firebase.storage/component1(): kotlin/Long // com.google.firebase.storage/component1|component1@com.google.firebase.storage.FileDownloadTask.TaskSnapshot(){}[0]
+final fun (com.google.firebase.storage/FileDownloadTask.TaskSnapshot).com.google.firebase.storage/component2(): kotlin/Long // com.google.firebase.storage/component2|component2@com.google.firebase.storage.FileDownloadTask.TaskSnapshot(){}[0]
+final fun (com.google.firebase.storage/ListResult).com.google.firebase.storage/component1(): kotlin.collections/List<com.google.firebase.storage/StorageReference> // com.google.firebase.storage/component1|component1@com.google.firebase.storage.ListResult(){}[0]
+final fun (com.google.firebase.storage/ListResult).com.google.firebase.storage/component2(): kotlin.collections/List<com.google.firebase.storage/StorageReference> // com.google.firebase.storage/component2|component2@com.google.firebase.storage.ListResult(){}[0]
+final fun (com.google.firebase.storage/ListResult).com.google.firebase.storage/component3(): kotlin/String? // com.google.firebase.storage/component3|component3@com.google.firebase.storage.ListResult(){}[0]
+final fun (com.google.firebase.storage/StorageReference).com.google.firebase.storage/getFile(kotlin/Any): com.google.firebase.storage/FileDownloadTask // com.google.firebase.storage/getFile|getFile@com.google.firebase.storage.StorageReference(kotlin.Any){}[0]
+final fun (com.google.firebase.storage/StorageReference).com.google.firebase.storage/putFile(kotlin/Any): com.google.firebase.storage/UploadTask // com.google.firebase.storage/putFile|putFile@com.google.firebase.storage.StorageReference(kotlin.Any){}[0]
+final fun (com.google.firebase.storage/StorageReference).com.google.firebase.storage/putFile(kotlin/Any, com.google.firebase.storage/StorageMetadata): com.google.firebase.storage/UploadTask // com.google.firebase.storage/putFile|putFile@com.google.firebase.storage.StorageReference(kotlin.Any;com.google.firebase.storage.StorageMetadata){}[0]
+final fun (com.google.firebase.storage/UploadTask.TaskSnapshot).com.google.firebase.storage/component1(): kotlin/Long // com.google.firebase.storage/component1|component1@com.google.firebase.storage.UploadTask.TaskSnapshot(){}[0]
+final fun (com.google.firebase.storage/UploadTask.TaskSnapshot).com.google.firebase.storage/component2(): kotlin/Long // com.google.firebase.storage/component2|component2@com.google.firebase.storage.UploadTask.TaskSnapshot(){}[0]
+final fun (com.google.firebase.storage/UploadTask.TaskSnapshot).com.google.firebase.storage/component3(): com.google.firebase.storage/StorageMetadata? // com.google.firebase.storage/component3|component3@com.google.firebase.storage.UploadTask.TaskSnapshot(){}[0]
+final fun (com.google.firebase/Firebase).com.google.firebase.storage/storage(com.google.firebase/FirebaseApp): com.google.firebase.storage/FirebaseStorage // com.google.firebase.storage/storage|storage@com.google.firebase.Firebase(com.google.firebase.FirebaseApp){}[0]
+final fun (com.google.firebase/Firebase).com.google.firebase.storage/storage(com.google.firebase/FirebaseApp, kotlin/String): com.google.firebase.storage/FirebaseStorage // com.google.firebase.storage/storage|storage@com.google.firebase.Firebase(com.google.firebase.FirebaseApp;kotlin.String){}[0]
+final fun (com.google.firebase/Firebase).com.google.firebase.storage/storage(kotlin/String): com.google.firebase.storage/FirebaseStorage // com.google.firebase.storage/storage|storage@com.google.firebase.Firebase(kotlin.String){}[0]
+final fun (io.github.corneloaie.firebase.storage/Data).io.github.corneloaie.firebase.storage/toByteArray(): kotlin/ByteArray // io.github.corneloaie.firebase.storage/toByteArray|toByteArray@io.github.corneloaie.firebase.storage.Data(){}[0]
+final fun (io.github.corneloaie.firebase.storage/FirebaseStorage).io.github.corneloaie.firebase.storage/setMaxOperationRetryTimeMillis(kotlin/Long) // io.github.corneloaie.firebase.storage/setMaxOperationRetryTimeMillis|setMaxOperationRetryTimeMillis@io.github.corneloaie.firebase.storage.FirebaseStorage(kotlin.Long){}[0]
+final fun (io.github.corneloaie.firebase.storage/FirebaseStorage).io.github.corneloaie.firebase.storage/setMaxUploadRetryTimeMillis(kotlin/Long) // io.github.corneloaie.firebase.storage/setMaxUploadRetryTimeMillis|setMaxUploadRetryTimeMillis@io.github.corneloaie.firebase.storage.FirebaseStorage(kotlin.Long){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase.storage/storage(io.github.corneloaie.firebase/FirebaseApp): io.github.corneloaie.firebase.storage/FirebaseStorage // io.github.corneloaie.firebase.storage/storage|storage@io.github.corneloaie.firebase.Firebase(io.github.corneloaie.firebase.FirebaseApp){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase.storage/storage(io.github.corneloaie.firebase/FirebaseApp, kotlin/String): io.github.corneloaie.firebase.storage/FirebaseStorage // io.github.corneloaie.firebase.storage/storage|storage@io.github.corneloaie.firebase.Firebase(io.github.corneloaie.firebase.FirebaseApp;kotlin.String){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase.storage/storage(kotlin/String): io.github.corneloaie.firebase.storage/FirebaseStorage // io.github.corneloaie.firebase.storage/storage|storage@io.github.corneloaie.firebase.Firebase(kotlin.String){}[0]
+final fun (kotlin/ByteArray).io.github.corneloaie.firebase.storage/toData(): io.github.corneloaie.firebase.storage/Data // io.github.corneloaie.firebase.storage/toData|toData@kotlin.ByteArray(){}[0]
+final fun com.google.firebase.storage/storageMetadata(kotlin/Function1<com.google.firebase.storage/StorageMetadata.Builder, kotlin/Unit>): com.google.firebase.storage/StorageMetadata // com.google.firebase.storage/storageMetadata|storageMetadata(kotlin.Function1<com.google.firebase.storage.StorageMetadata.Builder,kotlin.Unit>){}[0]
+final fun io.github.corneloaie.firebase.storage/storageMetadata(kotlin/Function1<io.github.corneloaie.firebase.storage/FirebaseStorageMetadata, kotlin/Unit>): io.github.corneloaie.firebase.storage/FirebaseStorageMetadata // io.github.corneloaie.firebase.storage/storageMetadata|storageMetadata(kotlin.Function1<io.github.corneloaie.firebase.storage.FirebaseStorageMetadata,kotlin.Unit>){}[0]
+
+// Targets: [apple]
+final class io.github.corneloaie.firebase.storage/File { // io.github.corneloaie.firebase.storage/File|null[0]
+    constructor <init>(platform.Foundation/NSURL) // io.github.corneloaie.firebase.storage/File.<init>|<init>(platform.Foundation.NSURL){}[0]
+
+    final val url // io.github.corneloaie.firebase.storage/File.url|{}url[0]
+        final fun <get-url>(): platform.Foundation/NSURL // io.github.corneloaie.firebase.storage/File.url.<get-url>|<get-url>(){}[0]
+}
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.storage/ios // io.github.corneloaie.firebase.storage/ios|@io.github.corneloaie.firebase.storage.FirebaseStorage{}ios[0]
+    final fun (io.github.corneloaie.firebase.storage/FirebaseStorage).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.storage/FIRStorage // io.github.corneloaie.firebase.storage/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.storage.FirebaseStorage(){}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.storage/ios // io.github.corneloaie.firebase.storage/ios|@io.github.corneloaie.firebase.storage.StorageReference{}ios[0]
+    final fun (io.github.corneloaie.firebase.storage/StorageReference).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.storage/FIRStorageReference // io.github.corneloaie.firebase.storage/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.storage.StorageReference(){}[0]
+
+// Targets: [js, wasmJs]
+abstract interface io.github.corneloaie.firebase.storage.externals/FullMetadata : io.github.corneloaie.firebase.storage.externals/UploadMetadata { // io.github.corneloaie.firebase.storage.externals/FullMetadata|null[0]
+    abstract val bucket // io.github.corneloaie.firebase.storage.externals/FullMetadata.bucket|{}bucket[0]
+        abstract fun <get-bucket>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/FullMetadata.bucket.<get-bucket>|<get-bucket>(){}[0]
+    abstract val downloadTokens // io.github.corneloaie.firebase.storage.externals/FullMetadata.downloadTokens|{}downloadTokens[0]
+        // Targets: [js]
+        abstract fun <get-downloadTokens>(): kotlin/Array<kotlin/String>? // io.github.corneloaie.firebase.storage.externals/FullMetadata.downloadTokens.<get-downloadTokens>|<get-downloadTokens>(){}[0]
+
+        // Targets: [wasmJs]
+        abstract fun <get-downloadTokens>(): kotlin.js/JsArray<kotlin.js/JsString>? // io.github.corneloaie.firebase.storage.externals/FullMetadata.downloadTokens.<get-downloadTokens>|<get-downloadTokens>(){}[0]
+    abstract val fullPath // io.github.corneloaie.firebase.storage.externals/FullMetadata.fullPath|{}fullPath[0]
+        abstract fun <get-fullPath>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/FullMetadata.fullPath.<get-fullPath>|<get-fullPath>(){}[0]
+    abstract val generation // io.github.corneloaie.firebase.storage.externals/FullMetadata.generation|{}generation[0]
+        abstract fun <get-generation>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/FullMetadata.generation.<get-generation>|<get-generation>(){}[0]
+    abstract val metageneration // io.github.corneloaie.firebase.storage.externals/FullMetadata.metageneration|{}metageneration[0]
+        abstract fun <get-metageneration>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/FullMetadata.metageneration.<get-metageneration>|<get-metageneration>(){}[0]
+    abstract val name // io.github.corneloaie.firebase.storage.externals/FullMetadata.name|{}name[0]
+        abstract fun <get-name>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/FullMetadata.name.<get-name>|<get-name>(){}[0]
+    abstract val ref // io.github.corneloaie.firebase.storage.externals/FullMetadata.ref|{}ref[0]
+        abstract fun <get-ref>(): io.github.corneloaie.firebase.storage.externals/StorageReference? // io.github.corneloaie.firebase.storage.externals/FullMetadata.ref.<get-ref>|<get-ref>(){}[0]
+    abstract val size // io.github.corneloaie.firebase.storage.externals/FullMetadata.size|{}size[0]
+        abstract fun <get-size>(): kotlin/Double // io.github.corneloaie.firebase.storage.externals/FullMetadata.size.<get-size>|<get-size>(){}[0]
+    abstract val timeCreated // io.github.corneloaie.firebase.storage.externals/FullMetadata.timeCreated|{}timeCreated[0]
+        abstract fun <get-timeCreated>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/FullMetadata.timeCreated.<get-timeCreated>|<get-timeCreated>(){}[0]
+    abstract val updated // io.github.corneloaie.firebase.storage.externals/FullMetadata.updated|{}updated[0]
+        abstract fun <get-updated>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/FullMetadata.updated.<get-updated>|<get-updated>(){}[0]
+}
+
+// Targets: [js, wasmJs]
+abstract interface io.github.corneloaie.firebase.storage.externals/UploadMetadata : io.github.corneloaie.firebase.storage.externals/SettableMetadata { // io.github.corneloaie.firebase.storage.externals/UploadMetadata|null[0]
+    abstract val md5Hash // io.github.corneloaie.firebase.storage.externals/UploadMetadata.md5Hash|{}md5Hash[0]
+        abstract fun <get-md5Hash>(): kotlin/String? // io.github.corneloaie.firebase.storage.externals/UploadMetadata.md5Hash.<get-md5Hash>|<get-md5Hash>(){}[0]
+}
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.storage/js // io.github.corneloaie.firebase.storage/js|@io.github.corneloaie.firebase.storage.FirebaseStorage{}js[0]
+    final fun (io.github.corneloaie.firebase.storage/FirebaseStorage).<get-js>(): io.github.corneloaie.firebase.storage.externals/FirebaseStorage // io.github.corneloaie.firebase.storage/js.<get-js>|<get-js>@io.github.corneloaie.firebase.storage.FirebaseStorage(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.storage/js // io.github.corneloaie.firebase.storage/js|@io.github.corneloaie.firebase.storage.StorageReference{}js[0]
+    final fun (io.github.corneloaie.firebase.storage/StorageReference).<get-js>(): io.github.corneloaie.firebase.storage.externals/StorageReference // io.github.corneloaie.firebase.storage/js.<get-js>|<get-js>@io.github.corneloaie.firebase.storage.StorageReference(){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.storage.externals/getBytes(io.github.corneloaie.firebase.storage.externals/StorageReference, kotlin/Double): kotlin.js/Promise<org.khronos.webgl/ArrayBuffer> // io.github.corneloaie.firebase.storage.externals/getBytes|getBytes(io.github.corneloaie.firebase.storage.externals.StorageReference;kotlin.Double){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.storage.externals/getMetadata(io.github.corneloaie.firebase.storage.externals/StorageReference): kotlin.js/Promise<io.github.corneloaie.firebase.storage.externals/FullMetadata> // io.github.corneloaie.firebase.storage.externals/getMetadata|getMetadata(io.github.corneloaie.firebase.storage.externals.StorageReference){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.storage.externals/getStorage(io.github.corneloaie.firebase.externals/FirebaseApp? = ...): io.github.corneloaie.firebase.storage.externals/FirebaseStorage // io.github.corneloaie.firebase.storage.externals/getStorage|getStorage(io.github.corneloaie.firebase.externals.FirebaseApp?){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.storage.externals/getStorage(io.github.corneloaie.firebase.externals/FirebaseApp? = ..., kotlin/String): io.github.corneloaie.firebase.storage.externals/FirebaseStorage // io.github.corneloaie.firebase.storage.externals/getStorage|getStorage(io.github.corneloaie.firebase.externals.FirebaseApp?;kotlin.String){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.storage.externals/listAll(io.github.corneloaie.firebase.storage.externals/StorageReference): kotlin.js/Promise<io.github.corneloaie.firebase.storage.externals/ListResult> // io.github.corneloaie.firebase.storage.externals/listAll|listAll(io.github.corneloaie.firebase.storage.externals.StorageReference){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.storage.externals/ref(io.github.corneloaie.firebase.storage.externals/FirebaseStorage, kotlin/String? = ...): io.github.corneloaie.firebase.storage.externals/StorageReference // io.github.corneloaie.firebase.storage.externals/ref|ref(io.github.corneloaie.firebase.storage.externals.FirebaseStorage;kotlin.String?){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.storage.externals/ref(io.github.corneloaie.firebase.storage.externals/StorageReference, kotlin/String? = ...): io.github.corneloaie.firebase.storage.externals/StorageReference // io.github.corneloaie.firebase.storage.externals/ref|ref(io.github.corneloaie.firebase.storage.externals.StorageReference;kotlin.String?){}[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.storage.externals/FirebaseStorage { // io.github.corneloaie.firebase.storage.externals/FirebaseStorage|null[0]
+    abstract val app // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.app|{}app[0]
+        abstract fun <get-app>(): io.github.corneloaie.firebase.externals/FirebaseApp // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.app.<get-app>|<get-app>(){}[0]
+
+    abstract var maxOperationRetryTime // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.maxOperationRetryTime|{}maxOperationRetryTime[0]
+        abstract fun <get-maxOperationRetryTime>(): kotlin/Double // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.maxOperationRetryTime.<get-maxOperationRetryTime>|<get-maxOperationRetryTime>(){}[0]
+        abstract fun <set-maxOperationRetryTime>(kotlin/Double) // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.maxOperationRetryTime.<set-maxOperationRetryTime>|<set-maxOperationRetryTime>(kotlin.Double){}[0]
+    abstract var maxUploadRetryTime // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.maxUploadRetryTime|{}maxUploadRetryTime[0]
+        abstract fun <get-maxUploadRetryTime>(): kotlin/Double // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.maxUploadRetryTime.<get-maxUploadRetryTime>|<get-maxUploadRetryTime>(){}[0]
+        abstract fun <set-maxUploadRetryTime>(kotlin/Double) // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.maxUploadRetryTime.<set-maxUploadRetryTime>|<set-maxUploadRetryTime>(kotlin.Double){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.storage.externals/ListOptions { // io.github.corneloaie.firebase.storage.externals/ListOptions|null[0]
+    abstract val maxResults // io.github.corneloaie.firebase.storage.externals/ListOptions.maxResults|{}maxResults[0]
+        abstract fun <get-maxResults>(): kotlin/Double? // io.github.corneloaie.firebase.storage.externals/ListOptions.maxResults.<get-maxResults>|<get-maxResults>(){}[0]
+    abstract val pageToken // io.github.corneloaie.firebase.storage.externals/ListOptions.pageToken|{}pageToken[0]
+        abstract fun <get-pageToken>(): kotlin/String? // io.github.corneloaie.firebase.storage.externals/ListOptions.pageToken.<get-pageToken>|<get-pageToken>(){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.storage.externals/ListResult { // io.github.corneloaie.firebase.storage.externals/ListResult|null[0]
+    abstract val items // io.github.corneloaie.firebase.storage.externals/ListResult.items|{}items[0]
+        abstract fun <get-items>(): kotlin/Array<io.github.corneloaie.firebase.storage.externals/StorageReference> // io.github.corneloaie.firebase.storage.externals/ListResult.items.<get-items>|<get-items>(){}[0]
+    abstract val nextPageToken // io.github.corneloaie.firebase.storage.externals/ListResult.nextPageToken|{}nextPageToken[0]
+        abstract fun <get-nextPageToken>(): kotlin/String? // io.github.corneloaie.firebase.storage.externals/ListResult.nextPageToken.<get-nextPageToken>|<get-nextPageToken>(){}[0]
+    abstract val prefixes // io.github.corneloaie.firebase.storage.externals/ListResult.prefixes|{}prefixes[0]
+        abstract fun <get-prefixes>(): kotlin/Array<io.github.corneloaie.firebase.storage.externals/StorageReference> // io.github.corneloaie.firebase.storage.externals/ListResult.prefixes.<get-prefixes>|<get-prefixes>(){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.storage.externals/SettableMetadata { // io.github.corneloaie.firebase.storage.externals/SettableMetadata|null[0]
+    abstract val cacheControl // io.github.corneloaie.firebase.storage.externals/SettableMetadata.cacheControl|{}cacheControl[0]
+        abstract fun <get-cacheControl>(): kotlin/String? // io.github.corneloaie.firebase.storage.externals/SettableMetadata.cacheControl.<get-cacheControl>|<get-cacheControl>(){}[0]
+    abstract val contentDisposition // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentDisposition|{}contentDisposition[0]
+        abstract fun <get-contentDisposition>(): kotlin/String? // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentDisposition.<get-contentDisposition>|<get-contentDisposition>(){}[0]
+    abstract val contentEncoding // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentEncoding|{}contentEncoding[0]
+        abstract fun <get-contentEncoding>(): kotlin/String? // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentEncoding.<get-contentEncoding>|<get-contentEncoding>(){}[0]
+    abstract val contentLanguage // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentLanguage|{}contentLanguage[0]
+        abstract fun <get-contentLanguage>(): kotlin/String? // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentLanguage.<get-contentLanguage>|<get-contentLanguage>(){}[0]
+    abstract val contentType // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentType|{}contentType[0]
+        abstract fun <get-contentType>(): kotlin/String? // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentType.<get-contentType>|<get-contentType>(){}[0]
+    abstract val customMetadata // io.github.corneloaie.firebase.storage.externals/SettableMetadata.customMetadata|{}customMetadata[0]
+        abstract fun <get-customMetadata>(): kotlin.js/Json? // io.github.corneloaie.firebase.storage.externals/SettableMetadata.customMetadata.<get-customMetadata>|<get-customMetadata>(){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.storage.externals/StorageError { // io.github.corneloaie.firebase.storage.externals/StorageError|null[0]
+    abstract val code // io.github.corneloaie.firebase.storage.externals/StorageError.code|{}code[0]
+        abstract fun <get-code>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/StorageError.code.<get-code>|<get-code>(){}[0]
+    abstract val message // io.github.corneloaie.firebase.storage.externals/StorageError.message|{}message[0]
+        abstract fun <get-message>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/StorageError.message.<get-message>|<get-message>(){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.storage.externals/StorageReference { // io.github.corneloaie.firebase.storage.externals/StorageReference|null[0]
+    abstract val bucket // io.github.corneloaie.firebase.storage.externals/StorageReference.bucket|{}bucket[0]
+        abstract fun <get-bucket>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/StorageReference.bucket.<get-bucket>|<get-bucket>(){}[0]
+    abstract val fullPath // io.github.corneloaie.firebase.storage.externals/StorageReference.fullPath|{}fullPath[0]
+        abstract fun <get-fullPath>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/StorageReference.fullPath.<get-fullPath>|<get-fullPath>(){}[0]
+    abstract val name // io.github.corneloaie.firebase.storage.externals/StorageReference.name|{}name[0]
+        abstract fun <get-name>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/StorageReference.name.<get-name>|<get-name>(){}[0]
+    abstract val parent // io.github.corneloaie.firebase.storage.externals/StorageReference.parent|{}parent[0]
+        abstract fun <get-parent>(): io.github.corneloaie.firebase.storage.externals/StorageReference? // io.github.corneloaie.firebase.storage.externals/StorageReference.parent.<get-parent>|<get-parent>(){}[0]
+    abstract val root // io.github.corneloaie.firebase.storage.externals/StorageReference.root|{}root[0]
+        abstract fun <get-root>(): io.github.corneloaie.firebase.storage.externals/StorageReference // io.github.corneloaie.firebase.storage.externals/StorageReference.root.<get-root>|<get-root>(){}[0]
+    abstract val storage // io.github.corneloaie.firebase.storage.externals/StorageReference.storage|{}storage[0]
+        abstract fun <get-storage>(): io.github.corneloaie.firebase.storage.externals/FirebaseStorage // io.github.corneloaie.firebase.storage.externals/StorageReference.storage.<get-storage>|<get-storage>(){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.storage.externals/UploadResult { // io.github.corneloaie.firebase.storage.externals/UploadResult|null[0]
+    abstract val metadata // io.github.corneloaie.firebase.storage.externals/UploadResult.metadata|{}metadata[0]
+        abstract fun <get-metadata>(): io.github.corneloaie.firebase.storage.externals/FullMetadata // io.github.corneloaie.firebase.storage.externals/UploadResult.metadata.<get-metadata>|<get-metadata>(){}[0]
+    abstract val ref // io.github.corneloaie.firebase.storage.externals/UploadResult.ref|{}ref[0]
+        abstract fun <get-ref>(): io.github.corneloaie.firebase.storage.externals/StorageReference // io.github.corneloaie.firebase.storage.externals/UploadResult.ref.<get-ref>|<get-ref>(){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.storage.externals/UploadTask { // io.github.corneloaie.firebase.storage.externals/UploadTask|null[0]
+    abstract val snapshot // io.github.corneloaie.firebase.storage.externals/UploadTask.snapshot|{}snapshot[0]
+        abstract fun <get-snapshot>(): io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot // io.github.corneloaie.firebase.storage.externals/UploadTask.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+
+    abstract fun cancel(): kotlin/Boolean // io.github.corneloaie.firebase.storage.externals/UploadTask.cancel|cancel(){}[0]
+    abstract fun on(kotlin/String, kotlin/Function1<io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot, kotlin/Unit>, kotlin/Function1<io.github.corneloaie.firebase.storage.externals/StorageError, kotlin/Unit>, kotlin/Function0<kotlin/Unit>): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.storage.externals/UploadTask.on|on(kotlin.String;kotlin.Function1<io.github.corneloaie.firebase.storage.externals.UploadTaskSnapshot,kotlin.Unit>;kotlin.Function1<io.github.corneloaie.firebase.storage.externals.StorageError,kotlin.Unit>;kotlin.Function0<kotlin.Unit>){}[0]
+    abstract fun pause(): kotlin/Boolean // io.github.corneloaie.firebase.storage.externals/UploadTask.pause|pause(){}[0]
+    abstract fun resume(): kotlin/Boolean // io.github.corneloaie.firebase.storage.externals/UploadTask.resume|resume(){}[0]
+    abstract fun then(kotlin/Function1<io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot, kotlin/Unit>?, kotlin/Function1<io.github.corneloaie.firebase.storage.externals/StorageError, kotlin/Unit>?): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.storage.externals/UploadTask.then|then(kotlin.Function1<io.github.corneloaie.firebase.storage.externals.UploadTaskSnapshot,kotlin.Unit>?;kotlin.Function1<io.github.corneloaie.firebase.storage.externals.StorageError,kotlin.Unit>?){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot { // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot|null[0]
+    abstract val bytesTransferred // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.bytesTransferred|{}bytesTransferred[0]
+        abstract fun <get-bytesTransferred>(): kotlin/Double // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.bytesTransferred.<get-bytesTransferred>|<get-bytesTransferred>(){}[0]
+    abstract val metadata // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.metadata|{}metadata[0]
+        abstract fun <get-metadata>(): io.github.corneloaie.firebase.storage.externals/FullMetadata? // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.metadata.<get-metadata>|<get-metadata>(){}[0]
+    abstract val ref // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.ref|{}ref[0]
+        abstract fun <get-ref>(): io.github.corneloaie.firebase.storage.externals/StorageReference // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.ref.<get-ref>|<get-ref>(){}[0]
+    abstract val state // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.state|{}state[0]
+        abstract fun <get-state>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.state.<get-state>|<get-state>(){}[0]
+    abstract val task // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.task|{}task[0]
+        abstract fun <get-task>(): io.github.corneloaie.firebase.storage.externals/UploadTask // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.task.<get-task>|<get-task>(){}[0]
+    abstract val totalBytes // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.totalBytes|{}totalBytes[0]
+        abstract fun <get-totalBytes>(): kotlin/Double // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.totalBytes.<get-totalBytes>|<get-totalBytes>(){}[0]
+}
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.storage.externals/connectStorageEmulator(io.github.corneloaie.firebase.storage.externals/FirebaseStorage, kotlin/String, kotlin/Double, kotlin/Any? = ...) // io.github.corneloaie.firebase.storage.externals/connectStorageEmulator|connectStorageEmulator(io.github.corneloaie.firebase.storage.externals.FirebaseStorage;kotlin.String;kotlin.Double;kotlin.Any?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.storage.externals/deleteObject(io.github.corneloaie.firebase.storage.externals/StorageReference): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.storage.externals/deleteObject|deleteObject(io.github.corneloaie.firebase.storage.externals.StorageReference){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.storage.externals/getDownloadURL(io.github.corneloaie.firebase.storage.externals/StorageReference): kotlin.js/Promise<kotlin/String> // io.github.corneloaie.firebase.storage.externals/getDownloadURL|getDownloadURL(io.github.corneloaie.firebase.storage.externals.StorageReference){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.storage.externals/list(io.github.corneloaie.firebase.storage.externals/StorageReference, io.github.corneloaie.firebase.storage.externals/ListOptions?): kotlin.js/Promise<io.github.corneloaie.firebase.storage.externals/ListResult> // io.github.corneloaie.firebase.storage.externals/list|list(io.github.corneloaie.firebase.storage.externals.StorageReference;io.github.corneloaie.firebase.storage.externals.ListOptions?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.storage.externals/updateMetadata(io.github.corneloaie.firebase.storage.externals/StorageReference, io.github.corneloaie.firebase.storage.externals/SettableMetadata): kotlin.js/Promise<io.github.corneloaie.firebase.storage.externals/FullMetadata> // io.github.corneloaie.firebase.storage.externals/updateMetadata|updateMetadata(io.github.corneloaie.firebase.storage.externals.StorageReference;io.github.corneloaie.firebase.storage.externals.SettableMetadata){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.storage.externals/uploadBytes(io.github.corneloaie.firebase.storage.externals/StorageReference, dynamic, kotlin.js/Json?): kotlin.js/Promise<io.github.corneloaie.firebase.storage.externals/UploadResult> // io.github.corneloaie.firebase.storage.externals/uploadBytes|uploadBytes(io.github.corneloaie.firebase.storage.externals.StorageReference;<dynamic>;kotlin.js.Json?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.storage.externals/uploadBytesResumable(io.github.corneloaie.firebase.storage.externals/StorageReference, dynamic, kotlin.js/Json?): io.github.corneloaie.firebase.storage.externals/UploadTask // io.github.corneloaie.firebase.storage.externals/uploadBytesResumable|uploadBytesResumable(io.github.corneloaie.firebase.storage.externals.StorageReference;<dynamic>;kotlin.js.Json?){}[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.storage.externals/FirebaseStorage : kotlin.js/JsAny { // io.github.corneloaie.firebase.storage.externals/FirebaseStorage|null[0]
+    abstract val app // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.app|{}app[0]
+        abstract fun <get-app>(): io.github.corneloaie.firebase.externals/FirebaseApp // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.app.<get-app>|<get-app>(){}[0]
+
+    abstract var maxOperationRetryTime // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.maxOperationRetryTime|{}maxOperationRetryTime[0]
+        abstract fun <get-maxOperationRetryTime>(): kotlin/Double // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.maxOperationRetryTime.<get-maxOperationRetryTime>|<get-maxOperationRetryTime>(){}[0]
+        abstract fun <set-maxOperationRetryTime>(kotlin/Double) // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.maxOperationRetryTime.<set-maxOperationRetryTime>|<set-maxOperationRetryTime>(kotlin.Double){}[0]
+    abstract var maxUploadRetryTime // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.maxUploadRetryTime|{}maxUploadRetryTime[0]
+        abstract fun <get-maxUploadRetryTime>(): kotlin/Double // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.maxUploadRetryTime.<get-maxUploadRetryTime>|<get-maxUploadRetryTime>(){}[0]
+        abstract fun <set-maxUploadRetryTime>(kotlin/Double) // io.github.corneloaie.firebase.storage.externals/FirebaseStorage.maxUploadRetryTime.<set-maxUploadRetryTime>|<set-maxUploadRetryTime>(kotlin.Double){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.storage.externals/ListOptions : kotlin.js/JsAny { // io.github.corneloaie.firebase.storage.externals/ListOptions|null[0]
+    abstract val maxResults // io.github.corneloaie.firebase.storage.externals/ListOptions.maxResults|{}maxResults[0]
+        abstract fun <get-maxResults>(): kotlin/Double? // io.github.corneloaie.firebase.storage.externals/ListOptions.maxResults.<get-maxResults>|<get-maxResults>(){}[0]
+    abstract val pageToken // io.github.corneloaie.firebase.storage.externals/ListOptions.pageToken|{}pageToken[0]
+        abstract fun <get-pageToken>(): kotlin/String? // io.github.corneloaie.firebase.storage.externals/ListOptions.pageToken.<get-pageToken>|<get-pageToken>(){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.storage.externals/ListResult : kotlin.js/JsAny { // io.github.corneloaie.firebase.storage.externals/ListResult|null[0]
+    abstract val items // io.github.corneloaie.firebase.storage.externals/ListResult.items|{}items[0]
+        abstract fun <get-items>(): kotlin.js/JsArray<io.github.corneloaie.firebase.storage.externals/StorageReference> // io.github.corneloaie.firebase.storage.externals/ListResult.items.<get-items>|<get-items>(){}[0]
+    abstract val nextPageToken // io.github.corneloaie.firebase.storage.externals/ListResult.nextPageToken|{}nextPageToken[0]
+        abstract fun <get-nextPageToken>(): kotlin/String? // io.github.corneloaie.firebase.storage.externals/ListResult.nextPageToken.<get-nextPageToken>|<get-nextPageToken>(){}[0]
+    abstract val prefixes // io.github.corneloaie.firebase.storage.externals/ListResult.prefixes|{}prefixes[0]
+        abstract fun <get-prefixes>(): kotlin.js/JsArray<io.github.corneloaie.firebase.storage.externals/StorageReference> // io.github.corneloaie.firebase.storage.externals/ListResult.prefixes.<get-prefixes>|<get-prefixes>(){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.storage.externals/SettableMetadata : kotlin.js/JsAny { // io.github.corneloaie.firebase.storage.externals/SettableMetadata|null[0]
+    abstract val cacheControl // io.github.corneloaie.firebase.storage.externals/SettableMetadata.cacheControl|{}cacheControl[0]
+        abstract fun <get-cacheControl>(): kotlin/String? // io.github.corneloaie.firebase.storage.externals/SettableMetadata.cacheControl.<get-cacheControl>|<get-cacheControl>(){}[0]
+    abstract val contentDisposition // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentDisposition|{}contentDisposition[0]
+        abstract fun <get-contentDisposition>(): kotlin/String? // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentDisposition.<get-contentDisposition>|<get-contentDisposition>(){}[0]
+    abstract val contentEncoding // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentEncoding|{}contentEncoding[0]
+        abstract fun <get-contentEncoding>(): kotlin/String? // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentEncoding.<get-contentEncoding>|<get-contentEncoding>(){}[0]
+    abstract val contentLanguage // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentLanguage|{}contentLanguage[0]
+        abstract fun <get-contentLanguage>(): kotlin/String? // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentLanguage.<get-contentLanguage>|<get-contentLanguage>(){}[0]
+    abstract val contentType // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentType|{}contentType[0]
+        abstract fun <get-contentType>(): kotlin/String? // io.github.corneloaie.firebase.storage.externals/SettableMetadata.contentType.<get-contentType>|<get-contentType>(){}[0]
+    abstract val customMetadata // io.github.corneloaie.firebase.storage.externals/SettableMetadata.customMetadata|{}customMetadata[0]
+        abstract fun <get-customMetadata>(): kotlin.js/JsAny? // io.github.corneloaie.firebase.storage.externals/SettableMetadata.customMetadata.<get-customMetadata>|<get-customMetadata>(){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.storage.externals/StorageError : kotlin.js/JsAny { // io.github.corneloaie.firebase.storage.externals/StorageError|null[0]
+    abstract val code // io.github.corneloaie.firebase.storage.externals/StorageError.code|{}code[0]
+        abstract fun <get-code>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/StorageError.code.<get-code>|<get-code>(){}[0]
+    abstract val message // io.github.corneloaie.firebase.storage.externals/StorageError.message|{}message[0]
+        abstract fun <get-message>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/StorageError.message.<get-message>|<get-message>(){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.storage.externals/StorageReference : kotlin.js/JsAny { // io.github.corneloaie.firebase.storage.externals/StorageReference|null[0]
+    abstract val bucket // io.github.corneloaie.firebase.storage.externals/StorageReference.bucket|{}bucket[0]
+        abstract fun <get-bucket>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/StorageReference.bucket.<get-bucket>|<get-bucket>(){}[0]
+    abstract val fullPath // io.github.corneloaie.firebase.storage.externals/StorageReference.fullPath|{}fullPath[0]
+        abstract fun <get-fullPath>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/StorageReference.fullPath.<get-fullPath>|<get-fullPath>(){}[0]
+    abstract val name // io.github.corneloaie.firebase.storage.externals/StorageReference.name|{}name[0]
+        abstract fun <get-name>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/StorageReference.name.<get-name>|<get-name>(){}[0]
+    abstract val parent // io.github.corneloaie.firebase.storage.externals/StorageReference.parent|{}parent[0]
+        abstract fun <get-parent>(): io.github.corneloaie.firebase.storage.externals/StorageReference? // io.github.corneloaie.firebase.storage.externals/StorageReference.parent.<get-parent>|<get-parent>(){}[0]
+    abstract val root // io.github.corneloaie.firebase.storage.externals/StorageReference.root|{}root[0]
+        abstract fun <get-root>(): io.github.corneloaie.firebase.storage.externals/StorageReference // io.github.corneloaie.firebase.storage.externals/StorageReference.root.<get-root>|<get-root>(){}[0]
+    abstract val storage // io.github.corneloaie.firebase.storage.externals/StorageReference.storage|{}storage[0]
+        abstract fun <get-storage>(): io.github.corneloaie.firebase.storage.externals/FirebaseStorage // io.github.corneloaie.firebase.storage.externals/StorageReference.storage.<get-storage>|<get-storage>(){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.storage.externals/UploadResult : kotlin.js/JsAny { // io.github.corneloaie.firebase.storage.externals/UploadResult|null[0]
+    abstract val metadata // io.github.corneloaie.firebase.storage.externals/UploadResult.metadata|{}metadata[0]
+        abstract fun <get-metadata>(): io.github.corneloaie.firebase.storage.externals/FullMetadata // io.github.corneloaie.firebase.storage.externals/UploadResult.metadata.<get-metadata>|<get-metadata>(){}[0]
+    abstract val ref // io.github.corneloaie.firebase.storage.externals/UploadResult.ref|{}ref[0]
+        abstract fun <get-ref>(): io.github.corneloaie.firebase.storage.externals/StorageReference // io.github.corneloaie.firebase.storage.externals/UploadResult.ref.<get-ref>|<get-ref>(){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.storage.externals/UploadTask : kotlin.js/JsAny { // io.github.corneloaie.firebase.storage.externals/UploadTask|null[0]
+    abstract val snapshot // io.github.corneloaie.firebase.storage.externals/UploadTask.snapshot|{}snapshot[0]
+        abstract fun <get-snapshot>(): io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot // io.github.corneloaie.firebase.storage.externals/UploadTask.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+
+    abstract fun cancel(): kotlin/Boolean // io.github.corneloaie.firebase.storage.externals/UploadTask.cancel|cancel(){}[0]
+    abstract fun on(kotlin/String, kotlin/Function1<io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot, kotlin/Unit>, kotlin/Function1<io.github.corneloaie.firebase.storage.externals/StorageError, kotlin/Unit>, kotlin/Function0<kotlin/Unit>): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.storage.externals/UploadTask.on|on(kotlin.String;kotlin.Function1<io.github.corneloaie.firebase.storage.externals.UploadTaskSnapshot,kotlin.Unit>;kotlin.Function1<io.github.corneloaie.firebase.storage.externals.StorageError,kotlin.Unit>;kotlin.Function0<kotlin.Unit>){}[0]
+    abstract fun pause(): kotlin/Boolean // io.github.corneloaie.firebase.storage.externals/UploadTask.pause|pause(){}[0]
+    abstract fun resume(): kotlin/Boolean // io.github.corneloaie.firebase.storage.externals/UploadTask.resume|resume(){}[0]
+    abstract fun then(kotlin/Function1<io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot, kotlin/Unit>?, kotlin/Function1<io.github.corneloaie.firebase.storage.externals/StorageError, kotlin/Unit>?): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.storage.externals/UploadTask.then|then(kotlin.Function1<io.github.corneloaie.firebase.storage.externals.UploadTaskSnapshot,kotlin.Unit>?;kotlin.Function1<io.github.corneloaie.firebase.storage.externals.StorageError,kotlin.Unit>?){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot : kotlin.js/JsAny { // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot|null[0]
+    abstract val bytesTransferred // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.bytesTransferred|{}bytesTransferred[0]
+        abstract fun <get-bytesTransferred>(): kotlin/Double // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.bytesTransferred.<get-bytesTransferred>|<get-bytesTransferred>(){}[0]
+    abstract val metadata // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.metadata|{}metadata[0]
+        abstract fun <get-metadata>(): io.github.corneloaie.firebase.storage.externals/FullMetadata? // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.metadata.<get-metadata>|<get-metadata>(){}[0]
+    abstract val ref // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.ref|{}ref[0]
+        abstract fun <get-ref>(): io.github.corneloaie.firebase.storage.externals/StorageReference // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.ref.<get-ref>|<get-ref>(){}[0]
+    abstract val state // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.state|{}state[0]
+        abstract fun <get-state>(): kotlin/String // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.state.<get-state>|<get-state>(){}[0]
+    abstract val task // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.task|{}task[0]
+        abstract fun <get-task>(): io.github.corneloaie.firebase.storage.externals/UploadTask // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.task.<get-task>|<get-task>(){}[0]
+    abstract val totalBytes // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.totalBytes|{}totalBytes[0]
+        abstract fun <get-totalBytes>(): kotlin/Double // io.github.corneloaie.firebase.storage.externals/UploadTaskSnapshot.totalBytes.<get-totalBytes>|<get-totalBytes>(){}[0]
+}
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.storage.externals/connectStorageEmulator(io.github.corneloaie.firebase.storage.externals/FirebaseStorage, kotlin/String, kotlin/Double, kotlin.js/JsAny? = ...) // io.github.corneloaie.firebase.storage.externals/connectStorageEmulator|connectStorageEmulator(io.github.corneloaie.firebase.storage.externals.FirebaseStorage;kotlin.String;kotlin.Double;kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.storage.externals/deleteObject(io.github.corneloaie.firebase.storage.externals/StorageReference): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.storage.externals/deleteObject|deleteObject(io.github.corneloaie.firebase.storage.externals.StorageReference){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.storage.externals/getDownloadURL(io.github.corneloaie.firebase.storage.externals/StorageReference): kotlin.js/Promise<kotlin.js/JsString> // io.github.corneloaie.firebase.storage.externals/getDownloadURL|getDownloadURL(io.github.corneloaie.firebase.storage.externals.StorageReference){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.storage.externals/list(io.github.corneloaie.firebase.storage.externals/StorageReference, kotlin.js/JsAny?): kotlin.js/Promise<io.github.corneloaie.firebase.storage.externals/ListResult> // io.github.corneloaie.firebase.storage.externals/list|list(io.github.corneloaie.firebase.storage.externals.StorageReference;kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.storage.externals/updateMetadata(io.github.corneloaie.firebase.storage.externals/StorageReference, kotlin.js/JsAny): kotlin.js/Promise<io.github.corneloaie.firebase.storage.externals/FullMetadata> // io.github.corneloaie.firebase.storage.externals/updateMetadata|updateMetadata(io.github.corneloaie.firebase.storage.externals.StorageReference;kotlin.js.JsAny){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.storage.externals/uploadBytes(io.github.corneloaie.firebase.storage.externals/StorageReference, kotlin.js/JsAny?, kotlin.js/JsAny?): kotlin.js/Promise<io.github.corneloaie.firebase.storage.externals/UploadResult> // io.github.corneloaie.firebase.storage.externals/uploadBytes|uploadBytes(io.github.corneloaie.firebase.storage.externals.StorageReference;kotlin.js.JsAny?;kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.storage.externals/uploadBytesResumable(io.github.corneloaie.firebase.storage.externals/StorageReference, kotlin.js/JsAny?, kotlin.js/JsAny?): io.github.corneloaie.firebase.storage.externals/UploadTask // io.github.corneloaie.firebase.storage.externals/uploadBytesResumable|uploadBytesResumable(io.github.corneloaie.firebase.storage.externals.StorageReference;kotlin.js.JsAny?;kotlin.js.JsAny?){}[0]

@@ -1,0 +1,119 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, tvosArm64, tvosSimulatorArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-common>
+open annotation class io.github.corneloaie.firebase/FirebaseClassDiscriminator : kotlin/Annotation { // io.github.corneloaie.firebase/FirebaseClassDiscriminator|null[0]
+    constructor <init>(kotlin/String) // io.github.corneloaie.firebase/FirebaseClassDiscriminator.<init>|<init>(kotlin.String){}[0]
+
+    final val discriminator // io.github.corneloaie.firebase/FirebaseClassDiscriminator.discriminator|{}discriminator[0]
+        final fun <get-discriminator>(): kotlin/String // io.github.corneloaie.firebase/FirebaseClassDiscriminator.discriminator.<get-discriminator>|<get-discriminator>(){}[0]
+}
+
+abstract interface io.github.corneloaie.firebase/DecodeSettings : io.github.corneloaie.firebase/EncodeDecodeSettings { // io.github.corneloaie.firebase/DecodeSettings|null[0]
+    abstract interface Builder { // io.github.corneloaie.firebase/DecodeSettings.Builder|null[0]
+        abstract var serializersModule // io.github.corneloaie.firebase/DecodeSettings.Builder.serializersModule|{}serializersModule[0]
+            abstract fun <get-serializersModule>(): kotlinx.serialization.modules/SerializersModule // io.github.corneloaie.firebase/DecodeSettings.Builder.serializersModule.<get-serializersModule>|<get-serializersModule>(){}[0]
+            abstract fun <set-serializersModule>(kotlinx.serialization.modules/SerializersModule) // io.github.corneloaie.firebase/DecodeSettings.Builder.serializersModule.<set-serializersModule>|<set-serializersModule>(kotlinx.serialization.modules.SerializersModule){}[0]
+    }
+}
+
+abstract interface io.github.corneloaie.firebase/EncodeDecodeSettingsBuilder : io.github.corneloaie.firebase/DecodeSettings.Builder, io.github.corneloaie.firebase/EncodeSettings.Builder // io.github.corneloaie.firebase/EncodeDecodeSettingsBuilder|null[0]
+
+abstract interface io.github.corneloaie.firebase/EncodeSettings : io.github.corneloaie.firebase/EncodeDecodeSettings { // io.github.corneloaie.firebase/EncodeSettings|null[0]
+    abstract val encodeDefaults // io.github.corneloaie.firebase/EncodeSettings.encodeDefaults|{}encodeDefaults[0]
+        abstract fun <get-encodeDefaults>(): kotlin/Boolean // io.github.corneloaie.firebase/EncodeSettings.encodeDefaults.<get-encodeDefaults>|<get-encodeDefaults>(){}[0]
+
+    abstract interface Builder { // io.github.corneloaie.firebase/EncodeSettings.Builder|null[0]
+        abstract var encodeDefaults // io.github.corneloaie.firebase/EncodeSettings.Builder.encodeDefaults|{}encodeDefaults[0]
+            abstract fun <get-encodeDefaults>(): kotlin/Boolean // io.github.corneloaie.firebase/EncodeSettings.Builder.encodeDefaults.<get-encodeDefaults>|<get-encodeDefaults>(){}[0]
+            abstract fun <set-encodeDefaults>(kotlin/Boolean) // io.github.corneloaie.firebase/EncodeSettings.Builder.encodeDefaults.<set-encodeDefaults>|<set-encodeDefaults>(kotlin.Boolean){}[0]
+        abstract var serializersModule // io.github.corneloaie.firebase/EncodeSettings.Builder.serializersModule|{}serializersModule[0]
+            abstract fun <get-serializersModule>(): kotlinx.serialization.modules/SerializersModule // io.github.corneloaie.firebase/EncodeSettings.Builder.serializersModule.<get-serializersModule>|<get-serializersModule>(){}[0]
+            abstract fun <set-serializersModule>(kotlinx.serialization.modules/SerializersModule) // io.github.corneloaie.firebase/EncodeSettings.Builder.serializersModule.<set-serializersModule>|<set-serializersModule>(kotlinx.serialization.modules.SerializersModule){}[0]
+    }
+}
+
+abstract interface io.github.corneloaie.firebase/FirebaseDecoder : kotlinx.serialization.encoding/Decoder // io.github.corneloaie.firebase/FirebaseDecoder|null[0]
+
+abstract interface io.github.corneloaie.firebase/FirebaseEncoder : kotlinx.serialization.encoding/Encoder // io.github.corneloaie.firebase/FirebaseEncoder|null[0]
+
+sealed interface io.github.corneloaie.firebase/EncodeDecodeSettings { // io.github.corneloaie.firebase/EncodeDecodeSettings|null[0]
+    abstract val serializersModule // io.github.corneloaie.firebase/EncodeDecodeSettings.serializersModule|{}serializersModule[0]
+        abstract fun <get-serializersModule>(): kotlinx.serialization.modules/SerializersModule // io.github.corneloaie.firebase/EncodeDecodeSettings.serializersModule.<get-serializersModule>|<get-serializersModule>(){}[0]
+}
+
+// Targets: [wasmJs]
+final fun (kotlin.js/JsAny?).io.github.corneloaie.firebase.externals/toKotlin(): kotlin/Any? // io.github.corneloaie.firebase.externals/toKotlin|toKotlin@kotlin.js.JsAny?(){}[0]
+
+// Targets: [wasmJs]
+final fun (kotlin.js/JsArray<kotlin.js/JsAny?>).io.github.corneloaie.firebase.externals/toKotlinList(): kotlin.collections/List<kotlin/Any?> // io.github.corneloaie.firebase.externals/toKotlinList|toKotlinList@kotlin.js.JsArray<kotlin.js.JsAny?>(){}[0]
+
+// Targets: [wasmJs]
+final fun (kotlin.js/JsException).io.github.corneloaie.firebase.externals/errorCode(): kotlin/String? // io.github.corneloaie.firebase.externals/errorCode|errorCode@kotlin.js.JsException(){}[0]
+
+// Targets: [wasmJs]
+final fun (kotlin.js/JsException).io.github.corneloaie.firebase.externals/stringifyThrownValue(): kotlin/String // io.github.corneloaie.firebase.externals/stringifyThrownValue|stringifyThrownValue@kotlin.js.JsException(){}[0]
+
+// Targets: [wasmJs]
+final fun (kotlin.js/JsString).io.github.corneloaie.firebase.externals/toKotlinString(): kotlin/String // io.github.corneloaie.firebase.externals/toKotlinString|toKotlinString@kotlin.js.JsString(){}[0]
+
+// Targets: [wasmJs]
+final fun (kotlin/Any?).io.github.corneloaie.firebase.externals/asJsAny(): kotlin.js/JsAny // io.github.corneloaie.firebase.externals/asJsAny|asJsAny@kotlin.Any?(){}[0]
+
+// Targets: [wasmJs]
+final fun (kotlin/Any?).io.github.corneloaie.firebase.externals/asJsArray(): kotlin.js/JsArray<kotlin.js/JsAny?> // io.github.corneloaie.firebase.externals/asJsArray|asJsArray@kotlin.Any?(){}[0]
+
+// Targets: [wasmJs]
+final fun (kotlin/Any?).io.github.corneloaie.firebase.externals/toJs(): kotlin.js/JsAny? // io.github.corneloaie.firebase.externals/toJs|toJs@kotlin.Any?(){}[0]
+
+// Targets: [wasmJs]
+final fun <#A: kotlin.js/JsAny?> (kotlin.js/JsArray<#A>).io.github.corneloaie.firebase.externals/toList(): kotlin.collections/List<#A> // io.github.corneloaie.firebase.externals/toList|toList@kotlin.js.JsArray<0:0>(){0§<kotlin.js.JsAny?>}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/jsArrayOf(kotlin.collections/List<kotlin/Any?>): kotlin.js/JsArray<kotlin.js/JsAny?> // io.github.corneloaie.firebase.externals/jsArrayOf|jsArrayOf(kotlin.collections.List<kotlin.Any?>){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/jsContainsValue(kotlin.js/JsAny, kotlin/String): kotlin/Boolean // io.github.corneloaie.firebase.externals/jsContainsValue|jsContainsValue(kotlin.js.JsAny;kotlin.String){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/jsGet(kotlin.js/JsAny, kotlin/String): kotlin.js/JsAny? // io.github.corneloaie.firebase.externals/jsGet|jsGet(kotlin.js.JsAny;kotlin.String){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/jsIsArray(kotlin.js/JsAny): kotlin/Boolean // io.github.corneloaie.firebase.externals/jsIsArray|jsIsArray(kotlin.js.JsAny){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/jsObject(): kotlin.js/JsAny // io.github.corneloaie.firebase.externals/jsObject|jsObject(){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/jsObjectEntries(kotlin.js/JsAny): kotlin.js/JsArray<kotlin.js/JsArray<kotlin.js/JsAny?>> // io.github.corneloaie.firebase.externals/jsObjectEntries|jsObjectEntries(kotlin.js.JsAny){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/jsObjectKeys(kotlin.js/JsAny): kotlin.js/JsArray<kotlin.js/JsString> // io.github.corneloaie.firebase.externals/jsObjectKeys|jsObjectKeys(kotlin.js.JsAny){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/jsSet(kotlin.js/JsAny, kotlin/String, kotlin.js/JsAny?) // io.github.corneloaie.firebase.externals/jsSet|jsSet(kotlin.js.JsAny;kotlin.String;kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/jsTypeOf(kotlin.js/JsAny): kotlin/String // io.github.corneloaie.firebase.externals/jsTypeOf|jsTypeOf(kotlin.js.JsAny){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/json(kotlin/Array<out kotlin/Pair<kotlin/String, kotlin/Any?>>...): kotlin.js/JsAny // io.github.corneloaie.firebase.externals/json|json(kotlin.Array<out|kotlin.Pair<kotlin.String,kotlin.Any?>>...){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/jsonParse(kotlin/String): kotlin.js/JsAny? // io.github.corneloaie.firebase.externals/jsonParse|jsonParse(kotlin.String){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/jsonStringify(kotlin.js/JsAny?): kotlin/String // io.github.corneloaie.firebase.externals/jsonStringify|jsonStringify(kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/parseDateStringToMillis(kotlin/String): kotlin/Double // io.github.corneloaie.firebase.externals/parseDateStringToMillis|parseDateStringToMillis(kotlin.String){}[0]
+
+// Targets: [wasmJs]
+final suspend fun (kotlin.js/Promise<*>).io.github.corneloaie.firebase.externals/awaitUnit() // io.github.corneloaie.firebase.externals/awaitUnit|awaitUnit@kotlin.js.Promise<*>(){}[0]
+
+// Targets: [wasmJs]
+final suspend fun <#A: kotlin.js/JsAny?> (kotlin.js/Promise<#A>).io.github.corneloaie.firebase.externals/awaitValue(): #A // io.github.corneloaie.firebase.externals/awaitValue|awaitValue@kotlin.js.Promise<0:0>(){0§<kotlin.js.JsAny?>}[0]

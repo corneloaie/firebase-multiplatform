@@ -57,12 +57,7 @@ jobs:
 
           api_dump_tasks=""
           for module in $changed_modules; do
-            if [ -d "$module/api/android" ] || find "$module/api" -maxdepth 1 -name '*.api' -print -quit | grep -q .; then
-              api_dump_tasks="$api_dump_tasks :${module}:androidApiDump"
-            fi
-            if [ -d "$module/api/jvm" ]; then
-              api_dump_tasks="$api_dump_tasks :${module}:jvmApiDump"
-            fi
+            api_dump_tasks="$api_dump_tasks :${module}:updateKotlinAbi"
             if [ -d "$module/api/android-sdk" ]; then
               api_dump_tasks="$api_dump_tasks :${module}:androidSourceCompatDump"
             fi

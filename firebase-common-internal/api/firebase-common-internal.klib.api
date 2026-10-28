@@ -1,0 +1,203 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, tvosArm64, tvosSimulatorArm64, wasmJs]
+// Alias: apple => [iosArm64, iosSimulatorArm64, iosX64, macosArm64, tvosArm64, tvosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-common-internal>
+sealed interface io.github.corneloaie.firebase.internal/EncodedObject // io.github.corneloaie.firebase.internal/EncodedObject|null[0]
+
+final class <#A: kotlin/Any?> io.github.corneloaie.firebase.internal/SpecialValueSerializer : kotlinx.serialization/KSerializer<#A> { // io.github.corneloaie.firebase.internal/SpecialValueSerializer|null[0]
+    constructor <init>(kotlin/String, kotlin/Function1<#A, kotlin/Any?>, kotlin/Function1<kotlin/Any?, #A>) // io.github.corneloaie.firebase.internal/SpecialValueSerializer.<init>|<init>(kotlin.String;kotlin.Function1<1:0,kotlin.Any?>;kotlin.Function1<kotlin.Any?,1:0>){}[0]
+
+    final val descriptor // io.github.corneloaie.firebase.internal/SpecialValueSerializer.descriptor|{}descriptor[0]
+        final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.github.corneloaie.firebase.internal/SpecialValueSerializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+    final fun deserialize(kotlinx.serialization.encoding/Decoder): #A // io.github.corneloaie.firebase.internal/SpecialValueSerializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+    final fun serialize(kotlinx.serialization.encoding/Encoder, #A) // io.github.corneloaie.firebase.internal/SpecialValueSerializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;1:0){}[0]
+}
+
+final class io.github.corneloaie.firebase.internal/DecodeSettingsImpl : io.github.corneloaie.firebase/DecodeSettings { // io.github.corneloaie.firebase.internal/DecodeSettingsImpl|null[0]
+    final val serializersModule // io.github.corneloaie.firebase.internal/DecodeSettingsImpl.serializersModule|{}serializersModule[0]
+        final fun <get-serializersModule>(): kotlinx.serialization.modules/SerializersModule // io.github.corneloaie.firebase.internal/DecodeSettingsImpl.serializersModule.<get-serializersModule>|<get-serializersModule>(){}[0]
+
+    final class Builder : io.github.corneloaie.firebase/DecodeSettings.Builder { // io.github.corneloaie.firebase.internal/DecodeSettingsImpl.Builder|null[0]
+        constructor <init>() // io.github.corneloaie.firebase.internal/DecodeSettingsImpl.Builder.<init>|<init>(){}[0]
+
+        final var serializersModule // io.github.corneloaie.firebase.internal/DecodeSettingsImpl.Builder.serializersModule|{}serializersModule[0]
+            final fun <get-serializersModule>(): kotlinx.serialization.modules/SerializersModule // io.github.corneloaie.firebase.internal/DecodeSettingsImpl.Builder.serializersModule.<get-serializersModule>|<get-serializersModule>(){}[0]
+            final fun <set-serializersModule>(kotlinx.serialization.modules/SerializersModule) // io.github.corneloaie.firebase.internal/DecodeSettingsImpl.Builder.serializersModule.<set-serializersModule>|<set-serializersModule>(kotlinx.serialization.modules.SerializersModule){}[0]
+    }
+}
+
+final class io.github.corneloaie.firebase.internal/EncodeDecodeSettingsBuilderImpl : io.github.corneloaie.firebase/EncodeDecodeSettingsBuilder { // io.github.corneloaie.firebase.internal/EncodeDecodeSettingsBuilderImpl|null[0]
+    constructor <init>() // io.github.corneloaie.firebase.internal/EncodeDecodeSettingsBuilderImpl.<init>|<init>(){}[0]
+
+    final var encodeDefaults // io.github.corneloaie.firebase.internal/EncodeDecodeSettingsBuilderImpl.encodeDefaults|{}encodeDefaults[0]
+        final fun <get-encodeDefaults>(): kotlin/Boolean // io.github.corneloaie.firebase.internal/EncodeDecodeSettingsBuilderImpl.encodeDefaults.<get-encodeDefaults>|<get-encodeDefaults>(){}[0]
+        final fun <set-encodeDefaults>(kotlin/Boolean) // io.github.corneloaie.firebase.internal/EncodeDecodeSettingsBuilderImpl.encodeDefaults.<set-encodeDefaults>|<set-encodeDefaults>(kotlin.Boolean){}[0]
+    final var serializersModule // io.github.corneloaie.firebase.internal/EncodeDecodeSettingsBuilderImpl.serializersModule|{}serializersModule[0]
+        final fun <get-serializersModule>(): kotlinx.serialization.modules/SerializersModule // io.github.corneloaie.firebase.internal/EncodeDecodeSettingsBuilderImpl.serializersModule.<get-serializersModule>|<get-serializersModule>(){}[0]
+        final fun <set-serializersModule>(kotlinx.serialization.modules/SerializersModule) // io.github.corneloaie.firebase.internal/EncodeDecodeSettingsBuilderImpl.serializersModule.<set-serializersModule>|<set-serializersModule>(kotlinx.serialization.modules.SerializersModule){}[0]
+}
+
+final class io.github.corneloaie.firebase.internal/EncodeSettingsImpl : io.github.corneloaie.firebase/EncodeSettings { // io.github.corneloaie.firebase.internal/EncodeSettingsImpl|null[0]
+    final val encodeDefaults // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.encodeDefaults|{}encodeDefaults[0]
+        final fun <get-encodeDefaults>(): kotlin/Boolean // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.encodeDefaults.<get-encodeDefaults>|<get-encodeDefaults>(){}[0]
+    final val serializersModule // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.serializersModule|{}serializersModule[0]
+        final fun <get-serializersModule>(): kotlinx.serialization.modules/SerializersModule // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.serializersModule.<get-serializersModule>|<get-serializersModule>(){}[0]
+
+    final fun component1(): kotlin/Boolean // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.component1|component1(){}[0]
+    final fun component2(): kotlinx.serialization.modules/SerializersModule // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.component2|component2(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.toString|toString(){}[0]
+
+    final class Builder : io.github.corneloaie.firebase/EncodeSettings.Builder { // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.Builder|null[0]
+        constructor <init>() // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.Builder.<init>|<init>(){}[0]
+
+        final var encodeDefaults // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.Builder.encodeDefaults|{}encodeDefaults[0]
+            final fun <get-encodeDefaults>(): kotlin/Boolean // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.Builder.encodeDefaults.<get-encodeDefaults>|<get-encodeDefaults>(){}[0]
+            final fun <set-encodeDefaults>(kotlin/Boolean) // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.Builder.encodeDefaults.<set-encodeDefaults>|<set-encodeDefaults>(kotlin.Boolean){}[0]
+        final var serializersModule // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.Builder.serializersModule|{}serializersModule[0]
+            final fun <get-serializersModule>(): kotlinx.serialization.modules/SerializersModule // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.Builder.serializersModule.<get-serializersModule>|<get-serializersModule>(){}[0]
+            final fun <set-serializersModule>(kotlinx.serialization.modules/SerializersModule) // io.github.corneloaie.firebase.internal/EncodeSettingsImpl.Builder.serializersModule.<set-serializersModule>|<set-serializersModule>(kotlinx.serialization.modules.SerializersModule){}[0]
+    }
+}
+
+final class io.github.corneloaie.firebase.internal/FirebaseDecoderImpl : io.github.corneloaie.firebase/FirebaseDecoder { // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl|null[0]
+    constructor <init>(kotlin/Any?) // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.<init>|<init>(kotlin.Any?){}[0]
+    constructor <init>(kotlin/Any?, io.github.corneloaie.firebase/DecodeSettings) // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.<init>|<init>(kotlin.Any?;io.github.corneloaie.firebase.DecodeSettings){}[0]
+
+    final val serializersModule // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.serializersModule|{}serializersModule[0]
+        final fun <get-serializersModule>(): kotlinx.serialization.modules/SerializersModule // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.serializersModule.<get-serializersModule>|<get-serializersModule>(){}[0]
+    final val value // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.value|{}value[0]
+        final fun <get-value>(): kotlin/Any? // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.value.<get-value>|<get-value>(){}[0]
+
+    final fun <#A1: kotlin/Any?> decodeSerializableValue(kotlinx.serialization/DeserializationStrategy<#A1>): #A1 // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.decodeSerializableValue|decodeSerializableValue(kotlinx.serialization.DeserializationStrategy<0:0>){0§<kotlin.Any?>}[0]
+    final fun beginStructure(kotlinx.serialization.descriptors/SerialDescriptor): kotlinx.serialization.encoding/CompositeDecoder // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.beginStructure|beginStructure(kotlinx.serialization.descriptors.SerialDescriptor){}[0]
+    final fun decodeBoolean(): kotlin/Boolean // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.decodeBoolean|decodeBoolean(){}[0]
+    final fun decodeByte(): kotlin/Byte // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.decodeByte|decodeByte(){}[0]
+    final fun decodeChar(): kotlin/Char // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.decodeChar|decodeChar(){}[0]
+    final fun decodeDouble(): kotlin/Double // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.decodeDouble|decodeDouble(){}[0]
+    final fun decodeEnum(kotlinx.serialization.descriptors/SerialDescriptor): kotlin/Int // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.decodeEnum|decodeEnum(kotlinx.serialization.descriptors.SerialDescriptor){}[0]
+    final fun decodeFloat(): kotlin/Float // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.decodeFloat|decodeFloat(){}[0]
+    final fun decodeInline(kotlinx.serialization.descriptors/SerialDescriptor): kotlinx.serialization.encoding/Decoder // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.decodeInline|decodeInline(kotlinx.serialization.descriptors.SerialDescriptor){}[0]
+    final fun decodeInt(): kotlin/Int // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.decodeInt|decodeInt(){}[0]
+    final fun decodeLong(): kotlin/Long // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.decodeLong|decodeLong(){}[0]
+    final fun decodeNotNullMark(): kotlin/Boolean // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.decodeNotNullMark|decodeNotNullMark(){}[0]
+    final fun decodeNull(): kotlin/Nothing? // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.decodeNull|decodeNull(){}[0]
+    final fun decodeShort(): kotlin/Short // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.decodeShort|decodeShort(){}[0]
+    final fun decodeString(): kotlin/String // io.github.corneloaie.firebase.internal/FirebaseDecoderImpl.decodeString|decodeString(){}[0]
+}
+
+final class io.github.corneloaie.firebase.internal/FirebaseEncoderImpl : io.github.corneloaie.firebase/FirebaseEncoder { // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl|null[0]
+    constructor <init>(io.github.corneloaie.firebase/EncodeSettings) // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.<init>|<init>(io.github.corneloaie.firebase.EncodeSettings){}[0]
+    constructor <init>(kotlin/Boolean) // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.<init>|<init>(kotlin.Boolean){}[0]
+
+    final val serializersModule // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.serializersModule|{}serializersModule[0]
+        final fun <get-serializersModule>(): kotlinx.serialization.modules/SerializersModule // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.serializersModule.<get-serializersModule>|<get-serializersModule>(){}[0]
+
+    final var value // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.value|{}value[0]
+        final fun <get-value>(): kotlin/Any? // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.value.<get-value>|<get-value>(){}[0]
+        final fun <set-value>(kotlin/Any?) // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.value.<set-value>|<set-value>(kotlin.Any?){}[0]
+
+    final fun <#A1: kotlin/Any?> encodeSerializableValue(kotlinx.serialization/SerializationStrategy<#A1>, #A1) // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.encodeSerializableValue|encodeSerializableValue(kotlinx.serialization.SerializationStrategy<0:0>;0:0){0§<kotlin.Any?>}[0]
+    final fun beginStructure(kotlinx.serialization.descriptors/SerialDescriptor): kotlinx.serialization.encoding/CompositeEncoder // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.beginStructure|beginStructure(kotlinx.serialization.descriptors.SerialDescriptor){}[0]
+    final fun encodeBoolean(kotlin/Boolean) // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.encodeBoolean|encodeBoolean(kotlin.Boolean){}[0]
+    final fun encodeByte(kotlin/Byte) // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.encodeByte|encodeByte(kotlin.Byte){}[0]
+    final fun encodeChar(kotlin/Char) // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.encodeChar|encodeChar(kotlin.Char){}[0]
+    final fun encodeDouble(kotlin/Double) // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.encodeDouble|encodeDouble(kotlin.Double){}[0]
+    final fun encodeEnum(kotlinx.serialization.descriptors/SerialDescriptor, kotlin/Int) // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.encodeEnum|encodeEnum(kotlinx.serialization.descriptors.SerialDescriptor;kotlin.Int){}[0]
+    final fun encodeFloat(kotlin/Float) // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.encodeFloat|encodeFloat(kotlin.Float){}[0]
+    final fun encodeInline(kotlinx.serialization.descriptors/SerialDescriptor): kotlinx.serialization.encoding/Encoder // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.encodeInline|encodeInline(kotlinx.serialization.descriptors.SerialDescriptor){}[0]
+    final fun encodeInt(kotlin/Int) // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.encodeInt|encodeInt(kotlin.Int){}[0]
+    final fun encodeLong(kotlin/Long) // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.encodeLong|encodeLong(kotlin.Long){}[0]
+    final fun encodeNotNullMark() // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.encodeNotNullMark|encodeNotNullMark(){}[0]
+    final fun encodeNull() // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.encodeNull|encodeNull(){}[0]
+    final fun encodeShort(kotlin/Short) // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.encodeShort|encodeShort(kotlin.Short){}[0]
+    final fun encodeString(kotlin/String) // io.github.corneloaie.firebase.internal/FirebaseEncoderImpl.encodeString|encodeString(kotlin.String){}[0]
+}
+
+final class io.github.corneloaie.firebase.internal/FirebaseListSerializer : kotlinx.serialization/KSerializer<kotlin.collections/Iterable<kotlin/Any?>> { // io.github.corneloaie.firebase.internal/FirebaseListSerializer|null[0]
+    constructor <init>() // io.github.corneloaie.firebase.internal/FirebaseListSerializer.<init>|<init>(){}[0]
+
+    final val descriptor // io.github.corneloaie.firebase.internal/FirebaseListSerializer.descriptor|{}descriptor[0]
+        final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.github.corneloaie.firebase.internal/FirebaseListSerializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+    final var list // io.github.corneloaie.firebase.internal/FirebaseListSerializer.list|{}list[0]
+        final fun <get-list>(): kotlin.collections/List<kotlin/Any?> // io.github.corneloaie.firebase.internal/FirebaseListSerializer.list.<get-list>|<get-list>(){}[0]
+        final fun <set-list>(kotlin.collections/List<kotlin/Any?>) // io.github.corneloaie.firebase.internal/FirebaseListSerializer.list.<set-list>|<set-list>(kotlin.collections.List<kotlin.Any?>){}[0]
+
+    final fun deserialize(kotlinx.serialization.encoding/Decoder): kotlin.collections/List<kotlin/Any?> // io.github.corneloaie.firebase.internal/FirebaseListSerializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+    final fun serialize(kotlinx.serialization.encoding/Encoder, kotlin.collections/Iterable<kotlin/Any?>) // io.github.corneloaie.firebase.internal/FirebaseListSerializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;kotlin.collections.Iterable<kotlin.Any?>){}[0]
+}
+
+final class io.github.corneloaie.firebase.internal/FirebaseMapSerializer : kotlinx.serialization/KSerializer<kotlin.collections/Map<kotlin/String, kotlin/Any?>> { // io.github.corneloaie.firebase.internal/FirebaseMapSerializer|null[0]
+    constructor <init>() // io.github.corneloaie.firebase.internal/FirebaseMapSerializer.<init>|<init>(){}[0]
+
+    final val descriptor // io.github.corneloaie.firebase.internal/FirebaseMapSerializer.descriptor|{}descriptor[0]
+        final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.github.corneloaie.firebase.internal/FirebaseMapSerializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+    final var keys // io.github.corneloaie.firebase.internal/FirebaseMapSerializer.keys|{}keys[0]
+        final fun <get-keys>(): kotlin.collections/List<kotlin/String> // io.github.corneloaie.firebase.internal/FirebaseMapSerializer.keys.<get-keys>|<get-keys>(){}[0]
+        final fun <set-keys>(kotlin.collections/List<kotlin/String>) // io.github.corneloaie.firebase.internal/FirebaseMapSerializer.keys.<set-keys>|<set-keys>(kotlin.collections.List<kotlin.String>){}[0]
+    final var map // io.github.corneloaie.firebase.internal/FirebaseMapSerializer.map|{}map[0]
+        final fun <get-map>(): kotlin.collections/Map<kotlin/String, kotlin/Any?> // io.github.corneloaie.firebase.internal/FirebaseMapSerializer.map.<get-map>|<get-map>(){}[0]
+        final fun <set-map>(kotlin.collections/Map<kotlin/String, kotlin/Any?>) // io.github.corneloaie.firebase.internal/FirebaseMapSerializer.map.<set-map>|<set-map>(kotlin.collections.Map<kotlin.String,kotlin.Any?>){}[0]
+
+    final fun deserialize(kotlinx.serialization.encoding/Decoder): kotlin.collections/Map<kotlin/String, kotlin/Any?> // io.github.corneloaie.firebase.internal/FirebaseMapSerializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+    final fun serialize(kotlinx.serialization.encoding/Encoder, kotlin.collections/Map<kotlin/String, kotlin/Any?>) // io.github.corneloaie.firebase.internal/FirebaseMapSerializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;kotlin.collections.Map<kotlin.String,kotlin.Any?>){}[0]
+}
+
+final value class io.github.corneloaie.firebase.internal/EncodedObjectImpl : io.github.corneloaie.firebase.internal/EncodedObject { // io.github.corneloaie.firebase.internal/EncodedObjectImpl|null[0]
+    constructor <init>(kotlin.collections/Map<kotlin/String, kotlin/Any?>) // io.github.corneloaie.firebase.internal/EncodedObjectImpl.<init>|<init>(kotlin.collections.Map<kotlin.String,kotlin.Any?>){}[0]
+
+    final val raw // io.github.corneloaie.firebase.internal/EncodedObjectImpl.raw|{}raw[0]
+        final fun <get-raw>(): kotlin.collections/Map<kotlin/String, kotlin/Any?> // io.github.corneloaie.firebase.internal/EncodedObjectImpl.raw.<get-raw>|<get-raw>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.internal/EncodedObjectImpl.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.internal/EncodedObjectImpl.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.internal/EncodedObjectImpl.toString|toString(){}[0]
+}
+
+final fun (io.github.corneloaie.firebase/DecodeSettings.Builder).io.github.corneloaie.firebase.internal/buildDecodeSettings(): io.github.corneloaie.firebase/DecodeSettings // io.github.corneloaie.firebase.internal/buildDecodeSettings|buildDecodeSettings@io.github.corneloaie.firebase.DecodeSettings.Builder(){}[0]
+final fun (io.github.corneloaie.firebase/DecodeSettings.Builder).io.github.corneloaie.firebase.internal/copyFrom(io.github.corneloaie.firebase/DecodeSettings.Builder) // io.github.corneloaie.firebase.internal/copyFrom|copyFrom@io.github.corneloaie.firebase.DecodeSettings.Builder(io.github.corneloaie.firebase.DecodeSettings.Builder){}[0]
+final fun (io.github.corneloaie.firebase/EncodeSettings.Builder).io.github.corneloaie.firebase.internal/buildEncodeSettings(): io.github.corneloaie.firebase/EncodeSettings // io.github.corneloaie.firebase.internal/buildEncodeSettings|buildEncodeSettings@io.github.corneloaie.firebase.EncodeSettings.Builder(){}[0]
+final fun (io.github.corneloaie.firebase/EncodeSettings.Builder).io.github.corneloaie.firebase.internal/copyFrom(io.github.corneloaie.firebase/EncodeSettings.Builder) // io.github.corneloaie.firebase.internal/copyFrom|copyFrom@io.github.corneloaie.firebase.EncodeSettings.Builder(io.github.corneloaie.firebase.EncodeSettings.Builder){}[0]
+final fun (kotlin.collections/Map<*, *>).io.github.corneloaie.firebase.internal/asEncodedObject(): io.github.corneloaie.firebase.internal/EncodedObject // io.github.corneloaie.firebase.internal/asEncodedObject|asEncodedObject@kotlin.collections.Map<*,*>(){}[0]
+final fun (kotlin/Any).io.github.corneloaie.firebase.internal/asNativeMap(): kotlin.collections/Map<*, *>? // io.github.corneloaie.firebase.internal/asNativeMap|asNativeMap@kotlin.Any(){}[0]
+final fun <#A: kotlin/Any?> io.github.corneloaie.firebase.internal/decode(kotlinx.serialization/DeserializationStrategy<#A>, kotlin/Any?): #A // io.github.corneloaie.firebase.internal/decode|decode(kotlinx.serialization.DeserializationStrategy<0:0>;kotlin.Any?){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> io.github.corneloaie.firebase.internal/decode(kotlinx.serialization/DeserializationStrategy<#A>, kotlin/Any?, io.github.corneloaie.firebase/DecodeSettings): #A // io.github.corneloaie.firebase.internal/decode|decode(kotlinx.serialization.DeserializationStrategy<0:0>;kotlin.Any?;io.github.corneloaie.firebase.DecodeSettings){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> io.github.corneloaie.firebase.internal/encode(kotlinx.serialization/SerializationStrategy<#A>, #A, io.github.corneloaie.firebase/EncodeSettings): kotlin/Any? // io.github.corneloaie.firebase.internal/encode|encode(kotlinx.serialization.SerializationStrategy<0:0>;0:0;io.github.corneloaie.firebase.EncodeSettings){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> io.github.corneloaie.firebase.internal/encode(kotlinx.serialization/SerializationStrategy<#A>, #A, kotlin/Boolean): kotlin/Any? // io.github.corneloaie.firebase.internal/encode|encode(kotlinx.serialization.SerializationStrategy<0:0>;0:0;kotlin.Boolean){0§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any> io.github.corneloaie.firebase.internal/encodeAsObject(kotlinx.serialization/SerializationStrategy<#A>, #A, kotlin/Function1<io.github.corneloaie.firebase/EncodeSettings.Builder, kotlin/Unit> = ...): io.github.corneloaie.firebase.internal/EncodedObject // io.github.corneloaie.firebase.internal/encodeAsObject|encodeAsObject(kotlinx.serialization.SerializationStrategy<0:0>;0:0;kotlin.Function1<io.github.corneloaie.firebase.EncodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any>}[0]
+final inline fun <#A: kotlin/Any?> io.github.corneloaie.firebase.internal/decode(kotlinx.serialization/DeserializationStrategy<#A>, kotlin/Any?, kotlin/Function1<io.github.corneloaie.firebase/DecodeSettings.Builder, kotlin/Unit>): #A // io.github.corneloaie.firebase.internal/decode|decode(kotlinx.serialization.DeserializationStrategy<0:0>;kotlin.Any?;kotlin.Function1<io.github.corneloaie.firebase.DecodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?> io.github.corneloaie.firebase.internal/encode(kotlinx.serialization/SerializationStrategy<#A>, #A, kotlin/Function1<io.github.corneloaie.firebase/EncodeSettings.Builder, kotlin/Unit>): kotlin/Any? // io.github.corneloaie.firebase.internal/encode|encode(kotlinx.serialization.SerializationStrategy<0:0>;0:0;kotlin.Function1<io.github.corneloaie.firebase.EncodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?> io.github.corneloaie.firebase.internal/reencodeTransformation(kotlinx.serialization/KSerializer<#A>, kotlin/Any?, kotlin/Function1<io.github.corneloaie.firebase/EncodeDecodeSettingsBuilder, kotlin/Unit> = ..., kotlin/Function1<#A, #A>): kotlin/Any? // io.github.corneloaie.firebase.internal/reencodeTransformation|reencodeTransformation(kotlinx.serialization.KSerializer<0:0>;kotlin.Any?;kotlin.Function1<io.github.corneloaie.firebase.EncodeDecodeSettingsBuilder,kotlin.Unit>;kotlin.Function1<0:0,0:0>){0§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any> (#A).io.github.corneloaie.firebase.internal/firebaseSerializer(): kotlinx.serialization/SerializationStrategy<#A> // io.github.corneloaie.firebase.internal/firebaseSerializer|firebaseSerializer@0:0(){0§<kotlin.Any>}[0]
+final inline fun <#A: reified kotlin/Any> io.github.corneloaie.firebase.internal/encodeAsObject(#A, kotlin/Function1<io.github.corneloaie.firebase/EncodeSettings.Builder, kotlin/Unit> = ...): io.github.corneloaie.firebase.internal/EncodedObject // io.github.corneloaie.firebase.internal/encodeAsObject|encodeAsObject(0:0;kotlin.Function1<io.github.corneloaie.firebase.EncodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any>}[0]
+final inline fun <#A: reified kotlin/Any?> io.github.corneloaie.firebase.internal/decode(kotlin/Any?): #A // io.github.corneloaie.firebase.internal/decode|decode(kotlin.Any?){0§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?> io.github.corneloaie.firebase.internal/decode(kotlin/Any?, io.github.corneloaie.firebase/DecodeSettings): #A // io.github.corneloaie.firebase.internal/decode|decode(kotlin.Any?;io.github.corneloaie.firebase.DecodeSettings){0§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?> io.github.corneloaie.firebase.internal/decode(kotlin/Any?, kotlin/Function1<io.github.corneloaie.firebase/DecodeSettings.Builder, kotlin/Unit>): #A // io.github.corneloaie.firebase.internal/decode|decode(kotlin.Any?;kotlin.Function1<io.github.corneloaie.firebase.DecodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?> io.github.corneloaie.firebase.internal/encode(#A, io.github.corneloaie.firebase/EncodeSettings): kotlin/Any? // io.github.corneloaie.firebase.internal/encode|encode(0:0;io.github.corneloaie.firebase.EncodeSettings){0§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?> io.github.corneloaie.firebase.internal/encode(#A, kotlin/Boolean): kotlin/Any? // io.github.corneloaie.firebase.internal/encode|encode(0:0;kotlin.Boolean){0§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?> io.github.corneloaie.firebase.internal/encode(#A, kotlin/Function1<io.github.corneloaie.firebase/EncodeSettings.Builder, kotlin/Unit> = ...): kotlin/Any? // io.github.corneloaie.firebase.internal/encode|encode(0:0;kotlin.Function1<io.github.corneloaie.firebase.EncodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?> io.github.corneloaie.firebase.internal/reencodeTransformation(kotlin/Any?, kotlin/Function1<io.github.corneloaie.firebase/EncodeDecodeSettingsBuilder, kotlin/Unit> = ..., kotlin/Function1<#A, #A>): kotlin/Any? // io.github.corneloaie.firebase.internal/reencodeTransformation|reencodeTransformation(kotlin.Any?;kotlin.Function1<io.github.corneloaie.firebase.EncodeDecodeSettingsBuilder,kotlin.Unit>;kotlin.Function1<0:0,0:0>){0§<kotlin.Any?>}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.internal/ios // io.github.corneloaie.firebase.internal/ios|@io.github.corneloaie.firebase.internal.EncodedObject{}ios[0]
+    final fun (io.github.corneloaie.firebase.internal/EncodedObject).<get-ios>(): kotlin.collections/Map<kotlin/Any?, *> // io.github.corneloaie.firebase.internal/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.internal.EncodedObject(){}[0]
+
+// Targets: [apple]
+final fun (kotlin/Any?).io.github.corneloaie.firebase.internal/withFoundationBooleans(): kotlin/Any? // io.github.corneloaie.firebase.internal/withFoundationBooleans|withFoundationBooleans@kotlin.Any?(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.internal/js // io.github.corneloaie.firebase.internal/js|@io.github.corneloaie.firebase.internal.EncodedObject{}js[0]
+    // Targets: [js]
+    final fun (io.github.corneloaie.firebase.internal/EncodedObject).<get-js>(): kotlin.js/Json // io.github.corneloaie.firebase.internal/js.<get-js>|<get-js>@io.github.corneloaie.firebase.internal.EncodedObject(){}[0]
+
+    // Targets: [wasmJs]
+    final fun (io.github.corneloaie.firebase.internal/EncodedObject).<get-js>(): kotlin.js/JsAny // io.github.corneloaie.firebase.internal/js.<get-js>|<get-js>@io.github.corneloaie.firebase.internal.EncodedObject(){}[0]

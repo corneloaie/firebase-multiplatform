@@ -1,0 +1,239 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, tvosArm64, tvosSimulatorArm64, wasmJs]
+// Alias: apple => [iosArm64, iosSimulatorArm64, iosX64, macosArm64, tvosArm64, tvosSimulatorArm64]
+// Alias: ios => [iosArm64, iosSimulatorArm64, iosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-appcheck>
+abstract fun interface com.google.firebase.appcheck/AppCheckProvider { // com.google.firebase.appcheck/AppCheckProvider|null[0]
+    abstract fun getToken(): com.google.android.gms.tasks/Task<com.google.firebase.appcheck/AppCheckToken> // com.google.firebase.appcheck/AppCheckProvider.getToken|getToken(){}[0]
+    open fun getLimitedUseToken(): com.google.android.gms.tasks/Task<com.google.firebase.appcheck/AppCheckToken> // com.google.firebase.appcheck/AppCheckProvider.getLimitedUseToken|getLimitedUseToken(){}[0]
+}
+
+abstract fun interface com.google.firebase.appcheck/AppCheckProviderFactory { // com.google.firebase.appcheck/AppCheckProviderFactory|null[0]
+    abstract fun create(com.google.firebase/FirebaseApp): com.google.firebase.appcheck/AppCheckProvider // com.google.firebase.appcheck/AppCheckProviderFactory.create|create(com.google.firebase.FirebaseApp){}[0]
+}
+
+abstract class com.google.firebase.appcheck/AppCheckToken { // com.google.firebase.appcheck/AppCheckToken|null[0]
+    constructor <init>() // com.google.firebase.appcheck/AppCheckToken.<init>|<init>(){}[0]
+
+    final val expireTimeMillis // com.google.firebase.appcheck/AppCheckToken.expireTimeMillis|{}expireTimeMillis[0]
+        final fun <get-expireTimeMillis>(): kotlin/Long // com.google.firebase.appcheck/AppCheckToken.expireTimeMillis.<get-expireTimeMillis>|<get-expireTimeMillis>(){}[0]
+    final val token // com.google.firebase.appcheck/AppCheckToken.token|{}token[0]
+        final fun <get-token>(): kotlin/String // com.google.firebase.appcheck/AppCheckToken.token.<get-token>|<get-token>(){}[0]
+
+    abstract fun getExpireTimeMillis(): kotlin/Long // com.google.firebase.appcheck/AppCheckToken.getExpireTimeMillis|getExpireTimeMillis(){}[0]
+    abstract fun getToken(): kotlin/String // com.google.firebase.appcheck/AppCheckToken.getToken|getToken(){}[0]
+}
+
+abstract class com.google.firebase.appcheck/FirebaseAppCheck { // com.google.firebase.appcheck/FirebaseAppCheck|null[0]
+    constructor <init>() // com.google.firebase.appcheck/FirebaseAppCheck.<init>|<init>(){}[0]
+
+    abstract fun addAppCheckListener(com.google.firebase.appcheck/FirebaseAppCheck.AppCheckListener) // com.google.firebase.appcheck/FirebaseAppCheck.addAppCheckListener|addAppCheckListener(com.google.firebase.appcheck.FirebaseAppCheck.AppCheckListener){}[0]
+    abstract fun getAppCheckToken(kotlin/Boolean): com.google.android.gms.tasks/Task<com.google.firebase.appcheck/AppCheckToken> // com.google.firebase.appcheck/FirebaseAppCheck.getAppCheckToken|getAppCheckToken(kotlin.Boolean){}[0]
+    abstract fun getLimitedUseAppCheckToken(): com.google.android.gms.tasks/Task<com.google.firebase.appcheck/AppCheckToken> // com.google.firebase.appcheck/FirebaseAppCheck.getLimitedUseAppCheckToken|getLimitedUseAppCheckToken(){}[0]
+    abstract fun installAppCheckProviderFactory(com.google.firebase.appcheck/AppCheckProviderFactory) // com.google.firebase.appcheck/FirebaseAppCheck.installAppCheckProviderFactory|installAppCheckProviderFactory(com.google.firebase.appcheck.AppCheckProviderFactory){}[0]
+    abstract fun installAppCheckProviderFactory(com.google.firebase.appcheck/AppCheckProviderFactory, kotlin/Boolean) // com.google.firebase.appcheck/FirebaseAppCheck.installAppCheckProviderFactory|installAppCheckProviderFactory(com.google.firebase.appcheck.AppCheckProviderFactory;kotlin.Boolean){}[0]
+    abstract fun removeAppCheckListener(com.google.firebase.appcheck/FirebaseAppCheck.AppCheckListener) // com.google.firebase.appcheck/FirebaseAppCheck.removeAppCheckListener|removeAppCheckListener(com.google.firebase.appcheck.FirebaseAppCheck.AppCheckListener){}[0]
+    abstract fun setTokenAutoRefreshEnabled(kotlin/Boolean) // com.google.firebase.appcheck/FirebaseAppCheck.setTokenAutoRefreshEnabled|setTokenAutoRefreshEnabled(kotlin.Boolean){}[0]
+
+    abstract fun interface AppCheckListener { // com.google.firebase.appcheck/FirebaseAppCheck.AppCheckListener|null[0]
+        abstract fun onAppCheckTokenChanged(com.google.firebase.appcheck/AppCheckToken) // com.google.firebase.appcheck/FirebaseAppCheck.AppCheckListener.onAppCheckTokenChanged|onAppCheckTokenChanged(com.google.firebase.appcheck.AppCheckToken){}[0]
+    }
+
+    final object Companion { // com.google.firebase.appcheck/FirebaseAppCheck.Companion|null[0]
+        final fun getInstance(): com.google.firebase.appcheck/FirebaseAppCheck // com.google.firebase.appcheck/FirebaseAppCheck.Companion.getInstance|getInstance(){}[0]
+        final fun getInstance(com.google.firebase/FirebaseApp): com.google.firebase.appcheck/FirebaseAppCheck // com.google.firebase.appcheck/FirebaseAppCheck.Companion.getInstance|getInstance(com.google.firebase.FirebaseApp){}[0]
+
+        // Targets: [apple]
+        final fun setAppCheckProviderFactory(com.google.firebase.appcheck/AppCheckProviderFactory?) // com.google.firebase.appcheck/FirebaseAppCheck.Companion.setAppCheckProviderFactory|setAppCheckProviderFactory(com.google.firebase.appcheck.AppCheckProviderFactory?){}[0]
+    }
+}
+
+final class com.google.firebase.appcheck.debug/DebugAppCheckProviderFactory : com.google.firebase.appcheck/AppCheckProviderFactory { // com.google.firebase.appcheck.debug/DebugAppCheckProviderFactory|null[0]
+    final fun create(com.google.firebase/FirebaseApp): com.google.firebase.appcheck/AppCheckProvider // com.google.firebase.appcheck.debug/DebugAppCheckProviderFactory.create|create(com.google.firebase.FirebaseApp){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.appcheck.debug/DebugAppCheckProviderFactory.toString|toString(){}[0]
+
+    final object Companion { // com.google.firebase.appcheck.debug/DebugAppCheckProviderFactory.Companion|null[0]
+        final fun getInstance(): com.google.firebase.appcheck.debug/DebugAppCheckProviderFactory // com.google.firebase.appcheck.debug/DebugAppCheckProviderFactory.Companion.getInstance|getInstance(){}[0]
+    }
+
+    // Targets: [apple]
+    final val ios // com.google.firebase.appcheck.debug/DebugAppCheckProviderFactory.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.appcheck/FIRAppCheckDebugProviderFactory // com.google.firebase.appcheck.debug/DebugAppCheckProviderFactory.ios.<get-ios>|<get-ios>(){}[0]
+}
+
+final class com.google.firebase.appcheck.playintegrity/PlayIntegrityAppCheckProviderFactory : com.google.firebase.appcheck/AppCheckProviderFactory { // com.google.firebase.appcheck.playintegrity/PlayIntegrityAppCheckProviderFactory|null[0]
+    constructor <init>() // com.google.firebase.appcheck.playintegrity/PlayIntegrityAppCheckProviderFactory.<init>|<init>(){}[0]
+
+    final fun create(com.google.firebase/FirebaseApp): com.google.firebase.appcheck/AppCheckProvider // com.google.firebase.appcheck.playintegrity/PlayIntegrityAppCheckProviderFactory.create|create(com.google.firebase.FirebaseApp){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.appcheck.playintegrity/PlayIntegrityAppCheckProviderFactory.toString|toString(){}[0]
+
+    final object Companion { // com.google.firebase.appcheck.playintegrity/PlayIntegrityAppCheckProviderFactory.Companion|null[0]
+        final fun getInstance(): com.google.firebase.appcheck.playintegrity/PlayIntegrityAppCheckProviderFactory // com.google.firebase.appcheck.playintegrity/PlayIntegrityAppCheckProviderFactory.Companion.getInstance|getInstance(){}[0]
+    }
+}
+
+final class com.google.firebase.appcheck.recaptcha/RecaptchaAppCheckProviderFactory : com.google.firebase.appcheck/AppCheckProviderFactory { // com.google.firebase.appcheck.recaptcha/RecaptchaAppCheckProviderFactory|null[0]
+    final fun create(com.google.firebase/FirebaseApp): com.google.firebase.appcheck/AppCheckProvider // com.google.firebase.appcheck.recaptcha/RecaptchaAppCheckProviderFactory.create|create(com.google.firebase.FirebaseApp){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.appcheck.recaptcha/RecaptchaAppCheckProviderFactory.toString|toString(){}[0]
+
+    final object Companion { // com.google.firebase.appcheck.recaptcha/RecaptchaAppCheckProviderFactory.Companion|null[0]
+        final fun getInstance(kotlin/String): com.google.firebase.appcheck.recaptcha/RecaptchaAppCheckProviderFactory // com.google.firebase.appcheck.recaptcha/RecaptchaAppCheckProviderFactory.Companion.getInstance|getInstance(kotlin.String){}[0]
+    }
+
+    // Targets: [ios]
+    final val ios // com.google.firebase.appcheck.recaptcha/RecaptchaAppCheckProviderFactory.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.appcheck/FIRRecaptchaProviderFactory // com.google.firebase.appcheck.recaptcha/RecaptchaAppCheckProviderFactory.ios.<get-ios>|<get-ios>(){}[0]
+}
+
+final class io.github.corneloaie.firebase.appcheck/AppCheckToken { // io.github.corneloaie.firebase.appcheck/AppCheckToken|null[0]
+    final val compat // io.github.corneloaie.firebase.appcheck/AppCheckToken.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.appcheck/AppCheckToken // io.github.corneloaie.firebase.appcheck/AppCheckToken.compat.<get-compat>|<get-compat>(){}[0]
+    final val expireTimeMillis // io.github.corneloaie.firebase.appcheck/AppCheckToken.expireTimeMillis|{}expireTimeMillis[0]
+        final fun <get-expireTimeMillis>(): kotlin/Long // io.github.corneloaie.firebase.appcheck/AppCheckToken.expireTimeMillis.<get-expireTimeMillis>|<get-expireTimeMillis>(){}[0]
+    final val token // io.github.corneloaie.firebase.appcheck/AppCheckToken.token|{}token[0]
+        final fun <get-token>(): kotlin/String // io.github.corneloaie.firebase.appcheck/AppCheckToken.token.<get-token>|<get-token>(){}[0]
+
+    final fun component1(): kotlin/String // io.github.corneloaie.firebase.appcheck/AppCheckToken.component1|component1(){}[0]
+    final fun component2(): kotlin/Long // io.github.corneloaie.firebase.appcheck/AppCheckToken.component2|component2(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.appcheck/AppCheckToken.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.appcheck/AppCheckToken.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.appcheck/AppCheckToken.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.firebase.appcheck/FirebaseAppCheck { // io.github.corneloaie.firebase.appcheck/FirebaseAppCheck|null[0]
+    final val appCheckTokenChanged // io.github.corneloaie.firebase.appcheck/FirebaseAppCheck.appCheckTokenChanged|{}appCheckTokenChanged[0]
+        final fun <get-appCheckTokenChanged>(): kotlinx.coroutines.flow/Flow<io.github.corneloaie.firebase.appcheck/AppCheckToken> // io.github.corneloaie.firebase.appcheck/FirebaseAppCheck.appCheckTokenChanged.<get-appCheckTokenChanged>|<get-appCheckTokenChanged>(){}[0]
+    final val compat // io.github.corneloaie.firebase.appcheck/FirebaseAppCheck.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.appcheck/FirebaseAppCheck // io.github.corneloaie.firebase.appcheck/FirebaseAppCheck.compat.<get-compat>|<get-compat>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.appcheck/FirebaseAppCheck.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.appcheck/FirebaseAppCheck.hashCode|hashCode(){}[0]
+    final fun installAppCheckProviderFactory(com.google.firebase.appcheck/AppCheckProviderFactory, kotlin/Boolean? = ...) // io.github.corneloaie.firebase.appcheck/FirebaseAppCheck.installAppCheckProviderFactory|installAppCheckProviderFactory(com.google.firebase.appcheck.AppCheckProviderFactory;kotlin.Boolean?){}[0]
+    final fun setTokenAutoRefreshEnabled(kotlin/Boolean) // io.github.corneloaie.firebase.appcheck/FirebaseAppCheck.setTokenAutoRefreshEnabled|setTokenAutoRefreshEnabled(kotlin.Boolean){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.appcheck/FirebaseAppCheck.toString|toString(){}[0]
+    final suspend fun getAppCheckToken(kotlin/Boolean = ...): io.github.corneloaie.firebase.appcheck/AppCheckToken // io.github.corneloaie.firebase.appcheck/FirebaseAppCheck.getAppCheckToken|getAppCheckToken(kotlin.Boolean){}[0]
+    final suspend fun getLimitedUseAppCheckToken(): io.github.corneloaie.firebase.appcheck/AppCheckToken // io.github.corneloaie.firebase.appcheck/FirebaseAppCheck.getLimitedUseAppCheckToken|getLimitedUseAppCheckToken(){}[0]
+}
+
+final val com.google.firebase.appcheck/appCheck // com.google.firebase.appcheck/appCheck|@com.google.firebase.Firebase{}appCheck[0]
+    final fun (com.google.firebase/Firebase).<get-appCheck>(): com.google.firebase.appcheck/FirebaseAppCheck // com.google.firebase.appcheck/appCheck.<get-appCheck>|<get-appCheck>@com.google.firebase.Firebase(){}[0]
+final val io.github.corneloaie.firebase.appcheck/appCheck // io.github.corneloaie.firebase.appcheck/appCheck|@io.github.corneloaie.firebase.Firebase{}appCheck[0]
+    final fun (io.github.corneloaie.firebase/Firebase).<get-appCheck>(): io.github.corneloaie.firebase.appcheck/FirebaseAppCheck // io.github.corneloaie.firebase.appcheck/appCheck.<get-appCheck>|<get-appCheck>@io.github.corneloaie.firebase.Firebase(){}[0]
+
+final fun (com.google.firebase.appcheck/AppCheckToken).com.google.firebase.appcheck/component1(): kotlin/String // com.google.firebase.appcheck/component1|component1@com.google.firebase.appcheck.AppCheckToken(){}[0]
+final fun (com.google.firebase.appcheck/AppCheckToken).com.google.firebase.appcheck/component2(): kotlin/Long // com.google.firebase.appcheck/component2|component2@com.google.firebase.appcheck.AppCheckToken(){}[0]
+final fun (com.google.firebase/Firebase).com.google.firebase.appcheck/appCheck(com.google.firebase/FirebaseApp): com.google.firebase.appcheck/FirebaseAppCheck // com.google.firebase.appcheck/appCheck|appCheck@com.google.firebase.Firebase(com.google.firebase.FirebaseApp){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase.appcheck/appCheck(io.github.corneloaie.firebase/FirebaseApp): io.github.corneloaie.firebase.appcheck/FirebaseAppCheck // io.github.corneloaie.firebase.appcheck/appCheck|appCheck@io.github.corneloaie.firebase.Firebase(io.github.corneloaie.firebase.FirebaseApp){}[0]
+
+// Targets: [apple]
+final class io.github.corneloaie.firebase.appcheck/AppAttestProviderFactory : com.google.firebase.appcheck/AppCheckProviderFactory { // io.github.corneloaie.firebase.appcheck/AppAttestProviderFactory|null[0]
+    constructor <init>() // io.github.corneloaie.firebase.appcheck/AppAttestProviderFactory.<init>|<init>(){}[0]
+
+    final val ios // io.github.corneloaie.firebase.appcheck/AppAttestProviderFactory.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.appcheck/FIRAppAttestProviderFactory // io.github.corneloaie.firebase.appcheck/AppAttestProviderFactory.ios.<get-ios>|<get-ios>(){}[0]
+
+    final fun create(com.google.firebase/FirebaseApp): com.google.firebase.appcheck/AppCheckProvider // io.github.corneloaie.firebase.appcheck/AppAttestProviderFactory.create|create(com.google.firebase.FirebaseApp){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.appcheck/AppAttestProviderFactory.toString|toString(){}[0]
+}
+
+// Targets: [apple]
+final class io.github.corneloaie.firebase.appcheck/DeviceCheckProviderFactory : com.google.firebase.appcheck/AppCheckProviderFactory { // io.github.corneloaie.firebase.appcheck/DeviceCheckProviderFactory|null[0]
+    constructor <init>() // io.github.corneloaie.firebase.appcheck/DeviceCheckProviderFactory.<init>|<init>(){}[0]
+
+    final val ios // io.github.corneloaie.firebase.appcheck/DeviceCheckProviderFactory.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.appcheck/FIRDeviceCheckProviderFactory // io.github.corneloaie.firebase.appcheck/DeviceCheckProviderFactory.ios.<get-ios>|<get-ios>(){}[0]
+
+    final fun create(com.google.firebase/FirebaseApp): com.google.firebase.appcheck/AppCheckProvider // io.github.corneloaie.firebase.appcheck/DeviceCheckProviderFactory.create|create(com.google.firebase.FirebaseApp){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.appcheck/DeviceCheckProviderFactory.toString|toString(){}[0]
+}
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.appcheck/ios // io.github.corneloaie.firebase.appcheck/ios|@io.github.corneloaie.firebase.appcheck.FirebaseAppCheck{}ios[0]
+    final fun (io.github.corneloaie.firebase.appcheck/FirebaseAppCheck).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.appcheck/FIRAppCheck? // io.github.corneloaie.firebase.appcheck/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.appcheck.FirebaseAppCheck(){}[0]
+
+// Targets: [js, wasmJs]
+final class io.github.corneloaie.firebase.appcheck.externals/CustomProvider : io.github.corneloaie.firebase.appcheck.externals/AppCheckProvider { // io.github.corneloaie.firebase.appcheck.externals/CustomProvider|null[0]
+    // Targets: [js]
+    constructor <init>(kotlin.js/Json) // io.github.corneloaie.firebase.appcheck.externals/CustomProvider.<init>|<init>(kotlin.js.Json){}[0]
+
+    // Targets: [wasmJs]
+    constructor <init>(kotlin.js/JsAny) // io.github.corneloaie.firebase.appcheck.externals/CustomProvider.<init>|<init>(kotlin.js.JsAny){}[0]
+}
+
+// Targets: [js, wasmJs]
+final class io.github.corneloaie.firebase.appcheck.externals/ReCaptchaEnterpriseProvider : io.github.corneloaie.firebase.appcheck.externals/AppCheckProvider { // io.github.corneloaie.firebase.appcheck.externals/ReCaptchaEnterpriseProvider|null[0]
+    constructor <init>(kotlin/String) // io.github.corneloaie.firebase.appcheck.externals/ReCaptchaEnterpriseProvider.<init>|<init>(kotlin.String){}[0]
+}
+
+// Targets: [js, wasmJs]
+final class io.github.corneloaie.firebase.appcheck.externals/ReCaptchaV3Provider : io.github.corneloaie.firebase.appcheck.externals/AppCheckProvider { // io.github.corneloaie.firebase.appcheck.externals/ReCaptchaV3Provider|null[0]
+    constructor <init>(kotlin/String) // io.github.corneloaie.firebase.appcheck.externals/ReCaptchaV3Provider.<init>|<init>(kotlin.String){}[0]
+}
+
+// Targets: [js, wasmJs]
+final class io.github.corneloaie.firebase.appcheck/ReCaptchaV3ProviderFactory : com.google.firebase.appcheck/AppCheckProviderFactory { // io.github.corneloaie.firebase.appcheck/ReCaptchaV3ProviderFactory|null[0]
+    constructor <init>(kotlin/String) // io.github.corneloaie.firebase.appcheck/ReCaptchaV3ProviderFactory.<init>|<init>(kotlin.String){}[0]
+
+    final val siteKey // io.github.corneloaie.firebase.appcheck/ReCaptchaV3ProviderFactory.siteKey|{}siteKey[0]
+        final fun <get-siteKey>(): kotlin/String // io.github.corneloaie.firebase.appcheck/ReCaptchaV3ProviderFactory.siteKey.<get-siteKey>|<get-siteKey>(){}[0]
+
+    final fun create(com.google.firebase/FirebaseApp): com.google.firebase.appcheck/AppCheckProvider // io.github.corneloaie.firebase.appcheck/ReCaptchaV3ProviderFactory.create|create(com.google.firebase.FirebaseApp){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.appcheck/ReCaptchaV3ProviderFactory.toString|toString(){}[0]
+}
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.appcheck/js // io.github.corneloaie.firebase.appcheck/js|@io.github.corneloaie.firebase.appcheck.FirebaseAppCheck{}js[0]
+    final fun (io.github.corneloaie.firebase.appcheck/FirebaseAppCheck).<get-js>(): io.github.corneloaie.firebase.appcheck.externals/AppCheck? // io.github.corneloaie.firebase.appcheck/js.<get-js>|<get-js>@io.github.corneloaie.firebase.appcheck.FirebaseAppCheck(){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.appcheck.externals/getLimitedUseToken(io.github.corneloaie.firebase.appcheck.externals/AppCheck): kotlin.js/Promise<io.github.corneloaie.firebase.appcheck.externals/AppCheckTokenResult> // io.github.corneloaie.firebase.appcheck.externals/getLimitedUseToken|getLimitedUseToken(io.github.corneloaie.firebase.appcheck.externals.AppCheck){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.appcheck.externals/getToken(io.github.corneloaie.firebase.appcheck.externals/AppCheck, kotlin/Boolean): kotlin.js/Promise<io.github.corneloaie.firebase.appcheck.externals/AppCheckTokenResult> // io.github.corneloaie.firebase.appcheck.externals/getToken|getToken(io.github.corneloaie.firebase.appcheck.externals.AppCheck;kotlin.Boolean){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.appcheck.externals/onTokenChanged(io.github.corneloaie.firebase.appcheck.externals/AppCheck, kotlin/Function1<io.github.corneloaie.firebase.appcheck.externals/AppCheckTokenResult, kotlin/Unit>): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.appcheck.externals/onTokenChanged|onTokenChanged(io.github.corneloaie.firebase.appcheck.externals.AppCheck;kotlin.Function1<io.github.corneloaie.firebase.appcheck.externals.AppCheckTokenResult,kotlin.Unit>){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.appcheck.externals/setTokenAutoRefreshEnabled(io.github.corneloaie.firebase.appcheck.externals/AppCheck, kotlin/Boolean) // io.github.corneloaie.firebase.appcheck.externals/setTokenAutoRefreshEnabled|setTokenAutoRefreshEnabled(io.github.corneloaie.firebase.appcheck.externals.AppCheck;kotlin.Boolean){}[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.appcheck.externals/AppCheck { // io.github.corneloaie.firebase.appcheck.externals/AppCheck|null[0]
+    abstract val app // io.github.corneloaie.firebase.appcheck.externals/AppCheck.app|{}app[0]
+        abstract fun <get-app>(): io.github.corneloaie.firebase.externals/FirebaseApp // io.github.corneloaie.firebase.appcheck.externals/AppCheck.app.<get-app>|<get-app>(){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.appcheck.externals/AppCheckProvider // io.github.corneloaie.firebase.appcheck.externals/AppCheckProvider|null[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.appcheck.externals/AppCheckTokenResult { // io.github.corneloaie.firebase.appcheck.externals/AppCheckTokenResult|null[0]
+    abstract val token // io.github.corneloaie.firebase.appcheck.externals/AppCheckTokenResult.token|{}token[0]
+        abstract fun <get-token>(): kotlin/String // io.github.corneloaie.firebase.appcheck.externals/AppCheckTokenResult.token.<get-token>|<get-token>(){}[0]
+}
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.appcheck.externals/initializeAppCheck(io.github.corneloaie.firebase.externals/FirebaseApp?, kotlin.js/Json): io.github.corneloaie.firebase.appcheck.externals/AppCheck // io.github.corneloaie.firebase.appcheck.externals/initializeAppCheck|initializeAppCheck(io.github.corneloaie.firebase.externals.FirebaseApp?;kotlin.js.Json){}[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.appcheck.externals/AppCheck : kotlin.js/JsAny { // io.github.corneloaie.firebase.appcheck.externals/AppCheck|null[0]
+    abstract val app // io.github.corneloaie.firebase.appcheck.externals/AppCheck.app|{}app[0]
+        abstract fun <get-app>(): io.github.corneloaie.firebase.externals/FirebaseApp // io.github.corneloaie.firebase.appcheck.externals/AppCheck.app.<get-app>|<get-app>(){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.appcheck.externals/AppCheckProvider : kotlin.js/JsAny // io.github.corneloaie.firebase.appcheck.externals/AppCheckProvider|null[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.appcheck.externals/AppCheckTokenResult : kotlin.js/JsAny { // io.github.corneloaie.firebase.appcheck.externals/AppCheckTokenResult|null[0]
+    abstract val token // io.github.corneloaie.firebase.appcheck.externals/AppCheckTokenResult.token|{}token[0]
+        abstract fun <get-token>(): kotlin/String // io.github.corneloaie.firebase.appcheck.externals/AppCheckTokenResult.token.<get-token>|<get-token>(){}[0]
+}
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.appcheck.externals/initializeAppCheck(io.github.corneloaie.firebase.externals/FirebaseApp?, kotlin.js/JsAny): io.github.corneloaie.firebase.appcheck.externals/AppCheck // io.github.corneloaie.firebase.appcheck.externals/initializeAppCheck|initializeAppCheck(io.github.corneloaie.firebase.externals.FirebaseApp?;kotlin.js.JsAny){}[0]

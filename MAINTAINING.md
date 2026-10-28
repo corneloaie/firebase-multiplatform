@@ -121,7 +121,7 @@ Implement each member in the module's `com.google.firebase` layer on every platf
   signature that needs an Android-only type goes in `api/android-sdk/exclusions.txt`, with `@platform`. Never leave a
   member out silently.
 
-Then run `./gradlew apiDump androidSourceCompatDump formatKotlin` and
+Then run `./gradlew updateKotlinAbi androidSourceCompatDump formatKotlin` and
 `python3 .github/scripts/weekly/coverage.py --readme README.md`.
 
 ## Building on a laptop

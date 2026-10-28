@@ -63,7 +63,7 @@ import kotlin.test.assertTrue
 
 /*
  * The pipeline API of the `com.google.firebase.firestore` layer. firebase-java-sdk has no pipelines, so these tests
- * cannot compile for the JVM: they are in nonJvmTest for Apple and JS, and the same file is in androidInstrumentedTest
+ * cannot compile for the JVM: they are in nonJvmTest for Apple and JS, and the same file is in androidDeviceTest
  * for Android, where PipelineExpressionsTest checks that this module's classes behave as the Android SDK's own.
  */
 

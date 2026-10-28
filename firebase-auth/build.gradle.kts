@@ -19,41 +19,10 @@ import utils.toTargetPlatforms
 val supportedPlatforms = (project.property("firebase-auth.supportedTargets") as String).toTargetPlatforms()
 
 plugins {
-    id("com.android.library")
+    id("com.android.kotlin.multiplatform.library")
     kotlin("multiplatform")
     id("testOptionsConvention")
     alias(libs.plugins.publish)
-}
-
-if (supportedPlatforms.contains(TargetPlatform.Android)) {
-    android {
-        val compileSdkVersion: Int by project
-
-        compileSdk = compileSdkVersion
-        namespace = "io.github.corneloaie.firebase.auth"
-
-        defaultConfig {
-            minSdk =
-                24 // Auth had a MinSDK of 23 (https://github.com/firebase/firebase-android-sdk/issues/5927#issuecomment-2093466572); firebase-common 23 (BoM 35) requires 24
-            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        }
-
-        compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_17
-            targetCompatibility = JavaVersion.VERSION_17
-        }
-
-        (this as com.android.build.api.dsl.LibraryExtension).sourceSets.getByName("main").java.srcDir("src/androidMain/java")
-        testOptions.configureTestOptions(project)
-        packaging {
-            resources.pickFirsts.add("META-INF/kotlinx-serialization-core.kotlin_module")
-            resources.pickFirsts.add("META-INF/AL2.0")
-            resources.pickFirsts.add("META-INF/LGPL2.1")
-        }
-        lint {
-            abortOnError = false
-        }
-    }
 }
 
 kotlin {
@@ -78,11 +47,24 @@ kotlin {
     }
 
     if (supportedPlatforms.contains(TargetPlatform.Android)) {
-        @Suppress("OPT_IN_USAGE")
-        androidTarget {
-            instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
-            unitTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
-            publishAllLibraryVariants()
+        android {
+            val compileSdkVersion: Int by project
+
+            compileSdk = compileSdkVersion
+            minSdk = 24 // Auth had a MinSDK of 23 (https://github.com/firebase/firebase-android-sdk/issues/5927#issuecomment-2093466572); firebase-common 23 (BoM 35) requires 24
+            namespace = "io.github.corneloaie.firebase.auth"
+
+            withJava()
+            withHostTestBuilder { sourceSetTreeName = KotlinSourceSetTree.test.name }.configure { configureTestOptions(project) }
+            withDeviceTestBuilder { sourceSetTreeName = KotlinSourceSetTree.test.name }.configure { configureTestOptions(project) }
+            packaging {
+                resources.pickFirsts.add("META-INF/kotlinx-serialization-core.kotlin_module")
+                resources.pickFirsts.add("META-INF/AL2.0")
+                resources.pickFirsts.add("META-INF/LGPL2.1")
+            }
+            lint {
+                abortOnError = false
+            }
         }
     }
 
@@ -212,8 +194,8 @@ kotlin {
         }
 
         if (supportedPlatforms.contains(TargetPlatform.Android)) {
-            getByName("androidUnitTest") { kotlin.srcDir(androidSdkCompatTest) }
-            getByName("androidInstrumentedTest") {
+            getByName("androidHostTest") { kotlin.srcDir(androidSdkCompatTest) }
+            getByName("androidDeviceTest") {
                 kotlin.srcDir(androidSdkCompatTest)
                 dependencies {
                     // phone auth registers an sms retriever via ContextCompat.registerReceiver(
@@ -258,9 +240,9 @@ tasks.withType<JavaCompile>().configureEach {
 stripHeaderStubs(
     packageDirs = listOf("com/google/firebase"),
     androidReferenceJars = files({
-        configurations.findByName("releaseCompileClasspath")?.incoming?.artifactView {
+        configurations.getByName("androidCompileClasspath").incoming.artifactView {
             attributes.attribute(Attribute.of("artifactType", String::class.java), "android-classes-jar")
-        }?.files ?: files()
+        }.files
     }),
     jvmReferenceJars = files({ configurations.findByName("jvmCompileClasspath")?.files ?: files() }),
     // Shipped: the static members this module's own code reaches through AuthStatics.java.

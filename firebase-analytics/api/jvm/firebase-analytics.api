@@ -19,7 +19,6 @@ public final class com/google/firebase/analytics/ConsentBuilder {
 
 public final class com/google/firebase/analytics/FirebaseAnalytics {
 	public static final field Companion Lcom/google/firebase/analytics/FirebaseAnalytics$Companion;
-	public synthetic fun <init> (Lio/github/corneloaie/firebase/analytics/internal/NativeAnalytics;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAppInstanceId ()Lcom/google/android/gms/tasks/Task;
 	public final fun getFirebaseInstanceId ()Ljava/lang/String;

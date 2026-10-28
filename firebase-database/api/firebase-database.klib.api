@@ -1,0 +1,973 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, tvosArm64, tvosSimulatorArm64, wasmJs]
+// Alias: apple => [iosArm64, iosSimulatorArm64, iosX64, macosArm64, tvosArm64, tvosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-database>
+open annotation class com.google.firebase.database/Exclude : kotlin/Annotation { // com.google.firebase.database/Exclude|null[0]
+    constructor <init>() // com.google.firebase.database/Exclude.<init>|<init>(){}[0]
+}
+
+open annotation class com.google.firebase.database/IgnoreExtraProperties : kotlin/Annotation { // com.google.firebase.database/IgnoreExtraProperties|null[0]
+    constructor <init>() // com.google.firebase.database/IgnoreExtraProperties.<init>|<init>(){}[0]
+}
+
+open annotation class com.google.firebase.database/PropertyName : kotlin/Annotation { // com.google.firebase.database/PropertyName|null[0]
+    constructor <init>(kotlin/String) // com.google.firebase.database/PropertyName.<init>|<init>(kotlin.String){}[0]
+
+    final val value // com.google.firebase.database/PropertyName.value|{}value[0]
+        final fun <get-value>(): kotlin/String // com.google.firebase.database/PropertyName.value.<get-value>|<get-value>(){}[0]
+}
+
+open annotation class com.google.firebase.database/ThrowOnExtraProperties : kotlin/Annotation { // com.google.firebase.database/ThrowOnExtraProperties|null[0]
+    constructor <init>() // com.google.firebase.database/ThrowOnExtraProperties.<init>|<init>(){}[0]
+}
+
+abstract interface com.google.firebase.database/ChildEventListener { // com.google.firebase.database/ChildEventListener|null[0]
+    abstract fun onCancelled(com.google.firebase.database/DatabaseError) // com.google.firebase.database/ChildEventListener.onCancelled|onCancelled(com.google.firebase.database.DatabaseError){}[0]
+    abstract fun onChildAdded(com.google.firebase.database/DataSnapshot, kotlin/String?) // com.google.firebase.database/ChildEventListener.onChildAdded|onChildAdded(com.google.firebase.database.DataSnapshot;kotlin.String?){}[0]
+    abstract fun onChildChanged(com.google.firebase.database/DataSnapshot, kotlin/String?) // com.google.firebase.database/ChildEventListener.onChildChanged|onChildChanged(com.google.firebase.database.DataSnapshot;kotlin.String?){}[0]
+    abstract fun onChildMoved(com.google.firebase.database/DataSnapshot, kotlin/String?) // com.google.firebase.database/ChildEventListener.onChildMoved|onChildMoved(com.google.firebase.database.DataSnapshot;kotlin.String?){}[0]
+    abstract fun onChildRemoved(com.google.firebase.database/DataSnapshot) // com.google.firebase.database/ChildEventListener.onChildRemoved|onChildRemoved(com.google.firebase.database.DataSnapshot){}[0]
+}
+
+abstract interface com.google.firebase.database/Logger { // com.google.firebase.database/Logger|null[0]
+    final enum class Level : kotlin/Enum<com.google.firebase.database/Logger.Level> { // com.google.firebase.database/Logger.Level|null[0]
+        enum entry DEBUG // com.google.firebase.database/Logger.Level.DEBUG|null[0]
+        enum entry ERROR // com.google.firebase.database/Logger.Level.ERROR|null[0]
+        enum entry INFO // com.google.firebase.database/Logger.Level.INFO|null[0]
+        enum entry NONE // com.google.firebase.database/Logger.Level.NONE|null[0]
+        enum entry WARN // com.google.firebase.database/Logger.Level.WARN|null[0]
+
+        final val entries // com.google.firebase.database/Logger.Level.entries|#static{}entries[0]
+            final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.database/Logger.Level> // com.google.firebase.database/Logger.Level.entries.<get-entries>|<get-entries>#static(){}[0]
+
+        final fun valueOf(kotlin/String): com.google.firebase.database/Logger.Level // com.google.firebase.database/Logger.Level.valueOf|valueOf#static(kotlin.String){}[0]
+        final fun values(): kotlin/Array<com.google.firebase.database/Logger.Level> // com.google.firebase.database/Logger.Level.values|values#static(){}[0]
+    }
+}
+
+abstract interface com.google.firebase.database/ValueEventListener { // com.google.firebase.database/ValueEventListener|null[0]
+    abstract fun onCancelled(com.google.firebase.database/DatabaseError) // com.google.firebase.database/ValueEventListener.onCancelled|onCancelled(com.google.firebase.database.DatabaseError){}[0]
+    abstract fun onDataChange(com.google.firebase.database/DataSnapshot) // com.google.firebase.database/ValueEventListener.onDataChange|onDataChange(com.google.firebase.database.DataSnapshot){}[0]
+}
+
+abstract class <#A: kotlin/Any?> com.google.firebase.database/GenericTypeIndicator { // com.google.firebase.database/GenericTypeIndicator|null[0]
+    constructor <init>() // com.google.firebase.database/GenericTypeIndicator.<init>|<init>(){}[0]
+}
+
+final class com.google.firebase.database/DataSnapshot { // com.google.firebase.database/DataSnapshot|null[0]
+    final val children // com.google.firebase.database/DataSnapshot.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/Iterable<com.google.firebase.database/DataSnapshot> // com.google.firebase.database/DataSnapshot.children.<get-children>|<get-children>(){}[0]
+    final val childrenCount // com.google.firebase.database/DataSnapshot.childrenCount|{}childrenCount[0]
+        final fun <get-childrenCount>(): kotlin/Long // com.google.firebase.database/DataSnapshot.childrenCount.<get-childrenCount>|<get-childrenCount>(){}[0]
+    final val key // com.google.firebase.database/DataSnapshot.key|{}key[0]
+        final fun <get-key>(): kotlin/String? // com.google.firebase.database/DataSnapshot.key.<get-key>|<get-key>(){}[0]
+    final val priority // com.google.firebase.database/DataSnapshot.priority|{}priority[0]
+        final fun <get-priority>(): kotlin/Any? // com.google.firebase.database/DataSnapshot.priority.<get-priority>|<get-priority>(){}[0]
+    final val ref // com.google.firebase.database/DataSnapshot.ref|{}ref[0]
+        final fun <get-ref>(): com.google.firebase.database/DatabaseReference // com.google.firebase.database/DataSnapshot.ref.<get-ref>|<get-ref>(){}[0]
+    final val value // com.google.firebase.database/DataSnapshot.value|{}value[0]
+        final fun <get-value>(): kotlin/Any? // com.google.firebase.database/DataSnapshot.value.<get-value>|<get-value>(){}[0]
+
+    final fun <#A1: kotlin/Any?> getValue(com.google.firebase.database/GenericTypeIndicator<#A1>): #A1? // com.google.firebase.database/DataSnapshot.getValue|getValue(com.google.firebase.database.GenericTypeIndicator<0:0>){0§<kotlin.Any?>}[0]
+    final fun child(kotlin/String): com.google.firebase.database/DataSnapshot // com.google.firebase.database/DataSnapshot.child|child(kotlin.String){}[0]
+    final fun exists(): kotlin/Boolean // com.google.firebase.database/DataSnapshot.exists|exists(){}[0]
+    final fun getValue(kotlin/Boolean): kotlin/Any? // com.google.firebase.database/DataSnapshot.getValue|getValue(kotlin.Boolean){}[0]
+    final fun hasChild(kotlin/String): kotlin/Boolean // com.google.firebase.database/DataSnapshot.hasChild|hasChild(kotlin.String){}[0]
+    final fun hasChildren(): kotlin/Boolean // com.google.firebase.database/DataSnapshot.hasChildren|hasChildren(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.database/DataSnapshot.toString|toString(){}[0]
+
+    // Targets: [apple]
+    final val ios // com.google.firebase.database/DataSnapshot.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.database/FIRDataSnapshot // com.google.firebase.database/DataSnapshot.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val database // com.google.firebase.database/DataSnapshot.database|{}database[0]
+        final fun <get-database>(): io.github.corneloaie.firebase.database.externals/Database // com.google.firebase.database/DataSnapshot.database.<get-database>|<get-database>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val js // com.google.firebase.database/DataSnapshot.js|{}js[0]
+        final fun <get-js>(): io.github.corneloaie.firebase.database.externals/DataSnapshot // com.google.firebase.database/DataSnapshot.js.<get-js>|<get-js>(){}[0]
+}
+
+final class com.google.firebase.database/DatabaseError { // com.google.firebase.database/DatabaseError|null[0]
+    final val code // com.google.firebase.database/DatabaseError.code|{}code[0]
+        final fun <get-code>(): kotlin/Int // com.google.firebase.database/DatabaseError.code.<get-code>|<get-code>(){}[0]
+    final val details // com.google.firebase.database/DatabaseError.details|{}details[0]
+        final fun <get-details>(): kotlin/String // com.google.firebase.database/DatabaseError.details.<get-details>|<get-details>(){}[0]
+    final val message // com.google.firebase.database/DatabaseError.message|{}message[0]
+        final fun <get-message>(): kotlin/String // com.google.firebase.database/DatabaseError.message.<get-message>|<get-message>(){}[0]
+
+    final fun toException(): com.google.firebase.database/DatabaseException // com.google.firebase.database/DatabaseError.toException|toException(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.database/DatabaseError.toString|toString(){}[0]
+
+    final object Companion { // com.google.firebase.database/DatabaseError.Companion|null[0]
+        final val DATA_STALE // com.google.firebase.database/DatabaseError.Companion.DATA_STALE|{}DATA_STALE[0]
+            final fun <get-DATA_STALE>(): kotlin/Int // com.google.firebase.database/DatabaseError.Companion.DATA_STALE.<get-DATA_STALE>|<get-DATA_STALE>(){}[0]
+        final val DISCONNECTED // com.google.firebase.database/DatabaseError.Companion.DISCONNECTED|{}DISCONNECTED[0]
+            final fun <get-DISCONNECTED>(): kotlin/Int // com.google.firebase.database/DatabaseError.Companion.DISCONNECTED.<get-DISCONNECTED>|<get-DISCONNECTED>(){}[0]
+        final val EXPIRED_TOKEN // com.google.firebase.database/DatabaseError.Companion.EXPIRED_TOKEN|{}EXPIRED_TOKEN[0]
+            final fun <get-EXPIRED_TOKEN>(): kotlin/Int // com.google.firebase.database/DatabaseError.Companion.EXPIRED_TOKEN.<get-EXPIRED_TOKEN>|<get-EXPIRED_TOKEN>(){}[0]
+        final val INVALID_TOKEN // com.google.firebase.database/DatabaseError.Companion.INVALID_TOKEN|{}INVALID_TOKEN[0]
+            final fun <get-INVALID_TOKEN>(): kotlin/Int // com.google.firebase.database/DatabaseError.Companion.INVALID_TOKEN.<get-INVALID_TOKEN>|<get-INVALID_TOKEN>(){}[0]
+        final val MAX_RETRIES // com.google.firebase.database/DatabaseError.Companion.MAX_RETRIES|{}MAX_RETRIES[0]
+            final fun <get-MAX_RETRIES>(): kotlin/Int // com.google.firebase.database/DatabaseError.Companion.MAX_RETRIES.<get-MAX_RETRIES>|<get-MAX_RETRIES>(){}[0]
+        final val NETWORK_ERROR // com.google.firebase.database/DatabaseError.Companion.NETWORK_ERROR|{}NETWORK_ERROR[0]
+            final fun <get-NETWORK_ERROR>(): kotlin/Int // com.google.firebase.database/DatabaseError.Companion.NETWORK_ERROR.<get-NETWORK_ERROR>|<get-NETWORK_ERROR>(){}[0]
+        final val OPERATION_FAILED // com.google.firebase.database/DatabaseError.Companion.OPERATION_FAILED|{}OPERATION_FAILED[0]
+            final fun <get-OPERATION_FAILED>(): kotlin/Int // com.google.firebase.database/DatabaseError.Companion.OPERATION_FAILED.<get-OPERATION_FAILED>|<get-OPERATION_FAILED>(){}[0]
+        final val OVERRIDDEN_BY_SET // com.google.firebase.database/DatabaseError.Companion.OVERRIDDEN_BY_SET|{}OVERRIDDEN_BY_SET[0]
+            final fun <get-OVERRIDDEN_BY_SET>(): kotlin/Int // com.google.firebase.database/DatabaseError.Companion.OVERRIDDEN_BY_SET.<get-OVERRIDDEN_BY_SET>|<get-OVERRIDDEN_BY_SET>(){}[0]
+        final val PERMISSION_DENIED // com.google.firebase.database/DatabaseError.Companion.PERMISSION_DENIED|{}PERMISSION_DENIED[0]
+            final fun <get-PERMISSION_DENIED>(): kotlin/Int // com.google.firebase.database/DatabaseError.Companion.PERMISSION_DENIED.<get-PERMISSION_DENIED>|<get-PERMISSION_DENIED>(){}[0]
+        final val UNAVAILABLE // com.google.firebase.database/DatabaseError.Companion.UNAVAILABLE|{}UNAVAILABLE[0]
+            final fun <get-UNAVAILABLE>(): kotlin/Int // com.google.firebase.database/DatabaseError.Companion.UNAVAILABLE.<get-UNAVAILABLE>|<get-UNAVAILABLE>(){}[0]
+        final val UNKNOWN_ERROR // com.google.firebase.database/DatabaseError.Companion.UNKNOWN_ERROR|{}UNKNOWN_ERROR[0]
+            final fun <get-UNKNOWN_ERROR>(): kotlin/Int // com.google.firebase.database/DatabaseError.Companion.UNKNOWN_ERROR.<get-UNKNOWN_ERROR>|<get-UNKNOWN_ERROR>(){}[0]
+        final val USER_CODE_EXCEPTION // com.google.firebase.database/DatabaseError.Companion.USER_CODE_EXCEPTION|{}USER_CODE_EXCEPTION[0]
+            final fun <get-USER_CODE_EXCEPTION>(): kotlin/Int // com.google.firebase.database/DatabaseError.Companion.USER_CODE_EXCEPTION.<get-USER_CODE_EXCEPTION>|<get-USER_CODE_EXCEPTION>(){}[0]
+        final val WRITE_CANCELED // com.google.firebase.database/DatabaseError.Companion.WRITE_CANCELED|{}WRITE_CANCELED[0]
+            final fun <get-WRITE_CANCELED>(): kotlin/Int // com.google.firebase.database/DatabaseError.Companion.WRITE_CANCELED.<get-WRITE_CANCELED>|<get-WRITE_CANCELED>(){}[0]
+
+        final fun fromException(kotlin/Throwable): com.google.firebase.database/DatabaseError // com.google.firebase.database/DatabaseError.Companion.fromException|fromException(kotlin.Throwable){}[0]
+    }
+}
+
+final class com.google.firebase.database/FirebaseDatabase { // com.google.firebase.database/FirebaseDatabase|null[0]
+    final val app // com.google.firebase.database/FirebaseDatabase.app|{}app[0]
+        final fun <get-app>(): com.google.firebase/FirebaseApp // com.google.firebase.database/FirebaseDatabase.app.<get-app>|<get-app>(){}[0]
+    final val reference // com.google.firebase.database/FirebaseDatabase.reference|{}reference[0]
+        final fun <get-reference>(): com.google.firebase.database/DatabaseReference // com.google.firebase.database/FirebaseDatabase.reference.<get-reference>|<get-reference>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.database/FirebaseDatabase.equals|equals(kotlin.Any?){}[0]
+    final fun getReference(kotlin/String): com.google.firebase.database/DatabaseReference // com.google.firebase.database/FirebaseDatabase.getReference|getReference(kotlin.String){}[0]
+    final fun getReferenceFromUrl(kotlin/String): com.google.firebase.database/DatabaseReference // com.google.firebase.database/FirebaseDatabase.getReferenceFromUrl|getReferenceFromUrl(kotlin.String){}[0]
+    final fun goOffline() // com.google.firebase.database/FirebaseDatabase.goOffline|goOffline(){}[0]
+    final fun goOnline() // com.google.firebase.database/FirebaseDatabase.goOnline|goOnline(){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.database/FirebaseDatabase.hashCode|hashCode(){}[0]
+    final fun purgeOutstandingWrites() // com.google.firebase.database/FirebaseDatabase.purgeOutstandingWrites|purgeOutstandingWrites(){}[0]
+    final fun setLogLevel(com.google.firebase.database/Logger.Level) // com.google.firebase.database/FirebaseDatabase.setLogLevel|setLogLevel(com.google.firebase.database.Logger.Level){}[0]
+    final fun setPersistenceCacheSizeBytes(kotlin/Long) // com.google.firebase.database/FirebaseDatabase.setPersistenceCacheSizeBytes|setPersistenceCacheSizeBytes(kotlin.Long){}[0]
+    final fun setPersistenceEnabled(kotlin/Boolean) // com.google.firebase.database/FirebaseDatabase.setPersistenceEnabled|setPersistenceEnabled(kotlin.Boolean){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.database/FirebaseDatabase.toString|toString(){}[0]
+    final fun useEmulator(kotlin/String, kotlin/Int) // com.google.firebase.database/FirebaseDatabase.useEmulator|useEmulator(kotlin.String;kotlin.Int){}[0]
+
+    final object Companion { // com.google.firebase.database/FirebaseDatabase.Companion|null[0]
+        final fun getInstance(): com.google.firebase.database/FirebaseDatabase // com.google.firebase.database/FirebaseDatabase.Companion.getInstance|getInstance(){}[0]
+        final fun getInstance(com.google.firebase/FirebaseApp): com.google.firebase.database/FirebaseDatabase // com.google.firebase.database/FirebaseDatabase.Companion.getInstance|getInstance(com.google.firebase.FirebaseApp){}[0]
+        final fun getInstance(com.google.firebase/FirebaseApp, kotlin/String): com.google.firebase.database/FirebaseDatabase // com.google.firebase.database/FirebaseDatabase.Companion.getInstance|getInstance(com.google.firebase.FirebaseApp;kotlin.String){}[0]
+        final fun getInstance(kotlin/String): com.google.firebase.database/FirebaseDatabase // com.google.firebase.database/FirebaseDatabase.Companion.getInstance|getInstance(kotlin.String){}[0]
+        final fun getSdkVersion(): kotlin/String // com.google.firebase.database/FirebaseDatabase.Companion.getSdkVersion|getSdkVersion(){}[0]
+    }
+
+    // Targets: [apple]
+    final val ios // com.google.firebase.database/FirebaseDatabase.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.database/FIRDatabase // com.google.firebase.database/FirebaseDatabase.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val js // com.google.firebase.database/FirebaseDatabase.js|{}js[0]
+        final fun <get-js>(): io.github.corneloaie.firebase.database.externals/Database // com.google.firebase.database/FirebaseDatabase.js.<get-js>|<get-js>(){}[0]
+}
+
+final class com.google.firebase.database/MutableData { // com.google.firebase.database/MutableData|null[0]
+    final val children // com.google.firebase.database/MutableData.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/Iterable<com.google.firebase.database/MutableData> // com.google.firebase.database/MutableData.children.<get-children>|<get-children>(){}[0]
+    final val childrenCount // com.google.firebase.database/MutableData.childrenCount|{}childrenCount[0]
+        final fun <get-childrenCount>(): kotlin/Long // com.google.firebase.database/MutableData.childrenCount.<get-childrenCount>|<get-childrenCount>(){}[0]
+    final val key // com.google.firebase.database/MutableData.key|{}key[0]
+        final fun <get-key>(): kotlin/String? // com.google.firebase.database/MutableData.key.<get-key>|<get-key>(){}[0]
+
+    final var priority // com.google.firebase.database/MutableData.priority|{}priority[0]
+        final fun <get-priority>(): kotlin/Any? // com.google.firebase.database/MutableData.priority.<get-priority>|<get-priority>(){}[0]
+        final fun <set-priority>(kotlin/Any?) // com.google.firebase.database/MutableData.priority.<set-priority>|<set-priority>(kotlin.Any?){}[0]
+    final var value // com.google.firebase.database/MutableData.value|{}value[0]
+        final fun <get-value>(): kotlin/Any? // com.google.firebase.database/MutableData.value.<get-value>|<get-value>(){}[0]
+        final fun <set-value>(kotlin/Any?) // com.google.firebase.database/MutableData.value.<set-value>|<set-value>(kotlin.Any?){}[0]
+
+    final fun <#A1: kotlin/Any?> getValue(com.google.firebase.database/GenericTypeIndicator<#A1>): #A1? // com.google.firebase.database/MutableData.getValue|getValue(com.google.firebase.database.GenericTypeIndicator<0:0>){0§<kotlin.Any?>}[0]
+    final fun child(kotlin/String): com.google.firebase.database/MutableData // com.google.firebase.database/MutableData.child|child(kotlin.String){}[0]
+    final fun hasChild(kotlin/String): kotlin/Boolean // com.google.firebase.database/MutableData.hasChild|hasChild(kotlin.String){}[0]
+    final fun hasChildren(): kotlin/Boolean // com.google.firebase.database/MutableData.hasChildren|hasChildren(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.database/MutableData.toString|toString(){}[0]
+
+    // Targets: [apple]
+    final val ios // com.google.firebase.database/MutableData.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.database/FIRMutableData // com.google.firebase.database/MutableData.ios.<get-ios>|<get-ios>(){}[0]
+}
+
+final class com.google.firebase.database/OnDisconnect { // com.google.firebase.database/OnDisconnect|null[0]
+    final fun cancel(): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.database/OnDisconnect.cancel|cancel(){}[0]
+    final fun cancel(com.google.firebase.database/DatabaseReference.CompletionListener) // com.google.firebase.database/OnDisconnect.cancel|cancel(com.google.firebase.database.DatabaseReference.CompletionListener){}[0]
+    final fun removeValue(): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.database/OnDisconnect.removeValue|removeValue(){}[0]
+    final fun removeValue(com.google.firebase.database/DatabaseReference.CompletionListener?) // com.google.firebase.database/OnDisconnect.removeValue|removeValue(com.google.firebase.database.DatabaseReference.CompletionListener?){}[0]
+    final fun setValue(kotlin/Any?): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.database/OnDisconnect.setValue|setValue(kotlin.Any?){}[0]
+    final fun setValue(kotlin/Any?, com.google.firebase.database/DatabaseReference.CompletionListener?) // com.google.firebase.database/OnDisconnect.setValue|setValue(kotlin.Any?;com.google.firebase.database.DatabaseReference.CompletionListener?){}[0]
+    final fun setValue(kotlin/Any?, kotlin.collections/Map<*, *>?, com.google.firebase.database/DatabaseReference.CompletionListener?) // com.google.firebase.database/OnDisconnect.setValue|setValue(kotlin.Any?;kotlin.collections.Map<*,*>?;com.google.firebase.database.DatabaseReference.CompletionListener?){}[0]
+    final fun setValue(kotlin/Any?, kotlin/Double): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.database/OnDisconnect.setValue|setValue(kotlin.Any?;kotlin.Double){}[0]
+    final fun setValue(kotlin/Any?, kotlin/Double, com.google.firebase.database/DatabaseReference.CompletionListener?) // com.google.firebase.database/OnDisconnect.setValue|setValue(kotlin.Any?;kotlin.Double;com.google.firebase.database.DatabaseReference.CompletionListener?){}[0]
+    final fun setValue(kotlin/Any?, kotlin/String?): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.database/OnDisconnect.setValue|setValue(kotlin.Any?;kotlin.String?){}[0]
+    final fun setValue(kotlin/Any?, kotlin/String?, com.google.firebase.database/DatabaseReference.CompletionListener?) // com.google.firebase.database/OnDisconnect.setValue|setValue(kotlin.Any?;kotlin.String?;com.google.firebase.database.DatabaseReference.CompletionListener?){}[0]
+    final fun updateChildren(kotlin.collections/Map<kotlin/String, kotlin/Any?>): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.database/OnDisconnect.updateChildren|updateChildren(kotlin.collections.Map<kotlin.String,kotlin.Any?>){}[0]
+    final fun updateChildren(kotlin.collections/Map<kotlin/String, kotlin/Any?>, com.google.firebase.database/DatabaseReference.CompletionListener?) // com.google.firebase.database/OnDisconnect.updateChildren|updateChildren(kotlin.collections.Map<kotlin.String,kotlin.Any?>;com.google.firebase.database.DatabaseReference.CompletionListener?){}[0]
+
+    // Targets: [apple]
+    final val ios // com.google.firebase.database/OnDisconnect.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.database/FIRDatabaseReference // com.google.firebase.database/OnDisconnect.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val js // com.google.firebase.database/OnDisconnect.js|{}js[0]
+        final fun <get-js>(): io.github.corneloaie.firebase.database.externals/OnDisconnect // com.google.firebase.database/OnDisconnect.js.<get-js>|<get-js>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val ref // com.google.firebase.database/OnDisconnect.ref|{}ref[0]
+        final fun <get-ref>(): com.google.firebase.database/DatabaseReference // com.google.firebase.database/OnDisconnect.ref.<get-ref>|<get-ref>(){}[0]
+}
+
+final class com.google.firebase.database/ServerValue { // com.google.firebase.database/ServerValue|null[0]
+    constructor <init>() // com.google.firebase.database/ServerValue.<init>|<init>(){}[0]
+
+    final object Companion { // com.google.firebase.database/ServerValue.Companion|null[0]
+        final val TIMESTAMP // com.google.firebase.database/ServerValue.Companion.TIMESTAMP|{}TIMESTAMP[0]
+            final fun <get-TIMESTAMP>(): kotlin.collections/Map<kotlin/String, kotlin/String> // com.google.firebase.database/ServerValue.Companion.TIMESTAMP.<get-TIMESTAMP>|<get-TIMESTAMP>(){}[0]
+
+        final fun increment(kotlin/Double): kotlin/Any // com.google.firebase.database/ServerValue.Companion.increment|increment(kotlin.Double){}[0]
+        final fun increment(kotlin/Long): kotlin/Any // com.google.firebase.database/ServerValue.Companion.increment|increment(kotlin.Long){}[0]
+    }
+}
+
+final class com.google.firebase.database/Transaction { // com.google.firebase.database/Transaction|null[0]
+    constructor <init>() // com.google.firebase.database/Transaction.<init>|<init>(){}[0]
+
+    abstract interface Handler { // com.google.firebase.database/Transaction.Handler|null[0]
+        abstract fun doTransaction(com.google.firebase.database/MutableData): com.google.firebase.database/Transaction.Result // com.google.firebase.database/Transaction.Handler.doTransaction|doTransaction(com.google.firebase.database.MutableData){}[0]
+        abstract fun onComplete(com.google.firebase.database/DatabaseError?, kotlin/Boolean, com.google.firebase.database/DataSnapshot?) // com.google.firebase.database/Transaction.Handler.onComplete|onComplete(com.google.firebase.database.DatabaseError?;kotlin.Boolean;com.google.firebase.database.DataSnapshot?){}[0]
+    }
+
+    final class Result { // com.google.firebase.database/Transaction.Result|null[0]
+        final val isSuccess // com.google.firebase.database/Transaction.Result.isSuccess|{}isSuccess[0]
+            final fun <get-isSuccess>(): kotlin/Boolean // com.google.firebase.database/Transaction.Result.isSuccess.<get-isSuccess>|<get-isSuccess>(){}[0]
+
+        final fun toString(): kotlin/String // com.google.firebase.database/Transaction.Result.toString|toString(){}[0]
+    }
+
+    final object Companion { // com.google.firebase.database/Transaction.Companion|null[0]
+        final fun abort(): com.google.firebase.database/Transaction.Result // com.google.firebase.database/Transaction.Companion.abort|abort(){}[0]
+        final fun success(com.google.firebase.database/MutableData): com.google.firebase.database/Transaction.Result // com.google.firebase.database/Transaction.Companion.success|success(com.google.firebase.database.MutableData){}[0]
+    }
+}
+
+final class io.github.corneloaie.firebase.database/ChildEvent { // io.github.corneloaie.firebase.database/ChildEvent|null[0]
+    final val previousChildName // io.github.corneloaie.firebase.database/ChildEvent.previousChildName|{}previousChildName[0]
+        final fun <get-previousChildName>(): kotlin/String? // io.github.corneloaie.firebase.database/ChildEvent.previousChildName.<get-previousChildName>|<get-previousChildName>(){}[0]
+    final val snapshot // io.github.corneloaie.firebase.database/ChildEvent.snapshot|{}snapshot[0]
+        final fun <get-snapshot>(): io.github.corneloaie.firebase.database/DataSnapshot // io.github.corneloaie.firebase.database/ChildEvent.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+    final val type // io.github.corneloaie.firebase.database/ChildEvent.type|{}type[0]
+        final fun <get-type>(): io.github.corneloaie.firebase.database/ChildEvent.Type // io.github.corneloaie.firebase.database/ChildEvent.type.<get-type>|<get-type>(){}[0]
+
+    final fun component1(): io.github.corneloaie.firebase.database/DataSnapshot // io.github.corneloaie.firebase.database/ChildEvent.component1|component1(){}[0]
+    final fun component2(): io.github.corneloaie.firebase.database/ChildEvent.Type // io.github.corneloaie.firebase.database/ChildEvent.component2|component2(){}[0]
+    final fun component3(): kotlin/String? // io.github.corneloaie.firebase.database/ChildEvent.component3|component3(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.database/ChildEvent.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.database/ChildEvent.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.database/ChildEvent.toString|toString(){}[0]
+
+    final enum class Type : kotlin/Enum<io.github.corneloaie.firebase.database/ChildEvent.Type> { // io.github.corneloaie.firebase.database/ChildEvent.Type|null[0]
+        enum entry ADDED // io.github.corneloaie.firebase.database/ChildEvent.Type.ADDED|null[0]
+        enum entry CHANGED // io.github.corneloaie.firebase.database/ChildEvent.Type.CHANGED|null[0]
+        enum entry MOVED // io.github.corneloaie.firebase.database/ChildEvent.Type.MOVED|null[0]
+        enum entry REMOVED // io.github.corneloaie.firebase.database/ChildEvent.Type.REMOVED|null[0]
+
+        final val entries // io.github.corneloaie.firebase.database/ChildEvent.Type.entries|#static{}entries[0]
+            final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.corneloaie.firebase.database/ChildEvent.Type> // io.github.corneloaie.firebase.database/ChildEvent.Type.entries.<get-entries>|<get-entries>#static(){}[0]
+
+        final fun valueOf(kotlin/String): io.github.corneloaie.firebase.database/ChildEvent.Type // io.github.corneloaie.firebase.database/ChildEvent.Type.valueOf|valueOf#static(kotlin.String){}[0]
+        final fun values(): kotlin/Array<io.github.corneloaie.firebase.database/ChildEvent.Type> // io.github.corneloaie.firebase.database/ChildEvent.Type.values|values#static(){}[0]
+    }
+}
+
+final class io.github.corneloaie.firebase.database/DataSnapshot { // io.github.corneloaie.firebase.database/DataSnapshot|null[0]
+    final val children // io.github.corneloaie.firebase.database/DataSnapshot.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/Iterable<io.github.corneloaie.firebase.database/DataSnapshot> // io.github.corneloaie.firebase.database/DataSnapshot.children.<get-children>|<get-children>(){}[0]
+    final val compat // io.github.corneloaie.firebase.database/DataSnapshot.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.database/DataSnapshot // io.github.corneloaie.firebase.database/DataSnapshot.compat.<get-compat>|<get-compat>(){}[0]
+    final val exists // io.github.corneloaie.firebase.database/DataSnapshot.exists|{}exists[0]
+        final fun <get-exists>(): kotlin/Boolean // io.github.corneloaie.firebase.database/DataSnapshot.exists.<get-exists>|<get-exists>(){}[0]
+    final val hasChildren // io.github.corneloaie.firebase.database/DataSnapshot.hasChildren|{}hasChildren[0]
+        final fun <get-hasChildren>(): kotlin/Boolean // io.github.corneloaie.firebase.database/DataSnapshot.hasChildren.<get-hasChildren>|<get-hasChildren>(){}[0]
+    final val key // io.github.corneloaie.firebase.database/DataSnapshot.key|{}key[0]
+        final fun <get-key>(): kotlin/String? // io.github.corneloaie.firebase.database/DataSnapshot.key.<get-key>|<get-key>(){}[0]
+    final val nativeValue // io.github.corneloaie.firebase.database/DataSnapshot.nativeValue|{}nativeValue[0]
+        final fun <get-nativeValue>(): kotlin/Any? // io.github.corneloaie.firebase.database/DataSnapshot.nativeValue.<get-nativeValue>|<get-nativeValue>(){}[0]
+    final val ref // io.github.corneloaie.firebase.database/DataSnapshot.ref|{}ref[0]
+        final fun <get-ref>(): io.github.corneloaie.firebase.database/DatabaseReference // io.github.corneloaie.firebase.database/DataSnapshot.ref.<get-ref>|<get-ref>(){}[0]
+    final val value // io.github.corneloaie.firebase.database/DataSnapshot.value|{}value[0]
+        final fun <get-value>(): kotlin/Any? // io.github.corneloaie.firebase.database/DataSnapshot.value.<get-value>|<get-value>(){}[0]
+
+    final fun child(kotlin/String): io.github.corneloaie.firebase.database/DataSnapshot // io.github.corneloaie.firebase.database/DataSnapshot.child|child(kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.database/DataSnapshot.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.database/DataSnapshot.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.database/DataSnapshot.toString|toString(){}[0]
+    final inline fun <#A1: kotlin/Any?> value(kotlinx.serialization/DeserializationStrategy<#A1>, kotlin/Function1<io.github.corneloaie.firebase/DecodeSettings.Builder, kotlin/Unit> = ...): #A1 // io.github.corneloaie.firebase.database/DataSnapshot.value|value(kotlinx.serialization.DeserializationStrategy<0:0>;kotlin.Function1<io.github.corneloaie.firebase.DecodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any?>}[0]
+    final inline fun <#A1: reified kotlin/Any?> value(): #A1 // io.github.corneloaie.firebase.database/DataSnapshot.value|value(){0§<kotlin.Any?>}[0]
+}
+
+final class io.github.corneloaie.firebase.database/DatabaseReference : io.github.corneloaie.firebase.database/Query { // io.github.corneloaie.firebase.database/DatabaseReference|null[0]
+    final val compat // io.github.corneloaie.firebase.database/DatabaseReference.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.database/DatabaseReference // io.github.corneloaie.firebase.database/DatabaseReference.compat.<get-compat>|<get-compat>(){}[0]
+    final val key // io.github.corneloaie.firebase.database/DatabaseReference.key|{}key[0]
+        final fun <get-key>(): kotlin/String? // io.github.corneloaie.firebase.database/DatabaseReference.key.<get-key>|<get-key>(){}[0]
+
+    final fun child(kotlin/String): io.github.corneloaie.firebase.database/DatabaseReference // io.github.corneloaie.firebase.database/DatabaseReference.child|child(kotlin.String){}[0]
+    final fun onDisconnect(): io.github.corneloaie.firebase.database/OnDisconnect // io.github.corneloaie.firebase.database/DatabaseReference.onDisconnect|onDisconnect(){}[0]
+    final fun push(): io.github.corneloaie.firebase.database/DatabaseReference // io.github.corneloaie.firebase.database/DatabaseReference.push|push(){}[0]
+    final suspend fun <#A1: kotlin/Any?> runTransaction(kotlinx.serialization/KSerializer<#A1>, kotlin/Function1<io.github.corneloaie.firebase/EncodeDecodeSettingsBuilder, kotlin/Unit> = ..., kotlin/Function1<#A1, #A1>): io.github.corneloaie.firebase.database/DataSnapshot // io.github.corneloaie.firebase.database/DatabaseReference.runTransaction|runTransaction(kotlinx.serialization.KSerializer<0:0>;kotlin.Function1<io.github.corneloaie.firebase.EncodeDecodeSettingsBuilder,kotlin.Unit>;kotlin.Function1<0:0,0:0>){0§<kotlin.Any?>}[0]
+    final suspend fun <#A1: kotlin/Any?> setValue(kotlinx.serialization/SerializationStrategy<#A1>, #A1, kotlin/Boolean) // io.github.corneloaie.firebase.database/DatabaseReference.setValue|setValue(kotlinx.serialization.SerializationStrategy<0:0>;0:0;kotlin.Boolean){0§<kotlin.Any?>}[0]
+    final suspend fun removeValue() // io.github.corneloaie.firebase.database/DatabaseReference.removeValue|removeValue(){}[0]
+    final suspend fun setValueEncoded(kotlin/Any?) // io.github.corneloaie.firebase.database/DatabaseReference.setValueEncoded|setValueEncoded(kotlin.Any?){}[0]
+    final suspend fun updateChildren(kotlin.collections/Map<kotlin/String, kotlin/Any?>, kotlin/Boolean) // io.github.corneloaie.firebase.database/DatabaseReference.updateChildren|updateChildren(kotlin.collections.Map<kotlin.String,kotlin.Any?>;kotlin.Boolean){}[0]
+    final suspend fun updateEncodedChildren(io.github.corneloaie.firebase.internal/EncodedObject) // io.github.corneloaie.firebase.database/DatabaseReference.updateEncodedChildren|updateEncodedChildren(io.github.corneloaie.firebase.internal.EncodedObject){}[0]
+    final suspend inline fun <#A1: kotlin/Any?> setValue(kotlinx.serialization/SerializationStrategy<#A1>, #A1, kotlin/Function1<io.github.corneloaie.firebase/EncodeSettings.Builder, kotlin/Unit> = ...) // io.github.corneloaie.firebase.database/DatabaseReference.setValue|setValue(kotlinx.serialization.SerializationStrategy<0:0>;0:0;kotlin.Function1<io.github.corneloaie.firebase.EncodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any?>}[0]
+    final suspend inline fun <#A1: reified kotlin/Any?> setValue(#A1?, kotlin/Boolean) // io.github.corneloaie.firebase.database/DatabaseReference.setValue|setValue(0:0?;kotlin.Boolean){0§<kotlin.Any?>}[0]
+    final suspend inline fun <#A1: reified kotlin/Any?> setValue(#A1?, kotlin/Function1<io.github.corneloaie.firebase/EncodeSettings.Builder, kotlin/Unit> = ...) // io.github.corneloaie.firebase.database/DatabaseReference.setValue|setValue(0:0?;kotlin.Function1<io.github.corneloaie.firebase.EncodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any?>}[0]
+    final suspend inline fun updateChildren(kotlin.collections/Map<kotlin/String, kotlin/Any?>, kotlin/Function1<io.github.corneloaie.firebase/EncodeSettings.Builder, kotlin/Unit> = ...) // io.github.corneloaie.firebase.database/DatabaseReference.updateChildren|updateChildren(kotlin.collections.Map<kotlin.String,kotlin.Any?>;kotlin.Function1<io.github.corneloaie.firebase.EncodeSettings.Builder,kotlin.Unit>){}[0]
+}
+
+final class io.github.corneloaie.firebase.database/FirebaseDatabase { // io.github.corneloaie.firebase.database/FirebaseDatabase|null[0]
+    final val compat // io.github.corneloaie.firebase.database/FirebaseDatabase.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.database/FirebaseDatabase // io.github.corneloaie.firebase.database/FirebaseDatabase.compat.<get-compat>|<get-compat>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.database/FirebaseDatabase.equals|equals(kotlin.Any?){}[0]
+    final fun goOffline() // io.github.corneloaie.firebase.database/FirebaseDatabase.goOffline|goOffline(){}[0]
+    final fun goOnline() // io.github.corneloaie.firebase.database/FirebaseDatabase.goOnline|goOnline(){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.database/FirebaseDatabase.hashCode|hashCode(){}[0]
+    final fun purgeOutstandingWrites() // io.github.corneloaie.firebase.database/FirebaseDatabase.purgeOutstandingWrites|purgeOutstandingWrites(){}[0]
+    final fun reference(): io.github.corneloaie.firebase.database/DatabaseReference // io.github.corneloaie.firebase.database/FirebaseDatabase.reference|reference(){}[0]
+    final fun reference(kotlin/String): io.github.corneloaie.firebase.database/DatabaseReference // io.github.corneloaie.firebase.database/FirebaseDatabase.reference|reference(kotlin.String){}[0]
+    final fun setLoggingEnabled(kotlin/Boolean) // io.github.corneloaie.firebase.database/FirebaseDatabase.setLoggingEnabled|setLoggingEnabled(kotlin.Boolean){}[0]
+    final fun setPersistenceCacheSizeBytes(kotlin/Long) // io.github.corneloaie.firebase.database/FirebaseDatabase.setPersistenceCacheSizeBytes|setPersistenceCacheSizeBytes(kotlin.Long){}[0]
+    final fun setPersistenceEnabled(kotlin/Boolean) // io.github.corneloaie.firebase.database/FirebaseDatabase.setPersistenceEnabled|setPersistenceEnabled(kotlin.Boolean){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.database/FirebaseDatabase.toString|toString(){}[0]
+    final fun useEmulator(kotlin/String, kotlin/Int) // io.github.corneloaie.firebase.database/FirebaseDatabase.useEmulator|useEmulator(kotlin.String;kotlin.Int){}[0]
+}
+
+final class io.github.corneloaie.firebase.database/OnDisconnect { // io.github.corneloaie.firebase.database/OnDisconnect|null[0]
+    final val compat // io.github.corneloaie.firebase.database/OnDisconnect.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.database/OnDisconnect // io.github.corneloaie.firebase.database/OnDisconnect.compat.<get-compat>|<get-compat>(){}[0]
+
+    final suspend fun <#A1: kotlin/Any?> setValue(kotlinx.serialization/SerializationStrategy<#A1>, #A1, kotlin/Boolean) // io.github.corneloaie.firebase.database/OnDisconnect.setValue|setValue(kotlinx.serialization.SerializationStrategy<0:0>;0:0;kotlin.Boolean){0§<kotlin.Any?>}[0]
+    final suspend fun cancel() // io.github.corneloaie.firebase.database/OnDisconnect.cancel|cancel(){}[0]
+    final suspend fun removeValue() // io.github.corneloaie.firebase.database/OnDisconnect.removeValue|removeValue(){}[0]
+    final suspend fun setEncodedValue(kotlin/Any?) // io.github.corneloaie.firebase.database/OnDisconnect.setEncodedValue|setEncodedValue(kotlin.Any?){}[0]
+    final suspend fun updateChildren(kotlin.collections/Map<kotlin/String, kotlin/Any?>, kotlin/Boolean) // io.github.corneloaie.firebase.database/OnDisconnect.updateChildren|updateChildren(kotlin.collections.Map<kotlin.String,kotlin.Any?>;kotlin.Boolean){}[0]
+    final suspend fun updateEncodedChildren(io.github.corneloaie.firebase.internal/EncodedObject) // io.github.corneloaie.firebase.database/OnDisconnect.updateEncodedChildren|updateEncodedChildren(io.github.corneloaie.firebase.internal.EncodedObject){}[0]
+    final suspend inline fun <#A1: kotlin/Any?> setValue(kotlinx.serialization/SerializationStrategy<#A1>, #A1, kotlin/Function1<io.github.corneloaie.firebase/EncodeSettings.Builder, kotlin/Unit> = ...) // io.github.corneloaie.firebase.database/OnDisconnect.setValue|setValue(kotlinx.serialization.SerializationStrategy<0:0>;0:0;kotlin.Function1<io.github.corneloaie.firebase.EncodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any?>}[0]
+    final suspend inline fun <#A1: reified kotlin/Any?> setValue(#A1?, kotlin/Boolean) // io.github.corneloaie.firebase.database/OnDisconnect.setValue|setValue(0:0?;kotlin.Boolean){0§<kotlin.Any?>}[0]
+    final suspend inline fun <#A1: reified kotlin/Any?> setValue(#A1?, kotlin/Function1<io.github.corneloaie.firebase/EncodeSettings.Builder, kotlin/Unit> = ...) // io.github.corneloaie.firebase.database/OnDisconnect.setValue|setValue(0:0?;kotlin.Function1<io.github.corneloaie.firebase.EncodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any?>}[0]
+    final suspend inline fun updateChildren(kotlin.collections/Map<kotlin/String, kotlin/Any?>, kotlin/Function1<io.github.corneloaie.firebase/EncodeSettings.Builder, kotlin/Unit> = ...) // io.github.corneloaie.firebase.database/OnDisconnect.updateChildren|updateChildren(kotlin.collections.Map<kotlin.String,kotlin.Any?>;kotlin.Function1<io.github.corneloaie.firebase.EncodeSettings.Builder,kotlin.Unit>){}[0]
+}
+
+final class io.github.corneloaie.firebase.database/ServerValue { // io.github.corneloaie.firebase.database/ServerValue|null[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.database/ServerValue.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.database/ServerValue.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.database/ServerValue.toString|toString(){}[0]
+
+    final object Companion { // io.github.corneloaie.firebase.database/ServerValue.Companion|null[0]
+        final val TIMESTAMP // io.github.corneloaie.firebase.database/ServerValue.Companion.TIMESTAMP|{}TIMESTAMP[0]
+            final fun <get-TIMESTAMP>(): io.github.corneloaie.firebase.database/ServerValue // io.github.corneloaie.firebase.database/ServerValue.Companion.TIMESTAMP.<get-TIMESTAMP>|<get-TIMESTAMP>(){}[0]
+
+        final fun increment(kotlin/Double): io.github.corneloaie.firebase.database/ServerValue // io.github.corneloaie.firebase.database/ServerValue.Companion.increment|increment(kotlin.Double){}[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<io.github.corneloaie.firebase.database/ServerValue> // io.github.corneloaie.firebase.database/ServerValue.Companion.serializer|serializer(){}[0]
+    }
+}
+
+open class com.google.firebase.database/DatabaseException : kotlin/RuntimeException { // com.google.firebase.database/DatabaseException|null[0]
+    constructor <init>(kotlin/String) // com.google.firebase.database/DatabaseException.<init>|<init>(kotlin.String){}[0]
+    constructor <init>(kotlin/String, kotlin/Throwable) // com.google.firebase.database/DatabaseException.<init>|<init>(kotlin.String;kotlin.Throwable){}[0]
+}
+
+open class com.google.firebase.database/DatabaseReference : com.google.firebase.database/Query { // com.google.firebase.database/DatabaseReference|null[0]
+    final val database // com.google.firebase.database/DatabaseReference.database|{}database[0]
+        final fun <get-database>(): com.google.firebase.database/FirebaseDatabase // com.google.firebase.database/DatabaseReference.database.<get-database>|<get-database>(){}[0]
+    final val key // com.google.firebase.database/DatabaseReference.key|{}key[0]
+        final fun <get-key>(): kotlin/String? // com.google.firebase.database/DatabaseReference.key.<get-key>|<get-key>(){}[0]
+    final val parent // com.google.firebase.database/DatabaseReference.parent|{}parent[0]
+        final fun <get-parent>(): com.google.firebase.database/DatabaseReference? // com.google.firebase.database/DatabaseReference.parent.<get-parent>|<get-parent>(){}[0]
+    final val root // com.google.firebase.database/DatabaseReference.root|{}root[0]
+        final fun <get-root>(): com.google.firebase.database/DatabaseReference // com.google.firebase.database/DatabaseReference.root.<get-root>|<get-root>(){}[0]
+
+    final fun child(kotlin/String): com.google.firebase.database/DatabaseReference // com.google.firebase.database/DatabaseReference.child|child(kotlin.String){}[0]
+    final fun onDisconnect(): com.google.firebase.database/OnDisconnect // com.google.firebase.database/DatabaseReference.onDisconnect|onDisconnect(){}[0]
+    final fun push(): com.google.firebase.database/DatabaseReference // com.google.firebase.database/DatabaseReference.push|push(){}[0]
+    final fun removeValue(): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.database/DatabaseReference.removeValue|removeValue(){}[0]
+    final fun removeValue(com.google.firebase.database/DatabaseReference.CompletionListener?) // com.google.firebase.database/DatabaseReference.removeValue|removeValue(com.google.firebase.database.DatabaseReference.CompletionListener?){}[0]
+    final fun runTransaction(com.google.firebase.database/Transaction.Handler) // com.google.firebase.database/DatabaseReference.runTransaction|runTransaction(com.google.firebase.database.Transaction.Handler){}[0]
+    final fun runTransaction(com.google.firebase.database/Transaction.Handler, kotlin/Boolean) // com.google.firebase.database/DatabaseReference.runTransaction|runTransaction(com.google.firebase.database.Transaction.Handler;kotlin.Boolean){}[0]
+    final fun setPriority(kotlin/Any?): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.database/DatabaseReference.setPriority|setPriority(kotlin.Any?){}[0]
+    final fun setPriority(kotlin/Any?, com.google.firebase.database/DatabaseReference.CompletionListener?) // com.google.firebase.database/DatabaseReference.setPriority|setPriority(kotlin.Any?;com.google.firebase.database.DatabaseReference.CompletionListener?){}[0]
+    final fun setValue(kotlin/Any?): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.database/DatabaseReference.setValue|setValue(kotlin.Any?){}[0]
+    final fun setValue(kotlin/Any?, com.google.firebase.database/DatabaseReference.CompletionListener?) // com.google.firebase.database/DatabaseReference.setValue|setValue(kotlin.Any?;com.google.firebase.database.DatabaseReference.CompletionListener?){}[0]
+    final fun setValue(kotlin/Any?, kotlin/Any?): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.database/DatabaseReference.setValue|setValue(kotlin.Any?;kotlin.Any?){}[0]
+    final fun setValue(kotlin/Any?, kotlin/Any?, com.google.firebase.database/DatabaseReference.CompletionListener?) // com.google.firebase.database/DatabaseReference.setValue|setValue(kotlin.Any?;kotlin.Any?;com.google.firebase.database.DatabaseReference.CompletionListener?){}[0]
+    final fun updateChildren(kotlin.collections/Map<kotlin/String, kotlin/Any?>): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.database/DatabaseReference.updateChildren|updateChildren(kotlin.collections.Map<kotlin.String,kotlin.Any?>){}[0]
+    final fun updateChildren(kotlin.collections/Map<kotlin/String, kotlin/Any?>, com.google.firebase.database/DatabaseReference.CompletionListener?) // com.google.firebase.database/DatabaseReference.updateChildren|updateChildren(kotlin.collections.Map<kotlin.String,kotlin.Any?>;com.google.firebase.database.DatabaseReference.CompletionListener?){}[0]
+
+    abstract fun interface CompletionListener { // com.google.firebase.database/DatabaseReference.CompletionListener|null[0]
+        abstract fun onComplete(com.google.firebase.database/DatabaseError?, com.google.firebase.database/DatabaseReference) // com.google.firebase.database/DatabaseReference.CompletionListener.onComplete|onComplete(com.google.firebase.database.DatabaseError?;com.google.firebase.database.DatabaseReference){}[0]
+    }
+
+    final object Companion { // com.google.firebase.database/DatabaseReference.Companion|null[0]
+        final fun goOffline() // com.google.firebase.database/DatabaseReference.Companion.goOffline|goOffline(){}[0]
+        final fun goOnline() // com.google.firebase.database/DatabaseReference.Companion.goOnline|goOnline(){}[0]
+    }
+
+    // Targets: [apple]
+    open val ios // com.google.firebase.database/DatabaseReference.ios|{}ios[0]
+        open fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.database/FIRDatabaseReference // com.google.firebase.database/DatabaseReference.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    open val js // com.google.firebase.database/DatabaseReference.js|{}js[0]
+        open fun <get-js>(): io.github.corneloaie.firebase.database.externals/DatabaseReference // com.google.firebase.database/DatabaseReference.js.<get-js>|<get-js>(){}[0]
+}
+
+open class com.google.firebase.database/Query { // com.google.firebase.database/Query|null[0]
+    final val ref // com.google.firebase.database/Query.ref|{}ref[0]
+        final fun <get-ref>(): com.google.firebase.database/DatabaseReference // com.google.firebase.database/Query.ref.<get-ref>|<get-ref>(){}[0]
+
+    final fun addChildEventListener(com.google.firebase.database/ChildEventListener): com.google.firebase.database/ChildEventListener // com.google.firebase.database/Query.addChildEventListener|addChildEventListener(com.google.firebase.database.ChildEventListener){}[0]
+    final fun addListenerForSingleValueEvent(com.google.firebase.database/ValueEventListener) // com.google.firebase.database/Query.addListenerForSingleValueEvent|addListenerForSingleValueEvent(com.google.firebase.database.ValueEventListener){}[0]
+    final fun addValueEventListener(com.google.firebase.database/ValueEventListener): com.google.firebase.database/ValueEventListener // com.google.firebase.database/Query.addValueEventListener|addValueEventListener(com.google.firebase.database.ValueEventListener){}[0]
+    final fun endAt(kotlin/Boolean): com.google.firebase.database/Query // com.google.firebase.database/Query.endAt|endAt(kotlin.Boolean){}[0]
+    final fun endAt(kotlin/Boolean, kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.endAt|endAt(kotlin.Boolean;kotlin.String?){}[0]
+    final fun endAt(kotlin/Double): com.google.firebase.database/Query // com.google.firebase.database/Query.endAt|endAt(kotlin.Double){}[0]
+    final fun endAt(kotlin/Double, kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.endAt|endAt(kotlin.Double;kotlin.String?){}[0]
+    final fun endAt(kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.endAt|endAt(kotlin.String?){}[0]
+    final fun endAt(kotlin/String?, kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.endAt|endAt(kotlin.String?;kotlin.String?){}[0]
+    final fun endBefore(kotlin/Boolean): com.google.firebase.database/Query // com.google.firebase.database/Query.endBefore|endBefore(kotlin.Boolean){}[0]
+    final fun endBefore(kotlin/Boolean, kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.endBefore|endBefore(kotlin.Boolean;kotlin.String?){}[0]
+    final fun endBefore(kotlin/Double): com.google.firebase.database/Query // com.google.firebase.database/Query.endBefore|endBefore(kotlin.Double){}[0]
+    final fun endBefore(kotlin/Double, kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.endBefore|endBefore(kotlin.Double;kotlin.String?){}[0]
+    final fun endBefore(kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.endBefore|endBefore(kotlin.String?){}[0]
+    final fun endBefore(kotlin/String?, kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.endBefore|endBefore(kotlin.String?;kotlin.String?){}[0]
+    final fun equalTo(kotlin/Boolean): com.google.firebase.database/Query // com.google.firebase.database/Query.equalTo|equalTo(kotlin.Boolean){}[0]
+    final fun equalTo(kotlin/Boolean, kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.equalTo|equalTo(kotlin.Boolean;kotlin.String?){}[0]
+    final fun equalTo(kotlin/Double): com.google.firebase.database/Query // com.google.firebase.database/Query.equalTo|equalTo(kotlin.Double){}[0]
+    final fun equalTo(kotlin/Double, kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.equalTo|equalTo(kotlin.Double;kotlin.String?){}[0]
+    final fun equalTo(kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.equalTo|equalTo(kotlin.String?){}[0]
+    final fun equalTo(kotlin/String?, kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.equalTo|equalTo(kotlin.String?;kotlin.String?){}[0]
+    final fun get(): com.google.android.gms.tasks/Task<com.google.firebase.database/DataSnapshot> // com.google.firebase.database/Query.get|get(){}[0]
+    final fun keepSynced(kotlin/Boolean) // com.google.firebase.database/Query.keepSynced|keepSynced(kotlin.Boolean){}[0]
+    final fun limitToFirst(kotlin/Int): com.google.firebase.database/Query // com.google.firebase.database/Query.limitToFirst|limitToFirst(kotlin.Int){}[0]
+    final fun limitToLast(kotlin/Int): com.google.firebase.database/Query // com.google.firebase.database/Query.limitToLast|limitToLast(kotlin.Int){}[0]
+    final fun orderByChild(kotlin/String): com.google.firebase.database/Query // com.google.firebase.database/Query.orderByChild|orderByChild(kotlin.String){}[0]
+    final fun orderByKey(): com.google.firebase.database/Query // com.google.firebase.database/Query.orderByKey|orderByKey(){}[0]
+    final fun orderByPriority(): com.google.firebase.database/Query // com.google.firebase.database/Query.orderByPriority|orderByPriority(){}[0]
+    final fun orderByValue(): com.google.firebase.database/Query // com.google.firebase.database/Query.orderByValue|orderByValue(){}[0]
+    final fun removeEventListener(com.google.firebase.database/ChildEventListener) // com.google.firebase.database/Query.removeEventListener|removeEventListener(com.google.firebase.database.ChildEventListener){}[0]
+    final fun removeEventListener(com.google.firebase.database/ValueEventListener) // com.google.firebase.database/Query.removeEventListener|removeEventListener(com.google.firebase.database.ValueEventListener){}[0]
+    final fun startAfter(kotlin/Boolean): com.google.firebase.database/Query // com.google.firebase.database/Query.startAfter|startAfter(kotlin.Boolean){}[0]
+    final fun startAfter(kotlin/Boolean, kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.startAfter|startAfter(kotlin.Boolean;kotlin.String?){}[0]
+    final fun startAfter(kotlin/Double): com.google.firebase.database/Query // com.google.firebase.database/Query.startAfter|startAfter(kotlin.Double){}[0]
+    final fun startAfter(kotlin/Double, kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.startAfter|startAfter(kotlin.Double;kotlin.String?){}[0]
+    final fun startAfter(kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.startAfter|startAfter(kotlin.String?){}[0]
+    final fun startAfter(kotlin/String?, kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.startAfter|startAfter(kotlin.String?;kotlin.String?){}[0]
+    final fun startAt(kotlin/Boolean): com.google.firebase.database/Query // com.google.firebase.database/Query.startAt|startAt(kotlin.Boolean){}[0]
+    final fun startAt(kotlin/Boolean, kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.startAt|startAt(kotlin.Boolean;kotlin.String?){}[0]
+    final fun startAt(kotlin/Double): com.google.firebase.database/Query // com.google.firebase.database/Query.startAt|startAt(kotlin.Double){}[0]
+    final fun startAt(kotlin/Double, kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.startAt|startAt(kotlin.Double;kotlin.String?){}[0]
+    final fun startAt(kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.startAt|startAt(kotlin.String?){}[0]
+    final fun startAt(kotlin/String?, kotlin/String?): com.google.firebase.database/Query // com.google.firebase.database/Query.startAt|startAt(kotlin.String?;kotlin.String?){}[0]
+    open fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.database/Query.equals|equals(kotlin.Any?){}[0]
+    open fun hashCode(): kotlin/Int // com.google.firebase.database/Query.hashCode|hashCode(){}[0]
+    open fun toString(): kotlin/String // com.google.firebase.database/Query.toString|toString(){}[0]
+
+    // Targets: [apple]
+    open val ios // com.google.firebase.database/Query.ios|{}ios[0]
+        open fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.database/FIRDatabaseQuery // com.google.firebase.database/Query.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val jsDatabase // com.google.firebase.database/Query.jsDatabase|{}jsDatabase[0]
+        final fun <get-jsDatabase>(): io.github.corneloaie.firebase.database.externals/Database // com.google.firebase.database/Query.jsDatabase.<get-jsDatabase>|<get-jsDatabase>(){}[0]
+
+    // Targets: [js, wasmJs]
+    open val js // com.google.firebase.database/Query.js|{}js[0]
+        open fun <get-js>(): io.github.corneloaie.firebase.database.externals/Query // com.google.firebase.database/Query.js.<get-js>|<get-js>(){}[0]
+}
+
+open class io.github.corneloaie.firebase.database/Query { // io.github.corneloaie.firebase.database/Query|null[0]
+    final val valueEvents // io.github.corneloaie.firebase.database/Query.valueEvents|{}valueEvents[0]
+        final fun <get-valueEvents>(): kotlinx.coroutines.flow/Flow<io.github.corneloaie.firebase.database/DataSnapshot> // io.github.corneloaie.firebase.database/Query.valueEvents.<get-valueEvents>|<get-valueEvents>(){}[0]
+    open val compat // io.github.corneloaie.firebase.database/Query.compat|{}compat[0]
+        open fun <get-compat>(): com.google.firebase.database/Query // io.github.corneloaie.firebase.database/Query.compat.<get-compat>|<get-compat>(){}[0]
+
+    final fun childEvents(kotlin/Array<out io.github.corneloaie.firebase.database/ChildEvent.Type>... = ...): kotlinx.coroutines.flow/Flow<io.github.corneloaie.firebase.database/ChildEvent> // io.github.corneloaie.firebase.database/Query.childEvents|childEvents(kotlin.Array<out|io.github.corneloaie.firebase.database.ChildEvent.Type>...){}[0]
+    final fun endAt(kotlin/Boolean, kotlin/String? = ...): io.github.corneloaie.firebase.database/Query // io.github.corneloaie.firebase.database/Query.endAt|endAt(kotlin.Boolean;kotlin.String?){}[0]
+    final fun endAt(kotlin/Double, kotlin/String? = ...): io.github.corneloaie.firebase.database/Query // io.github.corneloaie.firebase.database/Query.endAt|endAt(kotlin.Double;kotlin.String?){}[0]
+    final fun endAt(kotlin/String, kotlin/String? = ...): io.github.corneloaie.firebase.database/Query // io.github.corneloaie.firebase.database/Query.endAt|endAt(kotlin.String;kotlin.String?){}[0]
+    final fun equalTo(kotlin/Boolean, kotlin/String? = ...): io.github.corneloaie.firebase.database/Query // io.github.corneloaie.firebase.database/Query.equalTo|equalTo(kotlin.Boolean;kotlin.String?){}[0]
+    final fun equalTo(kotlin/Double, kotlin/String? = ...): io.github.corneloaie.firebase.database/Query // io.github.corneloaie.firebase.database/Query.equalTo|equalTo(kotlin.Double;kotlin.String?){}[0]
+    final fun equalTo(kotlin/String, kotlin/String? = ...): io.github.corneloaie.firebase.database/Query // io.github.corneloaie.firebase.database/Query.equalTo|equalTo(kotlin.String;kotlin.String?){}[0]
+    final fun limitToFirst(kotlin/Int): io.github.corneloaie.firebase.database/Query // io.github.corneloaie.firebase.database/Query.limitToFirst|limitToFirst(kotlin.Int){}[0]
+    final fun limitToLast(kotlin/Int): io.github.corneloaie.firebase.database/Query // io.github.corneloaie.firebase.database/Query.limitToLast|limitToLast(kotlin.Int){}[0]
+    final fun orderByChild(kotlin/String): io.github.corneloaie.firebase.database/Query // io.github.corneloaie.firebase.database/Query.orderByChild|orderByChild(kotlin.String){}[0]
+    final fun orderByKey(): io.github.corneloaie.firebase.database/Query // io.github.corneloaie.firebase.database/Query.orderByKey|orderByKey(){}[0]
+    final fun orderByValue(): io.github.corneloaie.firebase.database/Query // io.github.corneloaie.firebase.database/Query.orderByValue|orderByValue(){}[0]
+    final fun startAt(kotlin/Boolean, kotlin/String? = ...): io.github.corneloaie.firebase.database/Query // io.github.corneloaie.firebase.database/Query.startAt|startAt(kotlin.Boolean;kotlin.String?){}[0]
+    final fun startAt(kotlin/Double, kotlin/String? = ...): io.github.corneloaie.firebase.database/Query // io.github.corneloaie.firebase.database/Query.startAt|startAt(kotlin.Double;kotlin.String?){}[0]
+    final fun startAt(kotlin/String, kotlin/String? = ...): io.github.corneloaie.firebase.database/Query // io.github.corneloaie.firebase.database/Query.startAt|startAt(kotlin.String;kotlin.String?){}[0]
+    final suspend fun get(): io.github.corneloaie.firebase.database/DataSnapshot // io.github.corneloaie.firebase.database/Query.get|get(){}[0]
+    open fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.database/Query.equals|equals(kotlin.Any?){}[0]
+    open fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.database/Query.hashCode|hashCode(){}[0]
+    open fun toString(): kotlin/String // io.github.corneloaie.firebase.database/Query.toString|toString(){}[0]
+}
+
+sealed class com.google.firebase.database/ChildEvent { // com.google.firebase.database/ChildEvent|null[0]
+    final class Added : com.google.firebase.database/ChildEvent { // com.google.firebase.database/ChildEvent.Added|null[0]
+        constructor <init>(com.google.firebase.database/DataSnapshot, kotlin/String?) // com.google.firebase.database/ChildEvent.Added.<init>|<init>(com.google.firebase.database.DataSnapshot;kotlin.String?){}[0]
+
+        final val previousChildName // com.google.firebase.database/ChildEvent.Added.previousChildName|{}previousChildName[0]
+            final fun <get-previousChildName>(): kotlin/String? // com.google.firebase.database/ChildEvent.Added.previousChildName.<get-previousChildName>|<get-previousChildName>(){}[0]
+        final val snapshot // com.google.firebase.database/ChildEvent.Added.snapshot|{}snapshot[0]
+            final fun <get-snapshot>(): com.google.firebase.database/DataSnapshot // com.google.firebase.database/ChildEvent.Added.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+
+        final fun component1(): com.google.firebase.database/DataSnapshot // com.google.firebase.database/ChildEvent.Added.component1|component1(){}[0]
+        final fun component2(): kotlin/String? // com.google.firebase.database/ChildEvent.Added.component2|component2(){}[0]
+        final fun copy(com.google.firebase.database/DataSnapshot = ..., kotlin/String? = ...): com.google.firebase.database/ChildEvent.Added // com.google.firebase.database/ChildEvent.Added.copy|copy(com.google.firebase.database.DataSnapshot;kotlin.String?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.database/ChildEvent.Added.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.google.firebase.database/ChildEvent.Added.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.google.firebase.database/ChildEvent.Added.toString|toString(){}[0]
+    }
+
+    final class Changed : com.google.firebase.database/ChildEvent { // com.google.firebase.database/ChildEvent.Changed|null[0]
+        constructor <init>(com.google.firebase.database/DataSnapshot, kotlin/String?) // com.google.firebase.database/ChildEvent.Changed.<init>|<init>(com.google.firebase.database.DataSnapshot;kotlin.String?){}[0]
+
+        final val previousChildName // com.google.firebase.database/ChildEvent.Changed.previousChildName|{}previousChildName[0]
+            final fun <get-previousChildName>(): kotlin/String? // com.google.firebase.database/ChildEvent.Changed.previousChildName.<get-previousChildName>|<get-previousChildName>(){}[0]
+        final val snapshot // com.google.firebase.database/ChildEvent.Changed.snapshot|{}snapshot[0]
+            final fun <get-snapshot>(): com.google.firebase.database/DataSnapshot // com.google.firebase.database/ChildEvent.Changed.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+
+        final fun component1(): com.google.firebase.database/DataSnapshot // com.google.firebase.database/ChildEvent.Changed.component1|component1(){}[0]
+        final fun component2(): kotlin/String? // com.google.firebase.database/ChildEvent.Changed.component2|component2(){}[0]
+        final fun copy(com.google.firebase.database/DataSnapshot = ..., kotlin/String? = ...): com.google.firebase.database/ChildEvent.Changed // com.google.firebase.database/ChildEvent.Changed.copy|copy(com.google.firebase.database.DataSnapshot;kotlin.String?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.database/ChildEvent.Changed.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.google.firebase.database/ChildEvent.Changed.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.google.firebase.database/ChildEvent.Changed.toString|toString(){}[0]
+    }
+
+    final class Moved : com.google.firebase.database/ChildEvent { // com.google.firebase.database/ChildEvent.Moved|null[0]
+        constructor <init>(com.google.firebase.database/DataSnapshot, kotlin/String?) // com.google.firebase.database/ChildEvent.Moved.<init>|<init>(com.google.firebase.database.DataSnapshot;kotlin.String?){}[0]
+
+        final val previousChildName // com.google.firebase.database/ChildEvent.Moved.previousChildName|{}previousChildName[0]
+            final fun <get-previousChildName>(): kotlin/String? // com.google.firebase.database/ChildEvent.Moved.previousChildName.<get-previousChildName>|<get-previousChildName>(){}[0]
+        final val snapshot // com.google.firebase.database/ChildEvent.Moved.snapshot|{}snapshot[0]
+            final fun <get-snapshot>(): com.google.firebase.database/DataSnapshot // com.google.firebase.database/ChildEvent.Moved.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+
+        final fun component1(): com.google.firebase.database/DataSnapshot // com.google.firebase.database/ChildEvent.Moved.component1|component1(){}[0]
+        final fun component2(): kotlin/String? // com.google.firebase.database/ChildEvent.Moved.component2|component2(){}[0]
+        final fun copy(com.google.firebase.database/DataSnapshot = ..., kotlin/String? = ...): com.google.firebase.database/ChildEvent.Moved // com.google.firebase.database/ChildEvent.Moved.copy|copy(com.google.firebase.database.DataSnapshot;kotlin.String?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.database/ChildEvent.Moved.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.google.firebase.database/ChildEvent.Moved.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.google.firebase.database/ChildEvent.Moved.toString|toString(){}[0]
+    }
+
+    final class Removed : com.google.firebase.database/ChildEvent { // com.google.firebase.database/ChildEvent.Removed|null[0]
+        constructor <init>(com.google.firebase.database/DataSnapshot) // com.google.firebase.database/ChildEvent.Removed.<init>|<init>(com.google.firebase.database.DataSnapshot){}[0]
+
+        final val snapshot // com.google.firebase.database/ChildEvent.Removed.snapshot|{}snapshot[0]
+            final fun <get-snapshot>(): com.google.firebase.database/DataSnapshot // com.google.firebase.database/ChildEvent.Removed.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+
+        final fun component1(): com.google.firebase.database/DataSnapshot // com.google.firebase.database/ChildEvent.Removed.component1|component1(){}[0]
+        final fun copy(com.google.firebase.database/DataSnapshot = ...): com.google.firebase.database/ChildEvent.Removed // com.google.firebase.database/ChildEvent.Removed.copy|copy(com.google.firebase.database.DataSnapshot){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.database/ChildEvent.Removed.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.google.firebase.database/ChildEvent.Removed.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.google.firebase.database/ChildEvent.Removed.toString|toString(){}[0]
+    }
+}
+
+final object io.github.corneloaie.firebase.database/ServerValueSerializer : kotlinx.serialization/KSerializer<io.github.corneloaie.firebase.database/ServerValue> { // io.github.corneloaie.firebase.database/ServerValueSerializer|null[0]
+    final val descriptor // io.github.corneloaie.firebase.database/ServerValueSerializer.descriptor|{}descriptor[0]
+        final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.github.corneloaie.firebase.database/ServerValueSerializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+    final fun deserialize(kotlinx.serialization.encoding/Decoder): io.github.corneloaie.firebase.database/ServerValue // io.github.corneloaie.firebase.database/ServerValueSerializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+    final fun serialize(kotlinx.serialization.encoding/Encoder, io.github.corneloaie.firebase.database/ServerValue) // io.github.corneloaie.firebase.database/ServerValueSerializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;io.github.corneloaie.firebase.database.ServerValue){}[0]
+}
+
+final val com.google.firebase.database/childEvents // com.google.firebase.database/childEvents|@com.google.firebase.database.Query{}childEvents[0]
+    final fun (com.google.firebase.database/Query).<get-childEvents>(): kotlinx.coroutines.flow/Flow<com.google.firebase.database/ChildEvent> // com.google.firebase.database/childEvents.<get-childEvents>|<get-childEvents>@com.google.firebase.database.Query(){}[0]
+final val com.google.firebase.database/database // com.google.firebase.database/database|@com.google.firebase.Firebase{}database[0]
+    final fun (com.google.firebase/Firebase).<get-database>(): com.google.firebase.database/FirebaseDatabase // com.google.firebase.database/database.<get-database>|<get-database>@com.google.firebase.Firebase(){}[0]
+final val com.google.firebase.database/snapshots // com.google.firebase.database/snapshots|@com.google.firebase.database.Query{}snapshots[0]
+    final fun (com.google.firebase.database/Query).<get-snapshots>(): kotlinx.coroutines.flow/Flow<com.google.firebase.database/DataSnapshot> // com.google.firebase.database/snapshots.<get-snapshots>|<get-snapshots>@com.google.firebase.database.Query(){}[0]
+final val io.github.corneloaie.firebase.database/database // io.github.corneloaie.firebase.database/database|@io.github.corneloaie.firebase.Firebase{}database[0]
+    final fun (io.github.corneloaie.firebase/Firebase).<get-database>(): io.github.corneloaie.firebase.database/FirebaseDatabase // io.github.corneloaie.firebase.database/database.<get-database>|<get-database>@io.github.corneloaie.firebase.Firebase(){}[0]
+
+final fun (com.google.firebase/Firebase).com.google.firebase.database/database(com.google.firebase/FirebaseApp): com.google.firebase.database/FirebaseDatabase // com.google.firebase.database/database|database@com.google.firebase.Firebase(com.google.firebase.FirebaseApp){}[0]
+final fun (com.google.firebase/Firebase).com.google.firebase.database/database(com.google.firebase/FirebaseApp, kotlin/String): com.google.firebase.database/FirebaseDatabase // com.google.firebase.database/database|database@com.google.firebase.Firebase(com.google.firebase.FirebaseApp;kotlin.String){}[0]
+final fun (com.google.firebase/Firebase).com.google.firebase.database/database(kotlin/String): com.google.firebase.database/FirebaseDatabase // com.google.firebase.database/database|database@com.google.firebase.Firebase(kotlin.String){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase.database/database(io.github.corneloaie.firebase/FirebaseApp): io.github.corneloaie.firebase.database/FirebaseDatabase // io.github.corneloaie.firebase.database/database|database@io.github.corneloaie.firebase.Firebase(io.github.corneloaie.firebase.FirebaseApp){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase.database/database(io.github.corneloaie.firebase/FirebaseApp, kotlin/String): io.github.corneloaie.firebase.database/FirebaseDatabase // io.github.corneloaie.firebase.database/database|database@io.github.corneloaie.firebase.Firebase(io.github.corneloaie.firebase.FirebaseApp;kotlin.String){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase.database/database(kotlin/String): io.github.corneloaie.firebase.database/FirebaseDatabase // io.github.corneloaie.firebase.database/database|database@io.github.corneloaie.firebase.Firebase(kotlin.String){}[0]
+final inline fun <#A: reified kotlin/Any?> (com.google.firebase.database/DataSnapshot).com.google.firebase.database/getValue(): #A? // com.google.firebase.database/getValue|getValue@com.google.firebase.database.DataSnapshot(){0§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?> (com.google.firebase.database/MutableData).com.google.firebase.database/getValue(): #A? // com.google.firebase.database/getValue|getValue@com.google.firebase.database.MutableData(){0§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?> (com.google.firebase.database/Query).com.google.firebase.database/values(): kotlinx.coroutines.flow/Flow<#A?> // com.google.firebase.database/values|values@com.google.firebase.database.Query(){0§<kotlin.Any?>}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.database/ios // io.github.corneloaie.firebase.database/ios|@io.github.corneloaie.firebase.database.DataSnapshot{}ios[0]
+    final fun (io.github.corneloaie.firebase.database/DataSnapshot).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.database/FIRDataSnapshot // io.github.corneloaie.firebase.database/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.database.DataSnapshot(){}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.database/ios // io.github.corneloaie.firebase.database/ios|@io.github.corneloaie.firebase.database.DatabaseReference{}ios[0]
+    final fun (io.github.corneloaie.firebase.database/DatabaseReference).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.database/FIRDatabaseReference // io.github.corneloaie.firebase.database/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.database.DatabaseReference(){}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.database/ios // io.github.corneloaie.firebase.database/ios|@io.github.corneloaie.firebase.database.FirebaseDatabase{}ios[0]
+    final fun (io.github.corneloaie.firebase.database/FirebaseDatabase).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.database/FIRDatabase // io.github.corneloaie.firebase.database/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.database.FirebaseDatabase(){}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.database/ios // io.github.corneloaie.firebase.database/ios|@io.github.corneloaie.firebase.database.OnDisconnect{}ios[0]
+    final fun (io.github.corneloaie.firebase.database/OnDisconnect).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.database/FIRDatabaseReference // io.github.corneloaie.firebase.database/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.database.OnDisconnect(){}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.database/ios // io.github.corneloaie.firebase.database/ios|@io.github.corneloaie.firebase.database.Query{}ios[0]
+    final fun (io.github.corneloaie.firebase.database/Query).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.database/FIRDatabaseQuery // io.github.corneloaie.firebase.database/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.database.Query(){}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.database/persistenceEnabled // io.github.corneloaie.firebase.database/persistenceEnabled|@io.github.corneloaie.firebase.database.OnDisconnect{}persistenceEnabled[0]
+    final fun (io.github.corneloaie.firebase.database/OnDisconnect).<get-persistenceEnabled>(): kotlin/Boolean // io.github.corneloaie.firebase.database/persistenceEnabled.<get-persistenceEnabled>|<get-persistenceEnabled>@io.github.corneloaie.firebase.database.OnDisconnect(){}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.database/persistenceEnabled // io.github.corneloaie.firebase.database/persistenceEnabled|@io.github.corneloaie.firebase.database.Query{}persistenceEnabled[0]
+    final fun (io.github.corneloaie.firebase.database/Query).<get-persistenceEnabled>(): kotlin/Boolean // io.github.corneloaie.firebase.database/persistenceEnabled.<get-persistenceEnabled>|<get-persistenceEnabled>@io.github.corneloaie.firebase.database.Query(){}[0]
+
+// Targets: [apple]
+final fun (io.github.corneloaie.firebase.database/ChildEvent.Type).io.github.corneloaie.firebase.database/toEventType(): swiftPMImport.io.github.corneloaie.firebase.database/FIRDataEventType // io.github.corneloaie.firebase.database/toEventType|toEventType@io.github.corneloaie.firebase.database.ChildEvent.Type(){}[0]
+
+// Targets: [js, wasmJs]
+abstract interface io.github.corneloaie.firebase.database.externals/DatabaseReference : io.github.corneloaie.firebase.database.externals/Query { // io.github.corneloaie.firebase.database.externals/DatabaseReference|null[0]
+    abstract val key // io.github.corneloaie.firebase.database.externals/DatabaseReference.key|{}key[0]
+        abstract fun <get-key>(): kotlin/String? // io.github.corneloaie.firebase.database.externals/DatabaseReference.key.<get-key>|<get-key>(){}[0]
+    abstract val parent // io.github.corneloaie.firebase.database.externals/DatabaseReference.parent|{}parent[0]
+        abstract fun <get-parent>(): io.github.corneloaie.firebase.database.externals/DatabaseReference? // io.github.corneloaie.firebase.database.externals/DatabaseReference.parent.<get-parent>|<get-parent>(){}[0]
+    abstract val root // io.github.corneloaie.firebase.database.externals/DatabaseReference.root|{}root[0]
+        abstract fun <get-root>(): io.github.corneloaie.firebase.database.externals/DatabaseReference // io.github.corneloaie.firebase.database.externals/DatabaseReference.root.<get-root>|<get-root>(){}[0]
+}
+
+// Targets: [js, wasmJs]
+abstract interface io.github.corneloaie.firebase.database.externals/ThenableReference : io.github.corneloaie.firebase.database.externals/DatabaseReference // io.github.corneloaie.firebase.database.externals/ThenableReference|null[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.database.externals/SDK_VERSION // io.github.corneloaie.firebase.database.externals/SDK_VERSION|{}SDK_VERSION[0]
+    final fun <get-SDK_VERSION>(): kotlin/String // io.github.corneloaie.firebase.database.externals/SDK_VERSION.<get-SDK_VERSION>|<get-SDK_VERSION>(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.database/database // io.github.corneloaie.firebase.database/database|@io.github.corneloaie.firebase.database.DataSnapshot{}database[0]
+    final fun (io.github.corneloaie.firebase.database/DataSnapshot).<get-database>(): io.github.corneloaie.firebase.database.externals/Database // io.github.corneloaie.firebase.database/database.<get-database>|<get-database>@io.github.corneloaie.firebase.database.DataSnapshot(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.database/database // io.github.corneloaie.firebase.database/database|@io.github.corneloaie.firebase.database.OnDisconnect{}database[0]
+    final fun (io.github.corneloaie.firebase.database/OnDisconnect).<get-database>(): io.github.corneloaie.firebase.database.externals/Database // io.github.corneloaie.firebase.database/database.<get-database>|<get-database>@io.github.corneloaie.firebase.database.OnDisconnect(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.database/database // io.github.corneloaie.firebase.database/database|@io.github.corneloaie.firebase.database.Query{}database[0]
+    final fun (io.github.corneloaie.firebase.database/Query).<get-database>(): io.github.corneloaie.firebase.database.externals/Database // io.github.corneloaie.firebase.database/database.<get-database>|<get-database>@io.github.corneloaie.firebase.database.Query(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.database/js // io.github.corneloaie.firebase.database/js|@io.github.corneloaie.firebase.database.DataSnapshot{}js[0]
+    final fun (io.github.corneloaie.firebase.database/DataSnapshot).<get-js>(): io.github.corneloaie.firebase.database.externals/DataSnapshot // io.github.corneloaie.firebase.database/js.<get-js>|<get-js>@io.github.corneloaie.firebase.database.DataSnapshot(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.database/js // io.github.corneloaie.firebase.database/js|@io.github.corneloaie.firebase.database.FirebaseDatabase{}js[0]
+    final fun (io.github.corneloaie.firebase.database/FirebaseDatabase).<get-js>(): io.github.corneloaie.firebase.database.externals/Database // io.github.corneloaie.firebase.database/js.<get-js>|<get-js>@io.github.corneloaie.firebase.database.FirebaseDatabase(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.database/js // io.github.corneloaie.firebase.database/js|@io.github.corneloaie.firebase.database.OnDisconnect{}js[0]
+    final fun (io.github.corneloaie.firebase.database/OnDisconnect).<get-js>(): io.github.corneloaie.firebase.database.externals/OnDisconnect // io.github.corneloaie.firebase.database/js.<get-js>|<get-js>@io.github.corneloaie.firebase.database.OnDisconnect(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.database/js // io.github.corneloaie.firebase.database/js|@io.github.corneloaie.firebase.database.Query{}js[0]
+    final fun (io.github.corneloaie.firebase.database/Query).<get-js>(): io.github.corneloaie.firebase.database.externals/Query // io.github.corneloaie.firebase.database/js.<get-js>|<get-js>@io.github.corneloaie.firebase.database.Query(){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/child(io.github.corneloaie.firebase.database.externals/DatabaseReference, kotlin/String): io.github.corneloaie.firebase.database.externals/DatabaseReference // io.github.corneloaie.firebase.database.externals/child|child(io.github.corneloaie.firebase.database.externals.DatabaseReference;kotlin.String){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/enableLogging(kotlin/Boolean?, kotlin/Boolean? = ...) // io.github.corneloaie.firebase.database.externals/enableLogging|enableLogging(kotlin.Boolean?;kotlin.Boolean?){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/get(io.github.corneloaie.firebase.database.externals/Query): kotlin.js/Promise<io.github.corneloaie.firebase.database.externals/DataSnapshot> // io.github.corneloaie.firebase.database.externals/get|get(io.github.corneloaie.firebase.database.externals.Query){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/getDatabase(io.github.corneloaie.firebase.externals/FirebaseApp? = ..., kotlin/String? = ...): io.github.corneloaie.firebase.database.externals/Database // io.github.corneloaie.firebase.database.externals/getDatabase|getDatabase(io.github.corneloaie.firebase.externals.FirebaseApp?;kotlin.String?){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/goOffline(io.github.corneloaie.firebase.database.externals/Database) // io.github.corneloaie.firebase.database.externals/goOffline|goOffline(io.github.corneloaie.firebase.database.externals.Database){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/goOnline(io.github.corneloaie.firebase.database.externals/Database) // io.github.corneloaie.firebase.database.externals/goOnline|goOnline(io.github.corneloaie.firebase.database.externals.Database){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/limitToFirst(kotlin/Int): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/limitToFirst|limitToFirst(kotlin.Int){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/limitToLast(kotlin/Int): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/limitToLast|limitToLast(kotlin.Int){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/onDisconnect(io.github.corneloaie.firebase.database.externals/DatabaseReference): io.github.corneloaie.firebase.database.externals/OnDisconnect // io.github.corneloaie.firebase.database.externals/onDisconnect|onDisconnect(io.github.corneloaie.firebase.database.externals.DatabaseReference){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/orderByChild(kotlin/String): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/orderByChild|orderByChild(kotlin.String){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/orderByKey(): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/orderByKey|orderByKey(){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/orderByPriority(): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/orderByPriority|orderByPriority(){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/orderByValue(): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/orderByValue|orderByValue(){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/query(io.github.corneloaie.firebase.database.externals/Query, kotlin/Array<out io.github.corneloaie.firebase.database.externals/QueryConstraint>...): io.github.corneloaie.firebase.database.externals/Query // io.github.corneloaie.firebase.database.externals/query|query(io.github.corneloaie.firebase.database.externals.Query;kotlin.Array<out|io.github.corneloaie.firebase.database.externals.QueryConstraint>...){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/ref(io.github.corneloaie.firebase.database.externals/Database, kotlin/String? = ...): io.github.corneloaie.firebase.database.externals/DatabaseReference // io.github.corneloaie.firebase.database.externals/ref|ref(io.github.corneloaie.firebase.database.externals.Database;kotlin.String?){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/refFromURL(io.github.corneloaie.firebase.database.externals/Database, kotlin/String): io.github.corneloaie.firebase.database.externals/DatabaseReference // io.github.corneloaie.firebase.database.externals/refFromURL|refFromURL(io.github.corneloaie.firebase.database.externals.Database;kotlin.String){}[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.database.externals/DataSnapshot { // io.github.corneloaie.firebase.database.externals/DataSnapshot|null[0]
+    abstract val key // io.github.corneloaie.firebase.database.externals/DataSnapshot.key|{}key[0]
+        abstract fun <get-key>(): kotlin/String? // io.github.corneloaie.firebase.database.externals/DataSnapshot.key.<get-key>|<get-key>(){}[0]
+    abstract val priority // io.github.corneloaie.firebase.database.externals/DataSnapshot.priority|{}priority[0]
+        abstract fun <get-priority>(): kotlin/Any? // io.github.corneloaie.firebase.database.externals/DataSnapshot.priority.<get-priority>|<get-priority>(){}[0]
+    abstract val ref // io.github.corneloaie.firebase.database.externals/DataSnapshot.ref|{}ref[0]
+        abstract fun <get-ref>(): io.github.corneloaie.firebase.database.externals/DatabaseReference // io.github.corneloaie.firebase.database.externals/DataSnapshot.ref.<get-ref>|<get-ref>(){}[0]
+    abstract val size // io.github.corneloaie.firebase.database.externals/DataSnapshot.size|{}size[0]
+        abstract fun <get-size>(): kotlin/Int // io.github.corneloaie.firebase.database.externals/DataSnapshot.size.<get-size>|<get-size>(){}[0]
+
+    abstract fun child(kotlin/String): io.github.corneloaie.firebase.database.externals/DataSnapshot // io.github.corneloaie.firebase.database.externals/DataSnapshot.child|child(kotlin.String){}[0]
+    abstract fun exists(): kotlin/Boolean // io.github.corneloaie.firebase.database.externals/DataSnapshot.exists|exists(){}[0]
+    abstract fun exportVal(): kotlin/Any? // io.github.corneloaie.firebase.database.externals/DataSnapshot.exportVal|exportVal(){}[0]
+    abstract fun forEach(kotlin/Function1<io.github.corneloaie.firebase.database.externals/DataSnapshot, kotlin/Boolean>): kotlin/Boolean // io.github.corneloaie.firebase.database.externals/DataSnapshot.forEach|forEach(kotlin.Function1<io.github.corneloaie.firebase.database.externals.DataSnapshot,kotlin.Boolean>){}[0]
+    abstract fun hasChild(kotlin/String): kotlin/Boolean // io.github.corneloaie.firebase.database.externals/DataSnapshot.hasChild|hasChild(kotlin.String){}[0]
+    abstract fun hasChildren(): kotlin/Boolean // io.github.corneloaie.firebase.database.externals/DataSnapshot.hasChildren|hasChildren(){}[0]
+    abstract fun val(): kotlin/Any // io.github.corneloaie.firebase.database.externals/DataSnapshot.val|val(){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.database.externals/Database { // io.github.corneloaie.firebase.database.externals/Database|null[0]
+    abstract val app // io.github.corneloaie.firebase.database.externals/Database.app|{}app[0]
+        abstract fun <get-app>(): io.github.corneloaie.firebase.externals/FirebaseApp // io.github.corneloaie.firebase.database.externals/Database.app.<get-app>|<get-app>(){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.database.externals/OnDisconnect { // io.github.corneloaie.firebase.database.externals/OnDisconnect|null[0]
+    abstract fun cancel(): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/OnDisconnect.cancel|cancel(){}[0]
+    abstract fun remove(): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/OnDisconnect.remove|remove(){}[0]
+    abstract fun set(kotlin/Any?): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/OnDisconnect.set|set(kotlin.Any?){}[0]
+    abstract fun setWithPriority(kotlin/Any?, kotlin/Any?): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/OnDisconnect.setWithPriority|setWithPriority(kotlin.Any?;kotlin.Any?){}[0]
+    abstract fun update(kotlin/Any): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/OnDisconnect.update|update(kotlin.Any){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.database.externals/Query { // io.github.corneloaie.firebase.database.externals/Query|null[0]
+    abstract val ref // io.github.corneloaie.firebase.database.externals/Query.ref|{}ref[0]
+        abstract fun <get-ref>(): io.github.corneloaie.firebase.database.externals/DatabaseReference // io.github.corneloaie.firebase.database.externals/Query.ref.<get-ref>|<get-ref>(){}[0]
+
+    abstract fun isEqual(io.github.corneloaie.firebase.database.externals/Query?): kotlin/Boolean // io.github.corneloaie.firebase.database.externals/Query.isEqual|isEqual(io.github.corneloaie.firebase.database.externals.Query?){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/QueryConstraint|null[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.database.externals/TransactionResult { // io.github.corneloaie.firebase.database.externals/TransactionResult|null[0]
+    abstract val committed // io.github.corneloaie.firebase.database.externals/TransactionResult.committed|{}committed[0]
+        abstract fun <get-committed>(): kotlin/Boolean // io.github.corneloaie.firebase.database.externals/TransactionResult.committed.<get-committed>|<get-committed>(){}[0]
+    abstract val snapshot // io.github.corneloaie.firebase.database.externals/TransactionResult.snapshot|{}snapshot[0]
+        abstract fun <get-snapshot>(): io.github.corneloaie.firebase.database.externals/DataSnapshot // io.github.corneloaie.firebase.database.externals/TransactionResult.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+}
+
+// Targets: [js]
+final fun <#A: kotlin/Any?> io.github.corneloaie.firebase.database.externals/runTransaction(io.github.corneloaie.firebase.database.externals/DatabaseReference, kotlin/Function1<#A, #A>, kotlin/Any? = ...): kotlin.js/Promise<io.github.corneloaie.firebase.database.externals/TransactionResult> // io.github.corneloaie.firebase.database.externals/runTransaction|runTransaction(io.github.corneloaie.firebase.database.externals.DatabaseReference;kotlin.Function1<0:0,0:0>;kotlin.Any?){0§<kotlin.Any?>}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/connectDatabaseEmulator(io.github.corneloaie.firebase.database.externals/Database, kotlin/String, kotlin/Int, kotlin/Any? = ...) // io.github.corneloaie.firebase.database.externals/connectDatabaseEmulator|connectDatabaseEmulator(io.github.corneloaie.firebase.database.externals.Database;kotlin.String;kotlin.Int;kotlin.Any?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/endAt(kotlin/Any?, kotlin/String? = ...): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/endAt|endAt(kotlin.Any?;kotlin.String?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/endBefore(kotlin/Any?, kotlin/String? = ...): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/endBefore|endBefore(kotlin.Any?;kotlin.String?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/equalTo(kotlin/Any?, kotlin/String? = ...): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/equalTo|equalTo(kotlin.Any?;kotlin.String?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/increment(kotlin/Double): kotlin/Any // io.github.corneloaie.firebase.database.externals/increment|increment(kotlin.Double){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/off(io.github.corneloaie.firebase.database.externals/Query, kotlin/String?, kotlin/Any?) // io.github.corneloaie.firebase.database.externals/off|off(io.github.corneloaie.firebase.database.externals.Query;kotlin.String?;kotlin.Any?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/onChildAdded(io.github.corneloaie.firebase.database.externals/Query, kotlin/Function2<io.github.corneloaie.firebase.database.externals/DataSnapshot, kotlin/String?, kotlin/Unit>, kotlin/Function1<kotlin/Throwable, kotlin/Unit>? = ...): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/onChildAdded|onChildAdded(io.github.corneloaie.firebase.database.externals.Query;kotlin.Function2<io.github.corneloaie.firebase.database.externals.DataSnapshot,kotlin.String?,kotlin.Unit>;kotlin.Function1<kotlin.Throwable,kotlin.Unit>?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/onChildChanged(io.github.corneloaie.firebase.database.externals/Query, kotlin/Function2<io.github.corneloaie.firebase.database.externals/DataSnapshot, kotlin/String?, kotlin/Unit>, kotlin/Function1<kotlin/Throwable, kotlin/Unit>? = ...): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/onChildChanged|onChildChanged(io.github.corneloaie.firebase.database.externals.Query;kotlin.Function2<io.github.corneloaie.firebase.database.externals.DataSnapshot,kotlin.String?,kotlin.Unit>;kotlin.Function1<kotlin.Throwable,kotlin.Unit>?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/onChildMoved(io.github.corneloaie.firebase.database.externals/Query, kotlin/Function2<io.github.corneloaie.firebase.database.externals/DataSnapshot, kotlin/String?, kotlin/Unit>, kotlin/Function1<kotlin/Throwable, kotlin/Unit>? = ...): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/onChildMoved|onChildMoved(io.github.corneloaie.firebase.database.externals.Query;kotlin.Function2<io.github.corneloaie.firebase.database.externals.DataSnapshot,kotlin.String?,kotlin.Unit>;kotlin.Function1<kotlin.Throwable,kotlin.Unit>?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/onChildRemoved(io.github.corneloaie.firebase.database.externals/Query, kotlin/Function2<io.github.corneloaie.firebase.database.externals/DataSnapshot, kotlin/String?, kotlin/Unit>, kotlin/Function1<kotlin/Throwable, kotlin/Unit>? = ...): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/onChildRemoved|onChildRemoved(io.github.corneloaie.firebase.database.externals.Query;kotlin.Function2<io.github.corneloaie.firebase.database.externals.DataSnapshot,kotlin.String?,kotlin.Unit>;kotlin.Function1<kotlin.Throwable,kotlin.Unit>?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/onValue(io.github.corneloaie.firebase.database.externals/Query, kotlin/Function1<io.github.corneloaie.firebase.database.externals/DataSnapshot, kotlin/Unit>, kotlin/Function1<kotlin/Throwable, kotlin/Unit>? = ..., kotlin/Any? = ...): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/onValue|onValue(io.github.corneloaie.firebase.database.externals.Query;kotlin.Function1<io.github.corneloaie.firebase.database.externals.DataSnapshot,kotlin.Unit>;kotlin.Function1<kotlin.Throwable,kotlin.Unit>?;kotlin.Any?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/push(io.github.corneloaie.firebase.database.externals/DatabaseReference, kotlin/Any? = ...): io.github.corneloaie.firebase.database.externals/ThenableReference // io.github.corneloaie.firebase.database.externals/push|push(io.github.corneloaie.firebase.database.externals.DatabaseReference;kotlin.Any?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/remove(io.github.corneloaie.firebase.database.externals/DatabaseReference): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/remove|remove(io.github.corneloaie.firebase.database.externals.DatabaseReference){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/serverTimestamp(): kotlin/Any // io.github.corneloaie.firebase.database.externals/serverTimestamp|serverTimestamp(){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/set(io.github.corneloaie.firebase.database.externals/DatabaseReference, kotlin/Any?): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/set|set(io.github.corneloaie.firebase.database.externals.DatabaseReference;kotlin.Any?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/setPriority(io.github.corneloaie.firebase.database.externals/DatabaseReference, kotlin/Any?): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/setPriority|setPriority(io.github.corneloaie.firebase.database.externals.DatabaseReference;kotlin.Any?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/setWithPriority(io.github.corneloaie.firebase.database.externals/DatabaseReference, kotlin/Any?, kotlin/Any?): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/setWithPriority|setWithPriority(io.github.corneloaie.firebase.database.externals.DatabaseReference;kotlin.Any?;kotlin.Any?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/startAfter(kotlin/Any?, kotlin/String? = ...): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/startAfter|startAfter(kotlin.Any?;kotlin.String?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/startAt(kotlin/Any?, kotlin/String? = ...): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/startAt|startAt(kotlin.Any?;kotlin.String?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.database.externals/update(io.github.corneloaie.firebase.database.externals/DatabaseReference, kotlin/Any): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/update|update(io.github.corneloaie.firebase.database.externals.DatabaseReference;kotlin.Any){}[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.database.externals/DataSnapshot : kotlin.js/JsAny { // io.github.corneloaie.firebase.database.externals/DataSnapshot|null[0]
+    abstract val key // io.github.corneloaie.firebase.database.externals/DataSnapshot.key|{}key[0]
+        abstract fun <get-key>(): kotlin/String? // io.github.corneloaie.firebase.database.externals/DataSnapshot.key.<get-key>|<get-key>(){}[0]
+    abstract val priority // io.github.corneloaie.firebase.database.externals/DataSnapshot.priority|{}priority[0]
+        abstract fun <get-priority>(): kotlin.js/JsAny? // io.github.corneloaie.firebase.database.externals/DataSnapshot.priority.<get-priority>|<get-priority>(){}[0]
+    abstract val ref // io.github.corneloaie.firebase.database.externals/DataSnapshot.ref|{}ref[0]
+        abstract fun <get-ref>(): io.github.corneloaie.firebase.database.externals/DatabaseReference // io.github.corneloaie.firebase.database.externals/DataSnapshot.ref.<get-ref>|<get-ref>(){}[0]
+    abstract val size // io.github.corneloaie.firebase.database.externals/DataSnapshot.size|{}size[0]
+        abstract fun <get-size>(): kotlin/Int // io.github.corneloaie.firebase.database.externals/DataSnapshot.size.<get-size>|<get-size>(){}[0]
+
+    abstract fun child(kotlin/String): io.github.corneloaie.firebase.database.externals/DataSnapshot // io.github.corneloaie.firebase.database.externals/DataSnapshot.child|child(kotlin.String){}[0]
+    abstract fun exists(): kotlin/Boolean // io.github.corneloaie.firebase.database.externals/DataSnapshot.exists|exists(){}[0]
+    abstract fun exportVal(): kotlin.js/JsAny? // io.github.corneloaie.firebase.database.externals/DataSnapshot.exportVal|exportVal(){}[0]
+    abstract fun forEach(kotlin/Function1<io.github.corneloaie.firebase.database.externals/DataSnapshot, kotlin/Boolean>): kotlin/Boolean // io.github.corneloaie.firebase.database.externals/DataSnapshot.forEach|forEach(kotlin.Function1<io.github.corneloaie.firebase.database.externals.DataSnapshot,kotlin.Boolean>){}[0]
+    abstract fun hasChild(kotlin/String): kotlin/Boolean // io.github.corneloaie.firebase.database.externals/DataSnapshot.hasChild|hasChild(kotlin.String){}[0]
+    abstract fun hasChildren(): kotlin/Boolean // io.github.corneloaie.firebase.database.externals/DataSnapshot.hasChildren|hasChildren(){}[0]
+    abstract fun val(): kotlin.js/JsAny? // io.github.corneloaie.firebase.database.externals/DataSnapshot.val|val(){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.database.externals/Database : kotlin.js/JsAny { // io.github.corneloaie.firebase.database.externals/Database|null[0]
+    abstract val app // io.github.corneloaie.firebase.database.externals/Database.app|{}app[0]
+        abstract fun <get-app>(): io.github.corneloaie.firebase.externals/FirebaseApp // io.github.corneloaie.firebase.database.externals/Database.app.<get-app>|<get-app>(){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.database.externals/OnDisconnect : kotlin.js/JsAny { // io.github.corneloaie.firebase.database.externals/OnDisconnect|null[0]
+    abstract fun cancel(): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.database.externals/OnDisconnect.cancel|cancel(){}[0]
+    abstract fun remove(): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.database.externals/OnDisconnect.remove|remove(){}[0]
+    abstract fun set(kotlin.js/JsAny?): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.database.externals/OnDisconnect.set|set(kotlin.js.JsAny?){}[0]
+    abstract fun setWithPriority(kotlin.js/JsAny?, kotlin.js/JsAny?): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.database.externals/OnDisconnect.setWithPriority|setWithPriority(kotlin.js.JsAny?;kotlin.js.JsAny?){}[0]
+    abstract fun update(kotlin.js/JsAny): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.database.externals/OnDisconnect.update|update(kotlin.js.JsAny){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.database.externals/Query : kotlin.js/JsAny { // io.github.corneloaie.firebase.database.externals/Query|null[0]
+    abstract val ref // io.github.corneloaie.firebase.database.externals/Query.ref|{}ref[0]
+        abstract fun <get-ref>(): io.github.corneloaie.firebase.database.externals/DatabaseReference // io.github.corneloaie.firebase.database.externals/Query.ref.<get-ref>|<get-ref>(){}[0]
+
+    abstract fun isEqual(io.github.corneloaie.firebase.database.externals/Query?): kotlin/Boolean // io.github.corneloaie.firebase.database.externals/Query.isEqual|isEqual(io.github.corneloaie.firebase.database.externals.Query?){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.database.externals/QueryConstraint : kotlin.js/JsAny // io.github.corneloaie.firebase.database.externals/QueryConstraint|null[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.database.externals/TransactionResult : kotlin.js/JsAny { // io.github.corneloaie.firebase.database.externals/TransactionResult|null[0]
+    abstract val committed // io.github.corneloaie.firebase.database.externals/TransactionResult.committed|{}committed[0]
+        abstract fun <get-committed>(): kotlin/Boolean // io.github.corneloaie.firebase.database.externals/TransactionResult.committed.<get-committed>|<get-committed>(){}[0]
+    abstract val snapshot // io.github.corneloaie.firebase.database.externals/TransactionResult.snapshot|{}snapshot[0]
+        abstract fun <get-snapshot>(): io.github.corneloaie.firebase.database.externals/DataSnapshot // io.github.corneloaie.firebase.database.externals/TransactionResult.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+}
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/connectDatabaseEmulator(io.github.corneloaie.firebase.database.externals/Database, kotlin/String, kotlin/Int, kotlin.js/JsAny? = ...) // io.github.corneloaie.firebase.database.externals/connectDatabaseEmulator|connectDatabaseEmulator(io.github.corneloaie.firebase.database.externals.Database;kotlin.String;kotlin.Int;kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/endAt(kotlin.js/JsAny?, kotlin/String? = ...): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/endAt|endAt(kotlin.js.JsAny?;kotlin.String?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/endBefore(kotlin.js/JsAny?, kotlin/String? = ...): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/endBefore|endBefore(kotlin.js.JsAny?;kotlin.String?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/equalTo(kotlin.js/JsAny?, kotlin/String? = ...): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/equalTo|equalTo(kotlin.js.JsAny?;kotlin.String?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/increment(kotlin/Double): kotlin.js/JsAny // io.github.corneloaie.firebase.database.externals/increment|increment(kotlin.Double){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/off(io.github.corneloaie.firebase.database.externals/Query, kotlin/String?, kotlin.js/JsAny?) // io.github.corneloaie.firebase.database.externals/off|off(io.github.corneloaie.firebase.database.externals.Query;kotlin.String?;kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/onChildAdded(io.github.corneloaie.firebase.database.externals/Query, kotlin/Function2<io.github.corneloaie.firebase.database.externals/DataSnapshot, kotlin/String?, kotlin/Unit>, kotlin/Function1<kotlin.js/JsAny, kotlin/Unit>? = ...): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/onChildAdded|onChildAdded(io.github.corneloaie.firebase.database.externals.Query;kotlin.Function2<io.github.corneloaie.firebase.database.externals.DataSnapshot,kotlin.String?,kotlin.Unit>;kotlin.Function1<kotlin.js.JsAny,kotlin.Unit>?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/onChildChanged(io.github.corneloaie.firebase.database.externals/Query, kotlin/Function2<io.github.corneloaie.firebase.database.externals/DataSnapshot, kotlin/String?, kotlin/Unit>, kotlin/Function1<kotlin.js/JsAny, kotlin/Unit>? = ...): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/onChildChanged|onChildChanged(io.github.corneloaie.firebase.database.externals.Query;kotlin.Function2<io.github.corneloaie.firebase.database.externals.DataSnapshot,kotlin.String?,kotlin.Unit>;kotlin.Function1<kotlin.js.JsAny,kotlin.Unit>?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/onChildMoved(io.github.corneloaie.firebase.database.externals/Query, kotlin/Function2<io.github.corneloaie.firebase.database.externals/DataSnapshot, kotlin/String?, kotlin/Unit>, kotlin/Function1<kotlin.js/JsAny, kotlin/Unit>? = ...): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/onChildMoved|onChildMoved(io.github.corneloaie.firebase.database.externals.Query;kotlin.Function2<io.github.corneloaie.firebase.database.externals.DataSnapshot,kotlin.String?,kotlin.Unit>;kotlin.Function1<kotlin.js.JsAny,kotlin.Unit>?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/onChildRemoved(io.github.corneloaie.firebase.database.externals/Query, kotlin/Function2<io.github.corneloaie.firebase.database.externals/DataSnapshot, kotlin/String?, kotlin/Unit>, kotlin/Function1<kotlin.js/JsAny, kotlin/Unit>? = ...): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/onChildRemoved|onChildRemoved(io.github.corneloaie.firebase.database.externals.Query;kotlin.Function2<io.github.corneloaie.firebase.database.externals.DataSnapshot,kotlin.String?,kotlin.Unit>;kotlin.Function1<kotlin.js.JsAny,kotlin.Unit>?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/onValue(io.github.corneloaie.firebase.database.externals/Query, kotlin/Function1<io.github.corneloaie.firebase.database.externals/DataSnapshot, kotlin/Unit>, kotlin/Function1<kotlin.js/JsAny, kotlin/Unit>? = ..., kotlin.js/JsAny? = ...): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.database.externals/onValue|onValue(io.github.corneloaie.firebase.database.externals.Query;kotlin.Function1<io.github.corneloaie.firebase.database.externals.DataSnapshot,kotlin.Unit>;kotlin.Function1<kotlin.js.JsAny,kotlin.Unit>?;kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/push(io.github.corneloaie.firebase.database.externals/DatabaseReference, kotlin.js/JsAny? = ...): io.github.corneloaie.firebase.database.externals/ThenableReference // io.github.corneloaie.firebase.database.externals/push|push(io.github.corneloaie.firebase.database.externals.DatabaseReference;kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/remove(io.github.corneloaie.firebase.database.externals/DatabaseReference): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.database.externals/remove|remove(io.github.corneloaie.firebase.database.externals.DatabaseReference){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/runTransaction(io.github.corneloaie.firebase.database.externals/DatabaseReference, kotlin/Function1<kotlin.js/JsAny?, kotlin.js/JsAny?>, kotlin.js/JsAny? = ...): kotlin.js/Promise<io.github.corneloaie.firebase.database.externals/TransactionResult> // io.github.corneloaie.firebase.database.externals/runTransaction|runTransaction(io.github.corneloaie.firebase.database.externals.DatabaseReference;kotlin.Function1<kotlin.js.JsAny?,kotlin.js.JsAny?>;kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/serverTimestamp(): kotlin.js/JsAny // io.github.corneloaie.firebase.database.externals/serverTimestamp|serverTimestamp(){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/set(io.github.corneloaie.firebase.database.externals/DatabaseReference, kotlin.js/JsAny?): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.database.externals/set|set(io.github.corneloaie.firebase.database.externals.DatabaseReference;kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/setPriority(io.github.corneloaie.firebase.database.externals/DatabaseReference, kotlin.js/JsAny?): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.database.externals/setPriority|setPriority(io.github.corneloaie.firebase.database.externals.DatabaseReference;kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/setWithPriority(io.github.corneloaie.firebase.database.externals/DatabaseReference, kotlin.js/JsAny?, kotlin.js/JsAny?): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.database.externals/setWithPriority|setWithPriority(io.github.corneloaie.firebase.database.externals.DatabaseReference;kotlin.js.JsAny?;kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/startAfter(kotlin.js/JsAny?, kotlin/String? = ...): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/startAfter|startAfter(kotlin.js.JsAny?;kotlin.String?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/startAt(kotlin.js/JsAny?, kotlin/String? = ...): io.github.corneloaie.firebase.database.externals/QueryConstraint // io.github.corneloaie.firebase.database.externals/startAt|startAt(kotlin.js.JsAny?;kotlin.String?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.database.externals/update(io.github.corneloaie.firebase.database.externals/DatabaseReference, kotlin.js/JsAny): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.database.externals/update|update(io.github.corneloaie.firebase.database.externals.DatabaseReference;kotlin.js.JsAny){}[0]

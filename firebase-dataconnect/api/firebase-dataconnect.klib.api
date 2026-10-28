@@ -1,0 +1,611 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, tvosArm64, tvosSimulatorArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-dataconnect>
+open annotation class com.google.firebase.dataconnect/ExperimentalFirebaseDataConnect : kotlin/Annotation { // com.google.firebase.dataconnect/ExperimentalFirebaseDataConnect|null[0]
+    constructor <init>() // com.google.firebase.dataconnect/ExperimentalFirebaseDataConnect.<init>|<init>(){}[0]
+}
+
+final enum class com.google.firebase.dataconnect/DataSource : kotlin/Enum<com.google.firebase.dataconnect/DataSource> { // com.google.firebase.dataconnect/DataSource|null[0]
+    enum entry CACHE // com.google.firebase.dataconnect/DataSource.CACHE|null[0]
+    enum entry SERVER // com.google.firebase.dataconnect/DataSource.SERVER|null[0]
+
+    final val entries // com.google.firebase.dataconnect/DataSource.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.dataconnect/DataSource> // com.google.firebase.dataconnect/DataSource.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.google.firebase.dataconnect/DataSource // com.google.firebase.dataconnect/DataSource.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.google.firebase.dataconnect/DataSource> // com.google.firebase.dataconnect/DataSource.values|values#static(){}[0]
+}
+
+final enum class com.google.firebase.dataconnect/LogLevel : kotlin/Enum<com.google.firebase.dataconnect/LogLevel> { // com.google.firebase.dataconnect/LogLevel|null[0]
+    enum entry DEBUG // com.google.firebase.dataconnect/LogLevel.DEBUG|null[0]
+    enum entry NONE // com.google.firebase.dataconnect/LogLevel.NONE|null[0]
+    enum entry WARN // com.google.firebase.dataconnect/LogLevel.WARN|null[0]
+
+    final val entries // com.google.firebase.dataconnect/LogLevel.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.dataconnect/LogLevel> // com.google.firebase.dataconnect/LogLevel.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.google.firebase.dataconnect/LogLevel // com.google.firebase.dataconnect/LogLevel.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.google.firebase.dataconnect/LogLevel> // com.google.firebase.dataconnect/LogLevel.values|values#static(){}[0]
+}
+
+abstract interface <#A: com.google.firebase.dataconnect.generated/GeneratedConnector<#A>, #B: kotlin/Any?, #C: kotlin/Any?> com.google.firebase.dataconnect.generated/GeneratedMutation : com.google.firebase.dataconnect.generated/GeneratedOperation<#A, #B, #C> { // com.google.firebase.dataconnect.generated/GeneratedMutation|null[0]
+    abstract fun <#A1: kotlin/Any?> withDataDeserializer(kotlinx.serialization/DeserializationStrategy<#A1>): com.google.firebase.dataconnect.generated/GeneratedMutation<#A, #A1, #C> // com.google.firebase.dataconnect.generated/GeneratedMutation.withDataDeserializer|withDataDeserializer(kotlinx.serialization.DeserializationStrategy<0:0>){0§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?> withVariablesSerializer(kotlinx.serialization/SerializationStrategy<#A1>): com.google.firebase.dataconnect.generated/GeneratedMutation<#A, #B, #A1> // com.google.firebase.dataconnect.generated/GeneratedMutation.withVariablesSerializer|withVariablesSerializer(kotlinx.serialization.SerializationStrategy<0:0>){0§<kotlin.Any?>}[0]
+    abstract fun copy(#A, kotlin/String, kotlinx.serialization/DeserializationStrategy<#B>, kotlinx.serialization/SerializationStrategy<#C>): com.google.firebase.dataconnect.generated/GeneratedMutation<#A, #B, #C> // com.google.firebase.dataconnect.generated/GeneratedMutation.copy|copy(1:0;kotlin.String;kotlinx.serialization.DeserializationStrategy<1:1>;kotlinx.serialization.SerializationStrategy<1:2>){}[0]
+    open fun ref(#C): com.google.firebase.dataconnect/MutationRef<#B, #C> // com.google.firebase.dataconnect.generated/GeneratedMutation.ref|ref(1:2){}[0]
+}
+
+abstract interface <#A: com.google.firebase.dataconnect.generated/GeneratedConnector<#A>, #B: kotlin/Any?, #C: kotlin/Any?> com.google.firebase.dataconnect.generated/GeneratedOperation { // com.google.firebase.dataconnect.generated/GeneratedOperation|null[0]
+    abstract val connector // com.google.firebase.dataconnect.generated/GeneratedOperation.connector|{}connector[0]
+        abstract fun <get-connector>(): #A // com.google.firebase.dataconnect.generated/GeneratedOperation.connector.<get-connector>|<get-connector>(){}[0]
+    abstract val dataDeserializer // com.google.firebase.dataconnect.generated/GeneratedOperation.dataDeserializer|{}dataDeserializer[0]
+        abstract fun <get-dataDeserializer>(): kotlinx.serialization/DeserializationStrategy<#B> // com.google.firebase.dataconnect.generated/GeneratedOperation.dataDeserializer.<get-dataDeserializer>|<get-dataDeserializer>(){}[0]
+    abstract val operationName // com.google.firebase.dataconnect.generated/GeneratedOperation.operationName|{}operationName[0]
+        abstract fun <get-operationName>(): kotlin/String // com.google.firebase.dataconnect.generated/GeneratedOperation.operationName.<get-operationName>|<get-operationName>(){}[0]
+    abstract val variablesSerializer // com.google.firebase.dataconnect.generated/GeneratedOperation.variablesSerializer|{}variablesSerializer[0]
+        abstract fun <get-variablesSerializer>(): kotlinx.serialization/SerializationStrategy<#C> // com.google.firebase.dataconnect.generated/GeneratedOperation.variablesSerializer.<get-variablesSerializer>|<get-variablesSerializer>(){}[0]
+
+    abstract fun <#A1: kotlin/Any?> withDataDeserializer(kotlinx.serialization/DeserializationStrategy<#A1>): com.google.firebase.dataconnect.generated/GeneratedOperation<#A, #A1, #C> // com.google.firebase.dataconnect.generated/GeneratedOperation.withDataDeserializer|withDataDeserializer(kotlinx.serialization.DeserializationStrategy<0:0>){0§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?> withVariablesSerializer(kotlinx.serialization/SerializationStrategy<#A1>): com.google.firebase.dataconnect.generated/GeneratedOperation<#A, #B, #A1> // com.google.firebase.dataconnect.generated/GeneratedOperation.withVariablesSerializer|withVariablesSerializer(kotlinx.serialization.SerializationStrategy<0:0>){0§<kotlin.Any?>}[0]
+    abstract fun copy(#A = ..., kotlin/String = ..., kotlinx.serialization/DeserializationStrategy<#B> = ..., kotlinx.serialization/SerializationStrategy<#C> = ...): com.google.firebase.dataconnect.generated/GeneratedOperation<#A, #B, #C> // com.google.firebase.dataconnect.generated/GeneratedOperation.copy|copy(1:0;kotlin.String;kotlinx.serialization.DeserializationStrategy<1:1>;kotlinx.serialization.SerializationStrategy<1:2>){}[0]
+    abstract fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect.generated/GeneratedOperation.equals|equals(kotlin.Any?){}[0]
+    abstract fun hashCode(): kotlin/Int // com.google.firebase.dataconnect.generated/GeneratedOperation.hashCode|hashCode(){}[0]
+    abstract fun toString(): kotlin/String // com.google.firebase.dataconnect.generated/GeneratedOperation.toString|toString(){}[0]
+    open fun ref(#C): com.google.firebase.dataconnect/OperationRef<#B, #C> // com.google.firebase.dataconnect.generated/GeneratedOperation.ref|ref(1:2){}[0]
+}
+
+abstract interface <#A: com.google.firebase.dataconnect.generated/GeneratedConnector<#A>, #B: kotlin/Any?, #C: kotlin/Any?> com.google.firebase.dataconnect.generated/GeneratedQuery : com.google.firebase.dataconnect.generated/GeneratedOperation<#A, #B, #C> { // com.google.firebase.dataconnect.generated/GeneratedQuery|null[0]
+    abstract fun <#A1: kotlin/Any?> withDataDeserializer(kotlinx.serialization/DeserializationStrategy<#A1>): com.google.firebase.dataconnect.generated/GeneratedQuery<#A, #A1, #C> // com.google.firebase.dataconnect.generated/GeneratedQuery.withDataDeserializer|withDataDeserializer(kotlinx.serialization.DeserializationStrategy<0:0>){0§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?> withVariablesSerializer(kotlinx.serialization/SerializationStrategy<#A1>): com.google.firebase.dataconnect.generated/GeneratedQuery<#A, #B, #A1> // com.google.firebase.dataconnect.generated/GeneratedQuery.withVariablesSerializer|withVariablesSerializer(kotlinx.serialization.SerializationStrategy<0:0>){0§<kotlin.Any?>}[0]
+    abstract fun copy(#A, kotlin/String, kotlinx.serialization/DeserializationStrategy<#B>, kotlinx.serialization/SerializationStrategy<#C>): com.google.firebase.dataconnect.generated/GeneratedQuery<#A, #B, #C> // com.google.firebase.dataconnect.generated/GeneratedQuery.copy|copy(1:0;kotlin.String;kotlinx.serialization.DeserializationStrategy<1:1>;kotlinx.serialization.SerializationStrategy<1:2>){}[0]
+    open fun ref(#C): com.google.firebase.dataconnect/QueryRef<#B, #C> // com.google.firebase.dataconnect.generated/GeneratedQuery.ref|ref(1:2){}[0]
+}
+
+abstract interface <#A: com.google.firebase.dataconnect.generated/GeneratedConnector<#A>> com.google.firebase.dataconnect.generated/GeneratedConnector { // com.google.firebase.dataconnect.generated/GeneratedConnector|null[0]
+    abstract val dataConnect // com.google.firebase.dataconnect.generated/GeneratedConnector.dataConnect|{}dataConnect[0]
+        abstract fun <get-dataConnect>(): com.google.firebase.dataconnect/FirebaseDataConnect // com.google.firebase.dataconnect.generated/GeneratedConnector.dataConnect.<get-dataConnect>|<get-dataConnect>(){}[0]
+
+    abstract fun copy(com.google.firebase.dataconnect/FirebaseDataConnect = ...): #A // com.google.firebase.dataconnect.generated/GeneratedConnector.copy|copy(com.google.firebase.dataconnect.FirebaseDataConnect){}[0]
+    abstract fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect.generated/GeneratedConnector.equals|equals(kotlin.Any?){}[0]
+    abstract fun hashCode(): kotlin/Int // com.google.firebase.dataconnect.generated/GeneratedConnector.hashCode|hashCode(){}[0]
+    abstract fun mutations(): kotlin.collections/List<com.google.firebase.dataconnect.generated/GeneratedMutation<#A, *, *>> // com.google.firebase.dataconnect.generated/GeneratedConnector.mutations|mutations(){}[0]
+    abstract fun operations(): kotlin.collections/List<com.google.firebase.dataconnect.generated/GeneratedOperation<#A, *, *>> // com.google.firebase.dataconnect.generated/GeneratedConnector.operations|operations(){}[0]
+    abstract fun queries(): kotlin.collections/List<com.google.firebase.dataconnect.generated/GeneratedQuery<#A, *, *>> // com.google.firebase.dataconnect.generated/GeneratedConnector.queries|queries(){}[0]
+    abstract fun toString(): kotlin/String // com.google.firebase.dataconnect.generated/GeneratedConnector.toString|toString(){}[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: kotlin/Any?> com.google.firebase.dataconnect/MutationRef : com.google.firebase.dataconnect/OperationRef<#A, #B> { // com.google.firebase.dataconnect/MutationRef|null[0]
+    abstract fun <#A1: kotlin/Any?> withDataDeserializer(kotlinx.serialization/DeserializationStrategy<#A1>, kotlinx.serialization.modules/SerializersModule?): com.google.firebase.dataconnect/MutationRef<#A1, #B> // com.google.firebase.dataconnect/MutationRef.withDataDeserializer|withDataDeserializer(kotlinx.serialization.DeserializationStrategy<0:0>;kotlinx.serialization.modules.SerializersModule?){0§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?> withVariablesSerializer(#A1, kotlinx.serialization/SerializationStrategy<#A1>, kotlinx.serialization.modules/SerializersModule?): com.google.firebase.dataconnect/MutationRef<#A, #A1> // com.google.firebase.dataconnect/MutationRef.withVariablesSerializer|withVariablesSerializer(0:0;kotlinx.serialization.SerializationStrategy<0:0>;kotlinx.serialization.modules.SerializersModule?){0§<kotlin.Any?>}[0]
+    abstract fun copy(kotlin/String, #B, kotlinx.serialization/DeserializationStrategy<#A>, kotlinx.serialization/SerializationStrategy<#B>, com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType, kotlinx.serialization.modules/SerializersModule?, kotlinx.serialization.modules/SerializersModule?): com.google.firebase.dataconnect/MutationRef<#A, #B> // com.google.firebase.dataconnect/MutationRef.copy|copy(kotlin.String;1:1;kotlinx.serialization.DeserializationStrategy<1:0>;kotlinx.serialization.SerializationStrategy<1:1>;com.google.firebase.dataconnect.FirebaseDataConnect.CallerSdkType;kotlinx.serialization.modules.SerializersModule?;kotlinx.serialization.modules.SerializersModule?){}[0]
+    abstract suspend fun execute(): com.google.firebase.dataconnect/MutationResult<#A, #B> // com.google.firebase.dataconnect/MutationRef.execute|execute(){}[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: kotlin/Any?> com.google.firebase.dataconnect/MutationResult : com.google.firebase.dataconnect/OperationResult<#A, #B> { // com.google.firebase.dataconnect/MutationResult|null[0]
+    abstract val ref // com.google.firebase.dataconnect/MutationResult.ref|{}ref[0]
+        abstract fun <get-ref>(): com.google.firebase.dataconnect/MutationRef<#A, #B> // com.google.firebase.dataconnect/MutationResult.ref.<get-ref>|<get-ref>(){}[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: kotlin/Any?> com.google.firebase.dataconnect/OperationRef { // com.google.firebase.dataconnect/OperationRef|null[0]
+    abstract val callerSdkType // com.google.firebase.dataconnect/OperationRef.callerSdkType|{}callerSdkType[0]
+        abstract fun <get-callerSdkType>(): com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType // com.google.firebase.dataconnect/OperationRef.callerSdkType.<get-callerSdkType>|<get-callerSdkType>(){}[0]
+    abstract val dataConnect // com.google.firebase.dataconnect/OperationRef.dataConnect|{}dataConnect[0]
+        abstract fun <get-dataConnect>(): com.google.firebase.dataconnect/FirebaseDataConnect // com.google.firebase.dataconnect/OperationRef.dataConnect.<get-dataConnect>|<get-dataConnect>(){}[0]
+    abstract val dataDeserializer // com.google.firebase.dataconnect/OperationRef.dataDeserializer|{}dataDeserializer[0]
+        abstract fun <get-dataDeserializer>(): kotlinx.serialization/DeserializationStrategy<#A> // com.google.firebase.dataconnect/OperationRef.dataDeserializer.<get-dataDeserializer>|<get-dataDeserializer>(){}[0]
+    abstract val dataSerializersModule // com.google.firebase.dataconnect/OperationRef.dataSerializersModule|{}dataSerializersModule[0]
+        abstract fun <get-dataSerializersModule>(): kotlinx.serialization.modules/SerializersModule? // com.google.firebase.dataconnect/OperationRef.dataSerializersModule.<get-dataSerializersModule>|<get-dataSerializersModule>(){}[0]
+    abstract val operationName // com.google.firebase.dataconnect/OperationRef.operationName|{}operationName[0]
+        abstract fun <get-operationName>(): kotlin/String // com.google.firebase.dataconnect/OperationRef.operationName.<get-operationName>|<get-operationName>(){}[0]
+    abstract val variables // com.google.firebase.dataconnect/OperationRef.variables|{}variables[0]
+        abstract fun <get-variables>(): #B // com.google.firebase.dataconnect/OperationRef.variables.<get-variables>|<get-variables>(){}[0]
+    abstract val variablesSerializer // com.google.firebase.dataconnect/OperationRef.variablesSerializer|{}variablesSerializer[0]
+        abstract fun <get-variablesSerializer>(): kotlinx.serialization/SerializationStrategy<#B> // com.google.firebase.dataconnect/OperationRef.variablesSerializer.<get-variablesSerializer>|<get-variablesSerializer>(){}[0]
+    abstract val variablesSerializersModule // com.google.firebase.dataconnect/OperationRef.variablesSerializersModule|{}variablesSerializersModule[0]
+        abstract fun <get-variablesSerializersModule>(): kotlinx.serialization.modules/SerializersModule? // com.google.firebase.dataconnect/OperationRef.variablesSerializersModule.<get-variablesSerializersModule>|<get-variablesSerializersModule>(){}[0]
+
+    abstract fun <#A1: kotlin/Any?> withDataDeserializer(kotlinx.serialization/DeserializationStrategy<#A1>, kotlinx.serialization.modules/SerializersModule? = ...): com.google.firebase.dataconnect/OperationRef<#A1, #B> // com.google.firebase.dataconnect/OperationRef.withDataDeserializer|withDataDeserializer(kotlinx.serialization.DeserializationStrategy<0:0>;kotlinx.serialization.modules.SerializersModule?){0§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?> withVariablesSerializer(#A1, kotlinx.serialization/SerializationStrategy<#A1>, kotlinx.serialization.modules/SerializersModule? = ...): com.google.firebase.dataconnect/OperationRef<#A, #A1> // com.google.firebase.dataconnect/OperationRef.withVariablesSerializer|withVariablesSerializer(0:0;kotlinx.serialization.SerializationStrategy<0:0>;kotlinx.serialization.modules.SerializersModule?){0§<kotlin.Any?>}[0]
+    abstract fun copy(kotlin/String = ..., #B = ..., kotlinx.serialization/DeserializationStrategy<#A> = ..., kotlinx.serialization/SerializationStrategy<#B> = ..., com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType = ..., kotlinx.serialization.modules/SerializersModule? = ..., kotlinx.serialization.modules/SerializersModule? = ...): com.google.firebase.dataconnect/OperationRef<#A, #B> // com.google.firebase.dataconnect/OperationRef.copy|copy(kotlin.String;1:1;kotlinx.serialization.DeserializationStrategy<1:0>;kotlinx.serialization.SerializationStrategy<1:1>;com.google.firebase.dataconnect.FirebaseDataConnect.CallerSdkType;kotlinx.serialization.modules.SerializersModule?;kotlinx.serialization.modules.SerializersModule?){}[0]
+    abstract fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/OperationRef.equals|equals(kotlin.Any?){}[0]
+    abstract fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/OperationRef.hashCode|hashCode(){}[0]
+    abstract fun toString(): kotlin/String // com.google.firebase.dataconnect/OperationRef.toString|toString(){}[0]
+    abstract suspend fun execute(): com.google.firebase.dataconnect/OperationResult<#A, #B> // com.google.firebase.dataconnect/OperationRef.execute|execute(){}[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: kotlin/Any?> com.google.firebase.dataconnect/OperationResult { // com.google.firebase.dataconnect/OperationResult|null[0]
+    abstract val data // com.google.firebase.dataconnect/OperationResult.data|{}data[0]
+        abstract fun <get-data>(): #A // com.google.firebase.dataconnect/OperationResult.data.<get-data>|<get-data>(){}[0]
+    abstract val ref // com.google.firebase.dataconnect/OperationResult.ref|{}ref[0]
+        abstract fun <get-ref>(): com.google.firebase.dataconnect/OperationRef<#A, #B> // com.google.firebase.dataconnect/OperationResult.ref.<get-ref>|<get-ref>(){}[0]
+
+    abstract fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/OperationResult.equals|equals(kotlin.Any?){}[0]
+    abstract fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/OperationResult.hashCode|hashCode(){}[0]
+    abstract fun toString(): kotlin/String // com.google.firebase.dataconnect/OperationResult.toString|toString(){}[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: kotlin/Any?> com.google.firebase.dataconnect/QueryRef : com.google.firebase.dataconnect/OperationRef<#A, #B> { // com.google.firebase.dataconnect/QueryRef|null[0]
+    abstract fun <#A1: kotlin/Any?> withDataDeserializer(kotlinx.serialization/DeserializationStrategy<#A1>, kotlinx.serialization.modules/SerializersModule?): com.google.firebase.dataconnect/QueryRef<#A1, #B> // com.google.firebase.dataconnect/QueryRef.withDataDeserializer|withDataDeserializer(kotlinx.serialization.DeserializationStrategy<0:0>;kotlinx.serialization.modules.SerializersModule?){0§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?> withVariablesSerializer(#A1, kotlinx.serialization/SerializationStrategy<#A1>, kotlinx.serialization.modules/SerializersModule?): com.google.firebase.dataconnect/QueryRef<#A, #A1> // com.google.firebase.dataconnect/QueryRef.withVariablesSerializer|withVariablesSerializer(0:0;kotlinx.serialization.SerializationStrategy<0:0>;kotlinx.serialization.modules.SerializersModule?){0§<kotlin.Any?>}[0]
+    abstract fun copy(kotlin/String, #B, kotlinx.serialization/DeserializationStrategy<#A>, kotlinx.serialization/SerializationStrategy<#B>, com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType, kotlinx.serialization.modules/SerializersModule?, kotlinx.serialization.modules/SerializersModule?): com.google.firebase.dataconnect/QueryRef<#A, #B> // com.google.firebase.dataconnect/QueryRef.copy|copy(kotlin.String;1:1;kotlinx.serialization.DeserializationStrategy<1:0>;kotlinx.serialization.SerializationStrategy<1:1>;com.google.firebase.dataconnect.FirebaseDataConnect.CallerSdkType;kotlinx.serialization.modules.SerializersModule?;kotlinx.serialization.modules.SerializersModule?){}[0]
+    abstract fun subscribe(): com.google.firebase.dataconnect/QuerySubscription<#A, #B> // com.google.firebase.dataconnect/QueryRef.subscribe|subscribe(){}[0]
+    abstract suspend fun execute(): com.google.firebase.dataconnect/QueryResult<#A, #B> // com.google.firebase.dataconnect/QueryRef.execute|execute(){}[0]
+    abstract suspend fun execute(com.google.firebase.dataconnect/QueryRef.FetchPolicy): com.google.firebase.dataconnect/QueryResult<#A, #B> // com.google.firebase.dataconnect/QueryRef.execute|execute(com.google.firebase.dataconnect.QueryRef.FetchPolicy){}[0]
+
+    final enum class FetchPolicy : kotlin/Enum<com.google.firebase.dataconnect/QueryRef.FetchPolicy> { // com.google.firebase.dataconnect/QueryRef.FetchPolicy|null[0]
+        enum entry CACHE_ONLY // com.google.firebase.dataconnect/QueryRef.FetchPolicy.CACHE_ONLY|null[0]
+        enum entry PREFER_CACHE // com.google.firebase.dataconnect/QueryRef.FetchPolicy.PREFER_CACHE|null[0]
+        enum entry SERVER_ONLY // com.google.firebase.dataconnect/QueryRef.FetchPolicy.SERVER_ONLY|null[0]
+
+        final val entries // com.google.firebase.dataconnect/QueryRef.FetchPolicy.entries|#static{}entries[0]
+            final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.dataconnect/QueryRef.FetchPolicy> // com.google.firebase.dataconnect/QueryRef.FetchPolicy.entries.<get-entries>|<get-entries>#static(){}[0]
+
+        final fun valueOf(kotlin/String): com.google.firebase.dataconnect/QueryRef.FetchPolicy // com.google.firebase.dataconnect/QueryRef.FetchPolicy.valueOf|valueOf#static(kotlin.String){}[0]
+        final fun values(): kotlin/Array<com.google.firebase.dataconnect/QueryRef.FetchPolicy> // com.google.firebase.dataconnect/QueryRef.FetchPolicy.values|values#static(){}[0]
+    }
+}
+
+abstract interface <#A: kotlin/Any?, #B: kotlin/Any?> com.google.firebase.dataconnect/QueryResult : com.google.firebase.dataconnect/OperationResult<#A, #B> { // com.google.firebase.dataconnect/QueryResult|null[0]
+    abstract val dataSource // com.google.firebase.dataconnect/QueryResult.dataSource|{}dataSource[0]
+        abstract fun <get-dataSource>(): com.google.firebase.dataconnect/DataSource // com.google.firebase.dataconnect/QueryResult.dataSource.<get-dataSource>|<get-dataSource>(){}[0]
+    abstract val ref // com.google.firebase.dataconnect/QueryResult.ref|{}ref[0]
+        abstract fun <get-ref>(): com.google.firebase.dataconnect/QueryRef<#A, #B> // com.google.firebase.dataconnect/QueryResult.ref.<get-ref>|<get-ref>(){}[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: kotlin/Any?> com.google.firebase.dataconnect/QuerySubscription { // com.google.firebase.dataconnect/QuerySubscription|null[0]
+    abstract val flow // com.google.firebase.dataconnect/QuerySubscription.flow|{}flow[0]
+        abstract fun <get-flow>(): kotlinx.coroutines.flow/Flow<com.google.firebase.dataconnect/QuerySubscriptionResult<#A, #B>> // com.google.firebase.dataconnect/QuerySubscription.flow.<get-flow>|<get-flow>(){}[0]
+    abstract val query // com.google.firebase.dataconnect/QuerySubscription.query|{}query[0]
+        abstract fun <get-query>(): com.google.firebase.dataconnect/QueryRef<#A, #B> // com.google.firebase.dataconnect/QuerySubscription.query.<get-query>|<get-query>(){}[0]
+
+    abstract fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/QuerySubscription.equals|equals(kotlin.Any?){}[0]
+    abstract fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/QuerySubscription.hashCode|hashCode(){}[0]
+    abstract fun toString(): kotlin/String // com.google.firebase.dataconnect/QuerySubscription.toString|toString(){}[0]
+}
+
+abstract interface <#A: kotlin/Any?, #B: kotlin/Any?> com.google.firebase.dataconnect/QuerySubscriptionResult { // com.google.firebase.dataconnect/QuerySubscriptionResult|null[0]
+    abstract val query // com.google.firebase.dataconnect/QuerySubscriptionResult.query|{}query[0]
+        abstract fun <get-query>(): com.google.firebase.dataconnect/QueryRef<#A, #B> // com.google.firebase.dataconnect/QuerySubscriptionResult.query.<get-query>|<get-query>(){}[0]
+    abstract val result // com.google.firebase.dataconnect/QuerySubscriptionResult.result|{}result[0]
+        abstract fun <get-result>(): kotlin/Result<com.google.firebase.dataconnect/QueryResult<#A, #B>> // com.google.firebase.dataconnect/QuerySubscriptionResult.result.<get-result>|<get-result>(){}[0]
+
+    abstract fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/QuerySubscriptionResult.equals|equals(kotlin.Any?){}[0]
+    abstract fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/QuerySubscriptionResult.hashCode|hashCode(){}[0]
+    abstract fun toString(): kotlin/String // com.google.firebase.dataconnect/QuerySubscriptionResult.toString|toString(){}[0]
+}
+
+abstract interface <#A: kotlin/Any?> com.google.firebase.dataconnect/DataConnectOperationFailureResponse { // com.google.firebase.dataconnect/DataConnectOperationFailureResponse|null[0]
+    abstract val data // com.google.firebase.dataconnect/DataConnectOperationFailureResponse.data|{}data[0]
+        abstract fun <get-data>(): #A? // com.google.firebase.dataconnect/DataConnectOperationFailureResponse.data.<get-data>|<get-data>(){}[0]
+    abstract val errors // com.google.firebase.dataconnect/DataConnectOperationFailureResponse.errors|{}errors[0]
+        abstract fun <get-errors>(): kotlin.collections/List<com.google.firebase.dataconnect/DataConnectOperationFailureResponse.ErrorInfo> // com.google.firebase.dataconnect/DataConnectOperationFailureResponse.errors.<get-errors>|<get-errors>(){}[0]
+    abstract val rawData // com.google.firebase.dataconnect/DataConnectOperationFailureResponse.rawData|{}rawData[0]
+        abstract fun <get-rawData>(): kotlin.collections/Map<kotlin/String, kotlin/Any?>? // com.google.firebase.dataconnect/DataConnectOperationFailureResponse.rawData.<get-rawData>|<get-rawData>(){}[0]
+
+    abstract fun toString(): kotlin/String // com.google.firebase.dataconnect/DataConnectOperationFailureResponse.toString|toString(){}[0]
+
+    abstract interface ErrorInfo { // com.google.firebase.dataconnect/DataConnectOperationFailureResponse.ErrorInfo|null[0]
+        abstract val message // com.google.firebase.dataconnect/DataConnectOperationFailureResponse.ErrorInfo.message|{}message[0]
+            abstract fun <get-message>(): kotlin/String // com.google.firebase.dataconnect/DataConnectOperationFailureResponse.ErrorInfo.message.<get-message>|<get-message>(){}[0]
+        abstract val path // com.google.firebase.dataconnect/DataConnectOperationFailureResponse.ErrorInfo.path|{}path[0]
+            abstract fun <get-path>(): kotlin.collections/List<com.google.firebase.dataconnect/DataConnectPathSegment> // com.google.firebase.dataconnect/DataConnectOperationFailureResponse.ErrorInfo.path.<get-path>|<get-path>(){}[0]
+
+        abstract fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/DataConnectOperationFailureResponse.ErrorInfo.equals|equals(kotlin.Any?){}[0]
+        abstract fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/DataConnectOperationFailureResponse.ErrorInfo.hashCode|hashCode(){}[0]
+        abstract fun toString(): kotlin/String // com.google.firebase.dataconnect/DataConnectOperationFailureResponse.ErrorInfo.toString|toString(){}[0]
+    }
+}
+
+abstract interface com.google.firebase.dataconnect/FirebaseDataConnect : kotlin/AutoCloseable { // com.google.firebase.dataconnect/FirebaseDataConnect|null[0]
+    abstract val app // com.google.firebase.dataconnect/FirebaseDataConnect.app|{}app[0]
+        abstract fun <get-app>(): com.google.firebase/FirebaseApp // com.google.firebase.dataconnect/FirebaseDataConnect.app.<get-app>|<get-app>(){}[0]
+    abstract val config // com.google.firebase.dataconnect/FirebaseDataConnect.config|{}config[0]
+        abstract fun <get-config>(): com.google.firebase.dataconnect/ConnectorConfig // com.google.firebase.dataconnect/FirebaseDataConnect.config.<get-config>|<get-config>(){}[0]
+    abstract val settings // com.google.firebase.dataconnect/FirebaseDataConnect.settings|{}settings[0]
+        abstract fun <get-settings>(): com.google.firebase.dataconnect/DataConnectSettings // com.google.firebase.dataconnect/FirebaseDataConnect.settings.<get-settings>|<get-settings>(){}[0]
+
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?> mutation(kotlin/String, #B1, kotlinx.serialization/DeserializationStrategy<#A1>, kotlinx.serialization/SerializationStrategy<#B1>, kotlin/Function1<com.google.firebase.dataconnect/FirebaseDataConnect.MutationRefOptionsBuilder<#A1, #B1>, kotlin/Unit>? = ...): com.google.firebase.dataconnect/MutationRef<#A1, #B1> // com.google.firebase.dataconnect/FirebaseDataConnect.mutation|mutation(kotlin.String;0:1;kotlinx.serialization.DeserializationStrategy<0:0>;kotlinx.serialization.SerializationStrategy<0:1>;kotlin.Function1<com.google.firebase.dataconnect.FirebaseDataConnect.MutationRefOptionsBuilder<0:0,0:1>,kotlin.Unit>?){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?, #B1: kotlin/Any?> query(kotlin/String, #B1, kotlinx.serialization/DeserializationStrategy<#A1>, kotlinx.serialization/SerializationStrategy<#B1>, kotlin/Function1<com.google.firebase.dataconnect/FirebaseDataConnect.QueryRefOptionsBuilder<#A1, #B1>, kotlin/Unit>? = ...): com.google.firebase.dataconnect/QueryRef<#A1, #B1> // com.google.firebase.dataconnect/FirebaseDataConnect.query|query(kotlin.String;0:1;kotlinx.serialization.DeserializationStrategy<0:0>;kotlinx.serialization.SerializationStrategy<0:1>;kotlin.Function1<com.google.firebase.dataconnect.FirebaseDataConnect.QueryRefOptionsBuilder<0:0,0:1>,kotlin.Unit>?){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+    abstract fun close() // com.google.firebase.dataconnect/FirebaseDataConnect.close|close(){}[0]
+    abstract fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/FirebaseDataConnect.equals|equals(kotlin.Any?){}[0]
+    abstract fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/FirebaseDataConnect.hashCode|hashCode(){}[0]
+    abstract fun toString(): kotlin/String // com.google.firebase.dataconnect/FirebaseDataConnect.toString|toString(){}[0]
+    abstract fun useEmulator(kotlin/String = ..., kotlin/Int = ...) // com.google.firebase.dataconnect/FirebaseDataConnect.useEmulator|useEmulator(kotlin.String;kotlin.Int){}[0]
+    abstract suspend fun suspendingClose() // com.google.firebase.dataconnect/FirebaseDataConnect.suspendingClose|suspendingClose(){}[0]
+
+    final enum class CallerSdkType : kotlin/Enum<com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType> { // com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType|null[0]
+        enum entry Base // com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType.Base|null[0]
+        enum entry Generated // com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType.Generated|null[0]
+
+        final val entries // com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType.entries|#static{}entries[0]
+            final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType> // com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType.entries.<get-entries>|<get-entries>#static(){}[0]
+
+        final fun valueOf(kotlin/String): com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType // com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType.valueOf|valueOf#static(kotlin.String){}[0]
+        final fun values(): kotlin/Array<com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType> // com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType.values|values#static(){}[0]
+    }
+
+    abstract interface <#A1: kotlin/Any?, #B1: kotlin/Any?> MutationRefOptionsBuilder { // com.google.firebase.dataconnect/FirebaseDataConnect.MutationRefOptionsBuilder|null[0]
+        abstract var callerSdkType // com.google.firebase.dataconnect/FirebaseDataConnect.MutationRefOptionsBuilder.callerSdkType|{}callerSdkType[0]
+            abstract fun <get-callerSdkType>(): com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType? // com.google.firebase.dataconnect/FirebaseDataConnect.MutationRefOptionsBuilder.callerSdkType.<get-callerSdkType>|<get-callerSdkType>(){}[0]
+            abstract fun <set-callerSdkType>(com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType?) // com.google.firebase.dataconnect/FirebaseDataConnect.MutationRefOptionsBuilder.callerSdkType.<set-callerSdkType>|<set-callerSdkType>(com.google.firebase.dataconnect.FirebaseDataConnect.CallerSdkType?){}[0]
+        abstract var dataSerializersModule // com.google.firebase.dataconnect/FirebaseDataConnect.MutationRefOptionsBuilder.dataSerializersModule|{}dataSerializersModule[0]
+            abstract fun <get-dataSerializersModule>(): kotlinx.serialization.modules/SerializersModule? // com.google.firebase.dataconnect/FirebaseDataConnect.MutationRefOptionsBuilder.dataSerializersModule.<get-dataSerializersModule>|<get-dataSerializersModule>(){}[0]
+            abstract fun <set-dataSerializersModule>(kotlinx.serialization.modules/SerializersModule?) // com.google.firebase.dataconnect/FirebaseDataConnect.MutationRefOptionsBuilder.dataSerializersModule.<set-dataSerializersModule>|<set-dataSerializersModule>(kotlinx.serialization.modules.SerializersModule?){}[0]
+        abstract var variablesSerializersModule // com.google.firebase.dataconnect/FirebaseDataConnect.MutationRefOptionsBuilder.variablesSerializersModule|{}variablesSerializersModule[0]
+            abstract fun <get-variablesSerializersModule>(): kotlinx.serialization.modules/SerializersModule? // com.google.firebase.dataconnect/FirebaseDataConnect.MutationRefOptionsBuilder.variablesSerializersModule.<get-variablesSerializersModule>|<get-variablesSerializersModule>(){}[0]
+            abstract fun <set-variablesSerializersModule>(kotlinx.serialization.modules/SerializersModule?) // com.google.firebase.dataconnect/FirebaseDataConnect.MutationRefOptionsBuilder.variablesSerializersModule.<set-variablesSerializersModule>|<set-variablesSerializersModule>(kotlinx.serialization.modules.SerializersModule?){}[0]
+    }
+
+    abstract interface <#A1: kotlin/Any?, #B1: kotlin/Any?> QueryRefOptionsBuilder { // com.google.firebase.dataconnect/FirebaseDataConnect.QueryRefOptionsBuilder|null[0]
+        abstract var callerSdkType // com.google.firebase.dataconnect/FirebaseDataConnect.QueryRefOptionsBuilder.callerSdkType|{}callerSdkType[0]
+            abstract fun <get-callerSdkType>(): com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType? // com.google.firebase.dataconnect/FirebaseDataConnect.QueryRefOptionsBuilder.callerSdkType.<get-callerSdkType>|<get-callerSdkType>(){}[0]
+            abstract fun <set-callerSdkType>(com.google.firebase.dataconnect/FirebaseDataConnect.CallerSdkType?) // com.google.firebase.dataconnect/FirebaseDataConnect.QueryRefOptionsBuilder.callerSdkType.<set-callerSdkType>|<set-callerSdkType>(com.google.firebase.dataconnect.FirebaseDataConnect.CallerSdkType?){}[0]
+        abstract var dataSerializersModule // com.google.firebase.dataconnect/FirebaseDataConnect.QueryRefOptionsBuilder.dataSerializersModule|{}dataSerializersModule[0]
+            abstract fun <get-dataSerializersModule>(): kotlinx.serialization.modules/SerializersModule? // com.google.firebase.dataconnect/FirebaseDataConnect.QueryRefOptionsBuilder.dataSerializersModule.<get-dataSerializersModule>|<get-dataSerializersModule>(){}[0]
+            abstract fun <set-dataSerializersModule>(kotlinx.serialization.modules/SerializersModule?) // com.google.firebase.dataconnect/FirebaseDataConnect.QueryRefOptionsBuilder.dataSerializersModule.<set-dataSerializersModule>|<set-dataSerializersModule>(kotlinx.serialization.modules.SerializersModule?){}[0]
+        abstract var variablesSerializersModule // com.google.firebase.dataconnect/FirebaseDataConnect.QueryRefOptionsBuilder.variablesSerializersModule|{}variablesSerializersModule[0]
+            abstract fun <get-variablesSerializersModule>(): kotlinx.serialization.modules/SerializersModule? // com.google.firebase.dataconnect/FirebaseDataConnect.QueryRefOptionsBuilder.variablesSerializersModule.<get-variablesSerializersModule>|<get-variablesSerializersModule>(){}[0]
+            abstract fun <set-variablesSerializersModule>(kotlinx.serialization.modules/SerializersModule?) // com.google.firebase.dataconnect/FirebaseDataConnect.QueryRefOptionsBuilder.variablesSerializersModule.<set-variablesSerializersModule>|<set-variablesSerializersModule>(kotlinx.serialization.modules.SerializersModule?){}[0]
+    }
+
+    final object Companion // com.google.firebase.dataconnect/FirebaseDataConnect.Companion|null[0]
+}
+
+sealed interface <#A: out kotlin/Any?> com.google.firebase.dataconnect/OptionalVariable { // com.google.firebase.dataconnect/OptionalVariable|null[0]
+    abstract fun valueOrNull(): #A? // com.google.firebase.dataconnect/OptionalVariable.valueOrNull|valueOrNull(){}[0]
+    abstract fun valueOrThrow(): #A // com.google.firebase.dataconnect/OptionalVariable.valueOrThrow|valueOrThrow(){}[0]
+
+    final class <#A1: kotlin/Any?> Serializer : kotlinx.serialization/KSerializer<com.google.firebase.dataconnect/OptionalVariable<#A1>> { // com.google.firebase.dataconnect/OptionalVariable.Serializer|null[0]
+        constructor <init>(kotlinx.serialization/KSerializer<#A1>) // com.google.firebase.dataconnect/OptionalVariable.Serializer.<init>|<init>(kotlinx.serialization.KSerializer<1:0>){}[0]
+
+        final val descriptor // com.google.firebase.dataconnect/OptionalVariable.Serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // com.google.firebase.dataconnect/OptionalVariable.Serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): com.google.firebase.dataconnect/OptionalVariable<#A1> // com.google.firebase.dataconnect/OptionalVariable.Serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, com.google.firebase.dataconnect/OptionalVariable<#A1>) // com.google.firebase.dataconnect/OptionalVariable.Serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;com.google.firebase.dataconnect.OptionalVariable<1:0>){}[0]
+    }
+
+    final class <#A1: kotlin/Any?> Value : com.google.firebase.dataconnect/OptionalVariable<#A1> { // com.google.firebase.dataconnect/OptionalVariable.Value|null[0]
+        constructor <init>(#A1) // com.google.firebase.dataconnect/OptionalVariable.Value.<init>|<init>(1:0){}[0]
+
+        final val value // com.google.firebase.dataconnect/OptionalVariable.Value.value|{}value[0]
+            final fun <get-value>(): #A1 // com.google.firebase.dataconnect/OptionalVariable.Value.value.<get-value>|<get-value>(){}[0]
+
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/OptionalVariable.Value.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/OptionalVariable.Value.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.google.firebase.dataconnect/OptionalVariable.Value.toString|toString(){}[0]
+        final fun valueOrNull(): #A1 // com.google.firebase.dataconnect/OptionalVariable.Value.valueOrNull|valueOrNull(){}[0]
+        final fun valueOrThrow(): #A1 // com.google.firebase.dataconnect/OptionalVariable.Value.valueOrThrow|valueOrThrow(){}[0]
+    }
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // com.google.firebase.dataconnect/OptionalVariable.Companion|null[0]
+        final fun <#A2: kotlin/Any?> serializer(kotlinx.serialization/KSerializer<#A2>): kotlinx.serialization/KSerializer<com.google.firebase.dataconnect/OptionalVariable<#A2>> // com.google.firebase.dataconnect/OptionalVariable.Companion.serializer|serializer(kotlinx.serialization.KSerializer<0:0>){0§<kotlin.Any?>}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // com.google.firebase.dataconnect/OptionalVariable.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+
+    final object Undefined : com.google.firebase.dataconnect/OptionalVariable<kotlin/Nothing> { // com.google.firebase.dataconnect/OptionalVariable.Undefined|null[0]
+        final fun toString(): kotlin/String // com.google.firebase.dataconnect/OptionalVariable.Undefined.toString|toString(){}[0]
+        final fun valueOrNull(): kotlin/Nothing? // com.google.firebase.dataconnect/OptionalVariable.Undefined.valueOrNull|valueOrNull(){}[0]
+        final fun valueOrThrow(): kotlin/Nothing // com.google.firebase.dataconnect/OptionalVariable.Undefined.valueOrThrow|valueOrThrow(){}[0]
+    }
+}
+
+sealed interface <#A: out kotlin/Enum<out #A>> com.google.firebase.dataconnect/EnumValue { // com.google.firebase.dataconnect/EnumValue|null[0]
+    abstract val stringValue // com.google.firebase.dataconnect/EnumValue.stringValue|{}stringValue[0]
+        abstract fun <get-stringValue>(): kotlin/String // com.google.firebase.dataconnect/EnumValue.stringValue.<get-stringValue>|<get-stringValue>(){}[0]
+    abstract val value // com.google.firebase.dataconnect/EnumValue.value|{}value[0]
+        abstract fun <get-value>(): #A? // com.google.firebase.dataconnect/EnumValue.value.<get-value>|<get-value>(){}[0]
+
+    final class <#A1: kotlin/Enum<#A1>> Known : com.google.firebase.dataconnect/EnumValue<#A1> { // com.google.firebase.dataconnect/EnumValue.Known|null[0]
+        constructor <init>(#A1) // com.google.firebase.dataconnect/EnumValue.Known.<init>|<init>(1:0){}[0]
+
+        final val stringValue // com.google.firebase.dataconnect/EnumValue.Known.stringValue|{}stringValue[0]
+            final fun <get-stringValue>(): kotlin/String // com.google.firebase.dataconnect/EnumValue.Known.stringValue.<get-stringValue>|<get-stringValue>(){}[0]
+        final val value // com.google.firebase.dataconnect/EnumValue.Known.value|{}value[0]
+            final fun <get-value>(): #A1 // com.google.firebase.dataconnect/EnumValue.Known.value.<get-value>|<get-value>(){}[0]
+
+        final fun copy(#A1 = ...): com.google.firebase.dataconnect/EnumValue.Known<#A1> // com.google.firebase.dataconnect/EnumValue.Known.copy|copy(1:0){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/EnumValue.Known.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/EnumValue.Known.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.google.firebase.dataconnect/EnumValue.Known.toString|toString(){}[0]
+    }
+
+    final class Unknown : com.google.firebase.dataconnect/EnumValue<kotlin/Nothing> { // com.google.firebase.dataconnect/EnumValue.Unknown|null[0]
+        constructor <init>(kotlin/String) // com.google.firebase.dataconnect/EnumValue.Unknown.<init>|<init>(kotlin.String){}[0]
+
+        final val stringValue // com.google.firebase.dataconnect/EnumValue.Unknown.stringValue|{}stringValue[0]
+            final fun <get-stringValue>(): kotlin/String // com.google.firebase.dataconnect/EnumValue.Unknown.stringValue.<get-stringValue>|<get-stringValue>(){}[0]
+        final val value // com.google.firebase.dataconnect/EnumValue.Unknown.value|{}value[0]
+            final fun <get-value>(): kotlin/Nothing? // com.google.firebase.dataconnect/EnumValue.Unknown.value.<get-value>|<get-value>(){}[0]
+
+        final fun copy(kotlin/String = ...): com.google.firebase.dataconnect/EnumValue.Unknown // com.google.firebase.dataconnect/EnumValue.Unknown.copy|copy(kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/EnumValue.Unknown.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/EnumValue.Unknown.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.google.firebase.dataconnect/EnumValue.Unknown.toString|toString(){}[0]
+    }
+}
+
+sealed interface com.google.firebase.dataconnect/DataConnectPathSegment { // com.google.firebase.dataconnect/DataConnectPathSegment|null[0]
+    final value class Field : com.google.firebase.dataconnect/DataConnectPathSegment { // com.google.firebase.dataconnect/DataConnectPathSegment.Field|null[0]
+        constructor <init>(kotlin/String) // com.google.firebase.dataconnect/DataConnectPathSegment.Field.<init>|<init>(kotlin.String){}[0]
+
+        final val field // com.google.firebase.dataconnect/DataConnectPathSegment.Field.field|{}field[0]
+            final fun <get-field>(): kotlin/String // com.google.firebase.dataconnect/DataConnectPathSegment.Field.field.<get-field>|<get-field>(){}[0]
+
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/DataConnectPathSegment.Field.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/DataConnectPathSegment.Field.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.google.firebase.dataconnect/DataConnectPathSegment.Field.toString|toString(){}[0]
+    }
+
+    final value class ListIndex : com.google.firebase.dataconnect/DataConnectPathSegment { // com.google.firebase.dataconnect/DataConnectPathSegment.ListIndex|null[0]
+        constructor <init>(kotlin/Int) // com.google.firebase.dataconnect/DataConnectPathSegment.ListIndex.<init>|<init>(kotlin.Int){}[0]
+
+        final val index // com.google.firebase.dataconnect/DataConnectPathSegment.ListIndex.index|{}index[0]
+            final fun <get-index>(): kotlin/Int // com.google.firebase.dataconnect/DataConnectPathSegment.ListIndex.index.<get-index>|<get-index>(){}[0]
+
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/DataConnectPathSegment.ListIndex.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/DataConnectPathSegment.ListIndex.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.google.firebase.dataconnect/DataConnectPathSegment.ListIndex.toString|toString(){}[0]
+    }
+}
+
+final class com.google.firebase.dataconnect/AnyValue { // com.google.firebase.dataconnect/AnyValue|null[0]
+    constructor <init>(kotlin.collections/List<kotlin/Any?>) // com.google.firebase.dataconnect/AnyValue.<init>|<init>(kotlin.collections.List<kotlin.Any?>){}[0]
+    constructor <init>(kotlin.collections/Map<kotlin/String, kotlin/Any?>) // com.google.firebase.dataconnect/AnyValue.<init>|<init>(kotlin.collections.Map<kotlin.String,kotlin.Any?>){}[0]
+    constructor <init>(kotlin/Boolean) // com.google.firebase.dataconnect/AnyValue.<init>|<init>(kotlin.Boolean){}[0]
+    constructor <init>(kotlin/Double) // com.google.firebase.dataconnect/AnyValue.<init>|<init>(kotlin.Double){}[0]
+    constructor <init>(kotlin/String) // com.google.firebase.dataconnect/AnyValue.<init>|<init>(kotlin.String){}[0]
+
+    final val value // com.google.firebase.dataconnect/AnyValue.value|{}value[0]
+        final fun <get-value>(): kotlin/Any // com.google.firebase.dataconnect/AnyValue.value.<get-value>|<get-value>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/AnyValue.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/AnyValue.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.dataconnect/AnyValue.toString|toString(){}[0]
+
+    final object Companion { // com.google.firebase.dataconnect/AnyValue.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<com.google.firebase.dataconnect/AnyValue> // com.google.firebase.dataconnect/AnyValue.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class com.google.firebase.dataconnect/CacheSettings { // com.google.firebase.dataconnect/CacheSettings|null[0]
+    constructor <init>(com.google.firebase.dataconnect/CacheSettings.Storage = ..., kotlin.time/Duration = ...) // com.google.firebase.dataconnect/CacheSettings.<init>|<init>(com.google.firebase.dataconnect.CacheSettings.Storage;kotlin.time.Duration){}[0]
+
+    final val maxAge // com.google.firebase.dataconnect/CacheSettings.maxAge|{}maxAge[0]
+        final fun <get-maxAge>(): kotlin.time/Duration // com.google.firebase.dataconnect/CacheSettings.maxAge.<get-maxAge>|<get-maxAge>(){}[0]
+    final val storage // com.google.firebase.dataconnect/CacheSettings.storage|{}storage[0]
+        final fun <get-storage>(): com.google.firebase.dataconnect/CacheSettings.Storage // com.google.firebase.dataconnect/CacheSettings.storage.<get-storage>|<get-storage>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/CacheSettings.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/CacheSettings.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.dataconnect/CacheSettings.toString|toString(){}[0]
+
+    final enum class Storage : kotlin/Enum<com.google.firebase.dataconnect/CacheSettings.Storage> { // com.google.firebase.dataconnect/CacheSettings.Storage|null[0]
+        enum entry MEMORY // com.google.firebase.dataconnect/CacheSettings.Storage.MEMORY|null[0]
+        enum entry PERSISTENT // com.google.firebase.dataconnect/CacheSettings.Storage.PERSISTENT|null[0]
+
+        final val entries // com.google.firebase.dataconnect/CacheSettings.Storage.entries|#static{}entries[0]
+            final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.dataconnect/CacheSettings.Storage> // com.google.firebase.dataconnect/CacheSettings.Storage.entries.<get-entries>|<get-entries>#static(){}[0]
+
+        final fun valueOf(kotlin/String): com.google.firebase.dataconnect/CacheSettings.Storage // com.google.firebase.dataconnect/CacheSettings.Storage.valueOf|valueOf#static(kotlin.String){}[0]
+        final fun values(): kotlin/Array<com.google.firebase.dataconnect/CacheSettings.Storage> // com.google.firebase.dataconnect/CacheSettings.Storage.values|values#static(){}[0]
+    }
+}
+
+final class com.google.firebase.dataconnect/ConnectorConfig { // com.google.firebase.dataconnect/ConnectorConfig|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin/String) // com.google.firebase.dataconnect/ConnectorConfig.<init>|<init>(kotlin.String;kotlin.String;kotlin.String){}[0]
+
+    final val connector // com.google.firebase.dataconnect/ConnectorConfig.connector|{}connector[0]
+        final fun <get-connector>(): kotlin/String // com.google.firebase.dataconnect/ConnectorConfig.connector.<get-connector>|<get-connector>(){}[0]
+    final val location // com.google.firebase.dataconnect/ConnectorConfig.location|{}location[0]
+        final fun <get-location>(): kotlin/String // com.google.firebase.dataconnect/ConnectorConfig.location.<get-location>|<get-location>(){}[0]
+    final val serviceId // com.google.firebase.dataconnect/ConnectorConfig.serviceId|{}serviceId[0]
+        final fun <get-serviceId>(): kotlin/String // com.google.firebase.dataconnect/ConnectorConfig.serviceId.<get-serviceId>|<get-serviceId>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/ConnectorConfig.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/ConnectorConfig.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.dataconnect/ConnectorConfig.toString|toString(){}[0]
+}
+
+final class com.google.firebase.dataconnect/DataConnectSettings { // com.google.firebase.dataconnect/DataConnectSettings|null[0]
+    constructor <init>(kotlin/String = ..., kotlin/Boolean = ..., com.google.firebase.dataconnect/CacheSettings? = ...) // com.google.firebase.dataconnect/DataConnectSettings.<init>|<init>(kotlin.String;kotlin.Boolean;com.google.firebase.dataconnect.CacheSettings?){}[0]
+
+    final val cacheSettings // com.google.firebase.dataconnect/DataConnectSettings.cacheSettings|{}cacheSettings[0]
+        final fun <get-cacheSettings>(): com.google.firebase.dataconnect/CacheSettings? // com.google.firebase.dataconnect/DataConnectSettings.cacheSettings.<get-cacheSettings>|<get-cacheSettings>(){}[0]
+    final val host // com.google.firebase.dataconnect/DataConnectSettings.host|{}host[0]
+        final fun <get-host>(): kotlin/String // com.google.firebase.dataconnect/DataConnectSettings.host.<get-host>|<get-host>(){}[0]
+    final val sslEnabled // com.google.firebase.dataconnect/DataConnectSettings.sslEnabled|{}sslEnabled[0]
+        final fun <get-sslEnabled>(): kotlin/Boolean // com.google.firebase.dataconnect/DataConnectSettings.sslEnabled.<get-sslEnabled>|<get-sslEnabled>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/DataConnectSettings.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/DataConnectSettings.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.dataconnect/DataConnectSettings.toString|toString(){}[0]
+}
+
+final class com.google.firebase.dataconnect/LocalDate { // com.google.firebase.dataconnect/LocalDate|null[0]
+    constructor <init>(kotlin/Int, kotlin/Int, kotlin/Int) // com.google.firebase.dataconnect/LocalDate.<init>|<init>(kotlin.Int;kotlin.Int;kotlin.Int){}[0]
+
+    final val day // com.google.firebase.dataconnect/LocalDate.day|{}day[0]
+        final fun <get-day>(): kotlin/Int // com.google.firebase.dataconnect/LocalDate.day.<get-day>|<get-day>(){}[0]
+    final val month // com.google.firebase.dataconnect/LocalDate.month|{}month[0]
+        final fun <get-month>(): kotlin/Int // com.google.firebase.dataconnect/LocalDate.month.<get-month>|<get-month>(){}[0]
+    final val year // com.google.firebase.dataconnect/LocalDate.year|{}year[0]
+        final fun <get-year>(): kotlin/Int // com.google.firebase.dataconnect/LocalDate.year.<get-year>|<get-year>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.dataconnect/LocalDate.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.dataconnect/LocalDate.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.dataconnect/LocalDate.toString|toString(){}[0]
+
+    final object Companion { // com.google.firebase.dataconnect/LocalDate.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<com.google.firebase.dataconnect/LocalDate> // com.google.firebase.dataconnect/LocalDate.Companion.serializer|serializer(){}[0]
+    }
+}
+
+open class <#A: kotlin/Enum<#A>> com.google.firebase.dataconnect.serializers/EnumValueSerializer : kotlinx.serialization/KSerializer<com.google.firebase.dataconnect/EnumValue<#A>> { // com.google.firebase.dataconnect.serializers/EnumValueSerializer|null[0]
+    constructor <init>(kotlin.collections/Iterable<#A>) // com.google.firebase.dataconnect.serializers/EnumValueSerializer.<init>|<init>(kotlin.collections.Iterable<1:0>){}[0]
+
+    open val descriptor // com.google.firebase.dataconnect.serializers/EnumValueSerializer.descriptor|{}descriptor[0]
+        open fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // com.google.firebase.dataconnect.serializers/EnumValueSerializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+    open fun deserialize(kotlinx.serialization.encoding/Decoder): com.google.firebase.dataconnect/EnumValue<#A> // com.google.firebase.dataconnect.serializers/EnumValueSerializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+    open fun serialize(kotlinx.serialization.encoding/Encoder, com.google.firebase.dataconnect/EnumValue<#A>) // com.google.firebase.dataconnect.serializers/EnumValueSerializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;com.google.firebase.dataconnect.EnumValue<1:0>){}[0]
+}
+
+open class com.google.firebase.dataconnect/AuthUserChangedException : com.google.firebase.dataconnect/DataConnectException { // com.google.firebase.dataconnect/AuthUserChangedException|null[0]
+    constructor <init>(kotlin/String, kotlin/Throwable? = ...) // com.google.firebase.dataconnect/AuthUserChangedException.<init>|<init>(kotlin.String;kotlin.Throwable?){}[0]
+}
+
+open class com.google.firebase.dataconnect/DataConnectException : kotlin/Exception { // com.google.firebase.dataconnect/DataConnectException|null[0]
+    constructor <init>(kotlin/String, kotlin/Throwable? = ...) // com.google.firebase.dataconnect/DataConnectException.<init>|<init>(kotlin.String;kotlin.Throwable?){}[0]
+}
+
+open class com.google.firebase.dataconnect/DataConnectOperationException : com.google.firebase.dataconnect/DataConnectException { // com.google.firebase.dataconnect/DataConnectOperationException|null[0]
+    constructor <init>(kotlin/String, kotlin/Throwable? = ..., com.google.firebase.dataconnect/DataConnectOperationFailureResponse<*>) // com.google.firebase.dataconnect/DataConnectOperationException.<init>|<init>(kotlin.String;kotlin.Throwable?;com.google.firebase.dataconnect.DataConnectOperationFailureResponse<*>){}[0]
+
+    final val response // com.google.firebase.dataconnect/DataConnectOperationException.response|{}response[0]
+        final fun <get-response>(): com.google.firebase.dataconnect/DataConnectOperationFailureResponse<*> // com.google.firebase.dataconnect/DataConnectOperationException.response.<get-response>|<get-response>(){}[0]
+}
+
+final object com.google.firebase.dataconnect.serializers/AnyValueSerializer : kotlinx.serialization/KSerializer<com.google.firebase.dataconnect/AnyValue> { // com.google.firebase.dataconnect.serializers/AnyValueSerializer|null[0]
+    final val descriptor // com.google.firebase.dataconnect.serializers/AnyValueSerializer.descriptor|{}descriptor[0]
+        final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // com.google.firebase.dataconnect.serializers/AnyValueSerializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+    final fun deserialize(kotlinx.serialization.encoding/Decoder): com.google.firebase.dataconnect/AnyValue // com.google.firebase.dataconnect.serializers/AnyValueSerializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+    final fun serialize(kotlinx.serialization.encoding/Encoder, com.google.firebase.dataconnect/AnyValue) // com.google.firebase.dataconnect.serializers/AnyValueSerializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;com.google.firebase.dataconnect.AnyValue){}[0]
+}
+
+final object com.google.firebase.dataconnect.serializers/KotlinxDatetimeLocalDateSerializer : kotlinx.serialization/KSerializer<kotlinx.datetime/LocalDate> { // com.google.firebase.dataconnect.serializers/KotlinxDatetimeLocalDateSerializer|null[0]
+    final val descriptor // com.google.firebase.dataconnect.serializers/KotlinxDatetimeLocalDateSerializer.descriptor|{}descriptor[0]
+        final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // com.google.firebase.dataconnect.serializers/KotlinxDatetimeLocalDateSerializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+    final fun deserialize(kotlinx.serialization.encoding/Decoder): kotlinx.datetime/LocalDate // com.google.firebase.dataconnect.serializers/KotlinxDatetimeLocalDateSerializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+    final fun serialize(kotlinx.serialization.encoding/Encoder, kotlinx.datetime/LocalDate) // com.google.firebase.dataconnect.serializers/KotlinxDatetimeLocalDateSerializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;kotlinx.datetime.LocalDate){}[0]
+}
+
+final object com.google.firebase.dataconnect.serializers/LocalDateSerializer : kotlinx.serialization/KSerializer<com.google.firebase.dataconnect/LocalDate> { // com.google.firebase.dataconnect.serializers/LocalDateSerializer|null[0]
+    final val descriptor // com.google.firebase.dataconnect.serializers/LocalDateSerializer.descriptor|{}descriptor[0]
+        final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // com.google.firebase.dataconnect.serializers/LocalDateSerializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+    final fun deserialize(kotlinx.serialization.encoding/Decoder): com.google.firebase.dataconnect/LocalDate // com.google.firebase.dataconnect.serializers/LocalDateSerializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+    final fun serialize(kotlinx.serialization.encoding/Encoder, com.google.firebase.dataconnect/LocalDate) // com.google.firebase.dataconnect.serializers/LocalDateSerializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;com.google.firebase.dataconnect.LocalDate){}[0]
+}
+
+final object com.google.firebase.dataconnect.serializers/TimestampSerializer : kotlinx.serialization/KSerializer<com.google.firebase/Timestamp> { // com.google.firebase.dataconnect.serializers/TimestampSerializer|null[0]
+    final val descriptor // com.google.firebase.dataconnect.serializers/TimestampSerializer.descriptor|{}descriptor[0]
+        final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // com.google.firebase.dataconnect.serializers/TimestampSerializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+    final fun deserialize(kotlinx.serialization.encoding/Decoder): com.google.firebase/Timestamp // com.google.firebase.dataconnect.serializers/TimestampSerializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+    final fun serialize(kotlinx.serialization.encoding/Encoder, com.google.firebase/Timestamp) // com.google.firebase.dataconnect.serializers/TimestampSerializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;com.google.firebase.Timestamp){}[0]
+}
+
+final object io.github.corneloaie.firebase.dataconnect.serializers/UuidSerializer : kotlinx.serialization/KSerializer<kotlin.uuid/Uuid> { // io.github.corneloaie.firebase.dataconnect.serializers/UuidSerializer|null[0]
+    final val descriptor // io.github.corneloaie.firebase.dataconnect.serializers/UuidSerializer.descriptor|{}descriptor[0]
+        final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.github.corneloaie.firebase.dataconnect.serializers/UuidSerializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+    final fun deserialize(kotlinx.serialization.encoding/Decoder): kotlin.uuid/Uuid // io.github.corneloaie.firebase.dataconnect.serializers/UuidSerializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+    final fun serialize(kotlinx.serialization.encoding/Encoder, kotlin.uuid/Uuid) // io.github.corneloaie.firebase.dataconnect.serializers/UuidSerializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;kotlin.uuid.Uuid){}[0]
+}
+
+final val com.google.firebase.dataconnect/logLevel // com.google.firebase.dataconnect/logLevel|@com.google.firebase.dataconnect.FirebaseDataConnect.Companion{}logLevel[0]
+    final fun (com.google.firebase.dataconnect/FirebaseDataConnect.Companion).<get-logLevel>(): kotlinx.coroutines.flow/MutableStateFlow<com.google.firebase.dataconnect/LogLevel> // com.google.firebase.dataconnect/logLevel.<get-logLevel>|<get-logLevel>@com.google.firebase.dataconnect.FirebaseDataConnect.Companion(){}[0]
+
+final fun (com.google.firebase.dataconnect/AnyValue.Companion).com.google.firebase.dataconnect/fromAny(kotlin/Any): com.google.firebase.dataconnect/AnyValue // com.google.firebase.dataconnect/fromAny|fromAny@com.google.firebase.dataconnect.AnyValue.Companion(kotlin.Any){}[0]
+final fun (com.google.firebase.dataconnect/AnyValue.Companion).com.google.firebase.dataconnect/fromAny(kotlin/Any?): com.google.firebase.dataconnect/AnyValue? // com.google.firebase.dataconnect/fromAny|fromAny@com.google.firebase.dataconnect.AnyValue.Companion(kotlin.Any?){}[0]
+final fun (com.google.firebase.dataconnect/CacheSettings).com.google.firebase.dataconnect/copy(com.google.firebase.dataconnect/CacheSettings.Storage = ..., kotlin.time/Duration = ...): com.google.firebase.dataconnect/CacheSettings // com.google.firebase.dataconnect/copy|copy@com.google.firebase.dataconnect.CacheSettings(com.google.firebase.dataconnect.CacheSettings.Storage;kotlin.time.Duration){}[0]
+final fun (com.google.firebase.dataconnect/ConnectorConfig).com.google.firebase.dataconnect/copy(kotlin/String = ..., kotlin/String = ..., kotlin/String = ...): com.google.firebase.dataconnect/ConnectorConfig // com.google.firebase.dataconnect/copy|copy@com.google.firebase.dataconnect.ConnectorConfig(kotlin.String;kotlin.String;kotlin.String){}[0]
+final fun (com.google.firebase.dataconnect/DataConnectSettings).com.google.firebase.dataconnect/copy(kotlin/String = ..., kotlin/Boolean = ..., com.google.firebase.dataconnect/CacheSettings? = ...): com.google.firebase.dataconnect/DataConnectSettings // com.google.firebase.dataconnect/copy|copy@com.google.firebase.dataconnect.DataConnectSettings(kotlin.String;kotlin.Boolean;com.google.firebase.dataconnect.CacheSettings?){}[0]
+final fun (com.google.firebase.dataconnect/FirebaseDataConnect.Companion).com.google.firebase.dataconnect/getInstance(com.google.firebase.dataconnect/ConnectorConfig, com.google.firebase.dataconnect/DataConnectSettings = ...): com.google.firebase.dataconnect/FirebaseDataConnect // com.google.firebase.dataconnect/getInstance|getInstance@com.google.firebase.dataconnect.FirebaseDataConnect.Companion(com.google.firebase.dataconnect.ConnectorConfig;com.google.firebase.dataconnect.DataConnectSettings){}[0]
+final fun (com.google.firebase.dataconnect/FirebaseDataConnect.Companion).com.google.firebase.dataconnect/getInstance(com.google.firebase/FirebaseApp, com.google.firebase.dataconnect/ConnectorConfig, com.google.firebase.dataconnect/DataConnectSettings = ...): com.google.firebase.dataconnect/FirebaseDataConnect // com.google.firebase.dataconnect/getInstance|getInstance@com.google.firebase.dataconnect.FirebaseDataConnect.Companion(com.google.firebase.FirebaseApp;com.google.firebase.dataconnect.ConnectorConfig;com.google.firebase.dataconnect.DataConnectSettings){}[0]
+final fun (com.google.firebase.dataconnect/LocalDate).com.google.firebase.dataconnect/copy(kotlin/Int = ..., kotlin/Int = ..., kotlin/Int = ...): com.google.firebase.dataconnect/LocalDate // com.google.firebase.dataconnect/copy|copy@com.google.firebase.dataconnect.LocalDate(kotlin.Int;kotlin.Int;kotlin.Int){}[0]
+final fun (com.google.firebase.dataconnect/LocalDate).com.google.firebase.dataconnect/toKotlinxLocalDate(): kotlinx.datetime/LocalDate // com.google.firebase.dataconnect/toKotlinxLocalDate|toKotlinxLocalDate@com.google.firebase.dataconnect.LocalDate(){}[0]
+final fun (kotlinx.datetime/LocalDate).com.google.firebase.dataconnect/toDataConnectLocalDate(): com.google.firebase.dataconnect/LocalDate // com.google.firebase.dataconnect/toDataConnectLocalDate|toDataConnectLocalDate@kotlinx.datetime.LocalDate(){}[0]
+final fun <#A: kotlin/Any?> (com.google.firebase.dataconnect/AnyValue).com.google.firebase.dataconnect/decode(kotlinx.serialization/DeserializationStrategy<#A>, kotlinx.serialization.modules/SerializersModule? = ...): #A // com.google.firebase.dataconnect/decode|decode@com.google.firebase.dataconnect.AnyValue(kotlinx.serialization.DeserializationStrategy<0:0>;kotlinx.serialization.modules.SerializersModule?){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (com.google.firebase.dataconnect/AnyValue.Companion).com.google.firebase.dataconnect/encode(#A, kotlinx.serialization/SerializationStrategy<#A>, kotlinx.serialization.modules/SerializersModule? = ...): com.google.firebase.dataconnect/AnyValue // com.google.firebase.dataconnect/encode|encode@com.google.firebase.dataconnect.AnyValue.Companion(0:0;kotlinx.serialization.SerializationStrategy<0:0>;kotlinx.serialization.modules.SerializersModule?){0§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?, #B: reified kotlin/Any?> (com.google.firebase.dataconnect/FirebaseDataConnect).io.github.corneloaie.firebase.dataconnect/mutation(kotlin/String, #B, noinline kotlin/Function1<com.google.firebase.dataconnect/FirebaseDataConnect.MutationRefOptionsBuilder<#A, #B>, kotlin/Unit>? = ...): com.google.firebase.dataconnect/MutationRef<#A, #B> // io.github.corneloaie.firebase.dataconnect/mutation|mutation@com.google.firebase.dataconnect.FirebaseDataConnect(kotlin.String;0:1;kotlin.Function1<com.google.firebase.dataconnect.FirebaseDataConnect.MutationRefOptionsBuilder<0:0,0:1>,kotlin.Unit>?){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?, #B: reified kotlin/Any?> (com.google.firebase.dataconnect/FirebaseDataConnect).io.github.corneloaie.firebase.dataconnect/query(kotlin/String, #B, noinline kotlin/Function1<com.google.firebase.dataconnect/FirebaseDataConnect.QueryRefOptionsBuilder<#A, #B>, kotlin/Unit>? = ...): com.google.firebase.dataconnect/QueryRef<#A, #B> // io.github.corneloaie.firebase.dataconnect/query|query@com.google.firebase.dataconnect.FirebaseDataConnect(kotlin.String;0:1;kotlin.Function1<com.google.firebase.dataconnect.FirebaseDataConnect.QueryRefOptionsBuilder<0:0,0:1>,kotlin.Unit>?){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?> (com.google.firebase.dataconnect/AnyValue).com.google.firebase.dataconnect/decode(): #A // com.google.firebase.dataconnect/decode|decode@com.google.firebase.dataconnect.AnyValue(){0§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?> (com.google.firebase.dataconnect/AnyValue.Companion).com.google.firebase.dataconnect/encode(#A): com.google.firebase.dataconnect/AnyValue // com.google.firebase.dataconnect/encode|encode@com.google.firebase.dataconnect.AnyValue.Companion(0:0){0§<kotlin.Any?>}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.dataconnect.externals/connectDataConnectEmulator(io.github.corneloaie.firebase.dataconnect.externals/DataConnect, kotlin/String, kotlin/Int, kotlin/Boolean) // io.github.corneloaie.firebase.dataconnect.externals/connectDataConnectEmulator|connectDataConnectEmulator(io.github.corneloaie.firebase.dataconnect.externals.DataConnect;kotlin.String;kotlin.Int;kotlin.Boolean){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.dataconnect.externals/executeMutation(io.github.corneloaie.firebase.dataconnect.externals/MutationRef): kotlin.js/Promise<io.github.corneloaie.firebase.dataconnect.externals/OperationResult> // io.github.corneloaie.firebase.dataconnect.externals/executeMutation|executeMutation(io.github.corneloaie.firebase.dataconnect.externals.MutationRef){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.dataconnect.externals/setLogLevel(kotlin/String) // io.github.corneloaie.firebase.dataconnect.externals/setLogLevel|setLogLevel(kotlin.String){}[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.dataconnect.externals/DataConnect // io.github.corneloaie.firebase.dataconnect.externals/DataConnect|null[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.dataconnect.externals/MutationRef // io.github.corneloaie.firebase.dataconnect.externals/MutationRef|null[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.dataconnect.externals/OperationResult { // io.github.corneloaie.firebase.dataconnect.externals/OperationResult|null[0]
+    abstract val data // io.github.corneloaie.firebase.dataconnect.externals/OperationResult.data|{}data[0]
+        abstract fun <get-data>(): kotlin/Any? // io.github.corneloaie.firebase.dataconnect.externals/OperationResult.data.<get-data>|<get-data>(){}[0]
+    abstract val source // io.github.corneloaie.firebase.dataconnect.externals/OperationResult.source|{}source[0]
+        abstract fun <get-source>(): kotlin/String // io.github.corneloaie.firebase.dataconnect.externals/OperationResult.source.<get-source>|<get-source>(){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.dataconnect.externals/QueryRef // io.github.corneloaie.firebase.dataconnect.externals/QueryRef|null[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.dataconnect.externals/executeQuery(io.github.corneloaie.firebase.dataconnect.externals/QueryRef, kotlin/Any): kotlin.js/Promise<io.github.corneloaie.firebase.dataconnect.externals/OperationResult> // io.github.corneloaie.firebase.dataconnect.externals/executeQuery|executeQuery(io.github.corneloaie.firebase.dataconnect.externals.QueryRef;kotlin.Any){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.dataconnect.externals/getDataConnect(io.github.corneloaie.firebase.externals/FirebaseApp, kotlin/Any, kotlin/Any): io.github.corneloaie.firebase.dataconnect.externals/DataConnect // io.github.corneloaie.firebase.dataconnect.externals/getDataConnect|getDataConnect(io.github.corneloaie.firebase.externals.FirebaseApp;kotlin.Any;kotlin.Any){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.dataconnect.externals/makeMemoryCacheProvider(): kotlin/Any // io.github.corneloaie.firebase.dataconnect.externals/makeMemoryCacheProvider|makeMemoryCacheProvider(){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.dataconnect.externals/mutationRef(io.github.corneloaie.firebase.dataconnect.externals/DataConnect, kotlin/String, kotlin/Any?): io.github.corneloaie.firebase.dataconnect.externals/MutationRef // io.github.corneloaie.firebase.dataconnect.externals/mutationRef|mutationRef(io.github.corneloaie.firebase.dataconnect.externals.DataConnect;kotlin.String;kotlin.Any?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.dataconnect.externals/queryRef(io.github.corneloaie.firebase.dataconnect.externals/DataConnect, kotlin/String, kotlin/Any?): io.github.corneloaie.firebase.dataconnect.externals/QueryRef // io.github.corneloaie.firebase.dataconnect.externals/queryRef|queryRef(io.github.corneloaie.firebase.dataconnect.externals.DataConnect;kotlin.String;kotlin.Any?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.dataconnect.externals/terminate(io.github.corneloaie.firebase.dataconnect.externals/DataConnect): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.dataconnect.externals/terminate|terminate(io.github.corneloaie.firebase.dataconnect.externals.DataConnect){}[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.dataconnect.externals/DataConnect : kotlin.js/JsAny // io.github.corneloaie.firebase.dataconnect.externals/DataConnect|null[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.dataconnect.externals/MutationRef : kotlin.js/JsAny // io.github.corneloaie.firebase.dataconnect.externals/MutationRef|null[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.dataconnect.externals/OperationResult : kotlin.js/JsAny { // io.github.corneloaie.firebase.dataconnect.externals/OperationResult|null[0]
+    abstract val data // io.github.corneloaie.firebase.dataconnect.externals/OperationResult.data|{}data[0]
+        abstract fun <get-data>(): kotlin.js/JsAny? // io.github.corneloaie.firebase.dataconnect.externals/OperationResult.data.<get-data>|<get-data>(){}[0]
+    abstract val source // io.github.corneloaie.firebase.dataconnect.externals/OperationResult.source|{}source[0]
+        abstract fun <get-source>(): kotlin/String // io.github.corneloaie.firebase.dataconnect.externals/OperationResult.source.<get-source>|<get-source>(){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.dataconnect.externals/QueryRef : kotlin.js/JsAny // io.github.corneloaie.firebase.dataconnect.externals/QueryRef|null[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.dataconnect.externals/executeQuery(io.github.corneloaie.firebase.dataconnect.externals/QueryRef, kotlin.js/JsAny): kotlin.js/Promise<io.github.corneloaie.firebase.dataconnect.externals/OperationResult> // io.github.corneloaie.firebase.dataconnect.externals/executeQuery|executeQuery(io.github.corneloaie.firebase.dataconnect.externals.QueryRef;kotlin.js.JsAny){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.dataconnect.externals/getDataConnect(io.github.corneloaie.firebase.externals/FirebaseApp, kotlin.js/JsAny, kotlin.js/JsAny): io.github.corneloaie.firebase.dataconnect.externals/DataConnect // io.github.corneloaie.firebase.dataconnect.externals/getDataConnect|getDataConnect(io.github.corneloaie.firebase.externals.FirebaseApp;kotlin.js.JsAny;kotlin.js.JsAny){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.dataconnect.externals/makeMemoryCacheProvider(): kotlin.js/JsAny // io.github.corneloaie.firebase.dataconnect.externals/makeMemoryCacheProvider|makeMemoryCacheProvider(){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.dataconnect.externals/mutationRef(io.github.corneloaie.firebase.dataconnect.externals/DataConnect, kotlin/String, kotlin.js/JsAny?): io.github.corneloaie.firebase.dataconnect.externals/MutationRef // io.github.corneloaie.firebase.dataconnect.externals/mutationRef|mutationRef(io.github.corneloaie.firebase.dataconnect.externals.DataConnect;kotlin.String;kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.dataconnect.externals/queryRef(io.github.corneloaie.firebase.dataconnect.externals/DataConnect, kotlin/String, kotlin.js/JsAny?): io.github.corneloaie.firebase.dataconnect.externals/QueryRef // io.github.corneloaie.firebase.dataconnect.externals/queryRef|queryRef(io.github.corneloaie.firebase.dataconnect.externals.DataConnect;kotlin.String;kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.dataconnect.externals/terminate(io.github.corneloaie.firebase.dataconnect.externals/DataConnect): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.dataconnect.externals/terminate|terminate(io.github.corneloaie.firebase.dataconnect.externals.DataConnect){}[0]
