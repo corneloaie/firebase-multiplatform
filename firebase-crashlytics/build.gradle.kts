@@ -52,6 +52,9 @@ kotlin {
             compileSdk = compileSdkVersion
             minSdk = minSdkVersion
             namespace = "io.github.corneloaie.firebase.crashlytics"
+            // The Android KMP plugin skips Android resources unless asked, and the device tests need theirs: the SDK
+            // refuses to start without the build ID in src/androidDeviceTest/res/values/strings.xml.
+            androidResources.enable = true
 
             withHostTestBuilder { sourceSetTreeName = KotlinSourceSetTree.test.name }.configure { configureTestOptions(project) }
             withDeviceTestBuilder { sourceSetTreeName = KotlinSourceSetTree.test.name }.configure { configureTestOptions(project) }
