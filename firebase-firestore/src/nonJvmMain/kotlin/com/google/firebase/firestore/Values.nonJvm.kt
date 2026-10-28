@@ -69,7 +69,7 @@ public actual class VectorValue internal constructor(values: DoubleArray) {
 
     public actual fun toArray(): DoubleArray = values.copyOf()
 
-    override fun equals(other: Any?): Boolean = this === other || other is VectorValue && other.values.contentEquals(values)
+    override fun equals(other: Any?): Boolean = this === other || (other is VectorValue && other.values.contentEquals(values))
 
     override fun hashCode(): Int = values.contentHashCode()
 

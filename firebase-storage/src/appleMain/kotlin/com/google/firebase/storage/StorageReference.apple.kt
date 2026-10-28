@@ -180,8 +180,8 @@ internal fun StorageMetadata.toIos(): FIRStorageMetadata {
     return ios
 }
 
-@Suppress("UNCHECKED_CAST")
 /** [reference] is the object the metadata belongs to: since iOS SDK 12 the metadata no longer exposes it to Objective-C. */
+@Suppress("UNCHECKED_CAST")
 internal fun FIRStorageMetadata.toCompat(
     reference: FIRStorageReference?,
 ): StorageMetadata = StorageMetadata().also { compat ->

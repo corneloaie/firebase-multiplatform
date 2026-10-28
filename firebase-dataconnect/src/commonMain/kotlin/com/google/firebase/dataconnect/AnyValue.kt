@@ -60,11 +60,17 @@ public fun AnyValue.Companion.fromAny(value: Any): AnyValue {
     @Suppress("UNCHECKED_CAST")
     return when (value) {
         is String -> AnyValue(value)
+
         is Boolean -> AnyValue(value)
+
         is Double -> AnyValue(value)
+
         is Number -> AnyValue(value.toDouble())
+
         is List<*> -> AnyValue(value)
+
         is Map<*, *> -> AnyValue(value as Map<String, Any?>)
+
         else -> throw IllegalArgumentException(
             "unsupported type: ${value::class.simpleName}" +
                 " (supported types: null, String, Boolean, Double, List<Any?>, Map<String, Any?>)",
@@ -75,14 +81,20 @@ public fun AnyValue.Companion.fromAny(value: Any): AnyValue {
 /** A validated, immutable copy of a plain value: the supported types only, numbers as [Double]. */
 private fun Any?.toNaturalValue(): Any? = when (this) {
     null -> null
+
     is String, is Boolean, is Double -> this
+
     is Number -> toDouble()
+
     is AnyValue -> value
+
     is List<*> -> map { it.toNaturalValue() }
+
     is Map<*, *> -> entries.associate { (key, value) ->
         require(key is String) { "unsupported map key type: ${key?.let { it::class.simpleName }} (map keys must be String)" }
         key to value.toNaturalValue()
     }
+
     else -> throw IllegalArgumentException(
         "unsupported type: ${this::class.simpleName}" +
             " (supported types: null, String, Boolean, Double, List<Any?>, Map<String, Any?>)",

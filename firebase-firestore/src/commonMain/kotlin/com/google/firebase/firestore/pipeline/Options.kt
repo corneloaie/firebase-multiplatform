@@ -23,7 +23,7 @@ internal class InternalOptions private constructor(internal val entries: Map<Str
 
     fun isEmpty(): Boolean = entries.isEmpty()
 
-    override fun equals(other: Any?): Boolean = this === other || other is InternalOptions && entries == other.entries
+    override fun equals(other: Any?): Boolean = this === other || (other is InternalOptions && entries == other.entries)
 
     override fun hashCode(): Int = entries.hashCode()
 

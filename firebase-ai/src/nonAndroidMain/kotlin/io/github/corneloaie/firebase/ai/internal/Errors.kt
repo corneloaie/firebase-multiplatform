@@ -66,8 +66,11 @@ internal class NativeAIError(
  */
 internal fun firebaseAIException(cause: Throwable): FirebaseAIException = when (cause) {
     is FirebaseAIException -> cause
+
     is TimeoutCancellationException -> RequestTimeoutException("The request failed to complete in the allotted time.", cause)
+
     is CancellationException -> throw cause
+
     is NativeAIError -> when (cause.kind) {
         NativeAIError.Kind.SERVER -> serverException(cause)
         NativeAIError.Kind.TIMEOUT -> RequestTimeoutException("The request failed to complete in the allotted time.", cause)
@@ -76,7 +79,9 @@ internal fun firebaseAIException(cause: Throwable): FirebaseAIException = when (
         NativeAIError.Kind.HANDSHAKE -> ServiceConnectionHandshakeFailedException(cause.message ?: "Unable to connect to the server", cause)
         NativeAIError.Kind.UNKNOWN -> UnknownException(cause.message ?: "Something unexpected happened.", cause)
     }
+
     is kotlinx.serialization.SerializationException -> SerializationException(cause.message ?: "Something went wrong while trying to deserialize a response from the server.", cause)
+
     else -> UnknownException("Something unexpected happened.", cause)
 }
 
@@ -84,13 +89,18 @@ private fun serverException(error: NativeAIError): FirebaseAIException {
     val message = error.message.orEmpty()
     return when {
         message.contains("API key not valid") -> InvalidAPIKeyException(message, error)
+
         message.contains("User location is not supported for the API use") -> UnsupportedUserLocationException(error)
+
         message.contains("quota") -> QuotaExceededException(message, error)
+
         message.contains("The prompt could not be submitted") -> PromptBlockedException(message, error)
+
         message.contains("genai config not found") -> APINotConfiguredException(
             "The Gemini Developer API is not enabled, to enable and configure, see https://firebase.google.com/docs/ai-logic/faq-and-troubleshooting#error-genai-config-not-found",
             error,
         )
+
         error.details.any { it.string("reason") == "SERVICE_DISABLED" && it.string("domain") == "googleapis.com" } -> {
             val detail = error.details.first { it.string("reason") == "SERVICE_DISABLED" }
             ServiceDisabledException(
@@ -105,12 +115,14 @@ private fun serverException(error: NativeAIError): FirebaseAIException {
                 error,
             )
         }
+
         error.status == 404 && message.contains("<html", ignoreCase = true) -> ServerException(
             "URL not found. Please verify the location used to create the `FirebaseAI` object. See " +
                 "https://firebase.google.com/docs/ai-logic/locations?api=vertex#available-locations for the list of available " +
                 "locations. Raw response: $message",
             error,
         )
+
         else -> ServerException(message, error)
     }
 }

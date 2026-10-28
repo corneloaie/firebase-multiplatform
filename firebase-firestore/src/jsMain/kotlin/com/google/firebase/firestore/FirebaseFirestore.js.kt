@@ -182,6 +182,7 @@ public actual class FirebaseFirestore private constructor(private val jsApp: JsF
 private fun FirebaseFirestoreSettings.toJs(): Json = json("host" to host, "ssl" to isSslEnabled).apply {
     when (val cache = cacheSettings) {
         is PersistentCacheSettings -> set("localCache", persistentLocalCache(json("cacheSizeBytes" to cache.sizeBytes).asDynamic() as JsPersistentCacheSettings))
+
         is MemoryCacheSettings -> set(
             "localCache",
             memoryLocalCache(
@@ -193,6 +194,7 @@ private fun FirebaseFirestoreSettings.toJs(): Json = json("host" to host, "ssl" 
                 ).asDynamic() as JsMemoryCacheSettings,
             ),
         )
+
         else -> Unit
     }
 }

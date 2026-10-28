@@ -53,6 +53,7 @@ internal constructor(
                 GenerativeBackendEnum.GOOGLE_AI -> {
                     other.backend == this.backend
                 }
+
                 GenerativeBackendEnum.AGENT_PLATFORM -> {
                     other.backend == this.backend && other.location == this.location
                 }

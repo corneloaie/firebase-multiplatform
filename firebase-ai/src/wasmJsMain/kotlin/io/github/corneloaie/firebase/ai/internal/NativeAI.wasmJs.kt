@@ -243,6 +243,7 @@ private fun liveServerMessage(message: JsAny): JsonObject? {
     return when (type) {
         // The JS SDK has parsed the protobuf duration into seconds.
         "goingAwayNotice" -> buildJsonObject { put("goAway", body) }
+
         else -> buildJsonObject { put(type, body) }
     }
 }
@@ -306,11 +307,16 @@ private fun JsAny.toNativeAIError(thrown: Throwable?, handshake: Boolean = false
         ?.filterIsInstance<JsonObject>().orEmpty()
     val kind = when (code) {
         "fetch-error" -> NativeAIError.Kind.SERVER
+
         // The server reported SERVICE_DISABLED for the AI Logic API (the details say so).
         "api-not-enabled" -> NativeAIError.Kind.SERVER
+
         "response-error" -> if (handshake) NativeAIError.Kind.HANDSHAKE else NativeAIError.Kind.SERVER
+
         "parse-failed" -> NativeAIError.Kind.SERIALIZATION
+
         "invalid-content", "invalid-schema", "no-api-key", "no-app-id", "no-model", "no-project-id", "unsupported", "request-error", "session-closed" -> NativeAIError.Kind.INVALID_REQUEST
+
         else -> if (handshake) NativeAIError.Kind.HANDSHAKE else NativeAIError.Kind.UNKNOWN
     }
     return NativeAIError(kind, message, status, details, cause)

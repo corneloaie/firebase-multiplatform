@@ -32,15 +32,10 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 /**
- * Exercises the `com.google.firebase.storage` layer exactly as Android app code would (the static accessors, the
- * Task-based reference API, upload tasks with their snapshots, listeners and the taskState flow, metadata built either
- * way, listing, the exception codes), on every platform, against the Storage emulator.
- */
-@IgnoreForAndroidUnitTest
-/**
  * Whether upload progress counts more than the uploaded bytes. Against the emulator, the iOS SDK's upload progress also
  * counts the upload request's own overhead (about 100 bytes), so there only a lower bound is checked.
  */
+@IgnoreForAndroidUnitTest
 expect val uploadProgressIncludesOverhead: Boolean
 
 /** Asserts that an upload's byte count covers [expected] bytes: exactly, unless [uploadProgressIncludesOverhead]. */
@@ -48,6 +43,11 @@ internal fun assertUploadedBytes(expected: Long, actual: Long) {
     if (uploadProgressIncludesOverhead) assertTrue(actual >= expected, "$actual < $expected") else assertEquals(expected, actual)
 }
 
+/**
+ * Exercises the `com.google.firebase.storage` layer exactly as Android app code would (the static accessors, the
+ * Task-based reference API, upload tasks with their snapshots, listeners and the taskState flow, metadata built either
+ * way, listing, the exception codes), on every platform, against the Storage emulator.
+ */
 class AndroidSdkSourceCompatTest {
 
     private lateinit var app: io.github.corneloaie.firebase.FirebaseApp

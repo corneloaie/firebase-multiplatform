@@ -96,7 +96,9 @@ internal fun CompatDocumentReference.wrapperSnapshots(includeMetadataChanges: Bo
 /** The filter as the compatibility layer's [CompatFilter]. */
 internal fun Filter.toCompat(): CompatFilter = when (this) {
     is Filter.And -> filterAnd(filters.map { it.toCompat() })
+
     is Filter.Or -> filterOr(filters.map { it.toCompat() })
+
     is Filter.Field -> when (val constraint = constraint) {
         is WhereConstraint.EqualTo -> filterEqualTo(field, constraint.value)
         is WhereConstraint.NotEqualTo -> filterNotEqualTo(field, constraint.value)
@@ -109,6 +111,7 @@ internal fun Filter.toCompat(): CompatFilter = when (this) {
         is WhereConstraint.InArray -> filterInArray(field, constraint.values)
         is WhereConstraint.NotInArray -> filterNotInArray(field, constraint.values)
     }
+
     is Filter.Path -> when (val constraint = constraint) {
         is WhereConstraint.EqualTo -> filterEqualTo(path.compat, constraint.value)
         is WhereConstraint.NotEqualTo -> filterNotEqualTo(path.compat, constraint.value)
@@ -126,6 +129,7 @@ internal fun Filter.toCompat(): CompatFilter = when (this) {
 /** The cache settings as the compatibility layer's, built through the Kotlin extensions and fluent setters (real static methods on Android). */
 internal fun LocalCacheSettings.toCompat(): CompatLocalCacheSettings = when (this) {
     is LocalCacheSettings.Persistent -> persistentCacheSettings { setSizeBytes(sizeBytes) }
+
     is LocalCacheSettings.Memory -> memoryCacheSettings {
         setGcSettings(
             when (val gc = garbaseCollectorSettings) {

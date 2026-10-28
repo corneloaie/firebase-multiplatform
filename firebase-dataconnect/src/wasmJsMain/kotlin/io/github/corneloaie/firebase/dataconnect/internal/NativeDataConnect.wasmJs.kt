@@ -119,7 +119,9 @@ private fun JsAny.toDataConnectFailure(thrown: Throwable?): Throwable {
             errors = parseErrorInfos(jsGet(response, "errors").toJsonValue()),
             cause = cause,
         )
+
         jsGet(this, "code") != null -> DataConnectException(message ?: cause.toString(), cause)
+
         else -> cause
     }
 }

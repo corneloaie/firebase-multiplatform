@@ -17,8 +17,11 @@ public val EncodedObject.js: JsAny get() = json(*getRaw().entries.map { (key, va
 internal actual fun Any.asNativeMap(): Map<*, *>? {
     val obj: JsAny = when (this) {
         is Number -> return null
+
         is Boolean -> return null
+
         is String -> return null
+
         is Map<*, *> -> {
             if (keys.all { it is String }) {
                 json(*entries.map { (key, value) -> (key as String) to value }.toTypedArray())
@@ -26,8 +29,11 @@ internal actual fun Any.asNativeMap(): Map<*, *>? {
                 return null
             }
         }
+
         is Collection<*> -> return null
+
         is Array<*> -> return null
+
         else -> asJsAny().takeUnless { jsIsArray(it) } ?: return null
     }
     val mutableMap = mutableMapOf<String, Any?>()

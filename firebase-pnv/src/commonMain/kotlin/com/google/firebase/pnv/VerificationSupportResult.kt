@@ -29,7 +29,7 @@ public class VerificationSupportResult(private val simSlotIndex: Int, private va
     public fun isSupported(): Boolean = reason == VerificationSupportStatus.CAPABLE
 
     override fun equals(other: Any?): Boolean = this === other ||
-        other is VerificationSupportResult && other.simSlotIndex == simSlotIndex && other.carrierId == carrierId && other.reason == reason
+        (other is VerificationSupportResult && other.simSlotIndex == simSlotIndex && other.carrierId == carrierId && other.reason == reason)
 
     override fun hashCode(): Int = (simSlotIndex * 31 + carrierId.hashCode()) * 31 + reason
 

@@ -40,7 +40,7 @@ public actual class DocumentChange internal constructor(public val js: JsDocumen
         REMOVED,
     }
 
-    override fun equals(other: Any?): Boolean = other is DocumentChange && (other.js === js || other.type == type && other.oldIndex == oldIndex && other.newIndex == newIndex && other.document == document)
+    override fun equals(other: Any?): Boolean = other is DocumentChange && (other.js === js || (other.type == type && other.oldIndex == oldIndex && other.newIndex == newIndex && other.document == document))
 
     override fun hashCode(): Int = listOf(type, oldIndex, newIndex, document).hashCode()
 

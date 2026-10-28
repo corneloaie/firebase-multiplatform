@@ -67,32 +67,56 @@ private const val MAX_EXACT_INTEGER = 9007199254740992.0
 /** [this] as the JS SDK writes it: Kotlin maps become objects, collections arrays, longs numbers and the layer's value types the SDK's. */
 internal fun Any?.toJs(): JsAny? = when (this) {
     null -> null
+
     is String -> toJsString()
+
     is Boolean -> toJsBoolean()
+
     is Number -> toDouble().toJsNumber()
+
     is Timestamp -> JsTimestamp(seconds.toDouble(), nanoseconds.toDouble())
+
     is GeoPoint -> JsGeoPoint(latitude, longitude)
+
     is DocumentReference -> js
+
     is FieldValue -> toJsFieldValue()
+
     is Blob -> Bytes.fromUint8Array(toBytes().toUint8Array(), subType)
+
     is VectorValue -> jsVector(toArray().map { it.toJsNumber() }.toJsArray())
+
     is BsonObjectId -> JsBsonObjectId(value)
+
     is BsonTimestamp -> JsBsonTimestamp(seconds.toDouble(), increment.toDouble())
+
     is Decimal128Value -> JsDecimal128Value(stringValue)
+
     is Int32Value -> JsInt32Value(value)
+
     is MaxKey -> JsMaxKey.instance()
+
     is MinKey -> JsMinKey.instance()
+
     is RegexValue -> JsRegexValue(pattern, options)
+
     is FieldPath -> toJs()
+
     is Map<*, *> -> jsObject().also { json -> forEach { (key, value) -> jsSet(json, key.toString(), value.toJs()) } }
+
     is Collection<*> -> map { it.toJs() }.toJsArray()
+
     is Array<*> -> map { it.toJs() }.toJsArray()
+
     else -> asJsAny().let { value ->
         when {
             // The JS SDK rejects an object of a custom class, but would read the reference to a Kotlin object as an empty map.
             isKotlinReference(value) -> throw FirebaseFirestoreException("Unsupported field value: a custom ${this::class.simpleName} object", FirebaseFirestoreException.Code.INVALID_ARGUMENT)
+
             jsIsArray(value) -> value.asJsArray().toList().map { it.toJs() }.toJsArray()
+
             isPlainObject(value) -> jsObject().also { json -> objectKeys(value).forEach { key -> jsSet(json, key, jsGet(value, key).toJs()) } }
+
             else -> value
         }
     }
@@ -103,11 +127,14 @@ internal fun JsAny?.toCompat(): Any? {
     if (this == null) return null
     return when (jsTypeOf(this)) {
         "string", "boolean" -> toKotlin()
+
         "number" -> toCompatNumber()
+
         "object" -> toCompatValueType() ?: when {
             jsIsArray(this) -> asJsArray().toList().map { it.toCompat() }
             else -> objectKeys(this).associateWith { key -> jsGet(this, key).toCompat() }
         }
+
         else -> this
     }
 }
@@ -165,6 +192,7 @@ internal fun SetOptions.toJs(): JsAny = if (merge) json("merge" to true) else js
 
 internal fun Filter.Node.toJs(): QueryConstraint = when (this) {
     is Filter.Node.Field -> jsWhere(fieldPath.toJs(), operator.jsOperator, value.toJs())
+
     is Filter.Node.Composite -> when (operator) {
         Filter.Operator.AND -> jsAnd(*filters.map { it.toJs() }.toTypedArray())
         else -> jsOr(*filters.map { it.toJs() }.toTypedArray())

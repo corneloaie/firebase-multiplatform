@@ -102,17 +102,23 @@ public class FirebaseAuth internal constructor(public val compat: CompatFirebase
         @Suppress("UNCHECKED_CAST")
         return when (result.operation) {
             CompatActionCodeResult.SIGN_IN_WITH_EMAIL_LINK -> ActionCodeResult.SignInWithEmailLink
+
             CompatActionCodeResult.VERIFY_EMAIL -> ActionCodeResult.VerifyEmail(result.info!!.emailValue())
+
             CompatActionCodeResult.PASSWORD_RESET -> ActionCodeResult.PasswordReset(result.info!!.emailValue())
+
             CompatActionCodeResult.RECOVER_EMAIL -> (result.info as ActionCodeEmailInfo).run {
                 ActionCodeResult.RecoverEmail(emailValue(), previousEmailValue())
             }
+
             CompatActionCodeResult.VERIFY_BEFORE_CHANGE_EMAIL -> (result.info as ActionCodeEmailInfo).run {
                 ActionCodeResult.VerifyBeforeChangeEmail(emailValue(), previousEmailValue())
             }
+
             CompatActionCodeResult.REVERT_SECOND_FACTOR_ADDITION -> (result.info as ActionCodeMultiFactorInfo).run {
                 ActionCodeResult.RevertSecondFactorAddition(emailValue(), MultiFactorInfo(multiFactorInfoValue()))
             }
+
             else -> throw UnsupportedOperationException(result.operation.toString())
         } as T
     }

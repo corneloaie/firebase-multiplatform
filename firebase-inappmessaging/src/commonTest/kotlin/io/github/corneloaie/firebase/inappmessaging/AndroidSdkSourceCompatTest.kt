@@ -150,12 +150,15 @@ class AndroidSdkSourceCompatTest {
                 append(describe(inAppMessage.title)).append(inAppMessage.body?.let { describe(it) })
                 append(describe(inAppMessage.imageData)).append(describe(inAppMessage.action)).append(inAppMessage.backgroundHexColor)
             }
+
             is CardMessage -> {
                 append(describe(inAppMessage.title)).append(inAppMessage.body?.let { describe(it) }).append(inAppMessage.backgroundHexColor)
                 append(describe(inAppMessage.portraitImageData)).append(describe(inAppMessage.landscapeImageData))
                 append(describe(inAppMessage.primaryAction)).append(describe(inAppMessage.secondaryAction))
             }
+
             is ImageOnlyMessage -> append(describe(inAppMessage.imageData)).append(describe(inAppMessage.action))
+
             is ModalMessage -> {
                 append(describe(inAppMessage.title)).append(inAppMessage.body?.let { describe(it) })
                 append(describe(inAppMessage.imageData)).append(describe(inAppMessage.action)).append(inAppMessage.backgroundHexColor)

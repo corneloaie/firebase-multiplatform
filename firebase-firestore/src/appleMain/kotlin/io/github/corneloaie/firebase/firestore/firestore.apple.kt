@@ -41,6 +41,7 @@ public operator fun FirebaseFirestore.Companion.invoke(ios: FIRFirestore): Fireb
 /** The cache settings as the Firebase iOS SDK's. */
 public val LocalCacheSettings.ios: FIRLocalCacheSettingsProtocol get() = when (this) {
     is LocalCacheSettings.Persistent -> FIRPersistentCacheSettings(NSNumber.numberWithLong(sizeBytes))
+
     is LocalCacheSettings.Memory -> FIRMemoryCacheSettings(
         when (garbaseCollectorSettings) {
             is MemoryGarbageCollectorSettings.Eager -> FIRMemoryEagerGCSettings()

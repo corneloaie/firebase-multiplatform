@@ -188,6 +188,7 @@ internal fun Part.toJson(ignoreThoughtFlag: Boolean = false): JsonObject {
                 )
             }
         }
+
         is InlineDataPart -> buildJsonObject {
             put(
                 "inlineData",
@@ -199,6 +200,7 @@ internal fun Part.toJson(ignoreThoughtFlag: Boolean = false): JsonObject {
             )
             thinking(thoughtSignature)
         }
+
         is FunctionCallPart -> buildJsonObject {
             put(
                 "functionCall",
@@ -210,10 +212,12 @@ internal fun Part.toJson(ignoreThoughtFlag: Boolean = false): JsonObject {
             )
             thinking(thoughtSignature)
         }
+
         is FunctionResponsePart -> buildJsonObject {
             put("functionResponse", functionResponseJson())
             thinking(thoughtSignature)
         }
+
         is FileDataPart -> buildJsonObject {
             put(
                 "fileData",
@@ -224,6 +228,7 @@ internal fun Part.toJson(ignoreThoughtFlag: Boolean = false): JsonObject {
             )
             thinking(thoughtSignature)
         }
+
         is ExecutableCodePart -> buildJsonObject {
             put(
                 "executableCode",
@@ -234,6 +239,7 @@ internal fun Part.toJson(ignoreThoughtFlag: Boolean = false): JsonObject {
             )
             thinking(thoughtSignature)
         }
+
         is CodeExecutionResultPart -> buildJsonObject {
             put(
                 "codeExecutionResult",
@@ -244,7 +250,9 @@ internal fun Part.toJson(ignoreThoughtFlag: Boolean = false): JsonObject {
             )
             thinking(thoughtSignature)
         }
+
         is UnknownPart -> buildJsonObject { thinking(thoughtSignature) }
+
         else -> throw SerializationException("The given subclass of Part (${this::class.simpleName}) is not supported in the serialization yet.")
     }
 }
