@@ -3,8 +3,8 @@ $dokka.linkExtension:html
 $dokka.location:com.google.firebase.appcheck.debug/DebugAppCheckProviderFactory/toString/#/PointingToDeclaration/firebase-appcheck/com.google.firebase.appcheck.debug/-debug-app-check-provider-factory/[wasm-js]to-string.html
 $dokka.location:com.google.firebase.appcheck.playintegrity/PlayIntegrityAppCheckProviderFactory/toString/#/PointingToDeclaration/firebase-appcheck/com.google.firebase.appcheck.playintegrity/-play-integrity-app-check-provider-factory/[wasm-js]to-string.html
 $dokka.location:com.google.firebase.appcheck.recaptcha/RecaptchaAppCheckProviderFactory/toString/#/PointingToDeclaration/firebase-appcheck/com.google.firebase.appcheck.recaptcha/-recaptcha-app-check-provider-factory/[wasm-js]to-string.html
-$dokka.location:com.google.firebase.auth//setApplicationVerifier/com.google.firebase.auth.PhoneAuthOptions.Builder#dev.gitlive.firebase.auth.externals.ApplicationVerifier/PointingToDeclaration/firebase-auth/com.google.firebase.auth/[wasm-js]set-application-verifier.html
-$dokka.location:com.google.firebase.auth/FirebaseAuth.Companion/wrap/#dev.gitlive.firebase.auth.externals.Auth/PointingToDeclaration/firebase-auth/com.google.firebase.auth/-firebase-auth/-companion/[wasm-js]wrap.html
+$dokka.location:com.google.firebase.auth//setApplicationVerifier/com.google.firebase.auth.PhoneAuthOptions.Builder#io.github.corneloaie.firebase.auth.externals.ApplicationVerifier/PointingToDeclaration/firebase-auth/com.google.firebase.auth/[wasm-js]set-application-verifier.html
+$dokka.location:com.google.firebase.auth/FirebaseAuth.Companion/wrap/#io.github.corneloaie.firebase.auth.externals.Auth/PointingToDeclaration/firebase-auth/com.google.firebase.auth/-firebase-auth/-companion/[wasm-js]wrap.html
 $dokka.location:com.google.firebase.auth/FirebaseAuth/equals/#kotlin.Any?/PointingToDeclaration/firebase-auth/com.google.firebase.auth/-firebase-auth/[wasm-js]equals.html
 $dokka.location:com.google.firebase.auth/FirebaseAuth/hashCode/#/PointingToDeclaration/firebase-auth/com.google.firebase.auth/-firebase-auth/[wasm-js]hash-code.html
 $dokka.location:com.google.firebase.auth/FirebaseAuth/js/#/PointingToDeclaration/firebase-auth/com.google.firebase.auth/-firebase-auth/[wasm-js]js.html
@@ -161,128 +161,129 @@ $dokka.location:com.google.firebase/FirebaseApp/toString/#/PointingToDeclaration
 $dokka.location:com.google.firebase/FirebaseOptions.Builder/setAuthDomain/#kotlin.String?/PointingToDeclaration/firebase-app/com.google.firebase/-firebase-options/-builder/[wasm-js]set-auth-domain.html
 $dokka.location:com.google.firebase/FirebaseOptions/authDomain/#/PointingToDeclaration/firebase-app/com.google.firebase/-firebase-options/[wasm-js]auth-domain.html
 $dokka.location:com.google.firebase/FirebaseOptions/toString/#/PointingToDeclaration/firebase-app/com.google.firebase/-firebase-options/[wasm-js]to-string.html
-$dokka.location:dev.gitlive.firebase.appcheck/ReCaptchaV3ProviderFactory///PointingToDeclaration/firebase-appcheck/dev.gitlive.firebase.appcheck/[wasm-js]-re-captcha-v3-provider-factory/index.html
-$dokka.location:dev.gitlive.firebase.appcheck/ReCaptchaV3ProviderFactory/ReCaptchaV3ProviderFactory/#kotlin.String/PointingToDeclaration/firebase-appcheck/dev.gitlive.firebase.appcheck/[wasm-js]-re-captcha-v3-provider-factory/-re-captcha-v3-provider-factory.html
-$dokka.location:dev.gitlive.firebase.appcheck/ReCaptchaV3ProviderFactory/create/#[Error type: Unresolved type for FirebaseApp]/PointingToDeclaration/firebase-appcheck/dev.gitlive.firebase.appcheck/[wasm-js]-re-captcha-v3-provider-factory/create.html
-$dokka.location:dev.gitlive.firebase.appcheck/ReCaptchaV3ProviderFactory/siteKey/#/PointingToDeclaration/firebase-appcheck/dev.gitlive.firebase.appcheck/[wasm-js]-re-captcha-v3-provider-factory/site-key.html
-$dokka.location:dev.gitlive.firebase.appcheck/ReCaptchaV3ProviderFactory/toString/#/PointingToDeclaration/firebase-appcheck/dev.gitlive.firebase.appcheck/[wasm-js]-re-captcha-v3-provider-factory/to-string.html
-$dokka.location:dev.gitlive.firebase.auth//FirebaseAuth/#dev.gitlive.firebase.auth.externals.Auth/PointingToDeclaration/firebase-auth/dev.gitlive.firebase.auth/[wasm-js]-firebase-auth.html
-$dokka.location:dev.gitlive.firebase.auth/PhoneAuthProvider/createOptionsBuilder/#/PointingToDeclaration/firebase-auth/dev.gitlive.firebase.auth/-phone-auth-provider/[jvm]create-options-builder.html
-$dokka.location:dev.gitlive.firebase.auth/PhoneVerificationProvider/activity/#/PointingToDeclaration/firebase-auth/dev.gitlive.firebase.auth/-phone-verification-provider/[jvm]activity.html
-$dokka.location:dev.gitlive.firebase.auth/PhoneVerificationProvider/codeSent/#kotlin.Function1[kotlin.Unit,kotlin.Unit]/PointingToDeclaration/firebase-auth/dev.gitlive.firebase.auth/-phone-verification-provider/[jvm]code-sent.html
-$dokka.location:dev.gitlive.firebase.auth/PhoneVerificationProvider/getVerificationCode/#/PointingToDeclaration/firebase-auth/dev.gitlive.firebase.auth/-phone-verification-provider/[jvm]get-verification-code.html
-$dokka.location:dev.gitlive.firebase.auth/PhoneVerificationProvider/getVerificationCode/#kotlin.String/PointingToDeclaration/firebase-auth/dev.gitlive.firebase.auth/-phone-verification-provider/[wasm-js]get-verification-code.html
-$dokka.location:dev.gitlive.firebase.auth/PhoneVerificationProvider/timeout/#/PointingToDeclaration/firebase-auth/dev.gitlive.firebase.auth/-phone-verification-provider/[jvm]timeout.html
-$dokka.location:dev.gitlive.firebase.auth/PhoneVerificationProvider/unit/#/PointingToDeclaration/firebase-auth/dev.gitlive.firebase.auth/-phone-verification-provider/[jvm]unit.html
-$dokka.location:dev.gitlive.firebase.auth/PhoneVerificationProvider/verifier/#/PointingToDeclaration/firebase-auth/dev.gitlive.firebase.auth/-phone-verification-provider/[wasm-js]verifier.html
-$dokka.location:dev.gitlive.firebase.database/ServerValue/equals/#kotlin.Any?/PointingToDeclaration/firebase-database/dev.gitlive.firebase.database/-server-value/[wasm-js]equals.html
-$dokka.location:dev.gitlive.firebase.database/ServerValue/hashCode/#/PointingToDeclaration/firebase-database/dev.gitlive.firebase.database/-server-value/[wasm-js]hash-code.html
-$dokka.location:dev.gitlive.firebase.database/ServerValue/toString/#/PointingToDeclaration/firebase-database/dev.gitlive.firebase.database/-server-value/[wasm-js]to-string.html
-$dokka.location:dev.gitlive.firebase.firestore//invoke/[Error type: Unresolved type for CollectionReference.Companion]#com.google.firebase.firestore.CollectionReference/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/[jvm]invoke.html
-$dokka.location:dev.gitlive.firebase.firestore//invoke/[Error type: Unresolved type for CollectionReference.Companion]#dev.gitlive.firebase.firestore.externals.CollectionReference/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/[wasm-js]invoke.html
-$dokka.location:dev.gitlive.firebase.firestore//invoke/[Error type: Unresolved type for DocumentReference.Companion]#com.google.firebase.firestore.DocumentReference/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/[jvm]invoke.html
-$dokka.location:dev.gitlive.firebase.firestore//invoke/[Error type: Unresolved type for DocumentReference.Companion]#dev.gitlive.firebase.firestore.externals.DocumentReference/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/[wasm-js]invoke.html
-$dokka.location:dev.gitlive.firebase.firestore//invoke/[Error type: Unresolved type for DocumentSnapshot.Companion]#com.google.firebase.firestore.DocumentSnapshot/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/[jvm]invoke.html
-$dokka.location:dev.gitlive.firebase.firestore//invoke/[Error type: Unresolved type for DocumentSnapshot.Companion]#dev.gitlive.firebase.firestore.externals.DocumentSnapshot/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/[wasm-js]invoke.html
-$dokka.location:dev.gitlive.firebase.firestore//invoke/[Error type: Unresolved type for FirebaseFirestore.Companion]#com.google.firebase.firestore.FirebaseFirestore/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/[jvm]invoke.html
-$dokka.location:dev.gitlive.firebase.firestore//invoke/[Error type: Unresolved type for FirebaseFirestore.Companion]#dev.gitlive.firebase.firestore.externals.Firestore/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/[wasm-js]invoke.html
-$dokka.location:dev.gitlive.firebase.firestore//invoke/[Error type: Unresolved type for Query.Companion]#com.google.firebase.firestore.Query/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/[jvm]invoke.html
-$dokka.location:dev.gitlive.firebase.firestore//invoke/[Error type: Unresolved type for Query.Companion]#dev.gitlive.firebase.firestore.externals.Query/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/[wasm-js]invoke.html
-$dokka.location:dev.gitlive.firebase.firestore//invoke/[Error type: Unresolved type for Transaction.Companion]#com.google.firebase.firestore.Transaction/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/[jvm]invoke.html
-$dokka.location:dev.gitlive.firebase.firestore//invoke/[Error type: Unresolved type for Transaction.Companion]#dev.gitlive.firebase.firestore.externals.Transaction/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/[wasm-js]invoke.html
-$dokka.location:dev.gitlive.firebase.firestore//invoke/[Error type: Unresolved type for WriteBatch.Companion]#com.google.firebase.firestore.WriteBatch/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/[jvm]invoke.html
-$dokka.location:dev.gitlive.firebase.firestore//invoke/[Error type: Unresolved type for WriteBatch.Companion]#dev.gitlive.firebase.firestore.externals.WriteBatch/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/[wasm-js]invoke.html
-$dokka.location:dev.gitlive.firebase.firestore/FirebaseFirestoreSettings.Builder/callbackExecutor/#/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/-firebase-firestore-settings/-builder/[jvm]callback-executor.html
-$dokka.location:dev.gitlive.firebase.firestore/FirebaseFirestoreSettings/callbackExecutor/#/PointingToDeclaration/firebase-firestore/dev.gitlive.firebase.firestore/-firebase-firestore-settings/[jvm]callback-executor.html
-$dokka.location:dev.gitlive.firebase.perf//isInstrumentationEnabled/[Error type: Unresolved type for FirebasePerformance]#/PointingToDeclaration/firebase-perf/dev.gitlive.firebase.perf/[wasm-js]is-instrumentation-enabled.html
-$dokka.location:dev.gitlive.firebase.perf//setInstrumentationEnabled/[Error type: Unresolved type for FirebasePerformance]#kotlin.Boolean/PointingToDeclaration/firebase-perf/dev.gitlive.firebase.perf/[wasm-js]set-instrumentation-enabled.html
-$dokka.location:dev.gitlive.firebase.storage/Data/data/#/PointingToDeclaration/firebase-storage/dev.gitlive.firebase.storage/-data/[wasm-js]data.html
-$dokka.location:dev.gitlive.firebase.storage/File/uri/#/PointingToDeclaration/firebase-storage/dev.gitlive.firebase.storage/-file/[jvm]uri.html
+$dokka.location:io.github.corneloaie.firebase.appcheck/ReCaptchaV3ProviderFactory///PointingToDeclaration/firebase-appcheck/io.github.corneloaie.firebase.appcheck/[wasm-js]-re-captcha-v3-provider-factory/index.html
+$dokka.location:io.github.corneloaie.firebase.appcheck/ReCaptchaV3ProviderFactory/ReCaptchaV3ProviderFactory/#kotlin.String/PointingToDeclaration/firebase-appcheck/io.github.corneloaie.firebase.appcheck/[wasm-js]-re-captcha-v3-provider-factory/-re-captcha-v3-provider-factory.html
+$dokka.location:io.github.corneloaie.firebase.appcheck/ReCaptchaV3ProviderFactory/create/#[Error type: Unresolved type for FirebaseApp]/PointingToDeclaration/firebase-appcheck/io.github.corneloaie.firebase.appcheck/[wasm-js]-re-captcha-v3-provider-factory/create.html
+$dokka.location:io.github.corneloaie.firebase.appcheck/ReCaptchaV3ProviderFactory/siteKey/#/PointingToDeclaration/firebase-appcheck/io.github.corneloaie.firebase.appcheck/[wasm-js]-re-captcha-v3-provider-factory/site-key.html
+$dokka.location:io.github.corneloaie.firebase.appcheck/ReCaptchaV3ProviderFactory/toString/#/PointingToDeclaration/firebase-appcheck/io.github.corneloaie.firebase.appcheck/[wasm-js]-re-captcha-v3-provider-factory/to-string.html
+$dokka.location:io.github.corneloaie.firebase.auth//FirebaseAuth/#io.github.corneloaie.firebase.auth.externals.Auth/PointingToDeclaration/firebase-auth/io.github.corneloaie.firebase.auth/[wasm-js]-firebase-auth.html
+$dokka.location:io.github.corneloaie.firebase.auth/PhoneAuthProvider/createOptionsBuilder/#/PointingToDeclaration/firebase-auth/io.github.corneloaie.firebase.auth/-phone-auth-provider/[jvm]create-options-builder.html
+$dokka.location:io.github.corneloaie.firebase.auth/PhoneVerificationProvider/activity/#/PointingToDeclaration/firebase-auth/io.github.corneloaie.firebase.auth/-phone-verification-provider/[jvm]activity.html
+$dokka.location:io.github.corneloaie.firebase.auth/PhoneVerificationProvider/codeSent/#kotlin.Function1[kotlin.Unit,kotlin.Unit]/PointingToDeclaration/firebase-auth/io.github.corneloaie.firebase.auth/-phone-verification-provider/[jvm]code-sent.html
+$dokka.location:io.github.corneloaie.firebase.auth/PhoneVerificationProvider/getVerificationCode/#/PointingToDeclaration/firebase-auth/io.github.corneloaie.firebase.auth/-phone-verification-provider/[jvm]get-verification-code.html
+$dokka.location:io.github.corneloaie.firebase.auth/PhoneVerificationProvider/getVerificationCode/#kotlin.String/PointingToDeclaration/firebase-auth/io.github.corneloaie.firebase.auth/-phone-verification-provider/[wasm-js]get-verification-code.html
+$dokka.location:io.github.corneloaie.firebase.auth/PhoneVerificationProvider/timeout/#/PointingToDeclaration/firebase-auth/io.github.corneloaie.firebase.auth/-phone-verification-provider/[jvm]timeout.html
+$dokka.location:io.github.corneloaie.firebase.auth/PhoneVerificationProvider/unit/#/PointingToDeclaration/firebase-auth/io.github.corneloaie.firebase.auth/-phone-verification-provider/[jvm]unit.html
+$dokka.location:io.github.corneloaie.firebase.auth/PhoneVerificationProvider/verifier/#/PointingToDeclaration/firebase-auth/io.github.corneloaie.firebase.auth/-phone-verification-provider/[wasm-js]verifier.html
+$dokka.location:io.github.corneloaie.firebase.database/ServerValue/equals/#kotlin.Any?/PointingToDeclaration/firebase-database/io.github.corneloaie.firebase.database/-server-value/[wasm-js]equals.html
+$dokka.location:io.github.corneloaie.firebase.database/ServerValue/hashCode/#/PointingToDeclaration/firebase-database/io.github.corneloaie.firebase.database/-server-value/[wasm-js]hash-code.html
+$dokka.location:io.github.corneloaie.firebase.database/ServerValue/toString/#/PointingToDeclaration/firebase-database/io.github.corneloaie.firebase.database/-server-value/[wasm-js]to-string.html
+$dokka.location:io.github.corneloaie.firebase.firestore//invoke/[Error type: Unresolved type for CollectionReference.Companion]#com.google.firebase.firestore.CollectionReference/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/[jvm]invoke.html
+$dokka.location:io.github.corneloaie.firebase.firestore//invoke/[Error type: Unresolved type for CollectionReference.Companion]#io.github.corneloaie.firebase.firestore.externals.CollectionReference/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/[wasm-js]invoke.html
+$dokka.location:io.github.corneloaie.firebase.firestore//invoke/[Error type: Unresolved type for DocumentReference.Companion]#com.google.firebase.firestore.DocumentReference/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/[jvm]invoke.html
+$dokka.location:io.github.corneloaie.firebase.firestore//invoke/[Error type: Unresolved type for DocumentReference.Companion]#io.github.corneloaie.firebase.firestore.externals.DocumentReference/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/[wasm-js]invoke.html
+$dokka.location:io.github.corneloaie.firebase.firestore//invoke/[Error type: Unresolved type for DocumentSnapshot.Companion]#com.google.firebase.firestore.DocumentSnapshot/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/[jvm]invoke.html
+$dokka.location:io.github.corneloaie.firebase.firestore//invoke/[Error type: Unresolved type for DocumentSnapshot.Companion]#io.github.corneloaie.firebase.firestore.externals.DocumentSnapshot/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/[wasm-js]invoke.html
+$dokka.location:io.github.corneloaie.firebase.firestore//invoke/[Error type: Unresolved type for FirebaseFirestore.Companion]#com.google.firebase.firestore.FirebaseFirestore/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/[jvm]invoke.html
+$dokka.location:io.github.corneloaie.firebase.firestore//invoke/[Error type: Unresolved type for FirebaseFirestore.Companion]#io.github.corneloaie.firebase.firestore.externals.Firestore/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/[wasm-js]invoke.html
+$dokka.location:io.github.corneloaie.firebase.firestore//invoke/[Error type: Unresolved type for Query.Companion]#com.google.firebase.firestore.Query/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/[jvm]invoke.html
+$dokka.location:io.github.corneloaie.firebase.firestore//invoke/[Error type: Unresolved type for Query.Companion]#io.github.corneloaie.firebase.firestore.externals.Query/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/[wasm-js]invoke.html
+$dokka.location:io.github.corneloaie.firebase.firestore//invoke/[Error type: Unresolved type for Transaction.Companion]#com.google.firebase.firestore.Transaction/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/[jvm]invoke.html
+$dokka.location:io.github.corneloaie.firebase.firestore//invoke/[Error type: Unresolved type for Transaction.Companion]#io.github.corneloaie.firebase.firestore.externals.Transaction/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/[wasm-js]invoke.html
+$dokka.location:io.github.corneloaie.firebase.firestore//invoke/[Error type: Unresolved type for WriteBatch.Companion]#com.google.firebase.firestore.WriteBatch/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/[jvm]invoke.html
+$dokka.location:io.github.corneloaie.firebase.firestore//invoke/[Error type: Unresolved type for WriteBatch.Companion]#io.github.corneloaie.firebase.firestore.externals.WriteBatch/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/[wasm-js]invoke.html
+$dokka.location:io.github.corneloaie.firebase.firestore/FirebaseFirestoreSettings.Builder/callbackExecutor/#/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/-firebase-firestore-settings/-builder/[jvm]callback-executor.html
+$dokka.location:io.github.corneloaie.firebase.firestore/FirebaseFirestoreSettings/callbackExecutor/#/PointingToDeclaration/firebase-firestore/io.github.corneloaie.firebase.firestore/-firebase-firestore-settings/[jvm]callback-executor.html
+$dokka.location:io.github.corneloaie.firebase.perf//isInstrumentationEnabled/[Error type: Unresolved type for FirebasePerformance]#/PointingToDeclaration/firebase-perf/io.github.corneloaie.firebase.perf/[wasm-js]is-instrumentation-enabled.html
+$dokka.location:io.github.corneloaie.firebase.perf//setInstrumentationEnabled/[Error type: Unresolved type for FirebasePerformance]#kotlin.Boolean/PointingToDeclaration/firebase-perf/io.github.corneloaie.firebase.perf/[wasm-js]set-instrumentation-enabled.html
+$dokka.location:io.github.corneloaie.firebase.storage/Data/data/#/PointingToDeclaration/firebase-storage/io.github.corneloaie.firebase.storage/-data/[wasm-js]data.html
+$dokka.location:io.github.corneloaie.firebase.storage/File/uri/#/PointingToDeclaration/firebase-storage/io.github.corneloaie.firebase.storage/-file/[jvm]uri.html
 module:firebase-ai
 com.google.firebase.ai
 com.google.firebase.ai.annotations
 com.google.firebase.ai.type
-dev.gitlive.firebase.ai
-dev.gitlive.firebase.ai.externals
+io.github.corneloaie.firebase.ai
+io.github.corneloaie.firebase.ai.externals
 module:firebase-analytics
 android.os
 com.google.firebase.analytics
-dev.gitlive.firebase.analytics
-dev.gitlive.firebase.analytics.externals
+io.github.corneloaie.firebase.analytics
+io.github.corneloaie.firebase.analytics.externals
 module:firebase-app
 com.google.android.gms.tasks
 com.google.firebase
-dev.gitlive.firebase
-dev.gitlive.firebase.externals
+io.github.corneloaie.firebase
+io.github.corneloaie.firebase.externals
 kotlinx.coroutines.tasks
 module:firebase-appcheck
 com.google.firebase.appcheck
 com.google.firebase.appcheck.debug
 com.google.firebase.appcheck.playintegrity
 com.google.firebase.appcheck.recaptcha
-dev.gitlive.firebase.appcheck
-dev.gitlive.firebase.appcheck.externals
+io.github.corneloaie.firebase.appcheck
+io.github.corneloaie.firebase.appcheck.externals
 module:firebase-appdistribution
 com.google.firebase.appdistribution
-dev.gitlive.firebase.appdistribution
+io.github.corneloaie.firebase.appdistribution
 module:firebase-auth
 com.google.firebase.auth
-dev.gitlive.firebase.auth
-dev.gitlive.firebase.auth.externals
+io.github.corneloaie.firebase.auth
+io.github.corneloaie.firebase.auth.externals
 module:firebase-config
 com.google.firebase.remoteconfig
-dev.gitlive.firebase.remoteconfig
-dev.gitlive.firebase.remoteconfig.externals
+io.github.corneloaie.firebase.remoteconfig
+io.github.corneloaie.firebase.remoteconfig.externals
 module:firebase-crashlytics
 com.google.firebase.crashlytics
-dev.gitlive.firebase.crashlytics
+io.github.corneloaie.firebase.crashlytics
 module:firebase-database
 com.google.firebase.database
-dev.gitlive.firebase.database
-dev.gitlive.firebase.database.externals
+io.github.corneloaie.firebase.database
+io.github.corneloaie.firebase.database.externals
 module:firebase-dataconnect
 com.google.firebase.dataconnect
 com.google.firebase.dataconnect.generated
 com.google.firebase.dataconnect.serializers
-dev.gitlive.firebase.dataconnect
-dev.gitlive.firebase.dataconnect.externals
-dev.gitlive.firebase.dataconnect.serializers
+io.github.corneloaie.firebase.dataconnect
+io.github.corneloaie.firebase.dataconnect.externals
+io.github.corneloaie.firebase.dataconnect.serializers
 module:firebase-firestore
 com.google.firebase.firestore
 com.google.firebase.firestore.pipeline
 com.google.firebase.firestore.pipeline.evaluation
-dev.gitlive.firebase.firestore
-dev.gitlive.firebase.firestore.externals
-dev.gitlive.firebase.firestore.externals.pipelines
+io.github.corneloaie.firebase.firestore
+io.github.corneloaie.firebase.firestore.externals
+io.github.corneloaie.firebase.firestore.externals.pipelines
 module:firebase-functions
 com.google.firebase.functions
-dev.gitlive.firebase.functions
-dev.gitlive.firebase.functions.externals
+io.github.corneloaie.firebase.functions
+io.github.corneloaie.firebase.functions.externals
+java.net
 module:firebase-inappmessaging
 com.google.firebase.inappmessaging
 com.google.firebase.inappmessaging.display
 com.google.firebase.inappmessaging.model
-dev.gitlive.firebase.inappmessaging
+io.github.corneloaie.firebase.inappmessaging
 module:firebase-installations
 com.google.firebase.installations
 com.google.firebase.installations.internal
-dev.gitlive.firebase.installations
-dev.gitlive.firebase.installations.externals
+io.github.corneloaie.firebase.installations
+io.github.corneloaie.firebase.installations.externals
 module:firebase-messaging
 com.google.firebase.messaging
-dev.gitlive.firebase.messaging
-dev.gitlive.firebase.messaging.externals
+io.github.corneloaie.firebase.messaging
+io.github.corneloaie.firebase.messaging.externals
 module:firebase-perf
 com.google.firebase.perf
 com.google.firebase.perf.metrics
-dev.gitlive.firebase.perf
-dev.gitlive.firebase.perf.externals
-dev.gitlive.firebase.perf.metrics
-dev.gitlive.firebase.perf.session
+io.github.corneloaie.firebase.perf
+io.github.corneloaie.firebase.perf.externals
+io.github.corneloaie.firebase.perf.metrics
+io.github.corneloaie.firebase.perf.session
 module:firebase-pnv
 com.google.firebase.pnv
-dev.gitlive.firebase.pnv
+io.github.corneloaie.firebase.pnv
 module:firebase-storage
 com.google.firebase.storage
-dev.gitlive.firebase.storage
-dev.gitlive.firebase.storage.externals
+io.github.corneloaie.firebase.storage
+io.github.corneloaie.firebase.storage.externals

@@ -1,0 +1,425 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>io.github.corneloaie.firebase.database</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+<a class="library-name--link" href="../../index.html">
+                    firebase-multiplatform
+            </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">3.0.0-alpha02
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":firebase-database:dokkaHtmlPartial/androidMain">android</button>
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-database:dokkaHtmlPartial/appleMain">apple</button>
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-database:dokkaHtmlPartial/commonMain">common</button>
+                <button class="platform-tag platform-selector js-like" data-active="" data-filter=":firebase-database:dokkaHtmlPartial/jsMain">js</button>
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":firebase-database:dokkaHtmlPartial/jvmMain">jvm</button>
+                <button class="platform-tag platform-selector wasm-like" data-active="" data-filter=":firebase-database:dokkaHtmlPartial/wasmJsMain">wasmJs</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-database:dokkaHtmlPartial/androidMain" data-filter=":firebase-database:dokkaHtmlPartial/androidMain">
+                                <span class="checkbox--icon"></span>
+                                android
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-database:dokkaHtmlPartial/appleMain" data-filter=":firebase-database:dokkaHtmlPartial/appleMain">
+                                <span class="checkbox--icon"></span>
+                                apple
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-database:dokkaHtmlPartial/commonMain" data-filter=":firebase-database:dokkaHtmlPartial/commonMain">
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option js-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-database:dokkaHtmlPartial/jsMain" data-filter=":firebase-database:dokkaHtmlPartial/jsMain">
+                                <span class="checkbox--icon"></span>
+                                js
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-database:dokkaHtmlPartial/jvmMain" data-filter=":firebase-database:dokkaHtmlPartial/jvmMain">
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option wasm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-database:dokkaHtmlPartial/wasmJsMain" data-filter=":firebase-database:dokkaHtmlPartial/wasmJsMain">
+                                <span class="checkbox--icon"></span>
+                                wasmJs
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+                <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://github.com/corneloaie/firebase-multiplatform"></a>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    firebase-multiplatform
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageids="firebase-database::io.github.corneloaie.firebase.database////PointingToDeclaration//1092867387">
+  <div class="breadcrumbs"><a href="../index.html">firebase-database</a><span class="delimiter">/</span><span class="current">io.github.corneloaie.firebase.database</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button><button class="section-tab" data-togglable="PROPERTY,EXTENSION_PROPERTY">Properties</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-364588840%2FClasslikes%2F1588087876" anchor-label="ChildEvent" id="-364588840%2FClasslikes%2F1588087876" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-child-event/index.html"><span>Child</span><wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-364588840%2FClasslikes%2F1588087876"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-child-event/index.html">ChildEvent</a></div><div class="brief "><p class="paragraph">Used to emit events about changes in the child locations of a given <a href="-query/index.html">Query</a> when using the <a href="../com.google.firebase.database/child-events.html">childEvents</a> Flow.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="731693112%2FClasslikes%2F1588087876" anchor-label="DatabaseException" id="731693112%2FClasslikes%2F1588087876" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-database-exception/index.html"><span>Database</span><wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="731693112%2FClasslikes%2F1588087876"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-database-exception/index.html">DatabaseException</a><span class="token operator"> = </span><a href="../com.google.firebase.database/-database-exception/index.html">com.google.firebase.database.DatabaseException</a></div><div class="brief "><p class="paragraph">Exception that gets thrown when an operation on Firebase Database fails.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="286713020%2FClasslikes%2F1588087876" anchor-label="DatabaseReference" id="286713020%2FClasslikes%2F1588087876" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-database-reference/index.html"><span>Database</span><wbr><span><span>Reference</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="286713020%2FClasslikes%2F1588087876"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-database-reference/index.html">DatabaseReference</a> : <a href="-query/index.html">Query</a></div><div class="brief "><p class="paragraph">A Firebase reference represents a particular location in your Database and can be used for reading or writing data to that Database location.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-393373464%2FClasslikes%2F1588087876" anchor-label="DataSnapshot" id="-393373464%2FClasslikes%2F1588087876" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-data-snapshot/index.html"><span>Data</span><wbr><span><span>Snapshot</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-393373464%2FClasslikes%2F1588087876"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-data-snapshot/index.html">DataSnapshot</a></div><div class="brief "><p class="paragraph">A DataSnapshot instance contains data from a Firebase Database location. Any time you read Database data, you receive the data as a DataSnapshot.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1021762516%2FClasslikes%2F1588087876" anchor-label="FirebaseDatabase" id="1021762516%2FClasslikes%2F1588087876" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-firebase-database/index.html"><span>Firebase</span><wbr><span><span>Database</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1021762516%2FClasslikes%2F1588087876"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-firebase-database/index.html">FirebaseDatabase</a></div><div class="brief "><p class="paragraph">The entry point for accessing a Firebase Database. You can get an instance by calling Firebase.database. To access a location in the database and read or write data, use <a href="-firebase-database/reference.html">FirebaseDatabase.reference</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-70598341%2FClasslikes%2F1588087876" anchor-label="OnDisconnect" id="-70598341%2FClasslikes%2F1588087876" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-on-disconnect/index.html"><span>On</span><wbr><span><span>Disconnect</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-70598341%2FClasslikes%2F1588087876"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-on-disconnect/index.html">OnDisconnect</a></div><div class="brief "><p class="paragraph">The OnDisconnect class is used to manage operations that will be run on the server when this client disconnects. It can be used to add or remove data based on a client's connection status. It is very useful in applications looking for 'presence' functionality.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1998332804%2FClasslikes%2F1588087876" anchor-label="Query" id="1998332804%2FClasslikes%2F1588087876" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-query/index.html"><span><span>Query</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1998332804%2FClasslikes%2F1588087876"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-query/index.html">Query</a></div><div class="brief "><p class="paragraph">The Query class (and its subclass, <a href="-database-reference/index.html">DatabaseReference</a>) are used for reading data. Listeners are attached, and they will be triggered when the corresponding data changes.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="830926558%2FClasslikes%2F1092867387" anchor-label="ServerValue" id="830926558%2FClasslikes%2F1092867387" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain,:firebase-database:dokkaHtmlPartial/androidMain,:firebase-database:dokkaHtmlPartial/appleMain,:firebase-database:dokkaHtmlPartial/jsMain,:firebase-database:dokkaHtmlPartial/jvmMain,:firebase-database:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/commonMain,:firebase-database:dokkaHtmlPartial/androidMain,:firebase-database:dokkaHtmlPartial/appleMain,:firebase-database:dokkaHtmlPartial/jsMain,:firebase-database:dokkaHtmlPartial/jvmMain,:firebase-database:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain,:firebase-database:dokkaHtmlPartial/androidMain,:firebase-database:dokkaHtmlPartial/appleMain,:firebase-database:dokkaHtmlPartial/jsMain,:firebase-database:dokkaHtmlPartial/jvmMain,:firebase-database:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-server-value/index.html"><span>Server</span><wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="830926558%2FClasslikes%2F1092867387"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/androidMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":firebase-database:dokkaHtmlPartial/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/appleMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/appleMain" data-toggle=":firebase-database:dokkaHtmlPartial/appleMain">apple</button><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain" data-toggle=":firebase-database:dokkaHtmlPartial/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/jsMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/jsMain" data-toggle=":firebase-database:dokkaHtmlPartial/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/jvmMain" data-toggle=":firebase-database:dokkaHtmlPartial/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/wasmJsMain" data-toggle=":firebase-database:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-togglable=":firebase-database:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-server-value/index.html">ServerValue</a></div><div class="brief "><p class="paragraph">Represents a Firebase ServerValue.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-database:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-server-value/index.html">ServerValue</a></div><div class="brief "><p class="paragraph">Represents a Firebase ServerValue.</p></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">class </span><a href="-server-value/index.html">ServerValue</a></div><div class="brief "><p class="paragraph">Represents a Firebase ServerValue.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-database:dokkaHtmlPartial/jsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-server-value/index.html">ServerValue</a></div><div class="brief "><p class="paragraph">Represents a Firebase ServerValue.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-database:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-server-value/index.html">ServerValue</a></div><div class="brief "><p class="paragraph">Represents a Firebase ServerValue.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-database:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-server-value/index.html">ServerValue</a></div><div class="brief "><p class="paragraph">Represents a Firebase ServerValue.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2098287916%2FClasslikes%2F1588087876" anchor-label="ServerValueSerializer" id="2098287916%2FClasslikes%2F1588087876" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-server-value-serializer/index.html"><span>Server</span><wbr><span>Value</span><wbr><span><span>Serializer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2098287916%2FClasslikes%2F1588087876"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-server-value-serializer/index.html">ServerValueSerializer</a></div><div class="brief "><p class="paragraph">Serializer for <a href="-server-value/index.html">ServerValue</a>. Must be used with FirebaseEncoder/FirebaseDecoder.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-1655451951%2FProperties%2F925296872" anchor-label="android" id="-1655451951%2FProperties%2F925296872" data-filterable-set=":firebase-database:dokkaHtmlPartial/androidMain,:firebase-database:dokkaHtmlPartial/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/androidMain,:firebase-database:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/androidMain,:firebase-database:dokkaHtmlPartial/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="android.html"><span><span>android</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1655451951%2FProperties%2F925296872"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/androidMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":firebase-database:dokkaHtmlPartial/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/jvmMain" data-toggle=":firebase-database:dokkaHtmlPartial/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.database/-data-snapshot/index.html">DataSnapshot</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.database/-database-reference/index.html">DatabaseReference</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.database/-firebase-database/index.html">FirebaseDatabase</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.database/-on-disconnect/index.html">OnDisconnect</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.database/-query/index.html">Query</a></div><div class="brief "><p class="paragraph">The underlying Firebase Android SDK object.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-database:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.database/-data-snapshot/index.html">DataSnapshot</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.database/-database-reference/index.html">DatabaseReference</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.database/-firebase-database/index.html">FirebaseDatabase</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.database/-on-disconnect/index.html">OnDisconnect</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.database/-query/index.html">Query</a></div><div class="brief "><p class="paragraph">The underlying Firebase Android SDK object.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="527978912%2FProperties%2F1653470069" anchor-label="database" id="527978912%2FProperties%2F1653470069" data-filterable-set=":firebase-database:dokkaHtmlPartial/jsMain,:firebase-database:dokkaHtmlPartial/wasmJsMain,:firebase-database:dokkaHtmlPartial/commonMain,:firebase-database:dokkaHtmlPartial/androidMain,:firebase-database:dokkaHtmlPartial/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/jsMain,:firebase-database:dokkaHtmlPartial/wasmJsMain,:firebase-database:dokkaHtmlPartial/commonMain,:firebase-database:dokkaHtmlPartial/androidMain,:firebase-database:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/jsMain,:firebase-database:dokkaHtmlPartial/wasmJsMain,:firebase-database:dokkaHtmlPartial/commonMain,:firebase-database:dokkaHtmlPartial/androidMain,:firebase-database:dokkaHtmlPartial/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="database.html"><span><span>database</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="527978912%2FProperties%2F1653470069"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/androidMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":firebase-database:dokkaHtmlPartial/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain" data-toggle=":firebase-database:dokkaHtmlPartial/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/jsMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/jsMain" data-toggle=":firebase-database:dokkaHtmlPartial/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/jvmMain" data-toggle=":firebase-database:dokkaHtmlPartial/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/wasmJsMain" data-toggle=":firebase-database:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-togglable=":firebase-database:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="database.html"><strike>database</strike></a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-database:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="database.html">database</a><span class="token operator">: </span><a href="-firebase-database/index.html">FirebaseDatabase</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-database/index.html">FirebaseDatabase</a> instance of the default FirebaseApp.</p></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/jsMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="database.html">database</a><span class="token operator">: </span><a href="../../firebase-database/io.github.corneloaie.firebase.database.externals/-database/index.html">Database</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="database.html">database</a><span class="token operator">: </span><a href="../../firebase-database/io.github.corneloaie.firebase.database.externals/-database/index.html">Database</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="database.html">database</a><span class="token operator">: </span><a href="../../firebase-database/io.github.corneloaie.firebase.database.externals/-database/index.html">Database</a></div><div class="brief "><p class="paragraph">The underlying Firebase JS SDK database.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-database:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="database.html"><strike>database</strike></a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-database:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="database.html">database</a><span class="token operator">: </span><a href="../io.github.corneloaie.firebase.database.externals/-database/index.html">Database</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="database.html">database</a><span class="token operator">: </span><a href="../io.github.corneloaie.firebase.database.externals/-database/index.html">Database</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="database.html">database</a><span class="token operator">: </span><a href="../io.github.corneloaie.firebase.database.externals/-database/index.html">Database</a></div><div class="brief "><p class="paragraph">The underlying Firebase JS SDK database.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-212004497%2FProperties%2F-160202234" anchor-label="ios" id="-212004497%2FProperties%2F-160202234" data-filterable-set=":firebase-database:dokkaHtmlPartial/appleMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/appleMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/appleMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ios.html"><span><span>ios</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-212004497%2FProperties%2F-160202234"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/appleMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":firebase-database:dokkaHtmlPartial/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="brief "><p class="paragraph">The underlying Firebase iOS SDK object.</p></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="brief "><p class="paragraph">The underlying Firebase iOS SDK reference the disconnect operations are registered on.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1828242309%2FProperties%2F38476357" anchor-label="js" id="-1828242309%2FProperties%2F38476357" data-filterable-set=":firebase-database:dokkaHtmlPartial/jsMain,:firebase-database:dokkaHtmlPartial/wasmJsMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/jsMain,:firebase-database:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/jsMain,:firebase-database:dokkaHtmlPartial/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="js.html"><span><span>js</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1828242309%2FProperties%2F38476357"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/jsMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/jsMain" data-active="" data-toggle=":firebase-database:dokkaHtmlPartial/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/wasmJsMain" data-toggle=":firebase-database:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/jsMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../../firebase-database/io.github.corneloaie.firebase.database.externals/-data-snapshot/index.html">DataSnapshot</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../../firebase-database/io.github.corneloaie.firebase.database.externals/-database/index.html">Database</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../../firebase-database/io.github.corneloaie.firebase.database.externals/-on-disconnect/index.html">OnDisconnect</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../../firebase-database/io.github.corneloaie.firebase.database.externals/-query/index.html">Query</a></div><div class="brief "><p class="paragraph">The underlying Firebase JS SDK object.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-database:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../io.github.corneloaie.firebase.database.externals/-data-snapshot/index.html">DataSnapshot</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../io.github.corneloaie.firebase.database.externals/-database/index.html">Database</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../io.github.corneloaie.firebase.database.externals/-on-disconnect/index.html">OnDisconnect</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../io.github.corneloaie.firebase.database.externals/-query/index.html">Query</a></div><div class="brief "><p class="paragraph">The underlying Firebase JS SDK object.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1340699655%2FProperties%2F35532718" anchor-label="persistenceEnabled" id="1340699655%2FProperties%2F35532718" data-filterable-set=":firebase-database:dokkaHtmlPartial/androidMain,:firebase-database:dokkaHtmlPartial/appleMain,:firebase-database:dokkaHtmlPartial/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/androidMain,:firebase-database:dokkaHtmlPartial/appleMain,:firebase-database:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/androidMain,:firebase-database:dokkaHtmlPartial/appleMain,:firebase-database:dokkaHtmlPartial/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="persistence-enabled.html"><span>persistence</span><wbr><span><span>Enabled</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1340699655%2FProperties%2F35532718"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/androidMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":firebase-database:dokkaHtmlPartial/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/appleMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/appleMain" data-toggle=":firebase-database:dokkaHtmlPartial/appleMain">apple</button><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/jvmMain" data-toggle=":firebase-database:dokkaHtmlPartial/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="persistence-enabled.html"><strike>persistenceEnabled</strike></a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="persistence-enabled.html"><strike>persistenceEnabled</strike></a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-database:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="persistence-enabled.html"><strike>persistenceEnabled</strike></a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="persistence-enabled.html"><strike>persistenceEnabled</strike></a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-database:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="persistence-enabled.html"><strike>persistenceEnabled</strike></a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="persistence-enabled.html"><strike>persistenceEnabled</strike></a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="321184132%2FFunctions%2F1588087876" anchor-label="database" id="321184132%2FFunctions%2F1588087876" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="database.html"><span><span>database</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="321184132%2FFunctions%2F1588087876"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="database.html"><span class="token function">database</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">app<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-firebase-database/index.html">FirebaseDatabase</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-database/index.html">FirebaseDatabase</a> instance of the given FirebaseApp.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="database.html"><span class="token function">database</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">url<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-firebase-database/index.html">FirebaseDatabase</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-database/index.html">FirebaseDatabase</a> instance for the specified <a href="database.html">url</a>.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="database.html"><span class="token function">database</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">app<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">url<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-firebase-database/index.html">FirebaseDatabase</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-database/index.html">FirebaseDatabase</a> instance of the given FirebaseApp and <a href="database.html">url</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-993222534%2FFunctions%2F-160202234" anchor-label="toEventType" id="-993222534%2FFunctions%2F-160202234" data-filterable-set=":firebase-database:dokkaHtmlPartial/appleMain"></a>
+          <div class="table-row" data-filterable-current=":firebase-database:dokkaHtmlPartial/appleMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/appleMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-event-type.html"><span>to</span><wbr><span>Event</span><wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-993222534%2FFunctions%2F-160202234"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-database:dokkaHtmlPartial/appleMain" data-filterable-set=":firebase-database:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":firebase-database:dokkaHtmlPartial/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-database:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="to-event-type.html"><span class="token function">toEventType</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
