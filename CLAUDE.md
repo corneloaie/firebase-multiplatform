@@ -39,7 +39,7 @@ firebase-multiplatform: the Firebase Android SDK API, plus a Kotlin-first API, f
 
 - Kotlin: 2.4.21 (2.4+ is required by the SwiftPM import used on Apple targets)
 - Coroutines: 1.10.2 (held below 1.11: see `.claude/skills/dependency-update/pins.txt`)
-- Serialization: 1.11.0
+- Serialization: 1.12.0
 - Firebase BOM: 35.1.0 (Android minSdk 24, which firebase-common 23 requires)
 - firebase-ios-sdk: 13.1.0 (minimum deployment targets iOS 15 / tvOS 15 / macOS 12; Firebase itself allows macOS 11, but Kotlin/Native builds macOS code for 12)
 - Firebase JS SDK: 13.1.0 (the `npm("firebase", ...)` pins in firebase-common and firebase-common-internal)

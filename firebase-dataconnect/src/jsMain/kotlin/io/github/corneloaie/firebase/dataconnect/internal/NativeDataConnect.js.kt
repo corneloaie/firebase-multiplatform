@@ -88,7 +88,9 @@ private fun Throwable.toDataConnectFailure(): Throwable {
             errors = parseErrorInfos((response.errors as Any?).toJsonElement()),
             cause = this,
         )
+
         error.code != null && error.code != undefined -> DataConnectException(message, this)
+
         else -> this
     }
 }

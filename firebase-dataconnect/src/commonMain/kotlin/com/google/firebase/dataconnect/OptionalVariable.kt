@@ -63,6 +63,7 @@ public sealed interface OptionalVariable<out T> {
                 is Undefined -> {
                     // nothing to do: the field is omitted
                 }
+
                 is Value<T> -> encoder.encodeSerializableValue(elementSerializer, value.value)
             }
         }

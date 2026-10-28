@@ -275,8 +275,8 @@ public actual class OnDisconnect internal constructor(public val ios: FIRDatabas
     }
 }
 
-@Suppress("UNCHECKED_CAST")
 /** Null values become NSNull, which the SDK reads as a deletion. */
+@Suppress("UNCHECKED_CAST")
 internal fun Map<String, Any?>.toIosMap(): Map<Any?, *> = mapValues { (_, value) -> value.toIos() }
 
 /**

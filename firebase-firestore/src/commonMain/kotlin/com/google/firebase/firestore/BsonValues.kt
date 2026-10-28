@@ -20,7 +20,7 @@ import kotlin.jvm.JvmStatic
  * @property value The 24-character hex string of the ObjectId.
  */
 public class BsonObjectId(@JvmField public val value: String) {
-    override fun equals(other: Any?): Boolean = this === other || other is BsonObjectId && other.value == value
+    override fun equals(other: Any?): Boolean = this === other || (other is BsonObjectId && other.value == value)
 
     override fun hashCode(): Int = value.hashCode()
 
@@ -40,7 +40,7 @@ public class BsonTimestamp(@JvmField public val seconds: Long, @JvmField public 
         require(increment in 0..UInt.MAX_VALUE.toLong()) { "The field 'increment' value ($increment) does not represent an unsigned 32-bit integer." }
     }
 
-    override fun equals(other: Any?): Boolean = this === other || other is BsonTimestamp && other.seconds == seconds && other.increment == increment
+    override fun equals(other: Any?): Boolean = this === other || (other is BsonTimestamp && other.seconds == seconds && other.increment == increment)
 
     override fun hashCode(): Int = (31 * seconds + increment).toInt()
 
@@ -61,7 +61,7 @@ public class Decimal128Value(@JvmField public val stringValue: String) {
     /** [stringValue] in a canonical form for equality, see [canonical]. */
     private val canonicalValue: String = canonical(stringValue)
 
-    override fun equals(other: Any?): Boolean = this === other || other is Decimal128Value && other.canonicalValue == canonicalValue
+    override fun equals(other: Any?): Boolean = this === other || (other is Decimal128Value && other.canonicalValue == canonicalValue)
 
     override fun hashCode(): Int = canonicalValue.hashCode()
 
@@ -116,7 +116,7 @@ public class Decimal128Value(@JvmField public val stringValue: String) {
  * @property value The integer.
  */
 public class Int32Value(@JvmField public val value: Int) {
-    override fun equals(other: Any?): Boolean = this === other || other is Int32Value && other.value == value
+    override fun equals(other: Any?): Boolean = this === other || (other is Int32Value && other.value == value)
 
     override fun hashCode(): Int = value
 
@@ -152,7 +152,7 @@ public class MinKey private constructor() {
  * @property options The options (flags) of the regular expression, such as `i`.
  */
 public class RegexValue(@JvmField public val pattern: String, @JvmField public val options: String) {
-    override fun equals(other: Any?): Boolean = this === other || other is RegexValue && other.pattern == pattern && other.options == options
+    override fun equals(other: Any?): Boolean = this === other || (other is RegexValue && other.pattern == pattern && other.options == options)
 
     override fun hashCode(): Int = 31 * pattern.hashCode() + options.hashCode()
 

@@ -38,7 +38,7 @@ public abstract class Selectable : Expression() {
 
 /** An expression with an alias, the name of its value in the output documents; created with [Expression.alias]. */
 public class AliasedExpression internal constructor(override val alias: String, override val expr: Expression) : Selectable() {
-    override fun equals(other: Any?): Boolean = this === other || other is AliasedExpression && alias == other.alias && expr == other.expr
+    override fun equals(other: Any?): Boolean = this === other || (other is AliasedExpression && alias == other.alias && expr == other.expr)
 
     override fun hashCode(): Int = 31 * alias.hashCode() + expr.hashCode()
 }
@@ -54,7 +54,7 @@ public class Field internal constructor(internal val segments: List<String>) : S
     /** The distance in meters between the location in this field and [location]; for the search stage only. */
     public fun geoDistance(location: GeoPoint): Expression = Expression.geoDistance(this, location)
 
-    override fun equals(other: Any?): Boolean = this === other || other is Field && segments == other.segments
+    override fun equals(other: Any?): Boolean = this === other || (other is Field && segments == other.segments)
 
     override fun hashCode(): Int = segments.hashCode()
 
@@ -70,8 +70,11 @@ public class Field internal constructor(internal val segments: List<String>) : S
         /** The field at [path], `.`-separated, as the Android SDK's `FieldPath.fromDotSeparatedPath` splits it. */
         internal fun fromDotSeparatedPath(path: String): Field = when (path) {
             DOCUMENT_ID_NAME -> DOCUMENT_ID
+
             CREATE_TIME_NAME -> CREATE_TIME
+
             UPDATE_TIME_NAME -> UPDATE_TIME
+
             else -> {
                 require(path.none { it in "~*/[]" }) { "Invalid field path ($path). Paths must not contain '~', '*', '/', '[', or ']'" }
                 val segments = path.split('.')
@@ -110,7 +113,7 @@ public open class FunctionExpression internal constructor(
     internal constructor(name: String, fieldName: String) : this(name, arrayOf(Expression.field(fieldName)))
     internal constructor(name: String, fieldName: String, vararg params: Any) : this(name, arrayOf(Expression.field(fieldName), *Expression.toArrayOfExprOrConstant(params)))
 
-    override fun equals(other: Any?): Boolean = this === other || other is FunctionExpression && name == other.name && params.contentEquals(other.params) && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is FunctionExpression && name == other.name && params.contentEquals(other.params) && options == other.options)
 
     override fun hashCode(): Int = 31 * (31 * name.hashCode() + params.contentHashCode()) + options.hashCode()
 }
@@ -145,7 +148,7 @@ public class Ordering internal constructor(
     /** The direction of the sort. */
     public val dir: Direction,
 ) {
-    override fun equals(other: Any?): Boolean = this === other || other is Ordering && expr == other.expr && dir == other.dir
+    override fun equals(other: Any?): Boolean = this === other || (other is Ordering && expr == other.expr && dir == other.dir)
 
     override fun hashCode(): Int = 31 * expr.hashCode() + dir.hashCode()
 
@@ -179,7 +182,7 @@ public class AliasedAggregate internal constructor(internal val alias: String, i
 
 /** A constant: null, or a value the Android SDK can encode (see [Expression.Companion.toExprOrConstant]). */
 internal class Constant(internal val value: Any?) : Expression() {
-    override fun equals(other: Any?): Boolean = this === other || other is Constant && constantEquals(value, other.value)
+    override fun equals(other: Any?): Boolean = this === other || (other is Constant && constantEquals(value, other.value))
 
     override fun hashCode(): Int = when (value) {
         is ByteArray -> value.contentHashCode()
@@ -212,7 +215,7 @@ internal class BooleanFunctionExpression internal constructor(internal val expr:
     internal constructor(name: String, fieldName: String) : this(name, arrayOf(Expression.field(fieldName)))
     internal constructor(name: String, fieldName: String, vararg params: Any) : this(name, arrayOf(Expression.field(fieldName), *Expression.toArrayOfExprOrConstant(params)))
 
-    override fun equals(other: Any?): Boolean = this === other || other is BooleanFunctionExpression && expr == other.expr || other is FunctionExpression && expr == other
+    override fun equals(other: Any?): Boolean = this === other || (other is BooleanFunctionExpression && expr == other.expr) || (other is FunctionExpression && expr == other)
 
     override fun hashCode(): Int = expr.hashCode()
 
@@ -221,7 +224,7 @@ internal class BooleanFunctionExpression internal constructor(internal val expr:
 
 /** A boolean constant, as a condition. */
 internal class BooleanConstant(internal val constant: Constant) : BooleanExpression() {
-    override fun equals(other: Any?): Boolean = this === other || other is BooleanConstant && constant == other.constant || other is Constant && constant == other
+    override fun equals(other: Any?): Boolean = this === other || (other is BooleanConstant && constant == other.constant) || (other is Constant && constant == other)
 
     override fun hashCode(): Int = constant.hashCode()
 
@@ -230,7 +233,7 @@ internal class BooleanConstant(internal val constant: Constant) : BooleanExpress
 
 /** A field holding a boolean, as a condition. */
 internal class BooleanField(internal val field: Field) : BooleanExpression() {
-    override fun equals(other: Any?): Boolean = this === other || other is BooleanField && field == other.field || other is Field && field == other
+    override fun equals(other: Any?): Boolean = this === other || (other is BooleanField && field == other.field) || (other is Field && field == other)
 
     override fun hashCode(): Int = field.hashCode()
 
@@ -239,7 +242,7 @@ internal class BooleanField(internal val field: Field) : BooleanExpression() {
 
 /** A variable bound by the define stage, or the element (or index) alias of `arrayFilter` and `arrayTransform`. */
 internal class Variable(internal val name: String) : Expression() {
-    override fun equals(other: Any?): Boolean = this === other || other is Variable && name == other.name
+    override fun equals(other: Any?): Boolean = this === other || (other is Variable && name == other.name)
 
     override fun hashCode(): Int = name.hashCode()
 

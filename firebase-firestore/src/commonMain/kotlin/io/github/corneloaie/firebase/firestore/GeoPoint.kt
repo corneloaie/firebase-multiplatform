@@ -16,7 +16,7 @@ public class GeoPoint internal constructor(internal val nativeValue: NativeGeoPo
     public val latitude: Double get() = nativeValue.latitude
     public val longitude: Double get() = nativeValue.longitude
 
-    override fun equals(other: Any?): Boolean = this === other || other is GeoPoint && nativeValue == other.nativeValue
+    override fun equals(other: Any?): Boolean = this === other || (other is GeoPoint && nativeValue == other.nativeValue)
     override fun hashCode(): Int = nativeValue.hashCode()
     override fun toString(): String = nativeValue.toString()
 }

@@ -21,6 +21,7 @@ import com.google.firebase.dataconnect.toDataConnectLocalDate
 import com.google.firebase.dataconnect.toKotlinxLocalDate
 import io.github.corneloaie.firebase.dataconnect.serializers.UuidSerializer
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonPrimitive
@@ -118,7 +119,9 @@ class SerializersTest {
         assertEquals(3, OptionalVariable.Value(3).valueOrThrow())
         assertNull(OptionalVariable.Undefined.valueOrNull())
         assertFailsWith<IllegalStateException> { OptionalVariable.Undefined.valueOrThrow() }
-        assertFailsWith<UnsupportedOperationException> { Json.decodeFromString(Variables.serializer(), """{"value":3}""") }
+        // kotlinx-serialization-json (1.12+) wraps what a deserializer throws, keeping it as the cause.
+        val decodeFailure = assertFailsWith<SerializationException> { Json.decodeFromString(Variables.serializer(), """{"value":3}""") }
+        assertIs<UnsupportedOperationException>(decodeFailure.cause)
     }
 
     @Test

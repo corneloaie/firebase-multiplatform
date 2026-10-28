@@ -216,9 +216,12 @@ internal fun NSError.toRemoteConfigException(): FirebaseRemoteConfigException = 
         FIRRemoteConfigErrorThrottled -> FirebaseRemoteConfigFetchThrottledException(
             ((userInfo[FIRRemoteConfigThrottledEndTimeInSecondsKey] as? NSNumber)?.doubleValue ?: 0.0).let { (it * MILLIS_PER_SECOND).toLong() },
         )
+
         FIRRemoteConfigErrorInternalError -> FirebaseRemoteConfigServerException(localizedDescription, FirebaseRemoteConfigException.Code.UNKNOWN)
+
         else -> FirebaseRemoteConfigClientException(localizedDescription)
     }
+
     FIRRemoteConfigUpdateErrorDomain -> FirebaseRemoteConfigException(
         localizedDescription,
         when (code) {
@@ -229,5 +232,6 @@ internal fun NSError.toRemoteConfigException(): FirebaseRemoteConfigException = 
             else -> FirebaseRemoteConfigException.Code.UNKNOWN
         },
     )
+
     else -> FirebaseRemoteConfigClientException(localizedDescription)
 }

@@ -57,6 +57,7 @@ internal fun FIRInAppMessagingDisplayMessage.asInAppMessage(): InAppMessage {
                 native = this,
             )
         }
+
         is FIRInAppMessagingModalDisplay -> {
             val textColor = textColor.hexString()
             ModalMessage(
@@ -70,6 +71,7 @@ internal fun FIRInAppMessagingDisplayMessage.asInAppMessage(): InAppMessage {
                 native = this,
             )
         }
+
         is FIRInAppMessagingBannerDisplay -> {
             val textColor = textColor.hexString()
             BannerMessage(
@@ -83,6 +85,7 @@ internal fun FIRInAppMessagingDisplayMessage.asInAppMessage(): InAppMessage {
                 native = this,
             )
         }
+
         is FIRInAppMessagingImageOnlyDisplay -> ImageOnlyMessage(
             campaignMetadata = metadata,
             imageData = imageData.asImageData(),
@@ -90,6 +93,7 @@ internal fun FIRInAppMessagingDisplayMessage.asInAppMessage(): InAppMessage {
             data = data,
             native = this,
         )
+
         else -> UnsupportedMessage(metadata, data, this)
     }
 }

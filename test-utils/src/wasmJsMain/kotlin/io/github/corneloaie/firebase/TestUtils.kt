@@ -41,15 +41,25 @@ private fun jsonStringify(value: JsAny?): String = js("JSON.stringify(value)")
 
 private fun Any?.toJsValue(): JsAny? = when (this) {
     null -> null
+
     is Boolean -> toJsBoolean()
+
     is Byte -> toInt().toJsNumber()
+
     is Short -> toInt().toJsNumber()
+
     is Int -> toJsNumber()
+
     is Long -> toDouble().toJsNumber()
+
     is Float -> toDouble().toJsNumber()
+
     is Double -> toJsNumber()
+
     is Char -> toString().toJsString()
+
     is String -> toJsString()
+
     is Map<*, *> -> {
         val target = jsObject()
         for ((key, value) in this) {
@@ -57,11 +67,13 @@ private fun Any?.toJsValue(): JsAny? = when (this) {
         }
         target
     }
+
     is List<*> -> {
         val array = JsArray<JsAny?>()
         forEachIndexed { index, element -> array[index] = element.toJsValue() }
         array
     }
+
     else -> asJsValue()
 }
 

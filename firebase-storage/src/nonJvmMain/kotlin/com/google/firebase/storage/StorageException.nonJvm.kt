@@ -42,7 +42,9 @@ public actual open class StorageException internal constructor(
 
         public actual fun fromExceptionAndHttpCode(exception: Throwable?, httpResultCode: Int): StorageException? = when {
             exception is StorageException -> exception
+
             exception == null && httpResultCode in HTTP_SUCCESS -> null
+
             else -> {
                 val code = when (httpResultCode) {
                     HTTP_UNAUTHENTICATED -> ERROR_NOT_AUTHENTICATED

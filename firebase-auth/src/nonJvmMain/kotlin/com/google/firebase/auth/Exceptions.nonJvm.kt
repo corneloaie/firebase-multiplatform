@@ -127,21 +127,32 @@ internal fun authException(errorCode: String, message: String, details: AuthErro
     val code = errorCodeAliases[errorCode] ?: errorCode
     return when (code) {
         "ERROR_NETWORK_REQUEST_FAILED", "ERROR_TIMEOUT" -> FirebaseNetworkException(message)
+
         "ERROR_TOO_MANY_REQUESTS", "ERROR_QUOTA_EXCEEDED" -> FirebaseTooManyRequestsException(message)
+
         "ERROR_WEAK_PASSWORD" -> FirebaseAuthWeakPasswordException(code, message, details.reason, details.cause)
+
         // The platform SDKs put the unmet requirements in the message.
         "ERROR_PASSWORD_DOES_NOT_MEET_REQUIREMENTS" -> FirebaseAuthPasswordDoesNotMeetRequirementsException(code, message, details.reason ?: message, details.cause)
+
         "ERROR_INVALID_ACTION_CODE", "ERROR_EXPIRED_ACTION_CODE" -> FirebaseAuthActionCodeException(code, message, details.cause)
+
         "ERROR_INVALID_RECIPIENT_EMAIL", "ERROR_INVALID_SENDER", "ERROR_INVALID_MESSAGE_PAYLOAD" -> FirebaseAuthEmailException(code, message, details.cause)
+
         "ERROR_USER_NOT_FOUND", "ERROR_USER_DISABLED", "ERROR_USER_TOKEN_EXPIRED", "ERROR_INVALID_USER_TOKEN", "ERROR_USER_MISMATCH", "ERROR_NULL_USER" ->
             FirebaseAuthInvalidUserException(code, message, details.cause)
+
         "ERROR_EMAIL_ALREADY_IN_USE", "ERROR_ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL", "ERROR_CREDENTIAL_ALREADY_IN_USE" ->
             FirebaseAuthUserCollisionException(code, message, details.email, details.updatedCredential, details.cause)
+
         "ERROR_REQUIRES_RECENT_LOGIN" -> FirebaseAuthRecentLoginRequiredException(code, message, details.cause)
+
         "ERROR_SECOND_FACTOR_REQUIRED" -> details.resolver?.let { FirebaseAuthMultiFactorException(code, message, it, details.cause) } ?: FirebaseAuthException(code, message, details.cause)
+
         "ERROR_WEB_CONTEXT_ALREADY_PRESENTED", "ERROR_WEB_CONTEXT_CANCELED", "ERROR_WEB_CONTEXT_CANCELLED", "ERROR_WEB_INTERNAL_ERROR",
         "ERROR_WEB_STORAGE_UNSUPPORTED", "ERROR_WEB_NETWORK_REQUEST_FAILED", "ERROR_POPUP_BLOCKED", "ERROR_POPUP_CLOSED_BY_USER", "ERROR_CANCELLED_POPUP_REQUEST",
         -> FirebaseAuthWebException(code, message, details.cause)
+
         "ERROR_INVALID_CUSTOM_TOKEN", "ERROR_CUSTOM_TOKEN_MISMATCH", "ERROR_INVALID_CREDENTIAL", "ERROR_INVALID_EMAIL", "ERROR_WRONG_PASSWORD",
         "ERROR_INVALID_LOGIN_CREDENTIALS", "ERROR_INVALID_VERIFICATION_CODE", "ERROR_INVALID_VERIFICATION_ID", "ERROR_MISSING_VERIFICATION_CODE",
         "ERROR_MISSING_VERIFICATION_ID", "ERROR_INVALID_PHONE_NUMBER", "ERROR_MISSING_PHONE_NUMBER", "ERROR_SESSION_EXPIRED", "ERROR_CAPTCHA_CHECK_FAILED",
@@ -149,6 +160,7 @@ internal fun authException(errorCode: String, message: String, details: AuthErro
         "ERROR_MISSING_APP_CREDENTIAL", "ERROR_INVALID_MULTI_FACTOR_SESSION", "ERROR_MISSING_MULTI_FACTOR_SESSION", "ERROR_MISSING_MULTI_FACTOR_INFO",
         "ERROR_INVALID_MULTI_FACTOR_INFO",
         -> FirebaseAuthInvalidCredentialsException(code, message, details.cause)
+
         else -> FirebaseAuthException(code, message, details.cause)
     }
 }

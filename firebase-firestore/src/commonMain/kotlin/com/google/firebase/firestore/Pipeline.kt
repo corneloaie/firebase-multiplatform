@@ -116,7 +116,7 @@ public class Pipeline internal constructor(
 
         override fun toString(): String = "Snapshot{executionTime=$executionTime, results=$results}"
 
-        override fun equals(other: Any?): Boolean = this === other || other is Snapshot && results == other.results
+        override fun equals(other: Any?): Boolean = this === other || (other is Snapshot && results == other.results)
 
         override fun hashCode(): Int = results.hashCode()
     }
@@ -394,7 +394,7 @@ public class PipelineResult internal constructor(
 
     override fun toString(): String = "PipelineResult{ref=$ref, updateTime=$updateTime}, data=${getData()}"
 
-    override fun equals(other: Any?): Boolean = this === other || other is PipelineResult && ref == other.ref && fields == other.fields
+    override fun equals(other: Any?): Boolean = this === other || (other is PipelineResult && ref == other.ref && fields == other.fields)
 
     override fun hashCode(): Int = 31 * (ref?.hashCode() ?: 0) + fields.hashCode()
 }

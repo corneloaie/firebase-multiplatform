@@ -98,15 +98,25 @@ public suspend fun Promise<*>.awaitUnit() {
  */
 public fun Any?.toJs(): JsAny? = when (this) {
     null -> null
+
     is Boolean -> toJsBoolean()
+
     is Byte -> toInt().toJsNumber()
+
     is Short -> toInt().toJsNumber()
+
     is Int -> toJsNumber()
+
     is Long -> toDouble().toJsNumber()
+
     is Float -> toDouble().toJsNumber()
+
     is Double -> toJsNumber()
+
     is Char -> toString().toJsString()
+
     is String -> toJsString()
+
     is Map<*, *> -> {
         val target = jsObject()
         for ((key, value) in this) {
@@ -114,16 +124,27 @@ public fun Any?.toJs(): JsAny? = when (this) {
         }
         target
     }
+
     is Iterable<*> -> jsArrayOf(toList())
+
     is Array<*> -> jsArrayOf(asList())
+
     is BooleanArray -> jsArrayOf(map { it })
+
     is ByteArray -> jsArrayOf(map { it })
+
     is ShortArray -> jsArrayOf(map { it })
+
     is IntArray -> jsArrayOf(map { it })
+
     is LongArray -> jsArrayOf(map { it })
+
     is FloatArray -> jsArrayOf(map { it })
+
     is DoubleArray -> jsArrayOf(map { it })
+
     is CharArray -> jsArrayOf(map { it })
+
     // `is JsAny` checks are not permitted on external interfaces in Kotlin/Wasm, so anything
     // that is not a known Kotlin leaf is assumed to already be a JS value (a nested structure
     // built by the encoder, or a Firebase native type passing through unchanged).
@@ -146,6 +167,7 @@ public fun Any?.asJsArray(): JsArray<JsAny?> = this as JsArray<JsAny?>
  */
 public fun JsAny?.toKotlin(): Any? = when (this) {
     null -> null
+
     else -> when (jsTypeOf(this)) {
         "string" -> jsAnyAsString(this)
         "number" -> jsAnyAsDouble(this).toKotlinNumber()

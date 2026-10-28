@@ -20,7 +20,9 @@ import kotlinx.serialization.encoding.CompositeDecoder
 
 internal actual fun FirebaseDecoderImpl.structureDecoder(descriptor: SerialDescriptor, polymorphicIsNested: Boolean): CompositeDecoder = when (descriptor.kind) {
     StructureKind.CLASS, StructureKind.OBJECT -> decodeAsMap(false)
+
     StructureKind.LIST -> decodeAsList()
+
     StructureKind.MAP -> {
         val entries = jsObjectEntries(value.asJsAny())
         FirebaseCompositeDecoder(
@@ -42,6 +44,7 @@ internal actual fun FirebaseDecoderImpl.structureDecoder(descriptor: SerialDescr
     }
 
     is PolymorphicKind -> decodeAsMap(polymorphicIsNested)
+
     else -> TODO("The firebase-kotlin-sdk does not support $descriptor for serialization yet")
 }
 

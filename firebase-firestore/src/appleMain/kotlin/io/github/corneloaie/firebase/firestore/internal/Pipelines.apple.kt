@@ -144,6 +144,7 @@ private fun Pipeline.toIosStages(): List<__FIRStageBridge> {
     val sources: List<__FIRStageBridge> = when (source) {
         // the query's filters, order, limits and cursors as stages, converted by the SDK
         is QuerySource -> __FIRPipelineBridge.createStageBridgesFromQuery(source.query.ios).map { it as __FIRStageBridge }
+
         else -> listOf(source.toIosSource(firestore))
     }
     return sources + stages.drop(1).map { it.toIosStage() }
@@ -156,12 +157,18 @@ private fun Stage<*>.toIosSource(firestore: FirebaseFirestore?): __FIRStageBridg
     if (unsupported.isNotEmpty()) throw UnsupportedOperationException("The Firebase iOS SDK does not support the options $unsupported of the $name stage")
     return when (this) {
         is CollectionSource -> __FIRCollectionSourceStageBridge(db().collectionWithPath(path), db(), forceIndex)
+
         is CollectionGroupSource -> __FIRCollectionGroupSourceStageBridge(collectionId, forceIndex)
+
         is DatabaseSource -> __FIRDatabaseSourceStageBridge()
+
         is DocumentsSource -> __FIRDocumentsSourceStageBridge(documents.map { db().documentWithPath(it) }, db())
+
         is SubcollectionSource -> __FIRSubcollectionSourceStageBridge(path)
+
         // each value as an expression: a constant, or evaluated (maps and lists holding expressions as map and array)
         is LiteralsSource -> __FIRLiteralsSourceStageBridge(data.map { document -> document.mapValues { (_, value) -> Expression.toExprOrConstant(value).toIosExpression() } })
+
         else -> throw IllegalArgumentException("A pipeline starts with a source stage, not $name")
     }
 }
@@ -173,17 +180,26 @@ private fun Stage<*>.toIosStage(): __FIRStageBridge {
     }
     return when (this) {
         is WhereStage -> __FIRWhereStageBridge(condition.toIosExpression())
+
         is LimitStage -> __FIRLimitStageBridge(limit.toLong())
+
         is OffsetStage -> __FIROffsetStageBridge(offset.toLong())
+
         is AddFieldsStage -> __FIRAddFieldsStageBridge(selectables(fields))
+
         is RemoveFieldsStage -> __FIRRemoveFieldsStageBridge(fields.map { it.alias })
+
         is SelectStage -> __FIRSelectStageBridge(selectables(fields))
+
         is DistinctStage -> __FIRDistinctStageBridge(selectables(groups))
+
         is DefineStage -> __FIRDefineStageBridge(selectables(aliasedExpressions))
+
         is AggregateStage -> __FIRAggregateStageBridge(
             accumulators.mapValues { (_, function) -> function.toIosAggregate() },
             groups.mapValues { (_, expr) -> expr.toIosExpression() },
         )
+
         is FindNearestStage -> __FIRFindNearestStageBridge(
             (property as? Field ?: throw UnsupportedOperationException("The Firebase iOS SDK only searches the nearest neighbours of a field")).toIosField(),
             vectorValue(),
@@ -191,6 +207,7 @@ private fun Stage<*>.toIosStage(): __FIRStageBridge {
             (options.entries["limit"] as Long?)?.let { NSNumber(longLong = it) },
             (options.entries["distance_field"] as Field?)?.toIosField(),
         )
+
         is SearchStage -> __FIRSearchStageBridge(
             buildMap {
                 put("query", query.toIosExpression())
@@ -204,16 +221,27 @@ private fun Stage<*>.toIosStage(): __FIRStageBridge {
             emptyMap<Any?, Any?>(),
             sort?.map { it.toIosOrdering() }.orEmpty(),
         )
+
         is SortStage -> __FIRSortStageBridge(orders.map { it.toIosOrdering() })
+
         is ReplaceStage -> __FIRReplaceWithStageBridge(mapValue.toIosExpression())
+
         is SampleStage -> if (mode == SampleStage.Mode.DOCUMENTS) __FIRSampleStageBridge(size.toLong()) else __FIRSampleStageBridge(size.toDouble())
+
         is UnionStage -> __FIRUnionStageBridge(__FIRPipelineBridge(other.toIosStages(), checkNotNull(other.firestore) { "A union needs a pipeline with a database" }.ios))
+
         is UnnestStage -> __FIRUnnestStageBridge(selectable.expr.toIosExpression(), Expression.field(selectable.alias).toIosExpression(), (options.entries["index_field"] as Field?)?.toIosField())
+
         is RawStage -> __FIRRawStageBridge(name, arguments.map { it.toIosArgument() }, options.toIosOptions(name))
+
         is DeleteStage -> __FIRDeleteStageBridge()
+
         is UpdateStage -> __FIRUpdateStageBridge(selectables(fields))
+
         is InsertStage -> __FIRInsertStageBridge(collectionPath, documentIdExpression?.toIosExpression())
+
         is UpsertStage -> __FIRUpsertStageBridge(selectables(fields), collectionPath, documentIdExpression?.toIosExpression())
+
         else -> throw IllegalArgumentException("The $name stage starts a pipeline")
     }
 }
@@ -222,7 +250,9 @@ private fun Stage<*>.toIosStage(): __FIRStageBridge {
 private fun Stage<*>.hasTypedOptions(): Boolean = when (this) {
     is FindNearestStage -> options.entries.keys.all { it == "limit" || it == "distance_field" } &&
         options.entries["limit"].let { it == null || it is Long } && options.entries["distance_field"].let { it == null || it is Field }
+
     is UnnestStage -> options.entries.keys == setOf("index_field") && options.entries["index_field"] is Field
+
     else -> false
 }
 
@@ -274,14 +304,23 @@ private fun Expression.toIosExpression(): __FIRExprBridge = when (this) {
         is ByteArray -> __FIRConstantBridge(value.toNSData())
         else -> constant(value)
     }
+
     is Field -> toIosField()
+
     is Variable -> __FIRVariableBridge(name)
+
     is FunctionExpression -> __FIRFunctionExprBridge(name, params.map { it.toIosExpression() }, options.takeUnless { it.isEmpty() }?.toIosOptions(name))
+
     is BooleanFunctionExpression -> expr.toIosExpression()
+
     is BooleanConstant -> constant.toIosExpression()
+
     is BooleanField -> field.toIosExpression()
+
     is AliasedExpression -> expr.toIosExpression()
+
     is PipelineValueExpression -> __FIRPipelineExprBridge(pipeline.toIosStages())
+
     else -> throw IllegalArgumentException("Unknown expression $this")
 }
 
@@ -294,9 +333,13 @@ private fun AggregateFunction.toIosAggregate(): __FIRAggregateFunctionBridge = _
 
 private fun GenericArg.toIosArgument(): Any = when (this) {
     is GenericArg.ExprArg -> expr.toIosExpression()
+
     is GenericArg.AggregateArg -> aggregate.toIosAggregate()
+
     is GenericArg.OrderingArg -> ordering.toIosArgument()
+
     is GenericArg.MapArg -> args.mapValues { (_, value) -> value.toIosArgument() }
+
     // the bridge takes an array as a constant, so only of constants
     is GenericArg.ListArg -> constant(
         args.map { arg ->

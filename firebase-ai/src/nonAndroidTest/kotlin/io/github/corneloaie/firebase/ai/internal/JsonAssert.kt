@@ -24,12 +24,16 @@ internal fun assertJson(expected: String, actual: JsonElement) {
 
 private fun sameJson(a: JsonElement, b: JsonElement): Boolean = when {
     a is JsonObject && b is JsonObject -> a.keys == b.keys && a.keys.all { sameJson(a.getValue(it), b.getValue(it)) }
+
     a is JsonArray && b is JsonArray -> a.size == b.size && a.indices.all { sameJson(a[it], b[it]) }
+
     a is JsonNull || b is JsonNull -> a == b
+
     a is JsonPrimitive && b is JsonPrimitive -> when {
         a.isString || b.isString -> a.isString == b.isString && a.content == b.content
         a.doubleOrNull != null && b.doubleOrNull != null -> a.doubleOrNull == b.doubleOrNull
         else -> a.content == b.content
     }
+
     else -> false
 }

@@ -113,7 +113,9 @@ internal class IosFirebaseAppDistribution(val ios: FIRAppDistribution) : Firebas
         val release = cachedRelease.load()
         when {
             !ios.isTesterSignedIn -> task.fail(FirebaseAppDistributionException(NOT_SIGNED_IN, Status.AUTHENTICATION_FAILURE))
+
             release == null -> task.fail(FirebaseAppDistributionException(RELEASE_NOT_FOUND, Status.UPDATE_NOT_AVAILABLE))
+
             // The download link expires 59 minutes after the check: check again for a fresh one.
             release.isExpired -> checkSignedIn { fresh, e ->
                 when {
@@ -122,6 +124,7 @@ internal class IosFirebaseAppDistribution(val ios: FIRAppDistribution) : Firebas
                     else -> install(fresh, task)
                 }
             }
+
             else -> install(release, task)
         }
         return task
@@ -156,6 +159,7 @@ internal class IosFirebaseAppDistribution(val ios: FIRAppDistribution) : Firebas
             val e = error?.toAppDistributionException()
             when {
                 e == null -> cachedRelease.store(release)
+
                 // The iOS SDK signs the tester out when it fails to authenticate them, which forgets the release too.
                 e.errorCode == Status.AUTHENTICATION_FAILURE -> cachedRelease.store(null)
             }

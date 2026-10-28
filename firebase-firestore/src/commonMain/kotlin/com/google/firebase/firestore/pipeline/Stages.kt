@@ -93,7 +93,7 @@ internal sealed class GenericArg {
 internal class DatabaseSource(options: InternalOptions = InternalOptions.EMPTY) : Stage<DatabaseSource>("database", options) {
     override fun self(options: InternalOptions) = DatabaseSource(options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is DatabaseSource && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is DatabaseSource && options == other.options)
 
     override fun hashCode(): Int = options.hashCode()
 }
@@ -104,7 +104,7 @@ public class CollectionSource internal constructor(internal val path: String, op
 
     override fun self(options: InternalOptions): CollectionSource = CollectionSource(path, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is CollectionSource && path == other.path && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is CollectionSource && path == other.path && options == other.options)
 
     override fun hashCode(): Int = 31 * path.hashCode() + options.hashCode()
 }
@@ -147,7 +147,7 @@ public class CollectionGroupSource internal constructor(
 
     override fun self(options: InternalOptions): CollectionGroupSource = CollectionGroupSource(collectionId, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is CollectionGroupSource && collectionId == other.collectionId && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is CollectionGroupSource && collectionId == other.collectionId && options == other.options)
 
     override fun hashCode(): Int = 31 * collectionId.hashCode() + options.hashCode()
 }
@@ -167,7 +167,7 @@ public class CollectionGroupOptions internal constructor(options: InternalOption
 internal class DocumentsSource(internal val documents: List<String>, options: InternalOptions = InternalOptions.EMPTY) : Stage<DocumentsSource>("documents", options) {
     override fun self(options: InternalOptions) = DocumentsSource(documents, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is DocumentsSource && documents == other.documents && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is DocumentsSource && documents == other.documents && options == other.options)
 
     override fun hashCode(): Int = 31 * documents.hashCode() + options.hashCode()
 }
@@ -184,7 +184,7 @@ internal class QuerySource(internal val query: Query, options: InternalOptions =
 public class LiteralsSource internal constructor(internal val data: List<Map<String, Any?>>, options: InternalOptions = InternalOptions.EMPTY) : Stage<LiteralsSource>("literals", options) {
     override fun self(options: InternalOptions): LiteralsSource = LiteralsSource(data, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is LiteralsSource && data == other.data && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is LiteralsSource && data == other.data && options == other.options)
 
     override fun hashCode(): Int = 31 * data.hashCode() + options.hashCode()
 }
@@ -216,7 +216,7 @@ internal class AddFieldsStage(internal val fields: Array<out Selectable>, option
 
     override fun self(options: InternalOptions) = AddFieldsStage(fields, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is AddFieldsStage && fields.contentEquals(other.fields) && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is AddFieldsStage && fields.contentEquals(other.fields) && options == other.options)
 
     override fun hashCode(): Int = 31 * fields.contentHashCode() + options.hashCode()
 }
@@ -245,7 +245,7 @@ public class AggregateStage private constructor(
 
     internal fun withOptions(options: AggregateOptions) = AggregateStage(accumulators, groups, options.options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is AggregateStage && accumulators == other.accumulators && groups == other.groups && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is AggregateStage && accumulators == other.accumulators && groups == other.groups && options == other.options)
 
     override fun hashCode(): Int = 31 * (31 * accumulators.hashCode() + groups.hashCode()) + options.hashCode()
 
@@ -287,7 +287,7 @@ public class AggregateOptions internal constructor(options: InternalOptions) : A
 internal class WhereStage(internal val condition: Expression, options: InternalOptions = InternalOptions.EMPTY) : Stage<WhereStage>("where", options) {
     override fun self(options: InternalOptions) = WhereStage(condition, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is WhereStage && condition == other.condition && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is WhereStage && condition == other.condition && options == other.options)
 
     override fun hashCode(): Int = 31 * condition.hashCode() + options.hashCode()
 }
@@ -303,7 +303,7 @@ public class FindNearestStage internal constructor(
 
     override fun self(options: InternalOptions): FindNearestStage = FindNearestStage(property, vector, distanceMeasure, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is FindNearestStage && property == other.property && vector == other.vector && distanceMeasure == other.distanceMeasure && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is FindNearestStage && property == other.property && vector == other.vector && distanceMeasure == other.distanceMeasure && options == other.options)
 
     override fun hashCode(): Int = 31 * (31 * (31 * property.hashCode() + vector.hashCode()) + distanceMeasure.hashCode()) + options.hashCode()
 
@@ -386,8 +386,10 @@ public class SearchStage internal constructor(
     public fun withLanguageCode(languageCode: String): SearchStage = SearchStage(query, languageCode, retrievalDepth, sort, offset, limit, addFields, options)
 
     override fun equals(other: Any?): Boolean = this === other ||
-        other is SearchStage && query == other.query && languageCode == other.languageCode && retrievalDepth == other.retrievalDepth &&
-        sort.contentEquals(other.sort) && offset == other.offset && limit == other.limit && addFields.contentEquals(other.addFields) && options == other.options
+        (
+            other is SearchStage && query == other.query && languageCode == other.languageCode && retrievalDepth == other.retrievalDepth &&
+                sort.contentEquals(other.sort) && offset == other.offset && limit == other.limit && addFields.contentEquals(other.addFields) && options == other.options
+            )
 
     override fun hashCode(): Int = listOf(query, languageCode, retrievalDepth, sort?.contentHashCode(), offset, limit, addFields?.contentHashCode(), options).hashCode()
 
@@ -405,7 +407,7 @@ public class SearchStage internal constructor(
 internal class LimitStage(internal val limit: Int, options: InternalOptions = InternalOptions.EMPTY) : Stage<LimitStage>("limit", options) {
     override fun self(options: InternalOptions) = LimitStage(limit, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is LimitStage && limit == other.limit && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is LimitStage && limit == other.limit && options == other.options)
 
     override fun hashCode(): Int = 31 * limit + options.hashCode()
 }
@@ -413,7 +415,7 @@ internal class LimitStage(internal val limit: Int, options: InternalOptions = In
 internal class OffsetStage(internal val offset: Int, options: InternalOptions = InternalOptions.EMPTY) : Stage<OffsetStage>("offset", options) {
     override fun self(options: InternalOptions) = OffsetStage(offset, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is OffsetStage && offset == other.offset && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is OffsetStage && offset == other.offset && options == other.options)
 
     override fun hashCode(): Int = 31 * offset + options.hashCode()
 }
@@ -421,7 +423,7 @@ internal class OffsetStage(internal val offset: Int, options: InternalOptions = 
 internal class SelectStage private constructor(internal val fields: Array<out Selectable>, options: InternalOptions) : Stage<SelectStage>("select", options) {
     override fun self(options: InternalOptions) = SelectStage(fields, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is SelectStage && fields.contentEquals(other.fields) && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is SelectStage && fields.contentEquals(other.fields) && options == other.options)
 
     override fun hashCode(): Int = 31 * fields.contentHashCode() + options.hashCode()
 
@@ -435,7 +437,7 @@ internal class SelectStage private constructor(internal val fields: Array<out Se
 internal class SortStage(internal val orders: Array<out Ordering>, options: InternalOptions = InternalOptions.EMPTY) : Stage<SortStage>("sort", options) {
     override fun self(options: InternalOptions) = SortStage(orders, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is SortStage && orders.contentEquals(other.orders) && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is SortStage && orders.contentEquals(other.orders) && options == other.options)
 
     override fun hashCode(): Int = 31 * orders.contentHashCode() + options.hashCode()
 }
@@ -443,7 +445,7 @@ internal class SortStage(internal val orders: Array<out Ordering>, options: Inte
 internal class DistinctStage(internal val groups: Array<out Selectable>, options: InternalOptions = InternalOptions.EMPTY) : Stage<DistinctStage>("distinct", options) {
     override fun self(options: InternalOptions) = DistinctStage(groups, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is DistinctStage && groups.contentEquals(other.groups) && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is DistinctStage && groups.contentEquals(other.groups) && options == other.options)
 
     override fun hashCode(): Int = 31 * groups.contentHashCode() + options.hashCode()
 }
@@ -453,7 +455,7 @@ internal class DistinctStage(internal val groups: Array<out Selectable>, options
 internal class RemoveFieldsStage(internal val fields: Array<out Field>, options: InternalOptions = InternalOptions.EMPTY) : Stage<RemoveFieldsStage>("remove_fields", options) {
     override fun self(options: InternalOptions) = RemoveFieldsStage(fields, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is RemoveFieldsStage && fields.contentEquals(other.fields) && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is RemoveFieldsStage && fields.contentEquals(other.fields) && options == other.options)
 
     override fun hashCode(): Int = 31 * fields.contentHashCode() + options.hashCode()
 }
@@ -469,7 +471,7 @@ internal class ReplaceStage(internal val mapValue: Expression, internal val mode
 
     override fun self(options: InternalOptions) = ReplaceStage(mapValue, mode, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is ReplaceStage && mapValue == other.mapValue && mode == other.mode && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is ReplaceStage && mapValue == other.mapValue && mode == other.mode && options == other.options)
 
     override fun hashCode(): Int = 31 * (31 * mapValue.hashCode() + mode.hashCode()) + options.hashCode()
 }
@@ -482,7 +484,7 @@ public class SampleStage private constructor(
 ) : Stage<SampleStage>("sample", options) {
     override fun self(options: InternalOptions): SampleStage = SampleStage(size, mode, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is SampleStage && size == other.size && mode == other.mode && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is SampleStage && size == other.size && mode == other.mode && options == other.options)
 
     override fun hashCode(): Int = 31 * (31 * size.hashCode() + mode.hashCode()) + options.hashCode()
 
@@ -511,7 +513,7 @@ public class SampleStage private constructor(
 internal class UnionStage(internal val other: Pipeline, options: InternalOptions = InternalOptions.EMPTY) : Stage<UnionStage>("union", options) {
     override fun self(options: InternalOptions) = UnionStage(other, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is UnionStage && this.other == other.other && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is UnionStage && this.other == other.other && options == other.options)
 
     override fun hashCode(): Int = 31 * other.hashCode() + options.hashCode()
 }
@@ -523,7 +525,7 @@ public class UnnestStage internal constructor(internal val selectable: Selectabl
     /** A copy of this stage writing the index of each element to the field [indexField]. */
     public fun withIndexField(indexField: String): UnnestStage = withOption("index_field", indexField)
 
-    override fun equals(other: Any?): Boolean = this === other || other is UnnestStage && selectable == other.selectable && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is UnnestStage && selectable == other.selectable && options == other.options)
 
     override fun hashCode(): Int = 31 * selectable.hashCode() + options.hashCode()
 
@@ -552,7 +554,7 @@ public class UnnestOptions private constructor(options: InternalOptions) : Abstr
 internal class DefineStage(internal val aliasedExpressions: Array<out AliasedExpression>, options: InternalOptions = InternalOptions.EMPTY) : Stage<DefineStage>("let", options) {
     override fun self(options: InternalOptions) = DefineStage(aliasedExpressions, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is DefineStage && aliasedExpressions.contentEquals(other.aliasedExpressions) && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is DefineStage && aliasedExpressions.contentEquals(other.aliasedExpressions) && options == other.options)
 
     override fun hashCode(): Int = 31 * aliasedExpressions.contentHashCode() + options.hashCode()
 }
@@ -561,7 +563,7 @@ internal class DefineStage(internal val aliasedExpressions: Array<out AliasedExp
 internal class DeleteStage(options: InternalOptions = InternalOptions.EMPTY) : Stage<DeleteStage>("delete", options) {
     override fun self(options: InternalOptions) = DeleteStage(options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is DeleteStage && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is DeleteStage && options == other.options)
 
     override fun hashCode(): Int = options.hashCode()
 }
@@ -570,7 +572,7 @@ internal class DeleteStage(options: InternalOptions = InternalOptions.EMPTY) : S
 internal class UpdateStage(internal val fields: Array<out Selectable>, options: InternalOptions = InternalOptions.EMPTY) : Stage<UpdateStage>("update", options) {
     override fun self(options: InternalOptions) = UpdateStage(fields, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is UpdateStage && fields.contentEquals(other.fields) && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is UpdateStage && fields.contentEquals(other.fields) && options == other.options)
 
     override fun hashCode(): Int = 31 * fields.contentHashCode() + options.hashCode()
 }
@@ -582,7 +584,7 @@ internal class UpdateStage(internal val fields: Array<out Selectable>, options: 
 internal class InsertStage(internal val collectionPath: String?, internal val documentIdExpression: Expression?, options: InternalOptions = InternalOptions.EMPTY) : Stage<InsertStage>("insert", options) {
     override fun self(options: InternalOptions) = InsertStage(collectionPath, documentIdExpression, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is InsertStage && collectionPath == other.collectionPath && documentIdExpression == other.documentIdExpression && options == other.options
+    override fun equals(other: Any?): Boolean = this === other || (other is InsertStage && collectionPath == other.collectionPath && documentIdExpression == other.documentIdExpression && options == other.options)
 
     override fun hashCode(): Int = 31 * (31 * (collectionPath?.hashCode() ?: 0) + (documentIdExpression?.hashCode() ?: 0)) + options.hashCode()
 }
@@ -599,8 +601,11 @@ internal class UpsertStage(
 ) : Stage<UpsertStage>("upsert", options) {
     override fun self(options: InternalOptions) = UpsertStage(fields, collectionPath, documentIdExpression, options)
 
-    override fun equals(other: Any?): Boolean = this === other || other is UpsertStage && fields.contentEquals(other.fields) && collectionPath == other.collectionPath &&
-        documentIdExpression == other.documentIdExpression && options == other.options
+    override fun equals(other: Any?): Boolean = this === other ||
+        (
+            other is UpsertStage && fields.contentEquals(other.fields) && collectionPath == other.collectionPath &&
+                documentIdExpression == other.documentIdExpression && options == other.options
+            )
 
     override fun hashCode(): Int = 31 * (31 * (31 * fields.contentHashCode() + (collectionPath?.hashCode() ?: 0)) + (documentIdExpression?.hashCode() ?: 0)) + options.hashCode()
 }

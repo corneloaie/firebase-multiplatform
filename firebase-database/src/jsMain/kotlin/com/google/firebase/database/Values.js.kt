@@ -32,15 +32,18 @@ internal fun Any?.fromJs(): Any? {
     if (this == null || this == undefined) return null
     return when (jsTypeOf(this)) {
         "string", "boolean" -> this
+
         "number" -> {
             val number = unsafeCast<Double>()
             if (number == floor(number) && abs(number) < MAX_EXACT_INTEGER) number.toLong() else number
         }
+
         "object" -> if (isArray(this)) {
             unsafeCast<Array<Any?>>().map { it.fromJs() }
         } else {
             objectKeys(this).associateWith { key -> asDynamic()[key].unsafeCast<Any?>().fromJs() }
         }
+
         else -> this
     }
 }

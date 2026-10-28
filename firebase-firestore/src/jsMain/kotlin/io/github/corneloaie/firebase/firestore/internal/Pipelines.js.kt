@@ -127,19 +127,28 @@ private fun Stage<*>.toJsSource(firestore: FirebaseFirestore?): JsPipeline {
 
 private fun Stage<*>.appendTo(js: JsPipeline): JsPipeline = when (this) {
     is WhereStage -> js.where(stageOptions("condition" to condition.toJsExpression()))
+
     is LimitStage -> js.limit(stageOptions("limit" to limit))
+
     is OffsetStage -> js.offset(stageOptions("offset" to offset))
+
     is AddFieldsStage -> js.addFields(stageOptions("fields" to selectables(fields)))
+
     is RemoveFieldsStage -> js.removeFields(stageOptions("fields" to fields.map { it.toJsExpression() }.toTypedArray()))
+
     is SelectStage -> js.select(stageOptions("selections" to selectables(fields)))
+
     is DistinctStage -> js.distinct(stageOptions("groups" to selectables(groups)))
+
     is DefineStage -> js.define(stageOptions("variables" to selectables(aliasedExpressions)))
+
     is AggregateStage -> js.aggregate(
         stageOptions(
             "accumulators" to accumulators.map { (alias, function) -> function.toJsAggregate().alias(alias) }.toTypedArray(),
             "groups" to groups.map { (alias, expr) -> selectable(alias, expr) }.toTypedArray(),
         ),
     )
+
     is FindNearestStage -> {
         val vectorValue = (vector as? Constant)?.value as? VectorValue
         if (vectorValue != null && property is Field) {
@@ -148,6 +157,7 @@ private fun Stage<*>.appendTo(js: JsPipeline): JsPipeline = when (this) {
             js.rawStage(name, arrayOf(property.toJsExpression(), vector.toJsExpression(), jsConstant(distanceMeasure.value)), options.toJsRawOptions(name))
         }
     }
+
     is SearchStage -> js.search(
         stageOptions(
             "query" to query.toJsExpression(),
@@ -159,15 +169,25 @@ private fun Stage<*>.appendTo(js: JsPipeline): JsPipeline = when (this) {
             "addFields" to addFields?.let { selectables(it) },
         ),
     )
+
     is SortStage -> js.sort(stageOptions("orderings" to orders.map { it.toJsOrdering() }.toTypedArray()))
+
     is ReplaceStage -> js.replaceWith(stageOptions("map" to mapValue.toJsExpression()))
+
     is SampleStage -> js.sample(stageOptions(if (mode == SampleStage.Mode.DOCUMENTS) "documents" to size.toDouble() else "percentage" to size.toDouble()))
+
     is UnionStage -> js.union(stageOptions("other" to other.toJsPipeline()))
+
     is UnnestStage -> js.unnest(stageOptions("selectable" to selectable(selectable.alias, selectable.expr)))
+
     is RawStage -> js.rawStage(name, arguments.map { it.toJsArgument() }.toTypedArray(), options.toJsRawOptions(name))
+
     is DeleteStage -> js.delete(stageOptions())
+
     is UpdateStage -> js.update(stageOptions("transformedFields" to selectables(fields).takeIf { fields.isNotEmpty() }))
+
     is InsertStage -> js.insert(stageOptions("collection" to collectionPath, "documentIdExpression" to documentIdExpression?.toJsExpression()))
+
     is UpsertStage -> js.upsert(
         stageOptions(
             "collection" to collectionPath,
@@ -175,6 +195,7 @@ private fun Stage<*>.appendTo(js: JsPipeline): JsPipeline = when (this) {
             "additionalFields" to selectables(fields).takeIf { fields.isNotEmpty() },
         ),
     )
+
     else -> throw IllegalArgumentException("The $name stage starts a pipeline")
 }
 
@@ -219,17 +240,27 @@ private fun Expression.toJsExpression(): JsExpression = when (this) {
         // Kotlin/JS numbers other than Long are JS numbers, so an integral double is sent as an integer, as the JS SDK
         // sends it; wasmJs, whose doubles are distinct, sends them as doubles.
         is ByteArray -> jsConstant(Blob.fromBytes(value).toJs())
+
         else -> jsConstant(value.toJs())
     }
+
     is Field -> jsField(JsFieldPath(*segments.toTypedArray()))
+
     is Variable -> jsVariable(name)
+
     is FunctionExpression -> JsFunctionExpression(name, params.map { it.toJsExpression() }.toTypedArray()).unsafeCast<JsExpression>()
+
     is BooleanFunctionExpression -> expr.toJsExpression().asBoolean()
+
     is BooleanConstant -> constant.toJsExpression().asBoolean()
+
     is BooleanField -> field.toJsExpression().asBoolean()
+
     is AliasedExpression -> expr.toJsExpression().alias(alias)
+
     // The JS SDK's pipeline value expression is not exported: take it from the subquery function it builds.
     is PipelineValueExpression -> pipeline.toJsPipeline().toArrayExpression().params[0]
+
     else -> throw IllegalArgumentException("Unknown expression $this")
 }
 
@@ -239,9 +270,13 @@ private fun AggregateFunction.toJsAggregate(): JsAggregateFunction = JsAggregate
 
 private fun GenericArg.toJsArgument(): Any? = when (this) {
     is GenericArg.ExprArg -> expr.toJsExpression()
+
     is GenericArg.AggregateArg -> aggregate.toJsAggregate()
+
     is GenericArg.OrderingArg -> json("direction" to ordering.dir.name.lowercase(), "expression" to ordering.expr.toJsExpression())
+
     is GenericArg.MapArg -> json(*args.map { (key, value) -> key to value.toJsArgument() }.toTypedArray())
+
     // the JS SDK takes an array as a constant, so only of constants
     is GenericArg.ListArg -> jsConstant(
         args.map { arg ->

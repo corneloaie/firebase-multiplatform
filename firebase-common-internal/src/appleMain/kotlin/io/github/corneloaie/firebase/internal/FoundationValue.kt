@@ -53,14 +53,20 @@ private fun containsBoolean(value: Any?): Boolean = when (value) {
 private fun StringBuilder.appendJsonValue(value: Any?) {
     when (value) {
         null -> append("null")
+
         is Boolean -> append(if (value) "true" else "false")
+
         is Double -> if (value.isFinite()) append(value.toString()) else throw NotJsonRepresentable()
+
         // Widened to Double first: a directly bridged Float NSNumber reaches the SDK as the Double widening of the Float
         // bits (1.2f becomes 1.2000000476837158), and the text form must produce that same Double so boolean presence
         // never changes stored numbers.
         is Float -> appendJsonValue(value.toDouble())
+
         is Byte, is Short, is Int, is Long -> append(value.toString())
+
         is String -> appendJsonString(value)
+
         is Map<*, *> -> {
             append('{')
             value.entries.forEachIndexed { index, (key, entryValue) ->
@@ -71,6 +77,7 @@ private fun StringBuilder.appendJsonValue(value: Any?) {
             }
             append('}')
         }
+
         is List<*> -> {
             append('[')
             value.forEachIndexed { index, element ->
@@ -79,6 +86,7 @@ private fun StringBuilder.appendJsonValue(value: Any?) {
             }
             append(']')
         }
+
         else -> throw NotJsonRepresentable()
     }
 }

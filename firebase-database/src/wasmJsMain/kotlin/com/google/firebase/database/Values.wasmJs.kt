@@ -29,15 +29,18 @@ internal fun JsAny?.fromJs(): Any? {
     if (this == null) return null
     return when (jsTypeOf(this)) {
         "string", "boolean" -> toKotlin()
+
         "number" -> {
             val number = (toKotlin() as Number).toDouble()
             if (number == floor(number) && abs(number) < MAX_EXACT_INTEGER) number.toLong() else number
         }
+
         "object" -> if (jsIsArray(this)) {
             asJsArray().toList().map { it.fromJs() }
         } else {
             objectKeys(this).associateWith { key -> jsGet(this, key).fromJs() }
         }
+
         else -> this
     }
 }

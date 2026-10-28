@@ -683,24 +683,38 @@ public abstract class Expression internal constructor() {
         /** [value] as an expression: itself if it is one, otherwise a constant (a map or a list as a `map` or `array` function). */
         internal fun toExprOrConstant(value: Any?): Expression = when (value) {
             null -> NULL
+
             is Expression -> value
+
             is String -> constant(value)
+
             is Number -> constant(value)
+
             is Timestamp -> constant(value)
+
             is Boolean -> constant(value)
+
             is GeoPoint -> constant(value)
+
             is Blob -> constant(value)
+
             is DocumentReference -> constant(value)
+
             is ByteArray -> constant(value)
+
             is VectorValue -> constant(value)
+
             is Map<*, *> -> map(
                 value.entries.flatMap { (key, entryValue) ->
                     require(key is String) { "Maps with non-string keys are not supported" }
                     listOf(constant(key), toExprOrConstant(entryValue))
                 }.toTypedArray(),
             )
+
             is List<*> -> array(value)
+
             is Pipeline -> PipelineValueExpression(value)
+
             else -> throw IllegalArgumentException("Unknown type: $value")
         }
 

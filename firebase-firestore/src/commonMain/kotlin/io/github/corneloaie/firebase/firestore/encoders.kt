@@ -12,6 +12,7 @@ internal fun isSpecialValue(value: Any): Boolean = when (value) {
     is NativeDocumentReferenceType,
     is Blob,
     -> true
+
     else -> false
 }
 

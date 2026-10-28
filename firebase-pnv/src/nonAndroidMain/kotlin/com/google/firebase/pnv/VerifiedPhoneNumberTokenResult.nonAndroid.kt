@@ -65,8 +65,11 @@ private fun invalidToken(message: String, cause: Throwable?) = FirebasePhoneNumb
 /** The value org.json reads for this element, with Kotlin collections for objects and arrays, and null for `null`. */
 private fun JsonElement.toClaim(): Any? = when (this) {
     JsonNull -> null
+
     is JsonObject -> mapValues { (_, value) -> value.toClaim() }
+
     is JsonArray -> map { it.toClaim() }
+
     is JsonPrimitive -> when {
         isString -> content
         else -> booleanOrNull ?: content.toIntOrNull() ?: content.toLongOrNull() ?: content.toDouble()

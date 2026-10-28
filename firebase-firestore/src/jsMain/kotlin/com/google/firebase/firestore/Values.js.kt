@@ -81,11 +81,14 @@ internal fun Any?.toCompat(): Any? {
     if (this == null || this == undefined) return null
     return when (jsTypeOf(this)) {
         "string", "boolean" -> this
+
         "number" -> toCompatNumber()
+
         "object" -> toCompatValueType() ?: when {
             isArray(this) -> unsafeCast<Array<Any?>>().map { it.toCompat() }
             else -> objectKeys(this).associateWith { key -> asDynamic()[key].unsafeCast<Any?>().toCompat() }
         }
+
         else -> this
     }
 }
@@ -142,6 +145,7 @@ internal fun SetOptions.toJs(): Json = if (merge) json("merge" to true) else jso
 
 internal fun Filter.Node.toJs(): QueryConstraint = when (this) {
     is Filter.Node.Field -> jsWhere(fieldPath.toJs(), operator.jsOperator, value.toJs())
+
     is Filter.Node.Composite -> when (operator) {
         Filter.Operator.AND -> jsAnd(*filters.map { it.toJs() }.toTypedArray())
         else -> jsOr(*filters.map { it.toJs() }.toTypedArray())

@@ -164,12 +164,14 @@ private fun FirebaseFirestoreSettings.toIos(current: FIRFirestoreSettings): FIRF
     settings.sslEnabled = isSslEnabled
     when (val cache = cacheSettings) {
         is PersistentCacheSettings -> settings.cacheSettings = FIRPersistentCacheSettings(NSNumber.numberWithLong(cache.sizeBytes))
+
         is MemoryCacheSettings -> settings.cacheSettings = FIRMemoryCacheSettings(
             when (val gc = cache.garbageCollectorSettings) {
                 is MemoryLruGcSettings -> FIRMemoryLRUGCSettings(NSNumber.numberWithLong(gc.sizeBytes))
                 else -> FIRMemoryEagerGCSettings()
             },
         )
+
         else -> settings.cacheSettings = current.cacheSettings
     }
     @Suppress("UNCHECKED_CAST")

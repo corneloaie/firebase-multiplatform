@@ -137,7 +137,7 @@ public class Chat(
         val tempHistory = mutableListOf<Content>()
         tempHistory.add(prompt)
 
-        /**
+        /*
          * TODO: revisit when images and inline data are returned. This will cause issues with how
          * things are structured in the response. eg; a text/image/text response will be (incorrectly)
          * represented as image/text
@@ -217,7 +217,7 @@ public class Chat(
     }
 }
 
-/**
+/*
  * Returns true if the [TextPart] contains any content, either in its [TextPart.text] property or
  * its [TextPart.thoughtSignature] property.
  */

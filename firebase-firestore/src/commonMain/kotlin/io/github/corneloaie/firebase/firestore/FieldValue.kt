@@ -20,7 +20,7 @@ public class FieldValue internal constructor(internal val nativeValue: Any) {
     /** The Android-SDK-shaped [com.google.firebase.firestore.FieldValue] this wraps. */
     public val compat: NativeFieldValue get() = nativeValue as NativeFieldValue
 
-    override fun equals(other: Any?): Boolean = this === other || other is FieldValue && nativeValue == other.nativeValue
+    override fun equals(other: Any?): Boolean = this === other || (other is FieldValue && nativeValue == other.nativeValue)
     override fun hashCode(): Int = nativeValue.hashCode()
     override fun toString(): String = nativeValue.toString()
 

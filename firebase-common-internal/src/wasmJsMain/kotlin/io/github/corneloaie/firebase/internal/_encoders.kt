@@ -14,6 +14,7 @@ import kotlinx.serialization.descriptors.StructureKind
 
 internal actual fun FirebaseEncoderImpl.structureEncoder(descriptor: SerialDescriptor): FirebaseCompositeEncoder = when (descriptor.kind) {
     StructureKind.LIST -> encodeAsList(descriptor)
+
     StructureKind.MAP -> {
         val map = jsObject()
         var lastKey = ""
@@ -26,8 +27,11 @@ internal actual fun FirebaseEncoderImpl.structureEncoder(descriptor: SerialDescr
             }
         }
     }
+
     StructureKind.CLASS, StructureKind.OBJECT -> encodeAsMap(descriptor)
+
     is PolymorphicKind -> encodeAsMap(descriptor)
+
     else -> TODO("The firebase-kotlin-sdk does not support $descriptor for serialization yet")
 }
 

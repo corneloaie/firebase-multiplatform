@@ -43,25 +43,44 @@ import platform.posix.memcpy
 /** [this] as the iOS SDK writes it: the layer's value types become the SDK's. */
 internal fun Any?.toIos(): Any? = when (this) {
     null -> null
+
     is String, is Boolean, is Number -> this
+
     is Timestamp -> FIRTimestamp(seconds, nanoseconds)
+
     is GeoPoint -> FIRGeoPoint(latitude, longitude)
+
     is DocumentReference -> ios
+
     is FieldValue -> toIosFieldValue()
+
     // The SDK writes BSON binary data of subtype 0 as plain bytes, as it does NSData.
     is Blob -> if (subType == 0) toBytes().toNSData() else FIRBlob.blobWithBSONBinary(toBytes().toNSData(), subType.toUByte())
+
     is VectorValue -> FIRVectorValue(toArray().toList())
+
     is BsonObjectId -> FIRBSONObjectId(value)
+
     is BsonTimestamp -> FIRBSONTimestamp(seconds.toUInt(), increment.toUInt())
+
     is Decimal128Value -> FIRDecimal128Value(stringValue)
+
     is Int32Value -> FIRInt32Value(value)
+
     is MaxKey -> FIRMaxKey.shared
+
     is MinKey -> FIRMinKey.shared
+
     is RegexValue -> FIRRegexValue(pattern, options)
+
     is FieldPath -> toIos()
+
     is Map<*, *> -> entries.associate { (key, value) -> key.toIos() to value.toIos() }
+
     is Collection<*> -> map { it.toIos() }
+
     is Array<*> -> map { it.toIos() }
+
     else -> this
 }
 
@@ -72,22 +91,38 @@ internal fun Any.toIosData(): Map<Any?, *> = toIos() as? Map<Any?, *> ?: throw I
 /** A value read by the iOS SDK as the Android SDK's types (see [toIos]). */
 internal fun Any?.toCompat(): Any? = when (this) {
     null, is NSNull -> null
+
     is FIRTimestamp -> Timestamp(seconds, nanoseconds)
+
     is FIRGeoPoint -> GeoPoint(latitude, longitude)
+
     is FIRDocumentReference -> DocumentReference(this)
+
     is NSData -> Blob.fromBytes(toByteArray())
+
     is FIRBlob -> Blob.createBsonBinary(subtype.toInt(), bytes.toByteArray())
+
     // The SDK keeps the values as NSNumbers of doubles, which Kotlin reads as Double.
     is FIRVectorValue -> VectorValue(array.map { (it as Number).toDouble() }.toDoubleArray())
+
     is FIRBSONObjectId -> BsonObjectId(value)
+
     is FIRBSONTimestamp -> BsonTimestamp(seconds.toLong(), increment.toLong())
+
     is FIRDecimal128Value -> Decimal128Value(value)
+
     is FIRInt32Value -> Int32Value(value)
+
     is FIRMaxKey -> MaxKey.instance()
+
     is FIRMinKey -> MinKey.instance()
+
     is FIRRegexValue -> RegexValue(pattern, options)
+
     is Map<*, *> -> entries.associate { (key, value) -> key.toString() to value.toCompat() }
+
     is List<*> -> map { it.toCompat() }
+
     else -> this
 }
 
@@ -96,17 +131,23 @@ internal fun Map<Any?, *>?.toCompatData(): Map<String, Any?>? = this?.toCompat()
 
 private fun FieldValue.toIosFieldValue(): FIRFieldValue = when (operation) {
     FieldValue.Operation.SERVER_TIMESTAMP -> FIRFieldValue.fieldValueForServerTimestamp()
+
     FieldValue.Operation.DELETE -> FIRFieldValue.fieldValueForDelete()
+
     FieldValue.Operation.ARRAY_UNION -> FIRFieldValue.fieldValueForArrayUnion(arguments.map { it.toIos() })
+
     FieldValue.Operation.ARRAY_REMOVE -> FIRFieldValue.fieldValueForArrayRemove(arguments.map { it.toIos() })
+
     FieldValue.Operation.INCREMENT -> when (val amount = arguments.single()) {
         is Long -> FIRFieldValue.fieldValueForIntegerIncrement(amount)
         else -> FIRFieldValue.fieldValueForDoubleIncrement((amount as Number).toDouble())
     }
+
     FieldValue.Operation.MINIMUM -> when (val operand = arguments.single()) {
         is Long -> FIRFieldValue.fieldValueForIntegerMinimum(operand)
         else -> FIRFieldValue.fieldValueForDoubleMinimum((operand as Number).toDouble())
     }
+
     FieldValue.Operation.MAXIMUM -> when (val operand = arguments.single()) {
         is Long -> FIRFieldValue.fieldValueForIntegerMaximum(operand)
         else -> FIRFieldValue.fieldValueForDoubleMaximum((operand as Number).toDouble())
@@ -136,6 +177,7 @@ internal fun Filter.Node.toIos(): FIRFilter = when (this) {
             else -> throw IllegalArgumentException("$operator is not a field operator")
         }
     }
+
     is Filter.Node.Composite -> when (operator) {
         Filter.Operator.AND -> FIRFilter.andFilterWithFilters(filters.map { it.toIos() })
         else -> FIRFilter.orFilterWithFilters(filters.map { it.toIos() })

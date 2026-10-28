@@ -311,6 +311,7 @@ public val AuthCredential.ios: FIRAuthCredential get() = platform as FIRAuthCred
 
 internal fun FIRAuthCredential.toCompat(): AuthCredential = when (this) {
     is FIROAuthCredential -> OAuthCredentialImpl(this, provider(), IDToken(), accessToken(), secret())
+
     else -> when (provider()) {
         EmailAuthProvider.PROVIDER_ID -> EmailAuthCredential(this, EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD)
         FacebookAuthProvider.PROVIDER_ID -> FacebookAuthCredential(this)
