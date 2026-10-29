@@ -1,0 +1,118 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, tvosArm64, tvosSimulatorArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-pnv>
+open annotation class com.google.firebase.pnv/VerificationSupportStatus : kotlin/Annotation { // com.google.firebase.pnv/VerificationSupportStatus|null[0]
+    constructor <init>() // com.google.firebase.pnv/VerificationSupportStatus.<init>|<init>(){}[0]
+
+    final object Companion { // com.google.firebase.pnv/VerificationSupportStatus.Companion|null[0]
+        final const val CAPABILITY_STATUS_UNSPECIFIED // com.google.firebase.pnv/VerificationSupportStatus.Companion.CAPABILITY_STATUS_UNSPECIFIED|{}CAPABILITY_STATUS_UNSPECIFIED[0]
+            final fun <get-CAPABILITY_STATUS_UNSPECIFIED>(): kotlin/Int // com.google.firebase.pnv/VerificationSupportStatus.Companion.CAPABILITY_STATUS_UNSPECIFIED.<get-CAPABILITY_STATUS_UNSPECIFIED>|<get-CAPABILITY_STATUS_UNSPECIFIED>(){}[0]
+        final const val CAPABLE // com.google.firebase.pnv/VerificationSupportStatus.Companion.CAPABLE|{}CAPABLE[0]
+            final fun <get-CAPABLE>(): kotlin/Int // com.google.firebase.pnv/VerificationSupportStatus.Companion.CAPABLE.<get-CAPABLE>|<get-CAPABLE>(){}[0]
+        final const val INCAPABLE_DUE_TO_ANDROID_VERSION // com.google.firebase.pnv/VerificationSupportStatus.Companion.INCAPABLE_DUE_TO_ANDROID_VERSION|{}INCAPABLE_DUE_TO_ANDROID_VERSION[0]
+            final fun <get-INCAPABLE_DUE_TO_ANDROID_VERSION>(): kotlin/Int // com.google.firebase.pnv/VerificationSupportStatus.Companion.INCAPABLE_DUE_TO_ANDROID_VERSION.<get-INCAPABLE_DUE_TO_ANDROID_VERSION>|<get-INCAPABLE_DUE_TO_ANDROID_VERSION>(){}[0]
+        final const val INCAPABLE_DUE_TO_CARRIER_UNSUPPORTED // com.google.firebase.pnv/VerificationSupportStatus.Companion.INCAPABLE_DUE_TO_CARRIER_UNSUPPORTED|{}INCAPABLE_DUE_TO_CARRIER_UNSUPPORTED[0]
+            final fun <get-INCAPABLE_DUE_TO_CARRIER_UNSUPPORTED>(): kotlin/Int // com.google.firebase.pnv/VerificationSupportStatus.Companion.INCAPABLE_DUE_TO_CARRIER_UNSUPPORTED.<get-INCAPABLE_DUE_TO_CARRIER_UNSUPPORTED>|<get-INCAPABLE_DUE_TO_CARRIER_UNSUPPORTED>(){}[0]
+        final const val INCAPABLE_DUE_TO_SIM_STATE // com.google.firebase.pnv/VerificationSupportStatus.Companion.INCAPABLE_DUE_TO_SIM_STATE|{}INCAPABLE_DUE_TO_SIM_STATE[0]
+            final fun <get-INCAPABLE_DUE_TO_SIM_STATE>(): kotlin/Int // com.google.firebase.pnv/VerificationSupportStatus.Companion.INCAPABLE_DUE_TO_SIM_STATE.<get-INCAPABLE_DUE_TO_SIM_STATE>|<get-INCAPABLE_DUE_TO_SIM_STATE>(){}[0]
+    }
+}
+
+abstract interface com.google.firebase.pnv/FirebasePhoneNumberVerification { // com.google.firebase.pnv/FirebasePhoneNumberVerification|null[0]
+    abstract fun enableTestSession(kotlin/String) // com.google.firebase.pnv/FirebasePhoneNumberVerification.enableTestSession|enableTestSession(kotlin.String){}[0]
+    abstract fun exchangeCredentialResponseForPhoneNumber(kotlin/String): com.google.android.gms.tasks/Task<com.google.firebase.pnv/VerifiedPhoneNumberTokenResult> // com.google.firebase.pnv/FirebasePhoneNumberVerification.exchangeCredentialResponseForPhoneNumber|exchangeCredentialResponseForPhoneNumber(kotlin.String){}[0]
+    abstract fun getDigitalCredentialPayload(kotlin/String): com.google.android.gms.tasks/Task<kotlin/String> // com.google.firebase.pnv/FirebasePhoneNumberVerification.getDigitalCredentialPayload|getDigitalCredentialPayload(kotlin.String){}[0]
+    abstract fun getVerificationSupportInfo(): com.google.android.gms.tasks/Task<kotlin.collections/List<com.google.firebase.pnv/VerificationSupportResult>> // com.google.firebase.pnv/FirebasePhoneNumberVerification.getVerificationSupportInfo|getVerificationSupportInfo(){}[0]
+    abstract fun getVerificationSupportInfo(kotlin/Int): com.google.android.gms.tasks/Task<kotlin.collections/List<com.google.firebase.pnv/VerificationSupportResult>> // com.google.firebase.pnv/FirebasePhoneNumberVerification.getVerificationSupportInfo|getVerificationSupportInfo(kotlin.Int){}[0]
+
+    final object Companion { // com.google.firebase.pnv/FirebasePhoneNumberVerification.Companion|null[0]
+        final fun getInstance(): com.google.firebase.pnv/FirebasePhoneNumberVerification // com.google.firebase.pnv/FirebasePhoneNumberVerification.Companion.getInstance|getInstance(){}[0]
+        final fun getInstance(com.google.firebase/FirebaseApp): com.google.firebase.pnv/FirebasePhoneNumberVerification // com.google.firebase.pnv/FirebasePhoneNumberVerification.Companion.getInstance|getInstance(com.google.firebase.FirebaseApp){}[0]
+    }
+}
+
+final class com.google.firebase.pnv/FirebasePhoneNumberVerificationException : com.google.firebase/FirebaseException { // com.google.firebase.pnv/FirebasePhoneNumberVerificationException|null[0]
+    constructor <init>(kotlin/Int, kotlin/String, kotlin/Throwable?) // com.google.firebase.pnv/FirebasePhoneNumberVerificationException.<init>|<init>(kotlin.Int;kotlin.String;kotlin.Throwable?){}[0]
+
+    final val errorCode // com.google.firebase.pnv/FirebasePhoneNumberVerificationException.errorCode|{}errorCode[0]
+        final fun <get-errorCode>(): kotlin/Int // com.google.firebase.pnv/FirebasePhoneNumberVerificationException.errorCode.<get-errorCode>|<get-errorCode>(){}[0]
+    final val message // com.google.firebase.pnv/FirebasePhoneNumberVerificationException.message|{}message[0]
+        final fun <get-message>(): kotlin/String? // com.google.firebase.pnv/FirebasePhoneNumberVerificationException.message.<get-message>|<get-message>(){}[0]
+
+    final object Companion // com.google.firebase.pnv/FirebasePhoneNumberVerificationException.Companion|null[0]
+}
+
+final class com.google.firebase.pnv/VerificationSupportResult { // com.google.firebase.pnv/VerificationSupportResult|null[0]
+    constructor <init>(kotlin/Int, kotlin/String, kotlin/Int) // com.google.firebase.pnv/VerificationSupportResult.<init>|<init>(kotlin.Int;kotlin.String;kotlin.Int){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.pnv/VerificationSupportResult.equals|equals(kotlin.Any?){}[0]
+    final fun getCarrierId(): kotlin/String // com.google.firebase.pnv/VerificationSupportResult.getCarrierId|getCarrierId(){}[0]
+    final fun getReason(): kotlin/Int // com.google.firebase.pnv/VerificationSupportResult.getReason|getReason(){}[0]
+    final fun getSimSlot(): kotlin/Int // com.google.firebase.pnv/VerificationSupportResult.getSimSlot|getSimSlot(){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.pnv/VerificationSupportResult.hashCode|hashCode(){}[0]
+    final fun isSupported(): kotlin/Boolean // com.google.firebase.pnv/VerificationSupportResult.isSupported|isSupported(){}[0]
+
+    final object Companion // com.google.firebase.pnv/VerificationSupportResult.Companion|null[0]
+}
+
+final class com.google.firebase.pnv/VerifiedPhoneNumberTokenResult { // com.google.firebase.pnv/VerifiedPhoneNumberTokenResult|null[0]
+    constructor <init>(kotlin/String) // com.google.firebase.pnv/VerifiedPhoneNumberTokenResult.<init>|<init>(kotlin.String){}[0]
+
+    final fun getClaims(): kotlin.collections/Map<kotlin/String, kotlin/Any> // com.google.firebase.pnv/VerifiedPhoneNumberTokenResult.getClaims|getClaims(){}[0]
+    final fun getExpirationTimestamp(): kotlin/Long // com.google.firebase.pnv/VerifiedPhoneNumberTokenResult.getExpirationTimestamp|getExpirationTimestamp(){}[0]
+    final fun getIssuedAtTimestamp(): kotlin/Long // com.google.firebase.pnv/VerifiedPhoneNumberTokenResult.getIssuedAtTimestamp|getIssuedAtTimestamp(){}[0]
+    final fun getNonce(): kotlin/String // com.google.firebase.pnv/VerifiedPhoneNumberTokenResult.getNonce|getNonce(){}[0]
+    final fun getPhoneNumber(): kotlin/String // com.google.firebase.pnv/VerifiedPhoneNumberTokenResult.getPhoneNumber|getPhoneNumber(){}[0]
+    final fun getToken(): kotlin/String // com.google.firebase.pnv/VerifiedPhoneNumberTokenResult.getToken|getToken(){}[0]
+
+    final object Companion // com.google.firebase.pnv/VerifiedPhoneNumberTokenResult.Companion|null[0]
+}
+
+final class io.github.corneloaie.firebase.pnv/FirebasePhoneNumberVerification { // io.github.corneloaie.firebase.pnv/FirebasePhoneNumberVerification|null[0]
+    final val compat // io.github.corneloaie.firebase.pnv/FirebasePhoneNumberVerification.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.pnv/FirebasePhoneNumberVerification // io.github.corneloaie.firebase.pnv/FirebasePhoneNumberVerification.compat.<get-compat>|<get-compat>(){}[0]
+
+    final fun enableTestSession(kotlin/String) // io.github.corneloaie.firebase.pnv/FirebasePhoneNumberVerification.enableTestSession|enableTestSession(kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.pnv/FirebasePhoneNumberVerification.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.pnv/FirebasePhoneNumberVerification.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.pnv/FirebasePhoneNumberVerification.toString|toString(){}[0]
+    final suspend fun exchangeCredentialResponseForPhoneNumber(kotlin/String): com.google.firebase.pnv/VerifiedPhoneNumberTokenResult // io.github.corneloaie.firebase.pnv/FirebasePhoneNumberVerification.exchangeCredentialResponseForPhoneNumber|exchangeCredentialResponseForPhoneNumber(kotlin.String){}[0]
+    final suspend fun getDigitalCredentialPayload(kotlin/String): kotlin/String // io.github.corneloaie.firebase.pnv/FirebasePhoneNumberVerification.getDigitalCredentialPayload|getDigitalCredentialPayload(kotlin.String){}[0]
+    final suspend fun getVerificationSupportInfo(): kotlin.collections/List<com.google.firebase.pnv/VerificationSupportResult> // io.github.corneloaie.firebase.pnv/FirebasePhoneNumberVerification.getVerificationSupportInfo|getVerificationSupportInfo(){}[0]
+    final suspend fun getVerificationSupportInfo(kotlin/Int): kotlin.collections/List<com.google.firebase.pnv/VerificationSupportResult> // io.github.corneloaie.firebase.pnv/FirebasePhoneNumberVerification.getVerificationSupportInfo|getVerificationSupportInfo(kotlin.Int){}[0]
+    final suspend fun getVerifiedPhoneNumber(kotlin/Any): com.google.firebase.pnv/VerifiedPhoneNumberTokenResult // io.github.corneloaie.firebase.pnv/FirebasePhoneNumberVerification.getVerifiedPhoneNumber|getVerifiedPhoneNumber(kotlin.Any){}[0]
+}
+
+final object com.google.firebase.pnv/FirebasePnvStatusCodes { // com.google.firebase.pnv/FirebasePnvStatusCodes|null[0]
+    final const val ACTIVITY_CONTEXT_REQUIRED // com.google.firebase.pnv/FirebasePnvStatusCodes.ACTIVITY_CONTEXT_REQUIRED|{}ACTIVITY_CONTEXT_REQUIRED[0]
+        final fun <get-ACTIVITY_CONTEXT_REQUIRED>(): kotlin/Int // com.google.firebase.pnv/FirebasePnvStatusCodes.ACTIVITY_CONTEXT_REQUIRED.<get-ACTIVITY_CONTEXT_REQUIRED>|<get-ACTIVITY_CONTEXT_REQUIRED>(){}[0]
+    final const val CARRIER_NOT_SUPPORTED // com.google.firebase.pnv/FirebasePnvStatusCodes.CARRIER_NOT_SUPPORTED|{}CARRIER_NOT_SUPPORTED[0]
+        final fun <get-CARRIER_NOT_SUPPORTED>(): kotlin/Int // com.google.firebase.pnv/FirebasePnvStatusCodes.CARRIER_NOT_SUPPORTED.<get-CARRIER_NOT_SUPPORTED>|<get-CARRIER_NOT_SUPPORTED>(){}[0]
+    final const val CREDENTIAL_MANAGER_ERROR // com.google.firebase.pnv/FirebasePnvStatusCodes.CREDENTIAL_MANAGER_ERROR|{}CREDENTIAL_MANAGER_ERROR[0]
+        final fun <get-CREDENTIAL_MANAGER_ERROR>(): kotlin/Int // com.google.firebase.pnv/FirebasePnvStatusCodes.CREDENTIAL_MANAGER_ERROR.<get-CREDENTIAL_MANAGER_ERROR>|<get-CREDENTIAL_MANAGER_ERROR>(){}[0]
+    final const val INTEGRITY_CHECK_FAILED // com.google.firebase.pnv/FirebasePnvStatusCodes.INTEGRITY_CHECK_FAILED|{}INTEGRITY_CHECK_FAILED[0]
+        final fun <get-INTEGRITY_CHECK_FAILED>(): kotlin/Int // com.google.firebase.pnv/FirebasePnvStatusCodes.INTEGRITY_CHECK_FAILED.<get-INTEGRITY_CHECK_FAILED>|<get-INTEGRITY_CHECK_FAILED>(){}[0]
+    final const val INVALID_DIGITAL_CREDENTIAL_RESPONSE // com.google.firebase.pnv/FirebasePnvStatusCodes.INVALID_DIGITAL_CREDENTIAL_RESPONSE|{}INVALID_DIGITAL_CREDENTIAL_RESPONSE[0]
+        final fun <get-INVALID_DIGITAL_CREDENTIAL_RESPONSE>(): kotlin/Int // com.google.firebase.pnv/FirebasePnvStatusCodes.INVALID_DIGITAL_CREDENTIAL_RESPONSE.<get-INVALID_DIGITAL_CREDENTIAL_RESPONSE>|<get-INVALID_DIGITAL_CREDENTIAL_RESPONSE>(){}[0]
+    final const val INVALID_TEST_NUMBER_ID // com.google.firebase.pnv/FirebasePnvStatusCodes.INVALID_TEST_NUMBER_ID|{}INVALID_TEST_NUMBER_ID[0]
+        final fun <get-INVALID_TEST_NUMBER_ID>(): kotlin/Int // com.google.firebase.pnv/FirebasePnvStatusCodes.INVALID_TEST_NUMBER_ID.<get-INVALID_TEST_NUMBER_ID>|<get-INVALID_TEST_NUMBER_ID>(){}[0]
+    final const val PREFLIGHT_CHECK_FAILED // com.google.firebase.pnv/FirebasePnvStatusCodes.PREFLIGHT_CHECK_FAILED|{}PREFLIGHT_CHECK_FAILED[0]
+        final fun <get-PREFLIGHT_CHECK_FAILED>(): kotlin/Int // com.google.firebase.pnv/FirebasePnvStatusCodes.PREFLIGHT_CHECK_FAILED.<get-PREFLIGHT_CHECK_FAILED>|<get-PREFLIGHT_CHECK_FAILED>(){}[0]
+    final const val TEST_SESSION_ALREADY_ENABLED // com.google.firebase.pnv/FirebasePnvStatusCodes.TEST_SESSION_ALREADY_ENABLED|{}TEST_SESSION_ALREADY_ENABLED[0]
+        final fun <get-TEST_SESSION_ALREADY_ENABLED>(): kotlin/Int // com.google.firebase.pnv/FirebasePnvStatusCodes.TEST_SESSION_ALREADY_ENABLED.<get-TEST_SESSION_ALREADY_ENABLED>|<get-TEST_SESSION_ALREADY_ENABLED>(){}[0]
+    final const val UNSUPPORTED_OPERATION // com.google.firebase.pnv/FirebasePnvStatusCodes.UNSUPPORTED_OPERATION|{}UNSUPPORTED_OPERATION[0]
+        final fun <get-UNSUPPORTED_OPERATION>(): kotlin/Int // com.google.firebase.pnv/FirebasePnvStatusCodes.UNSUPPORTED_OPERATION.<get-UNSUPPORTED_OPERATION>|<get-UNSUPPORTED_OPERATION>(){}[0]
+
+    final fun getMessage(kotlin/Int): kotlin/String // com.google.firebase.pnv/FirebasePnvStatusCodes.getMessage|getMessage(kotlin.Int){}[0]
+}
+
+final val io.github.corneloaie.firebase.pnv/phoneNumberVerification // io.github.corneloaie.firebase.pnv/phoneNumberVerification|@io.github.corneloaie.firebase.Firebase{}phoneNumberVerification[0]
+    final fun (io.github.corneloaie.firebase/Firebase).<get-phoneNumberVerification>(): io.github.corneloaie.firebase.pnv/FirebasePhoneNumberVerification // io.github.corneloaie.firebase.pnv/phoneNumberVerification.<get-phoneNumberVerification>|<get-phoneNumberVerification>@io.github.corneloaie.firebase.Firebase(){}[0]
+
+final fun (com.google.firebase.pnv/FirebasePhoneNumberVerification).com.google.firebase.pnv/getVerifiedPhoneNumber(kotlin/Any): com.google.android.gms.tasks/Task<com.google.firebase.pnv/VerifiedPhoneNumberTokenResult> // com.google.firebase.pnv/getVerifiedPhoneNumber|getVerifiedPhoneNumber@com.google.firebase.pnv.FirebasePhoneNumberVerification(kotlin.Any){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase.pnv/phoneNumberVerification(io.github.corneloaie.firebase/FirebaseApp): io.github.corneloaie.firebase.pnv/FirebasePhoneNumberVerification // io.github.corneloaie.firebase.pnv/phoneNumberVerification|phoneNumberVerification@io.github.corneloaie.firebase.Firebase(io.github.corneloaie.firebase.FirebaseApp){}[0]

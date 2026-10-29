@@ -1,7 +1,7 @@
 package compat
 
 /**
- * Parses the JVM API dumps written by the binary-compatibility-validator plugin (`api/android/<module>.api`) and the
+ * Parses the JVM API dumps written by Kotlin's ABI validation (`api/android/<module>.api`, in binary-compatibility-validator's format) and the
  * header stub dumps written by `utils.stripHeaderStubs`, whose member lines may end in `// deprecated: <message>` for a
  * member deprecated with an error.
  */

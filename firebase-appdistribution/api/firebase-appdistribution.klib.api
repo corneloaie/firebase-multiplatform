@@ -1,0 +1,171 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-appdistribution>
+final enum class com.google.firebase.appdistribution/BinaryType : kotlin/Enum<com.google.firebase.appdistribution/BinaryType> { // com.google.firebase.appdistribution/BinaryType|null[0]
+    enum entry AAB // com.google.firebase.appdistribution/BinaryType.AAB|null[0]
+    enum entry APK // com.google.firebase.appdistribution/BinaryType.APK|null[0]
+
+    final val entries // com.google.firebase.appdistribution/BinaryType.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.appdistribution/BinaryType> // com.google.firebase.appdistribution/BinaryType.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.google.firebase.appdistribution/BinaryType // com.google.firebase.appdistribution/BinaryType.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.google.firebase.appdistribution/BinaryType> // com.google.firebase.appdistribution/BinaryType.values|values#static(){}[0]
+}
+
+final enum class com.google.firebase.appdistribution/InterruptionLevel : kotlin/Enum<com.google.firebase.appdistribution/InterruptionLevel> { // com.google.firebase.appdistribution/InterruptionLevel|null[0]
+    enum entry DEFAULT // com.google.firebase.appdistribution/InterruptionLevel.DEFAULT|null[0]
+    enum entry HIGH // com.google.firebase.appdistribution/InterruptionLevel.HIGH|null[0]
+    enum entry LOW // com.google.firebase.appdistribution/InterruptionLevel.LOW|null[0]
+    enum entry MAX // com.google.firebase.appdistribution/InterruptionLevel.MAX|null[0]
+    enum entry MIN // com.google.firebase.appdistribution/InterruptionLevel.MIN|null[0]
+
+    final val entries // com.google.firebase.appdistribution/InterruptionLevel.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.appdistribution/InterruptionLevel> // com.google.firebase.appdistribution/InterruptionLevel.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.google.firebase.appdistribution/InterruptionLevel // com.google.firebase.appdistribution/InterruptionLevel.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.google.firebase.appdistribution/InterruptionLevel> // com.google.firebase.appdistribution/InterruptionLevel.values|values#static(){}[0]
+}
+
+final enum class com.google.firebase.appdistribution/UpdateStatus : kotlin/Enum<com.google.firebase.appdistribution/UpdateStatus> { // com.google.firebase.appdistribution/UpdateStatus|null[0]
+    enum entry DOWNLOADED // com.google.firebase.appdistribution/UpdateStatus.DOWNLOADED|null[0]
+    enum entry DOWNLOADING // com.google.firebase.appdistribution/UpdateStatus.DOWNLOADING|null[0]
+    enum entry DOWNLOAD_FAILED // com.google.firebase.appdistribution/UpdateStatus.DOWNLOAD_FAILED|null[0]
+    enum entry INSTALL_CANCELED // com.google.firebase.appdistribution/UpdateStatus.INSTALL_CANCELED|null[0]
+    enum entry INSTALL_FAILED // com.google.firebase.appdistribution/UpdateStatus.INSTALL_FAILED|null[0]
+    enum entry NEW_RELEASE_CHECK_FAILED // com.google.firebase.appdistribution/UpdateStatus.NEW_RELEASE_CHECK_FAILED|null[0]
+    enum entry NEW_RELEASE_NOT_AVAILABLE // com.google.firebase.appdistribution/UpdateStatus.NEW_RELEASE_NOT_AVAILABLE|null[0]
+    enum entry PENDING // com.google.firebase.appdistribution/UpdateStatus.PENDING|null[0]
+    enum entry REDIRECTED_TO_PLAY // com.google.firebase.appdistribution/UpdateStatus.REDIRECTED_TO_PLAY|null[0]
+    enum entry UPDATE_CANCELED // com.google.firebase.appdistribution/UpdateStatus.UPDATE_CANCELED|null[0]
+
+    final val entries // com.google.firebase.appdistribution/UpdateStatus.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.appdistribution/UpdateStatus> // com.google.firebase.appdistribution/UpdateStatus.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.google.firebase.appdistribution/UpdateStatus // com.google.firebase.appdistribution/UpdateStatus.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.google.firebase.appdistribution/UpdateStatus> // com.google.firebase.appdistribution/UpdateStatus.values|values#static(){}[0]
+}
+
+abstract fun interface com.google.firebase.appdistribution/OnProgressListener { // com.google.firebase.appdistribution/OnProgressListener|null[0]
+    abstract fun onProgressUpdate(com.google.firebase.appdistribution/UpdateProgress) // com.google.firebase.appdistribution/OnProgressListener.onProgressUpdate|onProgressUpdate(com.google.firebase.appdistribution.UpdateProgress){}[0]
+}
+
+abstract interface com.google.firebase.appdistribution/AppDistributionRelease { // com.google.firebase.appdistribution/AppDistributionRelease|null[0]
+    abstract val binaryType // com.google.firebase.appdistribution/AppDistributionRelease.binaryType|{}binaryType[0]
+        abstract fun <get-binaryType>(): com.google.firebase.appdistribution/BinaryType // com.google.firebase.appdistribution/AppDistributionRelease.binaryType.<get-binaryType>|<get-binaryType>(){}[0]
+    abstract val displayVersion // com.google.firebase.appdistribution/AppDistributionRelease.displayVersion|{}displayVersion[0]
+        abstract fun <get-displayVersion>(): kotlin/String // com.google.firebase.appdistribution/AppDistributionRelease.displayVersion.<get-displayVersion>|<get-displayVersion>(){}[0]
+    abstract val releaseNotes // com.google.firebase.appdistribution/AppDistributionRelease.releaseNotes|{}releaseNotes[0]
+        abstract fun <get-releaseNotes>(): kotlin/String? // com.google.firebase.appdistribution/AppDistributionRelease.releaseNotes.<get-releaseNotes>|<get-releaseNotes>(){}[0]
+    abstract val versionCode // com.google.firebase.appdistribution/AppDistributionRelease.versionCode|{}versionCode[0]
+        abstract fun <get-versionCode>(): kotlin/Long // com.google.firebase.appdistribution/AppDistributionRelease.versionCode.<get-versionCode>|<get-versionCode>(){}[0]
+}
+
+abstract interface com.google.firebase.appdistribution/FirebaseAppDistribution { // com.google.firebase.appdistribution/FirebaseAppDistribution|null[0]
+    abstract val isTesterSignedIn // com.google.firebase.appdistribution/FirebaseAppDistribution.isTesterSignedIn|{}isTesterSignedIn[0]
+        abstract fun <get-isTesterSignedIn>(): kotlin/Boolean // com.google.firebase.appdistribution/FirebaseAppDistribution.isTesterSignedIn.<get-isTesterSignedIn>|<get-isTesterSignedIn>(){}[0]
+
+    abstract fun cancelFeedbackNotification() // com.google.firebase.appdistribution/FirebaseAppDistribution.cancelFeedbackNotification|cancelFeedbackNotification(){}[0]
+    abstract fun checkForNewRelease(): com.google.android.gms.tasks/Task<com.google.firebase.appdistribution/AppDistributionRelease?> // com.google.firebase.appdistribution/FirebaseAppDistribution.checkForNewRelease|checkForNewRelease(){}[0]
+    abstract fun showFeedbackNotification(kotlin/CharSequence, com.google.firebase.appdistribution/InterruptionLevel) // com.google.firebase.appdistribution/FirebaseAppDistribution.showFeedbackNotification|showFeedbackNotification(kotlin.CharSequence;com.google.firebase.appdistribution.InterruptionLevel){}[0]
+    abstract fun showFeedbackNotification(kotlin/Int, com.google.firebase.appdistribution/InterruptionLevel) // com.google.firebase.appdistribution/FirebaseAppDistribution.showFeedbackNotification|showFeedbackNotification(kotlin.Int;com.google.firebase.appdistribution.InterruptionLevel){}[0]
+    abstract fun signInTester(): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.appdistribution/FirebaseAppDistribution.signInTester|signInTester(){}[0]
+    abstract fun signOutTester() // com.google.firebase.appdistribution/FirebaseAppDistribution.signOutTester|signOutTester(){}[0]
+    abstract fun startFeedback(kotlin/CharSequence) // com.google.firebase.appdistribution/FirebaseAppDistribution.startFeedback|startFeedback(kotlin.CharSequence){}[0]
+    abstract fun startFeedback(kotlin/Int) // com.google.firebase.appdistribution/FirebaseAppDistribution.startFeedback|startFeedback(kotlin.Int){}[0]
+    abstract fun updateApp(): com.google.firebase.appdistribution/UpdateTask // com.google.firebase.appdistribution/FirebaseAppDistribution.updateApp|updateApp(){}[0]
+    abstract fun updateIfNewReleaseAvailable(): com.google.firebase.appdistribution/UpdateTask // com.google.firebase.appdistribution/FirebaseAppDistribution.updateIfNewReleaseAvailable|updateIfNewReleaseAvailable(){}[0]
+
+    final object Companion { // com.google.firebase.appdistribution/FirebaseAppDistribution.Companion|null[0]
+        final fun getInstance(): com.google.firebase.appdistribution/FirebaseAppDistribution // com.google.firebase.appdistribution/FirebaseAppDistribution.Companion.getInstance|getInstance(){}[0]
+    }
+}
+
+abstract interface com.google.firebase.appdistribution/UpdateProgress { // com.google.firebase.appdistribution/UpdateProgress|null[0]
+    abstract val apkBytesDownloaded // com.google.firebase.appdistribution/UpdateProgress.apkBytesDownloaded|{}apkBytesDownloaded[0]
+        abstract fun <get-apkBytesDownloaded>(): kotlin/Long // com.google.firebase.appdistribution/UpdateProgress.apkBytesDownloaded.<get-apkBytesDownloaded>|<get-apkBytesDownloaded>(){}[0]
+    abstract val apkFileTotalBytes // com.google.firebase.appdistribution/UpdateProgress.apkFileTotalBytes|{}apkFileTotalBytes[0]
+        abstract fun <get-apkFileTotalBytes>(): kotlin/Long // com.google.firebase.appdistribution/UpdateProgress.apkFileTotalBytes.<get-apkFileTotalBytes>|<get-apkFileTotalBytes>(){}[0]
+    abstract val updateStatus // com.google.firebase.appdistribution/UpdateProgress.updateStatus|{}updateStatus[0]
+        abstract fun <get-updateStatus>(): com.google.firebase.appdistribution/UpdateStatus // com.google.firebase.appdistribution/UpdateProgress.updateStatus.<get-updateStatus>|<get-updateStatus>(){}[0]
+}
+
+abstract class com.google.firebase.appdistribution/UpdateTask : com.google.android.gms.tasks/Task<kotlin/Nothing?> { // com.google.firebase.appdistribution/UpdateTask|null[0]
+    constructor <init>() // com.google.firebase.appdistribution/UpdateTask.<init>|<init>(){}[0]
+
+    abstract fun addOnProgressListener(com.google.firebase.appdistribution/OnProgressListener): com.google.firebase.appdistribution/UpdateTask // com.google.firebase.appdistribution/UpdateTask.addOnProgressListener|addOnProgressListener(com.google.firebase.appdistribution.OnProgressListener){}[0]
+}
+
+final class io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution { // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution|null[0]
+    final val compat // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.appdistribution/FirebaseAppDistribution // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution.compat.<get-compat>|<get-compat>(){}[0]
+    final val isTesterSignedIn // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution.isTesterSignedIn|{}isTesterSignedIn[0]
+        final fun <get-isTesterSignedIn>(): kotlin/Boolean // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution.isTesterSignedIn.<get-isTesterSignedIn>|<get-isTesterSignedIn>(){}[0]
+
+    final fun cancelFeedbackNotification() // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution.cancelFeedbackNotification|cancelFeedbackNotification(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution.hashCode|hashCode(){}[0]
+    final fun showFeedbackNotification(kotlin/CharSequence, com.google.firebase.appdistribution/InterruptionLevel = ...) // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution.showFeedbackNotification|showFeedbackNotification(kotlin.CharSequence;com.google.firebase.appdistribution.InterruptionLevel){}[0]
+    final fun signOutTester() // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution.signOutTester|signOutTester(){}[0]
+    final fun startFeedback(kotlin/CharSequence, kotlin/String? = ...) // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution.startFeedback|startFeedback(kotlin.CharSequence;kotlin.String?){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution.toString|toString(){}[0]
+    final fun updateApp(): kotlinx.coroutines.flow/Flow<com.google.firebase.appdistribution/UpdateProgress> // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution.updateApp|updateApp(){}[0]
+    final fun updateIfNewReleaseAvailable(): kotlinx.coroutines.flow/Flow<com.google.firebase.appdistribution/UpdateProgress> // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution.updateIfNewReleaseAvailable|updateIfNewReleaseAvailable(){}[0]
+    final suspend fun checkForNewRelease(): com.google.firebase.appdistribution/AppDistributionRelease? // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution.checkForNewRelease|checkForNewRelease(){}[0]
+    final suspend fun signInTester() // io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution.signInTester|signInTester(){}[0]
+}
+
+open class com.google.firebase.appdistribution/FirebaseAppDistributionException : com.google.firebase/FirebaseException { // com.google.firebase.appdistribution/FirebaseAppDistributionException|null[0]
+    constructor <init>(kotlin/String, com.google.firebase.appdistribution/FirebaseAppDistributionException.Status) // com.google.firebase.appdistribution/FirebaseAppDistributionException.<init>|<init>(kotlin.String;com.google.firebase.appdistribution.FirebaseAppDistributionException.Status){}[0]
+    constructor <init>(kotlin/String, com.google.firebase.appdistribution/FirebaseAppDistributionException.Status, com.google.firebase.appdistribution/AppDistributionRelease?) // com.google.firebase.appdistribution/FirebaseAppDistributionException.<init>|<init>(kotlin.String;com.google.firebase.appdistribution.FirebaseAppDistributionException.Status;com.google.firebase.appdistribution.AppDistributionRelease?){}[0]
+    constructor <init>(kotlin/String, com.google.firebase.appdistribution/FirebaseAppDistributionException.Status, com.google.firebase.appdistribution/AppDistributionRelease?, kotlin/Throwable) // com.google.firebase.appdistribution/FirebaseAppDistributionException.<init>|<init>(kotlin.String;com.google.firebase.appdistribution.FirebaseAppDistributionException.Status;com.google.firebase.appdistribution.AppDistributionRelease?;kotlin.Throwable){}[0]
+    constructor <init>(kotlin/String, com.google.firebase.appdistribution/FirebaseAppDistributionException.Status, kotlin/Throwable) // com.google.firebase.appdistribution/FirebaseAppDistributionException.<init>|<init>(kotlin.String;com.google.firebase.appdistribution.FirebaseAppDistributionException.Status;kotlin.Throwable){}[0]
+
+    final val errorCode // com.google.firebase.appdistribution/FirebaseAppDistributionException.errorCode|{}errorCode[0]
+        final fun <get-errorCode>(): com.google.firebase.appdistribution/FirebaseAppDistributionException.Status // com.google.firebase.appdistribution/FirebaseAppDistributionException.errorCode.<get-errorCode>|<get-errorCode>(){}[0]
+    final val release // com.google.firebase.appdistribution/FirebaseAppDistributionException.release|{}release[0]
+        final fun <get-release>(): com.google.firebase.appdistribution/AppDistributionRelease? // com.google.firebase.appdistribution/FirebaseAppDistributionException.release.<get-release>|<get-release>(){}[0]
+
+    final enum class Status : kotlin/Enum<com.google.firebase.appdistribution/FirebaseAppDistributionException.Status> { // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status|null[0]
+        enum entry API_DISABLED // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status.API_DISABLED|null[0]
+        enum entry AUTHENTICATION_CANCELED // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status.AUTHENTICATION_CANCELED|null[0]
+        enum entry AUTHENTICATION_FAILURE // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status.AUTHENTICATION_FAILURE|null[0]
+        enum entry DOWNLOAD_FAILURE // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status.DOWNLOAD_FAILURE|null[0]
+        enum entry HOST_ACTIVITY_INTERRUPTED // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status.HOST_ACTIVITY_INTERRUPTED|null[0]
+        enum entry INSTALLATION_CANCELED // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status.INSTALLATION_CANCELED|null[0]
+        enum entry INSTALLATION_FAILURE // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status.INSTALLATION_FAILURE|null[0]
+        enum entry NETWORK_FAILURE // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status.NETWORK_FAILURE|null[0]
+        enum entry NOT_IMPLEMENTED // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status.NOT_IMPLEMENTED|null[0]
+        enum entry UNKNOWN // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status.UNKNOWN|null[0]
+        enum entry UPDATE_NOT_AVAILABLE // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status.UPDATE_NOT_AVAILABLE|null[0]
+
+        final val entries // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status.entries|#static{}entries[0]
+            final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.appdistribution/FirebaseAppDistributionException.Status> // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status.entries.<get-entries>|<get-entries>#static(){}[0]
+
+        final fun valueOf(kotlin/String): com.google.firebase.appdistribution/FirebaseAppDistributionException.Status // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status.valueOf|valueOf#static(kotlin.String){}[0]
+        final fun values(): kotlin/Array<com.google.firebase.appdistribution/FirebaseAppDistributionException.Status> // com.google.firebase.appdistribution/FirebaseAppDistributionException.Status.values|values#static(){}[0]
+    }
+}
+
+final val com.google.firebase.appdistribution/appDistribution // com.google.firebase.appdistribution/appDistribution|@com.google.firebase.Firebase{}appDistribution[0]
+    final fun (com.google.firebase/Firebase).<get-appDistribution>(): com.google.firebase.appdistribution/FirebaseAppDistribution // com.google.firebase.appdistribution/appDistribution.<get-appDistribution>|<get-appDistribution>@com.google.firebase.Firebase(){}[0]
+final val io.github.corneloaie.firebase.appdistribution/appDistribution // io.github.corneloaie.firebase.appdistribution/appDistribution|@io.github.corneloaie.firebase.Firebase{}appDistribution[0]
+    final fun (io.github.corneloaie.firebase/Firebase).<get-appDistribution>(): io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution // io.github.corneloaie.firebase.appdistribution/appDistribution.<get-appDistribution>|<get-appDistribution>@io.github.corneloaie.firebase.Firebase(){}[0]
+final val io.github.corneloaie.firebase.appdistribution/ios // io.github.corneloaie.firebase.appdistribution/ios|@com.google.firebase.appdistribution.AppDistributionRelease{}ios[0]
+    final fun (com.google.firebase.appdistribution/AppDistributionRelease).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.appdistribution/FIRAppDistributionRelease? // io.github.corneloaie.firebase.appdistribution/ios.<get-ios>|<get-ios>@com.google.firebase.appdistribution.AppDistributionRelease(){}[0]
+final val io.github.corneloaie.firebase.appdistribution/ios // io.github.corneloaie.firebase.appdistribution/ios|@io.github.corneloaie.firebase.appdistribution.FirebaseAppDistribution{}ios[0]
+    final fun (io.github.corneloaie.firebase.appdistribution/FirebaseAppDistribution).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.appdistribution/FIRAppDistribution // io.github.corneloaie.firebase.appdistribution/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.appdistribution.FirebaseAppDistribution(){}[0]
+
+final fun (com.google.firebase.appdistribution/AppDistributionRelease).com.google.firebase.appdistribution/component1(): com.google.firebase.appdistribution/BinaryType // com.google.firebase.appdistribution/component1|component1@com.google.firebase.appdistribution.AppDistributionRelease(){}[0]
+final fun (com.google.firebase.appdistribution/AppDistributionRelease).com.google.firebase.appdistribution/component2(): kotlin/String // com.google.firebase.appdistribution/component2|component2@com.google.firebase.appdistribution.AppDistributionRelease(){}[0]
+final fun (com.google.firebase.appdistribution/AppDistributionRelease).com.google.firebase.appdistribution/component3(): kotlin/Long // com.google.firebase.appdistribution/component3|component3@com.google.firebase.appdistribution.AppDistributionRelease(){}[0]
+final fun (com.google.firebase.appdistribution/AppDistributionRelease).com.google.firebase.appdistribution/component4(): kotlin/String? // com.google.firebase.appdistribution/component4|component4@com.google.firebase.appdistribution.AppDistributionRelease(){}[0]
+final fun (com.google.firebase.appdistribution/FirebaseAppDistribution).com.google.firebase.appdistribution/startFeedback(kotlin/CharSequence, kotlin/String?) // com.google.firebase.appdistribution/startFeedback|startFeedback@com.google.firebase.appdistribution.FirebaseAppDistribution(kotlin.CharSequence;kotlin.String?){}[0]
+final fun (com.google.firebase.appdistribution/FirebaseAppDistribution).com.google.firebase.appdistribution/startFeedback(kotlin/Int, kotlin/String?) // com.google.firebase.appdistribution/startFeedback|startFeedback@com.google.firebase.appdistribution.FirebaseAppDistribution(kotlin.Int;kotlin.String?){}[0]
+final fun (com.google.firebase.appdistribution/UpdateProgress).com.google.firebase.appdistribution/component1(): kotlin/Long // com.google.firebase.appdistribution/component1|component1@com.google.firebase.appdistribution.UpdateProgress(){}[0]
+final fun (com.google.firebase.appdistribution/UpdateProgress).com.google.firebase.appdistribution/component2(): kotlin/Long // com.google.firebase.appdistribution/component2|component2@com.google.firebase.appdistribution.UpdateProgress(){}[0]
+final fun (com.google.firebase.appdistribution/UpdateProgress).com.google.firebase.appdistribution/component3(): com.google.firebase.appdistribution/UpdateStatus // com.google.firebase.appdistribution/component3|component3@com.google.firebase.appdistribution.UpdateProgress(){}[0]

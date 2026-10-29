@@ -263,7 +263,7 @@ Migrated modules additionally expose `.compat`, the `com.google.firebase` object
 This library tracks its public binary API. After any public API change:
 
 ```bash
-./gradlew apiDump
+./gradlew updateKotlinAbi
 ```
 
 Commit the updated `.api` files alongside your code changes.

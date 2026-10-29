@@ -26,3 +26,8 @@ publish             hold    publishing only: needs a Publish dry run, which the 
 firebase-bom        weekly  Firebase Android BoM
 firebase-appdistribution  weekly  App Distribution, not in the BoM, moves to the release its api.txt describes
 firebase-ios-sdk    weekly  Firebase iOS SDK (SwiftPM)
+
+# androidx-core 1.15 and later need compileSdk 35 or higher (1.19: 37, with AGP 9.1). AGP 9 makes a library's compileSdk
+# its consumers' minimum (the AAR's minCompileSdk), so raising it for this test-only dependency (firebase-auth's device
+# tests) would raise it for every app that uses firebase-auth.
+androidx-core       <1.15   needs compileSdk 35+, which AGP 9 passes on to consumers; test-only (firebase-auth)

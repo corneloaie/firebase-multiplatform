@@ -111,19 +111,18 @@ Never re-add Dependabot.
      so it finds nothing to commit. A commit that job pushes comes from `github-actions[bot]`, and GitHub holds the CI
      of such a commit for approval, which stalls the pull request.
      - Run `fmg formatKotlin`.
-     - A catalog change makes that job dump every module's API, so run the same dumps:
+     - A catalog change makes that job dump every module's API, so run the same dumps. `updateKotlinAbi` also writes
+       the KLib dump, which builds every Apple target: dump one module at a time, and clear the SwiftPM build state
+       after each, so `build/kotlin` doesn't fill the disk:
 
        ```bash
-       tasks=""
        for d in */api; do
          m=${d%/api}
-         if [ -d "$m/api/android" ] || find "$m/api" -maxdepth 1 -name '*.api' | grep -q .; then
-           tasks="$tasks :${m}:androidApiDump"
-         fi
-         [ -d "$m/api/jvm" ] && tasks="$tasks :${m}:jvmApiDump"
-         [ -d "$m/api/android-sdk" ] && tasks="$tasks :${m}:androidSourceCompatDump"
+         tasks=(":${m}:updateKotlinAbi")
+         [ -d "$m/api/android-sdk" ] && tasks+=(":${m}:androidSourceCompatDump")
+         fmg "${tasks[@]}" || break
+         rm -rf build/kotlin/swiftPM*
        done
-       fmg $tasks
        ```
 
      - Commit what changed, naming the paths `git status --porcelain` lists, as `Deps: format and API dumps`.
@@ -158,8 +157,8 @@ Never re-add Dependabot.
 
 8. **Auto-merge** is armed only when all of these hold. If one fails, don't arm it, disarm it if it is armed
    (`gh pr merge <n> --disable-auto`), and say why in a comment:
-   - `git diff origin/main...origin/deps/weekly -- '*.api' | grep -E '^-[^-]'` finds nothing: no public API removed or
-     changed. Check again after CI's "Lint and API Checks" job commits API dumps.
+   - `git diff origin/main...origin/deps/weekly -- '*.api' | grep -E '^-[^-/]'` finds nothing: no public API removed or
+     changed (`/` skips the KLib dumps' `//` header lines). Check again after CI's "Lint and API Checks" job commits API dumps.
    - Nothing `pins.txt` holds was bumped. That includes dokka and the publish plugin, which PR CI never runs.
    - Nothing needs the user: no held-back bump that asks for a decision (a compileSdk raise, a public API change).
 

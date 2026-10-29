@@ -63,7 +63,7 @@ jobs:
           compare "jsTest/wasmJsTest" "jsTest" "wasmJsTest"
 
           # Only these have jvmMain sources of their own; the rest share source via srcDir or have no JVM target.
-          # androidUnitTest/jvmTest is deliberately NOT compared: those files are per-platform
+          # androidHostTest/jvmTest is deliberately NOT compared: those files are per-platform
           # `actual` test config (context, @Ignore aliasing), not mirrored logic.
           compare "androidMain/jvmMain" "androidMain" "jvmMain" \
             '^(firebase-analytics|firebase-appdistribution|firebase-auth|firebase-inappmessaging|firebase-messaging|firebase-perf)/'

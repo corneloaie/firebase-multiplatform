@@ -16,40 +16,10 @@ import utils.toTargetPlatforms
 val supportedPlatforms = (project.property("firebase-config.supportedTargets") as String).toTargetPlatforms()
 
 plugins {
-    id("com.android.library")
+    id("com.android.kotlin.multiplatform.library")
     kotlin("multiplatform")
     id("testOptionsConvention")
     alias(libs.plugins.publish)
-}
-
-if (supportedPlatforms.contains(TargetPlatform.Android)) {
-    android {
-        val minSdkVersion: Int by project
-        val compileSdkVersion: Int by project
-
-        compileSdk = compileSdkVersion
-        namespace = "io.github.corneloaie.firebase.remoteconfig"
-
-        defaultConfig {
-            minSdk = minSdkVersion
-            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        }
-
-        compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_17
-            targetCompatibility = JavaVersion.VERSION_17
-        }
-
-        testOptions.configureTestOptions(project)
-        packaging {
-            resources.pickFirsts.add("META-INF/kotlinx-serialization-core.kotlin_module")
-            resources.pickFirsts.add("META-INF/AL2.0")
-            resources.pickFirsts.add("META-INF/LGPL2.1")
-        }
-        lint {
-            abortOnError = false
-        }
-    }
 }
 
 kotlin {
@@ -74,11 +44,24 @@ kotlin {
     }
 
     if (supportedPlatforms.contains(TargetPlatform.Android)) {
-        @Suppress("OPT_IN_USAGE")
-        androidTarget {
-            instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
-            unitTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
-            publishAllLibraryVariants()
+        android {
+            val minSdkVersion: Int by project
+            val compileSdkVersion: Int by project
+
+            compileSdk = compileSdkVersion
+            minSdk = minSdkVersion
+            namespace = "io.github.corneloaie.firebase.remoteconfig"
+
+            withHostTestBuilder { sourceSetTreeName = KotlinSourceSetTree.test.name }.configure { configureTestOptions(project) }
+            withDeviceTestBuilder { sourceSetTreeName = KotlinSourceSetTree.test.name }.configure { configureTestOptions(project) }
+            packaging {
+                resources.pickFirsts.add("META-INF/kotlinx-serialization-core.kotlin_module")
+                resources.pickFirsts.add("META-INF/AL2.0")
+                resources.pickFirsts.add("META-INF/LGPL2.1")
+            }
+            lint {
+                abortOnError = false
+            }
         }
     }
 
@@ -194,9 +177,9 @@ kotlin {
 stripHeaderStubs(
     packageDirs = listOf("com/google/firebase"),
     androidReferenceJars = files({
-        configurations.findByName("releaseCompileClasspath")?.incoming?.artifactView {
+        configurations.getByName("androidCompileClasspath").incoming.artifactView {
             attributes.attribute(Attribute.of("artifactType", String::class.java), "android-classes-jar")
-        }?.files ?: files()
+        }.files
     }),
     jvmReferenceJars = files({ configurations.findByName("jvmCompileClasspath")?.files ?: files() }),
     // firebase-java-sdk has no custom signals.

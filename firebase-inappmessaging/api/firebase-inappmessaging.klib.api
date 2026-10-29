@@ -1,0 +1,346 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, tvosArm64, tvosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-inappmessaging>
+final enum class com.google.firebase.inappmessaging.model/MessageType : kotlin/Enum<com.google.firebase.inappmessaging.model/MessageType> { // com.google.firebase.inappmessaging.model/MessageType|null[0]
+    enum entry BANNER // com.google.firebase.inappmessaging.model/MessageType.BANNER|null[0]
+    enum entry CARD // com.google.firebase.inappmessaging.model/MessageType.CARD|null[0]
+    enum entry IMAGE_ONLY // com.google.firebase.inappmessaging.model/MessageType.IMAGE_ONLY|null[0]
+    enum entry MODAL // com.google.firebase.inappmessaging.model/MessageType.MODAL|null[0]
+    enum entry UNSUPPORTED // com.google.firebase.inappmessaging.model/MessageType.UNSUPPORTED|null[0]
+
+    final val entries // com.google.firebase.inappmessaging.model/MessageType.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.inappmessaging.model/MessageType> // com.google.firebase.inappmessaging.model/MessageType.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.google.firebase.inappmessaging.model/MessageType // com.google.firebase.inappmessaging.model/MessageType.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.google.firebase.inappmessaging.model/MessageType> // com.google.firebase.inappmessaging.model/MessageType.values|values#static(){}[0]
+}
+
+abstract fun interface com.google.firebase.inappmessaging/FirebaseInAppMessagingClickListener { // com.google.firebase.inappmessaging/FirebaseInAppMessagingClickListener|null[0]
+    abstract fun messageClicked(com.google.firebase.inappmessaging.model/InAppMessage, com.google.firebase.inappmessaging.model/Action) // com.google.firebase.inappmessaging/FirebaseInAppMessagingClickListener.messageClicked|messageClicked(com.google.firebase.inappmessaging.model.InAppMessage;com.google.firebase.inappmessaging.model.Action){}[0]
+}
+
+abstract fun interface com.google.firebase.inappmessaging/FirebaseInAppMessagingDismissListener { // com.google.firebase.inappmessaging/FirebaseInAppMessagingDismissListener|null[0]
+    abstract fun messageDismissed(com.google.firebase.inappmessaging.model/InAppMessage) // com.google.firebase.inappmessaging/FirebaseInAppMessagingDismissListener.messageDismissed|messageDismissed(com.google.firebase.inappmessaging.model.InAppMessage){}[0]
+}
+
+abstract fun interface com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplay { // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplay|null[0]
+    abstract fun displayMessage(com.google.firebase.inappmessaging.model/InAppMessage, com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks) // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplay.displayMessage|displayMessage(com.google.firebase.inappmessaging.model.InAppMessage;com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplayCallbacks){}[0]
+}
+
+abstract fun interface com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayErrorListener { // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayErrorListener|null[0]
+    abstract fun displayErrorEncountered(com.google.firebase.inappmessaging.model/InAppMessage, com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason) // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayErrorListener.displayErrorEncountered|displayErrorEncountered(com.google.firebase.inappmessaging.model.InAppMessage;com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason){}[0]
+}
+
+abstract fun interface com.google.firebase.inappmessaging/FirebaseInAppMessagingImpressionListener { // com.google.firebase.inappmessaging/FirebaseInAppMessagingImpressionListener|null[0]
+    abstract fun impressionDetected(com.google.firebase.inappmessaging.model/InAppMessage) // com.google.firebase.inappmessaging/FirebaseInAppMessagingImpressionListener.impressionDetected|impressionDetected(com.google.firebase.inappmessaging.model.InAppMessage){}[0]
+}
+
+abstract interface com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks { // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks|null[0]
+    abstract fun displayErrorEncountered(com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.displayErrorEncountered|displayErrorEncountered(com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason){}[0]
+    abstract fun impressionDetected(): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.impressionDetected|impressionDetected(){}[0]
+    abstract fun messageClicked(com.google.firebase.inappmessaging.model/Action): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.messageClicked|messageClicked(com.google.firebase.inappmessaging.model.Action){}[0]
+    abstract fun messageDismissed(com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.messageDismissed|messageDismissed(com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType){}[0]
+
+    final enum class InAppMessagingDismissType : kotlin/Enum<com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType> { // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType|null[0]
+        enum entry AUTO // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType.AUTO|null[0]
+        enum entry CLICK // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType.CLICK|null[0]
+        enum entry SWIPE // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType.SWIPE|null[0]
+        enum entry UNKNOWN_DISMISS_TYPE // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType.UNKNOWN_DISMISS_TYPE|null[0]
+
+        final val entries // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType.entries|#static{}entries[0]
+            final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType> // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType.entries.<get-entries>|<get-entries>#static(){}[0]
+
+        final fun valueOf(kotlin/String): com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType.valueOf|valueOf#static(kotlin.String){}[0]
+        final fun values(): kotlin/Array<com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType> // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType.values|values#static(){}[0]
+    }
+
+    final enum class InAppMessagingErrorReason : kotlin/Enum<com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason> { // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason|null[0]
+        enum entry IMAGE_DISPLAY_ERROR // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason.IMAGE_DISPLAY_ERROR|null[0]
+        enum entry IMAGE_FETCH_ERROR // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason.IMAGE_FETCH_ERROR|null[0]
+        enum entry IMAGE_UNSUPPORTED_FORMAT // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason.IMAGE_UNSUPPORTED_FORMAT|null[0]
+        enum entry UNSPECIFIED_RENDER_ERROR // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason.UNSPECIFIED_RENDER_ERROR|null[0]
+
+        final val entries // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason.entries|#static{}entries[0]
+            final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason> // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason.entries.<get-entries>|<get-entries>#static(){}[0]
+
+        final fun valueOf(kotlin/String): com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason.valueOf|valueOf#static(kotlin.String){}[0]
+        final fun values(): kotlin/Array<com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason> // com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason.values|values#static(){}[0]
+    }
+}
+
+abstract class com.google.firebase.inappmessaging.model/InAppMessage { // com.google.firebase.inappmessaging.model/InAppMessage|null[0]
+    abstract val action // com.google.firebase.inappmessaging.model/InAppMessage.action|{}action[0]
+        abstract fun <get-action>(): com.google.firebase.inappmessaging.model/Action? // com.google.firebase.inappmessaging.model/InAppMessage.action.<get-action>|<get-action>(){}[0]
+    final val campaignMetadata // com.google.firebase.inappmessaging.model/InAppMessage.campaignMetadata|{}campaignMetadata[0]
+        final fun <get-campaignMetadata>(): com.google.firebase.inappmessaging.model/CampaignMetadata? // com.google.firebase.inappmessaging.model/InAppMessage.campaignMetadata.<get-campaignMetadata>|<get-campaignMetadata>(){}[0]
+    final val data // com.google.firebase.inappmessaging.model/InAppMessage.data|{}data[0]
+        final fun <get-data>(): kotlin.collections/Map<kotlin/String, kotlin/String>? // com.google.firebase.inappmessaging.model/InAppMessage.data.<get-data>|<get-data>(){}[0]
+    final val isTestMessage // com.google.firebase.inappmessaging.model/InAppMessage.isTestMessage|{}isTestMessage[0]
+        final fun <get-isTestMessage>(): kotlin/Boolean? // com.google.firebase.inappmessaging.model/InAppMessage.isTestMessage.<get-isTestMessage>|<get-isTestMessage>(){}[0]
+    final val messageType // com.google.firebase.inappmessaging.model/InAppMessage.messageType|{}messageType[0]
+        final fun <get-messageType>(): com.google.firebase.inappmessaging.model/MessageType? // com.google.firebase.inappmessaging.model/InAppMessage.messageType.<get-messageType>|<get-messageType>(){}[0]
+    open val actionButton // com.google.firebase.inappmessaging.model/InAppMessage.actionButton|{}actionButton[0]
+        open fun <get-actionButton>(): com.google.firebase.inappmessaging.model/Button? // com.google.firebase.inappmessaging.model/InAppMessage.actionButton.<get-actionButton>|<get-actionButton>(){}[0]
+    open val backgroundHexColor // com.google.firebase.inappmessaging.model/InAppMessage.backgroundHexColor|{}backgroundHexColor[0]
+        open fun <get-backgroundHexColor>(): kotlin/String? // com.google.firebase.inappmessaging.model/InAppMessage.backgroundHexColor.<get-backgroundHexColor>|<get-backgroundHexColor>(){}[0]
+    open val body // com.google.firebase.inappmessaging.model/InAppMessage.body|{}body[0]
+        open fun <get-body>(): com.google.firebase.inappmessaging.model/Text? // com.google.firebase.inappmessaging.model/InAppMessage.body.<get-body>|<get-body>(){}[0]
+    open val campaignId // com.google.firebase.inappmessaging.model/InAppMessage.campaignId|{}campaignId[0]
+        open fun <get-campaignId>(): kotlin/String? // com.google.firebase.inappmessaging.model/InAppMessage.campaignId.<get-campaignId>|<get-campaignId>(){}[0]
+    open val campaignName // com.google.firebase.inappmessaging.model/InAppMessage.campaignName|{}campaignName[0]
+        open fun <get-campaignName>(): kotlin/String? // com.google.firebase.inappmessaging.model/InAppMessage.campaignName.<get-campaignName>|<get-campaignName>(){}[0]
+    open val imageData // com.google.firebase.inappmessaging.model/InAppMessage.imageData|{}imageData[0]
+        open fun <get-imageData>(): com.google.firebase.inappmessaging.model/ImageData? // com.google.firebase.inappmessaging.model/InAppMessage.imageData.<get-imageData>|<get-imageData>(){}[0]
+    open val imageUrl // com.google.firebase.inappmessaging.model/InAppMessage.imageUrl|{}imageUrl[0]
+        open fun <get-imageUrl>(): kotlin/String? // com.google.firebase.inappmessaging.model/InAppMessage.imageUrl.<get-imageUrl>|<get-imageUrl>(){}[0]
+    open val title // com.google.firebase.inappmessaging.model/InAppMessage.title|{}title[0]
+        open fun <get-title>(): com.google.firebase.inappmessaging.model/Text? // com.google.firebase.inappmessaging.model/InAppMessage.title.<get-title>|<get-title>(){}[0]
+}
+
+final class com.google.firebase.inappmessaging.display/FirebaseInAppMessagingDisplay : com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplay { // com.google.firebase.inappmessaging.display/FirebaseInAppMessagingDisplay|null[0]
+    final val ios // com.google.firebase.inappmessaging.display/FirebaseInAppMessagingDisplay.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.inappmessaging/FIRInAppMessagingDisplayProtocol? // com.google.firebase.inappmessaging.display/FirebaseInAppMessagingDisplay.ios.<get-ios>|<get-ios>(){}[0]
+
+    final fun displayMessage(com.google.firebase.inappmessaging.model/InAppMessage, com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks) // com.google.firebase.inappmessaging.display/FirebaseInAppMessagingDisplay.displayMessage|displayMessage(com.google.firebase.inappmessaging.model.InAppMessage;com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplayCallbacks){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.inappmessaging.display/FirebaseInAppMessagingDisplay.toString|toString(){}[0]
+
+    final object Companion { // com.google.firebase.inappmessaging.display/FirebaseInAppMessagingDisplay.Companion|null[0]
+        final fun getInstance(): com.google.firebase.inappmessaging.display/FirebaseInAppMessagingDisplay // com.google.firebase.inappmessaging.display/FirebaseInAppMessagingDisplay.Companion.getInstance|getInstance(){}[0]
+    }
+}
+
+final class com.google.firebase.inappmessaging.model/Action { // com.google.firebase.inappmessaging.model/Action|null[0]
+    final val actionUrl // com.google.firebase.inappmessaging.model/Action.actionUrl|{}actionUrl[0]
+        final fun <get-actionUrl>(): kotlin/String? // com.google.firebase.inappmessaging.model/Action.actionUrl.<get-actionUrl>|<get-actionUrl>(){}[0]
+    final val button // com.google.firebase.inappmessaging.model/Action.button|{}button[0]
+        final fun <get-button>(): com.google.firebase.inappmessaging.model/Button? // com.google.firebase.inappmessaging.model/Action.button.<get-button>|<get-button>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.inappmessaging.model/Action.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.inappmessaging.model/Action.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.inappmessaging.model/Action.toString|toString(){}[0]
+}
+
+final class com.google.firebase.inappmessaging.model/BannerMessage : com.google.firebase.inappmessaging.model/InAppMessage { // com.google.firebase.inappmessaging.model/BannerMessage|null[0]
+    final val action // com.google.firebase.inappmessaging.model/BannerMessage.action|{}action[0]
+        final fun <get-action>(): com.google.firebase.inappmessaging.model/Action? // com.google.firebase.inappmessaging.model/BannerMessage.action.<get-action>|<get-action>(){}[0]
+    final val backgroundHexColor // com.google.firebase.inappmessaging.model/BannerMessage.backgroundHexColor|{}backgroundHexColor[0]
+        final fun <get-backgroundHexColor>(): kotlin/String // com.google.firebase.inappmessaging.model/BannerMessage.backgroundHexColor.<get-backgroundHexColor>|<get-backgroundHexColor>(){}[0]
+    final val body // com.google.firebase.inappmessaging.model/BannerMessage.body|{}body[0]
+        final fun <get-body>(): com.google.firebase.inappmessaging.model/Text? // com.google.firebase.inappmessaging.model/BannerMessage.body.<get-body>|<get-body>(){}[0]
+    final val imageData // com.google.firebase.inappmessaging.model/BannerMessage.imageData|{}imageData[0]
+        final fun <get-imageData>(): com.google.firebase.inappmessaging.model/ImageData? // com.google.firebase.inappmessaging.model/BannerMessage.imageData.<get-imageData>|<get-imageData>(){}[0]
+    final val title // com.google.firebase.inappmessaging.model/BannerMessage.title|{}title[0]
+        final fun <get-title>(): com.google.firebase.inappmessaging.model/Text // com.google.firebase.inappmessaging.model/BannerMessage.title.<get-title>|<get-title>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.inappmessaging.model/BannerMessage.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.inappmessaging.model/BannerMessage.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.inappmessaging.model/BannerMessage.toString|toString(){}[0]
+}
+
+final class com.google.firebase.inappmessaging.model/Button { // com.google.firebase.inappmessaging.model/Button|null[0]
+    final val buttonHexColor // com.google.firebase.inappmessaging.model/Button.buttonHexColor|{}buttonHexColor[0]
+        final fun <get-buttonHexColor>(): kotlin/String // com.google.firebase.inappmessaging.model/Button.buttonHexColor.<get-buttonHexColor>|<get-buttonHexColor>(){}[0]
+    final val text // com.google.firebase.inappmessaging.model/Button.text|{}text[0]
+        final fun <get-text>(): com.google.firebase.inappmessaging.model/Text // com.google.firebase.inappmessaging.model/Button.text.<get-text>|<get-text>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.inappmessaging.model/Button.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.inappmessaging.model/Button.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.inappmessaging.model/Button.toString|toString(){}[0]
+}
+
+final class com.google.firebase.inappmessaging.model/CampaignMetadata { // com.google.firebase.inappmessaging.model/CampaignMetadata|null[0]
+    final val campaignId // com.google.firebase.inappmessaging.model/CampaignMetadata.campaignId|{}campaignId[0]
+        final fun <get-campaignId>(): kotlin/String // com.google.firebase.inappmessaging.model/CampaignMetadata.campaignId.<get-campaignId>|<get-campaignId>(){}[0]
+    final val campaignName // com.google.firebase.inappmessaging.model/CampaignMetadata.campaignName|{}campaignName[0]
+        final fun <get-campaignName>(): kotlin/String // com.google.firebase.inappmessaging.model/CampaignMetadata.campaignName.<get-campaignName>|<get-campaignName>(){}[0]
+    final val isTestMessage // com.google.firebase.inappmessaging.model/CampaignMetadata.isTestMessage|{}isTestMessage[0]
+        final fun <get-isTestMessage>(): kotlin/Boolean // com.google.firebase.inappmessaging.model/CampaignMetadata.isTestMessage.<get-isTestMessage>|<get-isTestMessage>(){}[0]
+
+    final fun toString(): kotlin/String // com.google.firebase.inappmessaging.model/CampaignMetadata.toString|toString(){}[0]
+}
+
+final class com.google.firebase.inappmessaging.model/CardMessage : com.google.firebase.inappmessaging.model/InAppMessage { // com.google.firebase.inappmessaging.model/CardMessage|null[0]
+    final val action // com.google.firebase.inappmessaging.model/CardMessage.action|{}action[0]
+        final fun <get-action>(): com.google.firebase.inappmessaging.model/Action? // com.google.firebase.inappmessaging.model/CardMessage.action.<get-action>|<get-action>(){}[0]
+    final val backgroundHexColor // com.google.firebase.inappmessaging.model/CardMessage.backgroundHexColor|{}backgroundHexColor[0]
+        final fun <get-backgroundHexColor>(): kotlin/String // com.google.firebase.inappmessaging.model/CardMessage.backgroundHexColor.<get-backgroundHexColor>|<get-backgroundHexColor>(){}[0]
+    final val body // com.google.firebase.inappmessaging.model/CardMessage.body|{}body[0]
+        final fun <get-body>(): com.google.firebase.inappmessaging.model/Text? // com.google.firebase.inappmessaging.model/CardMessage.body.<get-body>|<get-body>(){}[0]
+    final val imageData // com.google.firebase.inappmessaging.model/CardMessage.imageData|{}imageData[0]
+        final fun <get-imageData>(): com.google.firebase.inappmessaging.model/ImageData? // com.google.firebase.inappmessaging.model/CardMessage.imageData.<get-imageData>|<get-imageData>(){}[0]
+    final val landscapeImageData // com.google.firebase.inappmessaging.model/CardMessage.landscapeImageData|{}landscapeImageData[0]
+        final fun <get-landscapeImageData>(): com.google.firebase.inappmessaging.model/ImageData? // com.google.firebase.inappmessaging.model/CardMessage.landscapeImageData.<get-landscapeImageData>|<get-landscapeImageData>(){}[0]
+    final val portraitImageData // com.google.firebase.inappmessaging.model/CardMessage.portraitImageData|{}portraitImageData[0]
+        final fun <get-portraitImageData>(): com.google.firebase.inappmessaging.model/ImageData? // com.google.firebase.inappmessaging.model/CardMessage.portraitImageData.<get-portraitImageData>|<get-portraitImageData>(){}[0]
+    final val primaryAction // com.google.firebase.inappmessaging.model/CardMessage.primaryAction|{}primaryAction[0]
+        final fun <get-primaryAction>(): com.google.firebase.inappmessaging.model/Action // com.google.firebase.inappmessaging.model/CardMessage.primaryAction.<get-primaryAction>|<get-primaryAction>(){}[0]
+    final val secondaryAction // com.google.firebase.inappmessaging.model/CardMessage.secondaryAction|{}secondaryAction[0]
+        final fun <get-secondaryAction>(): com.google.firebase.inappmessaging.model/Action? // com.google.firebase.inappmessaging.model/CardMessage.secondaryAction.<get-secondaryAction>|<get-secondaryAction>(){}[0]
+    final val title // com.google.firebase.inappmessaging.model/CardMessage.title|{}title[0]
+        final fun <get-title>(): com.google.firebase.inappmessaging.model/Text // com.google.firebase.inappmessaging.model/CardMessage.title.<get-title>|<get-title>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.inappmessaging.model/CardMessage.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.inappmessaging.model/CardMessage.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.inappmessaging.model/CardMessage.toString|toString(){}[0]
+}
+
+final class com.google.firebase.inappmessaging.model/ImageData { // com.google.firebase.inappmessaging.model/ImageData|null[0]
+    final val imageUrl // com.google.firebase.inappmessaging.model/ImageData.imageUrl|{}imageUrl[0]
+        final fun <get-imageUrl>(): kotlin/String // com.google.firebase.inappmessaging.model/ImageData.imageUrl.<get-imageUrl>|<get-imageUrl>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.inappmessaging.model/ImageData.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.inappmessaging.model/ImageData.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.inappmessaging.model/ImageData.toString|toString(){}[0]
+}
+
+final class com.google.firebase.inappmessaging.model/ImageOnlyMessage : com.google.firebase.inappmessaging.model/InAppMessage { // com.google.firebase.inappmessaging.model/ImageOnlyMessage|null[0]
+    final val action // com.google.firebase.inappmessaging.model/ImageOnlyMessage.action|{}action[0]
+        final fun <get-action>(): com.google.firebase.inappmessaging.model/Action? // com.google.firebase.inappmessaging.model/ImageOnlyMessage.action.<get-action>|<get-action>(){}[0]
+    final val imageData // com.google.firebase.inappmessaging.model/ImageOnlyMessage.imageData|{}imageData[0]
+        final fun <get-imageData>(): com.google.firebase.inappmessaging.model/ImageData // com.google.firebase.inappmessaging.model/ImageOnlyMessage.imageData.<get-imageData>|<get-imageData>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.inappmessaging.model/ImageOnlyMessage.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.inappmessaging.model/ImageOnlyMessage.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.inappmessaging.model/ImageOnlyMessage.toString|toString(){}[0]
+}
+
+final class com.google.firebase.inappmessaging.model/ModalMessage : com.google.firebase.inappmessaging.model/InAppMessage { // com.google.firebase.inappmessaging.model/ModalMessage|null[0]
+    final val action // com.google.firebase.inappmessaging.model/ModalMessage.action|{}action[0]
+        final fun <get-action>(): com.google.firebase.inappmessaging.model/Action? // com.google.firebase.inappmessaging.model/ModalMessage.action.<get-action>|<get-action>(){}[0]
+    final val backgroundHexColor // com.google.firebase.inappmessaging.model/ModalMessage.backgroundHexColor|{}backgroundHexColor[0]
+        final fun <get-backgroundHexColor>(): kotlin/String // com.google.firebase.inappmessaging.model/ModalMessage.backgroundHexColor.<get-backgroundHexColor>|<get-backgroundHexColor>(){}[0]
+    final val body // com.google.firebase.inappmessaging.model/ModalMessage.body|{}body[0]
+        final fun <get-body>(): com.google.firebase.inappmessaging.model/Text? // com.google.firebase.inappmessaging.model/ModalMessage.body.<get-body>|<get-body>(){}[0]
+    final val imageData // com.google.firebase.inappmessaging.model/ModalMessage.imageData|{}imageData[0]
+        final fun <get-imageData>(): com.google.firebase.inappmessaging.model/ImageData? // com.google.firebase.inappmessaging.model/ModalMessage.imageData.<get-imageData>|<get-imageData>(){}[0]
+    final val title // com.google.firebase.inappmessaging.model/ModalMessage.title|{}title[0]
+        final fun <get-title>(): com.google.firebase.inappmessaging.model/Text // com.google.firebase.inappmessaging.model/ModalMessage.title.<get-title>|<get-title>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.inappmessaging.model/ModalMessage.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.inappmessaging.model/ModalMessage.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.inappmessaging.model/ModalMessage.toString|toString(){}[0]
+}
+
+final class com.google.firebase.inappmessaging.model/Text { // com.google.firebase.inappmessaging.model/Text|null[0]
+    final val hexColor // com.google.firebase.inappmessaging.model/Text.hexColor|{}hexColor[0]
+        final fun <get-hexColor>(): kotlin/String // com.google.firebase.inappmessaging.model/Text.hexColor.<get-hexColor>|<get-hexColor>(){}[0]
+    final val text // com.google.firebase.inappmessaging.model/Text.text|{}text[0]
+        final fun <get-text>(): kotlin/String? // com.google.firebase.inappmessaging.model/Text.text.<get-text>|<get-text>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.inappmessaging.model/Text.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.inappmessaging.model/Text.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.inappmessaging.model/Text.toString|toString(){}[0]
+}
+
+final class com.google.firebase.inappmessaging/FirebaseInAppMessaging { // com.google.firebase.inappmessaging/FirebaseInAppMessaging|null[0]
+    final val ios // com.google.firebase.inappmessaging/FirebaseInAppMessaging.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.inappmessaging/FIRInAppMessaging // com.google.firebase.inappmessaging/FirebaseInAppMessaging.ios.<get-ios>|<get-ios>(){}[0]
+
+    final var isAutomaticDataCollectionEnabled // com.google.firebase.inappmessaging/FirebaseInAppMessaging.isAutomaticDataCollectionEnabled|{}isAutomaticDataCollectionEnabled[0]
+        final fun <get-isAutomaticDataCollectionEnabled>(): kotlin/Boolean // com.google.firebase.inappmessaging/FirebaseInAppMessaging.isAutomaticDataCollectionEnabled.<get-isAutomaticDataCollectionEnabled>|<get-isAutomaticDataCollectionEnabled>(){}[0]
+        final fun <set-isAutomaticDataCollectionEnabled>(kotlin/Boolean) // com.google.firebase.inappmessaging/FirebaseInAppMessaging.isAutomaticDataCollectionEnabled.<set-isAutomaticDataCollectionEnabled>|<set-isAutomaticDataCollectionEnabled>(kotlin.Boolean){}[0]
+
+    final fun addClickListener(com.google.firebase.inappmessaging/FirebaseInAppMessagingClickListener) // com.google.firebase.inappmessaging/FirebaseInAppMessaging.addClickListener|addClickListener(com.google.firebase.inappmessaging.FirebaseInAppMessagingClickListener){}[0]
+    final fun addDismissListener(com.google.firebase.inappmessaging/FirebaseInAppMessagingDismissListener) // com.google.firebase.inappmessaging/FirebaseInAppMessaging.addDismissListener|addDismissListener(com.google.firebase.inappmessaging.FirebaseInAppMessagingDismissListener){}[0]
+    final fun addDisplayErrorListener(com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayErrorListener) // com.google.firebase.inappmessaging/FirebaseInAppMessaging.addDisplayErrorListener|addDisplayErrorListener(com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplayErrorListener){}[0]
+    final fun addImpressionListener(com.google.firebase.inappmessaging/FirebaseInAppMessagingImpressionListener) // com.google.firebase.inappmessaging/FirebaseInAppMessaging.addImpressionListener|addImpressionListener(com.google.firebase.inappmessaging.FirebaseInAppMessagingImpressionListener){}[0]
+    final fun areMessagesSuppressed(): kotlin/Boolean // com.google.firebase.inappmessaging/FirebaseInAppMessaging.areMessagesSuppressed|areMessagesSuppressed(){}[0]
+    final fun clearDisplayListener() // com.google.firebase.inappmessaging/FirebaseInAppMessaging.clearDisplayListener|clearDisplayListener(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.inappmessaging/FirebaseInAppMessaging.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.inappmessaging/FirebaseInAppMessaging.hashCode|hashCode(){}[0]
+    final fun removeClickListener(com.google.firebase.inappmessaging/FirebaseInAppMessagingClickListener) // com.google.firebase.inappmessaging/FirebaseInAppMessaging.removeClickListener|removeClickListener(com.google.firebase.inappmessaging.FirebaseInAppMessagingClickListener){}[0]
+    final fun removeDismissListener(com.google.firebase.inappmessaging/FirebaseInAppMessagingDismissListener) // com.google.firebase.inappmessaging/FirebaseInAppMessaging.removeDismissListener|removeDismissListener(com.google.firebase.inappmessaging.FirebaseInAppMessagingDismissListener){}[0]
+    final fun removeDisplayErrorListener(com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayErrorListener) // com.google.firebase.inappmessaging/FirebaseInAppMessaging.removeDisplayErrorListener|removeDisplayErrorListener(com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplayErrorListener){}[0]
+    final fun removeImpressionListener(com.google.firebase.inappmessaging/FirebaseInAppMessagingImpressionListener) // com.google.firebase.inappmessaging/FirebaseInAppMessaging.removeImpressionListener|removeImpressionListener(com.google.firebase.inappmessaging.FirebaseInAppMessagingImpressionListener){}[0]
+    final fun setAutomaticDataCollectionEnabled(kotlin/Boolean?) // com.google.firebase.inappmessaging/FirebaseInAppMessaging.setAutomaticDataCollectionEnabled|setAutomaticDataCollectionEnabled(kotlin.Boolean?){}[0]
+    final fun setMessageDisplayComponent(com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplay) // com.google.firebase.inappmessaging/FirebaseInAppMessaging.setMessageDisplayComponent|setMessageDisplayComponent(com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplay){}[0]
+    final fun setMessagesSuppressed(kotlin/Boolean?) // com.google.firebase.inappmessaging/FirebaseInAppMessaging.setMessagesSuppressed|setMessagesSuppressed(kotlin.Boolean?){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.inappmessaging/FirebaseInAppMessaging.toString|toString(){}[0]
+    final fun triggerEvent(kotlin/String) // com.google.firebase.inappmessaging/FirebaseInAppMessaging.triggerEvent|triggerEvent(kotlin.String){}[0]
+
+    final object Companion { // com.google.firebase.inappmessaging/FirebaseInAppMessaging.Companion|null[0]
+        final fun getInstance(): com.google.firebase.inappmessaging/FirebaseInAppMessaging // com.google.firebase.inappmessaging/FirebaseInAppMessaging.Companion.getInstance|getInstance(){}[0]
+    }
+}
+
+final class com.google.firebase.inappmessaging/FirebaseInAppMessagingContextualTrigger { // com.google.firebase.inappmessaging/FirebaseInAppMessagingContextualTrigger|null[0]
+    constructor <init>(kotlin/String) // com.google.firebase.inappmessaging/FirebaseInAppMessagingContextualTrigger.<init>|<init>(kotlin.String){}[0]
+
+    final val triggerName // com.google.firebase.inappmessaging/FirebaseInAppMessagingContextualTrigger.triggerName|{}triggerName[0]
+        final fun <get-triggerName>(): kotlin/String // com.google.firebase.inappmessaging/FirebaseInAppMessagingContextualTrigger.triggerName.<get-triggerName>|<get-triggerName>(){}[0]
+}
+
+final class io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging { // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging|null[0]
+    final val clicks // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.clicks|{}clicks[0]
+        final fun <get-clicks>(): kotlinx.coroutines.flow/Flow<io.github.corneloaie.firebase.inappmessaging/InAppMessageClick> // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.clicks.<get-clicks>|<get-clicks>(){}[0]
+    final val compat // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.inappmessaging/FirebaseInAppMessaging // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.compat.<get-compat>|<get-compat>(){}[0]
+    final val dismissals // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.dismissals|{}dismissals[0]
+        final fun <get-dismissals>(): kotlinx.coroutines.flow/Flow<com.google.firebase.inappmessaging.model/InAppMessage> // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.dismissals.<get-dismissals>|<get-dismissals>(){}[0]
+    final val displayErrors // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.displayErrors|{}displayErrors[0]
+        final fun <get-displayErrors>(): kotlinx.coroutines.flow/Flow<io.github.corneloaie.firebase.inappmessaging/InAppMessageDisplayError> // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.displayErrors.<get-displayErrors>|<get-displayErrors>(){}[0]
+    final val impressions // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.impressions|{}impressions[0]
+        final fun <get-impressions>(): kotlinx.coroutines.flow/Flow<com.google.firebase.inappmessaging.model/InAppMessage> // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.impressions.<get-impressions>|<get-impressions>(){}[0]
+
+    final var isAutomaticDataCollectionEnabled // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.isAutomaticDataCollectionEnabled|{}isAutomaticDataCollectionEnabled[0]
+        final fun <get-isAutomaticDataCollectionEnabled>(): kotlin/Boolean // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.isAutomaticDataCollectionEnabled.<get-isAutomaticDataCollectionEnabled>|<get-isAutomaticDataCollectionEnabled>(){}[0]
+        final fun <set-isAutomaticDataCollectionEnabled>(kotlin/Boolean) // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.isAutomaticDataCollectionEnabled.<set-isAutomaticDataCollectionEnabled>|<set-isAutomaticDataCollectionEnabled>(kotlin.Boolean){}[0]
+    final var messagesSuppressed // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.messagesSuppressed|{}messagesSuppressed[0]
+        final fun <get-messagesSuppressed>(): kotlin/Boolean // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.messagesSuppressed.<get-messagesSuppressed>|<get-messagesSuppressed>(){}[0]
+        final fun <set-messagesSuppressed>(kotlin/Boolean) // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.messagesSuppressed.<set-messagesSuppressed>|<set-messagesSuppressed>(kotlin.Boolean){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.hashCode|hashCode(){}[0]
+    final fun setAutomaticDataCollectionEnabled(kotlin/Boolean?) // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.setAutomaticDataCollectionEnabled|setAutomaticDataCollectionEnabled(kotlin.Boolean?){}[0]
+    final fun setMessageDisplayComponent(com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplay?) // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.setMessageDisplayComponent|setMessageDisplayComponent(com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplay?){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.toString|toString(){}[0]
+    final fun triggerEvent(kotlin/String) // io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging.triggerEvent|triggerEvent(kotlin.String){}[0]
+}
+
+final class io.github.corneloaie.firebase.inappmessaging/InAppMessageClick { // io.github.corneloaie.firebase.inappmessaging/InAppMessageClick|null[0]
+    constructor <init>(com.google.firebase.inappmessaging.model/InAppMessage, com.google.firebase.inappmessaging.model/Action) // io.github.corneloaie.firebase.inappmessaging/InAppMessageClick.<init>|<init>(com.google.firebase.inappmessaging.model.InAppMessage;com.google.firebase.inappmessaging.model.Action){}[0]
+
+    final val action // io.github.corneloaie.firebase.inappmessaging/InAppMessageClick.action|{}action[0]
+        final fun <get-action>(): com.google.firebase.inappmessaging.model/Action // io.github.corneloaie.firebase.inappmessaging/InAppMessageClick.action.<get-action>|<get-action>(){}[0]
+    final val inAppMessage // io.github.corneloaie.firebase.inappmessaging/InAppMessageClick.inAppMessage|{}inAppMessage[0]
+        final fun <get-inAppMessage>(): com.google.firebase.inappmessaging.model/InAppMessage // io.github.corneloaie.firebase.inappmessaging/InAppMessageClick.inAppMessage.<get-inAppMessage>|<get-inAppMessage>(){}[0]
+
+    final fun component1(): com.google.firebase.inappmessaging.model/InAppMessage // io.github.corneloaie.firebase.inappmessaging/InAppMessageClick.component1|component1(){}[0]
+    final fun component2(): com.google.firebase.inappmessaging.model/Action // io.github.corneloaie.firebase.inappmessaging/InAppMessageClick.component2|component2(){}[0]
+    final fun copy(com.google.firebase.inappmessaging.model/InAppMessage = ..., com.google.firebase.inappmessaging.model/Action = ...): io.github.corneloaie.firebase.inappmessaging/InAppMessageClick // io.github.corneloaie.firebase.inappmessaging/InAppMessageClick.copy|copy(com.google.firebase.inappmessaging.model.InAppMessage;com.google.firebase.inappmessaging.model.Action){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.inappmessaging/InAppMessageClick.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.inappmessaging/InAppMessageClick.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.inappmessaging/InAppMessageClick.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.firebase.inappmessaging/InAppMessageDisplayError { // io.github.corneloaie.firebase.inappmessaging/InAppMessageDisplayError|null[0]
+    constructor <init>(com.google.firebase.inappmessaging.model/InAppMessage, com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason) // io.github.corneloaie.firebase.inappmessaging/InAppMessageDisplayError.<init>|<init>(com.google.firebase.inappmessaging.model.InAppMessage;com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason){}[0]
+
+    final val errorReason // io.github.corneloaie.firebase.inappmessaging/InAppMessageDisplayError.errorReason|{}errorReason[0]
+        final fun <get-errorReason>(): com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason // io.github.corneloaie.firebase.inappmessaging/InAppMessageDisplayError.errorReason.<get-errorReason>|<get-errorReason>(){}[0]
+    final val inAppMessage // io.github.corneloaie.firebase.inappmessaging/InAppMessageDisplayError.inAppMessage|{}inAppMessage[0]
+        final fun <get-inAppMessage>(): com.google.firebase.inappmessaging.model/InAppMessage // io.github.corneloaie.firebase.inappmessaging/InAppMessageDisplayError.inAppMessage.<get-inAppMessage>|<get-inAppMessage>(){}[0]
+
+    final fun component1(): com.google.firebase.inappmessaging.model/InAppMessage // io.github.corneloaie.firebase.inappmessaging/InAppMessageDisplayError.component1|component1(){}[0]
+    final fun component2(): com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason // io.github.corneloaie.firebase.inappmessaging/InAppMessageDisplayError.component2|component2(){}[0]
+    final fun copy(com.google.firebase.inappmessaging.model/InAppMessage = ..., com.google.firebase.inappmessaging/FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason = ...): io.github.corneloaie.firebase.inappmessaging/InAppMessageDisplayError // io.github.corneloaie.firebase.inappmessaging/InAppMessageDisplayError.copy|copy(com.google.firebase.inappmessaging.model.InAppMessage;com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.inappmessaging/InAppMessageDisplayError.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.inappmessaging/InAppMessageDisplayError.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.inappmessaging/InAppMessageDisplayError.toString|toString(){}[0]
+}
+
+final val com.google.firebase.inappmessaging.display/inAppMessagingDisplay // com.google.firebase.inappmessaging.display/inAppMessagingDisplay|@com.google.firebase.Firebase{}inAppMessagingDisplay[0]
+    final fun (com.google.firebase/Firebase).<get-inAppMessagingDisplay>(): com.google.firebase.inappmessaging.display/FirebaseInAppMessagingDisplay // com.google.firebase.inappmessaging.display/inAppMessagingDisplay.<get-inAppMessagingDisplay>|<get-inAppMessagingDisplay>@com.google.firebase.Firebase(){}[0]
+final val com.google.firebase.inappmessaging.model/ios // com.google.firebase.inappmessaging.model/ios|@com.google.firebase.inappmessaging.model.InAppMessage{}ios[0]
+    final fun (com.google.firebase.inappmessaging.model/InAppMessage).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.inappmessaging/FIRInAppMessagingDisplayMessage? // com.google.firebase.inappmessaging.model/ios.<get-ios>|<get-ios>@com.google.firebase.inappmessaging.model.InAppMessage(){}[0]
+final val com.google.firebase.inappmessaging/inAppMessaging // com.google.firebase.inappmessaging/inAppMessaging|@com.google.firebase.Firebase{}inAppMessaging[0]
+    final fun (com.google.firebase/Firebase).<get-inAppMessaging>(): com.google.firebase.inappmessaging/FirebaseInAppMessaging // com.google.firebase.inappmessaging/inAppMessaging.<get-inAppMessaging>|<get-inAppMessaging>@com.google.firebase.Firebase(){}[0]
+final val io.github.corneloaie.firebase.inappmessaging/inAppMessaging // io.github.corneloaie.firebase.inappmessaging/inAppMessaging|@io.github.corneloaie.firebase.Firebase{}inAppMessaging[0]
+    final fun (io.github.corneloaie.firebase/Firebase).<get-inAppMessaging>(): io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging // io.github.corneloaie.firebase.inappmessaging/inAppMessaging.<get-inAppMessaging>|<get-inAppMessaging>@io.github.corneloaie.firebase.Firebase(){}[0]
+final val io.github.corneloaie.firebase.inappmessaging/ios // io.github.corneloaie.firebase.inappmessaging/ios|@io.github.corneloaie.firebase.inappmessaging.FirebaseInAppMessaging{}ios[0]
+    final fun (io.github.corneloaie.firebase.inappmessaging/FirebaseInAppMessaging).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.inappmessaging/FIRInAppMessaging // io.github.corneloaie.firebase.inappmessaging/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.inappmessaging.FirebaseInAppMessaging(){}[0]

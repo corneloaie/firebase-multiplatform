@@ -1,0 +1,261 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, tvosArm64, tvosSimulatorArm64, wasmJs]
+// Alias: apple => [iosArm64, iosSimulatorArm64, iosX64, tvosArm64, tvosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-perf>
+open annotation class com.google.firebase.perf.metrics/AddTrace : kotlin/Annotation { // com.google.firebase.perf.metrics/AddTrace|null[0]
+    constructor <init>(kotlin/String, kotlin/Boolean = ...) // com.google.firebase.perf.metrics/AddTrace.<init>|<init>(kotlin.String;kotlin.Boolean){}[0]
+
+    final val enabled // com.google.firebase.perf.metrics/AddTrace.enabled|{}enabled[0]
+        final fun <get-enabled>(): kotlin/Boolean // com.google.firebase.perf.metrics/AddTrace.enabled.<get-enabled>|<get-enabled>(){}[0]
+    final val name // com.google.firebase.perf.metrics/AddTrace.name|{}name[0]
+        final fun <get-name>(): kotlin/String // com.google.firebase.perf.metrics/AddTrace.name.<get-name>|<get-name>(){}[0]
+}
+
+final class com.google.firebase.perf.metrics/Trace { // com.google.firebase.perf.metrics/Trace|null[0]
+    final val attributes // com.google.firebase.perf.metrics/Trace.attributes|{}attributes[0]
+        final fun <get-attributes>(): kotlin.collections/Map<kotlin/String, kotlin/String> // com.google.firebase.perf.metrics/Trace.attributes.<get-attributes>|<get-attributes>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.perf.metrics/Trace.equals|equals(kotlin.Any?){}[0]
+    final fun getAttribute(kotlin/String): kotlin/String? // com.google.firebase.perf.metrics/Trace.getAttribute|getAttribute(kotlin.String){}[0]
+    final fun getLongMetric(kotlin/String): kotlin/Long // com.google.firebase.perf.metrics/Trace.getLongMetric|getLongMetric(kotlin.String){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.perf.metrics/Trace.hashCode|hashCode(){}[0]
+    final fun incrementMetric(kotlin/String, kotlin/Long) // com.google.firebase.perf.metrics/Trace.incrementMetric|incrementMetric(kotlin.String;kotlin.Long){}[0]
+    final fun putAttribute(kotlin/String, kotlin/String) // com.google.firebase.perf.metrics/Trace.putAttribute|putAttribute(kotlin.String;kotlin.String){}[0]
+    final fun putMetric(kotlin/String, kotlin/Long) // com.google.firebase.perf.metrics/Trace.putMetric|putMetric(kotlin.String;kotlin.Long){}[0]
+    final fun removeAttribute(kotlin/String) // com.google.firebase.perf.metrics/Trace.removeAttribute|removeAttribute(kotlin.String){}[0]
+    final fun start() // com.google.firebase.perf.metrics/Trace.start|start(){}[0]
+    final fun stop() // com.google.firebase.perf.metrics/Trace.stop|stop(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.perf.metrics/Trace.toString|toString(){}[0]
+
+    final object Companion { // com.google.firebase.perf.metrics/Trace.Companion|null[0]
+        final val MAX_ATTRIBUTE_KEY_LENGTH // com.google.firebase.perf.metrics/Trace.Companion.MAX_ATTRIBUTE_KEY_LENGTH|{}MAX_ATTRIBUTE_KEY_LENGTH[0]
+            final fun <get-MAX_ATTRIBUTE_KEY_LENGTH>(): kotlin/Int // com.google.firebase.perf.metrics/Trace.Companion.MAX_ATTRIBUTE_KEY_LENGTH.<get-MAX_ATTRIBUTE_KEY_LENGTH>|<get-MAX_ATTRIBUTE_KEY_LENGTH>(){}[0]
+        final val MAX_ATTRIBUTE_VALUE_LENGTH // com.google.firebase.perf.metrics/Trace.Companion.MAX_ATTRIBUTE_VALUE_LENGTH|{}MAX_ATTRIBUTE_VALUE_LENGTH[0]
+            final fun <get-MAX_ATTRIBUTE_VALUE_LENGTH>(): kotlin/Int // com.google.firebase.perf.metrics/Trace.Companion.MAX_ATTRIBUTE_VALUE_LENGTH.<get-MAX_ATTRIBUTE_VALUE_LENGTH>|<get-MAX_ATTRIBUTE_VALUE_LENGTH>(){}[0]
+        final val MAX_TRACE_CUSTOM_ATTRIBUTES // com.google.firebase.perf.metrics/Trace.Companion.MAX_TRACE_CUSTOM_ATTRIBUTES|{}MAX_TRACE_CUSTOM_ATTRIBUTES[0]
+            final fun <get-MAX_TRACE_CUSTOM_ATTRIBUTES>(): kotlin/Int // com.google.firebase.perf.metrics/Trace.Companion.MAX_TRACE_CUSTOM_ATTRIBUTES.<get-MAX_TRACE_CUSTOM_ATTRIBUTES>|<get-MAX_TRACE_CUSTOM_ATTRIBUTES>(){}[0]
+        final val MAX_TRACE_NAME_LENGTH // com.google.firebase.perf.metrics/Trace.Companion.MAX_TRACE_NAME_LENGTH|{}MAX_TRACE_NAME_LENGTH[0]
+            final fun <get-MAX_TRACE_NAME_LENGTH>(): kotlin/Int // com.google.firebase.perf.metrics/Trace.Companion.MAX_TRACE_NAME_LENGTH.<get-MAX_TRACE_NAME_LENGTH>|<get-MAX_TRACE_NAME_LENGTH>(){}[0]
+    }
+
+    // Targets: [apple]
+    final val ios // com.google.firebase.perf.metrics/Trace.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.perf/FIRTrace? // com.google.firebase.perf.metrics/Trace.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val js // com.google.firebase.perf.metrics/Trace.js|{}js[0]
+        final fun <get-js>(): io.github.corneloaie.firebase.perf.externals/PerformanceTrace // com.google.firebase.perf.metrics/Trace.js.<get-js>|<get-js>(){}[0]
+}
+
+final class com.google.firebase.perf/FirebasePerformance { // com.google.firebase.perf/FirebasePerformance|null[0]
+    final var isPerformanceCollectionEnabled // com.google.firebase.perf/FirebasePerformance.isPerformanceCollectionEnabled|{}isPerformanceCollectionEnabled[0]
+        final fun <get-isPerformanceCollectionEnabled>(): kotlin/Boolean // com.google.firebase.perf/FirebasePerformance.isPerformanceCollectionEnabled.<get-isPerformanceCollectionEnabled>|<get-isPerformanceCollectionEnabled>(){}[0]
+        final fun <set-isPerformanceCollectionEnabled>(kotlin/Boolean) // com.google.firebase.perf/FirebasePerformance.isPerformanceCollectionEnabled.<set-isPerformanceCollectionEnabled>|<set-isPerformanceCollectionEnabled>(kotlin.Boolean){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.perf/FirebasePerformance.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.perf/FirebasePerformance.hashCode|hashCode(){}[0]
+    final fun newTrace(kotlin/String): com.google.firebase.perf.metrics/Trace // com.google.firebase.perf/FirebasePerformance.newTrace|newTrace(kotlin.String){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.perf/FirebasePerformance.toString|toString(){}[0]
+
+    open annotation class HttpMethod : kotlin/Annotation { // com.google.firebase.perf/FirebasePerformance.HttpMethod|null[0]
+        constructor <init>() // com.google.firebase.perf/FirebasePerformance.HttpMethod.<init>|<init>(){}[0]
+
+        final object Companion { // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion|null[0]
+            final val CONNECT // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.CONNECT|{}CONNECT[0]
+                final fun <get-CONNECT>(): kotlin/String // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.CONNECT.<get-CONNECT>|<get-CONNECT>(){}[0]
+            final val DELETE // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.DELETE|{}DELETE[0]
+                final fun <get-DELETE>(): kotlin/String // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.DELETE.<get-DELETE>|<get-DELETE>(){}[0]
+            final val GET // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.GET|{}GET[0]
+                final fun <get-GET>(): kotlin/String // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.GET.<get-GET>|<get-GET>(){}[0]
+            final val HEAD // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.HEAD|{}HEAD[0]
+                final fun <get-HEAD>(): kotlin/String // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.HEAD.<get-HEAD>|<get-HEAD>(){}[0]
+            final val OPTIONS // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.OPTIONS|{}OPTIONS[0]
+                final fun <get-OPTIONS>(): kotlin/String // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.OPTIONS.<get-OPTIONS>|<get-OPTIONS>(){}[0]
+            final val PATCH // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.PATCH|{}PATCH[0]
+                final fun <get-PATCH>(): kotlin/String // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.PATCH.<get-PATCH>|<get-PATCH>(){}[0]
+            final val POST // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.POST|{}POST[0]
+                final fun <get-POST>(): kotlin/String // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.POST.<get-POST>|<get-POST>(){}[0]
+            final val PUT // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.PUT|{}PUT[0]
+                final fun <get-PUT>(): kotlin/String // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.PUT.<get-PUT>|<get-PUT>(){}[0]
+            final val TRACE // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.TRACE|{}TRACE[0]
+                final fun <get-TRACE>(): kotlin/String // com.google.firebase.perf/FirebasePerformance.HttpMethod.Companion.TRACE.<get-TRACE>|<get-TRACE>(){}[0]
+        }
+    }
+
+    final object Companion { // com.google.firebase.perf/FirebasePerformance.Companion|null[0]
+        final val MAX_TRACE_NAME_LENGTH // com.google.firebase.perf/FirebasePerformance.Companion.MAX_TRACE_NAME_LENGTH|{}MAX_TRACE_NAME_LENGTH[0]
+            final fun <get-MAX_TRACE_NAME_LENGTH>(): kotlin/Int // com.google.firebase.perf/FirebasePerformance.Companion.MAX_TRACE_NAME_LENGTH.<get-MAX_TRACE_NAME_LENGTH>|<get-MAX_TRACE_NAME_LENGTH>(){}[0]
+
+        final fun getInstance(): com.google.firebase.perf/FirebasePerformance // com.google.firebase.perf/FirebasePerformance.Companion.getInstance|getInstance(){}[0]
+        final fun startTrace(kotlin/String): com.google.firebase.perf.metrics/Trace // com.google.firebase.perf/FirebasePerformance.Companion.startTrace|startTrace(kotlin.String){}[0]
+    }
+
+    // Targets: [apple]
+    final val ios // com.google.firebase.perf/FirebasePerformance.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.perf/FIRPerformance // com.google.firebase.perf/FirebasePerformance.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val js // com.google.firebase.perf/FirebasePerformance.js|{}js[0]
+        final fun <get-js>(): io.github.corneloaie.firebase.perf.externals/FirebasePerformance // com.google.firebase.perf/FirebasePerformance.js.<get-js>|<get-js>(){}[0]
+}
+
+final class io.github.corneloaie.firebase.perf.metrics/Trace { // io.github.corneloaie.firebase.perf.metrics/Trace|null[0]
+    final val compat // io.github.corneloaie.firebase.perf.metrics/Trace.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.perf.metrics/Trace // io.github.corneloaie.firebase.perf.metrics/Trace.compat.<get-compat>|<get-compat>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.perf.metrics/Trace.equals|equals(kotlin.Any?){}[0]
+    final fun getAttribute(kotlin/String): kotlin/String? // io.github.corneloaie.firebase.perf.metrics/Trace.getAttribute|getAttribute(kotlin.String){}[0]
+    final fun getAttributes(): kotlin.collections/Map<kotlin/String, kotlin/String> // io.github.corneloaie.firebase.perf.metrics/Trace.getAttributes|getAttributes(){}[0]
+    final fun getLongMetric(kotlin/String): kotlin/Long // io.github.corneloaie.firebase.perf.metrics/Trace.getLongMetric|getLongMetric(kotlin.String){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.perf.metrics/Trace.hashCode|hashCode(){}[0]
+    final fun incrementMetric(kotlin/String, kotlin/Long) // io.github.corneloaie.firebase.perf.metrics/Trace.incrementMetric|incrementMetric(kotlin.String;kotlin.Long){}[0]
+    final fun putAttribute(kotlin/String, kotlin/String) // io.github.corneloaie.firebase.perf.metrics/Trace.putAttribute|putAttribute(kotlin.String;kotlin.String){}[0]
+    final fun putMetric(kotlin/String, kotlin/Long) // io.github.corneloaie.firebase.perf.metrics/Trace.putMetric|putMetric(kotlin.String;kotlin.Long){}[0]
+    final fun removeAttribute(kotlin/String) // io.github.corneloaie.firebase.perf.metrics/Trace.removeAttribute|removeAttribute(kotlin.String){}[0]
+    final fun start() // io.github.corneloaie.firebase.perf.metrics/Trace.start|start(){}[0]
+    final fun stop() // io.github.corneloaie.firebase.perf.metrics/Trace.stop|stop(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.perf.metrics/Trace.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.firebase.perf/FirebasePerformance { // io.github.corneloaie.firebase.perf/FirebasePerformance|null[0]
+    final val compat // io.github.corneloaie.firebase.perf/FirebasePerformance.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.perf/FirebasePerformance // io.github.corneloaie.firebase.perf/FirebasePerformance.compat.<get-compat>|<get-compat>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.perf/FirebasePerformance.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.perf/FirebasePerformance.hashCode|hashCode(){}[0]
+    final fun isPerformanceCollectionEnabled(): kotlin/Boolean // io.github.corneloaie.firebase.perf/FirebasePerformance.isPerformanceCollectionEnabled|isPerformanceCollectionEnabled(){}[0]
+    final fun newTrace(kotlin/String): io.github.corneloaie.firebase.perf.metrics/Trace // io.github.corneloaie.firebase.perf/FirebasePerformance.newTrace|newTrace(kotlin.String){}[0]
+    final fun setPerformanceCollectionEnabled(kotlin/Boolean) // io.github.corneloaie.firebase.perf/FirebasePerformance.setPerformanceCollectionEnabled|setPerformanceCollectionEnabled(kotlin.Boolean){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.perf/FirebasePerformance.toString|toString(){}[0]
+}
+
+open class io.github.corneloaie.firebase.perf/FirebasePerformanceException : com.google.firebase/FirebaseException { // io.github.corneloaie.firebase.perf/FirebasePerformanceException|null[0]
+    constructor <init>(kotlin/String) // io.github.corneloaie.firebase.perf/FirebasePerformanceException.<init>|<init>(kotlin.String){}[0]
+    constructor <init>(kotlin/String, kotlin/Throwable) // io.github.corneloaie.firebase.perf/FirebasePerformanceException.<init>|<init>(kotlin.String;kotlin.Throwable){}[0]
+}
+
+final val com.google.firebase.perf/performance // com.google.firebase.perf/performance|@com.google.firebase.Firebase{}performance[0]
+    final fun (com.google.firebase/Firebase).<get-performance>(): com.google.firebase.perf/FirebasePerformance // com.google.firebase.perf/performance.<get-performance>|<get-performance>@com.google.firebase.Firebase(){}[0]
+final val io.github.corneloaie.firebase.perf/performance // io.github.corneloaie.firebase.perf/performance|@io.github.corneloaie.firebase.Firebase{}performance[0]
+    final fun (io.github.corneloaie.firebase/Firebase).<get-performance>(): io.github.corneloaie.firebase.perf/FirebasePerformance // io.github.corneloaie.firebase.perf/performance.<get-performance>|<get-performance>@io.github.corneloaie.firebase.Firebase(){}[0]
+
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase.perf/performance(io.github.corneloaie.firebase/FirebaseApp): io.github.corneloaie.firebase.perf/FirebasePerformance // io.github.corneloaie.firebase.perf/performance|performance@io.github.corneloaie.firebase.Firebase(io.github.corneloaie.firebase.FirebaseApp){}[0]
+final inline fun <#A: kotlin/Any?> (com.google.firebase.perf.metrics/Trace).com.google.firebase.perf/trace(kotlin/Function1<com.google.firebase.perf.metrics/Trace, #A>): #A // com.google.firebase.perf/trace|trace@com.google.firebase.perf.metrics.Trace(kotlin.Function1<com.google.firebase.perf.metrics.Trace,0:0>){0§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?> com.google.firebase.perf/trace(kotlin/String, kotlin/Function1<com.google.firebase.perf.metrics/Trace, #A>): #A // com.google.firebase.perf/trace|trace(kotlin.String;kotlin.Function1<com.google.firebase.perf.metrics.Trace,0:0>){0§<kotlin.Any?>}[0]
+
+// Targets: [apple]
+final class com.google.firebase.perf.metrics/HttpMetric { // com.google.firebase.perf.metrics/HttpMetric|null[0]
+    final val attributes // com.google.firebase.perf.metrics/HttpMetric.attributes|{}attributes[0]
+        final fun <get-attributes>(): kotlin.collections/Map<kotlin/String, kotlin/String> // com.google.firebase.perf.metrics/HttpMetric.attributes.<get-attributes>|<get-attributes>(){}[0]
+    final val ios // com.google.firebase.perf.metrics/HttpMetric.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.perf/FIRHTTPMetric // com.google.firebase.perf.metrics/HttpMetric.ios.<get-ios>|<get-ios>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.perf.metrics/HttpMetric.equals|equals(kotlin.Any?){}[0]
+    final fun getAttribute(kotlin/String): kotlin/String? // com.google.firebase.perf.metrics/HttpMetric.getAttribute|getAttribute(kotlin.String){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.perf.metrics/HttpMetric.hashCode|hashCode(){}[0]
+    final fun putAttribute(kotlin/String, kotlin/String) // com.google.firebase.perf.metrics/HttpMetric.putAttribute|putAttribute(kotlin.String;kotlin.String){}[0]
+    final fun removeAttribute(kotlin/String) // com.google.firebase.perf.metrics/HttpMetric.removeAttribute|removeAttribute(kotlin.String){}[0]
+    final fun setHttpResponseCode(kotlin/Int) // com.google.firebase.perf.metrics/HttpMetric.setHttpResponseCode|setHttpResponseCode(kotlin.Int){}[0]
+    final fun setRequestPayloadSize(kotlin/Long) // com.google.firebase.perf.metrics/HttpMetric.setRequestPayloadSize|setRequestPayloadSize(kotlin.Long){}[0]
+    final fun setResponseContentType(kotlin/String?) // com.google.firebase.perf.metrics/HttpMetric.setResponseContentType|setResponseContentType(kotlin.String?){}[0]
+    final fun setResponsePayloadSize(kotlin/Long) // com.google.firebase.perf.metrics/HttpMetric.setResponsePayloadSize|setResponsePayloadSize(kotlin.Long){}[0]
+    final fun start() // com.google.firebase.perf.metrics/HttpMetric.start|start(){}[0]
+    final fun stop() // com.google.firebase.perf.metrics/HttpMetric.stop|stop(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.perf.metrics/HttpMetric.toString|toString(){}[0]
+
+    final object Companion { // com.google.firebase.perf.metrics/HttpMetric.Companion|null[0]
+        final val MAX_ATTRIBUTE_KEY_LENGTH // com.google.firebase.perf.metrics/HttpMetric.Companion.MAX_ATTRIBUTE_KEY_LENGTH|{}MAX_ATTRIBUTE_KEY_LENGTH[0]
+            final fun <get-MAX_ATTRIBUTE_KEY_LENGTH>(): kotlin/Int // com.google.firebase.perf.metrics/HttpMetric.Companion.MAX_ATTRIBUTE_KEY_LENGTH.<get-MAX_ATTRIBUTE_KEY_LENGTH>|<get-MAX_ATTRIBUTE_KEY_LENGTH>(){}[0]
+        final val MAX_ATTRIBUTE_VALUE_LENGTH // com.google.firebase.perf.metrics/HttpMetric.Companion.MAX_ATTRIBUTE_VALUE_LENGTH|{}MAX_ATTRIBUTE_VALUE_LENGTH[0]
+            final fun <get-MAX_ATTRIBUTE_VALUE_LENGTH>(): kotlin/Int // com.google.firebase.perf.metrics/HttpMetric.Companion.MAX_ATTRIBUTE_VALUE_LENGTH.<get-MAX_ATTRIBUTE_VALUE_LENGTH>|<get-MAX_ATTRIBUTE_VALUE_LENGTH>(){}[0]
+        final val MAX_TRACE_CUSTOM_ATTRIBUTES // com.google.firebase.perf.metrics/HttpMetric.Companion.MAX_TRACE_CUSTOM_ATTRIBUTES|{}MAX_TRACE_CUSTOM_ATTRIBUTES[0]
+            final fun <get-MAX_TRACE_CUSTOM_ATTRIBUTES>(): kotlin/Int // com.google.firebase.perf.metrics/HttpMetric.Companion.MAX_TRACE_CUSTOM_ATTRIBUTES.<get-MAX_TRACE_CUSTOM_ATTRIBUTES>|<get-MAX_TRACE_CUSTOM_ATTRIBUTES>(){}[0]
+        final val MAX_TRACE_NAME_LENGTH // com.google.firebase.perf.metrics/HttpMetric.Companion.MAX_TRACE_NAME_LENGTH|{}MAX_TRACE_NAME_LENGTH[0]
+            final fun <get-MAX_TRACE_NAME_LENGTH>(): kotlin/Int // com.google.firebase.perf.metrics/HttpMetric.Companion.MAX_TRACE_NAME_LENGTH.<get-MAX_TRACE_NAME_LENGTH>|<get-MAX_TRACE_NAME_LENGTH>(){}[0]
+    }
+}
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.perf.metrics/ios // io.github.corneloaie.firebase.perf.metrics/ios|@io.github.corneloaie.firebase.perf.metrics.Trace{}ios[0]
+    final fun (io.github.corneloaie.firebase.perf.metrics/Trace).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.perf/FIRTrace? // io.github.corneloaie.firebase.perf.metrics/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.perf.metrics.Trace(){}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.perf/ios // io.github.corneloaie.firebase.perf/ios|@io.github.corneloaie.firebase.perf.FirebasePerformance{}ios[0]
+    final fun (io.github.corneloaie.firebase.perf/FirebasePerformance).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.perf/FIRPerformance // io.github.corneloaie.firebase.perf/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.perf.FirebasePerformance(){}[0]
+
+// Targets: [apple]
+final fun (com.google.firebase.perf/FirebasePerformance).com.google.firebase.perf/newHttpMetric(kotlin/String, kotlin/String): com.google.firebase.perf.metrics/HttpMetric // com.google.firebase.perf/newHttpMetric|newHttpMetric@com.google.firebase.perf.FirebasePerformance(kotlin.String;kotlin.String){}[0]
+
+// Targets: [apple]
+final inline fun (com.google.firebase.perf.metrics/HttpMetric).com.google.firebase.perf/trace(kotlin/Function1<com.google.firebase.perf.metrics/HttpMetric, kotlin/Unit>) // com.google.firebase.perf/trace|trace@com.google.firebase.perf.metrics.HttpMetric(kotlin.Function1<com.google.firebase.perf.metrics.HttpMetric,kotlin.Unit>){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.perf.metrics/js // io.github.corneloaie.firebase.perf.metrics/js|@io.github.corneloaie.firebase.perf.metrics.Trace{}js[0]
+    final fun (io.github.corneloaie.firebase.perf.metrics/Trace).<get-js>(): io.github.corneloaie.firebase.perf.externals/PerformanceTrace // io.github.corneloaie.firebase.perf.metrics/js.<get-js>|<get-js>@io.github.corneloaie.firebase.perf.metrics.Trace(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.perf/js // io.github.corneloaie.firebase.perf/js|@io.github.corneloaie.firebase.perf.FirebasePerformance{}js[0]
+    final fun (io.github.corneloaie.firebase.perf/FirebasePerformance).<get-js>(): io.github.corneloaie.firebase.perf.externals/FirebasePerformance // io.github.corneloaie.firebase.perf/js.<get-js>|<get-js>@io.github.corneloaie.firebase.perf.FirebasePerformance(){}[0]
+
+// Targets: [js, wasmJs]
+final fun (io.github.corneloaie.firebase.perf/FirebasePerformance).io.github.corneloaie.firebase.perf/isInstrumentationEnabled(): kotlin/Boolean // io.github.corneloaie.firebase.perf/isInstrumentationEnabled|isInstrumentationEnabled@io.github.corneloaie.firebase.perf.FirebasePerformance(){}[0]
+
+// Targets: [js, wasmJs]
+final fun (io.github.corneloaie.firebase.perf/FirebasePerformance).io.github.corneloaie.firebase.perf/setInstrumentationEnabled(kotlin/Boolean) // io.github.corneloaie.firebase.perf/setInstrumentationEnabled|setInstrumentationEnabled@io.github.corneloaie.firebase.perf.FirebasePerformance(kotlin.Boolean){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.perf.externals/getPerformance(io.github.corneloaie.firebase.externals/FirebaseApp? = ...): io.github.corneloaie.firebase.perf.externals/FirebasePerformance // io.github.corneloaie.firebase.perf.externals/getPerformance|getPerformance(io.github.corneloaie.firebase.externals.FirebaseApp?){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.perf.externals/trace(io.github.corneloaie.firebase.perf.externals/FirebasePerformance, kotlin/String): io.github.corneloaie.firebase.perf.externals/PerformanceTrace // io.github.corneloaie.firebase.perf.externals/trace|trace(io.github.corneloaie.firebase.perf.externals.FirebasePerformance;kotlin.String){}[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.perf.externals/FirebasePerformance { // io.github.corneloaie.firebase.perf.externals/FirebasePerformance|null[0]
+    abstract var dataCollectionEnabled // io.github.corneloaie.firebase.perf.externals/FirebasePerformance.dataCollectionEnabled|{}dataCollectionEnabled[0]
+        abstract fun <get-dataCollectionEnabled>(): kotlin/Boolean // io.github.corneloaie.firebase.perf.externals/FirebasePerformance.dataCollectionEnabled.<get-dataCollectionEnabled>|<get-dataCollectionEnabled>(){}[0]
+        abstract fun <set-dataCollectionEnabled>(kotlin/Boolean) // io.github.corneloaie.firebase.perf.externals/FirebasePerformance.dataCollectionEnabled.<set-dataCollectionEnabled>|<set-dataCollectionEnabled>(kotlin.Boolean){}[0]
+    abstract var instrumentationEnabled // io.github.corneloaie.firebase.perf.externals/FirebasePerformance.instrumentationEnabled|{}instrumentationEnabled[0]
+        abstract fun <get-instrumentationEnabled>(): kotlin/Boolean // io.github.corneloaie.firebase.perf.externals/FirebasePerformance.instrumentationEnabled.<get-instrumentationEnabled>|<get-instrumentationEnabled>(){}[0]
+        abstract fun <set-instrumentationEnabled>(kotlin/Boolean) // io.github.corneloaie.firebase.perf.externals/FirebasePerformance.instrumentationEnabled.<set-instrumentationEnabled>|<set-instrumentationEnabled>(kotlin.Boolean){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.perf.externals/PerformanceTrace { // io.github.corneloaie.firebase.perf.externals/PerformanceTrace|null[0]
+    abstract fun getAttribute(kotlin/String): kotlin/String? // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.getAttribute|getAttribute(kotlin.String){}[0]
+    abstract fun getAttributes(): kotlin.js/Json // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.getAttributes|getAttributes(){}[0]
+    abstract fun getMetric(kotlin/String): kotlin/Int // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.getMetric|getMetric(kotlin.String){}[0]
+    abstract fun incrementMetric(kotlin/String, kotlin/Int? = ...) // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.incrementMetric|incrementMetric(kotlin.String;kotlin.Int?){}[0]
+    abstract fun putAttribute(kotlin/String, kotlin/String) // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.putAttribute|putAttribute(kotlin.String;kotlin.String){}[0]
+    abstract fun putMetric(kotlin/String, kotlin/Int) // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.putMetric|putMetric(kotlin.String;kotlin.Int){}[0]
+    abstract fun removeAttribute(kotlin/String) // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.removeAttribute|removeAttribute(kotlin.String){}[0]
+    abstract fun start() // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.start|start(){}[0]
+    abstract fun stop() // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.stop|stop(){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.perf.externals/FirebasePerformance : kotlin.js/JsAny { // io.github.corneloaie.firebase.perf.externals/FirebasePerformance|null[0]
+    abstract var dataCollectionEnabled // io.github.corneloaie.firebase.perf.externals/FirebasePerformance.dataCollectionEnabled|{}dataCollectionEnabled[0]
+        abstract fun <get-dataCollectionEnabled>(): kotlin/Boolean // io.github.corneloaie.firebase.perf.externals/FirebasePerformance.dataCollectionEnabled.<get-dataCollectionEnabled>|<get-dataCollectionEnabled>(){}[0]
+        abstract fun <set-dataCollectionEnabled>(kotlin/Boolean) // io.github.corneloaie.firebase.perf.externals/FirebasePerformance.dataCollectionEnabled.<set-dataCollectionEnabled>|<set-dataCollectionEnabled>(kotlin.Boolean){}[0]
+    abstract var instrumentationEnabled // io.github.corneloaie.firebase.perf.externals/FirebasePerformance.instrumentationEnabled|{}instrumentationEnabled[0]
+        abstract fun <get-instrumentationEnabled>(): kotlin/Boolean // io.github.corneloaie.firebase.perf.externals/FirebasePerformance.instrumentationEnabled.<get-instrumentationEnabled>|<get-instrumentationEnabled>(){}[0]
+        abstract fun <set-instrumentationEnabled>(kotlin/Boolean) // io.github.corneloaie.firebase.perf.externals/FirebasePerformance.instrumentationEnabled.<set-instrumentationEnabled>|<set-instrumentationEnabled>(kotlin.Boolean){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.perf.externals/PerformanceTrace : kotlin.js/JsAny { // io.github.corneloaie.firebase.perf.externals/PerformanceTrace|null[0]
+    abstract fun getAttribute(kotlin/String): kotlin/String? // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.getAttribute|getAttribute(kotlin.String){}[0]
+    abstract fun getAttributes(): kotlin.js/JsAny // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.getAttributes|getAttributes(){}[0]
+    abstract fun getMetric(kotlin/String): kotlin/Int // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.getMetric|getMetric(kotlin.String){}[0]
+    abstract fun incrementMetric(kotlin/String, kotlin/Int? = ...) // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.incrementMetric|incrementMetric(kotlin.String;kotlin.Int?){}[0]
+    abstract fun putAttribute(kotlin/String, kotlin/String) // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.putAttribute|putAttribute(kotlin.String;kotlin.String){}[0]
+    abstract fun putMetric(kotlin/String, kotlin/Int) // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.putMetric|putMetric(kotlin.String;kotlin.Int){}[0]
+    abstract fun removeAttribute(kotlin/String) // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.removeAttribute|removeAttribute(kotlin.String){}[0]
+    abstract fun start() // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.start|start(){}[0]
+    abstract fun stop() // io.github.corneloaie.firebase.perf.externals/PerformanceTrace.stop|stop(){}[0]
+}

@@ -16,41 +16,10 @@ import utils.toTargetPlatforms
 val supportedPlatforms = (project.property("firebase-functions.supportedTargets") as String).toTargetPlatforms()
 
 plugins {
-    id("com.android.library")
+    id("com.android.kotlin.multiplatform.library")
     kotlin("multiplatform")
     id("testOptionsConvention")
     alias(libs.plugins.publish)
-}
-
-if (supportedPlatforms.contains(TargetPlatform.Android)) {
-    android {
-        val minSdkVersion: Int by project
-        val compileSdkVersion: Int by project
-
-        compileSdk = compileSdkVersion
-        namespace = "io.github.corneloaie.firebase.functions"
-
-        defaultConfig {
-            minSdk = minSdkVersion
-            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        }
-
-        compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_17
-            targetCompatibility = JavaVersion.VERSION_17
-        }
-
-        (this as com.android.build.api.dsl.LibraryExtension).sourceSets.getByName("main").java.srcDir("src/androidMain/java")
-        testOptions.configureTestOptions(project)
-        packaging {
-            resources.pickFirsts.add("META-INF/kotlinx-serialization-core.kotlin_module")
-            resources.pickFirsts.add("META-INF/AL2.0")
-            resources.pickFirsts.add("META-INF/LGPL2.1")
-        }
-        lint {
-            abortOnError = false
-        }
-    }
 }
 
 kotlin {
@@ -76,11 +45,25 @@ kotlin {
     }
 
     if (supportedPlatforms.contains(TargetPlatform.Android)) {
-        @Suppress("OPT_IN_USAGE")
-        androidTarget {
-            instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
-            unitTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
-            publishAllLibraryVariants()
+        android {
+            val minSdkVersion: Int by project
+            val compileSdkVersion: Int by project
+
+            compileSdk = compileSdkVersion
+            minSdk = minSdkVersion
+            namespace = "io.github.corneloaie.firebase.functions"
+
+            withJava()
+            withHostTestBuilder { sourceSetTreeName = KotlinSourceSetTree.test.name }.configure { configureTestOptions(project) }
+            withDeviceTestBuilder { sourceSetTreeName = KotlinSourceSetTree.test.name }.configure { configureTestOptions(project) }
+            packaging {
+                resources.pickFirsts.add("META-INF/kotlinx-serialization-core.kotlin_module")
+                resources.pickFirsts.add("META-INF/AL2.0")
+                resources.pickFirsts.add("META-INF/LGPL2.1")
+            }
+            lint {
+                abortOnError = false
+            }
         }
     }
 
@@ -212,9 +195,9 @@ stripHeaderStubs(
     // java/net holds the deprecated stand-in for java.net.URL that lets the SDK's URL members be declared in common code.
     packageDirs = listOf("com/google/firebase", "java/net"),
     androidReferenceJars = files({
-        configurations.findByName("releaseCompileClasspath")?.incoming?.artifactView {
+        configurations.getByName("androidCompileClasspath").incoming.artifactView {
             attributes.attribute(Attribute.of("artifactType", String::class.java), "android-classes-jar")
-        }?.files ?: files()
+        }.files
     }),
     jvmReferenceJars = files({ configurations.findByName("jvmCompileClasspath")?.files ?: files() }),
     // The String / Duration counterparts of the SDK's java.net.URL and TimeUnit members are real code from their own facades.

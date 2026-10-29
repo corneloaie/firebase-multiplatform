@@ -336,7 +336,6 @@ public final class io/github/corneloaie/firebase/firestore/FirebaseFirestoreSett
 }
 
 public final class io/github/corneloaie/firebase/firestore/FirebaseFirestoreSettings$Builder {
-	public fun <init> ()V
 	public fun <init> (Lio/github/corneloaie/firebase/firestore/FirebaseFirestoreSettings;)V
 	public final fun build ()Lio/github/corneloaie/firebase/firestore/FirebaseFirestoreSettings;
 	public final fun getCacheSettings ()Lio/github/corneloaie/firebase/firestore/LocalCacheSettings;

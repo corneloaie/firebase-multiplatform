@@ -138,10 +138,10 @@ class EmulatorJobsMatrix {
             File(subProject.projectDir, "src${File.separator}commonTest").exists() ||
                     File(
                         subProject.projectDir,
-                        "src${File.separator}androidInstrumentedTest"
+                        "src${File.separator}androidDeviceTest"
                     ).exists()
         }.map { subProject ->
-            "${subProject.path}:gradleManagedDeviceDebugAndroidTest"
+            "${subProject.path}:gradleManagedDeviceAndroidDeviceTest"
         }.map { taskName ->
             mutableListOf(taskName).also {
                 it.add("--no-parallel")

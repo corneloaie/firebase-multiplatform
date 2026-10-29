@@ -1,0 +1,105 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, macosArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-crashlytics>
+final class com.google.firebase.crashlytics/CustomKeysAndValues { // com.google.firebase.crashlytics/CustomKeysAndValues|null[0]
+    final fun toString(): kotlin/String // com.google.firebase.crashlytics/CustomKeysAndValues.toString|toString(){}[0]
+
+    final class Builder { // com.google.firebase.crashlytics/CustomKeysAndValues.Builder|null[0]
+        constructor <init>() // com.google.firebase.crashlytics/CustomKeysAndValues.Builder.<init>|<init>(){}[0]
+
+        final fun build(): com.google.firebase.crashlytics/CustomKeysAndValues // com.google.firebase.crashlytics/CustomKeysAndValues.Builder.build|build(){}[0]
+        final fun putBoolean(kotlin/String, kotlin/Boolean): com.google.firebase.crashlytics/CustomKeysAndValues.Builder // com.google.firebase.crashlytics/CustomKeysAndValues.Builder.putBoolean|putBoolean(kotlin.String;kotlin.Boolean){}[0]
+        final fun putDouble(kotlin/String, kotlin/Double): com.google.firebase.crashlytics/CustomKeysAndValues.Builder // com.google.firebase.crashlytics/CustomKeysAndValues.Builder.putDouble|putDouble(kotlin.String;kotlin.Double){}[0]
+        final fun putFloat(kotlin/String, kotlin/Float): com.google.firebase.crashlytics/CustomKeysAndValues.Builder // com.google.firebase.crashlytics/CustomKeysAndValues.Builder.putFloat|putFloat(kotlin.String;kotlin.Float){}[0]
+        final fun putInt(kotlin/String, kotlin/Int): com.google.firebase.crashlytics/CustomKeysAndValues.Builder // com.google.firebase.crashlytics/CustomKeysAndValues.Builder.putInt|putInt(kotlin.String;kotlin.Int){}[0]
+        final fun putLong(kotlin/String, kotlin/Long): com.google.firebase.crashlytics/CustomKeysAndValues.Builder // com.google.firebase.crashlytics/CustomKeysAndValues.Builder.putLong|putLong(kotlin.String;kotlin.Long){}[0]
+        final fun putString(kotlin/String, kotlin/String): com.google.firebase.crashlytics/CustomKeysAndValues.Builder // com.google.firebase.crashlytics/CustomKeysAndValues.Builder.putString|putString(kotlin.String;kotlin.String){}[0]
+    }
+}
+
+final class com.google.firebase.crashlytics/FirebaseCrashlytics { // com.google.firebase.crashlytics/FirebaseCrashlytics|null[0]
+    final val ios // com.google.firebase.crashlytics/FirebaseCrashlytics.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.crashlytics/FIRCrashlytics // com.google.firebase.crashlytics/FirebaseCrashlytics.ios.<get-ios>|<get-ios>(){}[0]
+    final val isCrashlyticsCollectionEnabled // com.google.firebase.crashlytics/FirebaseCrashlytics.isCrashlyticsCollectionEnabled|{}isCrashlyticsCollectionEnabled[0]
+        final fun <get-isCrashlyticsCollectionEnabled>(): kotlin/Boolean // com.google.firebase.crashlytics/FirebaseCrashlytics.isCrashlyticsCollectionEnabled.<get-isCrashlyticsCollectionEnabled>|<get-isCrashlyticsCollectionEnabled>(){}[0]
+
+    final fun checkForUnsentReports(): com.google.android.gms.tasks/Task<kotlin/Boolean> // com.google.firebase.crashlytics/FirebaseCrashlytics.checkForUnsentReports|checkForUnsentReports(){}[0]
+    final fun deleteUnsentReports() // com.google.firebase.crashlytics/FirebaseCrashlytics.deleteUnsentReports|deleteUnsentReports(){}[0]
+    final fun didCrashOnPreviousExecution(): kotlin/Boolean // com.google.firebase.crashlytics/FirebaseCrashlytics.didCrashOnPreviousExecution|didCrashOnPreviousExecution(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.crashlytics/FirebaseCrashlytics.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.crashlytics/FirebaseCrashlytics.hashCode|hashCode(){}[0]
+    final fun log(kotlin/String) // com.google.firebase.crashlytics/FirebaseCrashlytics.log|log(kotlin.String){}[0]
+    final fun recordException(kotlin/Throwable) // com.google.firebase.crashlytics/FirebaseCrashlytics.recordException|recordException(kotlin.Throwable){}[0]
+    final fun recordException(kotlin/Throwable, com.google.firebase.crashlytics/CustomKeysAndValues) // com.google.firebase.crashlytics/FirebaseCrashlytics.recordException|recordException(kotlin.Throwable;com.google.firebase.crashlytics.CustomKeysAndValues){}[0]
+    final fun sendUnsentReports() // com.google.firebase.crashlytics/FirebaseCrashlytics.sendUnsentReports|sendUnsentReports(){}[0]
+    final fun setCrashlyticsCollectionEnabled(kotlin/Boolean) // com.google.firebase.crashlytics/FirebaseCrashlytics.setCrashlyticsCollectionEnabled|setCrashlyticsCollectionEnabled(kotlin.Boolean){}[0]
+    final fun setCrashlyticsCollectionEnabled(kotlin/Boolean?) // com.google.firebase.crashlytics/FirebaseCrashlytics.setCrashlyticsCollectionEnabled|setCrashlyticsCollectionEnabled(kotlin.Boolean?){}[0]
+    final fun setCustomKey(kotlin/String, kotlin/Boolean) // com.google.firebase.crashlytics/FirebaseCrashlytics.setCustomKey|setCustomKey(kotlin.String;kotlin.Boolean){}[0]
+    final fun setCustomKey(kotlin/String, kotlin/Double) // com.google.firebase.crashlytics/FirebaseCrashlytics.setCustomKey|setCustomKey(kotlin.String;kotlin.Double){}[0]
+    final fun setCustomKey(kotlin/String, kotlin/Float) // com.google.firebase.crashlytics/FirebaseCrashlytics.setCustomKey|setCustomKey(kotlin.String;kotlin.Float){}[0]
+    final fun setCustomKey(kotlin/String, kotlin/Int) // com.google.firebase.crashlytics/FirebaseCrashlytics.setCustomKey|setCustomKey(kotlin.String;kotlin.Int){}[0]
+    final fun setCustomKey(kotlin/String, kotlin/Long) // com.google.firebase.crashlytics/FirebaseCrashlytics.setCustomKey|setCustomKey(kotlin.String;kotlin.Long){}[0]
+    final fun setCustomKey(kotlin/String, kotlin/String) // com.google.firebase.crashlytics/FirebaseCrashlytics.setCustomKey|setCustomKey(kotlin.String;kotlin.String){}[0]
+    final fun setCustomKeys(com.google.firebase.crashlytics/CustomKeysAndValues) // com.google.firebase.crashlytics/FirebaseCrashlytics.setCustomKeys|setCustomKeys(com.google.firebase.crashlytics.CustomKeysAndValues){}[0]
+    final fun setUserId(kotlin/String) // com.google.firebase.crashlytics/FirebaseCrashlytics.setUserId|setUserId(kotlin.String){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.crashlytics/FirebaseCrashlytics.toString|toString(){}[0]
+
+    final object Companion { // com.google.firebase.crashlytics/FirebaseCrashlytics.Companion|null[0]
+        final fun getInstance(): com.google.firebase.crashlytics/FirebaseCrashlytics // com.google.firebase.crashlytics/FirebaseCrashlytics.Companion.getInstance|getInstance(){}[0]
+    }
+}
+
+final class com.google.firebase.crashlytics/KeyValueBuilder { // com.google.firebase.crashlytics/KeyValueBuilder|null[0]
+    final fun key(kotlin/String, kotlin/Boolean) // com.google.firebase.crashlytics/KeyValueBuilder.key|key(kotlin.String;kotlin.Boolean){}[0]
+    final fun key(kotlin/String, kotlin/Double) // com.google.firebase.crashlytics/KeyValueBuilder.key|key(kotlin.String;kotlin.Double){}[0]
+    final fun key(kotlin/String, kotlin/Float) // com.google.firebase.crashlytics/KeyValueBuilder.key|key(kotlin.String;kotlin.Float){}[0]
+    final fun key(kotlin/String, kotlin/Int) // com.google.firebase.crashlytics/KeyValueBuilder.key|key(kotlin.String;kotlin.Int){}[0]
+    final fun key(kotlin/String, kotlin/Long) // com.google.firebase.crashlytics/KeyValueBuilder.key|key(kotlin.String;kotlin.Long){}[0]
+    final fun key(kotlin/String, kotlin/String) // com.google.firebase.crashlytics/KeyValueBuilder.key|key(kotlin.String;kotlin.String){}[0]
+}
+
+final class io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics { // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics|null[0]
+    final val compat // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.crashlytics/FirebaseCrashlytics // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.compat.<get-compat>|<get-compat>(){}[0]
+
+    final fun deleteUnsentReports() // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.deleteUnsentReports|deleteUnsentReports(){}[0]
+    final fun didCrashOnPreviousExecution(): kotlin/Boolean // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.didCrashOnPreviousExecution|didCrashOnPreviousExecution(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.hashCode|hashCode(){}[0]
+    final fun log(kotlin/String) // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.log|log(kotlin.String){}[0]
+    final fun recordException(kotlin/Throwable) // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.recordException|recordException(kotlin.Throwable){}[0]
+    final fun recordException(kotlin/Throwable, kotlin.collections/Map<kotlin/String, kotlin/Any>) // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.recordException|recordException(kotlin.Throwable;kotlin.collections.Map<kotlin.String,kotlin.Any>){}[0]
+    final fun sendUnsentReports() // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.sendUnsentReports|sendUnsentReports(){}[0]
+    final fun setCrashlyticsCollectionEnabled(kotlin/Boolean) // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.setCrashlyticsCollectionEnabled|setCrashlyticsCollectionEnabled(kotlin.Boolean){}[0]
+    final fun setCustomKey(kotlin/String, kotlin/Boolean) // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.setCustomKey|setCustomKey(kotlin.String;kotlin.Boolean){}[0]
+    final fun setCustomKey(kotlin/String, kotlin/Double) // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.setCustomKey|setCustomKey(kotlin.String;kotlin.Double){}[0]
+    final fun setCustomKey(kotlin/String, kotlin/Float) // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.setCustomKey|setCustomKey(kotlin.String;kotlin.Float){}[0]
+    final fun setCustomKey(kotlin/String, kotlin/Int) // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.setCustomKey|setCustomKey(kotlin.String;kotlin.Int){}[0]
+    final fun setCustomKey(kotlin/String, kotlin/Long) // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.setCustomKey|setCustomKey(kotlin.String;kotlin.Long){}[0]
+    final fun setCustomKey(kotlin/String, kotlin/String) // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.setCustomKey|setCustomKey(kotlin.String;kotlin.String){}[0]
+    final fun setCustomKeys(kotlin.collections/Map<kotlin/String, kotlin/Any>) // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.setCustomKeys|setCustomKeys(kotlin.collections.Map<kotlin.String,kotlin.Any>){}[0]
+    final fun setUserId(kotlin/String) // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.setUserId|setUserId(kotlin.String){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics.toString|toString(){}[0]
+}
+
+open class io.github.corneloaie.firebase.crashlytics/FirebaseCrashlyticsException : com.google.firebase/FirebaseException { // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlyticsException|null[0]
+    constructor <init>(kotlin/String) // io.github.corneloaie.firebase.crashlytics/FirebaseCrashlyticsException.<init>|<init>(kotlin.String){}[0]
+}
+
+final val com.google.firebase.crashlytics/crashlytics // com.google.firebase.crashlytics/crashlytics|@com.google.firebase.Firebase{}crashlytics[0]
+    final fun (com.google.firebase/Firebase).<get-crashlytics>(): com.google.firebase.crashlytics/FirebaseCrashlytics // com.google.firebase.crashlytics/crashlytics.<get-crashlytics>|<get-crashlytics>@com.google.firebase.Firebase(){}[0]
+final val io.github.corneloaie.firebase.crashlytics/crashlytics // io.github.corneloaie.firebase.crashlytics/crashlytics|@io.github.corneloaie.firebase.Firebase{}crashlytics[0]
+    final fun (io.github.corneloaie.firebase/Firebase).<get-crashlytics>(): io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics // io.github.corneloaie.firebase.crashlytics/crashlytics.<get-crashlytics>|<get-crashlytics>@io.github.corneloaie.firebase.Firebase(){}[0]
+final val io.github.corneloaie.firebase.crashlytics/ios // io.github.corneloaie.firebase.crashlytics/ios|@io.github.corneloaie.firebase.crashlytics.FirebaseCrashlytics{}ios[0]
+    final fun (io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.crashlytics/FIRCrashlytics // io.github.corneloaie.firebase.crashlytics/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.crashlytics.FirebaseCrashlytics(){}[0]
+
+final fun (com.google.firebase.crashlytics/FirebaseCrashlytics).com.google.firebase.crashlytics/recordException(kotlin/Throwable, kotlin/Function1<com.google.firebase.crashlytics/KeyValueBuilder, kotlin/Unit>) // com.google.firebase.crashlytics/recordException|recordException@com.google.firebase.crashlytics.FirebaseCrashlytics(kotlin.Throwable;kotlin.Function1<com.google.firebase.crashlytics.KeyValueBuilder,kotlin.Unit>){}[0]
+final fun (com.google.firebase.crashlytics/FirebaseCrashlytics).com.google.firebase.crashlytics/setCustomKeys(kotlin/Function1<com.google.firebase.crashlytics/KeyValueBuilder, kotlin/Unit>) // com.google.firebase.crashlytics/setCustomKeys|setCustomKeys@com.google.firebase.crashlytics.FirebaseCrashlytics(kotlin.Function1<com.google.firebase.crashlytics.KeyValueBuilder,kotlin.Unit>){}[0]
+final fun (com.google.firebase.crashlytics/FirebaseCrashlytics).io.github.corneloaie.firebase.crashlytics/recordException(kotlin/Throwable, kotlin.collections/Map<kotlin/String, kotlin/Any>) // io.github.corneloaie.firebase.crashlytics/recordException|recordException@com.google.firebase.crashlytics.FirebaseCrashlytics(kotlin.Throwable;kotlin.collections.Map<kotlin.String,kotlin.Any>){}[0]
+final fun (com.google.firebase.crashlytics/FirebaseCrashlytics).io.github.corneloaie.firebase.crashlytics/setCustomKeys(kotlin.collections/Map<kotlin/String, kotlin/Any>) // io.github.corneloaie.firebase.crashlytics/setCustomKeys|setCustomKeys@com.google.firebase.crashlytics.FirebaseCrashlytics(kotlin.collections.Map<kotlin.String,kotlin.Any>){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase.crashlytics/crashlytics(io.github.corneloaie.firebase/FirebaseApp): io.github.corneloaie.firebase.crashlytics/FirebaseCrashlytics // io.github.corneloaie.firebase.crashlytics/crashlytics|crashlytics@io.github.corneloaie.firebase.Firebase(io.github.corneloaie.firebase.FirebaseApp){}[0]

@@ -1,0 +1,124 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, tvosArm64, tvosSimulatorArm64, wasmJs]
+// Alias: apple => [iosArm64, iosSimulatorArm64, iosX64, macosArm64, tvosArm64, tvosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-installations>
+abstract fun interface com.google.firebase.installations.internal/FidListener { // com.google.firebase.installations.internal/FidListener|null[0]
+    abstract fun onFidChanged(kotlin/String) // com.google.firebase.installations.internal/FidListener.onFidChanged|onFidChanged(kotlin.String){}[0]
+}
+
+abstract interface com.google.firebase.installations.internal/FidListenerHandle { // com.google.firebase.installations.internal/FidListenerHandle|null[0]
+    abstract fun unregister() // com.google.firebase.installations.internal/FidListenerHandle.unregister|unregister(){}[0]
+}
+
+abstract class com.google.firebase.installations/InstallationTokenResult { // com.google.firebase.installations/InstallationTokenResult|null[0]
+    constructor <init>() // com.google.firebase.installations/InstallationTokenResult.<init>|<init>(){}[0]
+
+    abstract val token // com.google.firebase.installations/InstallationTokenResult.token|{}token[0]
+        abstract fun <get-token>(): kotlin/String // com.google.firebase.installations/InstallationTokenResult.token.<get-token>|<get-token>(){}[0]
+    abstract val tokenExpirationTimestamp // com.google.firebase.installations/InstallationTokenResult.tokenExpirationTimestamp|{}tokenExpirationTimestamp[0]
+        abstract fun <get-tokenExpirationTimestamp>(): kotlin/Long // com.google.firebase.installations/InstallationTokenResult.tokenExpirationTimestamp.<get-tokenExpirationTimestamp>|<get-tokenExpirationTimestamp>(){}[0]
+}
+
+final class com.google.firebase.installations/FirebaseInstallations { // com.google.firebase.installations/FirebaseInstallations|null[0]
+    final fun delete(): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.installations/FirebaseInstallations.delete|delete(){}[0]
+    final fun getId(): com.google.android.gms.tasks/Task<kotlin/String> // com.google.firebase.installations/FirebaseInstallations.getId|getId(){}[0]
+    final fun getToken(kotlin/Boolean): com.google.android.gms.tasks/Task<com.google.firebase.installations/InstallationTokenResult> // com.google.firebase.installations/FirebaseInstallations.getToken|getToken(kotlin.Boolean){}[0]
+    final fun registerFidListener(com.google.firebase.installations.internal/FidListener): com.google.firebase.installations.internal/FidListenerHandle // com.google.firebase.installations/FirebaseInstallations.registerFidListener|registerFidListener(com.google.firebase.installations.internal.FidListener){}[0]
+
+    final object Companion { // com.google.firebase.installations/FirebaseInstallations.Companion|null[0]
+        final fun getInstance(): com.google.firebase.installations/FirebaseInstallations // com.google.firebase.installations/FirebaseInstallations.Companion.getInstance|getInstance(){}[0]
+        final fun getInstance(com.google.firebase/FirebaseApp): com.google.firebase.installations/FirebaseInstallations // com.google.firebase.installations/FirebaseInstallations.Companion.getInstance|getInstance(com.google.firebase.FirebaseApp){}[0]
+    }
+
+    // Targets: [apple]
+    final val ios // com.google.firebase.installations/FirebaseInstallations.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.installations/FIRInstallations // com.google.firebase.installations/FirebaseInstallations.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val js // com.google.firebase.installations/FirebaseInstallations.js|{}js[0]
+        final fun <get-js>(): io.github.corneloaie.firebase.installations.externals/Installations // com.google.firebase.installations/FirebaseInstallations.js.<get-js>|<get-js>(){}[0]
+}
+
+final class com.google.firebase.installations/FirebaseInstallationsException : com.google.firebase/FirebaseException { // com.google.firebase.installations/FirebaseInstallationsException|null[0]
+    constructor <init>(com.google.firebase.installations/FirebaseInstallationsException.Status) // com.google.firebase.installations/FirebaseInstallationsException.<init>|<init>(com.google.firebase.installations.FirebaseInstallationsException.Status){}[0]
+    constructor <init>(kotlin/String, com.google.firebase.installations/FirebaseInstallationsException.Status) // com.google.firebase.installations/FirebaseInstallationsException.<init>|<init>(kotlin.String;com.google.firebase.installations.FirebaseInstallationsException.Status){}[0]
+    constructor <init>(kotlin/String, com.google.firebase.installations/FirebaseInstallationsException.Status, kotlin/Throwable) // com.google.firebase.installations/FirebaseInstallationsException.<init>|<init>(kotlin.String;com.google.firebase.installations.FirebaseInstallationsException.Status;kotlin.Throwable){}[0]
+
+    final val status // com.google.firebase.installations/FirebaseInstallationsException.status|{}status[0]
+        final fun <get-status>(): com.google.firebase.installations/FirebaseInstallationsException.Status // com.google.firebase.installations/FirebaseInstallationsException.status.<get-status>|<get-status>(){}[0]
+
+    final enum class Status : kotlin/Enum<com.google.firebase.installations/FirebaseInstallationsException.Status> { // com.google.firebase.installations/FirebaseInstallationsException.Status|null[0]
+        enum entry BAD_CONFIG // com.google.firebase.installations/FirebaseInstallationsException.Status.BAD_CONFIG|null[0]
+        enum entry TOO_MANY_REQUESTS // com.google.firebase.installations/FirebaseInstallationsException.Status.TOO_MANY_REQUESTS|null[0]
+        enum entry UNAVAILABLE // com.google.firebase.installations/FirebaseInstallationsException.Status.UNAVAILABLE|null[0]
+
+        final val entries // com.google.firebase.installations/FirebaseInstallationsException.Status.entries|#static{}entries[0]
+            final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.installations/FirebaseInstallationsException.Status> // com.google.firebase.installations/FirebaseInstallationsException.Status.entries.<get-entries>|<get-entries>#static(){}[0]
+
+        final fun valueOf(kotlin/String): com.google.firebase.installations/FirebaseInstallationsException.Status // com.google.firebase.installations/FirebaseInstallationsException.Status.valueOf|valueOf#static(kotlin.String){}[0]
+        final fun values(): kotlin/Array<com.google.firebase.installations/FirebaseInstallationsException.Status> // com.google.firebase.installations/FirebaseInstallationsException.Status.values|values#static(){}[0]
+    }
+}
+
+final class io.github.corneloaie.firebase.installations/FirebaseInstallations { // io.github.corneloaie.firebase.installations/FirebaseInstallations|null[0]
+    final val compat // io.github.corneloaie.firebase.installations/FirebaseInstallations.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.installations/FirebaseInstallations // io.github.corneloaie.firebase.installations/FirebaseInstallations.compat.<get-compat>|<get-compat>(){}[0]
+
+    final suspend fun delete() // io.github.corneloaie.firebase.installations/FirebaseInstallations.delete|delete(){}[0]
+    final suspend fun getId(): kotlin/String // io.github.corneloaie.firebase.installations/FirebaseInstallations.getId|getId(){}[0]
+    final suspend fun getToken(kotlin/Boolean): kotlin/String // io.github.corneloaie.firebase.installations/FirebaseInstallations.getToken|getToken(kotlin.Boolean){}[0]
+}
+
+final val com.google.firebase.installations/installations // com.google.firebase.installations/installations|@com.google.firebase.Firebase{}installations[0]
+    final fun (com.google.firebase/Firebase).<get-installations>(): com.google.firebase.installations/FirebaseInstallations // com.google.firebase.installations/installations.<get-installations>|<get-installations>@com.google.firebase.Firebase(){}[0]
+final val io.github.corneloaie.firebase.installations/installations // io.github.corneloaie.firebase.installations/installations|@io.github.corneloaie.firebase.Firebase{}installations[0]
+    final fun (io.github.corneloaie.firebase/Firebase).<get-installations>(): io.github.corneloaie.firebase.installations/FirebaseInstallations // io.github.corneloaie.firebase.installations/installations.<get-installations>|<get-installations>@io.github.corneloaie.firebase.Firebase(){}[0]
+
+final fun (com.google.firebase/Firebase).com.google.firebase.installations/installations(com.google.firebase/FirebaseApp): com.google.firebase.installations/FirebaseInstallations // com.google.firebase.installations/installations|installations@com.google.firebase.Firebase(com.google.firebase.FirebaseApp){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase.installations/installations(io.github.corneloaie.firebase/FirebaseApp): io.github.corneloaie.firebase.installations/FirebaseInstallations // io.github.corneloaie.firebase.installations/installations|installations@io.github.corneloaie.firebase.Firebase(io.github.corneloaie.firebase.FirebaseApp){}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.installations/ios // io.github.corneloaie.firebase.installations/ios|@io.github.corneloaie.firebase.installations.FirebaseInstallations{}ios[0]
+    final fun (io.github.corneloaie.firebase.installations/FirebaseInstallations).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.installations/FIRInstallations // io.github.corneloaie.firebase.installations/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.installations.FirebaseInstallations(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.installations/js // io.github.corneloaie.firebase.installations/js|@io.github.corneloaie.firebase.installations.FirebaseInstallations{}js[0]
+    final fun (io.github.corneloaie.firebase.installations/FirebaseInstallations).<get-js>(): io.github.corneloaie.firebase.installations.externals/Installations // io.github.corneloaie.firebase.installations/js.<get-js>|<get-js>@io.github.corneloaie.firebase.installations.FirebaseInstallations(){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.installations.externals/getInstallations(io.github.corneloaie.firebase.externals/FirebaseApp? = ...): io.github.corneloaie.firebase.installations.externals/Installations // io.github.corneloaie.firebase.installations.externals/getInstallations|getInstallations(io.github.corneloaie.firebase.externals.FirebaseApp?){}[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.installations.externals/Installations // io.github.corneloaie.firebase.installations.externals/Installations|null[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.installations.externals/delete(io.github.corneloaie.firebase.installations.externals/Installations): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.installations.externals/delete|delete(io.github.corneloaie.firebase.installations.externals.Installations){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.installations.externals/getId(io.github.corneloaie.firebase.installations.externals/Installations): kotlin.js/Promise<kotlin/String> // io.github.corneloaie.firebase.installations.externals/getId|getId(io.github.corneloaie.firebase.installations.externals.Installations){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.installations.externals/getToken(io.github.corneloaie.firebase.installations.externals/Installations, kotlin/Boolean): kotlin.js/Promise<kotlin/String> // io.github.corneloaie.firebase.installations.externals/getToken|getToken(io.github.corneloaie.firebase.installations.externals.Installations;kotlin.Boolean){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.installations.externals/onIdChange(io.github.corneloaie.firebase.installations.externals/Installations, kotlin/Function1<kotlin/String, kotlin/Unit>): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.installations.externals/onIdChange|onIdChange(io.github.corneloaie.firebase.installations.externals.Installations;kotlin.Function1<kotlin.String,kotlin.Unit>){}[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.installations.externals/Installations : kotlin.js/JsAny // io.github.corneloaie.firebase.installations.externals/Installations|null[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.installations.externals/delete(io.github.corneloaie.firebase.installations.externals/Installations): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.installations.externals/delete|delete(io.github.corneloaie.firebase.installations.externals.Installations){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.installations.externals/getId(io.github.corneloaie.firebase.installations.externals/Installations): kotlin.js/Promise<kotlin.js/JsString> // io.github.corneloaie.firebase.installations.externals/getId|getId(io.github.corneloaie.firebase.installations.externals.Installations){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.installations.externals/getToken(io.github.corneloaie.firebase.installations.externals/Installations, kotlin/Boolean): kotlin.js/Promise<kotlin.js/JsString> // io.github.corneloaie.firebase.installations.externals/getToken|getToken(io.github.corneloaie.firebase.installations.externals.Installations;kotlin.Boolean){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.installations.externals/onIdChange(io.github.corneloaie.firebase.installations.externals/Installations, kotlin/Function1<kotlin.js/JsString, kotlin/Unit>): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.installations.externals/onIdChange|onIdChange(io.github.corneloaie.firebase.installations.externals.Installations;kotlin.Function1<kotlin.js.JsString,kotlin.Unit>){}[0]

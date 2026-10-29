@@ -1,0 +1,507 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, tvosArm64, tvosSimulatorArm64, wasmJs]
+// Alias: apple => [iosArm64, iosSimulatorArm64, iosX64, macosArm64, tvosArm64, tvosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-config>
+final enum class io.github.corneloaie.firebase.remoteconfig/FetchStatus : kotlin/Enum<io.github.corneloaie.firebase.remoteconfig/FetchStatus> { // io.github.corneloaie.firebase.remoteconfig/FetchStatus|null[0]
+    enum entry Failure // io.github.corneloaie.firebase.remoteconfig/FetchStatus.Failure|null[0]
+    enum entry NoFetchYet // io.github.corneloaie.firebase.remoteconfig/FetchStatus.NoFetchYet|null[0]
+    enum entry Success // io.github.corneloaie.firebase.remoteconfig/FetchStatus.Success|null[0]
+    enum entry Throttled // io.github.corneloaie.firebase.remoteconfig/FetchStatus.Throttled|null[0]
+
+    final val entries // io.github.corneloaie.firebase.remoteconfig/FetchStatus.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.corneloaie.firebase.remoteconfig/FetchStatus> // io.github.corneloaie.firebase.remoteconfig/FetchStatus.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): io.github.corneloaie.firebase.remoteconfig/FetchStatus // io.github.corneloaie.firebase.remoteconfig/FetchStatus.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.github.corneloaie.firebase.remoteconfig/FetchStatus> // io.github.corneloaie.firebase.remoteconfig/FetchStatus.values|values#static(){}[0]
+}
+
+final enum class io.github.corneloaie.firebase.remoteconfig/ValueSource : kotlin/Enum<io.github.corneloaie.firebase.remoteconfig/ValueSource> { // io.github.corneloaie.firebase.remoteconfig/ValueSource|null[0]
+    enum entry Default // io.github.corneloaie.firebase.remoteconfig/ValueSource.Default|null[0]
+    enum entry Remote // io.github.corneloaie.firebase.remoteconfig/ValueSource.Remote|null[0]
+    enum entry Static // io.github.corneloaie.firebase.remoteconfig/ValueSource.Static|null[0]
+
+    final val entries // io.github.corneloaie.firebase.remoteconfig/ValueSource.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<io.github.corneloaie.firebase.remoteconfig/ValueSource> // io.github.corneloaie.firebase.remoteconfig/ValueSource.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): io.github.corneloaie.firebase.remoteconfig/ValueSource // io.github.corneloaie.firebase.remoteconfig/ValueSource.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<io.github.corneloaie.firebase.remoteconfig/ValueSource> // io.github.corneloaie.firebase.remoteconfig/ValueSource.values|values#static(){}[0]
+}
+
+abstract fun interface com.google.firebase.remoteconfig/ConfigUpdateListenerRegistration { // com.google.firebase.remoteconfig/ConfigUpdateListenerRegistration|null[0]
+    abstract fun remove() // com.google.firebase.remoteconfig/ConfigUpdateListenerRegistration.remove|remove(){}[0]
+}
+
+abstract interface com.google.firebase.remoteconfig/ConfigUpdateListener { // com.google.firebase.remoteconfig/ConfigUpdateListener|null[0]
+    abstract fun onError(com.google.firebase.remoteconfig/FirebaseRemoteConfigException) // com.google.firebase.remoteconfig/ConfigUpdateListener.onError|onError(com.google.firebase.remoteconfig.FirebaseRemoteConfigException){}[0]
+    abstract fun onUpdate(com.google.firebase.remoteconfig/ConfigUpdate) // com.google.firebase.remoteconfig/ConfigUpdateListener.onUpdate|onUpdate(com.google.firebase.remoteconfig.ConfigUpdate){}[0]
+}
+
+abstract interface com.google.firebase.remoteconfig/FirebaseRemoteConfigInfo { // com.google.firebase.remoteconfig/FirebaseRemoteConfigInfo|null[0]
+    abstract val configSettings // com.google.firebase.remoteconfig/FirebaseRemoteConfigInfo.configSettings|{}configSettings[0]
+        abstract fun <get-configSettings>(): com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings // com.google.firebase.remoteconfig/FirebaseRemoteConfigInfo.configSettings.<get-configSettings>|<get-configSettings>(){}[0]
+    abstract val fetchTimeMillis // com.google.firebase.remoteconfig/FirebaseRemoteConfigInfo.fetchTimeMillis|{}fetchTimeMillis[0]
+        abstract fun <get-fetchTimeMillis>(): kotlin/Long // com.google.firebase.remoteconfig/FirebaseRemoteConfigInfo.fetchTimeMillis.<get-fetchTimeMillis>|<get-fetchTimeMillis>(){}[0]
+    abstract val lastFetchStatus // com.google.firebase.remoteconfig/FirebaseRemoteConfigInfo.lastFetchStatus|{}lastFetchStatus[0]
+        abstract fun <get-lastFetchStatus>(): kotlin/Int // com.google.firebase.remoteconfig/FirebaseRemoteConfigInfo.lastFetchStatus.<get-lastFetchStatus>|<get-lastFetchStatus>(){}[0]
+}
+
+abstract interface com.google.firebase.remoteconfig/FirebaseRemoteConfigValue { // com.google.firebase.remoteconfig/FirebaseRemoteConfigValue|null[0]
+    abstract val source // com.google.firebase.remoteconfig/FirebaseRemoteConfigValue.source|{}source[0]
+        abstract fun <get-source>(): kotlin/Int // com.google.firebase.remoteconfig/FirebaseRemoteConfigValue.source.<get-source>|<get-source>(){}[0]
+
+    abstract fun asBoolean(): kotlin/Boolean // com.google.firebase.remoteconfig/FirebaseRemoteConfigValue.asBoolean|asBoolean(){}[0]
+    abstract fun asByteArray(): kotlin/ByteArray // com.google.firebase.remoteconfig/FirebaseRemoteConfigValue.asByteArray|asByteArray(){}[0]
+    abstract fun asDouble(): kotlin/Double // com.google.firebase.remoteconfig/FirebaseRemoteConfigValue.asDouble|asDouble(){}[0]
+    abstract fun asLong(): kotlin/Long // com.google.firebase.remoteconfig/FirebaseRemoteConfigValue.asLong|asLong(){}[0]
+    abstract fun asString(): kotlin/String // com.google.firebase.remoteconfig/FirebaseRemoteConfigValue.asString|asString(){}[0]
+}
+
+abstract class com.google.firebase.remoteconfig/ConfigUpdate { // com.google.firebase.remoteconfig/ConfigUpdate|null[0]
+    constructor <init>() // com.google.firebase.remoteconfig/ConfigUpdate.<init>|<init>(){}[0]
+
+    abstract val updatedKeys // com.google.firebase.remoteconfig/ConfigUpdate.updatedKeys|{}updatedKeys[0]
+        abstract fun <get-updatedKeys>(): kotlin.collections/Set<kotlin/String> // com.google.firebase.remoteconfig/ConfigUpdate.updatedKeys.<get-updatedKeys>|<get-updatedKeys>(){}[0]
+
+    final object Companion { // com.google.firebase.remoteconfig/ConfigUpdate.Companion|null[0]
+        final fun create(kotlin.collections/Set<kotlin/String>): com.google.firebase.remoteconfig/ConfigUpdate // com.google.firebase.remoteconfig/ConfigUpdate.Companion.create|create(kotlin.collections.Set<kotlin.String>){}[0]
+    }
+}
+
+final class com.google.firebase.remoteconfig/CustomSignals { // com.google.firebase.remoteconfig/CustomSignals|null[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.remoteconfig/CustomSignals.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.remoteconfig/CustomSignals.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.remoteconfig/CustomSignals.toString|toString(){}[0]
+
+    final class Builder { // com.google.firebase.remoteconfig/CustomSignals.Builder|null[0]
+        constructor <init>() // com.google.firebase.remoteconfig/CustomSignals.Builder.<init>|<init>(){}[0]
+
+        final fun build(): com.google.firebase.remoteconfig/CustomSignals // com.google.firebase.remoteconfig/CustomSignals.Builder.build|build(){}[0]
+        final fun put(kotlin/String, kotlin/Double): com.google.firebase.remoteconfig/CustomSignals.Builder // com.google.firebase.remoteconfig/CustomSignals.Builder.put|put(kotlin.String;kotlin.Double){}[0]
+        final fun put(kotlin/String, kotlin/Long): com.google.firebase.remoteconfig/CustomSignals.Builder // com.google.firebase.remoteconfig/CustomSignals.Builder.put|put(kotlin.String;kotlin.Long){}[0]
+        final fun put(kotlin/String, kotlin/String?): com.google.firebase.remoteconfig/CustomSignals.Builder // com.google.firebase.remoteconfig/CustomSignals.Builder.put|put(kotlin.String;kotlin.String?){}[0]
+    }
+
+    // Targets: [apple]
+    final val signals // com.google.firebase.remoteconfig/CustomSignals.signals|{}signals[0]
+        final fun <get-signals>(): kotlin.collections/Map<kotlin/String, kotlin/Any?> // com.google.firebase.remoteconfig/CustomSignals.signals.<get-signals>|<get-signals>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val js // com.google.firebase.remoteconfig/CustomSignals.js|{}js[0]
+        // Targets: [js]
+        final fun <get-js>(): kotlin.js/Json // com.google.firebase.remoteconfig/CustomSignals.js.<get-js>|<get-js>(){}[0]
+
+        // Targets: [wasmJs]
+        final fun <get-js>(): kotlin.js/JsAny // com.google.firebase.remoteconfig/CustomSignals.js.<get-js>|<get-js>(){}[0]
+}
+
+final class com.google.firebase.remoteconfig/FirebaseRemoteConfig { // com.google.firebase.remoteconfig/FirebaseRemoteConfig|null[0]
+    final val all // com.google.firebase.remoteconfig/FirebaseRemoteConfig.all|{}all[0]
+        final fun <get-all>(): kotlin.collections/Map<kotlin/String, com.google.firebase.remoteconfig/FirebaseRemoteConfigValue> // com.google.firebase.remoteconfig/FirebaseRemoteConfig.all.<get-all>|<get-all>(){}[0]
+    final val info // com.google.firebase.remoteconfig/FirebaseRemoteConfig.info|{}info[0]
+        final fun <get-info>(): com.google.firebase.remoteconfig/FirebaseRemoteConfigInfo // com.google.firebase.remoteconfig/FirebaseRemoteConfig.info.<get-info>|<get-info>(){}[0]
+
+    final fun activate(): com.google.android.gms.tasks/Task<kotlin/Boolean> // com.google.firebase.remoteconfig/FirebaseRemoteConfig.activate|activate(){}[0]
+    final fun addOnConfigUpdateListener(com.google.firebase.remoteconfig/ConfigUpdateListener): com.google.firebase.remoteconfig/ConfigUpdateListenerRegistration // com.google.firebase.remoteconfig/FirebaseRemoteConfig.addOnConfigUpdateListener|addOnConfigUpdateListener(com.google.firebase.remoteconfig.ConfigUpdateListener){}[0]
+    final fun ensureInitialized(): com.google.android.gms.tasks/Task<com.google.firebase.remoteconfig/FirebaseRemoteConfigInfo> // com.google.firebase.remoteconfig/FirebaseRemoteConfig.ensureInitialized|ensureInitialized(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.remoteconfig/FirebaseRemoteConfig.equals|equals(kotlin.Any?){}[0]
+    final fun fetch(): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.remoteconfig/FirebaseRemoteConfig.fetch|fetch(){}[0]
+    final fun fetch(kotlin/Long): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.remoteconfig/FirebaseRemoteConfig.fetch|fetch(kotlin.Long){}[0]
+    final fun fetchAndActivate(): com.google.android.gms.tasks/Task<kotlin/Boolean> // com.google.firebase.remoteconfig/FirebaseRemoteConfig.fetchAndActivate|fetchAndActivate(){}[0]
+    final fun getBoolean(kotlin/String): kotlin/Boolean // com.google.firebase.remoteconfig/FirebaseRemoteConfig.getBoolean|getBoolean(kotlin.String){}[0]
+    final fun getDouble(kotlin/String): kotlin/Double // com.google.firebase.remoteconfig/FirebaseRemoteConfig.getDouble|getDouble(kotlin.String){}[0]
+    final fun getKeysByPrefix(kotlin/String): kotlin.collections/Set<kotlin/String> // com.google.firebase.remoteconfig/FirebaseRemoteConfig.getKeysByPrefix|getKeysByPrefix(kotlin.String){}[0]
+    final fun getLong(kotlin/String): kotlin/Long // com.google.firebase.remoteconfig/FirebaseRemoteConfig.getLong|getLong(kotlin.String){}[0]
+    final fun getString(kotlin/String): kotlin/String // com.google.firebase.remoteconfig/FirebaseRemoteConfig.getString|getString(kotlin.String){}[0]
+    final fun getValue(kotlin/String): com.google.firebase.remoteconfig/FirebaseRemoteConfigValue // com.google.firebase.remoteconfig/FirebaseRemoteConfig.getValue|getValue(kotlin.String){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.remoteconfig/FirebaseRemoteConfig.hashCode|hashCode(){}[0]
+    final fun reset(): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.remoteconfig/FirebaseRemoteConfig.reset|reset(){}[0]
+    final fun setConfigSettingsAsync(com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.remoteconfig/FirebaseRemoteConfig.setConfigSettingsAsync|setConfigSettingsAsync(com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings){}[0]
+    final fun setCustomSignals(com.google.firebase.remoteconfig/CustomSignals): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.remoteconfig/FirebaseRemoteConfig.setCustomSignals|setCustomSignals(com.google.firebase.remoteconfig.CustomSignals){}[0]
+    final fun setDefaultsAsync(kotlin.collections/Map<kotlin/String, kotlin/Any?>): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.remoteconfig/FirebaseRemoteConfig.setDefaultsAsync|setDefaultsAsync(kotlin.collections.Map<kotlin.String,kotlin.Any?>){}[0]
+    final fun setDefaultsAsync(kotlin/Int): com.google.android.gms.tasks/Task<kotlin/Nothing?> // com.google.firebase.remoteconfig/FirebaseRemoteConfig.setDefaultsAsync|setDefaultsAsync(kotlin.Int){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.remoteconfig/FirebaseRemoteConfig.toString|toString(){}[0]
+
+    final object Companion { // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion|null[0]
+        final val DEFAULT_VALUE_FOR_BOOLEAN // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.DEFAULT_VALUE_FOR_BOOLEAN|{}DEFAULT_VALUE_FOR_BOOLEAN[0]
+            final fun <get-DEFAULT_VALUE_FOR_BOOLEAN>(): kotlin/Boolean // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.DEFAULT_VALUE_FOR_BOOLEAN.<get-DEFAULT_VALUE_FOR_BOOLEAN>|<get-DEFAULT_VALUE_FOR_BOOLEAN>(){}[0]
+        final val DEFAULT_VALUE_FOR_BYTE_ARRAY // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.DEFAULT_VALUE_FOR_BYTE_ARRAY|{}DEFAULT_VALUE_FOR_BYTE_ARRAY[0]
+            final fun <get-DEFAULT_VALUE_FOR_BYTE_ARRAY>(): kotlin/ByteArray // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.DEFAULT_VALUE_FOR_BYTE_ARRAY.<get-DEFAULT_VALUE_FOR_BYTE_ARRAY>|<get-DEFAULT_VALUE_FOR_BYTE_ARRAY>(){}[0]
+        final val DEFAULT_VALUE_FOR_DOUBLE // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.DEFAULT_VALUE_FOR_DOUBLE|{}DEFAULT_VALUE_FOR_DOUBLE[0]
+            final fun <get-DEFAULT_VALUE_FOR_DOUBLE>(): kotlin/Double // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.DEFAULT_VALUE_FOR_DOUBLE.<get-DEFAULT_VALUE_FOR_DOUBLE>|<get-DEFAULT_VALUE_FOR_DOUBLE>(){}[0]
+        final val DEFAULT_VALUE_FOR_LONG // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.DEFAULT_VALUE_FOR_LONG|{}DEFAULT_VALUE_FOR_LONG[0]
+            final fun <get-DEFAULT_VALUE_FOR_LONG>(): kotlin/Long // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.DEFAULT_VALUE_FOR_LONG.<get-DEFAULT_VALUE_FOR_LONG>|<get-DEFAULT_VALUE_FOR_LONG>(){}[0]
+        final val DEFAULT_VALUE_FOR_STRING // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.DEFAULT_VALUE_FOR_STRING|{}DEFAULT_VALUE_FOR_STRING[0]
+            final fun <get-DEFAULT_VALUE_FOR_STRING>(): kotlin/String // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.DEFAULT_VALUE_FOR_STRING.<get-DEFAULT_VALUE_FOR_STRING>|<get-DEFAULT_VALUE_FOR_STRING>(){}[0]
+        final val LAST_FETCH_STATUS_FAILURE // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.LAST_FETCH_STATUS_FAILURE|{}LAST_FETCH_STATUS_FAILURE[0]
+            final fun <get-LAST_FETCH_STATUS_FAILURE>(): kotlin/Int // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.LAST_FETCH_STATUS_FAILURE.<get-LAST_FETCH_STATUS_FAILURE>|<get-LAST_FETCH_STATUS_FAILURE>(){}[0]
+        final val LAST_FETCH_STATUS_NO_FETCH_YET // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.LAST_FETCH_STATUS_NO_FETCH_YET|{}LAST_FETCH_STATUS_NO_FETCH_YET[0]
+            final fun <get-LAST_FETCH_STATUS_NO_FETCH_YET>(): kotlin/Int // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.LAST_FETCH_STATUS_NO_FETCH_YET.<get-LAST_FETCH_STATUS_NO_FETCH_YET>|<get-LAST_FETCH_STATUS_NO_FETCH_YET>(){}[0]
+        final val LAST_FETCH_STATUS_SUCCESS // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.LAST_FETCH_STATUS_SUCCESS|{}LAST_FETCH_STATUS_SUCCESS[0]
+            final fun <get-LAST_FETCH_STATUS_SUCCESS>(): kotlin/Int // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.LAST_FETCH_STATUS_SUCCESS.<get-LAST_FETCH_STATUS_SUCCESS>|<get-LAST_FETCH_STATUS_SUCCESS>(){}[0]
+        final val LAST_FETCH_STATUS_THROTTLED // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.LAST_FETCH_STATUS_THROTTLED|{}LAST_FETCH_STATUS_THROTTLED[0]
+            final fun <get-LAST_FETCH_STATUS_THROTTLED>(): kotlin/Int // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.LAST_FETCH_STATUS_THROTTLED.<get-LAST_FETCH_STATUS_THROTTLED>|<get-LAST_FETCH_STATUS_THROTTLED>(){}[0]
+        final val VALUE_SOURCE_DEFAULT // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.VALUE_SOURCE_DEFAULT|{}VALUE_SOURCE_DEFAULT[0]
+            final fun <get-VALUE_SOURCE_DEFAULT>(): kotlin/Int // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.VALUE_SOURCE_DEFAULT.<get-VALUE_SOURCE_DEFAULT>|<get-VALUE_SOURCE_DEFAULT>(){}[0]
+        final val VALUE_SOURCE_REMOTE // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.VALUE_SOURCE_REMOTE|{}VALUE_SOURCE_REMOTE[0]
+            final fun <get-VALUE_SOURCE_REMOTE>(): kotlin/Int // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.VALUE_SOURCE_REMOTE.<get-VALUE_SOURCE_REMOTE>|<get-VALUE_SOURCE_REMOTE>(){}[0]
+        final val VALUE_SOURCE_STATIC // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.VALUE_SOURCE_STATIC|{}VALUE_SOURCE_STATIC[0]
+            final fun <get-VALUE_SOURCE_STATIC>(): kotlin/Int // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.VALUE_SOURCE_STATIC.<get-VALUE_SOURCE_STATIC>|<get-VALUE_SOURCE_STATIC>(){}[0]
+
+        final fun getInstance(): com.google.firebase.remoteconfig/FirebaseRemoteConfig // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.getInstance|getInstance(){}[0]
+        final fun getInstance(com.google.firebase/FirebaseApp): com.google.firebase.remoteconfig/FirebaseRemoteConfig // com.google.firebase.remoteconfig/FirebaseRemoteConfig.Companion.getInstance|getInstance(com.google.firebase.FirebaseApp){}[0]
+    }
+
+    // Targets: [apple]
+    final val ios // com.google.firebase.remoteconfig/FirebaseRemoteConfig.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.config/FIRRemoteConfig // com.google.firebase.remoteconfig/FirebaseRemoteConfig.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val js // com.google.firebase.remoteconfig/FirebaseRemoteConfig.js|{}js[0]
+        final fun <get-js>(): io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig // com.google.firebase.remoteconfig/FirebaseRemoteConfig.js.<get-js>|<get-js>(){}[0]
+}
+
+final class com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings { // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings|null[0]
+    final val fetchTimeoutInSeconds // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.fetchTimeoutInSeconds|{}fetchTimeoutInSeconds[0]
+        final fun <get-fetchTimeoutInSeconds>(): kotlin/Long // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.fetchTimeoutInSeconds.<get-fetchTimeoutInSeconds>|<get-fetchTimeoutInSeconds>(){}[0]
+    final val minimumFetchIntervalInSeconds // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.minimumFetchIntervalInSeconds|{}minimumFetchIntervalInSeconds[0]
+        final fun <get-minimumFetchIntervalInSeconds>(): kotlin/Long // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.minimumFetchIntervalInSeconds.<get-minimumFetchIntervalInSeconds>|<get-minimumFetchIntervalInSeconds>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.hashCode|hashCode(){}[0]
+    final fun toBuilder(): com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.Builder // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.toBuilder|toBuilder(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.toString|toString(){}[0]
+
+    final class Builder { // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.Builder|null[0]
+        constructor <init>() // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.Builder.<init>|<init>(){}[0]
+
+        final var fetchTimeoutInSeconds // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.Builder.fetchTimeoutInSeconds|{}fetchTimeoutInSeconds[0]
+            final fun <get-fetchTimeoutInSeconds>(): kotlin/Long // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.Builder.fetchTimeoutInSeconds.<get-fetchTimeoutInSeconds>|<get-fetchTimeoutInSeconds>(){}[0]
+            final fun <set-fetchTimeoutInSeconds>(kotlin/Long) // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.Builder.fetchTimeoutInSeconds.<set-fetchTimeoutInSeconds>|<set-fetchTimeoutInSeconds>(kotlin.Long){}[0]
+        final var minimumFetchIntervalInSeconds // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.Builder.minimumFetchIntervalInSeconds|{}minimumFetchIntervalInSeconds[0]
+            final fun <get-minimumFetchIntervalInSeconds>(): kotlin/Long // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.Builder.minimumFetchIntervalInSeconds.<get-minimumFetchIntervalInSeconds>|<get-minimumFetchIntervalInSeconds>(){}[0]
+            final fun <set-minimumFetchIntervalInSeconds>(kotlin/Long) // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.Builder.minimumFetchIntervalInSeconds.<set-minimumFetchIntervalInSeconds>|<set-minimumFetchIntervalInSeconds>(kotlin.Long){}[0]
+
+        final fun build(): com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.Builder.build|build(){}[0]
+        final fun setFetchTimeoutInSeconds(kotlin/Long): com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.Builder // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.Builder.setFetchTimeoutInSeconds|setFetchTimeoutInSeconds(kotlin.Long){}[0]
+        final fun setMinimumFetchIntervalInSeconds(kotlin/Long): com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.Builder // com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.Builder.setMinimumFetchIntervalInSeconds|setMinimumFetchIntervalInSeconds(kotlin.Long){}[0]
+    }
+}
+
+final class io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig { // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig|null[0]
+    final val all // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.all|{}all[0]
+        final fun <get-all>(): kotlin.collections/Map<kotlin/String, io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue> // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.all.<get-all>|<get-all>(){}[0]
+    final val compat // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.remoteconfig/FirebaseRemoteConfig // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.compat.<get-compat>|<get-compat>(){}[0]
+    final val info // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.info|{}info[0]
+        final fun <get-info>(): io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.info.<get-info>|<get-info>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.equals|equals(kotlin.Any?){}[0]
+    final fun getKeysByPrefix(kotlin/String): kotlin.collections/Set<kotlin/String> // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.getKeysByPrefix|getKeysByPrefix(kotlin.String){}[0]
+    final fun getValue(kotlin/String): io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.getValue|getValue(kotlin.String){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.toString|toString(){}[0]
+    final suspend fun activate(): kotlin/Boolean // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.activate|activate(){}[0]
+    final suspend fun ensureInitialized() // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.ensureInitialized|ensureInitialized(){}[0]
+    final suspend fun fetch(kotlin.time/Duration? = ...) // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.fetch|fetch(kotlin.time.Duration?){}[0]
+    final suspend fun fetchAndActivate(): kotlin/Boolean // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.fetchAndActivate|fetchAndActivate(){}[0]
+    final suspend fun reset() // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.reset|reset(){}[0]
+    final suspend fun setDefaults(kotlin/Array<out kotlin/Pair<kotlin/String, kotlin/Any?>>...) // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.setDefaults|setDefaults(kotlin.Array<out|kotlin.Pair<kotlin.String,kotlin.Any?>>...){}[0]
+    final suspend fun settings(kotlin/Function1<io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings, kotlin/Unit>) // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig.settings|settings(kotlin.Function1<io.github.corneloaie.firebase.remoteconfig.FirebaseRemoteConfigSettings,kotlin.Unit>){}[0]
+}
+
+final class io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo { // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo|null[0]
+    constructor <init>(io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings, kotlin.time/Instant, io.github.corneloaie.firebase.remoteconfig/FetchStatus) // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.<init>|<init>(io.github.corneloaie.firebase.remoteconfig.FirebaseRemoteConfigSettings;kotlin.time.Instant;io.github.corneloaie.firebase.remoteconfig.FetchStatus){}[0]
+
+    final val configSettings // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.configSettings|{}configSettings[0]
+        final fun <get-configSettings>(): io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.configSettings.<get-configSettings>|<get-configSettings>(){}[0]
+    final val fetchTime // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.fetchTime|{}fetchTime[0]
+        final fun <get-fetchTime>(): kotlin.time/Instant // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.fetchTime.<get-fetchTime>|<get-fetchTime>(){}[0]
+    final val fetchTimeMillis // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.fetchTimeMillis|{}fetchTimeMillis[0]
+        final fun <get-fetchTimeMillis>(): kotlin/Long // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.fetchTimeMillis.<get-fetchTimeMillis>|<get-fetchTimeMillis>(){}[0]
+    final val lastFetchStatus // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.lastFetchStatus|{}lastFetchStatus[0]
+        final fun <get-lastFetchStatus>(): io.github.corneloaie.firebase.remoteconfig/FetchStatus // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.lastFetchStatus.<get-lastFetchStatus>|<get-lastFetchStatus>(){}[0]
+
+    final fun component1(): io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.component1|component1(){}[0]
+    final fun component2(): kotlin.time/Instant // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.component2|component2(){}[0]
+    final fun component3(): io.github.corneloaie.firebase.remoteconfig/FetchStatus // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.component3|component3(){}[0]
+    final fun copy(io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings = ..., kotlin.time/Instant = ..., io.github.corneloaie.firebase.remoteconfig/FetchStatus = ...): io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.copy|copy(io.github.corneloaie.firebase.remoteconfig.FirebaseRemoteConfigSettings;kotlin.time.Instant;io.github.corneloaie.firebase.remoteconfig.FetchStatus){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigInfo.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings { // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings|null[0]
+    constructor <init>(kotlin.time/Duration = ..., kotlin.time/Duration = ...) // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.<init>|<init>(kotlin.time.Duration;kotlin.time.Duration){}[0]
+
+    final var fetchTimeout // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.fetchTimeout|{}fetchTimeout[0]
+        final fun <get-fetchTimeout>(): kotlin.time/Duration // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.fetchTimeout.<get-fetchTimeout>|<get-fetchTimeout>(){}[0]
+        final fun <set-fetchTimeout>(kotlin.time/Duration) // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.fetchTimeout.<set-fetchTimeout>|<set-fetchTimeout>(kotlin.time.Duration){}[0]
+    final var fetchTimeoutInSeconds // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.fetchTimeoutInSeconds|{}fetchTimeoutInSeconds[0]
+        final fun <get-fetchTimeoutInSeconds>(): kotlin/Long // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.fetchTimeoutInSeconds.<get-fetchTimeoutInSeconds>|<get-fetchTimeoutInSeconds>(){}[0]
+        final fun <set-fetchTimeoutInSeconds>(kotlin/Long) // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.fetchTimeoutInSeconds.<set-fetchTimeoutInSeconds>|<set-fetchTimeoutInSeconds>(kotlin.Long){}[0]
+    final var minimumFetchInterval // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.minimumFetchInterval|{}minimumFetchInterval[0]
+        final fun <get-minimumFetchInterval>(): kotlin.time/Duration // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.minimumFetchInterval.<get-minimumFetchInterval>|<get-minimumFetchInterval>(){}[0]
+        final fun <set-minimumFetchInterval>(kotlin.time/Duration) // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.minimumFetchInterval.<set-minimumFetchInterval>|<set-minimumFetchInterval>(kotlin.time.Duration){}[0]
+    final var minimumFetchIntervalInSeconds // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.minimumFetchIntervalInSeconds|{}minimumFetchIntervalInSeconds[0]
+        final fun <get-minimumFetchIntervalInSeconds>(): kotlin/Long // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.minimumFetchIntervalInSeconds.<get-minimumFetchIntervalInSeconds>|<get-minimumFetchIntervalInSeconds>(){}[0]
+        final fun <set-minimumFetchIntervalInSeconds>(kotlin/Long) // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.minimumFetchIntervalInSeconds.<set-minimumFetchIntervalInSeconds>|<set-minimumFetchIntervalInSeconds>(kotlin.Long){}[0]
+
+    final fun component1(): kotlin.time/Duration // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.component1|component1(){}[0]
+    final fun component2(): kotlin.time/Duration // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.component2|component2(){}[0]
+    final fun copy(kotlin.time/Duration = ..., kotlin.time/Duration = ...): io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.copy|copy(kotlin.time.Duration;kotlin.time.Duration){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigSettings.toString|toString(){}[0]
+}
+
+final class io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue { // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue|null[0]
+    final val compat // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.remoteconfig/FirebaseRemoteConfigValue // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue.compat.<get-compat>|<get-compat>(){}[0]
+
+    final fun asBoolean(): kotlin/Boolean // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue.asBoolean|asBoolean(){}[0]
+    final fun asByteArray(): kotlin/ByteArray // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue.asByteArray|asByteArray(){}[0]
+    final fun asDouble(): kotlin/Double // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue.asDouble|asDouble(){}[0]
+    final fun asLong(): kotlin/Long // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue.asLong|asLong(){}[0]
+    final fun asString(): kotlin/String // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue.asString|asString(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue.equals|equals(kotlin.Any?){}[0]
+    final fun getSource(): io.github.corneloaie.firebase.remoteconfig/ValueSource // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue.getSource|getSource(){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue.toString|toString(){}[0]
+}
+
+open class com.google.firebase.remoteconfig/FirebaseRemoteConfigClientException : com.google.firebase.remoteconfig/FirebaseRemoteConfigException { // com.google.firebase.remoteconfig/FirebaseRemoteConfigClientException|null[0]
+    constructor <init>(kotlin/String) // com.google.firebase.remoteconfig/FirebaseRemoteConfigClientException.<init>|<init>(kotlin.String){}[0]
+    constructor <init>(kotlin/String, com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code) // com.google.firebase.remoteconfig/FirebaseRemoteConfigClientException.<init>|<init>(kotlin.String;com.google.firebase.remoteconfig.FirebaseRemoteConfigException.Code){}[0]
+    constructor <init>(kotlin/String, kotlin/Throwable?) // com.google.firebase.remoteconfig/FirebaseRemoteConfigClientException.<init>|<init>(kotlin.String;kotlin.Throwable?){}[0]
+    constructor <init>(kotlin/String, kotlin/Throwable?, com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code) // com.google.firebase.remoteconfig/FirebaseRemoteConfigClientException.<init>|<init>(kotlin.String;kotlin.Throwable?;com.google.firebase.remoteconfig.FirebaseRemoteConfigException.Code){}[0]
+}
+
+open class com.google.firebase.remoteconfig/FirebaseRemoteConfigException : com.google.firebase/FirebaseException { // com.google.firebase.remoteconfig/FirebaseRemoteConfigException|null[0]
+    constructor <init>(kotlin/String) // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.<init>|<init>(kotlin.String){}[0]
+    constructor <init>(kotlin/String, com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code) // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.<init>|<init>(kotlin.String;com.google.firebase.remoteconfig.FirebaseRemoteConfigException.Code){}[0]
+    constructor <init>(kotlin/String, kotlin/Throwable?) // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.<init>|<init>(kotlin.String;kotlin.Throwable?){}[0]
+    constructor <init>(kotlin/String, kotlin/Throwable?, com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code) // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.<init>|<init>(kotlin.String;kotlin.Throwable?;com.google.firebase.remoteconfig.FirebaseRemoteConfigException.Code){}[0]
+
+    final val code // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.code|{}code[0]
+        final fun <get-code>(): com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.code.<get-code>|<get-code>(){}[0]
+
+    final enum class Code : kotlin/Enum<com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code> { // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code|null[0]
+        enum entry CONFIG_UPDATE_MESSAGE_INVALID // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code.CONFIG_UPDATE_MESSAGE_INVALID|null[0]
+        enum entry CONFIG_UPDATE_NOT_FETCHED // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code.CONFIG_UPDATE_NOT_FETCHED|null[0]
+        enum entry CONFIG_UPDATE_STREAM_ERROR // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code.CONFIG_UPDATE_STREAM_ERROR|null[0]
+        enum entry CONFIG_UPDATE_UNAVAILABLE // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code.CONFIG_UPDATE_UNAVAILABLE|null[0]
+        enum entry UNKNOWN // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code.UNKNOWN|null[0]
+
+        final val entries // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code.entries|#static{}entries[0]
+            final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code> // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code.entries.<get-entries>|<get-entries>#static(){}[0]
+
+        final fun value(): kotlin/Int // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code.value|value(){}[0]
+        final fun valueOf(kotlin/String): com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code.valueOf|valueOf#static(kotlin.String){}[0]
+        final fun values(): kotlin/Array<com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code> // com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code.values|values#static(){}[0]
+    }
+}
+
+open class com.google.firebase.remoteconfig/FirebaseRemoteConfigFetchThrottledException : com.google.firebase.remoteconfig/FirebaseRemoteConfigException { // com.google.firebase.remoteconfig/FirebaseRemoteConfigFetchThrottledException|null[0]
+    constructor <init>(kotlin/Long) // com.google.firebase.remoteconfig/FirebaseRemoteConfigFetchThrottledException.<init>|<init>(kotlin.Long){}[0]
+
+    final val throttleEndTimeMillis // com.google.firebase.remoteconfig/FirebaseRemoteConfigFetchThrottledException.throttleEndTimeMillis|{}throttleEndTimeMillis[0]
+        final fun <get-throttleEndTimeMillis>(): kotlin/Long // com.google.firebase.remoteconfig/FirebaseRemoteConfigFetchThrottledException.throttleEndTimeMillis.<get-throttleEndTimeMillis>|<get-throttleEndTimeMillis>(){}[0]
+}
+
+open class com.google.firebase.remoteconfig/FirebaseRemoteConfigServerException : com.google.firebase.remoteconfig/FirebaseRemoteConfigException { // com.google.firebase.remoteconfig/FirebaseRemoteConfigServerException|null[0]
+    constructor <init>(kotlin/Int, kotlin/String) // com.google.firebase.remoteconfig/FirebaseRemoteConfigServerException.<init>|<init>(kotlin.Int;kotlin.String){}[0]
+    constructor <init>(kotlin/Int, kotlin/String, com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code) // com.google.firebase.remoteconfig/FirebaseRemoteConfigServerException.<init>|<init>(kotlin.Int;kotlin.String;com.google.firebase.remoteconfig.FirebaseRemoteConfigException.Code){}[0]
+    constructor <init>(kotlin/Int, kotlin/String, kotlin/Throwable?) // com.google.firebase.remoteconfig/FirebaseRemoteConfigServerException.<init>|<init>(kotlin.Int;kotlin.String;kotlin.Throwable?){}[0]
+    constructor <init>(kotlin/Int, kotlin/String, kotlin/Throwable?, com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code) // com.google.firebase.remoteconfig/FirebaseRemoteConfigServerException.<init>|<init>(kotlin.Int;kotlin.String;kotlin.Throwable?;com.google.firebase.remoteconfig.FirebaseRemoteConfigException.Code){}[0]
+    constructor <init>(kotlin/String, com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code) // com.google.firebase.remoteconfig/FirebaseRemoteConfigServerException.<init>|<init>(kotlin.String;com.google.firebase.remoteconfig.FirebaseRemoteConfigException.Code){}[0]
+    constructor <init>(kotlin/String, kotlin/Throwable?, com.google.firebase.remoteconfig/FirebaseRemoteConfigException.Code) // com.google.firebase.remoteconfig/FirebaseRemoteConfigServerException.<init>|<init>(kotlin.String;kotlin.Throwable?;com.google.firebase.remoteconfig.FirebaseRemoteConfigException.Code){}[0]
+
+    final val httpStatusCode // com.google.firebase.remoteconfig/FirebaseRemoteConfigServerException.httpStatusCode|{}httpStatusCode[0]
+        final fun <get-httpStatusCode>(): kotlin/Int // com.google.firebase.remoteconfig/FirebaseRemoteConfigServerException.httpStatusCode.<get-httpStatusCode>|<get-httpStatusCode>(){}[0]
+}
+
+final val com.google.firebase.remoteconfig/configUpdates // com.google.firebase.remoteconfig/configUpdates|@com.google.firebase.remoteconfig.FirebaseRemoteConfig{}configUpdates[0]
+    final fun (com.google.firebase.remoteconfig/FirebaseRemoteConfig).<get-configUpdates>(): kotlinx.coroutines.flow/Flow<com.google.firebase.remoteconfig/ConfigUpdate> // com.google.firebase.remoteconfig/configUpdates.<get-configUpdates>|<get-configUpdates>@com.google.firebase.remoteconfig.FirebaseRemoteConfig(){}[0]
+final val com.google.firebase.remoteconfig/remoteConfig // com.google.firebase.remoteconfig/remoteConfig|@com.google.firebase.Firebase{}remoteConfig[0]
+    final fun (com.google.firebase/Firebase).<get-remoteConfig>(): com.google.firebase.remoteconfig/FirebaseRemoteConfig // com.google.firebase.remoteconfig/remoteConfig.<get-remoteConfig>|<get-remoteConfig>@com.google.firebase.Firebase(){}[0]
+final val io.github.corneloaie.firebase.remoteconfig/remoteConfig // io.github.corneloaie.firebase.remoteconfig/remoteConfig|@io.github.corneloaie.firebase.Firebase{}remoteConfig[0]
+    final fun (io.github.corneloaie.firebase/Firebase).<get-remoteConfig>(): io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig // io.github.corneloaie.firebase.remoteconfig/remoteConfig.<get-remoteConfig>|<get-remoteConfig>@io.github.corneloaie.firebase.Firebase(){}[0]
+
+final fun (com.google.firebase.remoteconfig/FirebaseRemoteConfig).com.google.firebase.remoteconfig/get(kotlin/String): com.google.firebase.remoteconfig/FirebaseRemoteConfigValue // com.google.firebase.remoteconfig/get|get@com.google.firebase.remoteconfig.FirebaseRemoteConfig(kotlin.String){}[0]
+final fun (com.google.firebase/Firebase).com.google.firebase.remoteconfig/remoteConfig(com.google.firebase/FirebaseApp): com.google.firebase.remoteconfig/FirebaseRemoteConfig // com.google.firebase.remoteconfig/remoteConfig|remoteConfig@com.google.firebase.Firebase(com.google.firebase.FirebaseApp){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase.remoteconfig/remoteConfig(io.github.corneloaie.firebase/FirebaseApp): io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig // io.github.corneloaie.firebase.remoteconfig/remoteConfig|remoteConfig@io.github.corneloaie.firebase.Firebase(io.github.corneloaie.firebase.FirebaseApp){}[0]
+final fun com.google.firebase.remoteconfig/customSignals(kotlin/Function1<com.google.firebase.remoteconfig/CustomSignals.Builder, kotlin/Unit>): com.google.firebase.remoteconfig/CustomSignals // com.google.firebase.remoteconfig/customSignals|customSignals(kotlin.Function1<com.google.firebase.remoteconfig.CustomSignals.Builder,kotlin.Unit>){}[0]
+final fun com.google.firebase.remoteconfig/remoteConfigSettings(kotlin/Function1<com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings.Builder, kotlin/Unit>): com.google.firebase.remoteconfig/FirebaseRemoteConfigSettings // com.google.firebase.remoteconfig/remoteConfigSettings|remoteConfigSettings(kotlin.Function1<com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings.Builder,kotlin.Unit>){}[0]
+final inline fun <#A: reified kotlin/Any?> (io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig).io.github.corneloaie.firebase.remoteconfig/get(kotlin/String): #A // io.github.corneloaie.firebase.remoteconfig/get|get@io.github.corneloaie.firebase.remoteconfig.FirebaseRemoteConfig(kotlin.String){0§<kotlin.Any?>}[0]
+final suspend fun (io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig).io.github.corneloaie.firebase.remoteconfig/fetch(kotlin/Long) // io.github.corneloaie.firebase.remoteconfig/fetch|fetch@io.github.corneloaie.firebase.remoteconfig.FirebaseRemoteConfig(kotlin.Long){}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.remoteconfig/ios // io.github.corneloaie.firebase.remoteconfig/ios|@io.github.corneloaie.firebase.remoteconfig.FirebaseRemoteConfig{}ios[0]
+    final fun (io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.config/FIRRemoteConfig // io.github.corneloaie.firebase.remoteconfig/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.remoteconfig.FirebaseRemoteConfig(){}[0]
+
+// Targets: [apple]
+final fun (platform.Foundation/NSData).io.github.corneloaie.firebase.remoteconfig/toByteArray(): kotlin/ByteArray // io.github.corneloaie.firebase.remoteconfig/toByteArray|toByteArray@platform.Foundation.NSData(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.remoteconfig/js // io.github.corneloaie.firebase.remoteconfig/js|@io.github.corneloaie.firebase.remoteconfig.FirebaseRemoteConfigValue{}js[0]
+    final fun (io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfigValue).<get-js>(): io.github.corneloaie.firebase.remoteconfig.externals/Value // io.github.corneloaie.firebase.remoteconfig/js.<get-js>|<get-js>@io.github.corneloaie.firebase.remoteconfig.FirebaseRemoteConfigValue(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.remoteconfig/js // io.github.corneloaie.firebase.remoteconfig/js|@io.github.corneloaie.firebase.remoteconfig.FirebaseRemoteConfig{}js[0]
+    final fun (io.github.corneloaie.firebase.remoteconfig/FirebaseRemoteConfig).<get-js>(): io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig // io.github.corneloaie.firebase.remoteconfig/js.<get-js>|<get-js>@io.github.corneloaie.firebase.remoteconfig.FirebaseRemoteConfig(){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/getBoolean(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig, kotlin/String): kotlin/Boolean // io.github.corneloaie.firebase.remoteconfig.externals/getBoolean|getBoolean(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig;kotlin.String){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/getRemoteConfig(io.github.corneloaie.firebase.externals/FirebaseApp? = ...): io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig // io.github.corneloaie.firebase.remoteconfig.externals/getRemoteConfig|getRemoteConfig(io.github.corneloaie.firebase.externals.FirebaseApp?){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/getString(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig, kotlin/String): kotlin/String? // io.github.corneloaie.firebase.remoteconfig.externals/getString|getString(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig;kotlin.String){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/getValue(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig, kotlin/String): io.github.corneloaie.firebase.remoteconfig.externals/Value // io.github.corneloaie.firebase.remoteconfig.externals/getValue|getValue(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig;kotlin.String){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/onConfigUpdate(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig, io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdateObserver): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.remoteconfig.externals/onConfigUpdate|onConfigUpdate(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig;io.github.corneloaie.firebase.remoteconfig.externals.ConfigUpdateObserver){}[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdate { // io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdate|null[0]
+    abstract fun getUpdatedKeys(): dynamic // io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdate.getUpdatedKeys|getUpdatedKeys(){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdateObserver { // io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdateObserver|null[0]
+    abstract var complete // io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdateObserver.complete|{}complete[0]
+        abstract fun <get-complete>(): kotlin/Function0<kotlin/Unit> // io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdateObserver.complete.<get-complete>|<get-complete>(){}[0]
+        abstract fun <set-complete>(kotlin/Function0<kotlin/Unit>) // io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdateObserver.complete.<set-complete>|<set-complete>(kotlin.Function0<kotlin.Unit>){}[0]
+    abstract var error // io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdateObserver.error|{}error[0]
+        abstract fun <get-error>(): kotlin/Function1<kotlin/Throwable, kotlin/Unit> // io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdateObserver.error.<get-error>|<get-error>(){}[0]
+        abstract fun <set-error>(kotlin/Function1<kotlin/Throwable, kotlin/Unit>) // io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdateObserver.error.<set-error>|<set-error>(kotlin.Function1<kotlin.Throwable,kotlin.Unit>){}[0]
+    abstract var next // io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdateObserver.next|{}next[0]
+        abstract fun <get-next>(): kotlin/Function1<io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdate, kotlin/Unit> // io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdateObserver.next.<get-next>|<get-next>(){}[0]
+        abstract fun <set-next>(kotlin/Function1<io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdate, kotlin/Unit>) // io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdateObserver.next.<set-next>|<set-next>(kotlin.Function1<io.github.corneloaie.firebase.remoteconfig.externals.ConfigUpdate,kotlin.Unit>){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig { // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig|null[0]
+    abstract val settings // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.settings|{}settings[0]
+        abstract fun <get-settings>(): io.github.corneloaie.firebase.remoteconfig.externals/Settings // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.settings.<get-settings>|<get-settings>(){}[0]
+
+    abstract var defaultConfig // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.defaultConfig|{}defaultConfig[0]
+        abstract fun <get-defaultConfig>(): kotlin/Any // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.defaultConfig.<get-defaultConfig>|<get-defaultConfig>(){}[0]
+        abstract fun <set-defaultConfig>(kotlin/Any) // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.defaultConfig.<set-defaultConfig>|<set-defaultConfig>(kotlin.Any){}[0]
+    abstract var fetchTimeMillis // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.fetchTimeMillis|{}fetchTimeMillis[0]
+        abstract fun <get-fetchTimeMillis>(): kotlin/Double // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.fetchTimeMillis.<get-fetchTimeMillis>|<get-fetchTimeMillis>(){}[0]
+        abstract fun <set-fetchTimeMillis>(kotlin/Double) // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.fetchTimeMillis.<set-fetchTimeMillis>|<set-fetchTimeMillis>(kotlin.Double){}[0]
+    abstract var lastFetchStatus // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.lastFetchStatus|{}lastFetchStatus[0]
+        abstract fun <get-lastFetchStatus>(): kotlin/String // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.lastFetchStatus.<get-lastFetchStatus>|<get-lastFetchStatus>(){}[0]
+        abstract fun <set-lastFetchStatus>(kotlin/String) // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.lastFetchStatus.<set-lastFetchStatus>|<set-lastFetchStatus>(kotlin.String){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.remoteconfig.externals/Settings { // io.github.corneloaie.firebase.remoteconfig.externals/Settings|null[0]
+    abstract var fetchTimeoutMillis // io.github.corneloaie.firebase.remoteconfig.externals/Settings.fetchTimeoutMillis|{}fetchTimeoutMillis[0]
+        abstract fun <get-fetchTimeoutMillis>(): kotlin/Number // io.github.corneloaie.firebase.remoteconfig.externals/Settings.fetchTimeoutMillis.<get-fetchTimeoutMillis>|<get-fetchTimeoutMillis>(){}[0]
+        abstract fun <set-fetchTimeoutMillis>(kotlin/Number) // io.github.corneloaie.firebase.remoteconfig.externals/Settings.fetchTimeoutMillis.<set-fetchTimeoutMillis>|<set-fetchTimeoutMillis>(kotlin.Number){}[0]
+    abstract var minimumFetchIntervalMillis // io.github.corneloaie.firebase.remoteconfig.externals/Settings.minimumFetchIntervalMillis|{}minimumFetchIntervalMillis[0]
+        abstract fun <get-minimumFetchIntervalMillis>(): kotlin/Number // io.github.corneloaie.firebase.remoteconfig.externals/Settings.minimumFetchIntervalMillis.<get-minimumFetchIntervalMillis>|<get-minimumFetchIntervalMillis>(){}[0]
+        abstract fun <set-minimumFetchIntervalMillis>(kotlin/Number) // io.github.corneloaie.firebase.remoteconfig.externals/Settings.minimumFetchIntervalMillis.<set-minimumFetchIntervalMillis>|<set-minimumFetchIntervalMillis>(kotlin.Number){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.remoteconfig.externals/Value { // io.github.corneloaie.firebase.remoteconfig.externals/Value|null[0]
+    abstract fun asBoolean(): kotlin/Boolean // io.github.corneloaie.firebase.remoteconfig.externals/Value.asBoolean|asBoolean(){}[0]
+    abstract fun asNumber(): kotlin/Number // io.github.corneloaie.firebase.remoteconfig.externals/Value.asNumber|asNumber(){}[0]
+    abstract fun asString(): kotlin/String? // io.github.corneloaie.firebase.remoteconfig.externals/Value.asString|asString(){}[0]
+    abstract fun getSource(): kotlin/String // io.github.corneloaie.firebase.remoteconfig.externals/Value.getSource|getSource(){}[0]
+}
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/activate(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig): kotlin.js/Promise<kotlin/Boolean> // io.github.corneloaie.firebase.remoteconfig.externals/activate|activate(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/ensureInitialized(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.remoteconfig.externals/ensureInitialized|ensureInitialized(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/fetchAndActivate(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig): kotlin.js/Promise<kotlin/Boolean> // io.github.corneloaie.firebase.remoteconfig.externals/fetchAndActivate|fetchAndActivate(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/fetchConfig(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.remoteconfig.externals/fetchConfig|fetchConfig(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/getAll(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig): kotlin.js/Json // io.github.corneloaie.firebase.remoteconfig.externals/getAll|getAll(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/getNumber(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig, kotlin/String): kotlin/Number // io.github.corneloaie.firebase.remoteconfig.externals/getNumber|getNumber(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig;kotlin.String){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/setCustomSignals(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig, kotlin.js/Json): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.remoteconfig.externals/setCustomSignals|setCustomSignals(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig;kotlin.js.Json){}[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdate : kotlin.js/JsAny { // io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdate|null[0]
+    abstract fun getUpdatedKeys(): kotlin.js/JsAny // io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdate.getUpdatedKeys|getUpdatedKeys(){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdateObserver : kotlin.js/JsAny // io.github.corneloaie.firebase.remoteconfig.externals/ConfigUpdateObserver|null[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig : kotlin.js/JsAny { // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig|null[0]
+    abstract val settings // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.settings|{}settings[0]
+        abstract fun <get-settings>(): io.github.corneloaie.firebase.remoteconfig.externals/Settings // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.settings.<get-settings>|<get-settings>(){}[0]
+
+    abstract var defaultConfig // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.defaultConfig|{}defaultConfig[0]
+        abstract fun <get-defaultConfig>(): kotlin.js/JsAny // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.defaultConfig.<get-defaultConfig>|<get-defaultConfig>(){}[0]
+        abstract fun <set-defaultConfig>(kotlin.js/JsAny) // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.defaultConfig.<set-defaultConfig>|<set-defaultConfig>(kotlin.js.JsAny){}[0]
+    abstract var fetchTimeMillis // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.fetchTimeMillis|{}fetchTimeMillis[0]
+        abstract fun <get-fetchTimeMillis>(): kotlin/Double // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.fetchTimeMillis.<get-fetchTimeMillis>|<get-fetchTimeMillis>(){}[0]
+        abstract fun <set-fetchTimeMillis>(kotlin/Double) // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.fetchTimeMillis.<set-fetchTimeMillis>|<set-fetchTimeMillis>(kotlin.Double){}[0]
+    abstract var lastFetchStatus // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.lastFetchStatus|{}lastFetchStatus[0]
+        abstract fun <get-lastFetchStatus>(): kotlin/String // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.lastFetchStatus.<get-lastFetchStatus>|<get-lastFetchStatus>(){}[0]
+        abstract fun <set-lastFetchStatus>(kotlin/String) // io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig.lastFetchStatus.<set-lastFetchStatus>|<set-lastFetchStatus>(kotlin.String){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.remoteconfig.externals/Settings : kotlin.js/JsAny { // io.github.corneloaie.firebase.remoteconfig.externals/Settings|null[0]
+    abstract var fetchTimeoutMillis // io.github.corneloaie.firebase.remoteconfig.externals/Settings.fetchTimeoutMillis|{}fetchTimeoutMillis[0]
+        abstract fun <get-fetchTimeoutMillis>(): kotlin/Double // io.github.corneloaie.firebase.remoteconfig.externals/Settings.fetchTimeoutMillis.<get-fetchTimeoutMillis>|<get-fetchTimeoutMillis>(){}[0]
+        abstract fun <set-fetchTimeoutMillis>(kotlin/Double) // io.github.corneloaie.firebase.remoteconfig.externals/Settings.fetchTimeoutMillis.<set-fetchTimeoutMillis>|<set-fetchTimeoutMillis>(kotlin.Double){}[0]
+    abstract var minimumFetchIntervalMillis // io.github.corneloaie.firebase.remoteconfig.externals/Settings.minimumFetchIntervalMillis|{}minimumFetchIntervalMillis[0]
+        abstract fun <get-minimumFetchIntervalMillis>(): kotlin/Double // io.github.corneloaie.firebase.remoteconfig.externals/Settings.minimumFetchIntervalMillis.<get-minimumFetchIntervalMillis>|<get-minimumFetchIntervalMillis>(){}[0]
+        abstract fun <set-minimumFetchIntervalMillis>(kotlin/Double) // io.github.corneloaie.firebase.remoteconfig.externals/Settings.minimumFetchIntervalMillis.<set-minimumFetchIntervalMillis>|<set-minimumFetchIntervalMillis>(kotlin.Double){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.remoteconfig.externals/Value : kotlin.js/JsAny { // io.github.corneloaie.firebase.remoteconfig.externals/Value|null[0]
+    abstract fun asBoolean(): kotlin/Boolean // io.github.corneloaie.firebase.remoteconfig.externals/Value.asBoolean|asBoolean(){}[0]
+    abstract fun asNumber(): kotlin/Double // io.github.corneloaie.firebase.remoteconfig.externals/Value.asNumber|asNumber(){}[0]
+    abstract fun asString(): kotlin/String? // io.github.corneloaie.firebase.remoteconfig.externals/Value.asString|asString(){}[0]
+    abstract fun getSource(): kotlin/String // io.github.corneloaie.firebase.remoteconfig.externals/Value.getSource|getSource(){}[0]
+}
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/activate(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig): kotlin.js/Promise<kotlin.js/JsBoolean> // io.github.corneloaie.firebase.remoteconfig.externals/activate|activate(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/ensureInitialized(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.remoteconfig.externals/ensureInitialized|ensureInitialized(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/fetchAndActivate(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig): kotlin.js/Promise<kotlin.js/JsBoolean> // io.github.corneloaie.firebase.remoteconfig.externals/fetchAndActivate|fetchAndActivate(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/fetchConfig(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.remoteconfig.externals/fetchConfig|fetchConfig(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/getAll(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig): kotlin.js/JsAny // io.github.corneloaie.firebase.remoteconfig.externals/getAll|getAll(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/getNumber(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig, kotlin/String): kotlin/Double // io.github.corneloaie.firebase.remoteconfig.externals/getNumber|getNumber(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig;kotlin.String){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.remoteconfig.externals/setCustomSignals(io.github.corneloaie.firebase.remoteconfig.externals/RemoteConfig, kotlin.js/JsAny): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.remoteconfig.externals/setCustomSignals|setCustomSignals(io.github.corneloaie.firebase.remoteconfig.externals.RemoteConfig;kotlin.js.JsAny){}[0]

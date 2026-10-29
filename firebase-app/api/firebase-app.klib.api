@@ -1,0 +1,377 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, tvosArm64, tvosSimulatorArm64, wasmJs]
+// Alias: apple => [iosArm64, iosSimulatorArm64, iosX64, macosArm64, tvosArm64, tvosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-app>
+open annotation class io.github.corneloaie.firebase/UnsupportedOnApple : kotlin/Annotation { // io.github.corneloaie.firebase/UnsupportedOnApple|null[0]
+    constructor <init>() // io.github.corneloaie.firebase/UnsupportedOnApple.<init>|<init>(){}[0]
+}
+
+open annotation class io.github.corneloaie.firebase/UnsupportedOnJs : kotlin/Annotation { // io.github.corneloaie.firebase/UnsupportedOnJs|null[0]
+    constructor <init>() // io.github.corneloaie.firebase/UnsupportedOnJs.<init>|<init>(){}[0]
+}
+
+abstract fun interface <#A: in kotlin/Any?> com.google.android.gms.tasks/OnSuccessListener { // com.google.android.gms.tasks/OnSuccessListener|null[0]
+    abstract fun onSuccess(#A) // com.google.android.gms.tasks/OnSuccessListener.onSuccess|onSuccess(1:0){}[0]
+}
+
+abstract fun interface <#A: kotlin/Any?, #B: kotlin/Any?> com.google.android.gms.tasks/Continuation { // com.google.android.gms.tasks/Continuation|null[0]
+    abstract fun then(com.google.android.gms.tasks/Task<#A>): #B // com.google.android.gms.tasks/Continuation.then|then(com.google.android.gms.tasks.Task<1:0>){}[0]
+}
+
+abstract fun interface <#A: kotlin/Any?, #B: kotlin/Any?> com.google.android.gms.tasks/SuccessContinuation { // com.google.android.gms.tasks/SuccessContinuation|null[0]
+    abstract fun then(#A): com.google.android.gms.tasks/Task<#B> // com.google.android.gms.tasks/SuccessContinuation.then|then(1:0){}[0]
+}
+
+abstract fun interface <#A: kotlin/Any?> com.google.android.gms.tasks/OnCompleteListener { // com.google.android.gms.tasks/OnCompleteListener|null[0]
+    abstract fun onComplete(com.google.android.gms.tasks/Task<#A>) // com.google.android.gms.tasks/OnCompleteListener.onComplete|onComplete(com.google.android.gms.tasks.Task<1:0>){}[0]
+}
+
+abstract fun interface com.google.android.gms.tasks/OnCanceledListener { // com.google.android.gms.tasks/OnCanceledListener|null[0]
+    abstract fun onCanceled() // com.google.android.gms.tasks/OnCanceledListener.onCanceled|onCanceled(){}[0]
+}
+
+abstract fun interface com.google.android.gms.tasks/OnFailureListener { // com.google.android.gms.tasks/OnFailureListener|null[0]
+    abstract fun onFailure(kotlin/Exception) // com.google.android.gms.tasks/OnFailureListener.onFailure|onFailure(kotlin.Exception){}[0]
+}
+
+abstract class <#A: kotlin/Any?> com.google.android.gms.tasks/Task { // com.google.android.gms.tasks/Task|null[0]
+    constructor <init>() // com.google.android.gms.tasks/Task.<init>|<init>(){}[0]
+
+    abstract val exception // com.google.android.gms.tasks/Task.exception|{}exception[0]
+        abstract fun <get-exception>(): kotlin/Exception? // com.google.android.gms.tasks/Task.exception.<get-exception>|<get-exception>(){}[0]
+    abstract val isCanceled // com.google.android.gms.tasks/Task.isCanceled|{}isCanceled[0]
+        abstract fun <get-isCanceled>(): kotlin/Boolean // com.google.android.gms.tasks/Task.isCanceled.<get-isCanceled>|<get-isCanceled>(){}[0]
+    abstract val isComplete // com.google.android.gms.tasks/Task.isComplete|{}isComplete[0]
+        abstract fun <get-isComplete>(): kotlin/Boolean // com.google.android.gms.tasks/Task.isComplete.<get-isComplete>|<get-isComplete>(){}[0]
+    abstract val isSuccessful // com.google.android.gms.tasks/Task.isSuccessful|{}isSuccessful[0]
+        abstract fun <get-isSuccessful>(): kotlin/Boolean // com.google.android.gms.tasks/Task.isSuccessful.<get-isSuccessful>|<get-isSuccessful>(){}[0]
+    abstract val result // com.google.android.gms.tasks/Task.result|{}result[0]
+        abstract fun <get-result>(): #A // com.google.android.gms.tasks/Task.result.<get-result>|<get-result>(){}[0]
+
+    abstract fun <#A1: kotlin/Any?> continueWith(com.google.android.gms.tasks/Continuation<#A, #A1>): com.google.android.gms.tasks/Task<#A1> // com.google.android.gms.tasks/Task.continueWith|continueWith(com.google.android.gms.tasks.Continuation<1:0,0:0>){0§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?> continueWithTask(com.google.android.gms.tasks/Continuation<#A, com.google.android.gms.tasks/Task<#A1>>): com.google.android.gms.tasks/Task<#A1> // com.google.android.gms.tasks/Task.continueWithTask|continueWithTask(com.google.android.gms.tasks.Continuation<1:0,com.google.android.gms.tasks.Task<0:0>>){0§<kotlin.Any?>}[0]
+    abstract fun <#A1: kotlin/Any?> onSuccessTask(com.google.android.gms.tasks/SuccessContinuation<#A, #A1>): com.google.android.gms.tasks/Task<#A1> // com.google.android.gms.tasks/Task.onSuccessTask|onSuccessTask(com.google.android.gms.tasks.SuccessContinuation<1:0,0:0>){0§<kotlin.Any?>}[0]
+    abstract fun addOnCanceledListener(com.google.android.gms.tasks/OnCanceledListener): com.google.android.gms.tasks/Task<#A> // com.google.android.gms.tasks/Task.addOnCanceledListener|addOnCanceledListener(com.google.android.gms.tasks.OnCanceledListener){}[0]
+    abstract fun addOnCompleteListener(com.google.android.gms.tasks/OnCompleteListener<#A>): com.google.android.gms.tasks/Task<#A> // com.google.android.gms.tasks/Task.addOnCompleteListener|addOnCompleteListener(com.google.android.gms.tasks.OnCompleteListener<1:0>){}[0]
+    abstract fun addOnFailureListener(com.google.android.gms.tasks/OnFailureListener): com.google.android.gms.tasks/Task<#A> // com.google.android.gms.tasks/Task.addOnFailureListener|addOnFailureListener(com.google.android.gms.tasks.OnFailureListener){}[0]
+    abstract fun addOnSuccessListener(com.google.android.gms.tasks/OnSuccessListener<#A>): com.google.android.gms.tasks/Task<#A> // com.google.android.gms.tasks/Task.addOnSuccessListener|addOnSuccessListener(com.google.android.gms.tasks.OnSuccessListener<1:0>){}[0]
+}
+
+final class <#A: kotlin/Any?> com.google.android.gms.tasks/TaskCompletionSource { // com.google.android.gms.tasks/TaskCompletionSource|null[0]
+    constructor <init>() // com.google.android.gms.tasks/TaskCompletionSource.<init>|<init>(){}[0]
+
+    final val task // com.google.android.gms.tasks/TaskCompletionSource.task|{}task[0]
+        final fun <get-task>(): com.google.android.gms.tasks/Task<#A> // com.google.android.gms.tasks/TaskCompletionSource.task.<get-task>|<get-task>(){}[0]
+
+    final fun setException(kotlin/Exception) // com.google.android.gms.tasks/TaskCompletionSource.setException|setException(kotlin.Exception){}[0]
+    final fun setResult(#A?) // com.google.android.gms.tasks/TaskCompletionSource.setResult|setResult(1:0?){}[0]
+    final fun trySetException(kotlin/Exception): kotlin/Boolean // com.google.android.gms.tasks/TaskCompletionSource.trySetException|trySetException(kotlin.Exception){}[0]
+    final fun trySetResult(#A?): kotlin/Boolean // com.google.android.gms.tasks/TaskCompletionSource.trySetResult|trySetResult(1:0?){}[0]
+}
+
+final class com.google.android.gms.tasks/RuntimeExecutionException : kotlin/RuntimeException { // com.google.android.gms.tasks/RuntimeExecutionException|null[0]
+    constructor <init>(kotlin/Throwable) // com.google.android.gms.tasks/RuntimeExecutionException.<init>|<init>(kotlin.Throwable){}[0]
+}
+
+final class com.google.firebase/FirebaseApp { // com.google.firebase/FirebaseApp|null[0]
+    final val name // com.google.firebase/FirebaseApp.name|{}name[0]
+        final fun <get-name>(): kotlin/String // com.google.firebase/FirebaseApp.name.<get-name>|<get-name>(){}[0]
+    final val options // com.google.firebase/FirebaseApp.options|{}options[0]
+        final fun <get-options>(): com.google.firebase/FirebaseOptions // com.google.firebase/FirebaseApp.options.<get-options>|<get-options>(){}[0]
+
+    final fun delete() // com.google.firebase/FirebaseApp.delete|delete(){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase/FirebaseApp.equals|equals(kotlin.Any?){}[0]
+    final fun getApplicationContext(): kotlin/Any // com.google.firebase/FirebaseApp.getApplicationContext|getApplicationContext(){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase/FirebaseApp.hashCode|hashCode(){}[0]
+    final fun setAutomaticResourceManagementEnabled(kotlin/Boolean) // com.google.firebase/FirebaseApp.setAutomaticResourceManagementEnabled|setAutomaticResourceManagementEnabled(kotlin.Boolean){}[0]
+    final fun toString(): kotlin/String // com.google.firebase/FirebaseApp.toString|toString(){}[0]
+
+    final object Companion { // com.google.firebase/FirebaseApp.Companion|null[0]
+        final val DEFAULT_APP_NAME // com.google.firebase/FirebaseApp.Companion.DEFAULT_APP_NAME|{}DEFAULT_APP_NAME[0]
+            final fun <get-DEFAULT_APP_NAME>(): kotlin/String // com.google.firebase/FirebaseApp.Companion.DEFAULT_APP_NAME.<get-DEFAULT_APP_NAME>|<get-DEFAULT_APP_NAME>(){}[0]
+
+        final fun getApps(kotlin/Any?): kotlin.collections/List<com.google.firebase/FirebaseApp> // com.google.firebase/FirebaseApp.Companion.getApps|getApps(kotlin.Any?){}[0]
+        final fun getInstance(): com.google.firebase/FirebaseApp // com.google.firebase/FirebaseApp.Companion.getInstance|getInstance(){}[0]
+        final fun getInstance(kotlin/String): com.google.firebase/FirebaseApp // com.google.firebase/FirebaseApp.Companion.getInstance|getInstance(kotlin.String){}[0]
+        final fun initializeApp(kotlin/Any?): com.google.firebase/FirebaseApp? // com.google.firebase/FirebaseApp.Companion.initializeApp|initializeApp(kotlin.Any?){}[0]
+        final fun initializeApp(kotlin/Any?, com.google.firebase/FirebaseOptions): com.google.firebase/FirebaseApp // com.google.firebase/FirebaseApp.Companion.initializeApp|initializeApp(kotlin.Any?;com.google.firebase.FirebaseOptions){}[0]
+        final fun initializeApp(kotlin/Any?, com.google.firebase/FirebaseOptions, kotlin/String): com.google.firebase/FirebaseApp // com.google.firebase/FirebaseApp.Companion.initializeApp|initializeApp(kotlin.Any?;com.google.firebase.FirebaseOptions;kotlin.String){}[0]
+    }
+
+    // Targets: [apple]
+    final val ios // com.google.firebase/FirebaseApp.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.app/FIRApp // com.google.firebase/FirebaseApp.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val js // com.google.firebase/FirebaseApp.js|{}js[0]
+        final fun <get-js>(): io.github.corneloaie.firebase.externals/FirebaseApp // com.google.firebase/FirebaseApp.js.<get-js>|<get-js>(){}[0]
+}
+
+final class com.google.firebase/FirebaseNetworkException : com.google.firebase/FirebaseException { // com.google.firebase/FirebaseNetworkException|null[0]
+    constructor <init>(kotlin/String) // com.google.firebase/FirebaseNetworkException.<init>|<init>(kotlin.String){}[0]
+
+    // Targets: [js, wasmJs]
+    constructor <init>(kotlin/String?, kotlin/Throwable) // com.google.firebase/FirebaseNetworkException.<init>|<init>(kotlin.String?;kotlin.Throwable){}[0]
+}
+
+final class com.google.firebase/FirebaseOptions { // com.google.firebase/FirebaseOptions|null[0]
+    final val apiKey // com.google.firebase/FirebaseOptions.apiKey|{}apiKey[0]
+        final fun <get-apiKey>(): kotlin/String // com.google.firebase/FirebaseOptions.apiKey.<get-apiKey>|<get-apiKey>(){}[0]
+    final val applicationId // com.google.firebase/FirebaseOptions.applicationId|{}applicationId[0]
+        final fun <get-applicationId>(): kotlin/String // com.google.firebase/FirebaseOptions.applicationId.<get-applicationId>|<get-applicationId>(){}[0]
+    final val databaseUrl // com.google.firebase/FirebaseOptions.databaseUrl|{}databaseUrl[0]
+        final fun <get-databaseUrl>(): kotlin/String? // com.google.firebase/FirebaseOptions.databaseUrl.<get-databaseUrl>|<get-databaseUrl>(){}[0]
+    final val gaTrackingId // com.google.firebase/FirebaseOptions.gaTrackingId|{}gaTrackingId[0]
+        final fun <get-gaTrackingId>(): kotlin/String? // com.google.firebase/FirebaseOptions.gaTrackingId.<get-gaTrackingId>|<get-gaTrackingId>(){}[0]
+    final val gcmSenderId // com.google.firebase/FirebaseOptions.gcmSenderId|{}gcmSenderId[0]
+        final fun <get-gcmSenderId>(): kotlin/String? // com.google.firebase/FirebaseOptions.gcmSenderId.<get-gcmSenderId>|<get-gcmSenderId>(){}[0]
+    final val projectId // com.google.firebase/FirebaseOptions.projectId|{}projectId[0]
+        final fun <get-projectId>(): kotlin/String? // com.google.firebase/FirebaseOptions.projectId.<get-projectId>|<get-projectId>(){}[0]
+    final val storageBucket // com.google.firebase/FirebaseOptions.storageBucket|{}storageBucket[0]
+        final fun <get-storageBucket>(): kotlin/String? // com.google.firebase/FirebaseOptions.storageBucket.<get-storageBucket>|<get-storageBucket>(){}[0]
+
+    final fun toString(): kotlin/String // com.google.firebase/FirebaseOptions.toString|toString(){}[0]
+
+    final class Builder { // com.google.firebase/FirebaseOptions.Builder|null[0]
+        constructor <init>() // com.google.firebase/FirebaseOptions.Builder.<init>|<init>(){}[0]
+        constructor <init>(com.google.firebase/FirebaseOptions) // com.google.firebase/FirebaseOptions.Builder.<init>|<init>(com.google.firebase.FirebaseOptions){}[0]
+
+        final fun build(): com.google.firebase/FirebaseOptions // com.google.firebase/FirebaseOptions.Builder.build|build(){}[0]
+        final fun setApiKey(kotlin/String): com.google.firebase/FirebaseOptions.Builder // com.google.firebase/FirebaseOptions.Builder.setApiKey|setApiKey(kotlin.String){}[0]
+        final fun setApplicationId(kotlin/String): com.google.firebase/FirebaseOptions.Builder // com.google.firebase/FirebaseOptions.Builder.setApplicationId|setApplicationId(kotlin.String){}[0]
+        final fun setDatabaseUrl(kotlin/String?): com.google.firebase/FirebaseOptions.Builder // com.google.firebase/FirebaseOptions.Builder.setDatabaseUrl|setDatabaseUrl(kotlin.String?){}[0]
+        final fun setGaTrackingId(kotlin/String?): com.google.firebase/FirebaseOptions.Builder // com.google.firebase/FirebaseOptions.Builder.setGaTrackingId|setGaTrackingId(kotlin.String?){}[0]
+        final fun setGcmSenderId(kotlin/String?): com.google.firebase/FirebaseOptions.Builder // com.google.firebase/FirebaseOptions.Builder.setGcmSenderId|setGcmSenderId(kotlin.String?){}[0]
+        final fun setProjectId(kotlin/String?): com.google.firebase/FirebaseOptions.Builder // com.google.firebase/FirebaseOptions.Builder.setProjectId|setProjectId(kotlin.String?){}[0]
+        final fun setStorageBucket(kotlin/String?): com.google.firebase/FirebaseOptions.Builder // com.google.firebase/FirebaseOptions.Builder.setStorageBucket|setStorageBucket(kotlin.String?){}[0]
+
+        // Targets: [js, wasmJs]
+        final fun setAuthDomain(kotlin/String?): com.google.firebase/FirebaseOptions.Builder // com.google.firebase/FirebaseOptions.Builder.setAuthDomain|setAuthDomain(kotlin.String?){}[0]
+    }
+
+    final object Companion { // com.google.firebase/FirebaseOptions.Companion|null[0]
+        final fun fromResource(kotlin/Any?): com.google.firebase/FirebaseOptions? // com.google.firebase/FirebaseOptions.Companion.fromResource|fromResource(kotlin.Any?){}[0]
+    }
+
+    // Targets: [apple]
+    final val ios // com.google.firebase/FirebaseOptions.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.app/FIROptions // com.google.firebase/FirebaseOptions.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val authDomain // com.google.firebase/FirebaseOptions.authDomain|{}authDomain[0]
+        final fun <get-authDomain>(): kotlin/String? // com.google.firebase/FirebaseOptions.authDomain.<get-authDomain>|<get-authDomain>(){}[0]
+}
+
+final class com.google.firebase/Timestamp : kotlin/Comparable<com.google.firebase/Timestamp> { // com.google.firebase/Timestamp|null[0]
+    constructor <init>(kotlin/Any) // com.google.firebase/Timestamp.<init>|<init>(kotlin.Any){}[0]
+    constructor <init>(kotlin/Long, kotlin/Int) // com.google.firebase/Timestamp.<init>|<init>(kotlin.Long;kotlin.Int){}[0]
+
+    final val nanoseconds // com.google.firebase/Timestamp.nanoseconds|{}nanoseconds[0]
+        final fun <get-nanoseconds>(): kotlin/Int // com.google.firebase/Timestamp.nanoseconds.<get-nanoseconds>|<get-nanoseconds>(){}[0]
+    final val seconds // com.google.firebase/Timestamp.seconds|{}seconds[0]
+        final fun <get-seconds>(): kotlin/Long // com.google.firebase/Timestamp.seconds.<get-seconds>|<get-seconds>(){}[0]
+
+    final fun compareTo(com.google.firebase/Timestamp): kotlin/Int // com.google.firebase/Timestamp.compareTo|compareTo(com.google.firebase.Timestamp){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase/Timestamp.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase/Timestamp.hashCode|hashCode(){}[0]
+    final fun toDate(): kotlin/Any // com.google.firebase/Timestamp.toDate|toDate(){}[0]
+    final fun toInstant(): kotlin/Any // com.google.firebase/Timestamp.toInstant|toInstant(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase/Timestamp.toString|toString(){}[0]
+
+    final object Companion { // com.google.firebase/Timestamp.Companion|null[0]
+        final fun now(): com.google.firebase/Timestamp // com.google.firebase/Timestamp.Companion.now|now(){}[0]
+    }
+}
+
+final class io.github.corneloaie.firebase/FirebaseApp { // io.github.corneloaie.firebase/FirebaseApp|null[0]
+    final val compat // io.github.corneloaie.firebase/FirebaseApp.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase/FirebaseApp // io.github.corneloaie.firebase/FirebaseApp.compat.<get-compat>|<get-compat>(){}[0]
+    final val name // io.github.corneloaie.firebase/FirebaseApp.name|{}name[0]
+        final fun <get-name>(): kotlin/String // io.github.corneloaie.firebase/FirebaseApp.name.<get-name>|<get-name>(){}[0]
+    final val options // io.github.corneloaie.firebase/FirebaseApp.options|{}options[0]
+        final fun <get-options>(): io.github.corneloaie.firebase/FirebaseOptions // io.github.corneloaie.firebase/FirebaseApp.options.<get-options>|<get-options>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase/FirebaseApp.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase/FirebaseApp.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase/FirebaseApp.toString|toString(){}[0]
+    final suspend fun delete() // io.github.corneloaie.firebase/FirebaseApp.delete|delete(){}[0]
+}
+
+final class io.github.corneloaie.firebase/FirebaseOptions { // io.github.corneloaie.firebase/FirebaseOptions|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ...) // io.github.corneloaie.firebase/FirebaseOptions.<init>|<init>(kotlin.String;kotlin.String;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String?){}[0]
+
+    final val apiKey // io.github.corneloaie.firebase/FirebaseOptions.apiKey|{}apiKey[0]
+        final fun <get-apiKey>(): kotlin/String // io.github.corneloaie.firebase/FirebaseOptions.apiKey.<get-apiKey>|<get-apiKey>(){}[0]
+    final val applicationId // io.github.corneloaie.firebase/FirebaseOptions.applicationId|{}applicationId[0]
+        final fun <get-applicationId>(): kotlin/String // io.github.corneloaie.firebase/FirebaseOptions.applicationId.<get-applicationId>|<get-applicationId>(){}[0]
+    final val authDomain // io.github.corneloaie.firebase/FirebaseOptions.authDomain|{}authDomain[0]
+        final fun <get-authDomain>(): kotlin/String? // io.github.corneloaie.firebase/FirebaseOptions.authDomain.<get-authDomain>|<get-authDomain>(){}[0]
+    final val databaseUrl // io.github.corneloaie.firebase/FirebaseOptions.databaseUrl|{}databaseUrl[0]
+        final fun <get-databaseUrl>(): kotlin/String? // io.github.corneloaie.firebase/FirebaseOptions.databaseUrl.<get-databaseUrl>|<get-databaseUrl>(){}[0]
+    final val gaTrackingId // io.github.corneloaie.firebase/FirebaseOptions.gaTrackingId|{}gaTrackingId[0]
+        final fun <get-gaTrackingId>(): kotlin/String? // io.github.corneloaie.firebase/FirebaseOptions.gaTrackingId.<get-gaTrackingId>|<get-gaTrackingId>(){}[0]
+    final val gcmSenderId // io.github.corneloaie.firebase/FirebaseOptions.gcmSenderId|{}gcmSenderId[0]
+        final fun <get-gcmSenderId>(): kotlin/String? // io.github.corneloaie.firebase/FirebaseOptions.gcmSenderId.<get-gcmSenderId>|<get-gcmSenderId>(){}[0]
+    final val projectId // io.github.corneloaie.firebase/FirebaseOptions.projectId|{}projectId[0]
+        final fun <get-projectId>(): kotlin/String? // io.github.corneloaie.firebase/FirebaseOptions.projectId.<get-projectId>|<get-projectId>(){}[0]
+    final val storageBucket // io.github.corneloaie.firebase/FirebaseOptions.storageBucket|{}storageBucket[0]
+        final fun <get-storageBucket>(): kotlin/String? // io.github.corneloaie.firebase/FirebaseOptions.storageBucket.<get-storageBucket>|<get-storageBucket>(){}[0]
+
+    final fun component1(): kotlin/String // io.github.corneloaie.firebase/FirebaseOptions.component1|component1(){}[0]
+    final fun component2(): kotlin/String // io.github.corneloaie.firebase/FirebaseOptions.component2|component2(){}[0]
+    final fun component3(): kotlin/String? // io.github.corneloaie.firebase/FirebaseOptions.component3|component3(){}[0]
+    final fun component4(): kotlin/String? // io.github.corneloaie.firebase/FirebaseOptions.component4|component4(){}[0]
+    final fun component5(): kotlin/String? // io.github.corneloaie.firebase/FirebaseOptions.component5|component5(){}[0]
+    final fun component6(): kotlin/String? // io.github.corneloaie.firebase/FirebaseOptions.component6|component6(){}[0]
+    final fun component7(): kotlin/String? // io.github.corneloaie.firebase/FirebaseOptions.component7|component7(){}[0]
+    final fun component8(): kotlin/String? // io.github.corneloaie.firebase/FirebaseOptions.component8|component8(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ...): io.github.corneloaie.firebase/FirebaseOptions // io.github.corneloaie.firebase/FirebaseOptions.copy|copy(kotlin.String;kotlin.String;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase/FirebaseOptions.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase/FirebaseOptions.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase/FirebaseOptions.toString|toString(){}[0]
+}
+
+open class com.google.firebase/FirebaseApiNotAvailableException : com.google.firebase/FirebaseException { // com.google.firebase/FirebaseApiNotAvailableException|null[0]
+    constructor <init>(kotlin/String) // com.google.firebase/FirebaseApiNotAvailableException.<init>|<init>(kotlin.String){}[0]
+
+    // Targets: [js, wasmJs]
+    constructor <init>(kotlin/String?, kotlin/Throwable) // com.google.firebase/FirebaseApiNotAvailableException.<init>|<init>(kotlin.String?;kotlin.Throwable){}[0]
+}
+
+open class com.google.firebase/FirebaseException : kotlin/Exception { // com.google.firebase/FirebaseException|null[0]
+    constructor <init>(kotlin/String) // com.google.firebase/FirebaseException.<init>|<init>(kotlin.String){}[0]
+    constructor <init>(kotlin/String, kotlin/Throwable?) // com.google.firebase/FirebaseException.<init>|<init>(kotlin.String;kotlin.Throwable?){}[0]
+}
+
+open class com.google.firebase/FirebaseTooManyRequestsException : com.google.firebase/FirebaseException { // com.google.firebase/FirebaseTooManyRequestsException|null[0]
+    constructor <init>(kotlin/String) // com.google.firebase/FirebaseTooManyRequestsException.<init>|<init>(kotlin.String){}[0]
+
+    // Targets: [js, wasmJs]
+    constructor <init>(kotlin/String?, kotlin/Throwable) // com.google.firebase/FirebaseTooManyRequestsException.<init>|<init>(kotlin.String?;kotlin.Throwable){}[0]
+}
+
+final object com.google.firebase/Firebase // com.google.firebase/Firebase|null[0]
+
+final object io.github.corneloaie.firebase/Firebase // io.github.corneloaie.firebase/Firebase|null[0]
+
+final val com.google.firebase/app // com.google.firebase/app|@com.google.firebase.Firebase{}app[0]
+    final fun (com.google.firebase/Firebase).<get-app>(): com.google.firebase/FirebaseApp // com.google.firebase/app.<get-app>|<get-app>@com.google.firebase.Firebase(){}[0]
+final val com.google.firebase/options // com.google.firebase/options|@com.google.firebase.Firebase{}options[0]
+    final fun (com.google.firebase/Firebase).<get-options>(): com.google.firebase/FirebaseOptions // com.google.firebase/options.<get-options>|<get-options>@com.google.firebase.Firebase(){}[0]
+final val io.github.corneloaie.firebase/app // io.github.corneloaie.firebase/app|@io.github.corneloaie.firebase.Firebase{}app[0]
+    final fun (io.github.corneloaie.firebase/Firebase).<get-app>(): io.github.corneloaie.firebase/FirebaseApp // io.github.corneloaie.firebase/app.<get-app>|<get-app>@io.github.corneloaie.firebase.Firebase(){}[0]
+final val io.github.corneloaie.firebase/options // io.github.corneloaie.firebase/options|@io.github.corneloaie.firebase.Firebase{}options[0]
+    final fun (io.github.corneloaie.firebase/Firebase).<get-options>(): io.github.corneloaie.firebase/FirebaseOptions // io.github.corneloaie.firebase/options.<get-options>|<get-options>@io.github.corneloaie.firebase.Firebase(){}[0]
+
+final fun (com.google.firebase/Firebase).com.google.firebase/app(kotlin/String): com.google.firebase/FirebaseApp // com.google.firebase/app|app@com.google.firebase.Firebase(kotlin.String){}[0]
+final fun (com.google.firebase/Firebase).com.google.firebase/fromResource(kotlin/Any? = ...): com.google.firebase/FirebaseOptions? // com.google.firebase/fromResource|fromResource@com.google.firebase.Firebase(kotlin.Any?){}[0]
+final fun (com.google.firebase/Firebase).com.google.firebase/getApps(kotlin/Any? = ...): kotlin.collections/List<com.google.firebase/FirebaseApp> // com.google.firebase/getApps|getApps@com.google.firebase.Firebase(kotlin.Any?){}[0]
+final fun (com.google.firebase/Firebase).com.google.firebase/initialize(kotlin/Any? = ...): com.google.firebase/FirebaseApp? // com.google.firebase/initialize|initialize@com.google.firebase.Firebase(kotlin.Any?){}[0]
+final fun (com.google.firebase/Firebase).com.google.firebase/initialize(kotlin/Any? = ..., com.google.firebase/FirebaseOptions): com.google.firebase/FirebaseApp // com.google.firebase/initialize|initialize@com.google.firebase.Firebase(kotlin.Any?;com.google.firebase.FirebaseOptions){}[0]
+final fun (com.google.firebase/Firebase).com.google.firebase/initialize(kotlin/Any? = ..., com.google.firebase/FirebaseOptions, kotlin/String): com.google.firebase/FirebaseApp // com.google.firebase/initialize|initialize@com.google.firebase.Firebase(kotlin.Any?;com.google.firebase.FirebaseOptions;kotlin.String){}[0]
+final fun (com.google.firebase/Timestamp).com.google.firebase/toKotlinInstant(): kotlin.time/Instant // com.google.firebase/toKotlinInstant|toKotlinInstant@com.google.firebase.Timestamp(){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase/app(kotlin/String): io.github.corneloaie.firebase/FirebaseApp // io.github.corneloaie.firebase/app|app@io.github.corneloaie.firebase.Firebase(kotlin.String){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase/apps(kotlin/Any? = ...): kotlin.collections/List<io.github.corneloaie.firebase/FirebaseApp> // io.github.corneloaie.firebase/apps|apps@io.github.corneloaie.firebase.Firebase(kotlin.Any?){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase/initialize(kotlin/Any? = ...): io.github.corneloaie.firebase/FirebaseApp? // io.github.corneloaie.firebase/initialize|initialize@io.github.corneloaie.firebase.Firebase(kotlin.Any?){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase/initialize(kotlin/Any? = ..., io.github.corneloaie.firebase/FirebaseOptions): io.github.corneloaie.firebase/FirebaseApp // io.github.corneloaie.firebase/initialize|initialize@io.github.corneloaie.firebase.Firebase(kotlin.Any?;io.github.corneloaie.firebase.FirebaseOptions){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase/initialize(kotlin/Any? = ..., io.github.corneloaie.firebase/FirebaseOptions, kotlin/String): io.github.corneloaie.firebase/FirebaseApp // io.github.corneloaie.firebase/initialize|initialize@io.github.corneloaie.firebase.Firebase(kotlin.Any?;io.github.corneloaie.firebase.FirebaseOptions;kotlin.String){}[0]
+final fun com.google.firebase/Timestamp(kotlin.time/Instant): com.google.firebase/Timestamp // com.google.firebase/Timestamp|Timestamp(kotlin.time.Instant){}[0]
+final suspend fun <#A: kotlin/Any?> (com.google.android.gms.tasks/Task<#A>).kotlinx.coroutines.tasks/await(): #A // kotlinx.coroutines.tasks/await|await@com.google.android.gms.tasks.Task<0:0>(){0§<kotlin.Any?>}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase/ios // io.github.corneloaie.firebase/ios|@io.github.corneloaie.firebase.FirebaseApp{}ios[0]
+    final fun (io.github.corneloaie.firebase/FirebaseApp).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.app/FIRApp // io.github.corneloaie.firebase/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.FirebaseApp(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase/js // io.github.corneloaie.firebase/js|@io.github.corneloaie.firebase.FirebaseApp{}js[0]
+    final fun (io.github.corneloaie.firebase/FirebaseApp).<get-js>(): io.github.corneloaie.firebase.externals/FirebaseApp // io.github.corneloaie.firebase/js.<get-js>|<get-js>@io.github.corneloaie.firebase.FirebaseApp(){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.externals/getApp(kotlin/String = ...): io.github.corneloaie.firebase.externals/FirebaseApp // io.github.corneloaie.firebase.externals/getApp|getApp(kotlin.String){}[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.externals/FirebaseApp { // io.github.corneloaie.firebase.externals/FirebaseApp|null[0]
+    abstract val automaticDataCollectionEnabled // io.github.corneloaie.firebase.externals/FirebaseApp.automaticDataCollectionEnabled|{}automaticDataCollectionEnabled[0]
+        abstract fun <get-automaticDataCollectionEnabled>(): kotlin/Boolean // io.github.corneloaie.firebase.externals/FirebaseApp.automaticDataCollectionEnabled.<get-automaticDataCollectionEnabled>|<get-automaticDataCollectionEnabled>(){}[0]
+    abstract val name // io.github.corneloaie.firebase.externals/FirebaseApp.name|{}name[0]
+        abstract fun <get-name>(): kotlin/String // io.github.corneloaie.firebase.externals/FirebaseApp.name.<get-name>|<get-name>(){}[0]
+    abstract val options // io.github.corneloaie.firebase.externals/FirebaseApp.options|{}options[0]
+        abstract fun <get-options>(): io.github.corneloaie.firebase.externals/FirebaseOptions // io.github.corneloaie.firebase.externals/FirebaseApp.options.<get-options>|<get-options>(){}[0]
+}
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.externals/FirebaseOptions { // io.github.corneloaie.firebase.externals/FirebaseOptions|null[0]
+    abstract val apiKey // io.github.corneloaie.firebase.externals/FirebaseOptions.apiKey|{}apiKey[0]
+        abstract fun <get-apiKey>(): kotlin/String // io.github.corneloaie.firebase.externals/FirebaseOptions.apiKey.<get-apiKey>|<get-apiKey>(){}[0]
+    abstract val appId // io.github.corneloaie.firebase.externals/FirebaseOptions.appId|{}appId[0]
+        abstract fun <get-appId>(): kotlin/String // io.github.corneloaie.firebase.externals/FirebaseOptions.appId.<get-appId>|<get-appId>(){}[0]
+    abstract val authDomain // io.github.corneloaie.firebase.externals/FirebaseOptions.authDomain|{}authDomain[0]
+        abstract fun <get-authDomain>(): kotlin/String? // io.github.corneloaie.firebase.externals/FirebaseOptions.authDomain.<get-authDomain>|<get-authDomain>(){}[0]
+    abstract val databaseURL // io.github.corneloaie.firebase.externals/FirebaseOptions.databaseURL|{}databaseURL[0]
+        abstract fun <get-databaseURL>(): kotlin/String? // io.github.corneloaie.firebase.externals/FirebaseOptions.databaseURL.<get-databaseURL>|<get-databaseURL>(){}[0]
+    abstract val gaTrackingId // io.github.corneloaie.firebase.externals/FirebaseOptions.gaTrackingId|{}gaTrackingId[0]
+        abstract fun <get-gaTrackingId>(): kotlin/String? // io.github.corneloaie.firebase.externals/FirebaseOptions.gaTrackingId.<get-gaTrackingId>|<get-gaTrackingId>(){}[0]
+    abstract val measurementId // io.github.corneloaie.firebase.externals/FirebaseOptions.measurementId|{}measurementId[0]
+        abstract fun <get-measurementId>(): kotlin/String? // io.github.corneloaie.firebase.externals/FirebaseOptions.measurementId.<get-measurementId>|<get-measurementId>(){}[0]
+    abstract val messagingSenderId // io.github.corneloaie.firebase.externals/FirebaseOptions.messagingSenderId|{}messagingSenderId[0]
+        abstract fun <get-messagingSenderId>(): kotlin/String? // io.github.corneloaie.firebase.externals/FirebaseOptions.messagingSenderId.<get-messagingSenderId>|<get-messagingSenderId>(){}[0]
+    abstract val projectId // io.github.corneloaie.firebase.externals/FirebaseOptions.projectId|{}projectId[0]
+        abstract fun <get-projectId>(): kotlin/String? // io.github.corneloaie.firebase.externals/FirebaseOptions.projectId.<get-projectId>|<get-projectId>(){}[0]
+    abstract val storageBucket // io.github.corneloaie.firebase.externals/FirebaseOptions.storageBucket|{}storageBucket[0]
+        abstract fun <get-storageBucket>(): kotlin/String? // io.github.corneloaie.firebase.externals/FirebaseOptions.storageBucket.<get-storageBucket>|<get-storageBucket>(){}[0]
+}
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.externals/deleteApp(io.github.corneloaie.firebase.externals/FirebaseApp): kotlin.js/Promise<kotlin/Unit> // io.github.corneloaie.firebase.externals/deleteApp|deleteApp(io.github.corneloaie.firebase.externals.FirebaseApp){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.externals/getApps(): kotlin/Array<io.github.corneloaie.firebase.externals/FirebaseApp> // io.github.corneloaie.firebase.externals/getApps|getApps(){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.externals/initializeApp(kotlin/Any, kotlin/String = ...): io.github.corneloaie.firebase.externals/FirebaseApp // io.github.corneloaie.firebase.externals/initializeApp|initializeApp(kotlin.Any;kotlin.String){}[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.externals/FirebaseApp : kotlin.js/JsAny { // io.github.corneloaie.firebase.externals/FirebaseApp|null[0]
+    abstract val automaticDataCollectionEnabled // io.github.corneloaie.firebase.externals/FirebaseApp.automaticDataCollectionEnabled|{}automaticDataCollectionEnabled[0]
+        abstract fun <get-automaticDataCollectionEnabled>(): kotlin/Boolean // io.github.corneloaie.firebase.externals/FirebaseApp.automaticDataCollectionEnabled.<get-automaticDataCollectionEnabled>|<get-automaticDataCollectionEnabled>(){}[0]
+    abstract val name // io.github.corneloaie.firebase.externals/FirebaseApp.name|{}name[0]
+        abstract fun <get-name>(): kotlin/String // io.github.corneloaie.firebase.externals/FirebaseApp.name.<get-name>|<get-name>(){}[0]
+    abstract val options // io.github.corneloaie.firebase.externals/FirebaseApp.options|{}options[0]
+        abstract fun <get-options>(): io.github.corneloaie.firebase.externals/FirebaseOptions // io.github.corneloaie.firebase.externals/FirebaseApp.options.<get-options>|<get-options>(){}[0]
+}
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.externals/FirebaseOptions : kotlin.js/JsAny { // io.github.corneloaie.firebase.externals/FirebaseOptions|null[0]
+    abstract val apiKey // io.github.corneloaie.firebase.externals/FirebaseOptions.apiKey|{}apiKey[0]
+        abstract fun <get-apiKey>(): kotlin/String // io.github.corneloaie.firebase.externals/FirebaseOptions.apiKey.<get-apiKey>|<get-apiKey>(){}[0]
+    abstract val appId // io.github.corneloaie.firebase.externals/FirebaseOptions.appId|{}appId[0]
+        abstract fun <get-appId>(): kotlin/String // io.github.corneloaie.firebase.externals/FirebaseOptions.appId.<get-appId>|<get-appId>(){}[0]
+    abstract val authDomain // io.github.corneloaie.firebase.externals/FirebaseOptions.authDomain|{}authDomain[0]
+        abstract fun <get-authDomain>(): kotlin/String? // io.github.corneloaie.firebase.externals/FirebaseOptions.authDomain.<get-authDomain>|<get-authDomain>(){}[0]
+    abstract val databaseURL // io.github.corneloaie.firebase.externals/FirebaseOptions.databaseURL|{}databaseURL[0]
+        abstract fun <get-databaseURL>(): kotlin/String? // io.github.corneloaie.firebase.externals/FirebaseOptions.databaseURL.<get-databaseURL>|<get-databaseURL>(){}[0]
+    abstract val gaTrackingId // io.github.corneloaie.firebase.externals/FirebaseOptions.gaTrackingId|{}gaTrackingId[0]
+        abstract fun <get-gaTrackingId>(): kotlin/String? // io.github.corneloaie.firebase.externals/FirebaseOptions.gaTrackingId.<get-gaTrackingId>|<get-gaTrackingId>(){}[0]
+    abstract val measurementId // io.github.corneloaie.firebase.externals/FirebaseOptions.measurementId|{}measurementId[0]
+        abstract fun <get-measurementId>(): kotlin/String? // io.github.corneloaie.firebase.externals/FirebaseOptions.measurementId.<get-measurementId>|<get-measurementId>(){}[0]
+    abstract val messagingSenderId // io.github.corneloaie.firebase.externals/FirebaseOptions.messagingSenderId|{}messagingSenderId[0]
+        abstract fun <get-messagingSenderId>(): kotlin/String? // io.github.corneloaie.firebase.externals/FirebaseOptions.messagingSenderId.<get-messagingSenderId>|<get-messagingSenderId>(){}[0]
+    abstract val projectId // io.github.corneloaie.firebase.externals/FirebaseOptions.projectId|{}projectId[0]
+        abstract fun <get-projectId>(): kotlin/String? // io.github.corneloaie.firebase.externals/FirebaseOptions.projectId.<get-projectId>|<get-projectId>(){}[0]
+    abstract val storageBucket // io.github.corneloaie.firebase.externals/FirebaseOptions.storageBucket|{}storageBucket[0]
+        abstract fun <get-storageBucket>(): kotlin/String? // io.github.corneloaie.firebase.externals/FirebaseOptions.storageBucket.<get-storageBucket>|<get-storageBucket>(){}[0]
+}
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/deleteApp(io.github.corneloaie.firebase.externals/FirebaseApp): kotlin.js/Promise<kotlin.js/JsAny?> // io.github.corneloaie.firebase.externals/deleteApp|deleteApp(io.github.corneloaie.firebase.externals.FirebaseApp){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/getApps(): kotlin.js/JsArray<io.github.corneloaie.firebase.externals/FirebaseApp> // io.github.corneloaie.firebase.externals/getApps|getApps(){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.externals/initializeApp(kotlin.js/JsAny, kotlin/String = ...): io.github.corneloaie.firebase.externals/FirebaseApp // io.github.corneloaie.firebase.externals/initializeApp|initializeApp(kotlin.js.JsAny;kotlin.String){}[0]

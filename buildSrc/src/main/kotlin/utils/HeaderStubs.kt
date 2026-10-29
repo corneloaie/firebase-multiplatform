@@ -369,7 +369,8 @@ private fun verifyHeaderStubs(stubs: List<ClassMembers>, referenceJars: List<Fil
 }
 
 /**
- * Writes the stubs in the binary-compatibility-validator dump format so the source-compatibility report can read them.
+ * Writes the stubs in the JVM ABI dump format (binary-compatibility-validator's, which Kotlin's ABI validation kept) so the
+ * source-compatibility report can read them.
  * Companion objects are included (the Android SDK's Kotlin classes have them too); the mapping classes are not. A member
  * that is deprecated with an error carries its message as a trailing `// deprecated: ...` comment.
  */

@@ -67,7 +67,6 @@ public abstract interface annotation class com/google/firebase/messaging/RemoteM
 }
 
 public final class com/google/firebase/messaging/RemoteMessage$Notification {
-	public fun <init> ()V
 	public final fun getBody ()Ljava/lang/String;
 	public final fun getBodyLocalizationArgs ()[Ljava/lang/String;
 	public final fun getBodyLocalizationKey ()Ljava/lang/String;

@@ -1,0 +1,22 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, tvosArm64, tvosSimulatorArm64, wasmJs]
+// Alias: apple => [iosArm64, iosSimulatorArm64, iosX64, macosArm64, tvosArm64, tvosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:test-utils>
+final val io.github.corneloaie.firebase/runBlockingTestBlocks // io.github.corneloaie.firebase/runBlockingTestBlocks|{}runBlockingTestBlocks[0]
+    final fun <get-runBlockingTestBlocks>(): kotlin/Boolean // io.github.corneloaie.firebase/runBlockingTestBlocks.<get-runBlockingTestBlocks>|<get-runBlockingTestBlocks>(){}[0]
+
+final fun io.github.corneloaie.firebase/nativeAssertEquals(kotlin/Any?, kotlin/Any?) // io.github.corneloaie.firebase/nativeAssertEquals|nativeAssertEquals(kotlin.Any?;kotlin.Any?){}[0]
+final fun io.github.corneloaie.firebase/nativeListOf(kotlin/Array<out kotlin/Any?>...): kotlin/Any // io.github.corneloaie.firebase/nativeListOf|nativeListOf(kotlin.Array<out|kotlin.Any?>...){}[0]
+final fun io.github.corneloaie.firebase/nativeMapOf(kotlin/Array<out kotlin/Pair<kotlin/Any, kotlin/Any?>>...): kotlin/Any // io.github.corneloaie.firebase/nativeMapOf|nativeMapOf(kotlin.Array<out|kotlin.Pair<kotlin.Any,kotlin.Any?>>...){}[0]
+final fun io.github.corneloaie.firebase/runBlockingTest(kotlin.coroutines/SuspendFunction1<kotlinx.coroutines/CoroutineScope, kotlin/Unit>) // io.github.corneloaie.firebase/runBlockingTest|runBlockingTest(kotlin.coroutines.SuspendFunction1<kotlinx.coroutines.CoroutineScope,kotlin.Unit>){}[0]
+
+// Targets: [apple]
+final fun io.github.corneloaie.firebase/runTest(kotlin.coroutines/SuspendFunction1<kotlinx.coroutines/CoroutineScope, kotlin/Unit>) // io.github.corneloaie.firebase/runTest|runTest(kotlin.coroutines.SuspendFunction1<kotlinx.coroutines.CoroutineScope,kotlin.Unit>){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase/runTest(kotlin.coroutines/SuspendFunction1<kotlinx.coroutines/CoroutineScope, kotlin/Unit>): kotlinx.coroutines.test.internal/JsPromiseInterfaceForTesting // io.github.corneloaie.firebase/runTest|runTest(kotlin.coroutines.SuspendFunction1<kotlinx.coroutines.CoroutineScope,kotlin.Unit>){}[0]

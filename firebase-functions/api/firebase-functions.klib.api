@@ -1,0 +1,281 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, tvosArm64, tvosSimulatorArm64, wasmJs]
+// Alias: apple => [iosArm64, iosSimulatorArm64, iosX64, macosArm64, tvosArm64, tvosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.corneloaie:firebase-functions>
+abstract class com.google.firebase.functions/StreamResponse { // com.google.firebase.functions/StreamResponse|null[0]
+    final class Message : com.google.firebase.functions/StreamResponse { // com.google.firebase.functions/StreamResponse.Message|null[0]
+        constructor <init>(com.google.firebase.functions/HttpsCallableResult) // com.google.firebase.functions/StreamResponse.Message.<init>|<init>(com.google.firebase.functions.HttpsCallableResult){}[0]
+
+        final val message // com.google.firebase.functions/StreamResponse.Message.message|{}message[0]
+            final fun <get-message>(): com.google.firebase.functions/HttpsCallableResult // com.google.firebase.functions/StreamResponse.Message.message.<get-message>|<get-message>(){}[0]
+    }
+
+    final class Result : com.google.firebase.functions/StreamResponse { // com.google.firebase.functions/StreamResponse.Result|null[0]
+        constructor <init>(com.google.firebase.functions/HttpsCallableResult) // com.google.firebase.functions/StreamResponse.Result.<init>|<init>(com.google.firebase.functions.HttpsCallableResult){}[0]
+
+        final val result // com.google.firebase.functions/StreamResponse.Result.result|{}result[0]
+            final fun <get-result>(): com.google.firebase.functions/HttpsCallableResult // com.google.firebase.functions/StreamResponse.Result.result.<get-result>|<get-result>(){}[0]
+    }
+}
+
+final class com.google.firebase.functions/FirebaseFunctions { // com.google.firebase.functions/FirebaseFunctions|null[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.functions/FirebaseFunctions.equals|equals(kotlin.Any?){}[0]
+    final fun getHttpsCallable(kotlin/String): com.google.firebase.functions/HttpsCallableReference // com.google.firebase.functions/FirebaseFunctions.getHttpsCallable|getHttpsCallable(kotlin.String){}[0]
+    final fun getHttpsCallable(kotlin/String, com.google.firebase.functions/HttpsCallableOptions): com.google.firebase.functions/HttpsCallableReference // com.google.firebase.functions/FirebaseFunctions.getHttpsCallable|getHttpsCallable(kotlin.String;com.google.firebase.functions.HttpsCallableOptions){}[0]
+    final fun getHttpsCallableFromUrl(java.net/URL): com.google.firebase.functions/HttpsCallableReference // com.google.firebase.functions/FirebaseFunctions.getHttpsCallableFromUrl|getHttpsCallableFromUrl(java.net.URL){}[0]
+    final fun getHttpsCallableFromUrl(java.net/URL, com.google.firebase.functions/HttpsCallableOptions): com.google.firebase.functions/HttpsCallableReference // com.google.firebase.functions/FirebaseFunctions.getHttpsCallableFromUrl|getHttpsCallableFromUrl(java.net.URL;com.google.firebase.functions.HttpsCallableOptions){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.functions/FirebaseFunctions.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.functions/FirebaseFunctions.toString|toString(){}[0]
+    final fun useEmulator(kotlin/String, kotlin/Int) // com.google.firebase.functions/FirebaseFunctions.useEmulator|useEmulator(kotlin.String;kotlin.Int){}[0]
+
+    final object Companion { // com.google.firebase.functions/FirebaseFunctions.Companion|null[0]
+        final fun getInstance(): com.google.firebase.functions/FirebaseFunctions // com.google.firebase.functions/FirebaseFunctions.Companion.getInstance|getInstance(){}[0]
+        final fun getInstance(com.google.firebase/FirebaseApp): com.google.firebase.functions/FirebaseFunctions // com.google.firebase.functions/FirebaseFunctions.Companion.getInstance|getInstance(com.google.firebase.FirebaseApp){}[0]
+        final fun getInstance(com.google.firebase/FirebaseApp, kotlin/String): com.google.firebase.functions/FirebaseFunctions // com.google.firebase.functions/FirebaseFunctions.Companion.getInstance|getInstance(com.google.firebase.FirebaseApp;kotlin.String){}[0]
+        final fun getInstance(kotlin/String): com.google.firebase.functions/FirebaseFunctions // com.google.firebase.functions/FirebaseFunctions.Companion.getInstance|getInstance(kotlin.String){}[0]
+    }
+
+    // Targets: [apple]
+    final val ios // com.google.firebase.functions/FirebaseFunctions.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.functions/FIRFunctions // com.google.firebase.functions/FirebaseFunctions.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val js // com.google.firebase.functions/FirebaseFunctions.js|{}js[0]
+        final fun <get-js>(): io.github.corneloaie.firebase.functions.externals/Functions // com.google.firebase.functions/FirebaseFunctions.js.<get-js>|<get-js>(){}[0]
+}
+
+final class com.google.firebase.functions/FirebaseFunctionsException : com.google.firebase/FirebaseException { // com.google.firebase.functions/FirebaseFunctionsException|null[0]
+    final val code // com.google.firebase.functions/FirebaseFunctionsException.code|{}code[0]
+        final fun <get-code>(): com.google.firebase.functions/FirebaseFunctionsException.Code // com.google.firebase.functions/FirebaseFunctionsException.code.<get-code>|<get-code>(){}[0]
+    final val details // com.google.firebase.functions/FirebaseFunctionsException.details|{}details[0]
+        final fun <get-details>(): kotlin/Any? // com.google.firebase.functions/FirebaseFunctionsException.details.<get-details>|<get-details>(){}[0]
+
+    final enum class Code : kotlin/Enum<com.google.firebase.functions/FirebaseFunctionsException.Code> { // com.google.firebase.functions/FirebaseFunctionsException.Code|null[0]
+        enum entry ABORTED // com.google.firebase.functions/FirebaseFunctionsException.Code.ABORTED|null[0]
+        enum entry ALREADY_EXISTS // com.google.firebase.functions/FirebaseFunctionsException.Code.ALREADY_EXISTS|null[0]
+        enum entry CANCELLED // com.google.firebase.functions/FirebaseFunctionsException.Code.CANCELLED|null[0]
+        enum entry DATA_LOSS // com.google.firebase.functions/FirebaseFunctionsException.Code.DATA_LOSS|null[0]
+        enum entry DEADLINE_EXCEEDED // com.google.firebase.functions/FirebaseFunctionsException.Code.DEADLINE_EXCEEDED|null[0]
+        enum entry FAILED_PRECONDITION // com.google.firebase.functions/FirebaseFunctionsException.Code.FAILED_PRECONDITION|null[0]
+        enum entry INTERNAL // com.google.firebase.functions/FirebaseFunctionsException.Code.INTERNAL|null[0]
+        enum entry INVALID_ARGUMENT // com.google.firebase.functions/FirebaseFunctionsException.Code.INVALID_ARGUMENT|null[0]
+        enum entry NOT_FOUND // com.google.firebase.functions/FirebaseFunctionsException.Code.NOT_FOUND|null[0]
+        enum entry OK // com.google.firebase.functions/FirebaseFunctionsException.Code.OK|null[0]
+        enum entry OUT_OF_RANGE // com.google.firebase.functions/FirebaseFunctionsException.Code.OUT_OF_RANGE|null[0]
+        enum entry PERMISSION_DENIED // com.google.firebase.functions/FirebaseFunctionsException.Code.PERMISSION_DENIED|null[0]
+        enum entry RESOURCE_EXHAUSTED // com.google.firebase.functions/FirebaseFunctionsException.Code.RESOURCE_EXHAUSTED|null[0]
+        enum entry UNAUTHENTICATED // com.google.firebase.functions/FirebaseFunctionsException.Code.UNAUTHENTICATED|null[0]
+        enum entry UNAVAILABLE // com.google.firebase.functions/FirebaseFunctionsException.Code.UNAVAILABLE|null[0]
+        enum entry UNIMPLEMENTED // com.google.firebase.functions/FirebaseFunctionsException.Code.UNIMPLEMENTED|null[0]
+        enum entry UNKNOWN // com.google.firebase.functions/FirebaseFunctionsException.Code.UNKNOWN|null[0]
+
+        final val entries // com.google.firebase.functions/FirebaseFunctionsException.Code.entries|#static{}entries[0]
+            final fun <get-entries>(): kotlin.enums/EnumEntries<com.google.firebase.functions/FirebaseFunctionsException.Code> // com.google.firebase.functions/FirebaseFunctionsException.Code.entries.<get-entries>|<get-entries>#static(){}[0]
+
+        final fun valueOf(kotlin/String): com.google.firebase.functions/FirebaseFunctionsException.Code // com.google.firebase.functions/FirebaseFunctionsException.Code.valueOf|valueOf#static(kotlin.String){}[0]
+        final fun values(): kotlin/Array<com.google.firebase.functions/FirebaseFunctionsException.Code> // com.google.firebase.functions/FirebaseFunctionsException.Code.values|values#static(){}[0]
+
+        final object Companion { // com.google.firebase.functions/FirebaseFunctionsException.Code.Companion|null[0]
+            final fun fromHttpStatus(kotlin/Int): com.google.firebase.functions/FirebaseFunctionsException.Code // com.google.firebase.functions/FirebaseFunctionsException.Code.Companion.fromHttpStatus|fromHttpStatus(kotlin.Int){}[0]
+            final fun fromValue(kotlin/Int): com.google.firebase.functions/FirebaseFunctionsException.Code // com.google.firebase.functions/FirebaseFunctionsException.Code.Companion.fromValue|fromValue(kotlin.Int){}[0]
+        }
+    }
+}
+
+final class com.google.firebase.functions/HttpsCallableOptions { // com.google.firebase.functions/HttpsCallableOptions|null[0]
+    final val limitedUseAppCheckTokens // com.google.firebase.functions/HttpsCallableOptions.limitedUseAppCheckTokens|{}limitedUseAppCheckTokens[0]
+        final fun <get-limitedUseAppCheckTokens>(): kotlin/Boolean // com.google.firebase.functions/HttpsCallableOptions.limitedUseAppCheckTokens.<get-limitedUseAppCheckTokens>|<get-limitedUseAppCheckTokens>(){}[0]
+
+    final fun getLimitedUseAppCheckTokens(): kotlin/Boolean // com.google.firebase.functions/HttpsCallableOptions.getLimitedUseAppCheckTokens|getLimitedUseAppCheckTokens(){}[0]
+
+    final class Builder { // com.google.firebase.functions/HttpsCallableOptions.Builder|null[0]
+        constructor <init>() // com.google.firebase.functions/HttpsCallableOptions.Builder.<init>|<init>(){}[0]
+
+        final var limitedUseAppCheckTokens // com.google.firebase.functions/HttpsCallableOptions.Builder.limitedUseAppCheckTokens|{}limitedUseAppCheckTokens[0]
+            final fun <get-limitedUseAppCheckTokens>(): kotlin/Boolean // com.google.firebase.functions/HttpsCallableOptions.Builder.limitedUseAppCheckTokens.<get-limitedUseAppCheckTokens>|<get-limitedUseAppCheckTokens>(){}[0]
+            final fun <set-limitedUseAppCheckTokens>(kotlin/Boolean) // com.google.firebase.functions/HttpsCallableOptions.Builder.limitedUseAppCheckTokens.<set-limitedUseAppCheckTokens>|<set-limitedUseAppCheckTokens>(kotlin.Boolean){}[0]
+
+        final fun build(): com.google.firebase.functions/HttpsCallableOptions // com.google.firebase.functions/HttpsCallableOptions.Builder.build|build(){}[0]
+        final fun getLimitedUseAppCheckTokens(): kotlin/Boolean // com.google.firebase.functions/HttpsCallableOptions.Builder.getLimitedUseAppCheckTokens|getLimitedUseAppCheckTokens(){}[0]
+        final fun setLimitedUseAppCheckTokens(kotlin/Boolean): com.google.firebase.functions/HttpsCallableOptions.Builder // com.google.firebase.functions/HttpsCallableOptions.Builder.setLimitedUseAppCheckTokens|setLimitedUseAppCheckTokens(kotlin.Boolean){}[0]
+    }
+}
+
+final class com.google.firebase.functions/HttpsCallableReference { // com.google.firebase.functions/HttpsCallableReference|null[0]
+    final val timeout // com.google.firebase.functions/HttpsCallableReference.timeout|{}timeout[0]
+        final fun <get-timeout>(): kotlin/Long // com.google.firebase.functions/HttpsCallableReference.timeout.<get-timeout>|<get-timeout>(){}[0]
+
+    final fun call(): com.google.android.gms.tasks/Task<com.google.firebase.functions/HttpsCallableResult> // com.google.firebase.functions/HttpsCallableReference.call|call(){}[0]
+    final fun call(kotlin/Any?): com.google.android.gms.tasks/Task<com.google.firebase.functions/HttpsCallableResult> // com.google.firebase.functions/HttpsCallableReference.call|call(kotlin.Any?){}[0]
+    final fun setTimeout(kotlin/Long, kotlin/Any) // com.google.firebase.functions/HttpsCallableReference.setTimeout|setTimeout(kotlin.Long;kotlin.Any){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.functions/HttpsCallableReference.toString|toString(){}[0]
+    final fun withTimeout(kotlin/Long, kotlin/Any): com.google.firebase.functions/HttpsCallableReference // com.google.firebase.functions/HttpsCallableReference.withTimeout|withTimeout(kotlin.Long;kotlin.Any){}[0]
+
+    // Targets: [apple]
+    final val ios // com.google.firebase.functions/HttpsCallableReference.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.functions/FIRHTTPSCallable // com.google.firebase.functions/HttpsCallableReference.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val js // com.google.firebase.functions/HttpsCallableReference.js|{}js[0]
+        final fun <get-js>(): io.github.corneloaie.firebase.functions.externals/HttpsCallable // com.google.firebase.functions/HttpsCallableReference.js.<get-js>|<get-js>(){}[0]
+}
+
+final class com.google.firebase.functions/HttpsCallableResult { // com.google.firebase.functions/HttpsCallableResult|null[0]
+    final val data // com.google.firebase.functions/HttpsCallableResult.data|{}data[0]
+        final fun <get-data>(): kotlin/Any? // com.google.firebase.functions/HttpsCallableResult.data.<get-data>|<get-data>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.functions/HttpsCallableResult.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.functions/HttpsCallableResult.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.functions/HttpsCallableResult.toString|toString(){}[0]
+
+    // Targets: [apple]
+    final val ios // com.google.firebase.functions/HttpsCallableResult.ios|{}ios[0]
+        final fun <get-ios>(): swiftPMImport.io.github.corneloaie.firebase.functions/FIRHTTPSCallableResult // com.google.firebase.functions/HttpsCallableResult.ios.<get-ios>|<get-ios>(){}[0]
+
+    // Targets: [js, wasmJs]
+    final val js // com.google.firebase.functions/HttpsCallableResult.js|{}js[0]
+        final fun <get-js>(): io.github.corneloaie.firebase.functions.externals/HttpsCallableResult // com.google.firebase.functions/HttpsCallableResult.js.<get-js>|<get-js>(){}[0]
+}
+
+final class io.github.corneloaie.firebase.functions/FirebaseFunctions { // io.github.corneloaie.firebase.functions/FirebaseFunctions|null[0]
+    final val compat // io.github.corneloaie.firebase.functions/FirebaseFunctions.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.functions/FirebaseFunctions // io.github.corneloaie.firebase.functions/FirebaseFunctions.compat.<get-compat>|<get-compat>(){}[0]
+
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.github.corneloaie.firebase.functions/FirebaseFunctions.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.github.corneloaie.firebase.functions/FirebaseFunctions.hashCode|hashCode(){}[0]
+    final fun httpsCallable(kotlin/String, kotlin.time/Duration? = ...): io.github.corneloaie.firebase.functions/HttpsCallableReference // io.github.corneloaie.firebase.functions/FirebaseFunctions.httpsCallable|httpsCallable(kotlin.String;kotlin.time.Duration?){}[0]
+    final fun toString(): kotlin/String // io.github.corneloaie.firebase.functions/FirebaseFunctions.toString|toString(){}[0]
+    final fun useEmulator(kotlin/String, kotlin/Int) // io.github.corneloaie.firebase.functions/FirebaseFunctions.useEmulator|useEmulator(kotlin.String;kotlin.Int){}[0]
+}
+
+final class io.github.corneloaie.firebase.functions/HttpsCallableReference { // io.github.corneloaie.firebase.functions/HttpsCallableReference|null[0]
+    final val compat // io.github.corneloaie.firebase.functions/HttpsCallableReference.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.functions/HttpsCallableReference // io.github.corneloaie.firebase.functions/HttpsCallableReference.compat.<get-compat>|<get-compat>(){}[0]
+
+    final suspend fun <#A1: kotlin/Any?> invoke(kotlinx.serialization/SerializationStrategy<#A1>, #A1, kotlin/Boolean): io.github.corneloaie.firebase.functions/HttpsCallableResult // io.github.corneloaie.firebase.functions/HttpsCallableReference.invoke|invoke(kotlinx.serialization.SerializationStrategy<0:0>;0:0;kotlin.Boolean){0§<kotlin.Any?>}[0]
+    final suspend fun invoke(): io.github.corneloaie.firebase.functions/HttpsCallableResult // io.github.corneloaie.firebase.functions/HttpsCallableReference.invoke|invoke(){}[0]
+    final suspend inline fun <#A1: kotlin/Any?> invoke(kotlinx.serialization/SerializationStrategy<#A1>, #A1, kotlin/Function1<io.github.corneloaie.firebase/EncodeSettings.Builder, kotlin/Unit> = ...): io.github.corneloaie.firebase.functions/HttpsCallableResult // io.github.corneloaie.firebase.functions/HttpsCallableReference.invoke|invoke(kotlinx.serialization.SerializationStrategy<0:0>;0:0;kotlin.Function1<io.github.corneloaie.firebase.EncodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any?>}[0]
+    final suspend inline fun <#A1: reified kotlin/Any?> invoke(#A1, kotlin/Boolean): io.github.corneloaie.firebase.functions/HttpsCallableResult // io.github.corneloaie.firebase.functions/HttpsCallableReference.invoke|invoke(0:0;kotlin.Boolean){0§<kotlin.Any?>}[0]
+    final suspend inline fun <#A1: reified kotlin/Any?> invoke(#A1, kotlin/Function1<io.github.corneloaie.firebase/EncodeSettings.Builder, kotlin/Unit> = ...): io.github.corneloaie.firebase.functions/HttpsCallableResult // io.github.corneloaie.firebase.functions/HttpsCallableReference.invoke|invoke(0:0;kotlin.Function1<io.github.corneloaie.firebase.EncodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any?>}[0]
+}
+
+final class io.github.corneloaie.firebase.functions/HttpsCallableResult { // io.github.corneloaie.firebase.functions/HttpsCallableResult|null[0]
+    constructor <init>(com.google.firebase.functions/HttpsCallableResult) // io.github.corneloaie.firebase.functions/HttpsCallableResult.<init>|<init>(com.google.firebase.functions.HttpsCallableResult){}[0]
+
+    final val compat // io.github.corneloaie.firebase.functions/HttpsCallableResult.compat|{}compat[0]
+        final fun <get-compat>(): com.google.firebase.functions/HttpsCallableResult // io.github.corneloaie.firebase.functions/HttpsCallableResult.compat.<get-compat>|<get-compat>(){}[0]
+
+    final inline fun <#A1: kotlin/Any?> data(kotlinx.serialization/DeserializationStrategy<#A1>, kotlin/Function1<io.github.corneloaie.firebase/DecodeSettings.Builder, kotlin/Unit> = ...): #A1 // io.github.corneloaie.firebase.functions/HttpsCallableResult.data|data(kotlinx.serialization.DeserializationStrategy<0:0>;kotlin.Function1<io.github.corneloaie.firebase.DecodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any?>}[0]
+    final inline fun <#A1: reified kotlin/Any?> data(): #A1 // io.github.corneloaie.firebase.functions/HttpsCallableResult.data|data(){0§<kotlin.Any?>}[0]
+}
+
+final class java.net/URL // java.net/URL|null[0]
+
+final val com.google.firebase.functions/functions // com.google.firebase.functions/functions|@com.google.firebase.Firebase{}functions[0]
+    final fun (com.google.firebase/Firebase).<get-functions>(): com.google.firebase.functions/FirebaseFunctions // com.google.firebase.functions/functions.<get-functions>|<get-functions>@com.google.firebase.Firebase(){}[0]
+final val io.github.corneloaie.firebase.functions/code // io.github.corneloaie.firebase.functions/code|@com.google.firebase.functions.FirebaseFunctionsException{}code[0]
+    final fun (com.google.firebase.functions/FirebaseFunctionsException).<get-code>(): com.google.firebase.functions/FirebaseFunctionsException.Code // io.github.corneloaie.firebase.functions/code.<get-code>|<get-code>@com.google.firebase.functions.FirebaseFunctionsException(){}[0]
+final val io.github.corneloaie.firebase.functions/details // io.github.corneloaie.firebase.functions/details|@com.google.firebase.functions.FirebaseFunctionsException{}details[0]
+    final fun (com.google.firebase.functions/FirebaseFunctionsException).<get-details>(): kotlin/Any? // io.github.corneloaie.firebase.functions/details.<get-details>|<get-details>@com.google.firebase.functions.FirebaseFunctionsException(){}[0]
+final val io.github.corneloaie.firebase.functions/functions // io.github.corneloaie.firebase.functions/functions|@io.github.corneloaie.firebase.Firebase{}functions[0]
+    final fun (io.github.corneloaie.firebase/Firebase).<get-functions>(): io.github.corneloaie.firebase.functions/FirebaseFunctions // io.github.corneloaie.firebase.functions/functions.<get-functions>|<get-functions>@io.github.corneloaie.firebase.Firebase(){}[0]
+
+final fun (com.google.firebase.functions/FirebaseFunctions).com.google.firebase.functions/getHttpsCallable(kotlin/String, kotlin/Function1<com.google.firebase.functions/HttpsCallableOptions.Builder, kotlin/Unit>): com.google.firebase.functions/HttpsCallableReference // com.google.firebase.functions/getHttpsCallable|getHttpsCallable@com.google.firebase.functions.FirebaseFunctions(kotlin.String;kotlin.Function1<com.google.firebase.functions.HttpsCallableOptions.Builder,kotlin.Unit>){}[0]
+final fun (com.google.firebase.functions/FirebaseFunctions).com.google.firebase.functions/getHttpsCallableFromUrl(kotlin/String): com.google.firebase.functions/HttpsCallableReference // com.google.firebase.functions/getHttpsCallableFromUrl|getHttpsCallableFromUrl@com.google.firebase.functions.FirebaseFunctions(kotlin.String){}[0]
+final fun (com.google.firebase.functions/FirebaseFunctions).com.google.firebase.functions/getHttpsCallableFromUrl(kotlin/String, com.google.firebase.functions/HttpsCallableOptions): com.google.firebase.functions/HttpsCallableReference // com.google.firebase.functions/getHttpsCallableFromUrl|getHttpsCallableFromUrl@com.google.firebase.functions.FirebaseFunctions(kotlin.String;com.google.firebase.functions.HttpsCallableOptions){}[0]
+final fun (com.google.firebase.functions/FirebaseFunctions).com.google.firebase.functions/getHttpsCallableFromUrl(kotlin/String, kotlin/Function1<com.google.firebase.functions/HttpsCallableOptions.Builder, kotlin/Unit>): com.google.firebase.functions/HttpsCallableReference // com.google.firebase.functions/getHttpsCallableFromUrl|getHttpsCallableFromUrl@com.google.firebase.functions.FirebaseFunctions(kotlin.String;kotlin.Function1<com.google.firebase.functions.HttpsCallableOptions.Builder,kotlin.Unit>){}[0]
+final fun (com.google.firebase.functions/HttpsCallableReference).com.google.firebase.functions/setTimeout(kotlin.time/Duration) // com.google.firebase.functions/setTimeout|setTimeout@com.google.firebase.functions.HttpsCallableReference(kotlin.time.Duration){}[0]
+final fun (com.google.firebase.functions/HttpsCallableReference).com.google.firebase.functions/streamAsFlow(kotlin/Any? = ...): kotlinx.coroutines.flow/Flow<com.google.firebase.functions/StreamResponse> // com.google.firebase.functions/streamAsFlow|streamAsFlow@com.google.firebase.functions.HttpsCallableReference(kotlin.Any?){}[0]
+final fun (com.google.firebase.functions/HttpsCallableReference).com.google.firebase.functions/withTimeout(kotlin.time/Duration): com.google.firebase.functions/HttpsCallableReference // com.google.firebase.functions/withTimeout|withTimeout@com.google.firebase.functions.HttpsCallableReference(kotlin.time.Duration){}[0]
+final fun (com.google.firebase/Firebase).com.google.firebase.functions/functions(com.google.firebase/FirebaseApp): com.google.firebase.functions/FirebaseFunctions // com.google.firebase.functions/functions|functions@com.google.firebase.Firebase(com.google.firebase.FirebaseApp){}[0]
+final fun (com.google.firebase/Firebase).com.google.firebase.functions/functions(com.google.firebase/FirebaseApp, kotlin/String): com.google.firebase.functions/FirebaseFunctions // com.google.firebase.functions/functions|functions@com.google.firebase.Firebase(com.google.firebase.FirebaseApp;kotlin.String){}[0]
+final fun (com.google.firebase/Firebase).com.google.firebase.functions/functions(kotlin/String): com.google.firebase.functions/FirebaseFunctions // com.google.firebase.functions/functions|functions@com.google.firebase.Firebase(kotlin.String){}[0]
+final fun (io.github.corneloaie.firebase.functions/FirebaseFunctions).io.github.corneloaie.firebase.functions/httpsCallable(kotlin/String, kotlin/Long): io.github.corneloaie.firebase.functions/HttpsCallableReference // io.github.corneloaie.firebase.functions/httpsCallable|httpsCallable@io.github.corneloaie.firebase.functions.FirebaseFunctions(kotlin.String;kotlin.Long){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase.functions/functions(io.github.corneloaie.firebase/FirebaseApp): io.github.corneloaie.firebase.functions/FirebaseFunctions // io.github.corneloaie.firebase.functions/functions|functions@io.github.corneloaie.firebase.Firebase(io.github.corneloaie.firebase.FirebaseApp){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase.functions/functions(io.github.corneloaie.firebase/FirebaseApp, kotlin/String): io.github.corneloaie.firebase.functions/FirebaseFunctions // io.github.corneloaie.firebase.functions/functions|functions@io.github.corneloaie.firebase.Firebase(io.github.corneloaie.firebase.FirebaseApp;kotlin.String){}[0]
+final fun (io.github.corneloaie.firebase/Firebase).io.github.corneloaie.firebase.functions/functions(kotlin/String): io.github.corneloaie.firebase.functions/FirebaseFunctions // io.github.corneloaie.firebase.functions/functions|functions@io.github.corneloaie.firebase.Firebase(kotlin.String){}[0]
+final inline fun <#A: kotlin/Any?> (com.google.firebase.functions/HttpsCallableResult).io.github.corneloaie.firebase.functions/data(kotlinx.serialization/DeserializationStrategy<#A>, kotlin/Function1<io.github.corneloaie.firebase/DecodeSettings.Builder, kotlin/Unit> = ...): #A // io.github.corneloaie.firebase.functions/data|data@com.google.firebase.functions.HttpsCallableResult(kotlinx.serialization.DeserializationStrategy<0:0>;kotlin.Function1<io.github.corneloaie.firebase.DecodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?> (com.google.firebase.functions/HttpsCallableResult).io.github.corneloaie.firebase.functions/data(): #A // io.github.corneloaie.firebase.functions/data|data@com.google.firebase.functions.HttpsCallableResult(){0§<kotlin.Any?>}[0]
+final suspend fun (com.google.firebase.functions/HttpsCallableReference).io.github.corneloaie.firebase.functions/invoke(): com.google.firebase.functions/HttpsCallableResult // io.github.corneloaie.firebase.functions/invoke|invoke@com.google.firebase.functions.HttpsCallableReference(){}[0]
+final suspend inline fun <#A: kotlin/Any?> (com.google.firebase.functions/HttpsCallableReference).io.github.corneloaie.firebase.functions/invoke(kotlinx.serialization/SerializationStrategy<#A>, #A, kotlin/Function1<io.github.corneloaie.firebase/EncodeSettings.Builder, kotlin/Unit> = ...): com.google.firebase.functions/HttpsCallableResult // io.github.corneloaie.firebase.functions/invoke|invoke@com.google.firebase.functions.HttpsCallableReference(kotlinx.serialization.SerializationStrategy<0:0>;0:0;kotlin.Function1<io.github.corneloaie.firebase.EncodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any?>}[0]
+final suspend inline fun <#A: reified kotlin/Any?> (com.google.firebase.functions/HttpsCallableReference).io.github.corneloaie.firebase.functions/invoke(#A, kotlin/Function1<io.github.corneloaie.firebase/EncodeSettings.Builder, kotlin/Unit> = ...): com.google.firebase.functions/HttpsCallableResult // io.github.corneloaie.firebase.functions/invoke|invoke@com.google.firebase.functions.HttpsCallableReference(0:0;kotlin.Function1<io.github.corneloaie.firebase.EncodeSettings.Builder,kotlin.Unit>){0§<kotlin.Any?>}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.functions/ios // io.github.corneloaie.firebase.functions/ios|@io.github.corneloaie.firebase.functions.FirebaseFunctions{}ios[0]
+    final fun (io.github.corneloaie.firebase.functions/FirebaseFunctions).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.functions/FIRFunctions // io.github.corneloaie.firebase.functions/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.functions.FirebaseFunctions(){}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.functions/ios // io.github.corneloaie.firebase.functions/ios|@io.github.corneloaie.firebase.functions.HttpsCallableReference{}ios[0]
+    final fun (io.github.corneloaie.firebase.functions/HttpsCallableReference).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.functions/FIRHTTPSCallable // io.github.corneloaie.firebase.functions/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.functions.HttpsCallableReference(){}[0]
+
+// Targets: [apple]
+final val io.github.corneloaie.firebase.functions/ios // io.github.corneloaie.firebase.functions/ios|@io.github.corneloaie.firebase.functions.HttpsCallableResult{}ios[0]
+    final fun (io.github.corneloaie.firebase.functions/HttpsCallableResult).<get-ios>(): swiftPMImport.io.github.corneloaie.firebase.functions/FIRHTTPSCallableResult // io.github.corneloaie.firebase.functions/ios.<get-ios>|<get-ios>@io.github.corneloaie.firebase.functions.HttpsCallableResult(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.functions/js // io.github.corneloaie.firebase.functions/js|@io.github.corneloaie.firebase.functions.FirebaseFunctions{}js[0]
+    final fun (io.github.corneloaie.firebase.functions/FirebaseFunctions).<get-js>(): io.github.corneloaie.firebase.functions.externals/Functions // io.github.corneloaie.firebase.functions/js.<get-js>|<get-js>@io.github.corneloaie.firebase.functions.FirebaseFunctions(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.functions/js // io.github.corneloaie.firebase.functions/js|@io.github.corneloaie.firebase.functions.HttpsCallableReference{}js[0]
+    final fun (io.github.corneloaie.firebase.functions/HttpsCallableReference).<get-js>(): io.github.corneloaie.firebase.functions.externals/HttpsCallable // io.github.corneloaie.firebase.functions/js.<get-js>|<get-js>@io.github.corneloaie.firebase.functions.HttpsCallableReference(){}[0]
+
+// Targets: [js, wasmJs]
+final val io.github.corneloaie.firebase.functions/js // io.github.corneloaie.firebase.functions/js|@io.github.corneloaie.firebase.functions.HttpsCallableResult{}js[0]
+    final fun (io.github.corneloaie.firebase.functions/HttpsCallableResult).<get-js>(): io.github.corneloaie.firebase.functions.externals/HttpsCallableResult // io.github.corneloaie.firebase.functions/js.<get-js>|<get-js>@io.github.corneloaie.firebase.functions.HttpsCallableResult(){}[0]
+
+// Targets: [js, wasmJs]
+final fun (io.github.corneloaie.firebase.functions.externals/HttpsCallable).io.github.corneloaie.firebase.functions.externals/invoke(): kotlin.js/Promise<io.github.corneloaie.firebase.functions.externals/HttpsCallableResult> // io.github.corneloaie.firebase.functions.externals/invoke|invoke@io.github.corneloaie.firebase.functions.externals.HttpsCallable(){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.functions.externals/connectFunctionsEmulator(io.github.corneloaie.firebase.functions.externals/Functions, kotlin/String, kotlin/Int) // io.github.corneloaie.firebase.functions.externals/connectFunctionsEmulator|connectFunctionsEmulator(io.github.corneloaie.firebase.functions.externals.Functions;kotlin.String;kotlin.Int){}[0]
+
+// Targets: [js, wasmJs]
+final fun io.github.corneloaie.firebase.functions.externals/getFunctions(io.github.corneloaie.firebase.externals/FirebaseApp? = ..., kotlin/String? = ...): io.github.corneloaie.firebase.functions.externals/Functions // io.github.corneloaie.firebase.functions.externals/getFunctions|getFunctions(io.github.corneloaie.firebase.externals.FirebaseApp?;kotlin.String?){}[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.functions.externals/Functions // io.github.corneloaie.firebase.functions.externals/Functions|null[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.functions.externals/HttpsCallable // io.github.corneloaie.firebase.functions.externals/HttpsCallable|null[0]
+
+// Targets: [js]
+abstract interface io.github.corneloaie.firebase.functions.externals/HttpsCallableResult { // io.github.corneloaie.firebase.functions.externals/HttpsCallableResult|null[0]
+    abstract val data // io.github.corneloaie.firebase.functions.externals/HttpsCallableResult.data|{}data[0]
+        abstract fun <get-data>(): kotlin/Any? // io.github.corneloaie.firebase.functions.externals/HttpsCallableResult.data.<get-data>|<get-data>(){}[0]
+}
+
+// Targets: [js]
+final fun (io.github.corneloaie.firebase.functions.externals/HttpsCallable).io.github.corneloaie.firebase.functions.externals/invoke(kotlin/Any?): kotlin.js/Promise<io.github.corneloaie.firebase.functions.externals/HttpsCallableResult> // io.github.corneloaie.firebase.functions.externals/invoke|invoke@io.github.corneloaie.firebase.functions.externals.HttpsCallable(kotlin.Any?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.functions.externals/httpsCallable(io.github.corneloaie.firebase.functions.externals/Functions, kotlin/String, kotlin.js/Json?): io.github.corneloaie.firebase.functions.externals/HttpsCallable // io.github.corneloaie.firebase.functions.externals/httpsCallable|httpsCallable(io.github.corneloaie.firebase.functions.externals.Functions;kotlin.String;kotlin.js.Json?){}[0]
+
+// Targets: [js]
+final fun io.github.corneloaie.firebase.functions.externals/httpsCallableFromURL(io.github.corneloaie.firebase.functions.externals/Functions, kotlin/String, kotlin.js/Json?): io.github.corneloaie.firebase.functions.externals/HttpsCallable // io.github.corneloaie.firebase.functions.externals/httpsCallableFromURL|httpsCallableFromURL(io.github.corneloaie.firebase.functions.externals.Functions;kotlin.String;kotlin.js.Json?){}[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.functions.externals/Functions : kotlin.js/JsAny // io.github.corneloaie.firebase.functions.externals/Functions|null[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.functions.externals/HttpsCallable : kotlin.js/JsAny // io.github.corneloaie.firebase.functions.externals/HttpsCallable|null[0]
+
+// Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.functions.externals/HttpsCallableResult : kotlin.js/JsAny { // io.github.corneloaie.firebase.functions.externals/HttpsCallableResult|null[0]
+    abstract val data // io.github.corneloaie.firebase.functions.externals/HttpsCallableResult.data|{}data[0]
+        abstract fun <get-data>(): kotlin.js/JsAny? // io.github.corneloaie.firebase.functions.externals/HttpsCallableResult.data.<get-data>|<get-data>(){}[0]
+}
+
+// Targets: [wasmJs]
+final fun (io.github.corneloaie.firebase.functions.externals/HttpsCallable).io.github.corneloaie.firebase.functions.externals/invoke(kotlin.js/JsAny?): kotlin.js/Promise<io.github.corneloaie.firebase.functions.externals/HttpsCallableResult> // io.github.corneloaie.firebase.functions.externals/invoke|invoke@io.github.corneloaie.firebase.functions.externals.HttpsCallable(kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.functions.externals/httpsCallable(io.github.corneloaie.firebase.functions.externals/Functions, kotlin/String, kotlin.js/JsAny?): io.github.corneloaie.firebase.functions.externals/HttpsCallable // io.github.corneloaie.firebase.functions.externals/httpsCallable|httpsCallable(io.github.corneloaie.firebase.functions.externals.Functions;kotlin.String;kotlin.js.JsAny?){}[0]
+
+// Targets: [wasmJs]
+final fun io.github.corneloaie.firebase.functions.externals/httpsCallableFromURL(io.github.corneloaie.firebase.functions.externals/Functions, kotlin/String, kotlin.js/JsAny?): io.github.corneloaie.firebase.functions.externals/HttpsCallable // io.github.corneloaie.firebase.functions.externals/httpsCallableFromURL|httpsCallableFromURL(io.github.corneloaie.firebase.functions.externals.Functions;kotlin.String;kotlin.js.JsAny?){}[0]
