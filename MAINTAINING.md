@@ -90,7 +90,7 @@ weekly pull request, which edits the same catalog:
   decision.
 
 [`pins.txt`](.claude/skills/dependency-update/pins.txt) says what it must not bump, and why:
-- `<X.Y` stays below a version line (kotlinx-coroutines below 1.11, dokka below 2.2);
+- `<X.Y` stays below a version line (kotlinx-coroutines below 1.11, androidx-core below 1.15);
 - `hold` is left for a person (dokka and the publish plugin: pull request CI never publishes, so they need a Publish
   dry run);
 - `weekly` is the weekly workflow's (the Firebase SDKs).

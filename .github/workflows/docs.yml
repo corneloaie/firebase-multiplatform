@@ -26,9 +26,9 @@ jobs:
         with:
           xcode-version: '26.2.0'
       - name: Generate documentation
-        run: ./gradlew dokkaHtmlMultiModule
+        run: ./gradlew :dokkaGeneratePublicationHtml
       - name: Deploy API documentation to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: build/dokka/htmlMultiModule
+          folder: build/dokka/html
