@@ -1,70 +1,67 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>io.github.corneloaie.firebase.pnv</title>
-<link href="../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../styles/style.css" rel="Stylesheet">
 <link href="../../styles/main.css" rel="Stylesheet">
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../scripts/prism.js" async></script>
-<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
                     firebase-multiplatform
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">3.0.0-alpha02
+        <div class="library-version" id="library-version">0.3.0
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":firebase-pnv:dokkaHtmlPartial/androidMain">android</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-pnv:dokkaHtmlPartial/commonMain">common</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":firebase-pnv/androidMain">android</button>
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true" data-filter=":firebase-pnv/commonMain">common</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-pnv:dokkaHtmlPartial/androidMain" data-filter=":firebase-pnv:dokkaHtmlPartial/androidMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-pnv/androidMain" data-filter=":firebase-pnv/androidMain">
                                 <span class="checkbox--icon"></span>
                                 android
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-pnv:dokkaHtmlPartial/commonMain" data-filter=":firebase-pnv:dokkaHtmlPartial/commonMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-pnv/commonMain" data-filter=":firebase-pnv/commonMain">
                                 <span class="checkbox--icon"></span>
                                 common
                             </label>
@@ -72,7 +69,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://github.com/corneloaie/firebase-multiplatform"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -80,26 +77,28 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     firebase-multiplatform
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="package" id="content" pageids="firebase-pnv::io.github.corneloaie.firebase.pnv////PointingToDeclaration//817743796">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageids="firebase-pnv::io.github.corneloaie.firebase.pnv////PointingToDeclaration//898754990">
   <div class="breadcrumbs"><a href="../index.html">firebase-pnv</a><span class="delimiter">/</span><span class="current">io.github.corneloaie.firebase.pnv</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
@@ -108,93 +107,93 @@
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button><button class="section-tab" data-togglable="PROPERTY,EXTENSION_PROPERTY">Properties</button></div>
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
-        <div class="table"><a data-name="374442262%2FClasslikes%2F-549244255" anchor-label="FirebasePhoneNumberVerification" id="374442262%2FClasslikes%2F-549244255" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-pnv:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="374442262%2FClasslikes%2F415653437" anchor-label="FirebasePhoneNumberVerification" id="374442262%2FClasslikes%2F415653437" data-filterable-set=":firebase-pnv/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-pnv/commonMain" data-filterable-set=":firebase-pnv/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-phone-number-verification/index.html"><span>Firebase</span><wbr><span>Phone</span><wbr><span>Number</span><wbr><span><span>Verification</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="374442262%2FClasslikes%2F-549244255"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="374442262%2FClasslikes%2F415653437"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-firebase-phone-number-verification/index.html">FirebasePhoneNumberVerification</a></div><div class="brief "><p class="paragraph">Firebase Phone Number Verification: gets the phone number of a SIM in the device directly from its carrier, with a token signed by Firebase for your backend to verify, instead of sending an SMS code.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-firebase-phone-number-verification/index.html">FirebasePhoneNumberVerification</a></div><div class="brief "><p class="paragraph">Firebase Phone Number Verification: gets the phone number of a SIM in the device directly from its carrier, with a token signed by Firebase for your backend to verify, instead of sending an SMS code.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-10492003%2FClasslikes%2F-549244255" anchor-label="FirebasePhoneNumberVerificationException" id="-10492003%2FClasslikes%2F-549244255" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-pnv:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain">
+<a data-name="-10492003%2FClasslikes%2F415653437" anchor-label="FirebasePhoneNumberVerificationException" id="-10492003%2FClasslikes%2F415653437" data-filterable-set=":firebase-pnv/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-pnv/commonMain" data-filterable-set=":firebase-pnv/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-phone-number-verification-exception/index.html"><span>Firebase</span><wbr><span>Phone</span><wbr><span>Number</span><wbr><span>Verification</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-10492003%2FClasslikes%2F-549244255"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-10492003%2FClasslikes%2F415653437"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-phone-number-verification-exception/index.html">FirebasePhoneNumberVerificationException</a><span class="token operator"> = </span><a href="../com.google.firebase.pnv/-firebase-phone-number-verification-exception/index.html">com.google.firebase.pnv.FirebasePhoneNumberVerificationException</a></div><div class="brief "><p class="paragraph">The exception that a failed Phone Number Verification operation throws; its <code class="lang-kotlin">errorCode</code>, one of <a href="-firebase-pnv-status-codes/index.html">FirebasePnvStatusCodes</a>, says why.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-phone-number-verification-exception/index.html">FirebasePhoneNumberVerificationException</a><span class="token operator"> = </span><a href="../com.google.firebase.pnv/-firebase-phone-number-verification-exception/index.html">com.google.firebase.pnv.FirebasePhoneNumberVerificationException</a></div><div class="brief "><p class="paragraph">The exception that a failed Phone Number Verification operation throws; its <code class="lang-kotlin">errorCode</code>, one of <a href="-firebase-pnv-status-codes/index.html">FirebasePnvStatusCodes</a>, says why.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-508608226%2FClasslikes%2F-549244255" anchor-label="FirebasePnvStatusCodes" id="-508608226%2FClasslikes%2F-549244255" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-pnv:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain">
+<a data-name="-508608226%2FClasslikes%2F415653437" anchor-label="FirebasePnvStatusCodes" id="-508608226%2FClasslikes%2F415653437" data-filterable-set=":firebase-pnv/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-pnv/commonMain" data-filterable-set=":firebase-pnv/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-pnv-status-codes/index.html"><span>Firebase</span><wbr><span>Pnv</span><wbr><span>Status</span><wbr><span><span>Codes</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-508608226%2FClasslikes%2F-549244255"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-508608226%2FClasslikes%2F415653437"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-pnv-status-codes/index.html">FirebasePnvStatusCodes</a><span class="token operator"> = </span><a href="../com.google.firebase.pnv/-firebase-pnv-status-codes/index.html">com.google.firebase.pnv.FirebasePnvStatusCodes</a></div><div class="brief "><p class="paragraph">The status codes of Phone Number Verification, the <code class="lang-kotlin">errorCode</code> of a <a href="-firebase-phone-number-verification-exception/index.html">FirebasePhoneNumberVerificationException</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-pnv-status-codes/index.html">FirebasePnvStatusCodes</a><span class="token operator"> = </span><a href="../com.google.firebase.pnv/-firebase-pnv-status-codes/index.html">com.google.firebase.pnv.FirebasePnvStatusCodes</a></div><div class="brief "><p class="paragraph">The status codes of Phone Number Verification, the <code class="lang-kotlin">errorCode</code> of a <a href="-firebase-phone-number-verification-exception/index.html">FirebasePhoneNumberVerificationException</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1097531760%2FClasslikes%2F-549244255" anchor-label="VerificationSupportResult" id="1097531760%2FClasslikes%2F-549244255" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-pnv:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain">
+<a data-name="1097531760%2FClasslikes%2F415653437" anchor-label="VerificationSupportResult" id="1097531760%2FClasslikes%2F415653437" data-filterable-set=":firebase-pnv/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-pnv/commonMain" data-filterable-set=":firebase-pnv/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-verification-support-result/index.html"><span>Verification</span><wbr><span>Support</span><wbr><span><span>Result</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1097531760%2FClasslikes%2F-549244255"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1097531760%2FClasslikes%2F415653437"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-verification-support-result/index.html">VerificationSupportResult</a><span class="token operator"> = </span><a href="../com.google.firebase.pnv/-verification-support-result/index.html">com.google.firebase.pnv.VerificationSupportResult</a></div><div class="brief "><p class="paragraph">Whether a SIM of the device supports verification, from <a href="-firebase-phone-number-verification/get-verification-support-info.html">FirebasePhoneNumberVerification.getVerificationSupportInfo</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-verification-support-result/index.html">VerificationSupportResult</a><span class="token operator"> = </span><a href="../com.google.firebase.pnv/-verification-support-result/index.html">com.google.firebase.pnv.VerificationSupportResult</a></div><div class="brief "><p class="paragraph">Whether a SIM of the device supports verification, from <a href="-firebase-phone-number-verification/get-verification-support-info.html">FirebasePhoneNumberVerification.getVerificationSupportInfo</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1979514053%2FClasslikes%2F-549244255" anchor-label="VerificationSupportStatus" id="-1979514053%2FClasslikes%2F-549244255" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-pnv:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain">
+<a data-name="-1979514053%2FClasslikes%2F415653437" anchor-label="VerificationSupportStatus" id="-1979514053%2FClasslikes%2F415653437" data-filterable-set=":firebase-pnv/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-pnv/commonMain" data-filterable-set=":firebase-pnv/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-verification-support-status/index.html"><span>Verification</span><wbr><span>Support</span><wbr><span><span>Status</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1979514053%2FClasslikes%2F-549244255"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1979514053%2FClasslikes%2F415653437"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-verification-support-status/index.html">VerificationSupportStatus</a><span class="token operator"> = </span><a href="../com.google.firebase.pnv/-verification-support-status/index.html">com.google.firebase.pnv.VerificationSupportStatus</a></div><div class="brief "><p class="paragraph">The reasons of a <a href="-verification-support-result/index.html">VerificationSupportResult</a>, its <code class="lang-kotlin">getReason()</code>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-verification-support-status/index.html">VerificationSupportStatus</a><span class="token operator"> = </span><a href="../com.google.firebase.pnv/-verification-support-status/index.html">com.google.firebase.pnv.VerificationSupportStatus</a></div><div class="brief "><p class="paragraph">The reasons of a <a href="-verification-support-result/index.html">VerificationSupportResult</a>, its <code class="lang-kotlin">getReason()</code>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="972946426%2FClasslikes%2F-549244255" anchor-label="VerifiedPhoneNumberTokenResult" id="972946426%2FClasslikes%2F-549244255" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-pnv:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain">
+<a data-name="972946426%2FClasslikes%2F415653437" anchor-label="VerifiedPhoneNumberTokenResult" id="972946426%2FClasslikes%2F415653437" data-filterable-set=":firebase-pnv/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-pnv/commonMain" data-filterable-set=":firebase-pnv/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-verified-phone-number-token-result/index.html"><span>Verified</span><wbr><span>Phone</span><wbr><span>Number</span><wbr><span>Token</span><wbr><span><span>Result</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="972946426%2FClasslikes%2F-549244255"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="972946426%2FClasslikes%2F415653437"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-verified-phone-number-token-result/index.html">VerifiedPhoneNumberTokenResult</a><span class="token operator"> = </span><a href="../com.google.firebase.pnv/-verified-phone-number-token-result/index.html">com.google.firebase.pnv.VerifiedPhoneNumberTokenResult</a></div><div class="brief "><p class="paragraph">A verified phone number with its Firebase PNV token.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-verified-phone-number-token-result/index.html">VerifiedPhoneNumberTokenResult</a><span class="token operator"> = </span><a href="../com.google.firebase.pnv/-verified-phone-number-token-result/index.html">com.google.firebase.pnv.VerifiedPhoneNumberTokenResult</a></div><div class="brief "><p class="paragraph">A verified phone number with its Firebase PNV token.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -202,35 +201,35 @@
         </div>
       </div>
       <div data-togglable="EXTENSION_PROPERTY">
-        <h2 class="">Properties</h2>
-        <div class="table"><a data-name="1600992066%2FProperties%2F-145238247" anchor-label="android" id="1600992066%2FProperties%2F-145238247" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/androidMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-pnv:dokkaHtmlPartial/androidMain" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/androidMain">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-1538008917%2FProperties%2F-114112515" anchor-label="android" id="-1538008917%2FProperties%2F-114112515" data-filterable-set=":firebase-pnv/androidMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-pnv/androidMain" data-filterable-set=":firebase-pnv/androidMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="android.html"><span><span>android</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1600992066%2FProperties%2F-145238247"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1538008917%2FProperties%2F-114112515"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-pnv:dokkaHtmlPartial/androidMain" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":firebase-pnv:dokkaHtmlPartial/androidMain">android</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.pnv/-firebase-phone-number-verification/index.html">FirebasePhoneNumberVerification</a></div><div class="brief "><p class="paragraph">The underlying Firebase Android SDK object.</p></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-pnv/androidMain" data-filterable-set=":firebase-pnv/androidMain" data-active="" data-toggle=":firebase-pnv/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv/androidMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-phone-number-verification/index.html#374442262%2FMain%2F-114112515">FirebasePhoneNumberVerification</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.pnv/-firebase-phone-number-verification/index.html">FirebasePhoneNumberVerification</a></div><div class="brief "><p class="paragraph">The underlying Firebase Android SDK object.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1371310207%2FProperties%2F-549244255" anchor-label="phoneNumberVerification" id="1371310207%2FProperties%2F-549244255" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-pnv:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain">
+<a data-name="1986616778%2FProperties%2F415653437" anchor-label="phoneNumberVerification" id="1986616778%2FProperties%2F415653437" data-filterable-set=":firebase-pnv/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-pnv/commonMain" data-filterable-set=":firebase-pnv/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="phone-number-verification.html"><span>phone</span><wbr><span>Number</span><wbr><span><span>Verification</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1371310207%2FProperties%2F-549244255"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1986616778%2FProperties%2F415653437"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="phone-number-verification.html">phoneNumberVerification</a><span class="token operator">: </span><a href="-firebase-phone-number-verification/index.html">FirebasePhoneNumberVerification</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-phone-number-verification/index.html">FirebasePhoneNumberVerification</a> of the default FirebaseApp.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../firebase-app/io.github.corneloaie.firebase/-firebase/index.html">Firebase</a><span class="token punctuation">.</span><a href="phone-number-verification.html">phoneNumberVerification</a><span class="token operator">: </span><a href="-firebase-phone-number-verification/index.html">FirebasePhoneNumberVerification</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-phone-number-verification/index.html">FirebasePhoneNumberVerification</a> of the default <a href="../../firebase-app/io.github.corneloaie.firebase/-firebase-app/index.html">FirebaseApp</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -238,18 +237,18 @@
         </div>
       </div>
       <div data-togglable="EXTENSION_FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="605063903%2FFunctions%2F-549244255" anchor-label="phoneNumberVerification" id="605063903%2FFunctions%2F-549244255" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-pnv:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-pnv:dokkaHtmlPartial/commonMain">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="422431863%2FFunctions%2F415653437" anchor-label="phoneNumberVerification" id="422431863%2FFunctions%2F415653437" data-filterable-set=":firebase-pnv/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-pnv/commonMain" data-filterable-set=":firebase-pnv/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="phone-number-verification.html"><span>phone</span><wbr><span>Number</span><wbr><span><span>Verification</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="605063903%2FFunctions%2F-549244255"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="422431863%2FFunctions%2F415653437"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="phone-number-verification.html"><span class="token function">phoneNumberVerification</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">app<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-firebase-phone-number-verification/index.html">FirebasePhoneNumberVerification</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-phone-number-verification/index.html">FirebasePhoneNumberVerification</a> of <a href="phone-number-verification.html">app</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-pnv/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../firebase-app/io.github.corneloaie.firebase/-firebase/index.html">Firebase</a><span class="token punctuation">.</span><a href="phone-number-verification.html"><span class="token function">phoneNumberVerification</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">app<span class="token operator">: </span><a href="../../firebase-app/io.github.corneloaie.firebase/-firebase-app/index.html">FirebaseApp</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-firebase-phone-number-verification/index.html">FirebasePhoneNumberVerification</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-phone-number-verification/index.html">FirebasePhoneNumberVerification</a> of <a href="phone-number-verification.html">app</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -260,17 +259,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,110 +1,99 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>firebase-firestore</title>
-<link href="../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../scripts/sourceset_dependencies.js" async></script>
 <link href="../styles/style.css" rel="Stylesheet">
 <link href="../styles/main.css" rel="Stylesheet">
 <link href="../styles/prism.css" rel="Stylesheet">
 <link href="../styles/logo-styles.css" rel="Stylesheet">
-<link href="../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../scripts/main.js" defer></script>
 <script type="text/javascript" src="../scripts/prism.js" async></script>
-<script type="text/javascript" src="../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<script type="text/javascript" src="../ui-kit/ui-kit.min.js" defer></script></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../index.html" tabindex="1">
                     firebase-multiplatform
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">3.0.0-alpha02
+        <div class="library-version" id="library-version">0.3.0
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":firebase-firestore:dokkaHtmlPartial/androidMain">android</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-firestore:dokkaHtmlPartial/appleMain">apple</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-firestore:dokkaHtmlPartial/commonMain">common</button>
-                <button class="platform-tag platform-selector js-like" data-active="" data-filter=":firebase-firestore:dokkaHtmlPartial/jsMain">js</button>
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":firebase-firestore:dokkaHtmlPartial/jvmMain">jvm</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-firestore:dokkaHtmlPartial/nonJvmMain">nonJvm</button>
-                <button class="platform-tag platform-selector wasm-like" data-active="" data-filter=":firebase-firestore:dokkaHtmlPartial/wasmJsMain">wasmJs</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":firebase-firestore/androidMain">android</button>
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true" data-filter=":firebase-firestore/appleMain">apple</button>
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true" data-filter=":firebase-firestore/commonMain">common</button>
+                <button class="platform-tag platform-selector js-like" data-active="" aria-pressed="true" data-filter=":firebase-firestore/jsMain">js</button>
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true" data-filter=":firebase-firestore/nonJvmMain">nonJvm</button>
+                <button class="platform-tag platform-selector wasm-like" data-active="" aria-pressed="true" data-filter=":firebase-firestore/wasmJsMain">wasmJs</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore:dokkaHtmlPartial/androidMain" data-filter=":firebase-firestore:dokkaHtmlPartial/androidMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore/androidMain" data-filter=":firebase-firestore/androidMain">
                                 <span class="checkbox--icon"></span>
                                 android
                             </label>
                         </li>
-                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore:dokkaHtmlPartial/appleMain" data-filter=":firebase-firestore:dokkaHtmlPartial/appleMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore/appleMain" data-filter=":firebase-firestore/appleMain">
                                 <span class="checkbox--icon"></span>
                                 apple
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore:dokkaHtmlPartial/commonMain" data-filter=":firebase-firestore:dokkaHtmlPartial/commonMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore/commonMain" data-filter=":firebase-firestore/commonMain">
                                 <span class="checkbox--icon"></span>
                                 common
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option js-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore:dokkaHtmlPartial/jsMain" data-filter=":firebase-firestore:dokkaHtmlPartial/jsMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore/jsMain" data-filter=":firebase-firestore/jsMain">
                                 <span class="checkbox--icon"></span>
                                 js
                             </label>
                         </li>
-                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
-                            <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore:dokkaHtmlPartial/jvmMain" data-filter=":firebase-firestore:dokkaHtmlPartial/jvmMain">
-                                <span class="checkbox--icon"></span>
-                                jvm
-                            </label>
-                        </li>
                         <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore:dokkaHtmlPartial/nonJvmMain" data-filter=":firebase-firestore:dokkaHtmlPartial/nonJvmMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore/nonJvmMain" data-filter=":firebase-firestore/nonJvmMain">
                                 <span class="checkbox--icon"></span>
                                 nonJvm
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option wasm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore:dokkaHtmlPartial/wasmJsMain" data-filter=":firebase-firestore:dokkaHtmlPartial/wasmJsMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore/wasmJsMain" data-filter=":firebase-firestore/wasmJsMain">
                                 <span class="checkbox--icon"></span>
                                 wasmJs
                             </label>
@@ -112,7 +101,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://github.com/corneloaie/firebase-multiplatform"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -120,50 +109,51 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     firebase-multiplatform
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" id="content" pageids="firebase-firestore::////PointingToDeclaration//907706581">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" id="content" pageids="firebase-firestore::////PointingToDeclaration//266746141">
   <div class="breadcrumbs"></div>
   <div class="cover ">
     <h1 class="cover"><span><span>firebase-firestore</span></span></h1>
     <div class="platform-hinted UnderCoverText with-platform-tabs" data-platform-hinted="data-platform-hinted">
-      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-firestore:dokkaHtmlPartial/androidMain" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":firebase-firestore:dokkaHtmlPartial/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-firestore:dokkaHtmlPartial/appleMain" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/appleMain" data-toggle=":firebase-firestore:dokkaHtmlPartial/appleMain">apple</button><button class="platform-bookmark" data-filterable-current=":firebase-firestore:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/commonMain" data-toggle=":firebase-firestore:dokkaHtmlPartial/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":firebase-firestore:dokkaHtmlPartial/jsMain" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/jsMain" data-toggle=":firebase-firestore:dokkaHtmlPartial/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-firestore:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/jvmMain" data-toggle=":firebase-firestore:dokkaHtmlPartial/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":firebase-firestore:dokkaHtmlPartial/nonJvmMain" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/nonJvmMain" data-toggle=":firebase-firestore:dokkaHtmlPartial/nonJvmMain">nonJvm</button><button class="platform-bookmark" data-filterable-current=":firebase-firestore:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/wasmJsMain" data-toggle=":firebase-firestore:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-firestore:dokkaHtmlPartial/androidMain"><p class="paragraph">This module is a direct forward of the Firebase Firestore library. It provides the main functionality, like storing data.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-firestore:dokkaHtmlPartial/appleMain"><p class="paragraph">This module is a direct forward of the Firebase Firestore library. It provides the main functionality, like storing data.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-firestore:dokkaHtmlPartial/commonMain"><p class="paragraph">This module is a direct forward of the Firebase Firestore library. It provides the main functionality, like storing data.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-firestore:dokkaHtmlPartial/jsMain"><p class="paragraph">This module is a direct forward of the Firebase Firestore library. It provides the main functionality, like storing data.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-firestore:dokkaHtmlPartial/jvmMain"><p class="paragraph">This module is a direct forward of the Firebase Firestore library. It provides the main functionality, like storing data.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-firestore:dokkaHtmlPartial/nonJvmMain"><p class="paragraph">This module is a direct forward of the Firebase Firestore library. It provides the main functionality, like storing data.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-firestore:dokkaHtmlPartial/wasmJsMain"><p class="paragraph">This module is a direct forward of the Firebase Firestore library. It provides the main functionality, like storing data.</p></div>    </div>
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-firestore/androidMain" data-filterable-set=":firebase-firestore/androidMain" data-active="" data-toggle=":firebase-firestore/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-firestore/appleMain" data-filterable-set=":firebase-firestore/appleMain" data-toggle=":firebase-firestore/appleMain">apple</button><button class="platform-bookmark" data-filterable-current=":firebase-firestore/commonMain" data-filterable-set=":firebase-firestore/commonMain" data-toggle=":firebase-firestore/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":firebase-firestore/jsMain" data-filterable-set=":firebase-firestore/jsMain" data-toggle=":firebase-firestore/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-firestore/nonJvmMain" data-filterable-set=":firebase-firestore/nonJvmMain" data-toggle=":firebase-firestore/nonJvmMain">nonJvm</button><button class="platform-bookmark" data-filterable-current=":firebase-firestore/wasmJsMain" data-filterable-set=":firebase-firestore/wasmJsMain" data-toggle=":firebase-firestore/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-firestore/androidMain"><p class="paragraph">This module is a direct forward of the Firebase Firestore library. It provides the main functionality, like storing data.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-firestore/appleMain"><p class="paragraph">This module is a direct forward of the Firebase Firestore library. It provides the main functionality, like storing data.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-firestore/commonMain"><p class="paragraph">This module is a direct forward of the Firebase Firestore library. It provides the main functionality, like storing data.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-firestore/jsMain"><p class="paragraph">This module is a direct forward of the Firebase Firestore library. It provides the main functionality, like storing data.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-firestore/nonJvmMain"><p class="paragraph">This module is a direct forward of the Firebase Firestore library. It provides the main functionality, like storing data.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-firestore/wasmJsMain"><p class="paragraph">This module is a direct forward of the Firebase Firestore library. It provides the main functionality, like storing data.</p></div>    </div>
   </div>
   <h2 class="">Packages</h2>
-  <div class="table"><a data-name="1549989582%2FPackages%2F907706581" anchor-label="com.google.firebase.firestore" id="1549989582%2FPackages%2F907706581" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/androidMain,:firebase-firestore:dokkaHtmlPartial/appleMain,:firebase-firestore:dokkaHtmlPartial/commonMain,:firebase-firestore:dokkaHtmlPartial/jsMain,:firebase-firestore:dokkaHtmlPartial/jvmMain,:firebase-firestore:dokkaHtmlPartial/nonJvmMain,:firebase-firestore:dokkaHtmlPartial/wasmJsMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-firestore:dokkaHtmlPartial/androidMain,:firebase-firestore:dokkaHtmlPartial/appleMain,:firebase-firestore:dokkaHtmlPartial/commonMain,:firebase-firestore:dokkaHtmlPartial/jsMain,:firebase-firestore:dokkaHtmlPartial/jvmMain,:firebase-firestore:dokkaHtmlPartial/nonJvmMain,:firebase-firestore:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/androidMain,:firebase-firestore:dokkaHtmlPartial/appleMain,:firebase-firestore:dokkaHtmlPartial/commonMain,:firebase-firestore:dokkaHtmlPartial/jsMain,:firebase-firestore:dokkaHtmlPartial/jvmMain,:firebase-firestore:dokkaHtmlPartial/nonJvmMain,:firebase-firestore:dokkaHtmlPartial/wasmJsMain">
+  <div class="table"><a data-name="1549989582%2FPackages%2F266746141" anchor-label="com.google.firebase.firestore" id="1549989582%2FPackages%2F266746141" data-filterable-set=":firebase-firestore/androidMain,:firebase-firestore/appleMain,:firebase-firestore/commonMain,:firebase-firestore/jsMain,:firebase-firestore/nonJvmMain,:firebase-firestore/wasmJsMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-firestore/androidMain,:firebase-firestore/appleMain,:firebase-firestore/commonMain,:firebase-firestore/jsMain,:firebase-firestore/nonJvmMain,:firebase-firestore/wasmJsMain" data-filterable-set=":firebase-firestore/androidMain,:firebase-firestore/appleMain,:firebase-firestore/commonMain,:firebase-firestore/jsMain,:firebase-firestore/nonJvmMain,:firebase-firestore/wasmJsMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.google.firebase.firestore/index.html">com.google.firebase.firestore</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1549989582%2FPackages%2F907706581"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1549989582%2FPackages%2F266746141"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">android</div>
-              <div class="platform-tag common-like">apple</div>
+              <div class="platform-tag native-like">apple</div>
               <div class="platform-tag common-like">common</div>
               <div class="platform-tag js-like">js</div>
-              <div class="platform-tag jvm-like">jvm</div>
               <div class="platform-tag common-like">nonJvm</div>
               <div class="platform-tag wasm-like">wasmJs</div>
             </div>
@@ -172,16 +162,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="2013027654%2FPackages%2F-1515737202" anchor-label="com.google.firebase.firestore.pipeline" id="2013027654%2FPackages%2F-1515737202" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/commonMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-firestore:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/commonMain">
+<a data-name="2013027654%2FPackages%2F1259820464" anchor-label="com.google.firebase.firestore.pipeline" id="2013027654%2FPackages%2F1259820464" data-filterable-set=":firebase-firestore/commonMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-firestore/commonMain" data-filterable-set=":firebase-firestore/commonMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.google.firebase.firestore.pipeline/index.html">com.google.firebase.firestore.pipeline</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2013027654%2FPackages%2F-1515737202"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2013027654%2FPackages%2F1259820464"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag common-like">common</div>
             </div>
@@ -190,16 +180,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="-2020596888%2FPackages%2F-1515737202" anchor-label="com.google.firebase.firestore.pipeline.evaluation" id="-2020596888%2FPackages%2F-1515737202" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/commonMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-firestore:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/commonMain">
+<a data-name="-2020596888%2FPackages%2F1259820464" anchor-label="com.google.firebase.firestore.pipeline.evaluation" id="-2020596888%2FPackages%2F1259820464" data-filterable-set=":firebase-firestore/commonMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-firestore/commonMain" data-filterable-set=":firebase-firestore/commonMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.google.firebase.firestore.pipeline.evaluation/index.html">com.google.firebase.firestore.pipeline.evaluation</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2020596888%2FPackages%2F-1515737202"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2020596888%2FPackages%2F1259820464"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag common-like">common</div>
             </div>
@@ -208,22 +198,21 @@
         <div></div>
       </div>
     </div>
-<a data-name="-1769259276%2FPackages%2F-1219229517" anchor-label="io.github.corneloaie.firebase.firestore" id="-1769259276%2FPackages%2F-1219229517" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/androidMain,:firebase-firestore:dokkaHtmlPartial/appleMain,:firebase-firestore:dokkaHtmlPartial/commonMain,:firebase-firestore:dokkaHtmlPartial/jsMain,:firebase-firestore:dokkaHtmlPartial/jvmMain,:firebase-firestore:dokkaHtmlPartial/wasmJsMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-firestore:dokkaHtmlPartial/androidMain,:firebase-firestore:dokkaHtmlPartial/appleMain,:firebase-firestore:dokkaHtmlPartial/commonMain,:firebase-firestore:dokkaHtmlPartial/jsMain,:firebase-firestore:dokkaHtmlPartial/jvmMain,:firebase-firestore:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/androidMain,:firebase-firestore:dokkaHtmlPartial/appleMain,:firebase-firestore:dokkaHtmlPartial/commonMain,:firebase-firestore:dokkaHtmlPartial/jsMain,:firebase-firestore:dokkaHtmlPartial/jvmMain,:firebase-firestore:dokkaHtmlPartial/wasmJsMain">
+<a data-name="-1769259276%2FPackages%2F-1843259111" anchor-label="io.github.corneloaie.firebase.firestore" id="-1769259276%2FPackages%2F-1843259111" data-filterable-set=":firebase-firestore/commonMain,:firebase-firestore/androidMain,:firebase-firestore/appleMain,:firebase-firestore/jsMain,:firebase-firestore/wasmJsMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-firestore/commonMain,:firebase-firestore/androidMain,:firebase-firestore/appleMain,:firebase-firestore/jsMain,:firebase-firestore/wasmJsMain" data-filterable-set=":firebase-firestore/commonMain,:firebase-firestore/androidMain,:firebase-firestore/appleMain,:firebase-firestore/jsMain,:firebase-firestore/wasmJsMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="io.github.corneloaie.firebase.firestore/index.html">io.github.corneloaie.firebase.firestore</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1769259276%2FPackages%2F-1219229517"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1769259276%2FPackages%2F-1843259111"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">android</div>
-              <div class="platform-tag common-like">apple</div>
+              <div class="platform-tag native-like">apple</div>
               <div class="platform-tag common-like">common</div>
               <div class="platform-tag js-like">js</div>
-              <div class="platform-tag jvm-like">jvm</div>
               <div class="platform-tag wasm-like">wasmJs</div>
             </div>
           </div>
@@ -231,16 +220,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="1901104526%2FPackages%2F-1051790667" anchor-label="io.github.corneloaie.firebase.firestore.externals" id="1901104526%2FPackages%2F-1051790667" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/wasmJsMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-firestore:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/wasmJsMain">
+<a data-name="1901104526%2FPackages%2F1297463639" anchor-label="io.github.corneloaie.firebase.firestore.externals" id="1901104526%2FPackages%2F1297463639" data-filterable-set=":firebase-firestore/wasmJsMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-firestore/wasmJsMain" data-filterable-set=":firebase-firestore/wasmJsMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="io.github.corneloaie.firebase.firestore.externals/index.html">io.github.corneloaie.firebase.firestore.externals</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1901104526%2FPackages%2F-1051790667"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1901104526%2FPackages%2F1297463639"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag wasm-like">wasmJs</div>
             </div>
@@ -249,16 +238,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="2071465585%2FPackages%2F-1051790667" anchor-label="io.github.corneloaie.firebase.firestore.externals.pipelines" id="2071465585%2FPackages%2F-1051790667" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/wasmJsMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-firestore:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/wasmJsMain">
+<a data-name="2071465585%2FPackages%2F1297463639" anchor-label="io.github.corneloaie.firebase.firestore.externals.pipelines" id="2071465585%2FPackages%2F1297463639" data-filterable-set=":firebase-firestore/wasmJsMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-firestore/wasmJsMain" data-filterable-set=":firebase-firestore/wasmJsMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="io.github.corneloaie.firebase.firestore.externals.pipelines/index.html">io.github.corneloaie.firebase.firestore.externals.pipelines</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2071465585%2FPackages%2F-1051790667"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2071465585%2FPackages%2F1297463639"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag wasm-like">wasmJs</div>
             </div>
@@ -270,17 +259,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

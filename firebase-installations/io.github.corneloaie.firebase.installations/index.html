@@ -1,102 +1,91 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>io.github.corneloaie.firebase.installations</title>
-<link href="../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../styles/style.css" rel="Stylesheet">
 <link href="../../styles/main.css" rel="Stylesheet">
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../scripts/prism.js" async></script>
-<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
                     firebase-multiplatform
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">3.0.0-alpha02
+        <div class="library-version" id="library-version">0.3.0
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":firebase-installations:dokkaHtmlPartial/androidMain">android</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-installations:dokkaHtmlPartial/appleMain">apple</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-installations:dokkaHtmlPartial/commonMain">common</button>
-                <button class="platform-tag platform-selector js-like" data-active="" data-filter=":firebase-installations:dokkaHtmlPartial/jsMain">js</button>
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":firebase-installations:dokkaHtmlPartial/jvmMain">jvm</button>
-                <button class="platform-tag platform-selector wasm-like" data-active="" data-filter=":firebase-installations:dokkaHtmlPartial/wasmJsMain">wasmJs</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":firebase-installations/androidMain">android</button>
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true" data-filter=":firebase-installations/appleMain">apple</button>
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true" data-filter=":firebase-installations/commonMain">common</button>
+                <button class="platform-tag platform-selector js-like" data-active="" aria-pressed="true" data-filter=":firebase-installations/jsMain">js</button>
+                <button class="platform-tag platform-selector wasm-like" data-active="" aria-pressed="true" data-filter=":firebase-installations/wasmJsMain">wasmJs</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-installations:dokkaHtmlPartial/androidMain" data-filter=":firebase-installations:dokkaHtmlPartial/androidMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-installations/androidMain" data-filter=":firebase-installations/androidMain">
                                 <span class="checkbox--icon"></span>
                                 android
                             </label>
                         </li>
-                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-installations:dokkaHtmlPartial/appleMain" data-filter=":firebase-installations:dokkaHtmlPartial/appleMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-installations/appleMain" data-filter=":firebase-installations/appleMain">
                                 <span class="checkbox--icon"></span>
                                 apple
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-installations:dokkaHtmlPartial/commonMain" data-filter=":firebase-installations:dokkaHtmlPartial/commonMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-installations/commonMain" data-filter=":firebase-installations/commonMain">
                                 <span class="checkbox--icon"></span>
                                 common
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option js-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-installations:dokkaHtmlPartial/jsMain" data-filter=":firebase-installations:dokkaHtmlPartial/jsMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-installations/jsMain" data-filter=":firebase-installations/jsMain">
                                 <span class="checkbox--icon"></span>
                                 js
                             </label>
                         </li>
-                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
-                            <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-installations:dokkaHtmlPartial/jvmMain" data-filter=":firebase-installations:dokkaHtmlPartial/jvmMain">
-                                <span class="checkbox--icon"></span>
-                                jvm
-                            </label>
-                        </li>
                         <li role="option" class="dropdown--option platform-selector-option wasm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-installations:dokkaHtmlPartial/wasmJsMain" data-filter=":firebase-installations:dokkaHtmlPartial/wasmJsMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-installations/wasmJsMain" data-filter=":firebase-installations/wasmJsMain">
                                 <span class="checkbox--icon"></span>
                                 wasmJs
                             </label>
@@ -104,7 +93,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://github.com/corneloaie/firebase-multiplatform"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -112,26 +101,28 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     firebase-multiplatform
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="package" id="content" pageids="firebase-installations::io.github.corneloaie.firebase.installations////PointingToDeclaration//-983838349">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageids="firebase-installations::io.github.corneloaie.firebase.installations////PointingToDeclaration//-663581053">
   <div class="breadcrumbs"><a href="../index.html">firebase-installations</a><span class="delimiter">/</span><span class="current">io.github.corneloaie.firebase.installations</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
@@ -140,33 +131,33 @@
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button><button class="section-tab" data-togglable="PROPERTY,EXTENSION_PROPERTY">Properties</button></div>
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
-        <div class="table"><a data-name="-2080332882%2FClasslikes%2F480675520" anchor-label="FirebaseInstallations" id="-2080332882%2FClasslikes%2F480675520" data-filterable-set=":firebase-installations:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-installations:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-installations:dokkaHtmlPartial/commonMain">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-2080332882%2FClasslikes%2F1297787966" anchor-label="FirebaseInstallations" id="-2080332882%2FClasslikes%2F1297787966" data-filterable-set=":firebase-installations/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-installations/commonMain" data-filterable-set=":firebase-installations/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-installations/index.html"><span>Firebase</span><wbr><span><span>Installations</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2080332882%2FClasslikes%2F480675520"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2080332882%2FClasslikes%2F1297787966"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-installations:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-firebase-installations/index.html">FirebaseInstallations</a></div><div class="brief "><p class="paragraph">Entry point for Firebase installations.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-installations/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-firebase-installations/index.html">FirebaseInstallations</a></div><div class="brief "><p class="paragraph">Entry point for Firebase installations.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="128530437%2FClasslikes%2F480675520" anchor-label="FirebaseInstallationsException" id="128530437%2FClasslikes%2F480675520" data-filterable-set=":firebase-installations:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-installations:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-installations:dokkaHtmlPartial/commonMain">
+<a data-name="128530437%2FClasslikes%2F1297787966" anchor-label="FirebaseInstallationsException" id="128530437%2FClasslikes%2F1297787966" data-filterable-set=":firebase-installations/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-installations/commonMain" data-filterable-set=":firebase-installations/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-installations-exception/index.html"><span>Firebase</span><wbr><span>Installations</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="128530437%2FClasslikes%2F480675520"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="128530437%2FClasslikes%2F1297787966"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-installations:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-installations-exception/index.html">FirebaseInstallationsException</a><span class="token operator"> = </span><a href="../com.google.firebase.installations/-firebase-installations-exception/index.html">com.google.firebase.installations.FirebaseInstallationsException</a></div><div class="brief "><p class="paragraph">Exception that gets thrown when an operation on Firebase Installations fails.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-installations/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-installations-exception/index.html">FirebaseInstallationsException</a><span class="token operator"> = </span><a href="../com.google.firebase.installations/-firebase-installations-exception/index.html">com.google.firebase.installations.FirebaseInstallationsException</a></div><div class="brief "><p class="paragraph">Exception that gets thrown when an operation on Firebase Installations fails.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -174,69 +165,69 @@
         </div>
       </div>
       <div data-togglable="EXTENSION_PROPERTY">
-        <h2 class="">Properties</h2>
-        <div class="table"><a data-name="-925389414%2FProperties%2F-417720252" anchor-label="android" id="-925389414%2FProperties%2F-417720252" data-filterable-set=":firebase-installations:dokkaHtmlPartial/androidMain,:firebase-installations:dokkaHtmlPartial/jvmMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-installations:dokkaHtmlPartial/androidMain,:firebase-installations:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-installations:dokkaHtmlPartial/androidMain,:firebase-installations:dokkaHtmlPartial/jvmMain">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-2077811150%2FProperties%2F-1748224548" anchor-label="android" id="-2077811150%2FProperties%2F-1748224548" data-filterable-set=":firebase-installations/androidMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-installations/androidMain" data-filterable-set=":firebase-installations/androidMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="android.html"><span><span>android</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-925389414%2FProperties%2F-417720252"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2077811150%2FProperties%2F-1748224548"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-installations:dokkaHtmlPartial/androidMain" data-filterable-set=":firebase-installations:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":firebase-installations:dokkaHtmlPartial/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-installations:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-installations:dokkaHtmlPartial/jvmMain" data-toggle=":firebase-installations:dokkaHtmlPartial/jvmMain">jvm</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-installations:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.installations/-firebase-installations/index.html">FirebaseInstallations</a></div><div class="brief "><p class="paragraph">The underlying Firebase Android SDK object.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-installations:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.installations/-firebase-installations/index.html">FirebaseInstallations</a></div><div class="brief "><p class="paragraph">The underlying Firebase Android SDK object.</p></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-installations/androidMain" data-filterable-set=":firebase-installations/androidMain" data-active="" data-toggle=":firebase-installations/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-installations/androidMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-installations/index.html#-2080332882%2FMain%2F-1748224548">FirebaseInstallations</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.installations/-firebase-installations/index.html">FirebaseInstallations</a></div><div class="brief "><p class="paragraph">The underlying Firebase Android SDK object.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1806343495%2FProperties%2F480675520" anchor-label="installations" id="-1806343495%2FProperties%2F480675520" data-filterable-set=":firebase-installations:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-installations:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-installations:dokkaHtmlPartial/commonMain">
+<a data-name="749495556%2FProperties%2F1297787966" anchor-label="installations" id="749495556%2FProperties%2F1297787966" data-filterable-set=":firebase-installations/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-installations/commonMain" data-filterable-set=":firebase-installations/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="installations.html"><span><span>installations</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1806343495%2FProperties%2F480675520"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="749495556%2FProperties%2F1297787966"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-installations:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="installations.html">installations</a><span class="token operator">: </span><a href="-firebase-installations/index.html">FirebaseInstallations</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-installations/index.html">FirebaseInstallations</a> instance of the default FirebaseApp.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-installations/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../firebase-app/io.github.corneloaie.firebase/-firebase/index.html">Firebase</a><span class="token punctuation">.</span><a href="installations.html">installations</a><span class="token operator">: </span><a href="-firebase-installations/index.html">FirebaseInstallations</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-installations/index.html">FirebaseInstallations</a> instance of the default <a href="../../firebase-app/io.github.corneloaie.firebase/-firebase-app/index.html">FirebaseApp</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1185275080%2FProperties%2F-1435096190" anchor-label="ios" id="-1185275080%2FProperties%2F-1435096190" data-filterable-set=":firebase-installations:dokkaHtmlPartial/appleMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-installations:dokkaHtmlPartial/appleMain" data-filterable-set=":firebase-installations:dokkaHtmlPartial/appleMain">
+<a data-name="-1526618544%2FProperties%2F313735124" anchor-label="ios" id="-1526618544%2FProperties%2F313735124" data-filterable-set=":firebase-installations/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-installations/appleMain" data-filterable-set=":firebase-installations/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="ios.html"><span><span>ios</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1185275080%2FProperties%2F-1435096190"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1526618544%2FProperties%2F313735124"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-installations:dokkaHtmlPartial/appleMain" data-filterable-set=":firebase-installations:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":firebase-installations:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-installations:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="brief "><p class="paragraph">The underlying Firebase iOS SDK object.</p></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-installations/appleMain" data-filterable-set=":firebase-installations/appleMain" data-active="" data-toggle=":firebase-installations/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-installations/appleMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-installations/index.html#-2080332882%2FMain%2F313735124">FirebaseInstallations</a><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.installations/FIRInstallations///PointingToDeclaration/">FIRInstallations</span></div><div class="brief "><p class="paragraph">The underlying Firebase iOS SDK object.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="2057044084%2FProperties%2F1264194641" anchor-label="js" id="2057044084%2FProperties%2F1264194641" data-filterable-set=":firebase-installations:dokkaHtmlPartial/jsMain,:firebase-installations:dokkaHtmlPartial/wasmJsMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-installations:dokkaHtmlPartial/jsMain,:firebase-installations:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-installations:dokkaHtmlPartial/jsMain,:firebase-installations:dokkaHtmlPartial/wasmJsMain">
+<a data-name="-588437364%2FProperties%2F1295535801" anchor-label="js" id="-588437364%2FProperties%2F1295535801" data-filterable-set=":firebase-installations/jsMain,:firebase-installations/wasmJsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-installations/jsMain,:firebase-installations/wasmJsMain" data-filterable-set=":firebase-installations/jsMain,:firebase-installations/wasmJsMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="js.html"><span><span>js</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2057044084%2FProperties%2F1264194641"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-588437364%2FProperties%2F1295535801"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-installations:dokkaHtmlPartial/jsMain" data-filterable-set=":firebase-installations:dokkaHtmlPartial/jsMain" data-active="" data-toggle=":firebase-installations:dokkaHtmlPartial/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-installations:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-installations:dokkaHtmlPartial/wasmJsMain" data-toggle=":firebase-installations:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-installations:dokkaHtmlPartial/jsMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../../firebase-installations/io.github.corneloaie.firebase.installations.externals/-installations/index.html">Installations</a></div><div class="brief "><p class="paragraph">The underlying Firebase JS SDK object.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-installations:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../io.github.corneloaie.firebase.installations.externals/-installations/index.html">Installations</a></div><div class="brief "><p class="paragraph">The underlying Firebase JS SDK object.</p></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-installations/jsMain" data-filterable-set=":firebase-installations/jsMain" data-active="" data-toggle=":firebase-installations/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-installations/wasmJsMain" data-filterable-set=":firebase-installations/wasmJsMain" data-toggle=":firebase-installations/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-installations/jsMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-installations/index.html#-2080332882%2FMain%2F-279093024">FirebaseInstallations</a><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../../firebase-installations/io.github.corneloaie.firebase.installations.externals/-installations/index.html">Installations</a></div><div class="brief "><p class="paragraph">The underlying Firebase JS SDK object.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-installations/wasmJsMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-installations/index.html#-2080332882%2FMain%2F-369534107">FirebaseInstallations</a><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../io.github.corneloaie.firebase.installations.externals/-installations/index.html">Installations</a></div><div class="brief "><p class="paragraph">The underlying Firebase JS SDK object.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -244,18 +235,18 @@
         </div>
       </div>
       <div data-togglable="EXTENSION_FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="203949797%2FFunctions%2F480675520" anchor-label="installations" id="203949797%2FFunctions%2F480675520" data-filterable-set=":firebase-installations:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-installations:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-installations:dokkaHtmlPartial/commonMain">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="2074914429%2FFunctions%2F1297787966" anchor-label="installations" id="2074914429%2FFunctions%2F1297787966" data-filterable-set=":firebase-installations/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-installations/commonMain" data-filterable-set=":firebase-installations/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="installations.html"><span><span>installations</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="203949797%2FFunctions%2F480675520"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2074914429%2FFunctions%2F1297787966"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-installations:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="installations.html"><span class="token function">installations</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">app<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-firebase-installations/index.html">FirebaseInstallations</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-installations/index.html">FirebaseInstallations</a> instance of a given FirebaseApp.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-installations/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../firebase-app/io.github.corneloaie.firebase/-firebase/index.html">Firebase</a><span class="token punctuation">.</span><a href="installations.html"><span class="token function">installations</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">app<span class="token operator">: </span><a href="../../firebase-app/io.github.corneloaie.firebase/-firebase-app/index.html">FirebaseApp</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-firebase-installations/index.html">FirebaseInstallations</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-installations/index.html">FirebaseInstallations</a> instance of a given <a href="../../firebase-app/io.github.corneloaie.firebase/-firebase-app/index.html">FirebaseApp</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -266,17 +257,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

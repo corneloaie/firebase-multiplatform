@@ -1,118 +1,107 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>io.github.corneloaie.firebase.auth</title>
-<link href="../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../styles/style.css" rel="Stylesheet">
 <link href="../../styles/main.css" rel="Stylesheet">
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../scripts/prism.js" async></script>
-<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
                     firebase-multiplatform
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">3.0.0-alpha02
+        <div class="library-version" id="library-version">0.3.0
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":firebase-auth:dokkaHtmlPartial/androidMain">android</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-auth:dokkaHtmlPartial/appleMain">apple</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-auth:dokkaHtmlPartial/commonMain">common</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-auth:dokkaHtmlPartial/iosMain">ios</button>
-                <button class="platform-tag platform-selector js-like" data-active="" data-filter=":firebase-auth:dokkaHtmlPartial/jsMain">js</button>
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":firebase-auth:dokkaHtmlPartial/jvmMain">jvm</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-auth:dokkaHtmlPartial/tvosMain">tvos</button>
-                <button class="platform-tag platform-selector wasm-like" data-active="" data-filter=":firebase-auth:dokkaHtmlPartial/wasmJsMain">wasmJs</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":firebase-auth/androidMain">android</button>
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true" data-filter=":firebase-auth/appleMain">apple</button>
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true" data-filter=":firebase-auth/commonMain">common</button>
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true" data-filter=":firebase-auth/iosMain">ios</button>
+                <button class="platform-tag platform-selector js-like" data-active="" aria-pressed="true" data-filter=":firebase-auth/jsMain">js</button>
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true" data-filter=":firebase-auth/tvosMain">tvos</button>
+                <button class="platform-tag platform-selector wasm-like" data-active="" aria-pressed="true" data-filter=":firebase-auth/wasmJsMain">wasmJs</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-auth:dokkaHtmlPartial/androidMain" data-filter=":firebase-auth:dokkaHtmlPartial/androidMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-auth/androidMain" data-filter=":firebase-auth/androidMain">
                                 <span class="checkbox--icon"></span>
                                 android
                             </label>
                         </li>
-                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-auth:dokkaHtmlPartial/appleMain" data-filter=":firebase-auth:dokkaHtmlPartial/appleMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-auth/appleMain" data-filter=":firebase-auth/appleMain">
                                 <span class="checkbox--icon"></span>
                                 apple
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-auth:dokkaHtmlPartial/commonMain" data-filter=":firebase-auth:dokkaHtmlPartial/commonMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-auth/commonMain" data-filter=":firebase-auth/commonMain">
                                 <span class="checkbox--icon"></span>
                                 common
                             </label>
                         </li>
-                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-auth:dokkaHtmlPartial/iosMain" data-filter=":firebase-auth:dokkaHtmlPartial/iosMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-auth/iosMain" data-filter=":firebase-auth/iosMain">
                                 <span class="checkbox--icon"></span>
                                 ios
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option js-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-auth:dokkaHtmlPartial/jsMain" data-filter=":firebase-auth:dokkaHtmlPartial/jsMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-auth/jsMain" data-filter=":firebase-auth/jsMain">
                                 <span class="checkbox--icon"></span>
                                 js
                             </label>
                         </li>
-                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-auth:dokkaHtmlPartial/jvmMain" data-filter=":firebase-auth:dokkaHtmlPartial/jvmMain">
-                                <span class="checkbox--icon"></span>
-                                jvm
-                            </label>
-                        </li>
-                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
-                            <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-auth:dokkaHtmlPartial/tvosMain" data-filter=":firebase-auth:dokkaHtmlPartial/tvosMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-auth/tvosMain" data-filter=":firebase-auth/tvosMain">
                                 <span class="checkbox--icon"></span>
                                 tvos
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option wasm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-auth:dokkaHtmlPartial/wasmJsMain" data-filter=":firebase-auth:dokkaHtmlPartial/wasmJsMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-auth/wasmJsMain" data-filter=":firebase-auth/wasmJsMain">
                                 <span class="checkbox--icon"></span>
                                 wasmJs
                             </label>
@@ -120,7 +109,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://github.com/corneloaie/firebase-multiplatform"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -128,26 +117,28 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     firebase-multiplatform
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="package" id="content" pageids="firebase-auth::io.github.corneloaie.firebase.auth////PointingToDeclaration//-1854736083">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageids="firebase-auth::io.github.corneloaie.firebase.auth////PointingToDeclaration//1376593974">
   <div class="breadcrumbs"><a href="../index.html">firebase-auth</a><span class="delimiter">/</span><span class="current">io.github.corneloaie.firebase.auth</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
@@ -156,596 +147,596 @@
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button><button class="section-tab" data-togglable="PROPERTY,EXTENSION_PROPERTY">Properties</button></div>
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
-        <div class="table"><a data-name="639293283%2FClasslikes%2F-1965416265" anchor-label="ActionCodeResult" id="639293283%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="639293283%2FClasslikes%2F12970343" anchor-label="ActionCodeResult" id="639293283%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-action-code-result/index.html"><span>Action</span><wbr><span>Code</span><wbr><span><span>Result</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="639293283%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="639293283%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-action-code-result/index.html">ActionCodeResult</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-action-code-result/index.html">ActionCodeResult</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="830170717%2FClasslikes%2F-1965416265" anchor-label="ActionCodeSettings" id="830170717%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="830170717%2FClasslikes%2F12970343" anchor-label="ActionCodeSettings" id="830170717%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-action-code-settings/index.html"><span>Action</span><wbr><span>Code</span><wbr><span><span>Settings</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="830170717%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="830170717%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-action-code-settings/index.html">ActionCodeSettings</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>url<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>androidPackageName<span class="token operator">: </span><a href="-android-package-name/index.html">AndroidPackageName</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>dynamicLinkDomain<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>canHandleCodeInApp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>iOSBundleId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>linkDomain<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-action-code-settings/index.html">ActionCodeSettings</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>url<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>androidPackageName<span class="token operator">: </span><a href="-android-package-name/index.html">AndroidPackageName</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>dynamicLinkDomain<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>canHandleCodeInApp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>iOSBundleId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>linkDomain<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1579817533%2FClasslikes%2F-1965416265" anchor-label="AdditionalUserInfo" id="-1579817533%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-1579817533%2FClasslikes%2F12970343" anchor-label="AdditionalUserInfo" id="-1579817533%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-additional-user-info/index.html"><span>Additional</span><wbr><span>User</span><wbr><span><span>Info</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1579817533%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1579817533%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-additional-user-info/index.html">AdditionalUserInfo</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-additional-user-info/index.html">AdditionalUserInfo</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-504048031%2FClasslikes%2F-1965416265" anchor-label="AndroidPackageName" id="-504048031%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-504048031%2FClasslikes%2F12970343" anchor-label="AndroidPackageName" id="-504048031%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-android-package-name/index.html"><span>Android</span><wbr><span>Package</span><wbr><span><span>Name</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-504048031%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-504048031%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-android-package-name/index.html">AndroidPackageName</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>packageName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>installIfNotAvailable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>minimumVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-android-package-name/index.html">AndroidPackageName</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>packageName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>installIfNotAvailable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>minimumVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2028040220%2FClasslikes%2F-1965416265" anchor-label="AuthCredential" id="-2028040220%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-2028040220%2FClasslikes%2F12970343" anchor-label="AuthCredential" id="-2028040220%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-auth-credential/index.html"><span>Auth</span><wbr><span><span>Credential</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2028040220%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2028040220%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-auth-credential/index.html">AuthCredential</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-auth-credential/index.html">AuthCredential</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="8355806%2FClasslikes%2F-1965416265" anchor-label="AuthResult" id="8355806%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="8355806%2FClasslikes%2F12970343" anchor-label="AuthResult" id="8355806%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-auth-result/index.html"><span>Auth</span><wbr><span><span>Result</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="8355806%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="8355806%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-auth-result/index.html">AuthResult</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-auth-result/index.html">AuthResult</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1383621999%2FClasslikes%2F-1965416265" anchor-label="AuthTokenResult" id="-1383621999%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-1383621999%2FClasslikes%2F12970343" anchor-label="AuthTokenResult" id="-1383621999%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-auth-token-result/index.html"><span>Auth</span><wbr><span>Token</span><wbr><span><span>Result</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1383621999%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1383621999%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-auth-token-result/index.html">AuthTokenResult</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-auth-token-result/index.html">AuthTokenResult</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2110330838%2FClasslikes%2F-1965416265" anchor-label="EmailAuthProvider" id="-2110330838%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-2110330838%2FClasslikes%2F12970343" anchor-label="EmailAuthProvider" id="-2110330838%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-email-auth-provider/index.html"><span>Email</span><wbr><span>Auth</span><wbr><span><span>Provider</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2110330838%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2110330838%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-email-auth-provider/index.html">EmailAuthProvider</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-email-auth-provider/index.html">EmailAuthProvider</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-414622492%2FClasslikes%2F-1965416265" anchor-label="FacebookAuthProvider" id="-414622492%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-414622492%2FClasslikes%2F12970343" anchor-label="FacebookAuthProvider" id="-414622492%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-facebook-auth-provider/index.html"><span>Facebook</span><wbr><span>Auth</span><wbr><span><span>Provider</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-414622492%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-414622492%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-facebook-auth-provider/index.html">FacebookAuthProvider</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-facebook-auth-provider/index.html">FacebookAuthProvider</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2055830988%2FClasslikes%2F-1965416265" anchor-label="FirebaseAuth" id="-2055830988%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-2055830988%2FClasslikes%2F12970343" anchor-label="FirebaseAuth" id="-2055830988%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-auth/index.html"><span>Firebase</span><wbr><span><span>Auth</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2055830988%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2055830988%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-firebase-auth/index.html">FirebaseAuth</a></div><div class="brief "><p class="paragraph">The entry point of Firebase Authentication.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-firebase-auth/index.html">FirebaseAuth</a></div><div class="brief "><p class="paragraph">The entry point of Firebase Authentication.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-542123870%2FClasslikes%2F-1965416265" anchor-label="FirebaseAuthActionCodeException" id="-542123870%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-542123870%2FClasslikes%2F12970343" anchor-label="FirebaseAuthActionCodeException" id="-542123870%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-auth-action-code-exception/index.html"><span>Firebase</span><wbr><span>Auth</span><wbr><span>Action</span><wbr><span>Code</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-542123870%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-542123870%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-action-code-exception/index.html">FirebaseAuthActionCodeException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-action-code-exception/index.html">com.google.firebase.auth.FirebaseAuthActionCodeException</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-action-code-exception/index.html">FirebaseAuthActionCodeException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-action-code-exception/index.html">com.google.firebase.auth.FirebaseAuthActionCodeException</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="367235105%2FClasslikes%2F-1965416265" anchor-label="FirebaseAuthEmailException" id="367235105%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="367235105%2FClasslikes%2F12970343" anchor-label="FirebaseAuthEmailException" id="367235105%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-auth-email-exception/index.html"><span>Firebase</span><wbr><span>Auth</span><wbr><span>Email</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="367235105%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="367235105%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-email-exception/index.html">FirebaseAuthEmailException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-email-exception/index.html">com.google.firebase.auth.FirebaseAuthEmailException</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-email-exception/index.html">FirebaseAuthEmailException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-email-exception/index.html">com.google.firebase.auth.FirebaseAuthEmailException</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1751011391%2FClasslikes%2F-1965416265" anchor-label="FirebaseAuthException" id="1751011391%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="1751011391%2FClasslikes%2F12970343" anchor-label="FirebaseAuthException" id="1751011391%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-auth-exception/index.html"><span>Firebase</span><wbr><span>Auth</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1751011391%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1751011391%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-exception/index.html">FirebaseAuthException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-exception/index.html">com.google.firebase.auth.FirebaseAuthException</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-exception/index.html">FirebaseAuthException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-exception/index.html">com.google.firebase.auth.FirebaseAuthException</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="531050084%2FClasslikes%2F-1965416265" anchor-label="FirebaseAuthInvalidCredentialsException" id="531050084%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="531050084%2FClasslikes%2F12970343" anchor-label="FirebaseAuthInvalidCredentialsException" id="531050084%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-auth-invalid-credentials-exception/index.html"><span>Firebase</span><wbr><span>Auth</span><wbr><span>Invalid</span><wbr><span>Credentials</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="531050084%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="531050084%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-invalid-credentials-exception/index.html">FirebaseAuthInvalidCredentialsException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-invalid-credentials-exception/index.html">com.google.firebase.auth.FirebaseAuthInvalidCredentialsException</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-invalid-credentials-exception/index.html">FirebaseAuthInvalidCredentialsException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-invalid-credentials-exception/index.html">com.google.firebase.auth.FirebaseAuthInvalidCredentialsException</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1008192295%2FClasslikes%2F-1965416265" anchor-label="FirebaseAuthInvalidUserException" id="1008192295%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="1008192295%2FClasslikes%2F12970343" anchor-label="FirebaseAuthInvalidUserException" id="1008192295%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-auth-invalid-user-exception/index.html"><span>Firebase</span><wbr><span>Auth</span><wbr><span>Invalid</span><wbr><span>User</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1008192295%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1008192295%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-invalid-user-exception/index.html">FirebaseAuthInvalidUserException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-invalid-user-exception/index.html">com.google.firebase.auth.FirebaseAuthInvalidUserException</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-invalid-user-exception/index.html">FirebaseAuthInvalidUserException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-invalid-user-exception/index.html">com.google.firebase.auth.FirebaseAuthInvalidUserException</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1716545747%2FClasslikes%2F-1965416265" anchor-label="FirebaseAuthMultiFactorException" id="-1716545747%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-1716545747%2FClasslikes%2F12970343" anchor-label="FirebaseAuthMultiFactorException" id="-1716545747%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-auth-multi-factor-exception/index.html"><span>Firebase</span><wbr><span>Auth</span><wbr><span>Multi</span><wbr><span>Factor</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1716545747%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1716545747%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-multi-factor-exception/index.html">FirebaseAuthMultiFactorException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-multi-factor-exception/index.html">com.google.firebase.auth.FirebaseAuthMultiFactorException</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-multi-factor-exception/index.html">FirebaseAuthMultiFactorException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-multi-factor-exception/index.html">com.google.firebase.auth.FirebaseAuthMultiFactorException</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="597881691%2FClasslikes%2F-1965416265" anchor-label="FirebaseAuthPasswordDoesNotMeetRequirementsException" id="597881691%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="597881691%2FClasslikes%2F12970343" anchor-label="FirebaseAuthPasswordDoesNotMeetRequirementsException" id="597881691%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-auth-password-does-not-meet-requirements-exception/index.html"><span>Firebase</span><wbr><span>Auth</span><wbr><span>Password</span><wbr><span>Does</span><wbr><span>Not</span><wbr><span>Meet</span><wbr><span>Requirements</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="597881691%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="597881691%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-password-does-not-meet-requirements-exception/index.html">FirebaseAuthPasswordDoesNotMeetRequirementsException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-password-does-not-meet-requirements-exception/index.html">com.google.firebase.auth.FirebaseAuthPasswordDoesNotMeetRequirementsException</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-password-does-not-meet-requirements-exception/index.html">FirebaseAuthPasswordDoesNotMeetRequirementsException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-password-does-not-meet-requirements-exception/index.html">com.google.firebase.auth.FirebaseAuthPasswordDoesNotMeetRequirementsException</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1591178606%2FClasslikes%2F-1965416265" anchor-label="FirebaseAuthRecentLoginRequiredException" id="-1591178606%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-1591178606%2FClasslikes%2F12970343" anchor-label="FirebaseAuthRecentLoginRequiredException" id="-1591178606%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-auth-recent-login-required-exception/index.html"><span>Firebase</span><wbr><span>Auth</span><wbr><span>Recent</span><wbr><span>Login</span><wbr><span>Required</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1591178606%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1591178606%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-recent-login-required-exception/index.html">FirebaseAuthRecentLoginRequiredException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-recent-login-required-exception/index.html">com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-recent-login-required-exception/index.html">FirebaseAuthRecentLoginRequiredException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-recent-login-required-exception/index.html">com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2052800916%2FClasslikes%2F-1965416265" anchor-label="FirebaseAuthUserCollisionException" id="-2052800916%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-2052800916%2FClasslikes%2F12970343" anchor-label="FirebaseAuthUserCollisionException" id="-2052800916%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-auth-user-collision-exception/index.html"><span>Firebase</span><wbr><span>Auth</span><wbr><span>User</span><wbr><span>Collision</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2052800916%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2052800916%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-user-collision-exception/index.html">FirebaseAuthUserCollisionException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-user-collision-exception/index.html">com.google.firebase.auth.FirebaseAuthUserCollisionException</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-user-collision-exception/index.html">FirebaseAuthUserCollisionException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-user-collision-exception/index.html">com.google.firebase.auth.FirebaseAuthUserCollisionException</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1629425070%2FClasslikes%2F-1965416265" anchor-label="FirebaseAuthWeakPasswordException" id="-1629425070%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-1629425070%2FClasslikes%2F12970343" anchor-label="FirebaseAuthWeakPasswordException" id="-1629425070%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-auth-weak-password-exception/index.html"><span>Firebase</span><wbr><span>Auth</span><wbr><span>Weak</span><wbr><span>Password</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1629425070%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1629425070%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-weak-password-exception/index.html">FirebaseAuthWeakPasswordException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-weak-password-exception/index.html">com.google.firebase.auth.FirebaseAuthWeakPasswordException</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-weak-password-exception/index.html">FirebaseAuthWeakPasswordException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-weak-password-exception/index.html">com.google.firebase.auth.FirebaseAuthWeakPasswordException</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1639747943%2FClasslikes%2F-1965416265" anchor-label="FirebaseAuthWebException" id="-1639747943%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-1639747943%2FClasslikes%2F12970343" anchor-label="FirebaseAuthWebException" id="-1639747943%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-auth-web-exception/index.html"><span>Firebase</span><wbr><span>Auth</span><wbr><span>Web</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1639747943%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1639747943%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-web-exception/index.html">FirebaseAuthWebException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-web-exception/index.html">com.google.firebase.auth.FirebaseAuthWebException</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">typealias </span><a href="-firebase-auth-web-exception/index.html">FirebaseAuthWebException</a><span class="token operator"> = </span><a href="../com.google.firebase.auth/-firebase-auth-web-exception/index.html">com.google.firebase.auth.FirebaseAuthWebException</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1798336143%2FClasslikes%2F-1965416265" anchor-label="FirebaseUser" id="-1798336143%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-1798336143%2FClasslikes%2F12970343" anchor-label="FirebaseUser" id="-1798336143%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-firebase-user/index.html"><span>Firebase</span><wbr><span><span>User</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1798336143%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1798336143%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-firebase-user/index.html">FirebaseUser</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-firebase-user/index.html">FirebaseUser</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1888906855%2FClasslikes%2F-1965416265" anchor-label="GithubAuthProvider" id="1888906855%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="1888906855%2FClasslikes%2F12970343" anchor-label="GithubAuthProvider" id="1888906855%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-github-auth-provider/index.html"><span>Github</span><wbr><span>Auth</span><wbr><span><span>Provider</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1888906855%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1888906855%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-github-auth-provider/index.html">GithubAuthProvider</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-github-auth-provider/index.html">GithubAuthProvider</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1717171759%2FClasslikes%2F-1965416265" anchor-label="GoogleAuthProvider" id="-1717171759%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-1717171759%2FClasslikes%2F12970343" anchor-label="GoogleAuthProvider" id="-1717171759%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-google-auth-provider/index.html"><span>Google</span><wbr><span>Auth</span><wbr><span><span>Provider</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1717171759%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1717171759%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-google-auth-provider/index.html">GoogleAuthProvider</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-google-auth-provider/index.html">GoogleAuthProvider</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1590887529%2FClasslikes%2F-1965416265" anchor-label="MultiFactor" id="-1590887529%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-1590887529%2FClasslikes%2F12970343" anchor-label="MultiFactor" id="-1590887529%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-multi-factor/index.html"><span>Multi</span><wbr><span><span>Factor</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1590887529%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1590887529%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-multi-factor/index.html">MultiFactor</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-multi-factor/index.html">MultiFactor</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1659784937%2FClasslikes%2F-1965416265" anchor-label="MultiFactorAssertion" id="1659784937%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="1659784937%2FClasslikes%2F12970343" anchor-label="MultiFactorAssertion" id="1659784937%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-multi-factor-assertion/index.html"><span>Multi</span><wbr><span>Factor</span><wbr><span><span>Assertion</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1659784937%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1659784937%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-multi-factor-assertion/index.html">MultiFactorAssertion</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-multi-factor-assertion/index.html">MultiFactorAssertion</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="806413193%2FClasslikes%2F-1965416265" anchor-label="MultiFactorInfo" id="806413193%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="806413193%2FClasslikes%2F12970343" anchor-label="MultiFactorInfo" id="806413193%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-multi-factor-info/index.html"><span>Multi</span><wbr><span>Factor</span><wbr><span><span>Info</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="806413193%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="806413193%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-multi-factor-info/index.html">MultiFactorInfo</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-multi-factor-info/index.html">MultiFactorInfo</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="90205233%2FClasslikes%2F-1965416265" anchor-label="MultiFactorResolver" id="90205233%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="90205233%2FClasslikes%2F12970343" anchor-label="MultiFactorResolver" id="90205233%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-multi-factor-resolver/index.html"><span>Multi</span><wbr><span>Factor</span><wbr><span><span>Resolver</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="90205233%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="90205233%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-multi-factor-resolver/index.html">MultiFactorResolver</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-multi-factor-resolver/index.html">MultiFactorResolver</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1455396779%2FClasslikes%2F-1965416265" anchor-label="MultiFactorSession" id="-1455396779%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-1455396779%2FClasslikes%2F12970343" anchor-label="MultiFactorSession" id="-1455396779%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-multi-factor-session/index.html"><span>Multi</span><wbr><span>Factor</span><wbr><span><span>Session</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1455396779%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1455396779%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-multi-factor-session/index.html">MultiFactorSession</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-multi-factor-session/index.html">MultiFactorSession</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1721072431%2FClasslikes%2F-1965416265" anchor-label="OAuthCredential" id="-1721072431%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-1721072431%2FClasslikes%2F12970343" anchor-label="OAuthCredential" id="-1721072431%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-o-auth-credential/index.html"><span>OAuth</span><wbr><span><span>Credential</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1721072431%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1721072431%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-o-auth-credential/index.html">OAuthCredential</a> : <a href="-auth-credential/index.html">AuthCredential</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-o-auth-credential/index.html">OAuthCredential</a> : <a href="-auth-credential/index.html">AuthCredential</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1223040457%2FClasslikes%2F-1965416265" anchor-label="OAuthProvider" id="-1223040457%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-1223040457%2FClasslikes%2F12970343" anchor-label="OAuthProvider" id="-1223040457%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-o-auth-provider/index.html"><span>OAuth</span><wbr><span><span>Provider</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1223040457%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1223040457%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-o-auth-provider/index.html">OAuthProvider</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-o-auth-provider/index.html">OAuthProvider</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1139318798%2FClasslikes%2F-1965416265" anchor-label="PhoneAuthCredential" id="-1139318798%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-1139318798%2FClasslikes%2F12970343" anchor-label="PhoneAuthCredential" id="-1139318798%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-phone-auth-credential/index.html"><span>Phone</span><wbr><span>Auth</span><wbr><span><span>Credential</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1139318798%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1139318798%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-phone-auth-credential/index.html">PhoneAuthCredential</a> : <a href="-auth-credential/index.html">AuthCredential</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-phone-auth-credential/index.html">PhoneAuthCredential</a> : <a href="-auth-credential/index.html">AuthCredential</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="466948504%2FClasslikes%2F206237690" anchor-label="PhoneAuthProvider" id="466948504%2FClasslikes%2F206237690" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain,:firebase-auth:dokkaHtmlPartial/androidMain,:firebase-auth:dokkaHtmlPartial/iosMain,:firebase-auth:dokkaHtmlPartial/jsMain,:firebase-auth:dokkaHtmlPartial/jvmMain,:firebase-auth:dokkaHtmlPartial/tvosMain,:firebase-auth:dokkaHtmlPartial/wasmJsMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain,:firebase-auth:dokkaHtmlPartial/androidMain,:firebase-auth:dokkaHtmlPartial/iosMain,:firebase-auth:dokkaHtmlPartial/jsMain,:firebase-auth:dokkaHtmlPartial/jvmMain,:firebase-auth:dokkaHtmlPartial/tvosMain,:firebase-auth:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain,:firebase-auth:dokkaHtmlPartial/androidMain,:firebase-auth:dokkaHtmlPartial/iosMain,:firebase-auth:dokkaHtmlPartial/jsMain,:firebase-auth:dokkaHtmlPartial/jvmMain,:firebase-auth:dokkaHtmlPartial/tvosMain,:firebase-auth:dokkaHtmlPartial/wasmJsMain">
+<a data-name="466948504%2FClasslikes%2F-1939545063" anchor-label="PhoneAuthProvider" id="466948504%2FClasslikes%2F-1939545063" data-filterable-set=":firebase-auth/commonMain,:firebase-auth/androidMain,:firebase-auth/iosMain,:firebase-auth/jsMain,:firebase-auth/tvosMain,:firebase-auth/wasmJsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain,:firebase-auth/androidMain,:firebase-auth/iosMain,:firebase-auth/jsMain,:firebase-auth/tvosMain,:firebase-auth/wasmJsMain" data-filterable-set=":firebase-auth/commonMain,:firebase-auth/androidMain,:firebase-auth/iosMain,:firebase-auth/jsMain,:firebase-auth/tvosMain,:firebase-auth/wasmJsMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-phone-auth-provider/index.html"><span>Phone</span><wbr><span>Auth</span><wbr><span><span>Provider</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="466948504%2FClasslikes%2F206237690"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="466948504%2FClasslikes%2F-1939545063"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/androidMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":firebase-auth:dokkaHtmlPartial/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain" data-toggle=":firebase-auth:dokkaHtmlPartial/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/iosMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/iosMain" data-toggle=":firebase-auth:dokkaHtmlPartial/iosMain">ios</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/jsMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/jsMain" data-toggle=":firebase-auth:dokkaHtmlPartial/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/jvmMain" data-toggle=":firebase-auth:dokkaHtmlPartial/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/tvosMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/tvosMain" data-toggle=":firebase-auth:dokkaHtmlPartial/tvosMain">tvos</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/wasmJsMain" data-toggle=":firebase-auth:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
-<div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-phone-auth-provider/index.html">PhoneAuthProvider</a></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">class </span><a href="-phone-auth-provider/index.html">PhoneAuthProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/iosMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-phone-auth-provider/index.html">PhoneAuthProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/jsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-phone-auth-provider/index.html">PhoneAuthProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-phone-auth-provider/index.html">PhoneAuthProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/tvosMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-phone-auth-provider/index.html">PhoneAuthProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-phone-auth-provider/index.html">PhoneAuthProvider</a></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth/androidMain" data-filterable-set=":firebase-auth/androidMain" data-active="" data-toggle=":firebase-auth/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain" data-toggle=":firebase-auth/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":firebase-auth/iosMain" data-filterable-set=":firebase-auth/iosMain" data-toggle=":firebase-auth/iosMain">ios</button><button class="platform-bookmark" data-filterable-current=":firebase-auth/jsMain" data-filterable-set=":firebase-auth/jsMain" data-toggle=":firebase-auth/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-auth/tvosMain" data-filterable-set=":firebase-auth/tvosMain" data-toggle=":firebase-auth/tvosMain">tvos</button><button class="platform-bookmark" data-filterable-current=":firebase-auth/wasmJsMain" data-filterable-set=":firebase-auth/wasmJsMain" data-toggle=":firebase-auth/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-togglable=":firebase-auth/androidMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-phone-auth-provider/index.html">PhoneAuthProvider</a></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">class </span><a href="-phone-auth-provider/index.html">PhoneAuthProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth/iosMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-phone-auth-provider/index.html">PhoneAuthProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth/jsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-phone-auth-provider/index.html">PhoneAuthProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth/tvosMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-phone-auth-provider/index.html">PhoneAuthProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth/wasmJsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">class </span><a href="-phone-auth-provider/index.html">PhoneAuthProvider</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1951911035%2FClasslikes%2F1368797909" anchor-label="PhoneVerificationProvider" id="-1951911035%2FClasslikes%2F1368797909" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain,:firebase-auth:dokkaHtmlPartial/androidMain,:firebase-auth:dokkaHtmlPartial/appleMain,:firebase-auth:dokkaHtmlPartial/jsMain,:firebase-auth:dokkaHtmlPartial/jvmMain,:firebase-auth:dokkaHtmlPartial/wasmJsMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain,:firebase-auth:dokkaHtmlPartial/androidMain,:firebase-auth:dokkaHtmlPartial/appleMain,:firebase-auth:dokkaHtmlPartial/jsMain,:firebase-auth:dokkaHtmlPartial/jvmMain,:firebase-auth:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain,:firebase-auth:dokkaHtmlPartial/androidMain,:firebase-auth:dokkaHtmlPartial/appleMain,:firebase-auth:dokkaHtmlPartial/jsMain,:firebase-auth:dokkaHtmlPartial/jvmMain,:firebase-auth:dokkaHtmlPartial/wasmJsMain">
+<a data-name="-1951911035%2FClasslikes%2F-574251262" anchor-label="PhoneVerificationProvider" id="-1951911035%2FClasslikes%2F-574251262" data-filterable-set=":firebase-auth/commonMain,:firebase-auth/androidMain,:firebase-auth/appleMain,:firebase-auth/jsMain,:firebase-auth/wasmJsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain,:firebase-auth/androidMain,:firebase-auth/appleMain,:firebase-auth/jsMain,:firebase-auth/wasmJsMain" data-filterable-set=":firebase-auth/commonMain,:firebase-auth/androidMain,:firebase-auth/appleMain,:firebase-auth/jsMain,:firebase-auth/wasmJsMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-phone-verification-provider/index.html"><span>Phone</span><wbr><span>Verification</span><wbr><span><span>Provider</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1951911035%2FClasslikes%2F1368797909"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1951911035%2FClasslikes%2F-574251262"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/androidMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":firebase-auth:dokkaHtmlPartial/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/appleMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/appleMain" data-toggle=":firebase-auth:dokkaHtmlPartial/appleMain">apple</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain" data-toggle=":firebase-auth:dokkaHtmlPartial/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/jsMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/jsMain" data-toggle=":firebase-auth:dokkaHtmlPartial/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/jvmMain" data-toggle=":firebase-auth:dokkaHtmlPartial/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/wasmJsMain" data-toggle=":firebase-auth:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
-<div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">interface </span><a href="-phone-verification-provider/index.html">PhoneVerificationProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">interface </span><a href="-phone-verification-provider/index.html">PhoneVerificationProvider</a></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">interface </span><a href="-phone-verification-provider/index.html">PhoneVerificationProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/jsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">interface </span><a href="-phone-verification-provider/index.html">PhoneVerificationProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">interface </span><a href="-phone-verification-provider/index.html">PhoneVerificationProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">interface </span><a href="-phone-verification-provider/index.html">PhoneVerificationProvider</a></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth/androidMain" data-filterable-set=":firebase-auth/androidMain" data-active="" data-toggle=":firebase-auth/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-auth/appleMain" data-filterable-set=":firebase-auth/appleMain" data-toggle=":firebase-auth/appleMain">apple</button><button class="platform-bookmark" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain" data-toggle=":firebase-auth/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":firebase-auth/jsMain" data-filterable-set=":firebase-auth/jsMain" data-toggle=":firebase-auth/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-auth/wasmJsMain" data-filterable-set=":firebase-auth/wasmJsMain" data-toggle=":firebase-auth/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-togglable=":firebase-auth/androidMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">interface </span><a href="-phone-verification-provider/index.html">PhoneVerificationProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth/appleMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">interface </span><a href="-phone-verification-provider/index.html">PhoneVerificationProvider</a></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">interface </span><a href="-phone-verification-provider/index.html">PhoneVerificationProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth/jsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">interface </span><a href="-phone-verification-provider/index.html">PhoneVerificationProvider</a></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth/wasmJsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">interface </span><a href="-phone-verification-provider/index.html">PhoneVerificationProvider</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="449755441%2FClasslikes%2F-237204329" anchor-label="TvOsMultifactorNotSupportedException" id="449755441%2FClasslikes%2F-237204329" data-filterable-set=":firebase-auth:dokkaHtmlPartial/tvosMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/tvosMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/tvosMain">
+<a data-name="449755441%2FClasslikes%2F994692251" anchor-label="TvOsMultifactorNotSupportedException" id="449755441%2FClasslikes%2F994692251" data-filterable-set=":firebase-auth/tvosMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/tvosMain" data-filterable-set=":firebase-auth/tvosMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-tv-os-multifactor-not-supported-exception/index.html"><span>Tv</span><wbr><span>Os</span><wbr><span>Multifactor</span><wbr><span>Not</span><wbr><span>Supported</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="449755441%2FClasslikes%2F-237204329"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="449755441%2FClasslikes%2F994692251"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/tvosMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/tvosMain" data-active="" data-toggle=":firebase-auth:dokkaHtmlPartial/tvosMain">tvos</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/tvosMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-tv-os-multifactor-not-supported-exception/index.html">TvOsMultifactorNotSupportedException</a></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth/tvosMain" data-filterable-set=":firebase-auth/tvosMain" data-active="" data-toggle=":firebase-auth/tvosMain">tvos</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/tvosMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-tv-os-multifactor-not-supported-exception/index.html">TvOsMultifactorNotSupportedException</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unsupported-operation-exception/index.html">UnsupportedOperationException</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="22422559%2FClasslikes%2F-237204329" anchor-label="TvOsPhoneAuthNotSupportedException" id="22422559%2FClasslikes%2F-237204329" data-filterable-set=":firebase-auth:dokkaHtmlPartial/tvosMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/tvosMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/tvosMain">
+<a data-name="22422559%2FClasslikes%2F994692251" anchor-label="TvOsPhoneAuthNotSupportedException" id="22422559%2FClasslikes%2F994692251" data-filterable-set=":firebase-auth/tvosMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/tvosMain" data-filterable-set=":firebase-auth/tvosMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-tv-os-phone-auth-not-supported-exception/index.html"><span>Tv</span><wbr><span>Os</span><wbr><span>Phone</span><wbr><span>Auth</span><wbr><span>Not</span><wbr><span>Supported</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="22422559%2FClasslikes%2F-237204329"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="22422559%2FClasslikes%2F994692251"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/tvosMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/tvosMain" data-active="" data-toggle=":firebase-auth:dokkaHtmlPartial/tvosMain">tvos</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/tvosMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-tv-os-phone-auth-not-supported-exception/index.html">TvOsPhoneAuthNotSupportedException</a></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth/tvosMain" data-filterable-set=":firebase-auth/tvosMain" data-active="" data-toggle=":firebase-auth/tvosMain">tvos</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/tvosMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-tv-os-phone-auth-not-supported-exception/index.html">TvOsPhoneAuthNotSupportedException</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unsupported-operation-exception/index.html">UnsupportedOperationException</a></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1178114099%2FClasslikes%2F-1965416265" anchor-label="TwitterAuthProvider" id="1178114099%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="1178114099%2FClasslikes%2F12970343" anchor-label="TwitterAuthProvider" id="1178114099%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-twitter-auth-provider/index.html"><span>Twitter</span><wbr><span>Auth</span><wbr><span><span>Provider</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1178114099%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1178114099%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-twitter-auth-provider/index.html">TwitterAuthProvider</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-twitter-auth-provider/index.html">TwitterAuthProvider</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2063834198%2FClasslikes%2F-1965416265" anchor-label="UserInfo" id="-2063834198%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-2063834198%2FClasslikes%2F12970343" anchor-label="UserInfo" id="-2063834198%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-user-info/index.html"><span>User</span><wbr><span><span>Info</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2063834198%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2063834198%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-user-info/index.html">UserInfo</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-user-info/index.html">UserInfo</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1756506967%2FClasslikes%2F-1965416265" anchor-label="UserMetaData" id="-1756506967%2FClasslikes%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-1756506967%2FClasslikes%2F12970343" anchor-label="UserMetaData" id="-1756506967%2FClasslikes%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-user-meta-data/index.html"><span>User</span><wbr><span>Meta</span><wbr><span><span>Data</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1756506967%2FClasslikes%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1756506967%2FClasslikes%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-user-meta-data/index.html">UserMetaData</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-user-meta-data/index.html">UserMetaData</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -753,99 +744,99 @@
         </div>
       </div>
       <div data-togglable="EXTENSION_PROPERTY">
-        <h2 class="">Properties</h2>
-        <div class="table"><a data-name="1813215946%2FProperties%2F1365321352" anchor-label="android" id="1813215946%2FProperties%2F1365321352" data-filterable-set=":firebase-auth:dokkaHtmlPartial/androidMain,:firebase-auth:dokkaHtmlPartial/jvmMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/androidMain,:firebase-auth:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/androidMain,:firebase-auth:dokkaHtmlPartial/jvmMain">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="1217478024%2FProperties%2F-958386285" anchor-label="android" id="1217478024%2FProperties%2F-958386285" data-filterable-set=":firebase-auth/androidMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/androidMain" data-filterable-set=":firebase-auth/androidMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="android.html"><span><span>android</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1813215946%2FProperties%2F1365321352"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1217478024%2FProperties%2F-958386285"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/androidMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":firebase-auth:dokkaHtmlPartial/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/jvmMain" data-toggle=":firebase-auth:dokkaHtmlPartial/jvmMain">jvm</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/androidMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../../firebase-auth/com.google.firebase.auth/-additional-user-info/index.html">AdditionalUserInfo</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-auth-credential/index.html">AuthCredential</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../../firebase-auth/com.google.firebase.auth/-auth-result/index.html">AuthResult</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../../firebase-auth/com.google.firebase.auth/-get-token-result/index.html">GetTokenResult</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-firebase-user/index.html">FirebaseUser</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-multi-factor-assertion/index.html">MultiFactorAssertion</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-multi-factor-info/index.html">MultiFactorInfo</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-multi-factor-resolver/index.html">MultiFactorResolver</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-multi-factor-session/index.html">MultiFactorSession</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-multi-factor/index.html">MultiFactor</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-o-auth-provider/index.html">OAuthProvider</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-user-info/index.html">UserInfo</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../../firebase-auth/com.google.firebase.auth/-firebase-user-metadata/index.html">FirebaseUserMetadata</a></div><br><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-firebase-auth/index.html">FirebaseAuth</a></div><div class="brief "><p class="paragraph">The underlying Firebase Android SDK object.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-auth-credential/index.html">AuthCredential</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../../firebase-auth/com.google.firebase.auth/-auth-result/index.html">AuthResult</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../../firebase-auth/com.google.firebase.auth/-get-token-result/index.html">GetTokenResult</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-firebase-user/index.html">FirebaseUser</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-multi-factor-assertion/index.html">MultiFactorAssertion</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-multi-factor-info/index.html">MultiFactorInfo</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-multi-factor-resolver/index.html">MultiFactorResolver</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-multi-factor-session/index.html">MultiFactorSession</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-multi-factor/index.html">MultiFactor</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-o-auth-provider/index.html">OAuthProvider</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-user-info/index.html">UserInfo</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../../firebase-auth/com.google.firebase.auth/-firebase-user-metadata/index.html">FirebaseUserMetadata</a></div><br><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-firebase-auth/index.html">FirebaseAuth</a></div><div class="brief "><p class="paragraph">The underlying Firebase Android SDK object.</p></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth/androidMain" data-filterable-set=":firebase-auth/androidMain" data-active="" data-toggle=":firebase-auth/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/androidMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="-additional-user-info/index.html#-1579817533%2FMain%2F-958386285">AdditionalUserInfo</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../../firebase-auth/com.google.firebase.auth/-additional-user-info/index.html">AdditionalUserInfo</a></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-auth-credential/index.html#-2028040220%2FMain%2F-958386285">AuthCredential</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-auth-credential/index.html">AuthCredential</a></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-auth-result/index.html#8355806%2FMain%2F-958386285">AuthResult</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../../firebase-auth/com.google.firebase.auth/-auth-result/index.html">AuthResult</a></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-auth-token-result/index.html#-1383621999%2FMain%2F-958386285">AuthTokenResult</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../../firebase-auth/com.google.firebase.auth/-get-token-result/index.html">GetTokenResult</a></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-user/index.html#-1798336143%2FMain%2F-958386285">FirebaseUser</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-firebase-user/index.html">FirebaseUser</a></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-multi-factor/index.html#-1590887529%2FMain%2F-958386285">MultiFactor</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-multi-factor/index.html">MultiFactor</a></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-multi-factor-assertion/index.html#1659784937%2FMain%2F-958386285">MultiFactorAssertion</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-multi-factor-assertion/index.html">MultiFactorAssertion</a></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-multi-factor-info/index.html#806413193%2FMain%2F-958386285">MultiFactorInfo</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-multi-factor-info/index.html">MultiFactorInfo</a></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-multi-factor-resolver/index.html#90205233%2FMain%2F-958386285">MultiFactorResolver</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-multi-factor-resolver/index.html">MultiFactorResolver</a></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-multi-factor-session/index.html#-1455396779%2FMain%2F-958386285">MultiFactorSession</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-multi-factor-session/index.html">MultiFactorSession</a></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-o-auth-provider/index.html#-1223040457%2FMain%2F-958386285">OAuthProvider</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-o-auth-provider/index.html">OAuthProvider</a></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-user-info/index.html#-2063834198%2FMain%2F-958386285">UserInfo</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-user-info/index.html">UserInfo</a></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-user-meta-data/index.html#-1756506967%2FMain%2F-958386285">UserMetaData</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../../firebase-auth/com.google.firebase.auth/-firebase-user-metadata/index.html">FirebaseUserMetadata</a></div><br><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-auth/index.html#-2055830988%2FMain%2F-958386285">FirebaseAuth</a><span class="token punctuation">.</span><a href="android.html">android</a><span class="token operator">: </span><a href="../com.google.firebase.auth/-firebase-auth/index.html">FirebaseAuth</a></div><div class="brief "><p class="paragraph">The underlying Firebase Android SDK object.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1911063113%2FProperties%2F-1965416265" anchor-label="auth" id="1911063113%2FProperties%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="392023188%2FProperties%2F12970343" anchor-label="auth" id="392023188%2FProperties%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="auth.html"><span><span>auth</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1911063113%2FProperties%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="392023188%2FProperties%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="auth.html">auth</a><span class="token operator">: </span><a href="-firebase-auth/index.html">FirebaseAuth</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-auth/index.html">FirebaseAuth</a> instance of the default FirebaseApp.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="../../firebase-app/io.github.corneloaie.firebase/-firebase/index.html">Firebase</a><span class="token punctuation">.</span><a href="auth.html">auth</a><span class="token operator">: </span><a href="-firebase-auth/index.html">FirebaseAuth</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-auth/index.html">FirebaseAuth</a> instance of the default <a href="../../firebase-app/io.github.corneloaie.firebase/-firebase-app/index.html">FirebaseApp</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="582360328%2FProperties%2F-1965416265" anchor-label="code" id="582360328%2FProperties%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="582360328%2FProperties%2F12970343" anchor-label="code" id="582360328%2FProperties%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="code.html"><span><span>code</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="582360328%2FProperties%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="582360328%2FProperties%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-auth-exception/index.html">FirebaseAuthException</a><span class="token punctuation">.</span><a href="code.html">code</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The error code of the platform SDK, e.g. <code class="lang-kotlin">ERROR_INVALID_EMAIL</code>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-auth-exception/index.html">FirebaseAuthException</a><span class="token punctuation">.</span><a href="code.html">code</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The error code of the platform SDK, e.g. <code class="lang-kotlin">ERROR_INVALID_EMAIL</code>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1710521040%2FProperties%2F-1121464436" anchor-label="ios" id="1710521040%2FProperties%2F-1121464436" data-filterable-set=":firebase-auth:dokkaHtmlPartial/appleMain,:firebase-auth:dokkaHtmlPartial/iosMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/appleMain,:firebase-auth:dokkaHtmlPartial/iosMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/appleMain,:firebase-auth:dokkaHtmlPartial/iosMain">
+<a data-name="2004744377%2FProperties%2F-957782254" anchor-label="ios" id="2004744377%2FProperties%2F-957782254" data-filterable-set=":firebase-auth/appleMain,:firebase-auth/iosMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/appleMain,:firebase-auth/iosMain" data-filterable-set=":firebase-auth/appleMain,:firebase-auth/iosMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="ios.html"><span><span>ios</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1710521040%2FProperties%2F-1121464436"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2004744377%2FProperties%2F-957782254"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/appleMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":firebase-auth:dokkaHtmlPartial/appleMain">apple</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/iosMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/iosMain" data-toggle=":firebase-auth:dokkaHtmlPartial/iosMain">ios</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><br><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="brief "><p class="paragraph">The underlying Firebase iOS SDK object.</p></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="brief "><p class="paragraph">The iOS SDK's provider configured as this one.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/iosMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-phone-auth-provider/index.html">PhoneAuthProvider</a><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth/appleMain" data-filterable-set=":firebase-auth/appleMain" data-active="" data-toggle=":firebase-auth/appleMain">apple</button><button class="platform-bookmark" data-filterable-current=":firebase-auth/iosMain" data-filterable-set=":firebase-auth/iosMain" data-toggle=":firebase-auth/iosMain">ios</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/appleMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="-auth-credential/index.html#-2028040220%2FMain%2F-353522883">AuthCredential</a><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.auth/FIRAuthCredential///PointingToDeclaration/">FIRAuthCredential</span></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-user/index.html#-1798336143%2FMain%2F-353522883">FirebaseUser</a><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.auth/FIRUser///PointingToDeclaration/">FIRUser</span></div><br><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-auth/index.html#-2055830988%2FMain%2F-353522883">FirebaseAuth</a><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.auth/FIRAuth///PointingToDeclaration/">FIRAuth</span></div><div class="brief "><p class="paragraph">The underlying Firebase iOS SDK object.</p></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-o-auth-provider/index.html#-1223040457%2FMain%2F-353522883">OAuthProvider</a><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.auth/FIROAuthProvider///PointingToDeclaration/">FIROAuthProvider</span></div><div class="brief "><p class="paragraph">The iOS SDK's provider configured as this one.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth/iosMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="-multi-factor/index.html#-1590887529%2FMain%2F-601145245">MultiFactor</a><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.auth/FIRMultiFactor///PointingToDeclaration/">FIRMultiFactor</span></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-multi-factor-assertion/index.html#1659784937%2FMain%2F-601145245">MultiFactorAssertion</a><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.auth/FIRMultiFactorAssertion///PointingToDeclaration/">FIRMultiFactorAssertion</span></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-multi-factor-info/index.html#806413193%2FMain%2F-601145245">MultiFactorInfo</a><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.auth/FIRMultiFactorInfo///PointingToDeclaration/">FIRMultiFactorInfo</span></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-multi-factor-resolver/index.html#90205233%2FMain%2F-601145245">MultiFactorResolver</a><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.auth/FIRMultiFactorResolver///PointingToDeclaration/">FIRMultiFactorResolver</span></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-multi-factor-session/index.html#-1455396779%2FMain%2F-601145245">MultiFactorSession</a><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.auth/FIRMultiFactorSession///PointingToDeclaration/">FIRMultiFactorSession</span></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-phone-auth-provider/index.html">PhoneAuthProvider</a><span class="token punctuation">.</span><a href="ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.auth/FIRPhoneAuthProvider///PointingToDeclaration/">FIRPhoneAuthProvider</span></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1912603245%2FProperties%2F-861142421" anchor-label="js" id="1912603245%2FProperties%2F-861142421" data-filterable-set=":firebase-auth:dokkaHtmlPartial/jsMain,:firebase-auth:dokkaHtmlPartial/wasmJsMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/jsMain,:firebase-auth:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/jsMain,:firebase-auth:dokkaHtmlPartial/wasmJsMain">
+<a data-name="2123072522%2FProperties%2F1190287409" anchor-label="js" id="2123072522%2FProperties%2F1190287409" data-filterable-set=":firebase-auth/jsMain,:firebase-auth/wasmJsMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/jsMain,:firebase-auth/wasmJsMain" data-filterable-set=":firebase-auth/jsMain,:firebase-auth/wasmJsMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="js.html"><span><span>js</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1912603245%2FProperties%2F-861142421"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2123072522%2FProperties%2F1190287409"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/jsMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/jsMain" data-active="" data-toggle=":firebase-auth:dokkaHtmlPartial/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/wasmJsMain" data-toggle=":firebase-auth:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/jsMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../../firebase-auth/io.github.corneloaie.firebase.auth.externals/-auth-credential/index.html">AuthCredential</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../../firebase-auth/io.github.corneloaie.firebase.auth.externals/-user/index.html">User</a></div><br><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../../firebase-auth/io.github.corneloaie.firebase.auth.externals/-auth/index.html">Auth</a></div><div class="brief "><p class="paragraph">The underlying Firebase JS SDK object.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../io.github.corneloaie.firebase.auth.externals/-auth-credential/index.html">AuthCredential</a></div><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../io.github.corneloaie.firebase.auth.externals/-user/index.html">User</a></div><br><div class="symbol monospace"><span class="token keyword">val </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../io.github.corneloaie.firebase.auth.externals/-auth/index.html">Auth</a></div><div class="brief "><p class="paragraph">The underlying Firebase JS SDK object.</p></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth/jsMain" data-filterable-set=":firebase-auth/jsMain" data-active="" data-toggle=":firebase-auth/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-auth/wasmJsMain" data-filterable-set=":firebase-auth/wasmJsMain" data-toggle=":firebase-auth/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/jsMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="-auth-credential/index.html#-2028040220%2FMain%2F-886811767">AuthCredential</a><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../../firebase-auth/io.github.corneloaie.firebase.auth.externals/-auth-credential/index.html">AuthCredential</a></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-user/index.html#-1798336143%2FMain%2F-886811767">FirebaseUser</a><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../../firebase-auth/io.github.corneloaie.firebase.auth.externals/-user/index.html">User</a></div><br><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-auth/index.html#-2055830988%2FMain%2F-886811767">FirebaseAuth</a><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../../firebase-auth/io.github.corneloaie.firebase.auth.externals/-auth/index.html">Auth</a></div><div class="brief "><p class="paragraph">The underlying Firebase JS SDK object.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth/wasmJsMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="-auth-credential/index.html#-2028040220%2FMain%2F-1036792114">AuthCredential</a><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../io.github.corneloaie.firebase.auth.externals/-auth-credential/index.html">AuthCredential</a></div><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-user/index.html#-1798336143%2FMain%2F-1036792114">FirebaseUser</a><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../io.github.corneloaie.firebase.auth.externals/-user/index.html">User</a></div><br><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-auth/index.html#-2055830988%2FMain%2F-1036792114">FirebaseAuth</a><span class="token punctuation">.</span><a href="js.html">js</a><span class="token operator">: </span><a href="../io.github.corneloaie.firebase.auth.externals/-auth/index.html">Auth</a></div><div class="brief "><p class="paragraph">The underlying Firebase JS SDK object.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="121882761%2FProperties%2F-1965416265" anchor-label="multiFactorResolver" id="121882761%2FProperties%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="121882761%2FProperties%2F12970343" anchor-label="multiFactorResolver" id="121882761%2FProperties%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="multi-factor-resolver.html"><span>multi</span><wbr><span>Factor</span><wbr><span><span>Resolver</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="121882761%2FProperties%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="121882761%2FProperties%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-auth-multi-factor-exception/index.html">FirebaseAuthMultiFactorException</a><span class="token punctuation">.</span><a href="multi-factor-resolver.html">multiFactorResolver</a><span class="token operator">: </span><a href="-multi-factor-resolver/index.html">MultiFactorResolver</a></div><div class="brief "><p class="paragraph">The <a href="-multi-factor-resolver/index.html">MultiFactorResolver</a> of a sign-in that requires a second factor.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="-firebase-auth-multi-factor-exception/index.html">FirebaseAuthMultiFactorException</a><span class="token punctuation">.</span><a href="multi-factor-resolver.html">multiFactorResolver</a><span class="token operator">: </span><a href="-multi-factor-resolver/index.html">MultiFactorResolver</a></div><div class="brief "><p class="paragraph">The <a href="-multi-factor-resolver/index.html">MultiFactorResolver</a> of a sign-in that requires a second factor.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -853,50 +844,50 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="1859842389%2FFunctions%2F-1965416265" anchor-label="auth" id="1859842389%2FFunctions%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1835600109%2FFunctions%2F12970343" anchor-label="auth" id="1835600109%2FFunctions%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="auth.html"><span><span>auth</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1859842389%2FFunctions%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1835600109%2FFunctions%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="auth.html"><span class="token function">auth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">app<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-firebase-auth/index.html">FirebaseAuth</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-auth/index.html">FirebaseAuth</a> instance of a given FirebaseApp.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../firebase-app/io.github.corneloaie.firebase/-firebase/index.html">Firebase</a><span class="token punctuation">.</span><a href="auth.html"><span class="token function">auth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">app<span class="token operator">: </span><a href="../../firebase-app/io.github.corneloaie.firebase/-firebase-app/index.html">FirebaseApp</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-firebase-auth/index.html">FirebaseAuth</a></div><div class="brief "><p class="paragraph">Returns the <a href="-firebase-auth/index.html">FirebaseAuth</a> instance of a given <a href="../../firebase-app/io.github.corneloaie.firebase/-firebase-app/index.html">FirebaseApp</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1580033692%2FFunctions%2F181950040" anchor-label="FirebaseAuth" id="1580033692%2FFunctions%2F181950040" data-filterable-set=":firebase-auth:dokkaHtmlPartial/appleMain,:firebase-auth:dokkaHtmlPartial/jsMain,:firebase-auth:dokkaHtmlPartial/wasmJsMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-auth:dokkaHtmlPartial/appleMain,:firebase-auth:dokkaHtmlPartial/jsMain,:firebase-auth:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/appleMain,:firebase-auth:dokkaHtmlPartial/jsMain,:firebase-auth:dokkaHtmlPartial/wasmJsMain">
+<a data-name="-814692932%2FFunctions%2F1030977890" anchor-label="FirebaseAuth" id="-814692932%2FFunctions%2F1030977890" data-filterable-set=":firebase-auth/jsMain,:firebase-auth/wasmJsMain,:firebase-auth/appleMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-auth/jsMain,:firebase-auth/wasmJsMain,:firebase-auth/appleMain" data-filterable-set=":firebase-auth/jsMain,:firebase-auth/wasmJsMain,:firebase-auth/appleMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="../../firebase-auth/io.github.corneloaie.firebase.auth/index.html"><span>Firebase</span><wbr><span><span>Auth</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1580033692%2FFunctions%2F181950040"></span>
+                  <div><a href="../../firebase-auth/io.github.corneloaie.firebase.auth/[wasm-js]-firebase-auth.html"><span>Firebase</span><wbr><span><span>Auth</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-814692932%2FFunctions%2F1030977890"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/appleMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":firebase-auth:dokkaHtmlPartial/appleMain">apple</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/jsMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/jsMain" data-toggle=":firebase-auth:dokkaHtmlPartial/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-auth:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/wasmJsMain" data-toggle=":firebase-auth:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-firebase-auth.html"><span class="token function">FirebaseAuth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="brief "><p class="paragraph">The <a href="-firebase-auth.html">FirebaseAuth</a> of the iOS SDK's <a href="-firebase-auth.html">ios</a>.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/jsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="[js]-firebase-auth.html"><span class="token function">FirebaseAuth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">js<span class="token operator">: </span><a href="../../firebase-auth/io.github.corneloaie.firebase.auth.externals/-auth/index.html">Auth</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="brief "><p class="paragraph">The <a href="[js]-firebase-auth.html">FirebaseAuth</a> of the JS SDK's <a href="[js]-firebase-auth.html">js</a>.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth:dokkaHtmlPartial/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="[wasm-js]-firebase-auth.html"><span class="token function">FirebaseAuth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">js<span class="token operator">: </span><a href="../io.github.corneloaie.firebase.auth.externals/-auth/index.html">Auth</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="brief "><p class="paragraph">The <a href="[wasm-js]-firebase-auth.html">FirebaseAuth</a> of the JS SDK's <a href="[wasm-js]-firebase-auth.html">js</a>.</p></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-auth/appleMain" data-filterable-set=":firebase-auth/appleMain" data-active="" data-toggle=":firebase-auth/appleMain">apple</button><button class="platform-bookmark" data-filterable-current=":firebase-auth/jsMain" data-filterable-set=":firebase-auth/jsMain" data-toggle=":firebase-auth/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-auth/wasmJsMain" data-filterable-set=":firebase-auth/wasmJsMain" data-toggle=":firebase-auth/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-togglable=":firebase-auth/appleMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-firebase-auth.html"><span class="token function">FirebaseAuth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.auth/FIRAuth///PointingToDeclaration/">FIRAuth</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-firebase-auth/index.html#-2055830988%2FMain%2F-353522883">FirebaseAuth</a></div><div class="brief "><p class="paragraph">The <a href="-firebase-auth.html">FirebaseAuth</a> of the iOS SDK's <a href="-firebase-auth.html">ios</a>.</p></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/jsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="[js]-firebase-auth.html"><span class="token function">FirebaseAuth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">js<span class="token operator">: </span><a href="../../firebase-auth/io.github.corneloaie.firebase.auth.externals/-auth/index.html">Auth</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-firebase-auth/index.html#-2055830988%2FMain%2F-886811767">FirebaseAuth</a></div><div class="brief "><p class="paragraph">The <a href="[js]-firebase-auth.html">FirebaseAuth</a> of the JS SDK's <a href="[js]-firebase-auth.html">js</a>.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-auth/wasmJsMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="[wasm-js]-firebase-auth.html"><span class="token function">FirebaseAuth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">js<span class="token operator">: </span><a href="../io.github.corneloaie.firebase.auth.externals/-auth/index.html">Auth</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-firebase-auth/index.html#-2055830988%2FMain%2F-1036792114">FirebaseAuth</a></div><div class="brief "><p class="paragraph">The <a href="[wasm-js]-firebase-auth.html">FirebaseAuth</a> of the JS SDK's <a href="[wasm-js]-firebase-auth.html">js</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-75317392%2FFunctions%2F-1965416265" anchor-label="toCompat" id="-75317392%2FFunctions%2F-1965416265" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":firebase-auth:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-auth:dokkaHtmlPartial/commonMain">
+<a data-name="-75317392%2FFunctions%2F12970343" anchor-label="toCompat" id="-75317392%2FFunctions%2F12970343" data-filterable-set=":firebase-auth/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":firebase-auth/commonMain" data-filterable-set=":firebase-auth/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-compat.html"><span>to</span><wbr><span><span>Compat</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-75317392%2FFunctions%2F-1965416265"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-75317392%2FFunctions%2F12970343"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-action-code-settings/index.html">ActionCodeSettings</a><span class="token punctuation">.</span><a href="to-compat.html"><span class="token function">toCompat</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../com.google.firebase.auth/-action-code-settings/index.html">ActionCodeSettings</a></div><div class="brief "><p class="paragraph">The settings as the Android-SDK-shaped <a href="../com.google.firebase.auth/-action-code-settings/index.html">com.google.firebase.auth.ActionCodeSettings</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-auth/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-action-code-settings/index.html">ActionCodeSettings</a><span class="token punctuation">.</span><a href="to-compat.html"><span class="token function">toCompat</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../com.google.firebase.auth/-action-code-settings/index.html">ActionCodeSettings</a></div><div class="brief "><p class="paragraph">The settings as the Android-SDK-shaped <a href="../com.google.firebase.auth/-action-code-settings/index.html">com.google.firebase.auth.ActionCodeSettings</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -907,17 +898,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

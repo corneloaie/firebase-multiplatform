@@ -1,70 +1,99 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Trace</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async></script>
-<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
                     firebase-multiplatform
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">3.0.0-alpha02
+        <div class="library-version" id="library-version">0.3.0
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-perf:dokkaHtmlPartial/commonMain">common</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":firebase-perf/androidMain">android</button>
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true" data-filter=":firebase-perf/appleMain">apple</button>
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true" data-filter=":firebase-perf/commonMain">common</button>
+                <button class="platform-tag platform-selector js-like" data-active="" aria-pressed="true" data-filter=":firebase-perf/jsMain">js</button>
+                <button class="platform-tag platform-selector wasm-like" data-active="" aria-pressed="true" data-filter=":firebase-perf/wasmJsMain">wasmJs</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-perf/androidMain" data-filter=":firebase-perf/androidMain">
+                                <span class="checkbox--icon"></span>
+                                android
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-perf/appleMain" data-filter=":firebase-perf/appleMain">
+                                <span class="checkbox--icon"></span>
+                                apple
+                            </label>
+                        </li>
                         <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-perf:dokkaHtmlPartial/commonMain" data-filter=":firebase-perf:dokkaHtmlPartial/commonMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-perf/commonMain" data-filter=":firebase-perf/commonMain">
                                 <span class="checkbox--icon"></span>
                                 common
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option js-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-perf/jsMain" data-filter=":firebase-perf/jsMain">
+                                <span class="checkbox--icon"></span>
+                                js
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option wasm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-perf/wasmJsMain" data-filter=":firebase-perf/wasmJsMain">
+                                <span class="checkbox--icon"></span>
+                                wasmJs
                             </label>
                         </li>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://github.com/corneloaie/firebase-multiplatform"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -72,47 +101,100 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     firebase-multiplatform
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="classlike" id="content" pageids="firebase-perf::io.github.corneloaie.firebase.perf.metrics/Trace///PointingToDeclaration//593888022">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="firebase-perf::io.github.corneloaie.firebase.perf.metrics/Trace///PointingToDeclaration//1674731816">
   <div class="breadcrumbs"><a href="../../index.html">firebase-perf</a><span class="delimiter">/</span><a href="../index.html">io.github.corneloaie.firebase.perf.metrics</a><span class="delimiter">/</span><span class="current">Trace</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Trace</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Trace</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-perf/src/commonMain/kotlin/io/github/corneloaie/firebase/perf/metrics/Trace.kt#L14">source</a>)</span></span></div><p class="paragraph">A custom trace.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Trace</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-perf/src/commonMain/kotlin/io/github/corneloaie/firebase/perf/metrics/Trace.kt#L14">source</a>)</span></span></div><p class="paragraph">A custom trace.</p></div></div>
   </div>
   <div class="tabbedcontent">
-    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
     <div class="tabs-section-body">
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
-        <div class="table"><a data-name="2076503737%2FProperties%2F593888022" anchor-label="compat" id="2076503737%2FProperties%2F593888022" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-perf:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="909461299%2FProperties%2F1450523570" anchor-label="android" id="909461299%2FProperties%2F1450523570" data-filterable-set=":firebase-perf/androidMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":firebase-perf/androidMain" data-filterable-set=":firebase-perf/androidMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="compat.html"><span><span>compat</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2076503737%2FProperties%2F593888022"></span>
+                  <div><a href="../android.html"><span><span>android</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="909461299%2FProperties%2F1450523570"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="compat.html">compat</a><span class="token operator">: </span><a href="../../com.google.firebase.perf.metrics/-trace/index.html">Trace</a></div><div class="brief "><p class="paragraph">The Android-SDK-shaped <a href="../../com.google.firebase.perf.metrics/-trace/index.html">com.google.firebase.perf.metrics.Trace</a> this wraps.</p></div></div></div>
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-perf/androidMain" data-filterable-set=":firebase-perf/androidMain" data-active="" data-toggle=":firebase-perf/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/androidMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="index.html#-363268988%2FMain%2F1450523570">Trace</a><span class="token punctuation">.</span><a href="../android.html">android</a><span class="token operator">: </span><a href="../../com.google.firebase.perf.metrics/-trace/index.html">Trace</a></div><div class="brief "><p class="paragraph">The underlying Firebase Android SDK object.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2076503737%2FProperties%2F1674731816" anchor-label="compat" id="2076503737%2FProperties%2F1674731816" data-filterable-set=":firebase-perf/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-perf/commonMain" data-filterable-set=":firebase-perf/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="compat.html"><span><span>compat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2076503737%2FProperties%2F1674731816"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="compat.html">compat</a><span class="token operator">: </span><a href="../../com.google.firebase.perf.metrics/-trace/index.html">Trace</a></div><div class="brief "><p class="paragraph">The Android-SDK-shaped <a href="../../com.google.firebase.perf.metrics/-trace/index.html">com.google.firebase.perf.metrics.Trace</a> this wraps.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1324479787%2FProperties%2F-830005442" anchor-label="ios" id="-1324479787%2FProperties%2F-830005442" data-filterable-set=":firebase-perf/appleMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":firebase-perf/appleMain" data-filterable-set=":firebase-perf/appleMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../ios.html"><span><span>ios</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1324479787%2FProperties%2F-830005442"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-perf/appleMain" data-filterable-set=":firebase-perf/appleMain" data-active="" data-toggle=":firebase-perf/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/appleMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="index.html#-363268988%2FMain%2F-830005442">Trace</a><span class="token punctuation">.</span><a href="../ios.html">ios</a><span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.perf/FIRTrace///PointingToDeclaration/">FIRTrace</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The underlying Firebase iOS SDK object; null when the iOS SDK refused the trace name.</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2124315787%2FProperties%2F433712593" anchor-label="js" id="2124315787%2FProperties%2F433712593" data-filterable-set=":firebase-perf/jsMain,:firebase-perf/wasmJsMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":firebase-perf/jsMain,:firebase-perf/wasmJsMain" data-filterable-set=":firebase-perf/jsMain,:firebase-perf/wasmJsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../js.html"><span><span>js</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2124315787%2FProperties%2F433712593"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-perf/jsMain" data-filterable-set=":firebase-perf/jsMain" data-active="" data-toggle=":firebase-perf/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-perf/wasmJsMain" data-filterable-set=":firebase-perf/wasmJsMain" data-toggle=":firebase-perf/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/jsMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="index.html#-363268988%2FMain%2F-1218599734">Trace</a><span class="token punctuation">.</span><a href="../js.html">js</a><span class="token operator">: </span><a href="../../../firebase-perf/io.github.corneloaie.firebase.perf.externals/-performance-trace/index.html">PerformanceTrace</a></div><div class="brief "><p class="paragraph">The underlying Firebase JS SDK object.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-perf/wasmJsMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="index.html#-363268988%2FMain%2F-1513274673">Trace</a><span class="token punctuation">.</span><a href="../js.html">js</a><span class="token operator">: </span><a href="../../io.github.corneloaie.firebase.perf.externals/-performance-trace/index.html">PerformanceTrace</a></div><div class="brief "><p class="paragraph">The underlying Firebase JS SDK object.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -120,183 +202,200 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="1530319206%2FFunctions%2F593888022" anchor-label="equals" id="1530319206%2FFunctions%2F593888022" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-perf:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1530319206%2FFunctions%2F1674731816" anchor-label="equals" id="1530319206%2FFunctions%2F1674731816" data-filterable-set=":firebase-perf/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-perf/commonMain" data-filterable-set=":firebase-perf/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="equals.html"><span><span>equals</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1530319206%2FFunctions%2F593888022"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1530319206%2FFunctions%2F1674731816"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="equals.html"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="equals.html"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-213767473%2FFunctions%2F593888022" anchor-label="getAttribute" id="-213767473%2FFunctions%2F593888022" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-perf:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain">
+<a data-name="-213767473%2FFunctions%2F1674731816" anchor-label="getAttribute" id="-213767473%2FFunctions%2F1674731816" data-filterable-set=":firebase-perf/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-perf/commonMain" data-filterable-set=":firebase-perf/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-attribute.html"><span>get</span><wbr><span><span>Attribute</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-213767473%2FFunctions%2F593888022"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-213767473%2FFunctions%2F1674731816"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-attribute.html"><span class="token function">getAttribute</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">attribute<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Returns the value of the custom attribute with the given <a href="get-attribute.html">attribute</a> name.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-attribute.html"><span class="token function">getAttribute</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">attribute<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Returns the value of the custom attribute with the given <a href="get-attribute.html">attribute</a> name.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1898358510%2FFunctions%2F593888022" anchor-label="getAttributes" id="-1898358510%2FFunctions%2F593888022" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-perf:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain">
+<a data-name="-1898358510%2FFunctions%2F1674731816" anchor-label="getAttributes" id="-1898358510%2FFunctions%2F1674731816" data-filterable-set=":firebase-perf/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-perf/commonMain" data-filterable-set=":firebase-perf/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-attributes.html"><span>get</span><wbr><span><span>Attributes</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1898358510%2FFunctions%2F593888022"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1898358510%2FFunctions%2F1674731816"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-attributes.html"><span class="token function">getAttributes</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns all custom attributes associated with this trace.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-attributes.html"><span class="token function">getAttributes</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns all custom attributes associated with this trace.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-371484825%2FFunctions%2F593888022" anchor-label="getLongMetric" id="-371484825%2FFunctions%2F593888022" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-perf:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain">
+<a data-name="-371484825%2FFunctions%2F1674731816" anchor-label="getLongMetric" id="-371484825%2FFunctions%2F1674731816" data-filterable-set=":firebase-perf/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-perf/commonMain" data-filterable-set=":firebase-perf/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-long-metric.html"><span>get</span><wbr><span>Long</span><wbr><span><span>Metric</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-371484825%2FFunctions%2F593888022"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-371484825%2FFunctions%2F1674731816"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-long-metric.html"><span class="token function">getLongMetric</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">metricName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Gets the value of the metric with the given name in the current trace. If a metric with the given name doesn't exist, it is NOT created and a 0 is returned. This method is atomic.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-long-metric.html"><span class="token function">getLongMetric</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">metricName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Gets the value of the metric with the given name in the current trace. If a metric with the given name doesn't exist, it is NOT created and a 0 is returned. This method is atomic.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1019802432%2FFunctions%2F593888022" anchor-label="hashCode" id="-1019802432%2FFunctions%2F593888022" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-perf:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain">
+<a data-name="-1019802432%2FFunctions%2F1674731816" anchor-label="hashCode" id="-1019802432%2FFunctions%2F1674731816" data-filterable-set=":firebase-perf/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-perf/commonMain" data-filterable-set=":firebase-perf/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hash-code.html"><span>hash</span><wbr><span><span>Code</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1019802432%2FFunctions%2F593888022"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1019802432%2FFunctions%2F1674731816"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1369411134%2FFunctions%2F593888022" anchor-label="incrementMetric" id="1369411134%2FFunctions%2F593888022" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-perf:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain">
+<a data-name="1369411134%2FFunctions%2F1674731816" anchor-label="incrementMetric" id="1369411134%2FFunctions%2F1674731816" data-filterable-set=":firebase-perf/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-perf/commonMain" data-filterable-set=":firebase-perf/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="increment-metric.html"><span>increment</span><wbr><span><span>Metric</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1369411134%2FFunctions%2F593888022"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1369411134%2FFunctions%2F1674731816"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="increment-metric.html"><span class="token function">incrementMetric</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">metricName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">incrementBy<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Atomically increments the metric with the given name in this trace by the incrementBy value. If the metric does not exist, a new one will be created. If the trace has not been started or has already been stopped, returns immediately without taking action.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="increment-metric.html"><span class="token function">incrementMetric</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">metricName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">incrementBy<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Atomically increments the metric with the given name in this trace by the incrementBy value. If the metric does not exist, a new one will be created. If the trace has not been started or has already been stopped, returns immediately without taking action.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-86877093%2FFunctions%2F593888022" anchor-label="putAttribute" id="-86877093%2FFunctions%2F593888022" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-perf:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain">
+<a data-name="-86877093%2FFunctions%2F1674731816" anchor-label="putAttribute" id="-86877093%2FFunctions%2F1674731816" data-filterable-set=":firebase-perf/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-perf/commonMain" data-filterable-set=":firebase-perf/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="put-attribute.html"><span>put</span><wbr><span><span>Attribute</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-86877093%2FFunctions%2F593888022"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-86877093%2FFunctions%2F1674731816"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="put-attribute.html"><span class="token function">putAttribute</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">attribute<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sets a custom <a href="put-attribute.html">attribute</a> to the given <a href="put-attribute.html">value</a> on this trace.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="put-attribute.html"><span class="token function">putAttribute</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">attribute<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sets a custom <a href="put-attribute.html">attribute</a> to the given <a href="put-attribute.html">value</a> on this trace.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="948452446%2FFunctions%2F593888022" anchor-label="putMetric" id="948452446%2FFunctions%2F593888022" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-perf:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain">
+<a data-name="948452446%2FFunctions%2F1674731816" anchor-label="putMetric" id="948452446%2FFunctions%2F1674731816" data-filterable-set=":firebase-perf/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-perf/commonMain" data-filterable-set=":firebase-perf/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="put-metric.html"><span>put</span><wbr><span><span>Metric</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="948452446%2FFunctions%2F593888022"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="948452446%2FFunctions%2F1674731816"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="put-metric.html"><span class="token function">putMetric</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">metricName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sets the value of the metric with the given name in this trace to the value provided. If a metric with the given name doesn't exist, a new one will be created. If the trace has not been started or has already been stopped, returns immediately without taking action. This method is atomic.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="put-metric.html"><span class="token function">putMetric</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">metricName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sets the value of the metric with the given name in this trace to the value provided. If a metric with the given name doesn't exist, a new one will be created. If the trace has not been started or has already been stopped, returns immediately without taking action. This method is atomic.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="2127870621%2FFunctions%2F593888022" anchor-label="removeAttribute" id="2127870621%2FFunctions%2F593888022" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-perf:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain">
+<a data-name="2127870621%2FFunctions%2F1674731816" anchor-label="removeAttribute" id="2127870621%2FFunctions%2F1674731816" data-filterable-set=":firebase-perf/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-perf/commonMain" data-filterable-set=":firebase-perf/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="remove-attribute.html"><span>remove</span><wbr><span><span>Attribute</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2127870621%2FFunctions%2F593888022"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2127870621%2FFunctions%2F1674731816"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="remove-attribute.html"><span class="token function">removeAttribute</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">attribute<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Removes the custom attribute with the given <a href="remove-attribute.html">attribute</a> name from this trace.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="remove-attribute.html"><span class="token function">removeAttribute</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">attribute<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Removes the custom attribute with the given <a href="remove-attribute.html">attribute</a> name from this trace.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1195723165%2FFunctions%2F593888022" anchor-label="start" id="1195723165%2FFunctions%2F593888022" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-perf:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain">
+<a data-name="1195723165%2FFunctions%2F1674731816" anchor-label="start" id="1195723165%2FFunctions%2F1674731816" data-filterable-set=":firebase-perf/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-perf/commonMain" data-filterable-set=":firebase-perf/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="start.html"><span><span>start</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1195723165%2FFunctions%2F593888022"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1195723165%2FFunctions%2F1674731816"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="start.html"><span class="token function">start</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Starts this trace.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="start.html"><span class="token function">start</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Starts this trace.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1611080121%2FFunctions%2F593888022" anchor-label="stop" id="1611080121%2FFunctions%2F593888022" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-perf:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain">
+<a data-name="1611080121%2FFunctions%2F1674731816" anchor-label="stop" id="1611080121%2FFunctions%2F1674731816" data-filterable-set=":firebase-perf/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-perf/commonMain" data-filterable-set=":firebase-perf/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="stop.html"><span><span>stop</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1611080121%2FFunctions%2F593888022"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1611080121%2FFunctions%2F1674731816"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="stop.html"><span class="token function">stop</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Stops this trace.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="stop.html"><span class="token function">stop</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Stops this trace.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1197968497%2FFunctions%2F593888022" anchor-label="toString" id="-1197968497%2FFunctions%2F593888022" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-perf:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-perf:dokkaHtmlPartial/commonMain">
+<a data-name="-1197968497%2FFunctions%2F1674731816" anchor-label="toString" id="-1197968497%2FFunctions%2F1674731816" data-filterable-set=":firebase-perf/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-perf/commonMain" data-filterable-set=":firebase-perf/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-string.html"><span>to</span><wbr><span><span>String</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1197968497%2FFunctions%2F593888022"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1197968497%2FFunctions%2F1674731816"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-34103028%2FFunctions%2F1450523570" anchor-label="updateSession" id="-34103028%2FFunctions%2F1450523570" data-filterable-set=":firebase-perf/androidMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":firebase-perf/androidMain" data-filterable-set=":firebase-perf/androidMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../update-session.html"><span>update</span><wbr><span><span>Session</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-34103028%2FFunctions%2F1450523570"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-perf/androidMain" data-filterable-set=":firebase-perf/androidMain" data-active="" data-toggle=":firebase-perf/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-perf/androidMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html#-363268988%2FMain%2F1450523570">Trace</a><span class="token punctuation">.</span><a href="../update-session.html"><span class="token function">updateSession</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">session<span class="token operator">: </span><a href="../../io.github.corneloaie.firebase.perf.session/-perf-session/index.html">PerfSession</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Android-only: associates this trace with a <a href="../../io.github.corneloaie.firebase.perf.session/-perf-session/index.html">PerfSession</a>.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -307,17 +406,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,62 +1,59 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>FirebaseDataConnect</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async></script>
-<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
                     firebase-multiplatform
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">3.0.0-alpha02
+        <div class="library-version" id="library-version">0.3.0
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-dataconnect:dokkaHtmlPartial/commonMain">common</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true" data-filter=":firebase-dataconnect/commonMain">common</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filter=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-dataconnect/commonMain" data-filter=":firebase-dataconnect/commonMain">
                                 <span class="checkbox--icon"></span>
                                 common
                             </label>
@@ -64,7 +61,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://github.com/corneloaie/firebase-multiplatform"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -72,92 +69,94 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     firebase-multiplatform
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="classlike" id="content" pageids="firebase-dataconnect::com.google.firebase.dataconnect/FirebaseDataConnect///PointingToDeclaration//875243225">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="firebase-dataconnect::com.google.firebase.dataconnect/FirebaseDataConnect///PointingToDeclaration//-240807163">
   <div class="breadcrumbs"><a href="../../index.html">firebase-dataconnect</a><span class="delimiter">/</span><a href="../index.html">com.google.firebase.dataconnect</a><span class="delimiter">/</span><span class="current">FirebaseDataConnect</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Firebase</span><wbr><span>Data</span><wbr><span><span>Connect</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">FirebaseDataConnect</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-dataconnect/src/commonMain/kotlin/com/google/firebase/dataconnect/FirebaseDataConnect.kt#L22">source</a>)</span></span></div><p class="paragraph">The entry point of Firebase Data Connect: creates <a href="../-query-ref/index.html">QueryRef</a>s and <a href="../-mutation-ref/index.html">MutationRef</a>s for the operations of the connector <a href="config.html">config</a> of <a href="app.html">app</a>. Obtained with <a href="../get-instance.html">FirebaseDataConnect.Companion.getInstance</a>; one instance exists per app and connector until it is <a href="close.html">close</a>d.</p><p class="paragraph">Every operation takes the value to send followed by the serialization strategies to encode it and decode the result with (the Android SDK's pattern, with no reflection-based fallback), and an optional trailing builder for the remaining options.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">FirebaseDataConnect</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-auto-closeable/index.html">AutoCloseable</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-dataconnect/src/commonMain/kotlin/com/google/firebase/dataconnect/FirebaseDataConnect.kt#L22">source</a>)</span></span></div><p class="paragraph">The entry point of Firebase Data Connect: creates <a href="../-query-ref/index.html">QueryRef</a>s and <a href="../-mutation-ref/index.html">MutationRef</a>s for the operations of the connector <a href="config.html">config</a> of <a href="app.html">app</a>. Obtained with <a href="../get-instance.html">FirebaseDataConnect.Companion.getInstance</a>; one instance exists per app and connector until it is <a href="close.html">close</a>d.</p><p class="paragraph">Every operation takes the value to send followed by the serialization strategies to encode it and decode the result with (the Android SDK's pattern, with no reflection-based fallback), and an optional trailing builder for the remaining options.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
-        <div class="table"><a data-name="1377420491%2FClasslikes%2F875243225" anchor-label="CallerSdkType" id="1377420491%2FClasslikes%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="1377420491%2FClasslikes%2F-240807163" anchor-label="CallerSdkType" id="1377420491%2FClasslikes%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-caller-sdk-type/index.html"><span>Caller</span><wbr><span>Sdk</span><wbr><span><span>Type</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1377420491%2FClasslikes%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1377420491%2FClasslikes%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-caller-sdk-type/index.html">CallerSdkType</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-caller-sdk-type/index.html">FirebaseDataConnect.CallerSdkType</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Which SDK created a reference: user code (<a href="-caller-sdk-type/-base/index.html">Base</a>) or a generated connector SDK (<a href="-caller-sdk-type/-generated/index.html">Generated</a>).</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-caller-sdk-type/index.html">CallerSdkType</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-caller-sdk-type/index.html">FirebaseDataConnect.CallerSdkType</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Which SDK created a reference: user code (<a href="-caller-sdk-type/-base/index.html">Base</a>) or a generated connector SDK (<a href="-caller-sdk-type/-generated/index.html">Generated</a>).</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1264753368%2FClasslikes%2F875243225" anchor-label="Companion" id="-1264753368%2FClasslikes%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+<a data-name="-1264753368%2FClasslikes%2F-240807163" anchor-label="Companion" id="-1264753368%2FClasslikes%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1264753368%2FClasslikes%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1264753368%2FClasslikes%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1873719213%2FClasslikes%2F875243225" anchor-label="MutationRefOptionsBuilder" id="1873719213%2FClasslikes%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+<a data-name="1873719213%2FClasslikes%2F-240807163" anchor-label="MutationRefOptionsBuilder" id="1873719213%2FClasslikes%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-mutation-ref-options-builder/index.html"><span>Mutation</span><wbr><span>Ref</span><wbr><span>Options</span><wbr><span><span>Builder</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1873719213%2FClasslikes%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1873719213%2FClasslikes%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-mutation-ref-options-builder/index.html">MutationRefOptionsBuilder</a><span class="token operator">&lt;</span><a href="-mutation-ref-options-builder/index.html">Data</a><span class="token punctuation">, </span><a href="-mutation-ref-options-builder/index.html">Variables</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The options of a <a href="../-mutation-ref/index.html">MutationRef</a> beyond the required ones, set in the trailing lambda of <a href="mutation.html">mutation</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-mutation-ref-options-builder/index.html">MutationRefOptionsBuilder</a><span class="token operator">&lt;</span><a href="-mutation-ref-options-builder/index.html">Data</a><span class="token punctuation">, </span><a href="-mutation-ref-options-builder/index.html">Variables</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The options of a <a href="../-mutation-ref/index.html">MutationRef</a> beyond the required ones, set in the trailing lambda of <a href="mutation.html">mutation</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-230958874%2FClasslikes%2F875243225" anchor-label="QueryRefOptionsBuilder" id="-230958874%2FClasslikes%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+<a data-name="-230958874%2FClasslikes%2F-240807163" anchor-label="QueryRefOptionsBuilder" id="-230958874%2FClasslikes%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-query-ref-options-builder/index.html"><span>Query</span><wbr><span>Ref</span><wbr><span>Options</span><wbr><span><span>Builder</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-230958874%2FClasslikes%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-230958874%2FClasslikes%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-query-ref-options-builder/index.html">QueryRefOptionsBuilder</a><span class="token operator">&lt;</span><a href="-query-ref-options-builder/index.html">Data</a><span class="token punctuation">, </span><a href="-query-ref-options-builder/index.html">Variables</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The options of a <a href="../-query-ref/index.html">QueryRef</a> beyond the required ones, set in the trailing lambda of <a href="query.html">query</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-query-ref-options-builder/index.html">QueryRefOptionsBuilder</a><span class="token operator">&lt;</span><a href="-query-ref-options-builder/index.html">Data</a><span class="token punctuation">, </span><a href="-query-ref-options-builder/index.html">Variables</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The options of a <a href="../-query-ref/index.html">QueryRef</a> beyond the required ones, set in the trailing lambda of <a href="query.html">query</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -165,48 +164,48 @@
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
-        <div class="table"><a data-name="852491232%2FProperties%2F875243225" anchor-label="app" id="852491232%2FProperties%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="852491232%2FProperties%2F-240807163" anchor-label="app" id="852491232%2FProperties%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="app.html"><span><span>app</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="852491232%2FProperties%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="852491232%2FProperties%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="app.html">app</a><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="brief "><p class="paragraph">The app this instance belongs to.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="app.html">app</a><span class="token operator">: </span><a href="../../../firebase-app/com.google.firebase/-firebase-app/index.html">FirebaseApp</a></div><div class="brief "><p class="paragraph">The app this instance belongs to.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2140237545%2FProperties%2F875243225" anchor-label="config" id="-2140237545%2FProperties%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+<a data-name="-2140237545%2FProperties%2F-240807163" anchor-label="config" id="-2140237545%2FProperties%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="config.html"><span><span>config</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2140237545%2FProperties%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2140237545%2FProperties%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="config.html">config</a><span class="token operator">: </span><a href="../-connector-config/index.html">ConnectorConfig</a></div><div class="brief "><p class="paragraph">The connector this instance executes the operations of.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="config.html">config</a><span class="token operator">: </span><a href="../-connector-config/index.html">ConnectorConfig</a></div><div class="brief "><p class="paragraph">The connector this instance executes the operations of.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1025687466%2FProperties%2F875243225" anchor-label="settings" id="-1025687466%2FProperties%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+<a data-name="-1025687466%2FProperties%2F-240807163" anchor-label="settings" id="-1025687466%2FProperties%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="settings.html"><span><span>settings</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1025687466%2FProperties%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1025687466%2FProperties%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="settings.html">settings</a><span class="token operator">: </span><a href="../-data-connect-settings/index.html">DataConnectSettings</a></div><div class="brief "><p class="paragraph">The settings this instance was created with.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="settings.html">settings</a><span class="token operator">: </span><a href="../-data-connect-settings/index.html">DataConnectSettings</a></div><div class="brief "><p class="paragraph">The settings this instance was created with.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -214,153 +213,153 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="-1148481815%2FFunctions%2F875243225" anchor-label="close" id="-1148481815%2FFunctions%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1148481815%2FFunctions%2F-240807163" anchor-label="close" id="-1148481815%2FFunctions%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="close.html"><span><span>close</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1148481815%2FFunctions%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1148481815%2FFunctions%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="close.html"><span class="token function">close</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Releases this instance; a later <a href="../get-instance.html">getInstance</a> for the same app and connector creates a new one.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="close.html"><span class="token function">close</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Releases this instance; a later <a href="../get-instance.html">getInstance</a> for the same app and connector creates a new one.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1196738424%2FFunctions%2F875243225" anchor-label="equals" id="-1196738424%2FFunctions%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+<a data-name="-1196738424%2FFunctions%2F-240807163" anchor-label="equals" id="-1196738424%2FFunctions%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="equals.html"><span><span>equals</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1196738424%2FFunctions%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1196738424%2FFunctions%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="equals.html"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="equals.html"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="636860254%2FFunctions%2F875243225" anchor-label="hashCode" id="636860254%2FFunctions%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+<a data-name="636860254%2FFunctions%2F-240807163" anchor-label="hashCode" id="636860254%2FFunctions%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hash-code.html"><span>hash</span><wbr><span><span>Code</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="636860254%2FFunctions%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="636860254%2FFunctions%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-291807811%2FFunctions%2F875243225" anchor-label="mutation" id="-291807811%2FFunctions%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+<a data-name="-1509198518%2FFunctions%2F-240807163" anchor-label="mutation" id="-1509198518%2FFunctions%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mutation.html"><span><span>mutation</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-291807811%2FFunctions%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1509198518%2FFunctions%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="mutation.html">Data</a><span class="token punctuation">, </span><a href="mutation.html">Variables</a><span class="token operator">&gt; </span><a href="mutation.html"><span class="token function">mutation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">operationName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">variables<span class="token operator">: </span><a href="mutation.html">Variables</a><span class="token punctuation">, </span></span><span class="parameter ">dataDeserializer<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="mutation.html">Data</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">variablesSerializer<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="mutation.html">Variables</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">optionsBuilder<span class="token operator">: </span><a href="-mutation-ref-options-builder/index.html">FirebaseDataConnect.MutationRefOptionsBuilder</a><span class="token operator">&lt;</span><a href="mutation.html">Data</a><span class="token punctuation">, </span><a href="mutation.html">Variables</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-mutation-ref/index.html">MutationRef</a><span class="token operator">&lt;</span><a href="mutation.html">Data</a><span class="token punctuation">, </span><a href="mutation.html">Variables</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Creates a reference to the mutation <a href="mutation.html">operationName</a> with the given <a href="mutation.html">variables</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="mutation.html">Data</a><span class="token punctuation">, </span><a href="mutation.html">Variables</a><span class="token operator">&gt; </span><a href="mutation.html"><span class="token function">mutation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">operationName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">variables<span class="token operator">: </span><a href="mutation.html">Variables</a><span class="token punctuation">, </span></span><span class="parameter ">dataDeserializer<span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization/DeserializationStrategy///PointingToDeclaration/">DeserializationStrategy</span><span class="token operator">&lt;</span><a href="mutation.html">Data</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">variablesSerializer<span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization/SerializationStrategy///PointingToDeclaration/">SerializationStrategy</span><span class="token operator">&lt;</span><a href="mutation.html">Variables</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">optionsBuilder<span class="token operator">: </span><a href="-mutation-ref-options-builder/index.html">FirebaseDataConnect.MutationRefOptionsBuilder</a><span class="token operator">&lt;</span><a href="mutation.html">Data</a><span class="token punctuation">, </span><a href="mutation.html">Variables</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-mutation-ref/index.html">MutationRef</a><span class="token operator">&lt;</span><a href="mutation.html">Data</a><span class="token punctuation">, </span><a href="mutation.html">Variables</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Creates a reference to the mutation <a href="mutation.html">operationName</a> with the given <a href="mutation.html">variables</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-397823010%2FFunctions%2F875243225" anchor-label="mutation" id="-397823010%2FFunctions%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+<a data-name="-397823010%2FFunctions%2F-240807163" anchor-label="mutation" id="-397823010%2FFunctions%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html"><span><span>mutation</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-397823010%2FFunctions%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-397823010%2FFunctions%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Data</a><span class="token punctuation">, </span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Variables</a><span class="token operator">&gt; </span><a href="index.html">FirebaseDataConnect</a><span class="token punctuation">.</span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html"><span class="token function">mutation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">operationName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">variables<span class="token operator">: </span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Variables</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">noinline </span>optionsBuilder<span class="token operator">: </span><a href="-mutation-ref-options-builder/index.html">FirebaseDataConnect.MutationRefOptionsBuilder</a><span class="token operator">&lt;</span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Data</a><span class="token punctuation">, </span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Variables</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-mutation-ref/index.html">MutationRef</a><span class="token operator">&lt;</span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Data</a><span class="token punctuation">, </span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Variables</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph"><a href="mutation.html">FirebaseDataConnect.mutation</a> with the serializers of <a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Data</a> and <a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Variables</a> looked up by the compiler.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Data</a><span class="token punctuation">, </span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Variables</a><span class="token operator">&gt; </span><a href="index.html">FirebaseDataConnect</a><span class="token punctuation">.</span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html"><span class="token function">mutation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">operationName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">variables<span class="token operator">: </span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Variables</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">noinline </span>optionsBuilder<span class="token operator">: </span><a href="-mutation-ref-options-builder/index.html">FirebaseDataConnect.MutationRefOptionsBuilder</a><span class="token operator">&lt;</span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Data</a><span class="token punctuation">, </span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Variables</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-mutation-ref/index.html">MutationRef</a><span class="token operator">&lt;</span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Data</a><span class="token punctuation">, </span><a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Variables</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph"><a href="mutation.html">FirebaseDataConnect.mutation</a> with the serializers of <a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Data</a> and <a href="../../io.github.corneloaie.firebase.dataconnect/mutation.html">Variables</a> looked up by the compiler.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1783215803%2FFunctions%2F875243225" anchor-label="query" id="-1783215803%2FFunctions%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+<a data-name="713323722%2FFunctions%2F-240807163" anchor-label="query" id="713323722%2FFunctions%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="query.html"><span><span>query</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1783215803%2FFunctions%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="713323722%2FFunctions%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="query.html">Data</a><span class="token punctuation">, </span><a href="query.html">Variables</a><span class="token operator">&gt; </span><a href="query.html"><span class="token function">query</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">operationName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">variables<span class="token operator">: </span><a href="query.html">Variables</a><span class="token punctuation">, </span></span><span class="parameter ">dataDeserializer<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="query.html">Data</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">variablesSerializer<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="query.html">Variables</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">optionsBuilder<span class="token operator">: </span><a href="-query-ref-options-builder/index.html">FirebaseDataConnect.QueryRefOptionsBuilder</a><span class="token operator">&lt;</span><a href="query.html">Data</a><span class="token punctuation">, </span><a href="query.html">Variables</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-query-ref/index.html">QueryRef</a><span class="token operator">&lt;</span><a href="query.html">Data</a><span class="token punctuation">, </span><a href="query.html">Variables</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Creates a reference to the query <a href="query.html">operationName</a> with the given <a href="query.html">variables</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="query.html">Data</a><span class="token punctuation">, </span><a href="query.html">Variables</a><span class="token operator">&gt; </span><a href="query.html"><span class="token function">query</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">operationName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">variables<span class="token operator">: </span><a href="query.html">Variables</a><span class="token punctuation">, </span></span><span class="parameter ">dataDeserializer<span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization/DeserializationStrategy///PointingToDeclaration/">DeserializationStrategy</span><span class="token operator">&lt;</span><a href="query.html">Data</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">variablesSerializer<span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization/SerializationStrategy///PointingToDeclaration/">SerializationStrategy</span><span class="token operator">&lt;</span><a href="query.html">Variables</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">optionsBuilder<span class="token operator">: </span><a href="-query-ref-options-builder/index.html">FirebaseDataConnect.QueryRefOptionsBuilder</a><span class="token operator">&lt;</span><a href="query.html">Data</a><span class="token punctuation">, </span><a href="query.html">Variables</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-query-ref/index.html">QueryRef</a><span class="token operator">&lt;</span><a href="query.html">Data</a><span class="token punctuation">, </span><a href="query.html">Variables</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Creates a reference to the query <a href="query.html">operationName</a> with the given <a href="query.html">variables</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1603443810%2FFunctions%2F875243225" anchor-label="query" id="-1603443810%2FFunctions%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+<a data-name="-1603443810%2FFunctions%2F-240807163" anchor-label="query" id="-1603443810%2FFunctions%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../io.github.corneloaie.firebase.dataconnect/query.html"><span><span>query</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1603443810%2FFunctions%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1603443810%2FFunctions%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Data</a><span class="token punctuation">, </span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Variables</a><span class="token operator">&gt; </span><a href="index.html">FirebaseDataConnect</a><span class="token punctuation">.</span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html"><span class="token function">query</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">operationName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">variables<span class="token operator">: </span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Variables</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">noinline </span>optionsBuilder<span class="token operator">: </span><a href="-query-ref-options-builder/index.html">FirebaseDataConnect.QueryRefOptionsBuilder</a><span class="token operator">&lt;</span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Data</a><span class="token punctuation">, </span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Variables</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-query-ref/index.html">QueryRef</a><span class="token operator">&lt;</span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Data</a><span class="token punctuation">, </span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Variables</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph"><a href="query.html">FirebaseDataConnect.query</a> with the serializers of <a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Data</a> and <a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Variables</a> looked up by the compiler.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Data</a><span class="token punctuation">, </span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Variables</a><span class="token operator">&gt; </span><a href="index.html">FirebaseDataConnect</a><span class="token punctuation">.</span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html"><span class="token function">query</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">operationName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">variables<span class="token operator">: </span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Variables</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">noinline </span>optionsBuilder<span class="token operator">: </span><a href="-query-ref-options-builder/index.html">FirebaseDataConnect.QueryRefOptionsBuilder</a><span class="token operator">&lt;</span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Data</a><span class="token punctuation">, </span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Variables</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-query-ref/index.html">QueryRef</a><span class="token operator">&lt;</span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Data</a><span class="token punctuation">, </span><a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Variables</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph"><a href="query.html">FirebaseDataConnect.query</a> with the serializers of <a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Data</a> and <a href="../../io.github.corneloaie.firebase.dataconnect/query.html">Variables</a> looked up by the compiler.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-377080401%2FFunctions%2F875243225" anchor-label="suspendingClose" id="-377080401%2FFunctions%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+<a data-name="-377080401%2FFunctions%2F-240807163" anchor-label="suspendingClose" id="-377080401%2FFunctions%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="suspending-close.html"><span>suspending</span><wbr><span><span>Close</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-377080401%2FFunctions%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-377080401%2FFunctions%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="suspending-close.html"><span class="token function">suspendingClose</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="close.html">close</a>, waiting for the release to complete.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="suspending-close.html"><span class="token function">suspendingClose</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph"><a href="close.html">close</a>, waiting for the release to complete.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="458694189%2FFunctions%2F875243225" anchor-label="toString" id="458694189%2FFunctions%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+<a data-name="458694189%2FFunctions%2F-240807163" anchor-label="toString" id="458694189%2FFunctions%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-string.html"><span>to</span><wbr><span><span>String</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="458694189%2FFunctions%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="458694189%2FFunctions%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="2055963518%2FFunctions%2F875243225" anchor-label="useEmulator" id="2055963518%2FFunctions%2F875243225" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":firebase-dataconnect:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-dataconnect:dokkaHtmlPartial/commonMain">
+<a data-name="2055963518%2FFunctions%2F-240807163" anchor-label="useEmulator" id="2055963518%2FFunctions%2F-240807163" data-filterable-set=":firebase-dataconnect/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":firebase-dataconnect/commonMain" data-filterable-set=":firebase-dataconnect/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="use-emulator.html"><span>use</span><wbr><span><span>Emulator</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2055963518%2FFunctions%2F875243225"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2055963518%2FFunctions%2F-240807163"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="use-emulator.html"><span class="token function">useEmulator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">host<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">"10.0.2.2"</span><span class="token punctuation">, </span></span><span class="parameter ">port<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">9399</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Connects to the Data Connect emulator instead of the production service; must be called before any operation is executed. The default host is the one the Android emulator reaches its host machine with; the other platforms' tests use <code class="lang-kotlin">localhost</code>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-dataconnect/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="use-emulator.html"><span class="token function">useEmulator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">host<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">"10.0.2.2"</span><span class="token punctuation">, </span></span><span class="parameter ">port<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">9399</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Connects to the Data Connect emulator instead of the production service; must be called before any operation is executed. The default host is the one the Android emulator reaches its host machine with; the other platforms' tests use <code class="lang-kotlin">localhost</code>.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -371,17 +370,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,118 +1,115 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>firebase-appcheck</title>
-<link href="../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../scripts/sourceset_dependencies.js" async></script>
 <link href="../styles/style.css" rel="Stylesheet">
 <link href="../styles/main.css" rel="Stylesheet">
 <link href="../styles/prism.css" rel="Stylesheet">
 <link href="../styles/logo-styles.css" rel="Stylesheet">
-<link href="../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../scripts/main.js" defer></script>
 <script type="text/javascript" src="../scripts/prism.js" async></script>
-<script type="text/javascript" src="../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<script type="text/javascript" src="../ui-kit/ui-kit.min.js" defer></script></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../index.html" tabindex="1">
                     firebase-multiplatform
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">3.0.0-alpha02
+        <div class="library-version" id="library-version">0.3.0
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":firebase-appcheck:dokkaHtmlPartial/androidMain">android</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-appcheck:dokkaHtmlPartial/appleMain">apple</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-appcheck:dokkaHtmlPartial/commonMain">common</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-appcheck:dokkaHtmlPartial/iosMain">ios</button>
-                <button class="platform-tag platform-selector js-like" data-active="" data-filter=":firebase-appcheck:dokkaHtmlPartial/jsMain">js</button>
-                <button class="platform-tag platform-selector native-like" data-active="" data-filter=":firebase-appcheck:dokkaHtmlPartial/macosMain">macos</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-appcheck:dokkaHtmlPartial/tvosMain">tvos</button>
-                <button class="platform-tag platform-selector wasm-like" data-active="" data-filter=":firebase-appcheck:dokkaHtmlPartial/wasmJsMain">wasmJs</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":firebase-appcheck/androidMain">android</button>
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true" data-filter=":firebase-appcheck/appleMain">apple</button>
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true" data-filter=":firebase-appcheck/commonMain">common</button>
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true" data-filter=":firebase-appcheck/iosMain">ios</button>
+                <button class="platform-tag platform-selector js-like" data-active="" aria-pressed="true" data-filter=":firebase-appcheck/jsMain">js</button>
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true" data-filter=":firebase-appcheck/macosMain">macos</button>
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true" data-filter=":firebase-appcheck/tvosMain">tvos</button>
+                <button class="platform-tag platform-selector wasm-like" data-active="" aria-pressed="true" data-filter=":firebase-appcheck/wasmJsMain">wasmJs</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck:dokkaHtmlPartial/androidMain" data-filter=":firebase-appcheck:dokkaHtmlPartial/androidMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck/androidMain" data-filter=":firebase-appcheck/androidMain">
                                 <span class="checkbox--icon"></span>
                                 android
                             </label>
                         </li>
-                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck:dokkaHtmlPartial/appleMain" data-filter=":firebase-appcheck:dokkaHtmlPartial/appleMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck/appleMain" data-filter=":firebase-appcheck/appleMain">
                                 <span class="checkbox--icon"></span>
                                 apple
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck:dokkaHtmlPartial/commonMain" data-filter=":firebase-appcheck:dokkaHtmlPartial/commonMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck/commonMain" data-filter=":firebase-appcheck/commonMain">
                                 <span class="checkbox--icon"></span>
                                 common
                             </label>
                         </li>
-                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck:dokkaHtmlPartial/iosMain" data-filter=":firebase-appcheck:dokkaHtmlPartial/iosMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck/iosMain" data-filter=":firebase-appcheck/iosMain">
                                 <span class="checkbox--icon"></span>
                                 ios
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option js-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck:dokkaHtmlPartial/jsMain" data-filter=":firebase-appcheck:dokkaHtmlPartial/jsMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck/jsMain" data-filter=":firebase-appcheck/jsMain">
                                 <span class="checkbox--icon"></span>
                                 js
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck:dokkaHtmlPartial/macosMain" data-filter=":firebase-appcheck:dokkaHtmlPartial/macosMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck/macosMain" data-filter=":firebase-appcheck/macosMain">
                                 <span class="checkbox--icon"></span>
                                 macos
                             </label>
                         </li>
-                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck:dokkaHtmlPartial/tvosMain" data-filter=":firebase-appcheck:dokkaHtmlPartial/tvosMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck/tvosMain" data-filter=":firebase-appcheck/tvosMain">
                                 <span class="checkbox--icon"></span>
                                 tvos
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option wasm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck:dokkaHtmlPartial/wasmJsMain" data-filter=":firebase-appcheck:dokkaHtmlPartial/wasmJsMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-appcheck/wasmJsMain" data-filter=":firebase-appcheck/wasmJsMain">
                                 <span class="checkbox--icon"></span>
                                 wasmJs
                             </label>
@@ -120,7 +117,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://github.com/corneloaie/firebase-multiplatform"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -128,47 +125,49 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     firebase-multiplatform
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" id="content" pageids="firebase-appcheck::////PointingToDeclaration//-687436239">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" id="content" pageids="firebase-appcheck::////PointingToDeclaration//-486512599">
   <div class="breadcrumbs"></div>
   <div class="cover ">
     <h1 class="cover"><span><span>firebase-appcheck</span></span></h1>
     <div class="platform-hinted UnderCoverText with-platform-tabs" data-platform-hinted="data-platform-hinted">
-      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-appcheck:dokkaHtmlPartial/androidMain" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":firebase-appcheck:dokkaHtmlPartial/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-appcheck:dokkaHtmlPartial/appleMain" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/appleMain" data-toggle=":firebase-appcheck:dokkaHtmlPartial/appleMain">apple</button><button class="platform-bookmark" data-filterable-current=":firebase-appcheck:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/commonMain" data-toggle=":firebase-appcheck:dokkaHtmlPartial/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":firebase-appcheck:dokkaHtmlPartial/iosMain" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/iosMain" data-toggle=":firebase-appcheck:dokkaHtmlPartial/iosMain">ios</button><button class="platform-bookmark" data-filterable-current=":firebase-appcheck:dokkaHtmlPartial/jsMain" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/jsMain" data-toggle=":firebase-appcheck:dokkaHtmlPartial/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-appcheck:dokkaHtmlPartial/macosMain" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/macosMain" data-toggle=":firebase-appcheck:dokkaHtmlPartial/macosMain">macos</button><button class="platform-bookmark" data-filterable-current=":firebase-appcheck:dokkaHtmlPartial/tvosMain" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/tvosMain" data-toggle=":firebase-appcheck:dokkaHtmlPartial/tvosMain">tvos</button><button class="platform-bookmark" data-filterable-current=":firebase-appcheck:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/wasmJsMain" data-toggle=":firebase-appcheck:dokkaHtmlPartial/wasmJsMain">wasmJs</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appcheck:dokkaHtmlPartial/androidMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-appcheck:dokkaHtmlPartial/appleMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-appcheck:dokkaHtmlPartial/commonMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-appcheck:dokkaHtmlPartial/iosMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-appcheck:dokkaHtmlPartial/jsMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-appcheck:dokkaHtmlPartial/macosMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-appcheck:dokkaHtmlPartial/tvosMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-appcheck:dokkaHtmlPartial/wasmJsMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div>    </div>
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-appcheck/androidMain" data-filterable-set=":firebase-appcheck/androidMain" data-active="" data-toggle=":firebase-appcheck/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-appcheck/appleMain" data-filterable-set=":firebase-appcheck/appleMain" data-toggle=":firebase-appcheck/appleMain">apple</button><button class="platform-bookmark" data-filterable-current=":firebase-appcheck/commonMain" data-filterable-set=":firebase-appcheck/commonMain" data-toggle=":firebase-appcheck/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":firebase-appcheck/iosMain" data-filterable-set=":firebase-appcheck/iosMain" data-toggle=":firebase-appcheck/iosMain">ios</button><button class="platform-bookmark" data-filterable-current=":firebase-appcheck/jsMain" data-filterable-set=":firebase-appcheck/jsMain" data-toggle=":firebase-appcheck/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":firebase-appcheck/macosMain" data-filterable-set=":firebase-appcheck/macosMain" data-toggle=":firebase-appcheck/macosMain">macos</button><button class="platform-bookmark" data-filterable-current=":firebase-appcheck/tvosMain" data-filterable-set=":firebase-appcheck/tvosMain" data-toggle=":firebase-appcheck/tvosMain">tvos</button><button class="platform-bookmark" data-filterable-current=":firebase-appcheck/wasmJsMain" data-filterable-set=":firebase-appcheck/wasmJsMain" data-toggle=":firebase-appcheck/wasmJsMain">wasmJs</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-appcheck/androidMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-appcheck/appleMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-appcheck/commonMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-appcheck/iosMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-appcheck/jsMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-appcheck/macosMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-appcheck/tvosMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-appcheck/wasmJsMain"><p class="paragraph">This module is a direct forward of the Firebase App Check library. It attests that requests to Firebase backends come from your app, with the debug, Play Integrity (Android), reCAPTCHA Enterprise, DeviceCheck and App Attest (Apple) or reCAPTCHA v3 (web) providers, or a provider of your own.</p><p class="paragraph">The platform SDKs install a provider factory differently. On Android <code class="lang-kotlin">installAppCheckProviderFactory</code> applies to the app at any time. The iOS SDK reads the factory when an app is configured, so on Apple platforms set it with <code class="lang-kotlin">FirebaseAppCheck.setAppCheckProviderFactory</code> before <code class="lang-kotlin">Firebase.initialize</code>. The JS SDK starts App Check for an app once, with the first factory installed. On Android the module brings the Firebase libraries of every provider it mirrors (<code class="lang-kotlin">firebase-appcheck-debug</code>, <code class="lang-kotlin">firebase-appcheck-playintegrity</code> and <code class="lang-kotlin">firebase-appcheck-recaptcha</code>), so that common code can use any of them. An app that does not use one can exclude its library, for example <code class="lang-kotlin">exclude(group = "com.google.firebase", module = "firebase-appcheck-recaptcha")</code>; the module's own classes do not refer to them.</p></div>    </div>
   </div>
   <h2 class="">Packages</h2>
-  <div class="table"><a data-name="268349512%2FPackages%2F-10461987" anchor-label="com.google.firebase.appcheck" id="268349512%2FPackages%2F-10461987" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/androidMain,:firebase-appcheck:dokkaHtmlPartial/appleMain,:firebase-appcheck:dokkaHtmlPartial/commonMain,:firebase-appcheck:dokkaHtmlPartial/jsMain,:firebase-appcheck:dokkaHtmlPartial/wasmJsMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-appcheck:dokkaHtmlPartial/androidMain,:firebase-appcheck:dokkaHtmlPartial/appleMain,:firebase-appcheck:dokkaHtmlPartial/commonMain,:firebase-appcheck:dokkaHtmlPartial/jsMain,:firebase-appcheck:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/androidMain,:firebase-appcheck:dokkaHtmlPartial/appleMain,:firebase-appcheck:dokkaHtmlPartial/commonMain,:firebase-appcheck:dokkaHtmlPartial/jsMain,:firebase-appcheck:dokkaHtmlPartial/wasmJsMain">
+  <div class="table"><a data-name="268349512%2FPackages%2F-1402359997" anchor-label="com.google.firebase.appcheck" id="268349512%2FPackages%2F-1402359997" data-filterable-set=":firebase-appcheck/commonMain,:firebase-appcheck/androidMain,:firebase-appcheck/appleMain,:firebase-appcheck/jsMain,:firebase-appcheck/wasmJsMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-appcheck/commonMain,:firebase-appcheck/androidMain,:firebase-appcheck/appleMain,:firebase-appcheck/jsMain,:firebase-appcheck/wasmJsMain" data-filterable-set=":firebase-appcheck/commonMain,:firebase-appcheck/androidMain,:firebase-appcheck/appleMain,:firebase-appcheck/jsMain,:firebase-appcheck/wasmJsMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.google.firebase.appcheck/index.html">com.google.firebase.appcheck</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="268349512%2FPackages%2F-10461987"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="268349512%2FPackages%2F-1402359997"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">android</div>
-              <div class="platform-tag common-like">apple</div>
+              <div class="platform-tag native-like">apple</div>
               <div class="platform-tag common-like">common</div>
               <div class="platform-tag js-like">js</div>
               <div class="platform-tag wasm-like">wasmJs</div>
@@ -178,19 +177,19 @@
         <div></div>
       </div>
     </div>
-<a data-name="268569197%2FPackages%2F-10461987" anchor-label="com.google.firebase.appcheck.debug" id="268569197%2FPackages%2F-10461987" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/androidMain,:firebase-appcheck:dokkaHtmlPartial/appleMain,:firebase-appcheck:dokkaHtmlPartial/commonMain,:firebase-appcheck:dokkaHtmlPartial/jsMain,:firebase-appcheck:dokkaHtmlPartial/wasmJsMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-appcheck:dokkaHtmlPartial/androidMain,:firebase-appcheck:dokkaHtmlPartial/appleMain,:firebase-appcheck:dokkaHtmlPartial/commonMain,:firebase-appcheck:dokkaHtmlPartial/jsMain,:firebase-appcheck:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/androidMain,:firebase-appcheck:dokkaHtmlPartial/appleMain,:firebase-appcheck:dokkaHtmlPartial/commonMain,:firebase-appcheck:dokkaHtmlPartial/jsMain,:firebase-appcheck:dokkaHtmlPartial/wasmJsMain">
+<a data-name="268569197%2FPackages%2F-1402359997" anchor-label="com.google.firebase.appcheck.debug" id="268569197%2FPackages%2F-1402359997" data-filterable-set=":firebase-appcheck/commonMain,:firebase-appcheck/androidMain,:firebase-appcheck/appleMain,:firebase-appcheck/jsMain,:firebase-appcheck/wasmJsMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-appcheck/commonMain,:firebase-appcheck/androidMain,:firebase-appcheck/appleMain,:firebase-appcheck/jsMain,:firebase-appcheck/wasmJsMain" data-filterable-set=":firebase-appcheck/commonMain,:firebase-appcheck/androidMain,:firebase-appcheck/appleMain,:firebase-appcheck/jsMain,:firebase-appcheck/wasmJsMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.google.firebase.appcheck.debug/index.html">com.google.firebase.appcheck.debug</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="268569197%2FPackages%2F-10461987"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="268569197%2FPackages%2F-1402359997"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">android</div>
-              <div class="platform-tag common-like">apple</div>
+              <div class="platform-tag native-like">apple</div>
               <div class="platform-tag common-like">common</div>
               <div class="platform-tag js-like">js</div>
               <div class="platform-tag wasm-like">wasmJs</div>
@@ -200,19 +199,19 @@
         <div></div>
       </div>
     </div>
-<a data-name="-2008522957%2FPackages%2F-10461987" anchor-label="com.google.firebase.appcheck.playintegrity" id="-2008522957%2FPackages%2F-10461987" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/androidMain,:firebase-appcheck:dokkaHtmlPartial/appleMain,:firebase-appcheck:dokkaHtmlPartial/commonMain,:firebase-appcheck:dokkaHtmlPartial/jsMain,:firebase-appcheck:dokkaHtmlPartial/wasmJsMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-appcheck:dokkaHtmlPartial/androidMain,:firebase-appcheck:dokkaHtmlPartial/appleMain,:firebase-appcheck:dokkaHtmlPartial/commonMain,:firebase-appcheck:dokkaHtmlPartial/jsMain,:firebase-appcheck:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/androidMain,:firebase-appcheck:dokkaHtmlPartial/appleMain,:firebase-appcheck:dokkaHtmlPartial/commonMain,:firebase-appcheck:dokkaHtmlPartial/jsMain,:firebase-appcheck:dokkaHtmlPartial/wasmJsMain">
+<a data-name="-2008522957%2FPackages%2F-1402359997" anchor-label="com.google.firebase.appcheck.playintegrity" id="-2008522957%2FPackages%2F-1402359997" data-filterable-set=":firebase-appcheck/commonMain,:firebase-appcheck/androidMain,:firebase-appcheck/appleMain,:firebase-appcheck/jsMain,:firebase-appcheck/wasmJsMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-appcheck/commonMain,:firebase-appcheck/androidMain,:firebase-appcheck/appleMain,:firebase-appcheck/jsMain,:firebase-appcheck/wasmJsMain" data-filterable-set=":firebase-appcheck/commonMain,:firebase-appcheck/androidMain,:firebase-appcheck/appleMain,:firebase-appcheck/jsMain,:firebase-appcheck/wasmJsMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.google.firebase.appcheck.playintegrity/index.html">com.google.firebase.appcheck.playintegrity</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2008522957%2FPackages%2F-10461987"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2008522957%2FPackages%2F-1402359997"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">android</div>
-              <div class="platform-tag common-like">apple</div>
+              <div class="platform-tag native-like">apple</div>
               <div class="platform-tag common-like">common</div>
               <div class="platform-tag js-like">js</div>
               <div class="platform-tag wasm-like">wasmJs</div>
@@ -222,23 +221,23 @@
         <div></div>
       </div>
     </div>
-<a data-name="1516899329%2FPackages%2F-1479594557" anchor-label="com.google.firebase.appcheck.recaptcha" id="1516899329%2FPackages%2F-1479594557" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/androidMain,:firebase-appcheck:dokkaHtmlPartial/commonMain,:firebase-appcheck:dokkaHtmlPartial/iosMain,:firebase-appcheck:dokkaHtmlPartial/jsMain,:firebase-appcheck:dokkaHtmlPartial/macosMain,:firebase-appcheck:dokkaHtmlPartial/tvosMain,:firebase-appcheck:dokkaHtmlPartial/wasmJsMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-appcheck:dokkaHtmlPartial/androidMain,:firebase-appcheck:dokkaHtmlPartial/commonMain,:firebase-appcheck:dokkaHtmlPartial/iosMain,:firebase-appcheck:dokkaHtmlPartial/jsMain,:firebase-appcheck:dokkaHtmlPartial/macosMain,:firebase-appcheck:dokkaHtmlPartial/tvosMain,:firebase-appcheck:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/androidMain,:firebase-appcheck:dokkaHtmlPartial/commonMain,:firebase-appcheck:dokkaHtmlPartial/iosMain,:firebase-appcheck:dokkaHtmlPartial/jsMain,:firebase-appcheck:dokkaHtmlPartial/macosMain,:firebase-appcheck:dokkaHtmlPartial/tvosMain,:firebase-appcheck:dokkaHtmlPartial/wasmJsMain">
+<a data-name="1516899329%2FPackages%2F1199510889" anchor-label="com.google.firebase.appcheck.recaptcha" id="1516899329%2FPackages%2F1199510889" data-filterable-set=":firebase-appcheck/commonMain,:firebase-appcheck/androidMain,:firebase-appcheck/iosMain,:firebase-appcheck/jsMain,:firebase-appcheck/macosMain,:firebase-appcheck/tvosMain,:firebase-appcheck/wasmJsMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-appcheck/commonMain,:firebase-appcheck/androidMain,:firebase-appcheck/iosMain,:firebase-appcheck/jsMain,:firebase-appcheck/macosMain,:firebase-appcheck/tvosMain,:firebase-appcheck/wasmJsMain" data-filterable-set=":firebase-appcheck/commonMain,:firebase-appcheck/androidMain,:firebase-appcheck/iosMain,:firebase-appcheck/jsMain,:firebase-appcheck/macosMain,:firebase-appcheck/tvosMain,:firebase-appcheck/wasmJsMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.google.firebase.appcheck.recaptcha/index.html">com.google.firebase.appcheck.recaptcha</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1516899329%2FPackages%2F-1479594557"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1516899329%2FPackages%2F1199510889"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">android</div>
               <div class="platform-tag common-like">common</div>
-              <div class="platform-tag common-like">ios</div>
+              <div class="platform-tag native-like">ios</div>
               <div class="platform-tag js-like">js</div>
               <div class="platform-tag native-like">macos</div>
-              <div class="platform-tag common-like">tvos</div>
+              <div class="platform-tag native-like">tvos</div>
               <div class="platform-tag wasm-like">wasmJs</div>
             </div>
           </div>
@@ -246,19 +245,19 @@
         <div></div>
       </div>
     </div>
-<a data-name="2100939618%2FPackages%2F-10461987" anchor-label="io.github.corneloaie.firebase.appcheck" id="2100939618%2FPackages%2F-10461987" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/androidMain,:firebase-appcheck:dokkaHtmlPartial/appleMain,:firebase-appcheck:dokkaHtmlPartial/commonMain,:firebase-appcheck:dokkaHtmlPartial/jsMain,:firebase-appcheck:dokkaHtmlPartial/wasmJsMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-appcheck:dokkaHtmlPartial/androidMain,:firebase-appcheck:dokkaHtmlPartial/appleMain,:firebase-appcheck:dokkaHtmlPartial/commonMain,:firebase-appcheck:dokkaHtmlPartial/jsMain,:firebase-appcheck:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/androidMain,:firebase-appcheck:dokkaHtmlPartial/appleMain,:firebase-appcheck:dokkaHtmlPartial/commonMain,:firebase-appcheck:dokkaHtmlPartial/jsMain,:firebase-appcheck:dokkaHtmlPartial/wasmJsMain">
+<a data-name="2100939618%2FPackages%2F-1402359997" anchor-label="io.github.corneloaie.firebase.appcheck" id="2100939618%2FPackages%2F-1402359997" data-filterable-set=":firebase-appcheck/commonMain,:firebase-appcheck/androidMain,:firebase-appcheck/appleMain,:firebase-appcheck/jsMain,:firebase-appcheck/wasmJsMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-appcheck/commonMain,:firebase-appcheck/androidMain,:firebase-appcheck/appleMain,:firebase-appcheck/jsMain,:firebase-appcheck/wasmJsMain" data-filterable-set=":firebase-appcheck/commonMain,:firebase-appcheck/androidMain,:firebase-appcheck/appleMain,:firebase-appcheck/jsMain,:firebase-appcheck/wasmJsMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="io.github.corneloaie.firebase.appcheck/index.html">io.github.corneloaie.firebase.appcheck</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2100939618%2FPackages%2F-10461987"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2100939618%2FPackages%2F-1402359997"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">android</div>
-              <div class="platform-tag common-like">apple</div>
+              <div class="platform-tag native-like">apple</div>
               <div class="platform-tag common-like">common</div>
               <div class="platform-tag js-like">js</div>
               <div class="platform-tag wasm-like">wasmJs</div>
@@ -268,16 +267,16 @@
         <div></div>
       </div>
     </div>
-<a data-name="1652877436%2FPackages%2F-361265313" anchor-label="io.github.corneloaie.firebase.appcheck.externals" id="1652877436%2FPackages%2F-361265313" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/wasmJsMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-appcheck:dokkaHtmlPartial/wasmJsMain" data-filterable-set=":firebase-appcheck:dokkaHtmlPartial/wasmJsMain">
+<a data-name="1652877436%2FPackages%2F1957548909" anchor-label="io.github.corneloaie.firebase.appcheck.externals" id="1652877436%2FPackages%2F1957548909" data-filterable-set=":firebase-appcheck/wasmJsMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-appcheck/wasmJsMain" data-filterable-set=":firebase-appcheck/wasmJsMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="io.github.corneloaie.firebase.appcheck.externals/index.html">io.github.corneloaie.firebase.appcheck.externals</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1652877436%2FPackages%2F-361265313"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1652877436%2FPackages%2F1957548909"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag wasm-like">wasmJs</div>
             </div>
@@ -289,17 +288,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

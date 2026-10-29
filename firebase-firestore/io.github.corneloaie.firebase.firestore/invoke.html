@@ -1,62 +1,67 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>invoke</title>
-<link href="../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../styles/style.css" rel="Stylesheet">
 <link href="../../styles/main.css" rel="Stylesheet">
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../scripts/prism.js" async></script>
-<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer></script></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../index.html" tabindex="1">
                     firebase-multiplatform
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">3.0.0-alpha02
+        <div class="library-version" id="library-version">0.3.0
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-firestore:dokkaHtmlPartial/appleMain">apple</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":firebase-firestore/androidMain">android</button>
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true" data-filter=":firebase-firestore/appleMain">apple</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
-                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore:dokkaHtmlPartial/appleMain" data-filter=":firebase-firestore:dokkaHtmlPartial/appleMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore/androidMain" data-filter=":firebase-firestore/androidMain">
+                                <span class="checkbox--icon"></span>
+                                android
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-firestore/appleMain" data-filter=":firebase-firestore/appleMain">
                                 <span class="checkbox--icon"></span>
                                 apple
                             </label>
@@ -64,7 +69,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://github.com/corneloaie/firebase-multiplatform"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -72,46 +77,52 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     firebase-multiplatform
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="member" id="content" pageids="firebase-firestore::io.github.corneloaie.firebase.firestore//invoke/[Error type: Unresolved type for FirebaseFirestore.Companion]#[Error type: Unresolved type for FIRFirestore]/PointingToDeclaration//-1146671152">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="member" id="content" pageids="firebase-firestore::io.github.corneloaie.firebase.firestore//invoke/io.github.corneloaie.firebase.firestore.FirebaseFirestore.Companion#com.google.firebase.firestore.FirebaseFirestore/PointingToDeclaration//2067209572">
   <div class="breadcrumbs"><a href="../index.html">firebase-firestore</a><span class="delimiter">/</span><a href="index.html">io.github.corneloaie.firebase.firestore</a><span class="delimiter">/</span><span class="current">invoke</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>invoke</span></span></h1>
   </div>
   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-firestore:dokkaHtmlPartial/appleMain" data-filterable-set=":firebase-firestore:dokkaHtmlPartial/appleMain" data-active="" data-toggle=":firebase-firestore:dokkaHtmlPartial/appleMain">apple</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-firestore:dokkaHtmlPartial/appleMain"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/appleMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.apple.kt#L39">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/appleMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.apple.kt#L122">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/appleMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.apple.kt#L127">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/appleMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.apple.kt#L132">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/appleMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.apple.kt#L137">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/appleMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.apple.kt#L142">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/appleMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.apple.kt#L153">source</a>)</span></span></div></div>  </div>
+    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-firestore/androidMain" data-filterable-set=":firebase-firestore/androidMain" data-active="" data-toggle=":firebase-firestore/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-firestore/appleMain" data-filterable-set=":firebase-firestore/appleMain" data-toggle=":firebase-firestore/appleMain">apple</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-firestore/androidMain"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="-firebase-firestore/-companion/index.html#614581836%2FMain%2F-1610901974">FirebaseFirestore.Companion</a><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">android<span class="token operator">: </span><a href="../com.google.firebase.firestore/-firebase-firestore/index.html">FirebaseFirestore</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-firebase-firestore/index.html#-934740406%2FMain%2F-1610901974">FirebaseFirestore</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/androidMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.android.kt#L35">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="-write-batch/-companion/index.html#-1700363749%2FMain%2F-1610901974">WriteBatch.Companion</a><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">android<span class="token operator">: </span><a href="../com.google.firebase.firestore/-write-batch/index.html">WriteBatch</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-write-batch/index.html#-1763680039%2FMain%2F-1610901974">WriteBatch</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/androidMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.android.kt#L97">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="-transaction/-companion/index.html#217842962%2FMain%2F-1610901974">Transaction.Companion</a><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">android<span class="token operator">: </span><a href="../com.google.firebase.firestore/-transaction/index.html">Transaction</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-transaction/index.html#815258768%2FMain%2F-1610901974">Transaction</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/androidMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.android.kt#L102">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="-document-reference/-companion/index.html#2123079808%2FMain%2F-1610901974">DocumentReference.Companion</a><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">android<span class="token operator">: </span><a href="../com.google.firebase.firestore/-document-reference/index.html">DocumentReference</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-document-reference/index.html#-2078258818%2FMain%2F-1610901974">DocumentReference</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/androidMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.android.kt#L107">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="-query/-companion/index.html#483236008%2FMain%2F-1610901974">Query.Companion</a><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">android<span class="token operator">: </span><a href="../com.google.firebase.firestore/-query/index.html">Query</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-query/index.html#1657459622%2FMain%2F-1610901974">Query</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/androidMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.android.kt#L112">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="-collection-reference/-companion/index.html#677124675%2FMain%2F-1610901974">CollectionReference.Companion</a><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">android<span class="token operator">: </span><a href="../com.google.firebase.firestore/-collection-reference/index.html">CollectionReference</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-collection-reference/index.html#-754545919%2FMain%2F-1610901974">CollectionReference</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/androidMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.android.kt#L117">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="-document-snapshot/-companion/index.html#-1572166665%2FMain%2F-1610901974">DocumentSnapshot.Companion</a><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">android<span class="token operator">: </span><a href="../com.google.firebase.firestore/-document-snapshot/index.html">DocumentSnapshot</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-document-snapshot/index.html#-862984779%2FMain%2F-1610901974">DocumentSnapshot</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/androidMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.android.kt#L128">source</a>)</span></span></div></div><div class="content sourceset-dependent-content" data-togglable=":firebase-firestore/appleMain"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="-firebase-firestore/-companion/index.html#614581836%2FMain%2F1980732870">FirebaseFirestore.Companion</a><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.firestore/FIRFirestore///PointingToDeclaration/">FIRFirestore</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-firebase-firestore/index.html#-934740406%2FMain%2F1980732870">FirebaseFirestore</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/appleMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.apple.kt#L39">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="-write-batch/-companion/index.html#-1700363749%2FMain%2F1980732870">WriteBatch.Companion</a><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.firestore/FIRWriteBatch///PointingToDeclaration/">FIRWriteBatch</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-write-batch/index.html#-1763680039%2FMain%2F1980732870">WriteBatch</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/appleMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.apple.kt#L123">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="-transaction/-companion/index.html#217842962%2FMain%2F1980732870">Transaction.Companion</a><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.firestore/FIRTransaction///PointingToDeclaration/">FIRTransaction</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-transaction/index.html#815258768%2FMain%2F1980732870">Transaction</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/appleMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.apple.kt#L128">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="-document-reference/-companion/index.html#2123079808%2FMain%2F1980732870">DocumentReference.Companion</a><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.firestore/FIRDocumentReference///PointingToDeclaration/">FIRDocumentReference</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-document-reference/index.html#-2078258818%2FMain%2F1980732870">DocumentReference</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/appleMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.apple.kt#L133">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="-query/-companion/index.html#483236008%2FMain%2F1980732870">Query.Companion</a><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.firestore/FIRQuery///PointingToDeclaration/">FIRQuery</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-query/index.html#1657459622%2FMain%2F1980732870">Query</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/appleMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.apple.kt#L138">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="-collection-reference/-companion/index.html#677124675%2FMain%2F1980732870">CollectionReference.Companion</a><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.firestore/FIRCollectionReference///PointingToDeclaration/">FIRCollectionReference</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-collection-reference/index.html#-754545919%2FMain%2F1980732870">CollectionReference</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/appleMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.apple.kt#L143">source</a>)</span></span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="-document-snapshot/-companion/index.html#-1572166665%2FMain%2F1980732870">DocumentSnapshot.Companion</a><span class="token punctuation">.</span><a href="invoke.html"><span class="token function">invoke</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">ios<span class="token operator">: </span><span data-unresolved-link="swiftPMImport.io.github.corneloaie.firebase.firestore/FIRDocumentSnapshot///PointingToDeclaration/">FIRDocumentSnapshot</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-document-snapshot/index.html#-862984779%2FMain%2F1980732870">DocumentSnapshot</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/corneloaie/firebase-multiplatform/tree/main/firebase-firestore/src/appleMain/kotlin/io/github/corneloaie/firebase/firestore/firestore.apple.kt#L154">source</a>)</span></span></div></div>  </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

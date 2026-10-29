@@ -1,94 +1,91 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>firebase-inappmessaging</title>
-<link href="../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../scripts/sourceset_dependencies.js" async></script>
 <link href="../styles/style.css" rel="Stylesheet">
 <link href="../styles/main.css" rel="Stylesheet">
 <link href="../styles/prism.css" rel="Stylesheet">
 <link href="../styles/logo-styles.css" rel="Stylesheet">
-<link href="../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../scripts/main.js" defer></script>
 <script type="text/javascript" src="../scripts/prism.js" async></script>
-<script type="text/javascript" src="../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<script type="text/javascript" src="../ui-kit/ui-kit.min.js" defer></script></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../index.html" tabindex="1">
                     firebase-multiplatform
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
-        <div class="library-version" id="library-version">3.0.0-alpha02
+        <div class="library-version" id="library-version">0.3.0
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":firebase-inappmessaging:dokkaHtmlPartial/androidMain">android</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-inappmessaging:dokkaHtmlPartial/appleMain">apple</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-inappmessaging:dokkaHtmlPartial/commonMain">common</button>
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":firebase-inappmessaging:dokkaHtmlPartial/jvmMain">jvm</button>
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":firebase-inappmessaging:dokkaHtmlPartial/nonAndroidMain">nonAndroid</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":firebase-inappmessaging/androidMain">android</button>
+                <button class="platform-tag platform-selector native-like" data-active="" aria-pressed="true" data-filter=":firebase-inappmessaging/appleMain">apple</button>
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true" data-filter=":firebase-inappmessaging/commonMain">common</button>
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true" data-filter=":firebase-inappmessaging/jvmMain">jvm</button>
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true" data-filter=":firebase-inappmessaging/nonAndroidMain">nonAndroid</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-inappmessaging:dokkaHtmlPartial/androidMain" data-filter=":firebase-inappmessaging:dokkaHtmlPartial/androidMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-inappmessaging/androidMain" data-filter=":firebase-inappmessaging/androidMain">
                                 <span class="checkbox--icon"></span>
                                 android
                             </label>
                         </li>
-                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                        <li role="option" class="dropdown--option platform-selector-option native-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-inappmessaging:dokkaHtmlPartial/appleMain" data-filter=":firebase-inappmessaging:dokkaHtmlPartial/appleMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-inappmessaging/appleMain" data-filter=":firebase-inappmessaging/appleMain">
                                 <span class="checkbox--icon"></span>
                                 apple
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-inappmessaging:dokkaHtmlPartial/commonMain" data-filter=":firebase-inappmessaging:dokkaHtmlPartial/commonMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-inappmessaging/commonMain" data-filter=":firebase-inappmessaging/commonMain">
                                 <span class="checkbox--icon"></span>
                                 common
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-inappmessaging:dokkaHtmlPartial/jvmMain" data-filter=":firebase-inappmessaging:dokkaHtmlPartial/jvmMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-inappmessaging/jvmMain" data-filter=":firebase-inappmessaging/jvmMain">
                                 <span class="checkbox--icon"></span>
                                 jvm
                             </label>
                         </li>
                         <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":firebase-inappmessaging:dokkaHtmlPartial/nonAndroidMain" data-filter=":firebase-inappmessaging:dokkaHtmlPartial/nonAndroidMain">
+                                <input type="checkbox" class="checkbox--input" id=":firebase-inappmessaging/nonAndroidMain" data-filter=":firebase-inappmessaging/nonAndroidMain">
                                 <span class="checkbox--icon"></span>
                                 nonAndroid
                             </label>
@@ -96,7 +93,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
                 <a class="navigation-controls--btn navigation-controls--btn_homepage" id="homepage-link" href="https://github.com/corneloaie/firebase-multiplatform"></a>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
@@ -104,47 +101,49 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     firebase-multiplatform
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" id="content" pageids="firebase-inappmessaging::////PointingToDeclaration//1667614011">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" id="content" pageids="firebase-inappmessaging::////PointingToDeclaration//-1197836461">
   <div class="breadcrumbs"></div>
   <div class="cover ">
     <h1 class="cover"><span><span>firebase-inappmessaging</span></span></h1>
     <div class="platform-hinted UnderCoverText with-platform-tabs" data-platform-hinted="data-platform-hinted">
-      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-inappmessaging:dokkaHtmlPartial/androidMain" data-filterable-set=":firebase-inappmessaging:dokkaHtmlPartial/androidMain" data-active="" data-toggle=":firebase-inappmessaging:dokkaHtmlPartial/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-inappmessaging:dokkaHtmlPartial/appleMain" data-filterable-set=":firebase-inappmessaging:dokkaHtmlPartial/appleMain" data-toggle=":firebase-inappmessaging:dokkaHtmlPartial/appleMain">apple</button><button class="platform-bookmark" data-filterable-current=":firebase-inappmessaging:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-inappmessaging:dokkaHtmlPartial/commonMain" data-toggle=":firebase-inappmessaging:dokkaHtmlPartial/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":firebase-inappmessaging:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-inappmessaging:dokkaHtmlPartial/jvmMain" data-toggle=":firebase-inappmessaging:dokkaHtmlPartial/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":firebase-inappmessaging:dokkaHtmlPartial/nonAndroidMain" data-filterable-set=":firebase-inappmessaging:dokkaHtmlPartial/nonAndroidMain" data-toggle=":firebase-inappmessaging:dokkaHtmlPartial/nonAndroidMain">nonAndroid</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-inappmessaging:dokkaHtmlPartial/androidMain"><p class="paragraph">This module is a direct forward of the Firebase In-App Messaging library. It displays the in-app messages of the campaigns created in the Firebase console, with the SDK's default UI or a display component of your own, and reports the impressions, clicks, dismissals and display errors to listeners (<code class="lang-kotlin">com.google.firebase.inappmessaging</code>) or flows (<code class="lang-kotlin">io.github.corneloaie.firebase.inappmessaging</code>).</p><p class="paragraph">On Apple platforms it wraps the iOS SDK, which has In-App Messaging on iOS and tvOS (with no default UI on tvOS) but not on macOS. firebase-java-sdk has no In-App Messaging, so on the JVM nothing is ever displayed. There is no web SDK.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-inappmessaging:dokkaHtmlPartial/appleMain"><p class="paragraph">This module is a direct forward of the Firebase In-App Messaging library. It displays the in-app messages of the campaigns created in the Firebase console, with the SDK's default UI or a display component of your own, and reports the impressions, clicks, dismissals and display errors to listeners (<code class="lang-kotlin">com.google.firebase.inappmessaging</code>) or flows (<code class="lang-kotlin">io.github.corneloaie.firebase.inappmessaging</code>).</p><p class="paragraph">On Apple platforms it wraps the iOS SDK, which has In-App Messaging on iOS and tvOS (with no default UI on tvOS) but not on macOS. firebase-java-sdk has no In-App Messaging, so on the JVM nothing is ever displayed. There is no web SDK.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-inappmessaging:dokkaHtmlPartial/commonMain"><p class="paragraph">This module is a direct forward of the Firebase In-App Messaging library. It displays the in-app messages of the campaigns created in the Firebase console, with the SDK's default UI or a display component of your own, and reports the impressions, clicks, dismissals and display errors to listeners (<code class="lang-kotlin">com.google.firebase.inappmessaging</code>) or flows (<code class="lang-kotlin">io.github.corneloaie.firebase.inappmessaging</code>).</p><p class="paragraph">On Apple platforms it wraps the iOS SDK, which has In-App Messaging on iOS and tvOS (with no default UI on tvOS) but not on macOS. firebase-java-sdk has no In-App Messaging, so on the JVM nothing is ever displayed. There is no web SDK.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-inappmessaging:dokkaHtmlPartial/jvmMain"><p class="paragraph">This module is a direct forward of the Firebase In-App Messaging library. It displays the in-app messages of the campaigns created in the Firebase console, with the SDK's default UI or a display component of your own, and reports the impressions, clicks, dismissals and display errors to listeners (<code class="lang-kotlin">com.google.firebase.inappmessaging</code>) or flows (<code class="lang-kotlin">io.github.corneloaie.firebase.inappmessaging</code>).</p><p class="paragraph">On Apple platforms it wraps the iOS SDK, which has In-App Messaging on iOS and tvOS (with no default UI on tvOS) but not on macOS. firebase-java-sdk has no In-App Messaging, so on the JVM nothing is ever displayed. There is no web SDK.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-inappmessaging:dokkaHtmlPartial/nonAndroidMain"><p class="paragraph">This module is a direct forward of the Firebase In-App Messaging library. It displays the in-app messages of the campaigns created in the Firebase console, with the SDK's default UI or a display component of your own, and reports the impressions, clicks, dismissals and display errors to listeners (<code class="lang-kotlin">com.google.firebase.inappmessaging</code>) or flows (<code class="lang-kotlin">io.github.corneloaie.firebase.inappmessaging</code>).</p><p class="paragraph">On Apple platforms it wraps the iOS SDK, which has In-App Messaging on iOS and tvOS (with no default UI on tvOS) but not on macOS. firebase-java-sdk has no In-App Messaging, so on the JVM nothing is ever displayed. There is no web SDK.</p></div>    </div>
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":firebase-inappmessaging/androidMain" data-filterable-set=":firebase-inappmessaging/androidMain" data-active="" data-toggle=":firebase-inappmessaging/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":firebase-inappmessaging/appleMain" data-filterable-set=":firebase-inappmessaging/appleMain" data-toggle=":firebase-inappmessaging/appleMain">apple</button><button class="platform-bookmark" data-filterable-current=":firebase-inappmessaging/commonMain" data-filterable-set=":firebase-inappmessaging/commonMain" data-toggle=":firebase-inappmessaging/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":firebase-inappmessaging/jvmMain" data-filterable-set=":firebase-inappmessaging/jvmMain" data-toggle=":firebase-inappmessaging/jvmMain">jvm</button><button class="platform-bookmark" data-filterable-current=":firebase-inappmessaging/nonAndroidMain" data-filterable-set=":firebase-inappmessaging/nonAndroidMain" data-toggle=":firebase-inappmessaging/nonAndroidMain">nonAndroid</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":firebase-inappmessaging/androidMain"><p class="paragraph">This module is a direct forward of the Firebase In-App Messaging library. It displays the in-app messages of the campaigns created in the Firebase console, with the SDK's default UI or a display component of your own, and reports the impressions, clicks, dismissals and display errors to listeners (<code class="lang-kotlin">com.google.firebase.inappmessaging</code>) or flows (<code class="lang-kotlin">io.github.corneloaie.firebase.inappmessaging</code>).</p><p class="paragraph">On Apple platforms it wraps the iOS SDK, which has In-App Messaging on iOS and tvOS (with no default UI on tvOS) but not on macOS. firebase-java-sdk has no In-App Messaging, so on the JVM nothing is ever displayed. There is no web SDK.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-inappmessaging/appleMain"><p class="paragraph">This module is a direct forward of the Firebase In-App Messaging library. It displays the in-app messages of the campaigns created in the Firebase console, with the SDK's default UI or a display component of your own, and reports the impressions, clicks, dismissals and display errors to listeners (<code class="lang-kotlin">com.google.firebase.inappmessaging</code>) or flows (<code class="lang-kotlin">io.github.corneloaie.firebase.inappmessaging</code>).</p><p class="paragraph">On Apple platforms it wraps the iOS SDK, which has In-App Messaging on iOS and tvOS (with no default UI on tvOS) but not on macOS. firebase-java-sdk has no In-App Messaging, so on the JVM nothing is ever displayed. There is no web SDK.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-inappmessaging/commonMain"><p class="paragraph">This module is a direct forward of the Firebase In-App Messaging library. It displays the in-app messages of the campaigns created in the Firebase console, with the SDK's default UI or a display component of your own, and reports the impressions, clicks, dismissals and display errors to listeners (<code class="lang-kotlin">com.google.firebase.inappmessaging</code>) or flows (<code class="lang-kotlin">io.github.corneloaie.firebase.inappmessaging</code>).</p><p class="paragraph">On Apple platforms it wraps the iOS SDK, which has In-App Messaging on iOS and tvOS (with no default UI on tvOS) but not on macOS. firebase-java-sdk has no In-App Messaging, so on the JVM nothing is ever displayed. There is no web SDK.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-inappmessaging/jvmMain"><p class="paragraph">This module is a direct forward of the Firebase In-App Messaging library. It displays the in-app messages of the campaigns created in the Firebase console, with the SDK's default UI or a display component of your own, and reports the impressions, clicks, dismissals and display errors to listeners (<code class="lang-kotlin">com.google.firebase.inappmessaging</code>) or flows (<code class="lang-kotlin">io.github.corneloaie.firebase.inappmessaging</code>).</p><p class="paragraph">On Apple platforms it wraps the iOS SDK, which has In-App Messaging on iOS and tvOS (with no default UI on tvOS) but not on macOS. firebase-java-sdk has no In-App Messaging, so on the JVM nothing is ever displayed. There is no web SDK.</p></div><div class="content sourceset-dependent-content" data-togglable=":firebase-inappmessaging/nonAndroidMain"><p class="paragraph">This module is a direct forward of the Firebase In-App Messaging library. It displays the in-app messages of the campaigns created in the Firebase console, with the SDK's default UI or a display component of your own, and reports the impressions, clicks, dismissals and display errors to listeners (<code class="lang-kotlin">com.google.firebase.inappmessaging</code>) or flows (<code class="lang-kotlin">io.github.corneloaie.firebase.inappmessaging</code>).</p><p class="paragraph">On Apple platforms it wraps the iOS SDK, which has In-App Messaging on iOS and tvOS (with no default UI on tvOS) but not on macOS. firebase-java-sdk has no In-App Messaging, so on the JVM nothing is ever displayed. There is no web SDK.</p></div>    </div>
   </div>
   <h2 class="">Packages</h2>
-  <div class="table"><a data-name="-948724247%2FPackages%2F2142972080" anchor-label="com.google.firebase.inappmessaging" id="-948724247%2FPackages%2F2142972080" data-filterable-set=":firebase-inappmessaging:dokkaHtmlPartial/androidMain,:firebase-inappmessaging:dokkaHtmlPartial/appleMain,:firebase-inappmessaging:dokkaHtmlPartial/commonMain,:firebase-inappmessaging:dokkaHtmlPartial/jvmMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-inappmessaging:dokkaHtmlPartial/androidMain,:firebase-inappmessaging:dokkaHtmlPartial/appleMain,:firebase-inappmessaging:dokkaHtmlPartial/commonMain,:firebase-inappmessaging:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-inappmessaging:dokkaHtmlPartial/androidMain,:firebase-inappmessaging:dokkaHtmlPartial/appleMain,:firebase-inappmessaging:dokkaHtmlPartial/commonMain,:firebase-inappmessaging:dokkaHtmlPartial/jvmMain">
+  <div class="table"><a data-name="-948724247%2FPackages%2F-1777452544" anchor-label="com.google.firebase.inappmessaging" id="-948724247%2FPackages%2F-1777452544" data-filterable-set=":firebase-inappmessaging/commonMain,:firebase-inappmessaging/androidMain,:firebase-inappmessaging/appleMain,:firebase-inappmessaging/jvmMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-inappmessaging/commonMain,:firebase-inappmessaging/androidMain,:firebase-inappmessaging/appleMain,:firebase-inappmessaging/jvmMain" data-filterable-set=":firebase-inappmessaging/commonMain,:firebase-inappmessaging/androidMain,:firebase-inappmessaging/appleMain,:firebase-inappmessaging/jvmMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.google.firebase.inappmessaging/index.html">com.google.firebase.inappmessaging</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-948724247%2FPackages%2F2142972080"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-948724247%2FPackages%2F-1777452544"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">android</div>
-              <div class="platform-tag common-like">apple</div>
+              <div class="platform-tag native-like">apple</div>
               <div class="platform-tag common-like">common</div>
               <div class="platform-tag jvm-like">jvm</div>
             </div>
@@ -153,19 +152,19 @@
         <div></div>
       </div>
     </div>
-<a data-name="1285074621%2FPackages%2F2142972080" anchor-label="com.google.firebase.inappmessaging.display" id="1285074621%2FPackages%2F2142972080" data-filterable-set=":firebase-inappmessaging:dokkaHtmlPartial/androidMain,:firebase-inappmessaging:dokkaHtmlPartial/appleMain,:firebase-inappmessaging:dokkaHtmlPartial/commonMain,:firebase-inappmessaging:dokkaHtmlPartial/jvmMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-inappmessaging:dokkaHtmlPartial/androidMain,:firebase-inappmessaging:dokkaHtmlPartial/appleMain,:firebase-inappmessaging:dokkaHtmlPartial/commonMain,:firebase-inappmessaging:dokkaHtmlPartial/jvmMain" data-filterable-set=":firebase-inappmessaging:dokkaHtmlPartial/androidMain,:firebase-inappmessaging:dokkaHtmlPartial/appleMain,:firebase-inappmessaging:dokkaHtmlPartial/commonMain,:firebase-inappmessaging:dokkaHtmlPartial/jvmMain">
+<a data-name="1285074621%2FPackages%2F-1777452544" anchor-label="com.google.firebase.inappmessaging.display" id="1285074621%2FPackages%2F-1777452544" data-filterable-set=":firebase-inappmessaging/commonMain,:firebase-inappmessaging/androidMain,:firebase-inappmessaging/appleMain,:firebase-inappmessaging/jvmMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-inappmessaging/commonMain,:firebase-inappmessaging/androidMain,:firebase-inappmessaging/appleMain,:firebase-inappmessaging/jvmMain" data-filterable-set=":firebase-inappmessaging/commonMain,:firebase-inappmessaging/androidMain,:firebase-inappmessaging/appleMain,:firebase-inappmessaging/jvmMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.google.firebase.inappmessaging.display/index.html">com.google.firebase.inappmessaging.display</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1285074621%2FPackages%2F2142972080"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1285074621%2FPackages%2F-1777452544"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">android</div>
-              <div class="platform-tag common-like">apple</div>
+              <div class="platform-tag native-like">apple</div>
               <div class="platform-tag common-like">common</div>
               <div class="platform-tag jvm-like">jvm</div>
             </div>
@@ -174,19 +173,19 @@
         <div></div>
       </div>
     </div>
-<a data-name="-248586076%2FPackages%2F-311944794" anchor-label="com.google.firebase.inappmessaging.model" id="-248586076%2FPackages%2F-311944794" data-filterable-set=":firebase-inappmessaging:dokkaHtmlPartial/androidMain,:firebase-inappmessaging:dokkaHtmlPartial/appleMain,:firebase-inappmessaging:dokkaHtmlPartial/commonMain,:firebase-inappmessaging:dokkaHtmlPartial/nonAndroidMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-inappmessaging:dokkaHtmlPartial/androidMain,:firebase-inappmessaging:dokkaHtmlPartial/appleMain,:firebase-inappmessaging:dokkaHtmlPartial/commonMain,:firebase-inappmessaging:dokkaHtmlPartial/nonAndroidMain" data-filterable-set=":firebase-inappmessaging:dokkaHtmlPartial/androidMain,:firebase-inappmessaging:dokkaHtmlPartial/appleMain,:firebase-inappmessaging:dokkaHtmlPartial/commonMain,:firebase-inappmessaging:dokkaHtmlPartial/nonAndroidMain">
+<a data-name="-248586076%2FPackages%2F84922966" anchor-label="com.google.firebase.inappmessaging.model" id="-248586076%2FPackages%2F84922966" data-filterable-set=":firebase-inappmessaging/commonMain,:firebase-inappmessaging/androidMain,:firebase-inappmessaging/nonAndroidMain,:firebase-inappmessaging/appleMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-inappmessaging/commonMain,:firebase-inappmessaging/androidMain,:firebase-inappmessaging/nonAndroidMain,:firebase-inappmessaging/appleMain" data-filterable-set=":firebase-inappmessaging/commonMain,:firebase-inappmessaging/androidMain,:firebase-inappmessaging/nonAndroidMain,:firebase-inappmessaging/appleMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="com.google.firebase.inappmessaging.model/index.html">com.google.firebase.inappmessaging.model</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-248586076%2FPackages%2F-311944794"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-248586076%2FPackages%2F84922966"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">android</div>
-              <div class="platform-tag common-like">apple</div>
+              <div class="platform-tag native-like">apple</div>
               <div class="platform-tag common-like">common</div>
               <div class="platform-tag common-like">nonAndroid</div>
             </div>
@@ -195,19 +194,19 @@
         <div></div>
       </div>
     </div>
-<a data-name="-1005552253%2FPackages%2F770665371" anchor-label="io.github.corneloaie.firebase.inappmessaging" id="-1005552253%2FPackages%2F770665371" data-filterable-set=":firebase-inappmessaging:dokkaHtmlPartial/androidMain,:firebase-inappmessaging:dokkaHtmlPartial/appleMain,:firebase-inappmessaging:dokkaHtmlPartial/commonMain"></a>
-    <div class="table-row" data-filterable-current=":firebase-inappmessaging:dokkaHtmlPartial/androidMain,:firebase-inappmessaging:dokkaHtmlPartial/appleMain,:firebase-inappmessaging:dokkaHtmlPartial/commonMain" data-filterable-set=":firebase-inappmessaging:dokkaHtmlPartial/androidMain,:firebase-inappmessaging:dokkaHtmlPartial/appleMain,:firebase-inappmessaging:dokkaHtmlPartial/commonMain">
+<a data-name="-1005552253%2FPackages%2F-1649511715" anchor-label="io.github.corneloaie.firebase.inappmessaging" id="-1005552253%2FPackages%2F-1649511715" data-filterable-set=":firebase-inappmessaging/commonMain,:firebase-inappmessaging/androidMain,:firebase-inappmessaging/appleMain"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":firebase-inappmessaging/commonMain,:firebase-inappmessaging/androidMain,:firebase-inappmessaging/appleMain" data-filterable-set=":firebase-inappmessaging/commonMain,:firebase-inappmessaging/androidMain,:firebase-inappmessaging/appleMain">
       <div>
         <div class="main-subrow ">
           <div class=""><span class="inline-flex">
               <div><a href="io.github.corneloaie.firebase.inappmessaging/index.html">io.github.corneloaie.firebase.inappmessaging</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1005552253%2FPackages%2F770665371"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1005552253%2FPackages%2F-1649511715"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div class="pull-right">
+          <div class="pull-right platform-tags--wrapper">
             <div class="platform-tags no-gutters">
               <div class="platform-tag jvm-like">android</div>
-              <div class="platform-tag common-like">apple</div>
+              <div class="platform-tag native-like">apple</div>
               <div class="platform-tag common-like">common</div>
             </div>
           </div>
@@ -218,17 +217,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>firebase-multiplatform, Apache License 2.0. Based on <a href="https://github.com/GitLiveApp/firebase-kotlin-sdk">GitLive's firebase-kotlin-sdk</a>.</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
