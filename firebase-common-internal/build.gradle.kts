@@ -161,7 +161,7 @@ kotlin {
         if (supportedPlatforms.contains(TargetPlatform.Js)) {
             getByName("jsMain") {
                 dependencies {
-                    api(npm("firebase", "13.1.0"))
+                    api(npm("firebase", "13.2.0"))
                 }
             }
         }
@@ -169,7 +169,7 @@ kotlin {
         if (supportedPlatforms.contains(TargetPlatform.WasmJs)) {
             getByName("wasmJsMain") {
                 dependencies {
-                    api(npm("firebase", "13.1.0"))
+                    api(npm("firebase", "13.2.0"))
                 }
             }
         }
