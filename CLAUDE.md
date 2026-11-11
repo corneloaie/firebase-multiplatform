@@ -44,7 +44,7 @@ firebase-multiplatform: the Firebase Android SDK API, plus a Kotlin-first API, f
 - firebase-ios-sdk: 13.1.1 (minimum deployment targets iOS 15 / tvOS 15 / macOS 12; Firebase itself allows macOS 11, but Kotlin/Native builds macOS code for 12)
 - Firebase JS SDK: 13.2.0 (the `npm("firebase", ...)` pins in firebase-common and firebase-common-internal)
 - Java target: 17
-- Gradle: 9.8.2, AGP: 9.5.1. Every module applies `com.android.kotlin.multiplatform.library`: the Android target is `kotlin { android { } }`, its test source sets `androidHostTest` and `androidDeviceTest`
+- Gradle: 9.9.1, AGP: 9.5.1. Every module applies `com.android.kotlin.multiplatform.library`: the Android target is `kotlin { android { } }`, its test source sets `androidHostTest` and `androidDeviceTest`
 - Android minSdk: 24 (firebase-common 23, in BoM 35, requires it), compileSdk: 34 (35 in `firebase-pnv`, whose androidx.core 1.16 dependency requires it)
 
 ## KMP Targets
