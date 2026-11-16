@@ -1,6 +1,6 @@
 # Android SDK source compatibility of firebase-ai
-# Android SDK api.txt ref: 5b34dd98780b50f0f07d4381042ad35230d69b57
-# 100% of 884 public members available (884 identical, 0 mapped, 0 missing, 0 omitted)
+# Android SDK api.txt ref: 8aa789d9476a426677491eff71aee585b180e8d6
+# 99% of 889 public members available (884 identical, 0 mapped, 5 missing, 0 omitted)
 #
 com.google.firebase.ai.Chat
   OK    Chat(GenerativeModel, List)
@@ -729,6 +729,9 @@ com.google.firebase.ai.type.LiveServerToolCall
 com.google.firebase.ai.type.LiveServerToolCallCancellation
   OK    List getFunctionIds()
 com.google.firebase.ai.type.LiveServerUnknownMessage
+com.google.firebase.ai.type.LiveServerVoiceActivity  (class missing)
+  MISS  Duration getAudioOffset()
+  MISS  VoiceActivityType getType()
 com.google.firebase.ai.type.LiveSession
   OK    Object close(Continuation)
   OK    boolean isAudioConversationActive()
@@ -1106,6 +1109,11 @@ com.google.firebase.ai.type.UsageMetadata
 com.google.firebase.ai.type.Voice
   OK    Voice(String)
   OK    String getVoiceName()
+com.google.firebase.ai.type.VoiceActivityType  (class missing)
+  MISS  static VoiceActivityType ACTIVITY_END
+  MISS  static VoiceActivityType ACTIVITY_START
+  MISS  static VoiceActivityType UNKNOWN
+com.google.firebase.ai.type.VoiceActivityType.Companion  (class missing)
 com.google.firebase.ai.type.WebGroundingChunk
   OK    String getDomain()
   OK    String getTitle()

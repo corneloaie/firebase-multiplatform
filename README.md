@@ -8,7 +8,7 @@
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-support-FF5E5B?style=flat-square&logo=ko-fi&logoColor=white)](https://ko-fi.com/corneloaie)
 
 <!-- coverage-badge:start -->
-[coverage-badge]: https://img.shields.io/badge/Android%20API%20coverage-100%25%3A%204%2C117%20of%204%2C117%20members%2C%2018%20products-brightgreen?style=flat-square
+[coverage-badge]: https://img.shields.io/badge/Android%20API%20coverage-99%25%3A%204%2C117%20of%204%2C122%20members%2C%2018%20products-green?style=flat-square
 <!-- coverage-badge:end -->
 
 **The complete Firebase Android SDK API in Kotlin Multiplatform common code**, for every Firebase client product, on
@@ -26,11 +26,11 @@ their newest releases every week.
 ## Coverage
 
 <!-- coverage:start -->
-**18 Firebase products: 4,117 of 4,117 Android API members available from common code (100%)**, measured against firebase-android-sdk [`5b34dd9`](https://github.com/firebase/firebase-android-sdk/tree/5b34dd98780b50f0f07d4381042ad35230d69b57). Built on the Firebase Android BoM 35.1.0 (App Distribution 16.0.0-beta21), iOS SDK 13.1.1 and JS SDK 13.2.0.
+**18 Firebase products: 4,117 of 4,122 Android API members available from common code (99%)**, measured against firebase-android-sdk [`8aa789d`](https://github.com/firebase/firebase-android-sdk/tree/8aa789d9476a426677491eff71aee585b180e8d6). Built on the Firebase Android BoM 35.2.0 (App Distribution 16.0.0-beta21), iOS SDK 13.2.0 and JS SDK 13.3.0.
 
 | Product | Artifact | Android API | Members | Android | iOS | macOS | tvOS | JVM | JS | Wasm |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| [AI Logic](https://firebase.google.com/docs/ai-logic) | `firebase-ai` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-ai/api/android-sdk-compat.txt) | 884 / 884 | ✅ | ✅ | ✅ | ✅ | – | ✅ | ✅ |
+| [AI Logic](https://firebase.google.com/docs/ai-logic) | `firebase-ai` | [![99%](https://img.shields.io/badge/-99%25-green?style=flat-square)](firebase-ai/api/android-sdk-compat.txt) | 884 / 889 | ✅ | ✅ | ✅ | ✅ | – | ✅ | ✅ |
 | [Analytics](https://firebase.google.com/docs/analytics) | `firebase-analytics` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-analytics/api/android-sdk-compat.txt) | 153 / 153 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [App (core)](https://firebase.google.com/docs/reference/android/com/google/firebase/FirebaseApp) | `firebase-app` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-app/api/android-sdk-compat.txt) | 46 / 46 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [App Check](https://firebase.google.com/docs/app-check) | `firebase-appcheck` | [![100%](https://img.shields.io/badge/-100%25-brightgreen?style=flat-square)](firebase-appcheck/api/android-sdk-compat.txt) | 28 / 28 | ✅ | ✅ | ✅ | ✅ | – | ✅ | ✅ |

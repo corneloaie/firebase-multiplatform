@@ -1,4 +1,4 @@
-// Source: https://raw.githubusercontent.com/firebase/firebase-android-sdk/5b34dd98780b50f0f07d4381042ad35230d69b57/firebase-config/api.txt
+// Source: https://raw.githubusercontent.com/firebase/firebase-android-sdk/8aa789d9476a426677491eff71aee585b180e8d6/firebase-config/api.txt
 // Signature format: 3.0
 package com.google.firebase.remoteconfig {
 
