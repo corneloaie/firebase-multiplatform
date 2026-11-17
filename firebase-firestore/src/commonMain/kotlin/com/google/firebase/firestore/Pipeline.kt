@@ -8,11 +8,13 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.pipeline.AbstractOptions
 import com.google.firebase.firestore.pipeline.AddFieldsStage
+import com.google.firebase.firestore.pipeline.AddWindowFieldsStage
 import com.google.firebase.firestore.pipeline.AggregateFunction
 import com.google.firebase.firestore.pipeline.AggregateOptions
 import com.google.firebase.firestore.pipeline.AggregateStage
 import com.google.firebase.firestore.pipeline.AliasedAggregate
 import com.google.firebase.firestore.pipeline.AliasedExpression
+import com.google.firebase.firestore.pipeline.AliasedWindowFunction
 import com.google.firebase.firestore.pipeline.BooleanExpression
 import com.google.firebase.firestore.pipeline.CollectionGroupOptions
 import com.google.firebase.firestore.pipeline.CollectionGroupSource
@@ -51,6 +53,7 @@ import com.google.firebase.firestore.pipeline.UnnestStage
 import com.google.firebase.firestore.pipeline.UpdateStage
 import com.google.firebase.firestore.pipeline.UpsertStage
 import com.google.firebase.firestore.pipeline.WhereStage
+import com.google.firebase.firestore.pipeline.WindowSpec
 import io.github.corneloaie.firebase.firestore.internal.executePipeline
 import kotlin.jvm.JvmField
 import kotlin.jvm.JvmStatic
@@ -140,6 +143,32 @@ public class Pipeline internal constructor(
     /** Adds [field] and [additionalFields] to the documents. */
     public fun addFields(field: Selectable, vararg additionalFields: Selectable): Pipeline = append(AddFieldsStage(arrayOf(field, *additionalFields)))
 
+    /**
+     * Adds [field] and [additionalFields] ([AliasedWindowFunction]s or [AliasedAggregate]s), evaluated over [window], to
+     * the documents. Beta in the Android SDK: window functions are in preview until the backend feature launches.
+     */
+    public fun addWindowFields(window: WindowSpec, field: AliasedWindowFunction, vararg additionalFields: Any): Pipeline = append(AddWindowFieldsStage.of(window, field, *additionalFields))
+
+    /**
+     * Adds [field] and [additionalFields] ([AliasedWindowFunction]s or [AliasedAggregate]s), evaluated over [window], to
+     * the documents. Beta in the Android SDK: window functions are in preview until the backend feature launches.
+     */
+    public fun addWindowFields(window: WindowSpec, field: AliasedAggregate, vararg additionalFields: Any): Pipeline = append(AddWindowFieldsStage.of(window, field, *additionalFields))
+
+    /**
+     * Adds [field] and [additionalFields] ([AliasedWindowFunction]s or [AliasedAggregate]s), evaluated over a single window
+     * of all the documents, to the documents. Beta in the Android SDK: window functions are in preview until the backend
+     * feature launches.
+     */
+    public fun addWindowFields(field: AliasedWindowFunction, vararg additionalFields: Any): Pipeline = append(AddWindowFieldsStage.of(WindowSpec(), field, *additionalFields))
+
+    /**
+     * Adds [field] and [additionalFields] ([AliasedWindowFunction]s or [AliasedAggregate]s), evaluated over a single window
+     * of all the documents, to the documents. Beta in the Android SDK: window functions are in preview until the backend
+     * feature launches.
+     */
+    public fun addWindowFields(field: AliasedAggregate, vararg additionalFields: Any): Pipeline = append(AddWindowFieldsStage.of(WindowSpec(), field, *additionalFields))
+
     /** Removes [field] and [additionalFields] from the documents. */
     public fun removeFields(field: Field, vararg additionalFields: Field): Pipeline = append(RemoveFieldsStage(arrayOf(field, *additionalFields)))
 
@@ -224,7 +253,7 @@ public class Pipeline internal constructor(
     /** This pipeline as a subquery evaluating to its single result. */
     public fun toScalarExpression(): Expression = FunctionExpression("scalar", Expression.toExprOrConstant(this))
 
-    /** Appends the search [searchStage]. Beta in the Android SDK. */
+    /** Appends the search [searchStage]. */
     public fun search(searchStage: SearchStage): Pipeline = append(searchStage)
 
     /** Deletes each document of the previous stages from the database. */

@@ -21,6 +21,7 @@ import com.google.firebase.firestore.pipeline.AggregateHints
 import com.google.firebase.firestore.pipeline.AggregateOptions
 import com.google.firebase.firestore.pipeline.AggregateStage
 import com.google.firebase.firestore.pipeline.AliasedExpression
+import com.google.firebase.firestore.pipeline.AliasedWindowFunction
 import com.google.firebase.firestore.pipeline.BooleanExpression
 import com.google.firebase.firestore.pipeline.CollectionHints
 import com.google.firebase.firestore.pipeline.CollectionSourceOptions
@@ -40,6 +41,9 @@ import com.google.firebase.firestore.pipeline.SearchStage
 import com.google.firebase.firestore.pipeline.Selectable
 import com.google.firebase.firestore.pipeline.UnnestOptions
 import com.google.firebase.firestore.pipeline.UnnestStage
+import com.google.firebase.firestore.pipeline.WindowBound
+import com.google.firebase.firestore.pipeline.WindowFunction
+import com.google.firebase.firestore.pipeline.WindowSpec
 import com.google.firebase.firestore.pipeline.evaluation.isMicrosecondsInTimestampBounds
 import com.google.firebase.firestore.pipeline.evaluation.isMillisecondsInTimestampBounds
 import com.google.firebase.firestore.pipeline.evaluation.isSecondsInTimestampBounds
@@ -154,6 +158,41 @@ class PipelineExpressionsTest {
         Pipeline.ExecuteOptions().withIndexMode(Pipeline.ExecuteOptions.IndexMode.RECOMMENDED).with("raw", RawOptions.DEFAULT.with("nested", 1L))
         assertNotEquals(FindNearestStage.DistanceMeasure.COSINE, FindNearestStage.DistanceMeasure.EUCLIDEAN)
         assertNotEquals(SampleStage.Mode.DOCUMENTS, SampleStage.Mode.PERCENT)
+    }
+
+    @Test
+    fun testWindows() {
+        assertEquals(WindowSpec(), WindowSpec())
+        assertEquals(WindowSpec().hashCode(), WindowSpec().hashCode())
+        assertEquals(WindowSpec().partition("genre"), WindowSpec().partition(field("genre")))
+        assertEquals(WindowSpec().partition("genre", "author"), WindowSpec().partition(field("genre"), FieldPath.of("author")))
+        assertNotEquals(WindowSpec().partition("genre"), WindowSpec().partition("author"))
+        assertEquals(WindowSpec().sort(Ordering.ascending("rating")), WindowSpec().sort(listOf(field("rating").ascending())))
+        assertNotEquals(WindowSpec().sort(Ordering.ascending("rating")), WindowSpec().sort(Ordering.descending("rating")))
+        assertEquals(WindowSpec().documents(-1, 1), WindowSpec().documents(constant(-1), constant(1)))
+        assertNotEquals(WindowSpec().documents(-1, 1), WindowSpec().range(-1, 1))
+        assertNotEquals(WindowSpec().range(-1, 1), WindowSpec().range(-1, 1, "day"))
+        assertEquals(WindowSpec().range(-1, 1, "day"), WindowSpec().range(-1, 1, constant("day")))
+        assertEquals(WindowSpec().documents(WindowBound.UNBOUNDED, WindowBound.CURRENT), WindowSpec().documents(WindowBound.UNBOUNDED, WindowBound.CURRENT))
+        assertNotEquals(WindowSpec().documents(WindowBound.UNBOUNDED, WindowBound.CURRENT), WindowSpec().range(WindowBound.UNBOUNDED, WindowBound.CURRENT))
+        assertNotEquals(WindowBound.CURRENT, WindowBound.UNBOUNDED)
+        // A window has one frame: the last one set replaces the other.
+        assertEquals(WindowSpec().documents(3, 4), WindowSpec().range(1, 2).documents(3, 4))
+        assertEquals(WindowSpec().range(3, 4), WindowSpec().documents(1, 2).range(3, 4))
+        assertEquals(WindowSpec().partition("genre").sort(Ordering.ascending("rating")).documents(-1, 1), WindowSpec().documents(-1, 1).sort(Ordering.ascending("rating")).partition("genre"))
+        assertFailsWith<IllegalArgumentException> { WindowSpec().partition("genre", 1) }
+
+        assertEquals(WindowFunction.rank(), WindowFunction.rank())
+        assertEquals(WindowFunction.rank().hashCode(), WindowFunction.rank().hashCode())
+        assertNotEquals(WindowFunction.rank(), WindowFunction.rank().over(WindowSpec().documents(-1, 1)))
+        assertEquals(WindowFunction.rank().over(WindowSpec().documents(-1, 1)), WindowFunction.rank().over(WindowSpec().documents(-1, 1)))
+        assertEquals(AggregateFunction.sum("rating").over(WindowSpec().range(-5, 5)), AggregateFunction.sum("rating").over(WindowSpec().range(-5, 5)))
+        assertNotEquals(AggregateFunction.sum("rating").over(WindowSpec().range(-5, 5)), AggregateFunction.average("rating").over(WindowSpec().range(-5, 5)))
+        assertNotEquals(AggregateFunction.sum("rating").over(WindowSpec().range(-5, 5)), WindowFunction.rank().over(WindowSpec().range(-5, 5)))
+        assertIs<WindowFunction>(countAll().over(WindowSpec()))
+        assertEquals(WindowFunction.rank().alias("rank"), WindowFunction.rank().alias("rank"))
+        assertNotEquals(WindowFunction.rank().alias("rank"), WindowFunction.rank().alias("position"))
+        assertIs<AliasedWindowFunction>(AggregateFunction.sum("rating").over(WindowSpec().documents(-1, 1)).alias("total"))
     }
 
     @Test
@@ -379,6 +418,15 @@ class PipelineTest {
         // Checked before the request is sent, as the Android SDK checks them.
         assertFailsWith<IllegalArgumentException> { firestore.pipeline().collection(books).select(field("title").alias("x"), field("genre").alias("x")).execute() }
         assertFailsWith<IllegalArgumentException> { firestore.pipeline().collection(books).addFields(field("title").alias("__name__")) }
+        // Window fields build as on Android (window functions are in preview in the backend, which the emulator may lack).
+        val window = WindowSpec().partition("genre").sort(Ordering.ascending("rating"))
+        firestore.pipeline().collection(books).addWindowFields(window, WindowFunction.rank().alias("rank"), AggregateFunction.sum("rating").over(WindowSpec().documents(WindowBound.UNBOUNDED, WindowBound.CURRENT)).alias("runningTotal"))
+        firestore.pipeline().collection(books).addWindowFields(window, AggregateFunction.average("rating").alias("averageRating"), WindowFunction.rank().alias("rank"))
+        firestore.pipeline().collection(books).addWindowFields(countAll().over(WindowSpec().range(-1.5, 1.5)).alias("nearby"))
+        firestore.pipeline().collection(books).addWindowFields(countAll().alias("total"))
+        assertFailsWith<IllegalArgumentException> { firestore.pipeline().collection(books).addWindowFields(window, WindowFunction.rank().alias("n"), countAll().alias("n")) }
+        assertFailsWith<IllegalArgumentException> { firestore.pipeline().collection(books).addWindowFields(WindowFunction.rank().alias("__name__")) }
+        assertFailsWith<IllegalArgumentException> { firestore.pipeline().collection(books).addWindowFields(WindowFunction.rank().alias("rank"), field("title")) }
         // Firestore 27.1.0 for Android lets removeFields remove the reserved fields (firebase/firebase-android-sdk#8524).
         firestore.pipeline().collection(books).removeFields("__name__")
         // The write stages and literal documents build as on Android (the emulator does not run them).

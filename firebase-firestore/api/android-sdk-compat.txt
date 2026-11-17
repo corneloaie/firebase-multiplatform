@@ -1,6 +1,6 @@
 # Android SDK source compatibility of firebase-firestore
-# Android SDK api.txt ref: 5b34dd98780b50f0f07d4381042ad35230d69b57
-# 100% of 1667 public members available (1650 identical, 17 mapped, 0 missing, 0 omitted)
+# Android SDK api.txt ref: 8aa789d9476a426677491eff71aee585b180e8d6
+# 100% of 1702 public members available (1685 identical, 17 mapped, 0 missing, 0 omitted)
 #
 com.google.firebase.firestore.AggregateField
   OK    static AverageAggregateField average(FieldPath)
@@ -365,6 +365,10 @@ com.google.firebase.firestore.PersistentCacheSettings.Builder
   OK    Builder setSizeBytes(long)
 com.google.firebase.firestore.Pipeline
   OK    Pipeline addFields(Selectable, Selectable[])
+  OK    Pipeline addWindowFields(AliasedAggregate, Object[])
+  OK    Pipeline addWindowFields(AliasedWindowFunction, Object[])
+  OK    Pipeline addWindowFields(WindowSpec, AliasedAggregate, Object[])
+  OK    Pipeline addWindowFields(WindowSpec, AliasedWindowFunction, Object[])
   OK    Pipeline aggregate(AggregateStage)
   OK    Pipeline aggregate(AggregateStage, AggregateOptions)
   OK    Pipeline aggregate(AliasedAggregate, AliasedAggregate[])
@@ -603,6 +607,7 @@ com.google.firebase.firestore.pipeline.AggregateFunction
   OK    static AggregateFunction maximum(String)
   OK    static AggregateFunction minimum(Expression)
   OK    static AggregateFunction minimum(String)
+  OK    WindowFunction over(WindowSpec)
   OK    static AggregateFunction rawAggregate(String, Expression[])
   OK    static AggregateFunction sum(Expression)
   OK    static AggregateFunction sum(String)
@@ -646,6 +651,7 @@ com.google.firebase.firestore.pipeline.AliasedAggregate
 com.google.firebase.firestore.pipeline.AliasedExpression
   HIDE  String getAlias()
   HIDE  Expression getExpr()
+com.google.firebase.firestore.pipeline.AliasedWindowFunction
 com.google.firebase.firestore.pipeline.BooleanExpression
   OK    BooleanExpression()
   OK    Expression conditional(Expression, Expression)
@@ -1848,6 +1854,41 @@ com.google.firebase.firestore.pipeline.UnnestStage
 com.google.firebase.firestore.pipeline.UnnestStage.Companion
   OK    UnnestStage withField(Selectable)
   OK    UnnestStage withField(String, String)
+com.google.firebase.firestore.pipeline.WindowBound
+  OK    static WindowBound CURRENT
+  OK    static WindowBound UNBOUNDED
+com.google.firebase.firestore.pipeline.WindowBound.Companion
+com.google.firebase.firestore.pipeline.WindowFunction
+  OK    AliasedWindowFunction alias(String)
+  OK    WindowFunction over(WindowSpec)
+  OK    static WindowFunction rank()
+com.google.firebase.firestore.pipeline.WindowFunction.Companion
+  OK    WindowFunction rank()
+com.google.firebase.firestore.pipeline.WindowSpec
+  OK    WindowSpec()
+  OK    WindowSpec documents(Expression, Expression)
+  OK    WindowSpec documents(WindowBound, WindowBound)
+  OK    WindowSpec documents(int, int)
+  OK    WindowSpec documents(Object, Object)
+  OK    WindowSpec partition(Expression, Object[])
+  OK    WindowSpec partition(String, Object[])
+  OK    WindowSpec range(Expression, Expression)
+  OK    WindowSpec range(WindowBound, WindowBound)
+  OK    WindowSpec range(double, double)
+  OK    WindowSpec range(int, int)
+  OK    WindowSpec range(Object, Object)
+  OK    WindowSpec range(Expression, Expression, Expression)
+  OK    WindowSpec range(Expression, Expression, String)
+  OK    WindowSpec range(WindowBound, WindowBound, Expression)
+  OK    WindowSpec range(WindowBound, WindowBound, String)
+  OK    WindowSpec range(double, double, Expression)
+  OK    WindowSpec range(double, double, String)
+  OK    WindowSpec range(int, int, Expression)
+  OK    WindowSpec range(int, int, String)
+  OK    WindowSpec range(Object, Object, Expression)
+  OK    WindowSpec range(Object, Object, String)
+  OK    WindowSpec sort(List)
+  OK    WindowSpec sort(Ordering, Ordering[])
 com.google.firebase.firestore.pipeline.evaluation.TimestampKt
   PLAT  static ChronoUnit convertUnit(String)
   OK    static boolean isMicrosecondsInTimestampBounds(long)

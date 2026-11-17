@@ -13,6 +13,7 @@ import com.google.firebase.firestore.Pipeline
 import com.google.firebase.firestore.PipelineResult
 import com.google.firebase.firestore.objectKeys
 import com.google.firebase.firestore.pipeline.AddFieldsStage
+import com.google.firebase.firestore.pipeline.AddWindowFieldsStage
 import com.google.firebase.firestore.pipeline.AggregateFunction
 import com.google.firebase.firestore.pipeline.AggregateStage
 import com.google.firebase.firestore.pipeline.AliasedExpression
@@ -56,6 +57,8 @@ import com.google.firebase.firestore.pipeline.UpdateStage
 import com.google.firebase.firestore.pipeline.UpsertStage
 import com.google.firebase.firestore.pipeline.Variable
 import com.google.firebase.firestore.pipeline.WhereStage
+import com.google.firebase.firestore.pipeline.WindowFunction
+import com.google.firebase.firestore.pipeline.WindowSpec
 import com.google.firebase.firestore.task
 import com.google.firebase.firestore.toCompat
 import com.google.firebase.firestore.toJs
@@ -70,6 +73,7 @@ import io.github.corneloaie.firebase.firestore.externals.pipelines.Ordering as J
 import io.github.corneloaie.firebase.firestore.externals.pipelines.Pipeline as JsPipeline
 import io.github.corneloaie.firebase.firestore.externals.pipelines.PipelineSnapshot as JsPipelineSnapshot
 import io.github.corneloaie.firebase.firestore.externals.pipelines.PipelineSource as JsPipelineSource
+import io.github.corneloaie.firebase.firestore.externals.pipelines.WindowFunction as JsWindowFunction
 import io.github.corneloaie.firebase.firestore.externals.pipelines.constant as jsConstant
 import io.github.corneloaie.firebase.firestore.externals.pipelines.execute as jsExecute
 import io.github.corneloaie.firebase.firestore.externals.pipelines.field as jsField
@@ -133,6 +137,8 @@ private fun Stage<*>.appendTo(js: JsPipeline): JsPipeline = when (this) {
     is OffsetStage -> js.offset(stageOptions("offset" to offset))
 
     is AddFieldsStage -> js.addFields(stageOptions("fields" to selectables(fields)))
+
+    is AddWindowFieldsStage -> js.addWindowFields(stageOptions("window" to window.toJsWindow(), "fields" to fields.map { it.expr.toJsWindowFunction().alias(it.alias) }.toTypedArray()))
 
     is RemoveFieldsStage -> js.removeFields(stageOptions("fields" to fields.map { it.toJsExpression() }.toTypedArray()))
 
@@ -267,6 +273,28 @@ private fun Expression.toJsExpression(): JsExpression = when (this) {
 private fun Ordering.toJsOrdering(): JsOrdering = if (dir == Ordering.Direction.ASCENDING) expr.toJsExpression().ascending() else expr.toJsExpression().descending()
 
 private fun AggregateFunction.toJsAggregate(): JsAggregateFunction = JsAggregateFunction(name, params.map { it.toJsExpression() }.toTypedArray())
+
+/** A window function, with its own frame if it has one, which the JS SDK sends as `over(function, window)`. */
+private fun WindowFunction.toJsWindowFunction(): JsWindowFunction {
+    val function = JsWindowFunction(name, params.map { it.toJsExpression() }.toTypedArray())
+    return window?.let { function.over(it.toJsWindow()) } ?: function
+}
+
+/** A window as the JS SDK takes it: only the parts that are set, as the Android SDK sends them. */
+private fun WindowSpec.toJsWindow(): Json {
+    val result = json()
+    if (partition.isNotEmpty()) result["partition"] = partition.map { it.toJsExpression() }.toTypedArray()
+    if (sort.isNotEmpty()) result["sort"] = sort.map { it.toJsOrdering() }.toTypedArray()
+    documentsFrame?.let { result["documents"] = it.toJsFrame() }
+    rangeFrame?.let { result["range"] = it.toJsFrame() }
+    return result
+}
+
+private fun WindowSpec.Frame.toJsFrame(): Json {
+    val result = json("preceding" to preceding.toJsExpression(), "following" to following.toJsExpression())
+    unit?.let { result["unit"] = it.toJsExpression() }
+    return result
+}
 
 private fun GenericArg.toJsArgument(): Any? = when (this) {
     is GenericArg.ExprArg -> expr.toJsExpression()
