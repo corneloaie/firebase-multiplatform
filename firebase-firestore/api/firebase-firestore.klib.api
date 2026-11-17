@@ -1066,6 +1066,7 @@ abstract class com.google.firebase.firestore/LoadBundleTask : com.google.android
 
 final class com.google.firebase.firestore.pipeline/AggregateFunction { // com.google.firebase.firestore.pipeline/AggregateFunction|null[0]
     final fun alias(kotlin/String): com.google.firebase.firestore.pipeline/AliasedAggregate // com.google.firebase.firestore.pipeline/AggregateFunction.alias|alias(kotlin.String){}[0]
+    final fun over(com.google.firebase.firestore.pipeline/WindowSpec): com.google.firebase.firestore.pipeline/WindowFunction // com.google.firebase.firestore.pipeline/AggregateFunction.over|over(com.google.firebase.firestore.pipeline.WindowSpec){}[0]
 
     final object Companion { // com.google.firebase.firestore.pipeline/AggregateFunction.Companion|null[0]
         final fun arrayAgg(com.google.firebase.firestore.pipeline/Expression): com.google.firebase.firestore.pipeline/AggregateFunction // com.google.firebase.firestore.pipeline/AggregateFunction.Companion.arrayAgg|arrayAgg(com.google.firebase.firestore.pipeline.Expression){}[0]
@@ -1122,6 +1123,11 @@ final class com.google.firebase.firestore.pipeline/AliasedAggregate // com.googl
 final class com.google.firebase.firestore.pipeline/AliasedExpression : com.google.firebase.firestore.pipeline/Selectable { // com.google.firebase.firestore.pipeline/AliasedExpression|null[0]
     final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.firestore.pipeline/AliasedExpression.equals|equals(kotlin.Any?){}[0]
     final fun hashCode(): kotlin/Int // com.google.firebase.firestore.pipeline/AliasedExpression.hashCode|hashCode(){}[0]
+}
+
+final class com.google.firebase.firestore.pipeline/AliasedWindowFunction { // com.google.firebase.firestore.pipeline/AliasedWindowFunction|null[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.firestore.pipeline/AliasedWindowFunction.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.firestore.pipeline/AliasedWindowFunction.hashCode|hashCode(){}[0]
 }
 
 final class com.google.firebase.firestore.pipeline/CollectionGroupOptions : com.google.firebase.firestore.pipeline/AbstractOptions<com.google.firebase.firestore.pipeline/CollectionGroupOptions> { // com.google.firebase.firestore.pipeline/CollectionGroupOptions|null[0]
@@ -1294,6 +1300,60 @@ final class com.google.firebase.firestore.pipeline/UnnestStage : com.google.fire
         final fun withField(com.google.firebase.firestore.pipeline/Selectable): com.google.firebase.firestore.pipeline/UnnestStage // com.google.firebase.firestore.pipeline/UnnestStage.Companion.withField|withField(com.google.firebase.firestore.pipeline.Selectable){}[0]
         final fun withField(kotlin/String, kotlin/String): com.google.firebase.firestore.pipeline/UnnestStage // com.google.firebase.firestore.pipeline/UnnestStage.Companion.withField|withField(kotlin.String;kotlin.String){}[0]
     }
+}
+
+final class com.google.firebase.firestore.pipeline/WindowBound { // com.google.firebase.firestore.pipeline/WindowBound|null[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.firestore.pipeline/WindowBound.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.firestore.pipeline/WindowBound.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.firestore.pipeline/WindowBound.toString|toString(){}[0]
+
+    final object Companion { // com.google.firebase.firestore.pipeline/WindowBound.Companion|null[0]
+        final val CURRENT // com.google.firebase.firestore.pipeline/WindowBound.Companion.CURRENT|{}CURRENT[0]
+            final fun <get-CURRENT>(): com.google.firebase.firestore.pipeline/WindowBound // com.google.firebase.firestore.pipeline/WindowBound.Companion.CURRENT.<get-CURRENT>|<get-CURRENT>(){}[0]
+        final val UNBOUNDED // com.google.firebase.firestore.pipeline/WindowBound.Companion.UNBOUNDED|{}UNBOUNDED[0]
+            final fun <get-UNBOUNDED>(): com.google.firebase.firestore.pipeline/WindowBound // com.google.firebase.firestore.pipeline/WindowBound.Companion.UNBOUNDED.<get-UNBOUNDED>|<get-UNBOUNDED>(){}[0]
+    }
+}
+
+final class com.google.firebase.firestore.pipeline/WindowFunction { // com.google.firebase.firestore.pipeline/WindowFunction|null[0]
+    final fun alias(kotlin/String): com.google.firebase.firestore.pipeline/AliasedWindowFunction // com.google.firebase.firestore.pipeline/WindowFunction.alias|alias(kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.firestore.pipeline/WindowFunction.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.firestore.pipeline/WindowFunction.hashCode|hashCode(){}[0]
+    final fun over(com.google.firebase.firestore.pipeline/WindowSpec): com.google.firebase.firestore.pipeline/WindowFunction // com.google.firebase.firestore.pipeline/WindowFunction.over|over(com.google.firebase.firestore.pipeline.WindowSpec){}[0]
+
+    final object Companion { // com.google.firebase.firestore.pipeline/WindowFunction.Companion|null[0]
+        final fun rank(): com.google.firebase.firestore.pipeline/WindowFunction // com.google.firebase.firestore.pipeline/WindowFunction.Companion.rank|rank(){}[0]
+    }
+}
+
+final class com.google.firebase.firestore.pipeline/WindowSpec { // com.google.firebase.firestore.pipeline/WindowSpec|null[0]
+    constructor <init>() // com.google.firebase.firestore.pipeline/WindowSpec.<init>|<init>(){}[0]
+
+    final fun documents(com.google.firebase.firestore.pipeline/Expression, com.google.firebase.firestore.pipeline/Expression): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.documents|documents(com.google.firebase.firestore.pipeline.Expression;com.google.firebase.firestore.pipeline.Expression){}[0]
+    final fun documents(com.google.firebase.firestore.pipeline/WindowBound, com.google.firebase.firestore.pipeline/WindowBound): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.documents|documents(com.google.firebase.firestore.pipeline.WindowBound;com.google.firebase.firestore.pipeline.WindowBound){}[0]
+    final fun documents(kotlin/Any, kotlin/Any): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.documents|documents(kotlin.Any;kotlin.Any){}[0]
+    final fun documents(kotlin/Int, kotlin/Int): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.documents|documents(kotlin.Int;kotlin.Int){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.firestore.pipeline/WindowSpec.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.firestore.pipeline/WindowSpec.hashCode|hashCode(){}[0]
+    final fun partition(com.google.firebase.firestore.pipeline/Expression, kotlin/Array<out kotlin/Any>...): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.partition|partition(com.google.firebase.firestore.pipeline.Expression;kotlin.Array<out|kotlin.Any>...){}[0]
+    final fun partition(kotlin/String, kotlin/Array<out kotlin/Any>...): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.partition|partition(kotlin.String;kotlin.Array<out|kotlin.Any>...){}[0]
+    final fun range(com.google.firebase.firestore.pipeline/Expression, com.google.firebase.firestore.pipeline/Expression): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.range|range(com.google.firebase.firestore.pipeline.Expression;com.google.firebase.firestore.pipeline.Expression){}[0]
+    final fun range(com.google.firebase.firestore.pipeline/Expression, com.google.firebase.firestore.pipeline/Expression, com.google.firebase.firestore.pipeline/Expression): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.range|range(com.google.firebase.firestore.pipeline.Expression;com.google.firebase.firestore.pipeline.Expression;com.google.firebase.firestore.pipeline.Expression){}[0]
+    final fun range(com.google.firebase.firestore.pipeline/Expression, com.google.firebase.firestore.pipeline/Expression, kotlin/String): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.range|range(com.google.firebase.firestore.pipeline.Expression;com.google.firebase.firestore.pipeline.Expression;kotlin.String){}[0]
+    final fun range(com.google.firebase.firestore.pipeline/WindowBound, com.google.firebase.firestore.pipeline/WindowBound): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.range|range(com.google.firebase.firestore.pipeline.WindowBound;com.google.firebase.firestore.pipeline.WindowBound){}[0]
+    final fun range(com.google.firebase.firestore.pipeline/WindowBound, com.google.firebase.firestore.pipeline/WindowBound, com.google.firebase.firestore.pipeline/Expression): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.range|range(com.google.firebase.firestore.pipeline.WindowBound;com.google.firebase.firestore.pipeline.WindowBound;com.google.firebase.firestore.pipeline.Expression){}[0]
+    final fun range(com.google.firebase.firestore.pipeline/WindowBound, com.google.firebase.firestore.pipeline/WindowBound, kotlin/String): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.range|range(com.google.firebase.firestore.pipeline.WindowBound;com.google.firebase.firestore.pipeline.WindowBound;kotlin.String){}[0]
+    final fun range(kotlin/Any, kotlin/Any): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.range|range(kotlin.Any;kotlin.Any){}[0]
+    final fun range(kotlin/Any, kotlin/Any, com.google.firebase.firestore.pipeline/Expression): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.range|range(kotlin.Any;kotlin.Any;com.google.firebase.firestore.pipeline.Expression){}[0]
+    final fun range(kotlin/Any, kotlin/Any, kotlin/String): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.range|range(kotlin.Any;kotlin.Any;kotlin.String){}[0]
+    final fun range(kotlin/Double, kotlin/Double): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.range|range(kotlin.Double;kotlin.Double){}[0]
+    final fun range(kotlin/Double, kotlin/Double, com.google.firebase.firestore.pipeline/Expression): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.range|range(kotlin.Double;kotlin.Double;com.google.firebase.firestore.pipeline.Expression){}[0]
+    final fun range(kotlin/Double, kotlin/Double, kotlin/String): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.range|range(kotlin.Double;kotlin.Double;kotlin.String){}[0]
+    final fun range(kotlin/Int, kotlin/Int): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.range|range(kotlin.Int;kotlin.Int){}[0]
+    final fun range(kotlin/Int, kotlin/Int, com.google.firebase.firestore.pipeline/Expression): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.range|range(kotlin.Int;kotlin.Int;com.google.firebase.firestore.pipeline.Expression){}[0]
+    final fun range(kotlin/Int, kotlin/Int, kotlin/String): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.range|range(kotlin.Int;kotlin.Int;kotlin.String){}[0]
+    final fun sort(com.google.firebase.firestore.pipeline/Ordering, kotlin/Array<out com.google.firebase.firestore.pipeline/Ordering>...): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.sort|sort(com.google.firebase.firestore.pipeline.Ordering;kotlin.Array<out|com.google.firebase.firestore.pipeline.Ordering>...){}[0]
+    final fun sort(kotlin.collections/List<com.google.firebase.firestore.pipeline/Ordering>): com.google.firebase.firestore.pipeline/WindowSpec // com.google.firebase.firestore.pipeline/WindowSpec.sort|sort(kotlin.collections.List<com.google.firebase.firestore.pipeline.Ordering>){}[0]
 }
 
 final class com.google.firebase.firestore/AggregateQuery { // com.google.firebase.firestore/AggregateQuery|null[0]
@@ -1801,6 +1861,10 @@ final class com.google.firebase.firestore/PersistentCacheSettings : com.google.f
 
 final class com.google.firebase.firestore/Pipeline { // com.google.firebase.firestore/Pipeline|null[0]
     final fun addFields(com.google.firebase.firestore.pipeline/Selectable, kotlin/Array<out com.google.firebase.firestore.pipeline/Selectable>...): com.google.firebase.firestore/Pipeline // com.google.firebase.firestore/Pipeline.addFields|addFields(com.google.firebase.firestore.pipeline.Selectable;kotlin.Array<out|com.google.firebase.firestore.pipeline.Selectable>...){}[0]
+    final fun addWindowFields(com.google.firebase.firestore.pipeline/AliasedAggregate, kotlin/Array<out kotlin/Any>...): com.google.firebase.firestore/Pipeline // com.google.firebase.firestore/Pipeline.addWindowFields|addWindowFields(com.google.firebase.firestore.pipeline.AliasedAggregate;kotlin.Array<out|kotlin.Any>...){}[0]
+    final fun addWindowFields(com.google.firebase.firestore.pipeline/AliasedWindowFunction, kotlin/Array<out kotlin/Any>...): com.google.firebase.firestore/Pipeline // com.google.firebase.firestore/Pipeline.addWindowFields|addWindowFields(com.google.firebase.firestore.pipeline.AliasedWindowFunction;kotlin.Array<out|kotlin.Any>...){}[0]
+    final fun addWindowFields(com.google.firebase.firestore.pipeline/WindowSpec, com.google.firebase.firestore.pipeline/AliasedAggregate, kotlin/Array<out kotlin/Any>...): com.google.firebase.firestore/Pipeline // com.google.firebase.firestore/Pipeline.addWindowFields|addWindowFields(com.google.firebase.firestore.pipeline.WindowSpec;com.google.firebase.firestore.pipeline.AliasedAggregate;kotlin.Array<out|kotlin.Any>...){}[0]
+    final fun addWindowFields(com.google.firebase.firestore.pipeline/WindowSpec, com.google.firebase.firestore.pipeline/AliasedWindowFunction, kotlin/Array<out kotlin/Any>...): com.google.firebase.firestore/Pipeline // com.google.firebase.firestore/Pipeline.addWindowFields|addWindowFields(com.google.firebase.firestore.pipeline.WindowSpec;com.google.firebase.firestore.pipeline.AliasedWindowFunction;kotlin.Array<out|kotlin.Any>...){}[0]
     final fun aggregate(com.google.firebase.firestore.pipeline/AggregateStage): com.google.firebase.firestore/Pipeline // com.google.firebase.firestore/Pipeline.aggregate|aggregate(com.google.firebase.firestore.pipeline.AggregateStage){}[0]
     final fun aggregate(com.google.firebase.firestore.pipeline/AggregateStage, com.google.firebase.firestore.pipeline/AggregateOptions): com.google.firebase.firestore/Pipeline // com.google.firebase.firestore/Pipeline.aggregate|aggregate(com.google.firebase.firestore.pipeline.AggregateStage;com.google.firebase.firestore.pipeline.AggregateOptions){}[0]
     final fun aggregate(com.google.firebase.firestore.pipeline/AliasedAggregate, kotlin/Array<out com.google.firebase.firestore.pipeline/AliasedAggregate>...): com.google.firebase.firestore/Pipeline // com.google.firebase.firestore/Pipeline.aggregate|aggregate(com.google.firebase.firestore.pipeline.AliasedAggregate;kotlin.Array<out|com.google.firebase.firestore.pipeline.AliasedAggregate>...){}[0]
@@ -3304,6 +3368,9 @@ final fun io.github.corneloaie.firebase.firestore.externals/writeBatch(io.github
 abstract interface io.github.corneloaie.firebase.firestore.externals.pipelines/AliasedAggregate // io.github.corneloaie.firebase.firestore.externals.pipelines/AliasedAggregate|null[0]
 
 // Targets: [js]
+abstract interface io.github.corneloaie.firebase.firestore.externals.pipelines/AliasedWindowFunction // io.github.corneloaie.firebase.firestore.externals.pipelines/AliasedWindowFunction|null[0]
+
+// Targets: [js]
 abstract interface io.github.corneloaie.firebase.firestore.externals.pipelines/Expression { // io.github.corneloaie.firebase.firestore.externals.pipelines/Expression|null[0]
     abstract fun alias(kotlin/String): io.github.corneloaie.firebase.firestore.externals.pipelines/Expression // io.github.corneloaie.firebase.firestore.externals.pipelines/Expression.alias|alias(kotlin.String){}[0]
     abstract fun asBoolean(): io.github.corneloaie.firebase.firestore.externals.pipelines/Expression // io.github.corneloaie.firebase.firestore.externals.pipelines/Expression.asBoolean|asBoolean(){}[0]
@@ -3317,6 +3384,7 @@ abstract interface io.github.corneloaie.firebase.firestore.externals.pipelines/O
 // Targets: [js]
 abstract interface io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline { // io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline|null[0]
     abstract fun addFields(kotlin.js/Json): io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline // io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline.addFields|addFields(kotlin.js.Json){}[0]
+    abstract fun addWindowFields(kotlin.js/Json): io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline // io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline.addWindowFields|addWindowFields(kotlin.js.Json){}[0]
     abstract fun aggregate(kotlin.js/Json): io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline // io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline.aggregate|aggregate(kotlin.js.Json){}[0]
     abstract fun define(kotlin.js/Json): io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline // io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline.define|define(kotlin.js.Json){}[0]
     abstract fun delete(kotlin.js/Json): io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline // io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline.delete|delete(kotlin.js.Json){}[0]
@@ -3532,6 +3600,14 @@ final class io.github.corneloaie.firebase.firestore.externals.pipelines/Function
 
     final val params // io.github.corneloaie.firebase.firestore.externals.pipelines/FunctionExpression.params|{}params[0]
         final fun <get-params>(): kotlin/Array<io.github.corneloaie.firebase.firestore.externals.pipelines/Expression> // io.github.corneloaie.firebase.firestore.externals.pipelines/FunctionExpression.params.<get-params>|<get-params>(){}[0]
+}
+
+// Targets: [js]
+final class io.github.corneloaie.firebase.firestore.externals.pipelines/WindowFunction { // io.github.corneloaie.firebase.firestore.externals.pipelines/WindowFunction|null[0]
+    constructor <init>(kotlin/String, kotlin/Array<io.github.corneloaie.firebase.firestore.externals.pipelines/Expression>) // io.github.corneloaie.firebase.firestore.externals.pipelines/WindowFunction.<init>|<init>(kotlin.String;kotlin.Array<io.github.corneloaie.firebase.firestore.externals.pipelines.Expression>){}[0]
+
+    final fun alias(kotlin/String): io.github.corneloaie.firebase.firestore.externals.pipelines/AliasedWindowFunction // io.github.corneloaie.firebase.firestore.externals.pipelines/WindowFunction.alias|alias(kotlin.String){}[0]
+    final fun over(kotlin.js/Json): io.github.corneloaie.firebase.firestore.externals.pipelines/WindowFunction // io.github.corneloaie.firebase.firestore.externals.pipelines/WindowFunction.over|over(kotlin.js.Json){}[0]
 }
 
 // Targets: [js]
@@ -3801,6 +3877,9 @@ final fun io.github.corneloaie.firebase.firestore.externals/where(kotlin/String,
 abstract interface io.github.corneloaie.firebase.firestore.externals.pipelines/AliasedAggregate : kotlin.js/JsAny // io.github.corneloaie.firebase.firestore.externals.pipelines/AliasedAggregate|null[0]
 
 // Targets: [wasmJs]
+abstract interface io.github.corneloaie.firebase.firestore.externals.pipelines/AliasedWindowFunction : kotlin.js/JsAny // io.github.corneloaie.firebase.firestore.externals.pipelines/AliasedWindowFunction|null[0]
+
+// Targets: [wasmJs]
 abstract interface io.github.corneloaie.firebase.firestore.externals.pipelines/Expression : kotlin.js/JsAny { // io.github.corneloaie.firebase.firestore.externals.pipelines/Expression|null[0]
     abstract fun alias(kotlin/String): io.github.corneloaie.firebase.firestore.externals.pipelines/Expression // io.github.corneloaie.firebase.firestore.externals.pipelines/Expression.alias|alias(kotlin.String){}[0]
     abstract fun asBoolean(): io.github.corneloaie.firebase.firestore.externals.pipelines/Expression // io.github.corneloaie.firebase.firestore.externals.pipelines/Expression.asBoolean|asBoolean(){}[0]
@@ -3814,6 +3893,7 @@ abstract interface io.github.corneloaie.firebase.firestore.externals.pipelines/O
 // Targets: [wasmJs]
 abstract interface io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline : kotlin.js/JsAny { // io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline|null[0]
     abstract fun addFields(kotlin.js/JsAny): io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline // io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline.addFields|addFields(kotlin.js.JsAny){}[0]
+    abstract fun addWindowFields(kotlin.js/JsAny): io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline // io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline.addWindowFields|addWindowFields(kotlin.js.JsAny){}[0]
     abstract fun aggregate(kotlin.js/JsAny): io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline // io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline.aggregate|aggregate(kotlin.js.JsAny){}[0]
     abstract fun define(kotlin.js/JsAny): io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline // io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline.define|define(kotlin.js.JsAny){}[0]
     abstract fun delete(kotlin.js/JsAny): io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline // io.github.corneloaie.firebase.firestore.externals.pipelines/Pipeline.delete|delete(kotlin.js.JsAny){}[0]
@@ -4029,6 +4109,14 @@ final class io.github.corneloaie.firebase.firestore.externals.pipelines/Function
 
     final val params // io.github.corneloaie.firebase.firestore.externals.pipelines/FunctionExpression.params|{}params[0]
         final fun <get-params>(): kotlin.js/JsArray<io.github.corneloaie.firebase.firestore.externals.pipelines/Expression> // io.github.corneloaie.firebase.firestore.externals.pipelines/FunctionExpression.params.<get-params>|<get-params>(){}[0]
+}
+
+// Targets: [wasmJs]
+final class io.github.corneloaie.firebase.firestore.externals.pipelines/WindowFunction : kotlin.js/JsAny { // io.github.corneloaie.firebase.firestore.externals.pipelines/WindowFunction|null[0]
+    constructor <init>(kotlin/String, kotlin.js/JsArray<io.github.corneloaie.firebase.firestore.externals.pipelines/Expression>) // io.github.corneloaie.firebase.firestore.externals.pipelines/WindowFunction.<init>|<init>(kotlin.String;kotlin.js.JsArray<io.github.corneloaie.firebase.firestore.externals.pipelines.Expression>){}[0]
+
+    final fun alias(kotlin/String): io.github.corneloaie.firebase.firestore.externals.pipelines/AliasedWindowFunction // io.github.corneloaie.firebase.firestore.externals.pipelines/WindowFunction.alias|alias(kotlin.String){}[0]
+    final fun over(kotlin.js/JsAny): io.github.corneloaie.firebase.firestore.externals.pipelines/WindowFunction // io.github.corneloaie.firebase.firestore.externals.pipelines/WindowFunction.over|over(kotlin.js.JsAny){}[0]
 }
 
 // Targets: [wasmJs]

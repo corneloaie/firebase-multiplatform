@@ -49,6 +49,16 @@ public external class AggregateFunction(name: String, params: JsArray<Expression
 
 public external interface AliasedAggregate : JsAny
 
+/** A window function by its backend name; [over] takes a window (`partition`, `sort`, and a `documents` or `range` frame). */
+public external class WindowFunction(name: String, params: JsArray<Expression>) : JsAny {
+    public fun over(window: JsAny): WindowFunction
+
+    @JsName("as")
+    public fun alias(name: String): AliasedWindowFunction
+}
+
+public external interface AliasedWindowFunction : JsAny
+
 public external interface Ordering : JsAny
 
 public external interface PipelineSource : JsAny {
@@ -62,6 +72,7 @@ public external interface PipelineSource : JsAny {
 
 public external interface Pipeline : JsAny {
     public fun addFields(options: JsAny): Pipeline
+    public fun addWindowFields(options: JsAny): Pipeline
     public fun removeFields(options: JsAny): Pipeline
     public fun select(options: JsAny): Pipeline
     public fun where(options: JsAny): Pipeline

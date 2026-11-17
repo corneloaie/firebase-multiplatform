@@ -1,4 +1,4 @@
-// Source: https://raw.githubusercontent.com/firebase/firebase-android-sdk/5b34dd98780b50f0f07d4381042ad35230d69b57/ai-logic/firebase-ai/api.txt
+// Source: https://raw.githubusercontent.com/firebase/firebase-android-sdk/8aa789d9476a426677491eff71aee585b180e8d6/ai-logic/firebase-ai/api.txt
 // Signature format: 3.0
 package com.google.firebase.ai {
 
@@ -1265,6 +1265,13 @@ package com.google.firebase.ai.type {
   @com.google.firebase.ai.type.PublicPreviewAPI public final class LiveServerUnknownMessage implements com.google.firebase.ai.type.LiveServerMessage {
   }
 
+  @com.google.firebase.ai.type.PublicPreviewAPI public final class LiveServerVoiceActivity implements com.google.firebase.ai.type.LiveServerMessage {
+    method public kotlin.time.Duration? getAudioOffset();
+    method public com.google.firebase.ai.type.VoiceActivityType getType();
+    property public final kotlin.time.Duration? audioOffset;
+    property public final com.google.firebase.ai.type.VoiceActivityType type;
+  }
+
   @com.google.firebase.ai.type.PublicPreviewAPI public final class LiveSession {
     method public suspend Object? close(kotlin.coroutines.Continuation<? super kotlin.Unit>);
     method public boolean isAudioConversationActive();
@@ -1874,6 +1881,16 @@ package com.google.firebase.ai.type {
     ctor public Voice(String voiceName);
     method public String getVoiceName();
     property public final String voiceName;
+  }
+
+  @com.google.firebase.ai.type.PublicPreviewAPI public final class VoiceActivityType {
+    field public static final com.google.firebase.ai.type.VoiceActivityType ACTIVITY_END;
+    field public static final com.google.firebase.ai.type.VoiceActivityType ACTIVITY_START;
+    field public static final com.google.firebase.ai.type.VoiceActivityType.Companion Companion;
+    field public static final com.google.firebase.ai.type.VoiceActivityType UNKNOWN;
+  }
+
+  public static final class VoiceActivityType.Companion {
   }
 
   public final class WebGroundingChunk {

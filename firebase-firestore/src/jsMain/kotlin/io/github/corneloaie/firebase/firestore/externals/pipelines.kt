@@ -49,6 +49,16 @@ public external class AggregateFunction(name: String, params: Array<Expression>)
 
 public external interface AliasedAggregate
 
+/** A window function by its backend name; [over] takes a window (`partition`, `sort`, and a `documents` or `range` frame). */
+public external class WindowFunction(name: String, params: Array<Expression>) {
+    public fun over(window: Json): WindowFunction
+
+    @JsName("as")
+    public fun alias(name: String): AliasedWindowFunction
+}
+
+public external interface AliasedWindowFunction
+
 public external interface Ordering
 
 public external interface PipelineSource {
@@ -62,6 +72,7 @@ public external interface PipelineSource {
 
 public external interface Pipeline {
     public fun addFields(options: Json): Pipeline
+    public fun addWindowFields(options: Json): Pipeline
     public fun removeFields(options: Json): Pipeline
     public fun select(options: Json): Pipeline
     public fun where(options: Json): Pipeline

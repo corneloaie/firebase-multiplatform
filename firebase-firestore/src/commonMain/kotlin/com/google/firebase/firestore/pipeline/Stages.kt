@@ -221,6 +221,38 @@ internal class AddFieldsStage(internal val fields: Array<out Selectable>, option
     override fun hashCode(): Int = 31 * fields.contentHashCode() + options.hashCode()
 }
 
+/** Adds [fields], window functions evaluated over [window], to the documents. */
+internal class AddWindowFieldsStage(
+    internal val window: WindowSpec,
+    internal val fields: Array<out AliasedWindowFunction>,
+    options: InternalOptions = InternalOptions.EMPTY,
+) : Stage<AddWindowFieldsStage>("add_window_fields", options) {
+    init {
+        val seenAliases = HashSet<String>()
+        for (field in fields) {
+            val alias = field.alias
+            require(alias != Field.DOCUMENT_ID.alias) { "Alias ${Field.DOCUMENT_ID.alias} is reserved" }
+            require(alias != Field.CREATE_TIME.alias) { "Alias ${Field.CREATE_TIME.alias} is reserved" }
+            require(alias != Field.UPDATE_TIME.alias) { "Alias ${Field.UPDATE_TIME.alias} is reserved" }
+            require(seenAliases.add(alias)) { "Duplicate alias: '$alias'" }
+        }
+    }
+
+    override fun self(options: InternalOptions) = AddWindowFieldsStage(window, fields, options)
+
+    override fun equals(other: Any?): Boolean = this === other || (other is AddWindowFieldsStage && window == other.window && fields.contentEquals(other.fields) && options == other.options)
+
+    override fun hashCode(): Int = 31 * (31 * window.hashCode() + fields.contentHashCode()) + options.hashCode()
+
+    companion object {
+        /** The stage adding [field] and [additionalFields] ([AliasedWindowFunction]s or [AliasedAggregate]s) over [window]. */
+        fun of(window: WindowSpec, field: Any, vararg additionalFields: Any): AddWindowFieldsStage = AddWindowFieldsStage(
+            window,
+            arrayOf(AliasedWindowFunction.toAliasedWindowFunction(field), *additionalFields.map(AliasedWindowFunction::toAliasedWindowFunction).toTypedArray()),
+        )
+    }
+}
+
 /** An aggregation of the input documents, optionally by groups; created with [withAccumulators]. */
 public class AggregateStage private constructor(
     internal val accumulators: Map<String, AggregateFunction>,
@@ -354,7 +386,7 @@ public class FindNearestOptions private constructor(options: InternalOptions) : 
     public fun withDistanceField(distanceField: String?): FindNearestOptions? = withDistanceField(Expression.field(distanceField!!))
 }
 
-/** A full-text or geo search; created with [withQuery]. Beta in the Android SDK. */
+/** A full-text or geo search; created with [withQuery]. */
 public class SearchStage internal constructor(
     internal val query: BooleanExpression,
     internal val languageCode: String? = null,

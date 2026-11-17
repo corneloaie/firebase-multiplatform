@@ -11,6 +11,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Pipeline
 import com.google.firebase.firestore.PipelineResult
 import com.google.firebase.firestore.pipeline.AddFieldsStage
+import com.google.firebase.firestore.pipeline.AddWindowFieldsStage
 import com.google.firebase.firestore.pipeline.AggregateFunction
 import com.google.firebase.firestore.pipeline.AggregateStage
 import com.google.firebase.firestore.pipeline.AliasedExpression
@@ -54,6 +55,8 @@ import com.google.firebase.firestore.pipeline.UpdateStage
 import com.google.firebase.firestore.pipeline.UpsertStage
 import com.google.firebase.firestore.pipeline.Variable
 import com.google.firebase.firestore.pipeline.WhereStage
+import com.google.firebase.firestore.pipeline.WindowFunction
+import com.google.firebase.firestore.pipeline.WindowSpec
 import com.google.firebase.firestore.task
 import com.google.firebase.firestore.toCompat
 import com.google.firebase.firestore.toCompatData
@@ -65,6 +68,7 @@ import platform.Foundation.NSNumber
 import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRFieldPath
 import swiftPMImport.io.github.corneloaie.firebase.firestore.FIRVectorValue
 import swiftPMImport.io.github.corneloaie.firebase.firestore.__FIRAddFieldsStageBridge
+import swiftPMImport.io.github.corneloaie.firebase.firestore.__FIRAddWindowFieldsStageBridge
 import swiftPMImport.io.github.corneloaie.firebase.firestore.__FIRAggregateFunctionBridge
 import swiftPMImport.io.github.corneloaie.firebase.firestore.__FIRAggregateStageBridge
 import swiftPMImport.io.github.corneloaie.firebase.firestore.__FIRCollectionGroupSourceStageBridge
@@ -103,6 +107,7 @@ import swiftPMImport.io.github.corneloaie.firebase.firestore.__FIRUpdateStageBri
 import swiftPMImport.io.github.corneloaie.firebase.firestore.__FIRUpsertStageBridge
 import swiftPMImport.io.github.corneloaie.firebase.firestore.__FIRVariableBridge
 import swiftPMImport.io.github.corneloaie.firebase.firestore.__FIRWhereStageBridge
+import swiftPMImport.io.github.corneloaie.firebase.firestore.__FIRWindowSpecBridge
 
 /*
  * The layer's pipelines on the iOS SDK's Objective-C pipeline bridge (FIRPipelineBridge.h, public in
@@ -187,6 +192,12 @@ private fun Stage<*>.toIosStage(): __FIRStageBridge {
 
         is AddFieldsStage -> __FIRAddFieldsStageBridge(selectables(fields))
 
+        is AddWindowFieldsStage -> __FIRAddWindowFieldsStageBridge(
+            window.toIosWindow(),
+            fields.associate { it.alias to it.expr.toIosWindowFunction() },
+            options.takeUnless { it.isEmpty() }?.toIosOptions(name),
+        )
+
         is RemoveFieldsStage -> __FIRRemoveFieldsStageBridge(fields.map { it.alias })
 
         is SelectStage -> __FIRSelectStageBridge(selectables(fields))
@@ -252,6 +263,9 @@ private fun Stage<*>.hasTypedOptions(): Boolean = when (this) {
         options.entries["limit"].let { it == null || it is Long } && options.entries["distance_field"].let { it == null || it is Field }
 
     is UnnestStage -> options.entries.keys == setOf("index_field") && options.entries["index_field"] is Field
+
+    // its bridge takes the options as they are
+    is AddWindowFieldsStage -> true
 
     else -> false
 }
@@ -330,6 +344,26 @@ private fun Ordering.toIosOrdering(): __FIROrderingBridge = __FIROrderingBridge(
 private fun Ordering.toIosArgument(): Map<Any?, *> = mapOf("direction" to constant(dir.name.lowercase()), "expression" to expr.toIosExpression())
 
 private fun AggregateFunction.toIosAggregate(): __FIRAggregateFunctionBridge = __FIRAggregateFunctionBridge(name, params.map { it.toIosExpression() })
+
+/** A window function, which the bridge sends as `over(function, window)` when it has a frame of its own. */
+private fun WindowFunction.toIosWindowFunction(): __FIRAggregateFunctionBridge = __FIRAggregateFunctionBridge(name, params.map { it.toIosExpression() }, window?.toIosWindow())
+
+/** A window as the bridge takes it: its partition and sort, and its frame, if any, by type ("documents" or "range"). */
+private fun WindowSpec.toIosWindow(): __FIRWindowSpecBridge {
+    val frame = documentsFrame ?: rangeFrame
+    return __FIRWindowSpecBridge(
+        partition.map { it.toIosExpression() },
+        sort.map { it.toIosOrdering() },
+        frame?.preceding?.toIosExpression(),
+        frame?.following?.toIosExpression(),
+        when {
+            documentsFrame != null -> "documents"
+            rangeFrame != null -> "range"
+            else -> null
+        },
+        frame?.unit?.toIosExpression(),
+    )
+}
 
 private fun GenericArg.toIosArgument(): Any = when (this) {
     is GenericArg.ExprArg -> expr.toIosExpression()
