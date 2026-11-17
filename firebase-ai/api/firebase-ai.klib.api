@@ -995,6 +995,13 @@ final class com.google.firebase.ai.type/LiveServerToolCallCancellation : com.goo
 
 final class com.google.firebase.ai.type/LiveServerUnknownMessage : com.google.firebase.ai.type/LiveServerMessage // com.google.firebase.ai.type/LiveServerUnknownMessage|null[0]
 
+final class com.google.firebase.ai.type/LiveServerVoiceActivity : com.google.firebase.ai.type/LiveServerMessage { // com.google.firebase.ai.type/LiveServerVoiceActivity|null[0]
+    final val audioOffset // com.google.firebase.ai.type/LiveServerVoiceActivity.audioOffset|{}audioOffset[0]
+        final fun <get-audioOffset>(): kotlin.time/Duration? // com.google.firebase.ai.type/LiveServerVoiceActivity.audioOffset.<get-audioOffset>|<get-audioOffset>(){}[0]
+    final val type // com.google.firebase.ai.type/LiveServerVoiceActivity.type|{}type[0]
+        final fun <get-type>(): com.google.firebase.ai.type/VoiceActivityType // com.google.firebase.ai.type/LiveServerVoiceActivity.type.<get-type>|<get-type>(){}[0]
+}
+
 final class com.google.firebase.ai.type/LiveSession { // com.google.firebase.ai.type/LiveSession|null[0]
     final fun isAudioConversationActive(): kotlin/Boolean // com.google.firebase.ai.type/LiveSession.isAudioConversationActive|isAudioConversationActive(){}[0]
     final fun isClosed(): kotlin/Boolean // com.google.firebase.ai.type/LiveSession.isClosed|isClosed(){}[0]
@@ -1445,6 +1452,21 @@ final class com.google.firebase.ai.type/Voice { // com.google.firebase.ai.type/V
 
     final val voiceName // com.google.firebase.ai.type/Voice.voiceName|{}voiceName[0]
         final fun <get-voiceName>(): kotlin/String // com.google.firebase.ai.type/Voice.voiceName.<get-voiceName>|<get-voiceName>(){}[0]
+}
+
+final class com.google.firebase.ai.type/VoiceActivityType { // com.google.firebase.ai.type/VoiceActivityType|null[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.google.firebase.ai.type/VoiceActivityType.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.google.firebase.ai.type/VoiceActivityType.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.google.firebase.ai.type/VoiceActivityType.toString|toString(){}[0]
+
+    final object Companion { // com.google.firebase.ai.type/VoiceActivityType.Companion|null[0]
+        final val ACTIVITY_END // com.google.firebase.ai.type/VoiceActivityType.Companion.ACTIVITY_END|{}ACTIVITY_END[0]
+            final fun <get-ACTIVITY_END>(): com.google.firebase.ai.type/VoiceActivityType // com.google.firebase.ai.type/VoiceActivityType.Companion.ACTIVITY_END.<get-ACTIVITY_END>|<get-ACTIVITY_END>(){}[0]
+        final val ACTIVITY_START // com.google.firebase.ai.type/VoiceActivityType.Companion.ACTIVITY_START|{}ACTIVITY_START[0]
+            final fun <get-ACTIVITY_START>(): com.google.firebase.ai.type/VoiceActivityType // com.google.firebase.ai.type/VoiceActivityType.Companion.ACTIVITY_START.<get-ACTIVITY_START>|<get-ACTIVITY_START>(){}[0]
+        final val UNKNOWN // com.google.firebase.ai.type/VoiceActivityType.Companion.UNKNOWN|{}UNKNOWN[0]
+            final fun <get-UNKNOWN>(): com.google.firebase.ai.type/VoiceActivityType // com.google.firebase.ai.type/VoiceActivityType.Companion.UNKNOWN.<get-UNKNOWN>|<get-UNKNOWN>(){}[0]
+    }
 }
 
 final class com.google.firebase.ai.type/WebGroundingChunk { // com.google.firebase.ai.type/WebGroundingChunk|null[0]

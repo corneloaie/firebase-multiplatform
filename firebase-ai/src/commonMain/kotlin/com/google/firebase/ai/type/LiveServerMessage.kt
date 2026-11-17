@@ -19,6 +19,7 @@
 
 package com.google.firebase.ai.type
 
+import kotlin.jvm.JvmName
 import kotlin.time.Duration
 
 /**
@@ -30,6 +31,7 @@ import kotlin.time.Duration
  * @see LiveServerSetupComplete
  * @see LiveServerGoAway
  * @see LiveSessionResumptionUpdate
+ * @see LiveServerVoiceActivity
  */
 @PublicPreviewAPI public interface LiveServerMessage
 
@@ -165,4 +167,19 @@ internal constructor(
     public val newHandle: String? = null,
     public val resumable: Boolean? = null,
     public val lastConsumedClientMessageIndex: Int? = null,
+) : LiveServerMessage
+
+/**
+ * Server notification indicating voice activity was detected in the input audio stream.
+ *
+ * @property type Whether speech started or ended. This is [VoiceActivityType.UNKNOWN] if the server
+ * sends a value that this version of the SDK does not recognize.
+ * @property audioOffset The time voice activity was detected relative to the start of the audio
+ * stream, or `null` if the server did not provide it.
+ */
+@PublicPreviewAPI
+public class LiveServerVoiceActivity
+internal constructor(
+    public val type: VoiceActivityType,
+    @get:JvmName("getAudioOffset") public val audioOffset: Duration?,
 ) : LiveServerMessage

@@ -37,6 +37,7 @@ import com.google.firebase.ai.type.LiveServerSetupComplete
 import com.google.firebase.ai.type.LiveServerToolCall
 import com.google.firebase.ai.type.LiveServerToolCallCancellation
 import com.google.firebase.ai.type.LiveServerUnknownMessage
+import com.google.firebase.ai.type.LiveServerVoiceActivity
 import com.google.firebase.ai.type.LiveSessionResumptionUpdate
 import com.google.firebase.ai.type.ModalityTokenCount
 import com.google.firebase.ai.type.Part
@@ -52,6 +53,7 @@ import com.google.firebase.ai.type.UrlContextMetadata
 import com.google.firebase.ai.type.UrlMetadata
 import com.google.firebase.ai.type.UrlRetrievalStatus
 import com.google.firebase.ai.type.UsageMetadata
+import com.google.firebase.ai.type.VoiceActivityType
 import com.google.firebase.ai.type.WebGroundingChunk
 import com.google.firebase.ai.type.content
 import kotlinx.serialization.json.Json
@@ -66,6 +68,7 @@ import kotlinx.serialization.json.doubleOrNull
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonObject
 import kotlin.io.encoding.Base64
+import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 
 /*
@@ -386,7 +389,7 @@ private fun JsonObject.toTranscription(): Transcription = Transcription(string("
 
 /**
  * A server message of the Live API, by its key: `serverContent`, `setupComplete`, `toolCall`, `toolCallCancellation`,
- * `goAway` and `sessionResumptionUpdate`; anything else is a [LiveServerUnknownMessage].
+ * `goAway`, `sessionResumptionUpdate` and `voiceActivity`; anything else is a [LiveServerUnknownMessage].
  */
 internal fun JsonObject.toLiveServerMessage(): LiveServerMessage {
     obj("serverContent")?.let { content ->
@@ -411,17 +414,21 @@ internal fun JsonObject.toLiveServerMessage(): LiveServerMessage {
         return LiveServerToolCallCancellation(cancellation.strings("ids") ?: cancellation.strings("functionIds").orEmpty())
     }
     obj("goAway")?.let { goAway ->
-        // A protobuf Duration ("12.5s"), or a number of seconds.
-        val timeLeft = (goAway["timeLeft"] as? JsonPrimitive)?.let { value ->
-            value.doubleOrNull ?: value.contentOrNull?.trim()?.takeIf { it.endsWith("s") }?.dropLast(1)?.toDoubleOrNull()
-        }
-        return LiveServerGoAway(timeLeft?.seconds)
+        return LiveServerGoAway(goAway.duration("timeLeft"))
     }
     obj("sessionResumptionUpdate")?.let { update ->
         return LiveSessionResumptionUpdate(update.string("newHandle"), update.boolean("resumable"), update.int("lastConsumedClientMessageIndex"))
     }
+    obj("voiceActivity")?.let { activity ->
+        return LiveServerVoiceActivity(VoiceActivityType.fromValue(activity.string("type")), activity.duration("audioOffset"))
+    }
     return LiveServerUnknownMessage.create()
 }
+
+/** A protobuf Duration ("12.5s"), or a number of seconds; null when it is missing, malformed or not finite. */
+private fun JsonObject.duration(key: String): Duration? = (this[key] as? JsonPrimitive)?.let { value ->
+    value.doubleOrNull ?: value.contentOrNull?.trim()?.takeIf { it.endsWith("s") }?.dropLast(1)?.toDoubleOrNull()
+}?.takeIf { it.isFinite() }?.seconds
 
 /** Parses [text] as a JSON object; anything else (a JSON `null` included) is an empty object. */
 internal fun parseJsonObject(text: String?): JsonObject = text?.let { runCatching { Json.parseToJsonElement(it) }.getOrNull() as? JsonObject } ?: JsonObject(emptyMap())

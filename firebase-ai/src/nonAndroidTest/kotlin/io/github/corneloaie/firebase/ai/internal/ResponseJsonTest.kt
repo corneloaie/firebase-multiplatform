@@ -25,6 +25,7 @@ import com.google.firebase.ai.type.LiveServerSetupComplete
 import com.google.firebase.ai.type.LiveServerToolCall
 import com.google.firebase.ai.type.LiveServerToolCallCancellation
 import com.google.firebase.ai.type.LiveServerUnknownMessage
+import com.google.firebase.ai.type.LiveServerVoiceActivity
 import com.google.firebase.ai.type.LiveSessionResumptionUpdate
 import com.google.firebase.ai.type.PromptBlockedException
 import com.google.firebase.ai.type.QuotaExceededException
@@ -38,6 +39,7 @@ import com.google.firebase.ai.type.TextPart
 import com.google.firebase.ai.type.UnknownException
 import com.google.firebase.ai.type.UnsupportedUserLocationException
 import com.google.firebase.ai.type.UrlRetrievalStatus
+import com.google.firebase.ai.type.VoiceActivityType
 import io.github.corneloaie.firebase.runTest
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -202,6 +204,15 @@ class ResponseJsonTest {
         assertEquals(listOf("x"), (json("""{"toolCallCancellation": {"ids": ["x"]}}""").toLiveServerMessage() as LiveServerToolCallCancellation).functionIds)
         assertEquals(1.5.seconds, (json("""{"goAway": {"timeLeft": "1.5s"}}""").toLiveServerMessage() as LiveServerGoAway).timeLeft)
         assertEquals(2.seconds, (json("""{"goAway": {"timeLeft": 2}}""").toLiveServerMessage() as LiveServerGoAway).timeLeft)
+        assertNull((json("""{"goAway": {"timeLeft": "soon"}}""").toLiveServerMessage() as LiveServerGoAway).timeLeft)
+        val started = json("""{"voiceActivity": {"type": "ACTIVITY_START", "audioOffset": "2.520s"}}""").toLiveServerMessage()
+        assertEquals(VoiceActivityType.ACTIVITY_START, (started as LiveServerVoiceActivity).type)
+        assertEquals(2.52.seconds, started.audioOffset)
+        val ended = json("""{"voiceActivity": {"type": "ACTIVITY_END"}}""").toLiveServerMessage() as LiveServerVoiceActivity
+        assertEquals(VoiceActivityType.ACTIVITY_END, ended.type)
+        assertNull(ended.audioOffset)
+        assertEquals(VoiceActivityType.UNKNOWN, (json("""{"voiceActivity": {"type": "SOMETHING_NEW"}}""").toLiveServerMessage() as LiveServerVoiceActivity).type)
+        assertEquals(VoiceActivityType.UNKNOWN, (json("""{"voiceActivity": {}}""").toLiveServerMessage() as LiveServerVoiceActivity).type)
         val update = json("""{"sessionResumptionUpdate": {"newHandle": "h", "resumable": true}}""").toLiveServerMessage()
         assertEquals("h", (update as LiveSessionResumptionUpdate).newHandle)
         assertIs<LiveServerUnknownMessage>(json("""{"somethingNew": {}}""").toLiveServerMessage())
