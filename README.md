@@ -26,7 +26,7 @@ their newest releases every week.
 ## Coverage
 
 <!-- coverage:start -->
-**18 Firebase products: 4,157 of 4,157 Android API members available from common code (100%)**, measured against firebase-android-sdk [`8aa789d`](https://github.com/firebase/firebase-android-sdk/tree/8aa789d9476a426677491eff71aee585b180e8d6). Built on the Firebase Android BoM 35.2.0 (App Distribution 16.0.0-beta21), iOS SDK 13.2.0 and JS SDK 13.3.0.
+**18 Firebase products: 4,157 of 4,157 Android API members available from common code (100%)**, measured against firebase-android-sdk [`8aa789d`](https://github.com/firebase/firebase-android-sdk/tree/8aa789d9476a426677491eff71aee585b180e8d6). Built on the Firebase Android BoM 35.2.0 (App Distribution 16.0.0-beta21), iOS SDK 13.2.0 and JS SDK 13.4.0.
 
 | Product | Artifact | Android API | Members | Android | iOS | macOS | tvOS | JVM | JS | Wasm |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
